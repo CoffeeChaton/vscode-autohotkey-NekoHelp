@@ -1,6 +1,6 @@
 # Changelog
 
-## Next 0.0.24(2023-02-XX)
+## 0.0.24(2023-02-24)
 
 - fix: `1.e3` syntax-highlight
 
