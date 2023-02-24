@@ -1,0 +1,16 @@
+.dccache
+.eslintcache
+.history/
+.idea/
+.vscode-test/
+.VSCodeCounter/
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+*.vsix
+coverage/
+dist/
+esbuildTarget.json
+node_modules/
+out/
+vscode-autohotkey-neko-help*

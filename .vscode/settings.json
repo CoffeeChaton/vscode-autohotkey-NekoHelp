@@ -1,0 +1,66 @@
+{
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "dprint.dprint"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "dprint.dprint"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "dprint.dprint"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "dprint.dprint"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "dprint.dprint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dprint.dprint"
+    },
+    "editor.codeActionsOnSave": {
+        "addMissingImports": true,
+        "source.fixAll": true,
+        "source.organizeImports": true
+    },
+    // "editor.defaultFormatter": "dprint.dprint",
+    "eslint.enable": true,
+    "eslint.options": {
+        "extensions": [
+            ".ts"
+        ]
+    },
+    "eslint.packageManager": "pnpm",
+    "eslint.probe": [
+        "typescript"
+    ],
+    "files.associations": {
+        ".eslintrc.json": "jsonc",
+        "ahk.configuration.json": "jsonc",
+        "dprint.json": "jsonc",
+        "extensions.json": "jsonc",
+        "settings.json": "jsonc",
+        "tsconfig.json": "jsonc"
+    },
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "cSpell.customDictionaries": {
+        "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:nekoHelp}/.cspell/custom-dictionary-workspace.txt",
+            "addWords": true,
+            "scope": "workspace"
+        }
+    },
+    "workbench.localHistory.enabled": false,
+    "markdownlint.config": {
+        "no-inline-html": {
+            "allowed_elements": ["details", "summary", "b"]
+        },
+        "ul-indent": {
+            "indent": 2
+        }
+    },
+    "markdown.extension.list.indentationSize": "inherit"
+}

@@ -1,0 +1,355 @@
+{
+    "name": "vscode-autohotkey-neko-help",
+    "displayName": "AutoHotkey NekoHelp",
+    "version": "0.0.23",
+    "description": "AutoHotkey IntelliSense, format, linters, and language support for VS Code, ",
+    "categories": [
+        "Programming Languages",
+        "Snippets",
+        "Linters",
+        "Formatters"
+    ],
+    "keywords": [
+        "ahk",
+        "autohotkey",
+        "vscode"
+    ],
+    "homepage": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/README.md",
+    "bugs": {
+        "url": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues"
+    },
+    "repository": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+    "license": "GNU GPLv2",
+    "author": "Coffee Chaton(https://github.com/CoffeeChaton)",
+    "publisher": "cat1122",
+    "main": "./dist/extension",
+    "scripts": {
+        "auto_fix": "eslint --fix src",
+        "compile": "node esbuild.config.js",
+        "compile_dev": "node esbuild.config.js --isDev",
+        "fmt": "dprint fmt && pnpm run sort_pack",
+        "lint": "eslint src",
+        "package": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/master/",
+        "pnpm clean cache": "pnpm store prune",
+        "sort_pack": "sort-package-json",
+        "test": "jest",
+        "test_vsc": "pnpm run compile && node ./dist/test/runTest.js",
+        "up": "dprint config update && pnpm up -L",
+        "vscode:prepublish": "pnpm run test && pnpm run auto_fix && pnpm run fmt && pnpm run compile",
+        "watch": "tsc -watch -p ./"
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "ahk.nekoHelp.bar",
+                "title": "ahk-neko-help:List all ahk-neko-help command"
+            },
+            {
+                "command": "ahk.nekoHelp.refreshResource",
+                "title": "ahk-neko-help:Refresh Resource"
+            },
+            {
+                "command": "ahk.nekoHelp.ListAllInclude",
+                "title": "ahk-neko-help:List all #include"
+            },
+            {
+                "command": "ahk.nekoHelp.ListIncludeTree",
+                "title": "ahk-neko-help:List #include as Tree"
+            },
+            {
+                "command": "ahk.nekoHelp.ListAllFunc",
+                "title": "ahk-neko-help:List all userDef function()"
+            }
+        ],
+        "configuration": [
+            {
+                "type": "object",
+                "title": "1. CodeLens",
+                "properties": {
+                    "AhkNekoHelp.CodeLens.showFuncReference": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "show Reference at function def line"
+                    },
+                    "AhkNekoHelp.CodeLens.showDevTool": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "show Func and Method dev tools"
+                    },
+                    "AhkNekoHelp.CodeLens.showFileReport": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "show CodeLens at file top"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "2. Diagnostics and Lint",
+                "properties": {
+                    "AhkNekoHelp.Diag.AMasterSwitch": {
+                        "type": "string",
+                        "default": "auto",
+                        "enum": [
+                            "never",
+                            "auto",
+                            "alway"
+                        ],
+                        "markdownEnumDescriptions": [
+                            "don't diagnose at any time.",
+                            "(default) if open [workspace](https://code.visualstudio.com/docs/editor/workspaces) then diagnose, else not.",
+                            "alway diagnose"
+                        ],
+                        "markdownDescription": "[Diagnostic](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/src/diag.ts) Master Switch"
+                    },
+                    "AhkNekoHelp.Diag.code107LegacyAssignment": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "(code107) Diagnostic [`var = value`(legacy assignment)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm) and suggest \"try to use `:=` replace `=`\""
+                    },
+                    "AhkNekoHelp.Diag.code300FuncSize": {
+                        "type": "number",
+                        "default": 100,
+                        "minimum": 3,
+                        "maximum": 100000,
+                        "markdownDescription": "(code300) lint of function/Method size (just calc non-blank lines)"
+                    },
+                    "AhkNekoHelp.Diag.code304AvoidConfusingFuncNames": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "([code304](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/code304.md)) avoid def-func-name look like Flow Of Control"
+                    },
+                    "AhkNekoHelp.Diag.code500": {
+                        "type": "number",
+                        "default": 20,
+                        "minimum": 0,
+                        "maximum": 999,
+                        "markdownDescription": "(code500) var is assigned but never used, a file max warn number. use ```0``` to close warn."
+                    },
+                    "AhkNekoHelp.Diag.code502": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 0,
+                        "maximum": 999,
+                        "markdownDescription": "(code502) case sensitivity check of variable, a file max warn number. use ```0``` to close warn."
+                    },
+                    "AhkNekoHelp.Diag.code503": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 0,
+                        "maximum": 999,
+                        "markdownDescription": "(code503) case sensitivity check of parameter, a file max checks number. use ```0``` to close warn."
+                    },
+                    "AhkNekoHelp.Diag.code511": {
+                        "type": "number",
+                        "default": 0,
+                        "minimum": 0,
+                        "maximum": 999,
+                        "markdownDescription": "(code511) ban var/param name same function-name. use ```0``` to close info."
+                    },
+                    "AhkNekoHelp.Diag.code512": {
+                        "type": "number",
+                        "default": 0,
+                        "minimum": 0,
+                        "maximum": 999,
+                        "markdownDescription": "(code512) ban global-var-name same function-name. use ```0``` to close info."
+                    },
+                    "AhkNekoHelp.Diag.code513": {
+                        "type": "number",
+                        "default": 0,
+                        "minimum": 0,
+                        "maximum": 999,
+                        "markdownDescription": "(code513) ban label-name same function-name. use ```0``` to close info."
+                    },
+                    "AhkNekoHelp.Diag.code800Deprecated": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "(code8xx) Diagnostic Deprecated commands, false to hide diag code like [8xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/src/diag.ts#L206)"
+                    },
+                    "AhkNekoHelp.Diag.useModuleValDiag": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "beta test: try to Diag [5xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/src/diag.ts#L29) at all file"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "3. format",
+                "properties": {
+                    "AhkNekoHelp.format.AMasterSwitchUseFormatProvider": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "if you want to use other format tools or manual processing, close this"
+                    },
+                    "AhkNekoHelp.format.textReplace": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "`Alpha test options`, It is **not recommended** to turn on except for advanced users."
+                    },
+                    "AhkNekoHelp.format.useTopLabelIndent": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "Indent the `label`, `HotString`, and `HotKey` at the top of the document"
+                    },
+                    "AhkNekoHelp.format.useParenthesesIndent": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "Indent the wih `(` and `)` not close"
+                    },
+                    "AhkNekoHelp.format.useSquareBracketsIndent": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "Indent the wih `[` and `]` not close"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "4. misc",
+                "properties": {
+                    "AhkNekoHelp.baseScan.IgnoredList": {
+                        "type": "array",
+                        "default": [
+                            "/\\.",
+                            "/node_modules$",
+                            "/node_modules/",
+                            "/neko_Exp_Gdip\\.ahk$",
+                            "/build(/|$)",
+                            "/dist(/|$)",
+                            "/temp(/|$)",
+                            "/ahk2(/|$)",
+                            "\\.2\\.ahk$",
+                            "/backup(/|$)",
+                            "/history(/|$)"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "markdownDescription": "[workspace](https://code.visualstudio.com/docs/editor/workspaces) scan blockList, Disable AhkNekoHelp when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-style** ```\"\\\"```"
+                    },
+                    "AhkNekoHelp.snippets.CommandOption": {
+                        "type": "number",
+                        "default": 1,
+                        "enum": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "markdownEnumDescriptions": [
+                            "Don't filter Command, Provides all entered commands.",
+                            "filter not recommended Command. (Referral rules from AhkNekoHelp.)",
+                            "filter Command with the pack has same name function and not recommended Command",
+                            "not provided any Command."
+                        ]
+                    },
+                    "AhkNekoHelp.snippets.blockFilesList": {
+                        "type": "array",
+                        "default": [
+                            "/Gdip_all_2020_08_24\\.ahk"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "markdownDescription": "Disable IntelliSense when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-style** ```\"\\\"```"
+                    },
+                    "AhkNekoHelp.statusBar.displayColor": {
+                        "type": "string",
+                        "default": "",
+                        "markdownDescription": "color of [status bar](https://code.visualstudio.com/api/extension-capabilities/extending-workbench), use HTML Color, exp: ```#e783e1``` or ```rgb(255,255,100)```"
+                    },
+                    "AhkNekoHelp.useSymbolProvider": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "use [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), if you like other plugins SymBolProvider, can close this."
+                    },
+                    "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/10)"
+                    },
+                    "AhkNekoHelp.Rename.functionInStr": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/89f0879239ef6250fc15c0fd0ea7ce95519e3487/note/code601.md)"
+                    }
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ahk",
+                "scopeName": "source.ahk",
+                "path": "./syntaxes/ahk.tmLanguage.json"
+            }
+        ],
+        "languages": [
+            {
+                "id": "ahk",
+                "aliases": [
+                    "AutoHotkey",
+                    "autohotkey",
+                    "ahk"
+                ],
+                "extensions": [
+                    ".ahk"
+                ],
+                "configuration": "./config/ahk.configuration.json"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "ahk.nekoHelp.refreshResource",
+                    "when": "explorerViewletVisible && AhkNekoHelpExtension.showMyCommand"
+                }
+            ]
+        }
+    },
+    "activationEvents": [
+        "onLanguage:ahk"
+    ],
+    "devDependencies": {
+        "@swc/core": "^1.3.36",
+        "@swc/jest": "^0.2.24",
+        "@types/assert": "^1.5.6",
+        "@types/jest": "^29.4.0",
+        "@types/node": "^18.14.1",
+        "@types/vscode": "^1.75.1",
+        "@typescript-eslint/eslint-plugin": "^5.53.0",
+        "@typescript-eslint/parser": "^5.53.0",
+        "@vscode/test-electron": "^2.2.3",
+        "@vscode/vsce": "^2.17.0",
+        "esbuild": "^0.17.10",
+        "eslint": "^8.34.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-sukka": "^1.7.2",
+        "eslint-import-resolver-typescript": "^3.5.3",
+        "eslint-plugin-fp": "^2.3.0",
+        "eslint-plugin-immutable": "^1.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jest": "^27.2.1",
+        "eslint-plugin-jest-formatting": "^3.1.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-regexp": "^1.12.0",
+        "eslint-plugin-security": "^1.7.1",
+        "eslint-plugin-sonarjs": "^0.18.0",
+        "eslint-plugin-unicorn": "^45.0.2",
+        "fs": "0.0.1-security",
+        "jest": "^29.4.3",
+        "sort-package-json": "^2.4.1",
+        "typescript": "5.0.0-beta",
+        "vscode-tmgrammar-test": "^0.1.1"
+    },
+    "engines": {
+        "vscode": "^1.75.1"
+    },
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#b09df5",
+        "theme": "dark"
+    }
+}

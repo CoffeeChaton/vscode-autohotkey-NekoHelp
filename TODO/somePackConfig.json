@@ -1,0 +1,38 @@
+{
+    "AhkNekoHelp.Provider": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "strings": {
+                "anyOf": [{ "type": "boolean" }, {
+                    "type": "string",
+                    "enum": ["on", "inline", "off"]
+                }],
+                "default": "on",
+                "description": ["TODO1", "TODO2", "TODO3"]
+            },
+            "comments": {
+                "anyOf": [{ "type": "boolean" }, {
+                    "type": "string",
+                    "enum": ["on", "inline", "off"]
+                }],
+                "default": "on",
+                "description": ["TODO1", "TODO2", "TODO3"]
+            },
+            "other": {
+                "anyOf": [{ "type": "boolean" }, {
+                    "type": "string",
+                    "enum": ["on", "inline", "off"]
+                }],
+                "default": "on",
+                "description": ["TODO1", "TODO2", "TODO3"]
+            }
+        },
+        "default": {
+            "other": "on",
+            "comments": "off",
+            "strings": "off"
+        },
+        "markdownDescription": "TODO1"
+    }
+}

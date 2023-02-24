@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "esModuleInterop": true,
+        "exactOptionalPropertyTypes": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["ESNext"],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUnusedLocals": false,
+        "resolveJsonModule": true,
+        "rootDir": ".",
+        "sourceMap": true,
+        "strict": true,
+        "target": "ES2021",
+        "types": ["@types/node", "@types/jest"],
+        "useUnknownInCatchVariables": false
+    },
+    "diagnostics": true,
+    "exclude": [
+        "node_modules",
+        ".vscode-test",
+        "out",
+        "dist"
+    ]
+}

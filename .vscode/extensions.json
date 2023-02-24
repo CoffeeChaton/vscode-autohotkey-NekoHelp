@@ -1,0 +1,25 @@
+{
+    // See https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions
+    // for the documentation about the extensions.json format
+    "recommendations": [
+        "alefragnani.project-manager",
+        "bierner.markdown-preview-github-styles",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "gruntfuggly.todo-tree",
+        "ms-vscode.vscode-js-profile-flame",
+        "redcmd.tmlanguage-syntax-highlighter",
+        "sburg.vscode-javascript-booster",
+        "yzhang.markdown-all-in-one"
+        // "christian-kohler.path-intellisense",
+        // "donjayamanne.githistory",
+        // "eamodio.gitlens",
+        // "igorsbitnev.error-gutters",
+        // "ionutvmi.path-autocomplete",
+        // "ipatalas.vscode-postfix-ts",
+        // "mhutchie.git-graph",
+        // "tabnine.tabnine-vscode",
+        // "usernamehw.errorlens",
+        // "visualstudioexptteam.vscodeintellicode",
+    ]
+}

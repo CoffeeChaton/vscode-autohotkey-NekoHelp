@@ -1,0 +1,38 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+        ".eslintrc.json",
+        "ahk.snippets.json",
+        "output.tmLanguage.json",
+        "pnpm-lock.yaml"
+    ],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "autohotkey",
+        "Chaton",
+        "cweijan",
+        "Disp",
+        "dprint",
+        "esbuild",
+        "EXITAPP",
+        "fluffyfox",
+        "Gdip",
+        "HKCC",
+        "HKCR",
+        "HKCU",
+        "HKEY",
+        "HKLM",
+        "hotstring",
+        "HWND",
+        "Mult",
+        "Neko",
+        "nekohelp",
+        "sonarjs",
+        "sukka",
+        "tmgrammar",
+        "Verdana"
+    ],
+    "ignoreWords": [],
+    "import": []
+}

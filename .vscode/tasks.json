@@ -1,0 +1,28 @@
+{
+    // https://go.microsoft.com/fwlink/?LinkId=733558
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "vscode:prepublish",
+            "isBackground": false,
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true // Ctrl+Shift+B  https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world
+            }
+        },
+        {
+            "type": "npm",
+            "script": "watch",
+            "problemMatcher": "$tsc-watch",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never"
+            },
+            "group": "test"
+        }
+    ]
+}
