@@ -10,7 +10,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.53.0
   '@typescript-eslint/parser': ^5.53.0
   '@vscode/test-electron': ^2.2.3
-  '@vscode/vsce': ^2.17.0
+  '@vscode/vsce': ^2.18.0
   esbuild: ^0.17.10
   eslint: ^8.34.0
   eslint-config-airbnb-base: ^15.0.0
@@ -44,7 +44,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.53.0_d24a4isrf44a3qxpar2qakk2qu
   '@typescript-eslint/parser': 5.53.0_ib2mota3gtssswgpztbt7y64nm
   '@vscode/test-electron': 2.2.3
-  '@vscode/vsce': 2.17.0
+  '@vscode/vsce': 2.18.0
   esbuild: 0.17.10
   eslint: 8.34.0
   eslint-config-airbnb-base: 15.0.0_mvgyw3chnqkp6sgfmmtihyjpnm
@@ -1374,8 +1374,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vscode/vsce/2.17.0:
-    resolution: {integrity: sha512-W4HN5MtTVj/mroQU1d82bUEeWM3dUykMFnMYZPtZ6jrMiHN1PUoN3RGcS896N0r2rIq8KpWDtufcQHgK8VfgpA==}
+  /@vscode/vsce/2.18.0:
+    resolution: {integrity: sha512-tUA3XoKx5xjoi3EDcngk0VUYMhvfXLhS4s7CntpLPh1qtLYtgSCexTIMUHkCy6MqyozRW98bdW3a2yHPEADRnQ==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
@@ -1385,6 +1385,7 @@ packages:
       commander: 6.2.1
       glob: 7.2.3
       hosted-git-info: 4.1.0
+      jsonc-parser: 3.2.0
       leven: 3.1.0
       markdown-it: 12.3.2
       mime: 1.6.0
@@ -1661,7 +1662,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001457
-      electron-to-chromium: 1.4.308
+      electron-to-chromium: 1.4.310
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -2055,8 +2056,8 @@ packages:
       readable-stream: 2.3.8
     dev: true
 
-  /electron-to-chromium/1.4.308:
-    resolution: {integrity: sha512-qyTx2aDFjEni4UnRWEME9ubd2Xc9c0zerTUl/ZinvD4QPsF0S7kJTV/Es/lPCTkNX6smyYar+z/n8Cl6pFr8yQ==}
+  /electron-to-chromium/1.4.310:
+    resolution: {integrity: sha512-/xlATgfwkm5uDDwLw5nt/MNEf7c1oazLURMZLy39vOioGYyYzLWIDT8fZMJak6qTiAJ7udFTy7JG7ziyjNutiA==}
     dev: true
 
   /emittery/0.13.1:

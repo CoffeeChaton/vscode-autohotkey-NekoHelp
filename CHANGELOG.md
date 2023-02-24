@@ -22,5 +22,5 @@
   > use command `format All File`
 
 ## 0.0.23(2023-02-17)
->
+
 > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/blob/master/CHANGELOG.md>
