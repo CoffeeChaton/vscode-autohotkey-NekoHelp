@@ -148,13 +148,25 @@
             "name": "comment.line.ahk2exe.ahk"
         },
         "comment_neko_help_ignore": {
-            "captures": {
-                "1": { "name": "punctuation.definition.comment.ahk" },
-                "2": { "name": "keyword.other.ahk" },
-                "3": { "name": "constant.numeric.ahk" }
-            },
-            "match": "^[ \\t]*(;)@ahk-neko-(ignore(?:-fn)?)[ \\t]+(\\d+)[ \\t].*",
-            "name": "comment.line.semicolon.ahk"
+            "name": "comment.line.semicolon.ahk",
+            "begin": "^[ \\t]*;@ahk-neko",
+            "end": "\n",
+            "patterns": [
+                {
+                    "captures": {
+                        "1": { "name": "keyword.other.ahk" },
+                        "2": { "name": "constant.numeric.ahk" }
+                    },
+                    "match": "-(ignore(?:-fn)?)[ \\t]+(\\d+)\\b"
+                },
+                {
+                    "captures": {
+                        "1": { "name": "keyword.other.ahk" },
+                        "2": { "name": "keyword.other.ahk" }
+                    },
+                    "match": "-(format)-(?:inline-spacing-)?ignore-(start|end)"
+                }
+            ]
         },
         "comment": {
             "patterns": [

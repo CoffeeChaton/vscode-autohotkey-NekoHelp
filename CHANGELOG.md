@@ -1,5 +1,28 @@
 # Changelog
 
+## Next 0.0.25(2023-02-XX)
+
+- feat: add more format config in file
+
+  ```ahk
+  ;@ahk-neko-format-ignore-start
+  ;@ahk-neko-format-ignore-end 
+  ;@ahk-neko-format-inline-spacing-ignore-start ;pairing `AhkNekoHelp.format.textReplace`
+  ;@ahk-neko-format-inline-spacing-ignore-end
+  ```
+
+- feat: add Comment Completion
+
+  ```ahk
+  ;@ahk-neko-ignore 1 line
+  ;@ahk-neko-ignore-fn 1 line
+
+  ;@ahk-neko-format-ignore-start
+  ;@ahk-neko-format-ignore-end
+  ;@ahk-neko-format-inline-spacing-ignore-start
+  ;@ahk-neko-format-inline-spacing-ignore-end
+  ```
+
 ## 0.0.24(2023-02-24)
 
 - fix: `1.e3` syntax-highlight

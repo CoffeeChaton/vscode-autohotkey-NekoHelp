@@ -1,5 +1,4 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,-999] }] */
-/* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import { getFormatConfig } from '../../configUI';
 import type { TConfigs } from '../../configUI.data';
@@ -13,9 +12,9 @@ import { getMatrixTopLabe } from './tools/getMatrixTopLabe';
 import { fn_Warn_thisLineText_WARN } from './TWarnUse';
 import type { TLnStatus } from './wantRefactor/getDeepKeywords';
 import { EFmtMagicStr, getDeepKeywords } from './wantRefactor/getDeepKeywords';
-
 import type { TFmtCore, TFmtCoreMap } from './FormatType';
 import { fmtDiffInfo } from './tools/fmtDiffInfo';
+import { getFormatFlag } from './tools/getFormatFlag';
 import { getSwitchRange, inSwitchBlock } from './wantRefactor/SwitchCase';
 
 type TFmtCoreArgs = {
@@ -80,9 +79,9 @@ export function FormatCore(
 
     const userConfigs: TConfigs['format'] = getFormatConfig();
     const {
+        AMasterSwitchUseFormatProvider,
         formatTextReplace,
         useTopLabelIndent,
-        AMasterSwitchUseFormatProvider,
     } = userConfigs;
     if (!AMasterSwitchUseFormatProvider) return newFmtMap;
 
@@ -90,6 +89,7 @@ export function FormatCore(
     const matrixTopLabe: readonly (0 | 1)[] = getMatrixTopLabe(AhkFileData, useTopLabelIndent);
     const matrixBrackets: readonly TBrackets[] = getMatrixFileBrackets(DocStrMap);
     const matrixMultLine: readonly (-999 | 0 | 1)[] = getMatrixMultLine(DocStrMap);
+    const { mainList, betaList } = getFormatFlag(DocStrMap);
 
     let lnStatus: TLnStatus = {
         lockList: [],
@@ -104,11 +104,12 @@ export function FormatCore(
         const { line, lStr } = AhkTokenLine;
         const lStrTrim: string = lStr.trim();
 
-        if (line >= fmtStart && line <= fmtEnd) {
+        if (line >= fmtStart && line <= fmtEnd && mainList[line]) {
             const { occ, status } = lnStatus;
             const occHotFix: number = status === EFmtMagicStr.caseA
                 ? occ + 1
                 : occ;
+
             newFmtMap.set(
                 line,
                 fn_Warn_thisLineText_WARN({
@@ -119,8 +120,9 @@ export function FormatCore(
                     switchDeep: inSwitchBlock(lStrTrim, line, switchRangeArray),
                     topLabelDeep: matrixTopLabe[line],
                     MultLine: matrixMultLine[line],
-                    formatTextReplace,
+                    formatTextReplace: formatTextReplace && betaList[line],
                     userConfigs,
+                    betaList,
                 }, AhkTokenLine),
             );
         } else if (line > fmtEnd) {
@@ -140,7 +142,6 @@ export function FormatCore(
         // memo.push({ ...lnStatus });
     }
 
-    // FIXME:
     if (formatTextReplace) {
         const { fsPath } = uri;
         fmtDiffInfo({

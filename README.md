@@ -16,7 +16,7 @@ AutoHotKey v1 edit-support for VS Code
   - [Function rename](#function-rename)
   - [Hover](#hover)
   - [Diagnostic and lint](#diagnostic-and-lint)
-  - [CodeFormat](#codeformat)
+  - [Format](#format)
   - [IntelliSense](#intellisense)
     - [1. Snippets of your function](#1-snippets-of-your-function)
     - [2. Completion of function variables](#2-completion-of-function-variables)
@@ -232,19 +232,40 @@ support to find like
 ⚠️ Diagnostics/Warnings over 30 ruler
 
 1. warning about use `=` not `:=` to assign.
-2. warning of Switch
-   \
+2. warning of Switch\
    `Case : not find`
-3. use `;@ahk-neko-ignore [number] line.` to ignore,
-   \
-   exp: `;@ahk-neko-ignore 999 line.`
+3. use `;@ahk-neko-ignore [number] line.` to ignore,\
+   exp:
 
-## CodeFormat
+   ```ahk
+   ;@ahk-neko-ignore 1 line
+   ;@ahk-neko-ignore 2 line
+   ;@ahk-neko-ignore 999 line
+
+   ;@ahk-neko-ignore-fn 1 line
+   ;@ahk-neko-ignore-fn 2 line
+   ;@ahk-neko-ignore-fn 999 line
+
+    ;use 0 to open diag
+    ;@ahk-neko-ignore 0 line
+    ;@ahk-neko-ignore-fn 0 line
+   ```
+
+## Format
 
 1. Right click then click format document.
 2. or `alt` + `shift` + `f`
 3. format `switch case`
 4. [read more exp](src/provider/Format/exp)
+5. other setting
+
+   ```ahk
+   ;
+   ;@ahk-neko-format-ignore-start
+   ;@ahk-neko-format-ignore-end
+   ;@ahk-neko-format-inline-spacing-ignore-start
+   ;@ahk-neko-format-inline-spacing-ignore-end
+   ```
 
 ## IntelliSense
 

@@ -5,7 +5,6 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { getSnippetStartWihA } from '../../tools/Built-in/A_Variables.tools';
-import { getSnipAhk2exe } from '../../tools/Built-in/Ahk2exe.tools';
 import { getSnipBiVar } from '../../tools/Built-in/BiVariables.tools';
 import { getSnippetCommand } from '../../tools/Built-in/Command.tools.completion';
 import { snipDirectives } from '../../tools/Built-in/Directives.tool';
@@ -25,6 +24,7 @@ import { getSnippetWinMsg } from '../../tools/Built-in/Windows_Messages_Tools';
 import { getSnippetWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { wrapClass } from './classThis/wrapClass';
+import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
 import { globalValCompletion } from './global/globalValCompletion';
 import { IncludeFsPath } from './Include_fsPath/Include_fsPath';
@@ -108,8 +108,8 @@ export const CompletionItemProvider: vscode.CompletionItemProvider = {
         context: vscode.CompletionContext,
     ): vscode.ProviderResult<vscode.CompletionItem[]> {
         if (context.triggerCharacter === '@') {
-            const ahk2exe: vscode.CompletionItem[] | null = getSnipAhk2exe(document, position);
-            if (ahk2exe !== null) return ahk2exe;
+            const commentCompletion: vscode.CompletionItem[] | null = getCommentCompletion(document, position);
+            if (commentCompletion !== null) return commentCompletion;
         }
         return CompletionItemCore(document, position);
     },

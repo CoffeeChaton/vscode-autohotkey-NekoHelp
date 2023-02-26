@@ -5,6 +5,7 @@ import type { DeepReadonly, TAhkTokenLine } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
 import { lineReplace } from './fmtReplace';
 import type { TFmtCore } from './FormatType';
+import type { TFormatFlag } from './tools/getFormatFlag';
 
 type TWarnUse =
     & DeepReadonly<{
@@ -16,16 +17,17 @@ type TWarnUse =
         formatTextReplace: boolean,
         MultLine: -999 | 0 | 1,
         userConfigs: TConfigs['format'],
+        betaList: TFormatFlag['betaList'],
     }>
     & {
         brackets: TBrackets,
     };
 
 function wrap(args: TWarnUse, text: string, AhkTokenLine: TAhkTokenLine): TFmtCore {
-    const { lStrTrim, formatTextReplace } = args;
+    const { lStrTrim, formatTextReplace, betaList } = args;
     const { line, textRaw } = AhkTokenLine;
 
-    const newText: string = formatTextReplace
+    const newText: string = formatTextReplace && betaList[line]
         ? lineReplace(AhkTokenLine, text, lStrTrim) // Alpha test options
         : text;
 

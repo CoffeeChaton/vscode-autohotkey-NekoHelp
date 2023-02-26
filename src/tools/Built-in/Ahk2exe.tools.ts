@@ -31,15 +31,15 @@ export const { Ahk2exeMdMap, snippetAhk2exe } = (() => {
 
         if (keyRawName === 'Bin') continue;
 
-        const item: vscode.CompletionItem = new vscode.CompletionItem(msgName);
+        const item: vscode.CompletionItem = new vscode.CompletionItem({
+            label: msgName,
+            description: 'Compiler',
+        });
         item.kind = vscode.CompletionItemKind.Snippet; // icon of https://code.visualstudio.com/docs/editor/intellisense#_types-of-completions
         item.insertText = new vscode.SnippetString(body.replace(';@', ''));
         item.detail = 'Script Compiler Directives (neko-help)';
         item.documentation = md;
-        //
-        if (keyRawName === 'IgnoreBegin') {
-            item.preselect = true;
-        }
+
         snippetAhk2exeRW.push(item);
     }
 
@@ -53,17 +53,6 @@ export const { Ahk2exeMdMap, snippetAhk2exe } = (() => {
         snippetAhk2exe: snippetAhk2exeRW as readonly vscode.CompletionItem[],
     };
 })();
-
-export function getSnipAhk2exe(
-    document: vscode.TextDocument,
-    position: vscode.Position,
-): vscode.CompletionItem[] | null {
-    const subStr: string = document.lineAt(position.line).text.slice(0, position.character);
-
-    return (/^\s*;@$/u).test(subStr)
-        ? [...snippetAhk2exe]
-        : null;
-}
 
 /**
  * ; else
