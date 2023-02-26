@@ -175,7 +175,7 @@ describe('check LineCommand ruler', () => {
             .map((v): string => v.keyRawName);
 
         const st1: string = (repository.command.patterns.at(-1)?.begin ?? '')
-            .replace('(?:^|[ \\t:])\\b(?i:', '')
+            .replace('(?<=^|[ \\t:])\\b(?i:', '')
             .replace(')\\b(?!\\()', '');
 
         // eslint-disable-next-line @typescript-eslint/require-array-sort-compare

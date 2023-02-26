@@ -166,6 +166,14 @@ export function Pretreatment(
         }
 
         if ((/^:[^:]*:[^:]+::/u).test(textTrimStart)) {
+            const hasXFlag: boolean = (/^:[^:X]*x[^:X]*:[^:]+::/iu).test(textTrimStart);
+            const lStrHotStrCase: string = getLStrHotStr(textRaw, hasXFlag);
+            const { fistWordUpCol, fistWordUp } = getFistWordUpData({
+                lStrTrim: lStrHotStrCase.trim(),
+                lStr: lStrHotStrCase,
+                cll: 0,
+            });
+            const { SecondWordUpCol, SecondWordUp } = getSecondUp(lStrHotStrCase, fistWordUp, fistWordUpCol);
             /**
              * of hotStr
              *
@@ -181,15 +189,15 @@ export function Pretreatment(
                 detail: [EDetail.isHotStrLine],
                 displayErr,
                 displayFnErr,
-                fistWordUp: '',
-                fistWordUpCol: -1,
+                fistWordUp,
+                fistWordUpCol,
                 line,
                 lineComment: '',
-                lStr: getLStrHotStr(textRaw),
+                lStr: lStrHotStrCase,
                 multiline,
                 multilineFlag: null,
-                SecondWordUp: '',
-                SecondWordUpCol: -1,
+                SecondWordUp,
+                SecondWordUpCol,
                 textRaw,
             });
             continue;

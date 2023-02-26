@@ -61,7 +61,7 @@ export function getUnknownTextMap(
 
         if (line > allowList.length) break;
 
-        if (!allowList[line] || detail.includes(EDetail.isHotStrLine) || detail.includes(EDetail.isLabelLine)) {
+        if (!allowList[line] || detail.includes(EDetail.isLabelLine)) {
             continue;
         }
 

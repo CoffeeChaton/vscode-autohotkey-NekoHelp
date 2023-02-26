@@ -2,6 +2,37 @@
 
 ## Next 0.0.25(2023-02-XX)
 
+- fix: `HotString` has [X-flag](https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options) case\
+  if `HotString` has X-flag, then it look like
+
+  ```ahk
+  ::case0,,::foo() ; "send foo()"
+
+
+  :X:case1,,::foo()  ; call foo() function
+
+  ::case2,,::  ; call foo() function
+    foo()
+  Return
+  ```
+
+  other exp
+
+  ```ahk
+  name_copied := "XX"
+  :X:name,,::Send, % "The name is " name_copied
+  ;                                 ^^^^^^^^^^^var
+  ;          ^^^^Send key https://www.autohotkey.com/docs/v1/lib/Send.htm
+  ;^ X-flag https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options
+
+  ;....
+  name_copied := "XX"
+  :XB0:name,,::Send % "The name is " name_copied
+  :X B0:name,,::Send % "The name is " name_copied
+  ; ^ has space does not affect.
+  :B0X:name,,::Send % "The name is " name_copied
+  ```
+
 - feat: add more format config in file
 
   ```ahk

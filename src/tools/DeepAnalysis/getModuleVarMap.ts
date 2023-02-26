@@ -48,7 +48,7 @@ function getModuleAllowList(DocStrMap: TTokenStream, Ast: TAstRoot): readonly bo
 
     // wtf style..
     for (const { line, detail } of DocStrMap) {
-        if (detail.includes(EDetail.isHotStrLine) || detail.includes(EDetail.isLabelLine)) {
+        if (detail.includes(EDetail.isLabelLine)) {
             allowList[line] = false;
             continue;
         }

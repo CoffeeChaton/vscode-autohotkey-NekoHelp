@@ -6,15 +6,15 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { EFormatChannel } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
+import type { TFmtCore, TFmtCoreMap } from './FormatType';
+import { fmtDiffInfo } from './tools/fmtDiffInfo';
+import { getFormatFlag } from './tools/getFormatFlag';
 import { getMatrixFileBrackets } from './tools/getMatrixFileBrackets';
 import { getMatrixMultLine } from './tools/getMatrixMultLine';
 import { getMatrixTopLabe } from './tools/getMatrixTopLabe';
 import { fn_Warn_thisLineText_WARN } from './TWarnUse';
 import type { TLnStatus } from './wantRefactor/getDeepKeywords';
 import { EFmtMagicStr, getDeepKeywords } from './wantRefactor/getDeepKeywords';
-import type { TFmtCore, TFmtCoreMap } from './FormatType';
-import { fmtDiffInfo } from './tools/fmtDiffInfo';
-import { getFormatFlag } from './tools/getFormatFlag';
 import { getSwitchRange, inSwitchBlock } from './wantRefactor/SwitchCase';
 
 type TFmtCoreArgs = {
