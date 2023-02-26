@@ -1,6 +1,6 @@
 # Changelog
 
-## Next 0.0.25(2023-02-XX)
+## 0.0.25(2023-02-26)
 
 - fix: `HotString` has [X-flag](https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options) case\
   if `HotString` has X-flag, then it look like
