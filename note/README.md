@@ -104,7 +104,7 @@ please use tell me, how to use this flag? [report](https://github.com/CoffeeChat
 
 > - [Multiline](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section) style1 / exp1 just support `%varName%` style.
 > - try to write like line `11` `12` `13`, this error is at line `11`, but ahk-L report error at line `6`.
-> - I know there has some highlight bug at line 12 of `.a` and line 13 of `[" b"]`. [v0.0.12(2022-10-28)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/CHANGELOG.md#00122022-10-28)
+> - I know there has some highlight bug at line 12 of `.a` and line 13 of `[" b"]`. at _v0.0.12(2022-10-28)_
 
 if [Multiline](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section) is very big, this diagnostic can help you to find the problem more quickly.
 

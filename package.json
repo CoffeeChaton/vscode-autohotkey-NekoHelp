@@ -14,7 +14,7 @@
         "autohotkey",
         "vscode"
     ],
-    "homepage": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/README.md",
+    "homepage": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/README.md",
     "bugs": {
         "url": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues"
     },
@@ -29,7 +29,7 @@
         "compile_dev": "node esbuild.config.js --isDev",
         "fmt": "dprint fmt && pnpm run sort_pack",
         "lint": "eslint src",
-        "package": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/master/",
+        "package": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/",
         "pnpm clean cache": "pnpm store prune",
         "sort_pack": "sort-package-json",
         "test": "jest",
@@ -100,7 +100,7 @@
                             "(default) if open [workspace](https://code.visualstudio.com/docs/editor/workspaces) then diagnose, else not.",
                             "alway diagnose"
                         ],
-                        "markdownDescription": "[Diagnostic](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/src/diag.ts) Master Switch"
+                        "markdownDescription": "[Diagnostic](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts) Master Switch"
                     },
                     "AhkNekoHelp.Diag.code107LegacyAssignment": {
                         "type": "boolean",
@@ -117,7 +117,7 @@
                     "AhkNekoHelp.Diag.code304AvoidConfusingFuncNames": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([code304](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/code304.md)) avoid def-func-name look like Flow Of Control"
+                        "markdownDescription": "([code304](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code304.md)) avoid def-func-name look like Flow Of Control"
                     },
                     "AhkNekoHelp.Diag.code500": {
                         "type": "number",
@@ -164,12 +164,12 @@
                     "AhkNekoHelp.Diag.code800Deprecated": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "(code8xx) Diagnostic Deprecated commands, false to hide diag code like [8xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/src/diag.ts#L206)"
+                        "markdownDescription": "(code8xx) Diagnostic Deprecated commands, false to hide diag code like [8xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L206)"
                     },
                     "AhkNekoHelp.Diag.useModuleValDiag": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "beta test: try to Diag [5xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/src/diag.ts#L29) at all file"
+                        "markdownDescription": "beta test: try to Diag [5xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L29) at all file"
                     }
                 }
             },
@@ -267,12 +267,12 @@
                     "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/10)"
+                        "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)"
                     },
                     "AhkNekoHelp.Rename.functionInStr": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/89f0879239ef6250fc15c0fd0ea7ce95519e3487/note/code601.md)"
+                        "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md)"
                     }
                 }
             }

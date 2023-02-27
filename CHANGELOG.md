@@ -1,11 +1,19 @@
 # Changelog
 
+- [Changelog](#changelog)
+  - [NEXT 0.0.26(2023-02-XX)](#next-00262023-02-xx)
+  - [0.0.25(2023-02-26)](#00252023-02-26)
+  - [0.0.24(2023-02-24)](#00242023-02-24)
+  - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
 ## NEXT 0.0.26(2023-02-XX)
 
 - add: hover at `Menu` SubCommand , exp: `Add`
   ![hover at menu sub-cmd](image/Changelog/v0-0-26-hover-at-menu-sub-cmd.png)
 - add: more Completion of Menu exp: [`Menu, Add`](https://www.autohotkey.com/docs/v1/lib/Menu.htm)
   ![more Completion of Menu](image/Changelog/v0-0-26-more-Completion-of-menu.png)
+- fix: some uri from old-packages to new-packages
+- fix: limit completion of `Gui` / `Menu` sub-command
 
 ## 0.0.25(2023-02-26)
 
@@ -82,6 +90,6 @@
 
   > use command `format All File`
 
-## 0.0.23(2023-02-17)
+## <= 0.0.23(2023-02-17)
 
 > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/blob/master/CHANGELOG.md>

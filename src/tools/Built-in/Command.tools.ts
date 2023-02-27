@@ -61,9 +61,7 @@ export const {
         md.supportHtml = true;
         CommandMDMapTemp.set(upName, md);
 
-        if (upName !== 'GUI') {
-            snippetCommandTemp.push(new CSnippetCommand(v, md));
-        }
+        snippetCommandTemp.push(new CSnippetCommand(v, md));
 
         if (diag !== undefined) {
             CommandErrMapTemp.set(upName, diag);

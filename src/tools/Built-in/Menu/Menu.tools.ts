@@ -57,10 +57,10 @@ const { snippetMenu, MenuMDMap } = (() => {
 
 export function getSnippetMenu(subStr: string): readonly vscode.CompletionItem[] {
     // FIXME: Menu add vs `MAdd`
-    const isOK: boolean = (/^M\w*$/iu).test(subStr)
-        || (/^case\s[^:]+:\s*M\w*$/iu).test(subStr)
-        || (/^default\s*:\s*M\w*$/iu).test(subStr)
-        || (!subStr.trim().startsWith(':') && (/::\s*M\w*$/iu).test(subStr)); // just allow hotkey, not allow hotString
+    const isOK: boolean = (/^(?:M|ME|MEN|MENU)$/iu).test(subStr)
+        || (/^case\s[^:]+:\s*(?:M|ME|MEN|MENU)$/iu).test(subStr)
+        || (/^default\s*:\s*(?:M|ME|MEN|MENU)$/iu).test(subStr)
+        || (!subStr.trim().startsWith(':') && (/::\s*(?:M|ME|MEN|MENU)$/iu).test(subStr)); // just allow hotkey, not allow hotString
 
     if (!isOK) return [];
 

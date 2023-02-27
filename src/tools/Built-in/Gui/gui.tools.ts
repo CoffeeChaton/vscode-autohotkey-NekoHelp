@@ -56,10 +56,10 @@ const { snippetGui, GuiMDMap } = (() => {
 })();
 
 export function getSnippetGui(subStr: string): readonly vscode.CompletionItem[] {
-    const isOK: boolean = (/^G\w*$/iu).test(subStr)
-        || (/^case\s[^:]+:\s*G\w*$/iu).test(subStr)
-        || (/^default\s*:\s*G\w*$/iu).test(subStr)
-        || (!subStr.trim().startsWith(':') && (/::\s*G\w*$/iu).test(subStr)); // just allow hotkey, not allow hotString
+    const isOK: boolean = (/^(?:G|GU|GUI)$/iu).test(subStr)
+        || (/^case\s[^:]+:\s*(?:G|GU|GUI)$/iu).test(subStr)
+        || (/^default\s*:\s*(?:G|GU|GUI)$/iu).test(subStr)
+        || (!subStr.trim().startsWith(':') && (/::\s*(?:G|GU|GUI)$/iu).test(subStr)); // just allow hotkey, not allow hotString
 
     if (!isOK) return [];
 
@@ -69,8 +69,6 @@ export function getSnippetGui(subStr: string): readonly vscode.CompletionItem[] 
     switch (opt) {
         case ECommandOption.All:
         case ECommandOption.Recommended:
-            return snippetGui;
-
         case ECommandOption.noSameFunc:
             return snippetGui;
 
