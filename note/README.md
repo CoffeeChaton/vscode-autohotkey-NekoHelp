@@ -68,7 +68,7 @@ please use tell me, how to use this flag? [report](https://github.com/CoffeeChat
 ```js
 124: {
     msg: '`"` is not closed',
-    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag124',
+    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag124',
 },
 ```
 
@@ -81,7 +81,7 @@ please use tell me, how to use this flag? [report](https://github.com/CoffeeChat
 ```js
 125: {
     msg: '`%` miss to closed',
-    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag125',
+    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag125',
 },
 ```
 
@@ -96,7 +96,7 @@ please use tell me, how to use this flag? [report](https://github.com/CoffeeChat
 ```js
 126: {
     msg: '`%` variable name contains an illegal character',
-    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag126',
+    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag126',
 },
 ```
 

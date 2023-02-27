@@ -41,7 +41,7 @@ function getLoopErr(lStr: string, line: number, col: number): CDiagBase | null {
 
     //     201: {
     //     msg: 'If Count is a variable reference such as `%varName%` or `% expression`',
-    //     path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag201',
+    //     path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag201',
     // https://www.autohotkey.com/docs/v1/lib/Loop.htm
     return new CDiagBase({
         value: EDiagCode.code201,

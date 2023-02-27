@@ -15,7 +15,7 @@ case4 %obj[" b"]% ; beacuse ahk can't find var name like "obj[" b"]"  <---.
 
 MsgBox, % style1
 
-; original from https://github.com/AutoHotkey/Ahk2Exe/blob/master/Update.ahk#L145
+; original from https://github.com/AutoHotkey/Ahk2Exe/blob/main/Update.ahk#L145
 ; The original code has no errors, I just couldn't find a complex demonstration, so I added an error at this exp.
 ;
 ; if Multiline is very big, this diagnostic can help you find errors faster.
@@ -23,7 +23,7 @@ MsgBox, % style1
 ; error at Loop Read, % UpdDir%\Script3c.csv
 ;                      ^ error
 
-;@ahk-neko-ignore 999 line;remove this line to use auto-diag https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag126
+;@ahk-neko-ignore 999 line;remove this line to use auto-diag https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag126
 
 style2 := 0
 

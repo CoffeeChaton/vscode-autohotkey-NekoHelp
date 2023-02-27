@@ -2,9 +2,9 @@
 import type { DeepReadonly } from './globalEnum';
 
 type TLink =
-    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/ahk/diag${number}.ahk`
-    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/code${number}.md`
-    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#${string}`
+    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag${number}.ahk`
+    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code${number}.md`
+    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#${string}`
     | `https://www.autohotkey.com/docs/v1/${string}`;
 
 // ScriptError(_T("Global variables must not be declared in this function."), aLineText);
@@ -61,15 +61,15 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
     },
     511: {
         msg: 'var/param name same func-Name',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/ahk/diag511.ahk',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag511.ahk',
     },
     512: {
         msg: 'global-var name same func-Name',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/ahk/diag511.ahk',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag511.ahk',
     },
     513: {
         msg: 'label-var name same func-Name',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/ahk/diag513.ahk',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag513.ahk',
     },
 };
 
@@ -152,7 +152,7 @@ export type TDiags = {
 export const Diags: DeepReadonly<TDiags> = {
     107: {
         msg: '(legacy assignment), try to use `:=` replace',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag107',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag107',
     },
     111: {
         msg: '`Default:` Too much ',
@@ -168,31 +168,31 @@ export const Diags: DeepReadonly<TDiags> = {
     },
     121: {
         msg: 'Multiline:join > 15 characters',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag121',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag121',
     },
     122: {
         msg: 'ahk-neko-help is not work of (, `) flag now.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag122',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag122',
     },
     124: {
         msg: '`"` is not closed',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag124',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag124',
     },
     125: {
         msg: '`%` is miss to closed',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag125',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag125',
     },
     126: {
         msg: 'Multiline just allow like `%VarName%` of style1.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag126',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag126',
     },
     127: {
         msg: 'Multiline just allow like `" VarName "` of style2, `"` need to use whitespace pack varName.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag127',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag127',
     },
     201: {
         msg: 'If Count is a variable reference such as `%varName%` or `% expression`',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/master/note#diag201',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag201',
     },
     301: {
         msg: 'function or Method is so big',
@@ -201,15 +201,15 @@ export const Diags: DeepReadonly<TDiags> = {
     },
     304: {
         msg: 'avoid def-func-name look like Flow Of Control',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/code304.md',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code304.md',
     },
     601: {
         msg: 'Avoid defining function names like On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/code601.md',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md',
     },
     602: {
         msg: 'recommended that the following names not be used: On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/master/note/code601.md',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md',
     },
     603: {
         msg: 'unknown #Directives in ahk-v1',
