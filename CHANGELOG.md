@@ -1,5 +1,12 @@
 # Changelog
 
+## NEXT 0.0.26(2023-02-XX)
+
+- add: hover at `Menu` SubCommand , exp: `Add`
+  ![hover at menu sub-cmd](image/Changelog/v0-0-26-hover-at-menu-sub-cmd.png)
+- add: more Completion of Menu exp: [`Menu, Add`](https://www.autohotkey.com/docs/v1/lib/Menu.htm)
+  ![more Completion of Menu](image/Changelog/v0-0-26-more-Completion-of-menu.png)
+
 ## 0.0.25(2023-02-26)
 
 - fix: `HotString` has [X-flag](https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options) case\

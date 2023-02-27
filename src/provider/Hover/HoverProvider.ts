@@ -24,6 +24,7 @@ import { hoverGlobalVar } from './tools/hoverGlobalVar';
 import { hoverGuiParam } from './tools/hoverGuiParam';
 import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
+import { hoverMenuParam } from './tools/hoverMenuParam';
 import { hoverMultiLine } from './tools/hoverMultiLine';
 
 function HoverOfFunc(
@@ -94,6 +95,9 @@ function HoverProviderCore(
 
     const guiParam: vscode.MarkdownString | null = hoverGuiParam(AhkTokenLine, position);
     if (guiParam !== null) return new vscode.Hover(guiParam);
+
+    const MenuParam: vscode.MarkdownString | null = hoverMenuParam(AhkTokenLine, position);
+    if (MenuParam !== null) return new vscode.Hover(MenuParam);
 
     if (AhkFunc !== null) {
         const DAmd: vscode.MarkdownString | null = DeepAnalysisHover(AhkFunc, wordUp, position);

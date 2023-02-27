@@ -15,6 +15,7 @@ import { getSnipStartJoy } from '../../tools/Built-in/Keys_and_other/Joystick';
 import { getSnipStartF } from '../../tools/Built-in/Keys_and_other/keyF12';
 import { getSnipMouseKeyboard } from '../../tools/Built-in/Keys_and_other/MouseKeyboard';
 import { getSnipStartNum } from '../../tools/Built-in/Keys_and_other/NumpadSnippets';
+import { getSnippetMenu } from '../../tools/Built-in/Menu/Menu.tools';
 import { getSnippetOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools';
 import { getSnippetOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tools';
 import { ahkSend } from '../../tools/Built-in/Send_tools';
@@ -71,6 +72,7 @@ function CompletionItemCore(
         ...getSnippetOtherKeyWord1(lStr),
         ...getSnippetCommand(subStr),
         ...getSnippetGui(subStr),
+        ...getSnippetMenu(subStr),
         ...globalValCompletion(DocStrMap, position),
         ...getSnipStatement2(subStr),
         ...getSnipJustSnip(subStr),

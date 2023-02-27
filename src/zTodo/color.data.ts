@@ -18,3 +18,4 @@ const colorDataList = {
     Aqua: '00FFFF',
 };
 // https://www.autohotkey.com/docs/v1/lib/Progress.htm#Object_Colors
+// Black,Silver,Gray,White,Maroon,Red,Purple,Fuchsia,Green,Lime,Olive,Yellow,Navy,Blue,Teal,Aqua

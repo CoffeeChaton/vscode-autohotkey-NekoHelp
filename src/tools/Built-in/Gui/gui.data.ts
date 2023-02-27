@@ -178,7 +178,7 @@ export const guiSubCommandList: TGuiCmdElement[] = [
         ],
     },
     {
-        SubCommand: 'Options',
+        SubCommand: 'Options', // need special treatment
         body:
             'Gui, ${1:GuiName:} +-AlwaysOnTop +-Border +-Caption +-Delimiter +-Disabled +-DPIScale +-HwndOutputVar +-LabelName +-LastFound +-LastFoundExist +-MaximizeBox +-MinimizeBox +-MinSize +-MaxSize +-OwnDialogs +-Owner +-Parent +-Resize +-SysMenu +-Theme +-ToolWindow',
         doc: 'One or more options may be specified immediately after the GUI command.',
@@ -191,5 +191,3 @@ export const guiSubCommandList: TGuiCmdElement[] = [
         ],
     },
 ];
-
-// Options and styles for a window: Sets various options for the appearance and behavior of the window.

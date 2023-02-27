@@ -1,8 +1,8 @@
 # vscode-autohotkey-NekoHelp
 
-> Base of [cweijan /vscode-autohotkey](https://github.com/cweijan/vscode-autohotkey)</br>
-> Base of regexp match, not the principles of compilation, so parser inaccurate.</br>
-> AutoHotkey v2 has been released and will be considered the default/main version [announcement](https://www.autohotkey.com/boards/viewtopic.php?f=24&t=112989), if you need to write new ahk, I suggest you to use ahk v2 && [AutoHotkey v2 Language Support](https://marketplace.visualstudio.com/items?itemName=thqby.vscode-autohotkey2-lsp), ahk v1 so complicated.
+> Base of [cweijan /vscode-autohotkey](https://github.com/cweijan/vscode-autohotkey)\
+> Base of regexp match, not the principles of compilation, so parser inaccurate.\
+> AutoHotkey v2 has been released and will be considered the default/main version [announcement](https://www.autohotkey.com/boards/viewtopic.php?f=24&t=112989), if you need to write new ahk, I suggest you to use ahk v2 && [AutoHotkey v2 Language Support](https://marketplace.visualstudio.com/items?itemName=thqby.vscode-autohotkey2-lsp), ahk v1 for me is so complicated.
 
 AutoHotKey v1 edit-support for VS Code
 
@@ -211,7 +211,7 @@ support to find like
    ```ahk
    f2(){
        /**
-       * - [markdowm-syntax](https://www.markdownguide.org/basic-syntax/)
+       * - [markdown-syntax](https://www.markdownguide.org/basic-syntax/)
        * - list2
        * - Love **is** bold
        *
@@ -291,7 +291,7 @@ support to find like
 
 ## Better highlight of Numbers
 
-![img](image/CHANGELOG/v0-0-7-highlight-of-Numbers.png)
+![img](image/Changelog/v0-0-7-highlight-of-Numbers.png)
 
 _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)_
 
