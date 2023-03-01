@@ -9,13 +9,11 @@ import { getSnipBiVar } from '../../tools/Built-in/BiVariables.tools';
 import { getSnippetCommand } from '../../tools/Built-in/Command.tools.completion';
 import { snipDirectives } from '../../tools/Built-in/Directives.tool';
 import { BuiltInFunc2Completion } from '../../tools/Built-in/func.tools';
-import { getSnippetGui } from '../../tools/Built-in/Gui/gui.tools';
 import { getSnipJustSnip } from '../../tools/Built-in/Keys_and_other/ahkSnippets.tools';
 import { getSnipStartJoy } from '../../tools/Built-in/Keys_and_other/Joystick';
 import { getSnipStartF } from '../../tools/Built-in/Keys_and_other/keyF12';
 import { getSnipMouseKeyboard } from '../../tools/Built-in/Keys_and_other/MouseKeyboard';
 import { getSnipStartNum } from '../../tools/Built-in/Keys_and_other/NumpadSnippets';
-import { getSnippetMenu } from '../../tools/Built-in/Menu/Menu.tools';
 import { getSnippetOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools';
 import { getSnippetOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tools';
 import { ahkSend } from '../../tools/Built-in/Send_tools';
@@ -31,6 +29,7 @@ import { globalValCompletion } from './global/globalValCompletion';
 import { IncludeFsPath } from './Include_fsPath/Include_fsPath';
 import { listAllFuncClass } from './listAllFuncClass/listAllFuncClass';
 import { ModuleVar2Completion } from './ModuleVar/ModuleVar2Completion';
+import { completionSubCommand } from './SubCommand/completionSubCommand';
 
 function getPartStr(lStr: string, position: vscode.Position): string | null {
     const match: RegExpMatchArray | null = lStr
@@ -70,9 +69,8 @@ function CompletionItemCore(
         ...ahkSend(AhkFileData, position), // '{'
         ...snipDirectives(subStr),
         ...getSnippetOtherKeyWord1(lStr),
-        ...getSnippetCommand(subStr),
-        ...getSnippetGui(subStr),
-        ...getSnippetMenu(subStr),
+        ...getSnippetCommand(subStr, AhkTokenLine),
+        ...completionSubCommand(subStr, AhkTokenLine),
         ...globalValCompletion(DocStrMap, position),
         ...getSnipStatement2(subStr),
         ...getSnipJustSnip(subStr),

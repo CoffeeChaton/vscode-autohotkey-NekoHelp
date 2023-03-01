@@ -1,5 +1,6 @@
 import { getCommandOptions } from '../../configUI';
 import { ECommandOption } from '../../configUI.data';
+import type { TAhkTokenLine } from '../../globalEnum';
 import { enumLog } from '../enumErr';
 import { getAllFunc } from '../Func/getAllFunc';
 import { snippetCommand } from './Command.tools';
@@ -7,11 +8,12 @@ import type { CSnippetCommand } from './CSnippetCommand';
 
 const snippetCommandFilter: readonly CSnippetCommand[] = snippetCommand.filter((v: CSnippetCommand) => v.recommended);
 
-export function getSnippetCommand(subStr: string): readonly CSnippetCommand[] {
+export function getSnippetCommand(subStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
+    const { fistWordUp } = AhkTokenLine;
     // ^ ~~ $  need close
     const isOK: boolean = (/^\w+$/u).test(subStr)
-        || (/^case\s[^:]+:\s*\w*$/iu).test(subStr)
-        || (/^default\s*:\s*\w*$/iu).test(subStr)
+        || (fistWordUp === 'CASE' && (/^case\s[^:]+:\s*\w*$/iu).test(subStr))
+        || (fistWordUp === 'DEFAULT' && (/^default\s*:\s*\w*$/iu).test(subStr))
         || (!subStr.trim().startsWith(':') && (/::\s*\w*$/iu).test(subStr)); // allow hotkey
 
     // || (/^[{}]\s*\w*$/iu).test(subStr);
@@ -26,7 +28,7 @@ export function getSnippetCommand(subStr: string): readonly CSnippetCommand[] {
     if (!isOK) return [];
 
     //
-    const opt: ECommandOption = getCommandOptions();
+    const opt: ECommandOption = getCommandOptions().CommandOption;
 
     switch (opt) {
         case ECommandOption.All:

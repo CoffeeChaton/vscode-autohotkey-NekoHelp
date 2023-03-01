@@ -12,6 +12,7 @@
   ![hover at menu sub-cmd](image/Changelog/v0-0-26-hover-at-menu-sub-cmd.png)
 - add: more Completion of Menu exp: [`Menu, Add`](https://www.autohotkey.com/docs/v1/lib/Menu.htm)
   ![more Completion of Menu](image/Changelog/v0-0-26-more-Completion-of-menu.png)
+- add: config `"AhkNekoHelp.snippets.expandSubCommand"` [(Preview it)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md)
 - fix: some uri from old-packages to new-packages
 - fix: limit completion of `Gui` / `Menu` sub-command
 

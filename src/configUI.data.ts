@@ -61,6 +61,7 @@ type TempConfigs = {
     snippets: {
         blockFilesList: readonly string[],
         CommandOption: ECommandOption,
+        expandSubCommand: boolean,
     },
     statusBarDisplayColor: string,
     useSymbolProvider: boolean,

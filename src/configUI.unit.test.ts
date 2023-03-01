@@ -1,5 +1,7 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3] }] */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4] }] */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { contributes } from '../package.json';
 
 describe('check package ruler', () => {
@@ -11,26 +13,43 @@ describe('check package ruler', () => {
 
         for (const [k, v] of Object.entries(contributes.configuration[0].properties)) {
             if (!k.startsWith('AhkNekoHelp.CodeLens')) errList0.push(k);
-
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[1].properties)) {
             if (!k.startsWith('AhkNekoHelp.Diag')) errList0.push(k);
-
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[2].properties)) {
             if (!k.startsWith('AhkNekoHelp.format')) errList0.push(k);
-
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[3].properties)) {
+            if (!k.startsWith('AhkNekoHelp.snippets')) errList0.push(k);
+            msg.push([k, v.type as unknown as string]);
+        }
+
+        for (const [k, v] of Object.entries(contributes.configuration[4].properties)) {
             if (!k.startsWith('AhkNekoHelp.')) errList0.push(k);
 
             msg.push([k, v.type as unknown as string]);
+        }
+
+        const absolutePath = path.join(__dirname, '../note/config');
+        const files: string[] = fs.readdirSync(absolutePath);
+        for (const file of files) {
+            if (!file.endsWith('.md')) {
+                errList0.push(`not md: ${file}`);
+                continue;
+            }
+
+            const section = `AhkNekoHelp.${file.replace(/.md$/u, '')}`;
+            const find: boolean = msg.some((v): boolean => v[0] === section);
+            if (!find) {
+                errList0.push(`not find section in pack.json: ${file}`);
+            }
         }
 
         expect(errList0).toHaveLength(0);
@@ -59,10 +78,13 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.format.useTopLabelIndent', 'boolean'],
                 ['AhkNekoHelp.format.useParenthesesIndent', 'boolean'],
                 ['AhkNekoHelp.format.useSquareBracketsIndent', 'boolean'],
-                // misc
-                ['AhkNekoHelp.baseScan.IgnoredList', 'array'],
+                // [3]
                 ['AhkNekoHelp.snippets.CommandOption', 'number'],
                 ['AhkNekoHelp.snippets.blockFilesList', 'array'],
+                ['AhkNekoHelp.snippets.expandSubCommand', 'boolean'],
+
+                // misc
+                ['AhkNekoHelp.baseScan.IgnoredList', 'array'],
                 ['AhkNekoHelp.statusBar.displayColor', 'string'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],

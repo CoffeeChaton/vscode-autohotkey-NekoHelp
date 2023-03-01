@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { MenuMDMapOut } from '../../../tools/Built-in/Menu/Menu.tools';
+import { MenuMDMap } from '../../../tools/Built-in/Menu/Menu.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
@@ -46,7 +46,7 @@ function hoverMenuParamCore(lStr: string, col: number, character: number): vscod
     const { lPos, RawNameNew } = at2;
 
     if (character >= lPos && character <= lPos + RawNameNew.length) {
-        const md: vscode.MarkdownString | undefined = MenuMDMapOut.get(RawNameNew.trim().toUpperCase());
+        const md: vscode.MarkdownString | undefined = MenuMDMap.get(RawNameNew.trim().toUpperCase());
         return md === undefined
             ? unknownMenuSubCmdMd
             : md;

@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as vscode from 'vscode';
-import { getCommandOptions } from '../../../configUI';
-import { ECommandOption } from '../../../configUI.data';
-import { enumLog } from '../../enumErr';
 import { MenuSubCmdList } from './Menu.data';
 
-const { snippetMenu, MenuMDMap } = (() => {
+export const { snippetMenu, MenuMDMap } = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
@@ -54,32 +51,3 @@ const { snippetMenu, MenuMDMap } = (() => {
         MenuMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
     };
 })();
-
-export function getSnippetMenu(subStr: string): readonly vscode.CompletionItem[] {
-    // FIXME: Menu add vs `MAdd`
-    const isOK: boolean = (/^(?:M|ME|MEN|MENU)$/iu).test(subStr)
-        || (/^case\s[^:]+:\s*(?:M|ME|MEN|MENU)$/iu).test(subStr)
-        || (/^default\s*:\s*(?:M|ME|MEN|MENU)$/iu).test(subStr)
-        || (!subStr.trim().startsWith(':') && (/::\s*(?:M|ME|MEN|MENU)$/iu).test(subStr)); // just allow hotkey, not allow hotString
-
-    if (!isOK) return [];
-
-    //
-    const opt: ECommandOption = getCommandOptions();
-
-    switch (opt) {
-        case ECommandOption.All:
-        case ECommandOption.Recommended:
-        case ECommandOption.noSameFunc:
-            return snippetMenu;
-
-        case ECommandOption.notProvided:
-            return [];
-
-        default:
-            enumLog(opt, 'getSnippetMenu');
-            return [];
-    }
-}
-
-export const MenuMDMapOut: ReadonlyMap<string, vscode.MarkdownString> = MenuMDMap;

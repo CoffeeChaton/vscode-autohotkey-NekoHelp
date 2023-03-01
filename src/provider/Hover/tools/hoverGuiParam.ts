@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { GuiMDMapOut } from '../../../tools/Built-in/Gui/gui.tools';
+import { GuiMDMap } from '../../../tools/Built-in/Gui/gui.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
@@ -42,10 +42,10 @@ function hoverGuiParamCore(lStr: string, col: number, character: number): vscode
         const word: string = GuiNameCol > -1
             ? RawNameNew.slice(GuiNameCol).replace(':', '')
             : RawNameNew;
-        const md: vscode.MarkdownString | undefined = GuiMDMapOut.get(word.trim().toUpperCase());
+        const md: vscode.MarkdownString | undefined = GuiMDMap.get(word.trim().toUpperCase());
         if (md !== undefined) return md;
         if (RawNameNew.includes('+') || RawNameNew.includes('-')) {
-            const mdOpt: vscode.MarkdownString | undefined = GuiMDMapOut.get('Options'.toUpperCase());
+            const mdOpt: vscode.MarkdownString | undefined = GuiMDMap.get('Options'.toUpperCase());
             if (mdOpt !== undefined) return mdOpt;
         }
 

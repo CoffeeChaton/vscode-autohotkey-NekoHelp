@@ -206,28 +206,8 @@
             },
             {
                 "type": "object",
-                "title": "4. misc",
+                "title": "4. completion and snippets",
                 "properties": {
-                    "AhkNekoHelp.baseScan.IgnoredList": {
-                        "type": "array",
-                        "default": [
-                            "/\\.",
-                            "/node_modules$",
-                            "/node_modules/",
-                            "/neko_Exp_Gdip\\.ahk$",
-                            "/build(/|$)",
-                            "/dist(/|$)",
-                            "/temp(/|$)",
-                            "/ahk2(/|$)",
-                            "\\.2\\.ahk$",
-                            "/backup(/|$)",
-                            "/history(/|$)"
-                        ],
-                        "items": {
-                            "type": "string"
-                        },
-                        "markdownDescription": "[workspace](https://code.visualstudio.com/docs/editor/workspaces) scan blockList, Disable AhkNekoHelp when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-style** ```\"\\\"```"
-                    },
                     "AhkNekoHelp.snippets.CommandOption": {
                         "type": "number",
                         "default": 1,
@@ -253,6 +233,37 @@
                             "type": "string"
                         },
                         "markdownDescription": "Disable IntelliSense when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-style** ```\"\\\"```"
+                    },
+                    "AhkNekoHelp.snippets.expandSubCommand": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "Provide a snip containing sub-command of `Gui` / `Menu` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md))"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "5. misc",
+                "properties": {
+                    "AhkNekoHelp.baseScan.IgnoredList": {
+                        "type": "array",
+                        "default": [
+                            "/\\.",
+                            "/node_modules$",
+                            "/node_modules/",
+                            "/neko_Exp_Gdip\\.ahk$",
+                            "/build(/|$)",
+                            "/dist(/|$)",
+                            "/temp(/|$)",
+                            "/ahk2(/|$)",
+                            "\\.2\\.ahk$",
+                            "/backup(/|$)",
+                            "/history(/|$)"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "markdownDescription": "[workspace](https://code.visualstudio.com/docs/editor/workspaces) scan blockList, Disable AhkNekoHelp when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-style** ```\"\\\"```"
                     },
                     "AhkNekoHelp.statusBar.displayColor": {
                         "type": "string",
@@ -311,15 +322,15 @@
         "onLanguage:ahk"
     ],
     "devDependencies": {
-        "@swc/core": "^1.3.36",
+        "@swc/core": "^1.3.37",
         "@swc/jest": "^0.2.24",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.4.0",
         "@types/node": "^18.14.2",
         "@types/vscode": "^1.75.1",
-        "@typescript-eslint/eslint-plugin": "^5.53.0",
-        "@typescript-eslint/parser": "^5.53.0",
-        "@vscode/test-electron": "^2.2.3",
+        "@typescript-eslint/eslint-plugin": "^5.54.0",
+        "@typescript-eslint/parser": "^5.54.0",
+        "@vscode/test-electron": "^2.3.0",
         "@vscode/vsce": "^2.18.0",
         "esbuild": "^0.17.10",
         "eslint": "^8.35.0",

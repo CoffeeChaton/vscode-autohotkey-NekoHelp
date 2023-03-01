@@ -53,6 +53,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         snippets: {
             blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.blockFilesList'),
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
+            expandSubCommand: getConfigs<boolean>(Configs, 'AhkNekoHelp.snippets.expandSubCommand'),
         },
         statusBarDisplayColor: getConfigs<string>(Configs, 'AhkNekoHelp.statusBar.displayColor'),
         useSymbolProvider: getConfigs<boolean>(Configs, 'AhkNekoHelp.useSymbolProvider'),
@@ -102,8 +103,8 @@ export function getSnippetBlockFilesList(): readonly RegExp[] {
     return str2RegexListCheck(config.snippets.blockFilesList);
 }
 
-export function getCommandOptions(): ECommandOption {
-    return config.snippets.CommandOption;
+export function getCommandOptions(): TConfigs['snippets'] {
+    return config.snippets;
 }
 
 export function getDiagConfig(): TConfigs['Diag'] {
