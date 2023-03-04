@@ -237,7 +237,7 @@
                     "AhkNekoHelp.snippets.expandSubCommand": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "Provide a snip containing sub-command of `Gui` / `Menu` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md))"
+                        "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md))"
                     }
                 }
             },
@@ -326,8 +326,8 @@
         "@swc/jest": "^0.2.24",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.4.0",
-        "@types/node": "^18.14.2",
-        "@types/vscode": "^1.75.1",
+        "@types/node": "^18.14.5",
+        "@types/vscode": "^1.76.0",
         "@typescript-eslint/eslint-plugin": "^5.54.0",
         "@typescript-eslint/parser": "^5.54.0",
         "@vscode/test-electron": "^2.3.0",
@@ -352,11 +352,11 @@
         "fs": "0.0.1-security",
         "jest": "^29.4.3",
         "sort-package-json": "^2.4.1",
-        "typescript": "5.0.0-beta",
+        "typescript": "5.0.1-rc",
         "vscode-tmgrammar-test": "^0.1.1"
     },
     "engines": {
-        "vscode": "^1.75.1"
+        "vscode": "^1.76.0"
     },
     "icon": "icon.png",
     "galleryBanner": {

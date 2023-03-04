@@ -21,6 +21,19 @@ import { ParserLine } from './ParserLine';
  */
 class CTopClass extends vscode.DocumentSymbol {
     declare public readonly children: TTopSymbol[];
+
+    /**
+     * never use this class , just of type
+     */
+    private constructor(
+        name: string,
+        detail: string,
+        kind: vscode.SymbolKind,
+        range: vscode.Range,
+        selectionRange: vscode.Range,
+    ) {
+        super(name, detail, kind, range, selectionRange);
+    }
 }
 
 export type TMemo = Readonly<{
@@ -30,6 +43,20 @@ export type TMemo = Readonly<{
     readonly uri: vscode.Uri,
     readonly ModuleVar: TModuleVar,
     readonly GValMap: TGValMapReadOnly,
+    /**
+     * ```jsonc
+     * {
+     *    // 13k line, 13921 line
+     *    "ms": "360 ~ 370 (20 cycles)",
+     *    "fsPath": "AHK-Studio-master\\AHK-Studio.ahk"
+     * },
+     * {
+     *    // 8K line ,8979 line
+     *    "ms": "46~48 (20 cycles)",
+     *    "fsPath":  "Lib\\Gdip_all_2020_08_24.ahk"
+     * }
+     * ```
+     */
     readonly ms: number,
 }>;
 
@@ -37,7 +64,6 @@ function strListDeepEq(DocStrMap: TTokenStream, fullTextList: readonly string[])
     const len: number = DocStrMap.length;
     if (len !== fullTextList.length) return false;
     for (let i = 0; i < len; i++) {
-        if (fullTextList[i].length !== DocStrMap[i].textRaw.length) return false;
         if (fullTextList[i] !== DocStrMap[i].textRaw) return false;
     }
     return true;
@@ -125,23 +151,6 @@ export function getFileAST(document: vscode.TextDocument): TMemo | 'isAhk2' {
         ms: Date.now() - t1,
     };
     BaseScanMemo.setMemo(fsPath, AhkCache);
-
-    // const ms = Date.now() - t1;
-    // if (ms > 30) {
-    //     .log('getFileAST', { ms, fsPath });
-    // }
-
-    // {
-    //     13k line, 13921 line
-    //     "ms": 360 ~ 370, (20 cycles)
-    //     "fsPath": ... "AHK-Studio-master\\AHK-Studio.ahk"
-    // }
-
-    // {
-    //     8K line ,8979 line
-    //     "ms": 46~48, (20 cycles)
-    //     "fsPath": ... "Lib\\Gdip_all_2020_08_24.ahk"
-    // }
 
     return AhkCache;
 }

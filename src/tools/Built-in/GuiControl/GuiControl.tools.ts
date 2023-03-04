@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as vscode from 'vscode';
-import { MenuSubCmdList } from './Menu.data';
+import { GuiControlSubCmdList } from './GuiControl.data';
 
-export const { snippetMenu, MenuMDMap } = (() => {
+export const { snippetGuiControl, GuiControlMDMap } = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
-    for (const v of MenuSubCmdList) {
+    for (const v of GuiControlSubCmdList) {
         const {
             SubCommand,
             body,
@@ -16,10 +16,10 @@ export const { snippetMenu, MenuMDMap } = (() => {
         } = v;
         const upName: string = SubCommand.toUpperCase();
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-            .appendMarkdown(`# Menu ${SubCommand}`)
+            .appendMarkdown('GuiControl')
             .appendCodeblock(body, 'ahk')
-            .appendMarkdown(doc)
             .appendMarkdown(`[(Read Doc)](${link})\n\n`)
+            .appendMarkdown(doc)
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'), 'ahk');
@@ -28,12 +28,12 @@ export const { snippetMenu, MenuMDMap } = (() => {
         MDMapRW.set(upName, md);
 
         const item: vscode.CompletionItem = new vscode.CompletionItem({
-            label: `Menu, ${SubCommand}`, // Left
+            label: `GuiControl, ${SubCommand}`, // Left
             description: 'sub-command', // Right
         });
         item.kind = vscode.CompletionItemKind.Keyword;
         item.insertText = new vscode.SnippetString(body);
-        item.detail = 'Menu';
+        item.detail = 'GuiControl';
         item.documentation = md;
 
         snippetListRW.push(item);
@@ -42,12 +42,12 @@ export const { snippetMenu, MenuMDMap } = (() => {
     /**
      * after initialization clear
      */
-    MenuSubCmdList.length = 0;
+    GuiControlSubCmdList.length = 0;
 
     // ---
     // ---
     return {
-        snippetMenu: snippetListRW as readonly vscode.CompletionItem[],
-        MenuMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetGuiControl: snippetListRW as readonly vscode.CompletionItem[],
+        GuiControlMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
     };
 })();

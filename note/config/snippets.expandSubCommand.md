@@ -4,9 +4,11 @@
 
 1. if first word start with `M` `Me` `Men` `Menu` provide `Menu sub-Command` completion.
 2. if first word start with `G` `Gu` `Gui` provide `Gui sub-Command` completion.
+3. if first word start with `G` `Gu` `Gui` or `GuiControl` provide `GuiControl sub-Command` completion.
 
 ![exp menu command expand](../../image/snippets.expandSubCommand/true-menu.png)
 ![exp gui command expand](../../image/snippets.expandSubCommand/true-gui.png)
+![exp guiControl command expand](../../image/snippets.expandSubCommand/true-guiControl.png)
 
 ## false
 

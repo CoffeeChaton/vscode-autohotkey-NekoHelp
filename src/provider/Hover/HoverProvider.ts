@@ -21,6 +21,7 @@ import { hoverAhk2exe } from './tools/hoverAhk2exe';
 import { hoverClassName } from './tools/hoverClassName';
 import { hoverDirectives } from './tools/hoverDirectives';
 import { hoverGlobalVar } from './tools/hoverGlobalVar';
+import { hoverGuiControlParam } from './tools/hoverGuiControlParam';
 import { hoverGuiParam } from './tools/hoverGuiParam';
 import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
@@ -95,6 +96,9 @@ function HoverProviderCore(
 
     const guiParam: vscode.MarkdownString | null = hoverGuiParam(AhkTokenLine, position);
     if (guiParam !== null) return new vscode.Hover(guiParam);
+
+    const GuiControlParam: vscode.MarkdownString | null = hoverGuiControlParam(AhkTokenLine, position);
+    if (GuiControlParam !== null) return new vscode.Hover(GuiControlParam);
 
     const MenuParam: vscode.MarkdownString | null = hoverMenuParam(AhkTokenLine, position);
     if (MenuParam !== null) return new vscode.Hover(MenuParam);

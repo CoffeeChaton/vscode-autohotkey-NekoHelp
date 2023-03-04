@@ -29,7 +29,7 @@ export const { snippetGui, GuiMDMap } = (() => {
 
         const item: vscode.CompletionItem = new vscode.CompletionItem({
             label: `Gui, ${SubCommand}`, // Left
-            description: 'Gui-sub-command', // Right
+            description: 'sub-command', // Right
         });
         item.kind = vscode.CompletionItemKind.Keyword;
         item.insertText = new vscode.SnippetString(body);
