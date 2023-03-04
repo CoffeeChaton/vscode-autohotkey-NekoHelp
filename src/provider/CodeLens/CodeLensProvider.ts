@@ -27,7 +27,7 @@ function CodeLensCore(
 
     const need: vscode.CodeLens[] = showFileReport
         ? [
-            new vscode.CodeLens(new vscode.Range(0, 0, 1, 0), {
+            new vscode.CodeLens(new vscode.Range(0, 0, 0, 0), {
                 title: 'Analyze this ahk file',
                 command: ECommand.showFileReport,
                 tooltip: ECodeLensStr.tooltip,

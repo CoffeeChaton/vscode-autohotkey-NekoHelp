@@ -28,9 +28,9 @@ Problems (Ctrl+Shift+M) - Total 84 Problems
 Deep Analysis All Files
 Deep Analysis : 745 Symbol, function : 665 , method: 80
 paramMapSize is 1926
-valMapSize is 2033
-textMapSize is 434
-All Size is 4393
+valMapSize is 2032
+textMapSize is 360
+All Size is 4318
 Done in 9 ms
 ; +6ms with c511 c512 c513, because not with weakMap cache
 */

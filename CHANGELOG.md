@@ -1,18 +1,19 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [NEXT 0.0.26(2023-03-XX)](#next-00262023-03-xx)
+  - [0.0.26(2023-03-04)](#00262023-03-04)
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## NEXT 0.0.26(2023-03-XX)
+## 0.0.26(2023-03-04)
 
 - add: hover at `Menu` / `Gui` / `GuiControl` SubCommand , exp: `Menu DeleteAll`
   ![hover at menu sub-cmd](image/Changelog/v0-0-26-hover-at-menu-sub-cmd.png)
 - add: more Completion of `Sub-commands` && provide config control `"AhkNekoHelp.snippets.expandSubCommand"` [(Preview it)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md)
 - fix: some uri from old-packages to new-packages
 - fix: limit completion of `Menu` / `Gui` / `GuiControl` sub-command
+- fix: CodeLens `'Analyze this ahk file'` if the file <= 1 line, there is a flickering problem.
 
 ## 0.0.25(2023-02-26)
 

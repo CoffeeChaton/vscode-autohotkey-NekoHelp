@@ -1,7 +1,7 @@
 {
     "name": "vscode-autohotkey-neko-help",
     "displayName": "AutoHotkey NekoHelp",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "description": "AutoHotkey IntelliSense, format, linters, and language support for VS Code, ",
     "categories": [
         "Programming Languages",
@@ -318,21 +318,18 @@
             ]
         }
     },
-    "activationEvents": [
-        "onLanguage:ahk"
-    ],
     "devDependencies": {
         "@swc/core": "^1.3.37",
         "@swc/jest": "^0.2.24",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.4.0",
-        "@types/node": "^18.14.5",
+        "@types/node": "^18.14.6",
         "@types/vscode": "^1.76.0",
         "@typescript-eslint/eslint-plugin": "^5.54.0",
         "@typescript-eslint/parser": "^5.54.0",
         "@vscode/test-electron": "^2.3.0",
         "@vscode/vsce": "^2.18.0",
-        "esbuild": "^0.17.10",
+        "esbuild": "^0.17.11",
         "eslint": "^8.35.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",
@@ -348,7 +345,7 @@
         "eslint-plugin-regexp": "^1.12.0",
         "eslint-plugin-security": "^1.7.1",
         "eslint-plugin-sonarjs": "^0.18.0",
-        "eslint-plugin-unicorn": "^45.0.2",
+        "eslint-plugin-unicorn": "^46.0.0",
         "fs": "0.0.1-security",
         "jest": "^29.4.3",
         "sort-package-json": "^2.4.1",
