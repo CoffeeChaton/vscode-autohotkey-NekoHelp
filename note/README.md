@@ -112,37 +112,7 @@ if [Multiline](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-secti
 
 ### diag201
 
-[Loop , Count](https://www.autohotkey.com/docs/v1/lib/Loop.htm#Parameters)
-
-```js
-201: {
-    msg: 'If Count is a variable reference such as `%varName%` or `% expression`',
-    path: 'https://www.autohotkey.com/docs/v1/lib/Loop.htm#Parameters'
-},
-```
-
-```ahk
-caseA := 5
-Loop, caseA { ; will jump this..., so I provided diagnosis.
-    MsgBox, % "caseA loop: " A_Index
-}
-;
-
-caseB := 3
-Loop, %caseB% { ; loop 3
-    MsgBox, % "caseB loop: " A_Index
-}
-
-
-caseC := 1
-Loop, % caseC + 1 { ; loop 2
-    MsgBox, % "caseC loop: " A_Index
-}
-```
-
-> try it [diag201](./ahk/diag201.ahk)
-
-When I switch back to ahk from other languages, I often make mistakes on this example
+Moved to new page [[jump]](./code201.md)
 
 ### diag506
 

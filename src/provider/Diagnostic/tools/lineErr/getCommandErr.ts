@@ -2,21 +2,49 @@ import * as vscode from 'vscode';
 import { EDiagCode } from '../../../../diag';
 import type { TAhkTokenLine } from '../../../../globalEnum';
 import { CommandErrMap } from '../../../../tools/Built-in/Command.tools';
+import { RegRootList } from '../../../../tools/Built-in/RegRoot/RegRootKey';
+import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { CDiagBase } from '../CDiagBase';
 
-function getLoopErr(lStr: string, line: number, col: number): CDiagBase | null {
-    const matchLoop: RegExpMatchArray | null = lStr.match(/\bLoop\b[\s,]*(\w+)/iu);
-    if (matchLoop === null) return null; // miss
+type TLoopData = { lPos: number, section: string };
+function getLoopErrData(lStr: string, wordUpCol: number): TLoopData | null {
+    const strF: string = lStr
+        .slice(wordUpCol)
+        .replace(/^\s*Loop\b\s*,?\s*/iu, 'Loop,')
+        .padStart(lStr.length, ' ');
 
-    const SecondSection = matchLoop[1];
-    if ((/^(?:\d+|Files|Parse|Read|Reg)$/iu).test(SecondSection)) {
+    const arr: TScanData[] = spiltCommandAll(strF);
+    // Loop, HKEY_LOCAL_MACHINE
+    // Loop, %A_Desktop%\combine\*,
+    // a0    a1
+
+    const a1: TScanData | undefined = arr.at(1);
+    if (a1 === undefined) return null;
+
+    const { lPos, RawNameNew } = a1;
+    const sectionFix: string = arr.at(2) === undefined
+        ? RawNameNew.replace(/\s*\{$/u, '')
+        : RawNameNew;
+
+    return { lPos, section: sectionFix };
+}
+function getLoopErr(lStr: string, line: number, wordUpCol: number): CDiagBase | null {
+    const data: TLoopData | null = getLoopErrData(lStr, wordUpCol);
+    if (data === null) return null;
+    const { lPos, section } = data;
+
+    if ((/^(?:\d+|Files|Parse|Read|Reg|0x[A-F\d]+)$/iu).test(section)) {
         return null; // OK
     }
 
-    // eslint-disable-next-line no-magic-numbers
-    const colL = lStr.indexOf(SecondSection, col + 4);
-    const colR = colL + SecondSection.length;
-    if ((/^RootKey$/iu).test(SecondSection)) {
+    const colL: number = lPos;
+    const colR: number = lPos + section.length;
+
+    const paramUp: string = section.toUpperCase();
+    const isOldRegLoop: boolean = RegRootList.some((key): boolean => paramUp.includes(key));
+
+    if (isOldRegLoop) {
         // https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#old
         return new CDiagBase({
             value: EDiagCode.code801,
@@ -26,17 +54,23 @@ function getLoopErr(lStr: string, line: number, col: number): CDiagBase | null {
         });
     }
 
-    if ((/^FilePattern$/iu).test(SecondSection)) {
-        // I can't recognize `Loop, FilePattern` syntax
+    if (paramUp.includes('\\')) {
         // https://www.autohotkey.com/boards/viewtopic.php?p=494782#p494782
         // https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#old
-        // maybe is never error?
         return new CDiagBase({
             value: EDiagCode.code802,
             range: new vscode.Range(line, colL, line, colR),
             severity: vscode.DiagnosticSeverity.Warning,
             tags: [vscode.DiagnosticTag.Deprecated],
         });
+    }
+
+    // if () {
+    // is float / 1.0e3
+    // }
+
+    if (paramUp.includes('%')) {
+        return null; // OK
     }
 
     //     201: {
@@ -51,19 +85,18 @@ function getLoopErr(lStr: string, line: number, col: number): CDiagBase | null {
     });
 }
 
-function getCommandErrCore(params: TAhkTokenLine, keyWordUp: string, col: number): CDiagBase | null {
+function getCommandErrCore(params: TAhkTokenLine, keyWordUp: string, wordUpCol: number): CDiagBase | null {
     const { lStr, line } = params;
 
     if (keyWordUp === 'LOOP') {
-        return getLoopErr(lStr, line, col);
+        return getLoopErr(lStr, line, wordUpCol);
     }
 
     const diag: EDiagCode | undefined = CommandErrMap.get(keyWordUp);
     if (diag !== undefined) {
-        const colL: number = col;
         return new CDiagBase({
             value: diag,
-            range: new vscode.Range(line, colL, line, colL + keyWordUp.length),
+            range: new vscode.Range(line, wordUpCol, line, wordUpCol + keyWordUp.length),
             severity: vscode.DiagnosticSeverity.Warning,
             tags: [vscode.DiagnosticTag.Deprecated],
         });
@@ -72,14 +105,17 @@ function getCommandErrCore(params: TAhkTokenLine, keyWordUp: string, col: number
 }
 
 export function getCommandErr(params: TAhkTokenLine): CDiagBase | null {
-    const { fistWordUp } = params;
+    const {
+        fistWordUp,
+        SecondWordUp,
+        SecondWordUpCol,
+        fistWordUpCol,
+    } = params;
 
     if (fistWordUp === '') return null; // miss
 
     if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
-        const { SecondWordUp, SecondWordUpCol } = params;
         return getCommandErrCore(params, SecondWordUp, SecondWordUpCol);
     }
-    const { fistWordUpCol } = params;
     return getCommandErrCore(params, fistWordUp, fistWordUpCol);
 }

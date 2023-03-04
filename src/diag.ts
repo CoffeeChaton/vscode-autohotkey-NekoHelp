@@ -192,7 +192,7 @@ export const Diags: DeepReadonly<TDiags> = {
     },
     201: {
         msg: 'If Count is a variable reference such as `%varName%` or `% expression`',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag201',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code201.md',
     },
     301: {
         msg: 'function or Method is so big',
