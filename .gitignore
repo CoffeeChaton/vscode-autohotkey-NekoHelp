@@ -14,3 +14,4 @@ esbuildTarget.json
 node_modules/
 out/
 vscode-autohotkey-neko-help*
+dist_test/

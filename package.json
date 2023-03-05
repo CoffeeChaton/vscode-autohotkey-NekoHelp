@@ -33,7 +33,7 @@
         "pnpm clean cache": "pnpm store prune",
         "sort_pack": "sort-package-json",
         "test": "jest",
-        "test_vsc": "pnpm run compile && node ./dist/test/runTest.js",
+        "test_vsc": "pnpm node esbuild.config.js --isTest && node ./dist_test/test/runTest.js",
         "up": "dprint config update && pnpm up -L",
         "vscode:prepublish": "pnpm run test && pnpm run auto_fix && pnpm run fmt && pnpm run compile",
         "watch": "tsc -watch -p ./"
@@ -323,6 +323,7 @@
         "@swc/jest": "^0.2.24",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.4.0",
+        "@types/mocha": "^10.0.1",
         "@types/node": "^18.14.6",
         "@types/vscode": "^1.76.0",
         "@typescript-eslint/eslint-plugin": "^5.54.0",
@@ -348,6 +349,7 @@
         "eslint-plugin-unicorn": "^46.0.0",
         "fs": "0.0.1-security",
         "jest": "^29.4.3",
+        "mocha": "^10.2.0",
         "sort-package-json": "^2.4.1",
         "typescript": "5.0.1-rc",
         "vscode-tmgrammar-test": "^0.1.1"

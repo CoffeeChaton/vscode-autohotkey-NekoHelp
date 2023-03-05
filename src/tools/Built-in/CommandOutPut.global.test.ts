@@ -1,5 +1,5 @@
 /* cSpell:disable */
-
+import * as assert from 'node:assert';
 import { inPutVarMap, OutputCommandBaseMap, OutputCommandPlusMap } from './Command.tools';
 
 const outBase = [
@@ -51,6 +51,7 @@ const outBase = [
     'WinGetClass, OutputVar, WinTitle, WinText, ExcludeTitle, ExcludeText',
     'WinGetText, OutputVar, WinTitle, WinText, ExcludeTitle, ExcludeText',
     'WinGetTitle, OutputVar, WinTitle, WinText, ExcludeTitle, ExcludeText',
+    'catch, err',
 ] as const;
 
 const outPlus = [
@@ -90,7 +91,7 @@ function getCmdHead(lineStr: string): string {
 }
 
 function DataCheck(testList: readonly string[], map: ReadonlyMap<string, unknown>): string[] {
-    expect(testList.length === map.size).toBeTruthy();
+    assert.equal(testList.length, map.size);
 
     const errList: string[] = [];
     for (const lineStr of testList) {
@@ -101,16 +102,14 @@ function DataCheck(testList: readonly string[], map: ReadonlyMap<string, unknown
     return errList;
 }
 
-describe('check outList Command cover', () => {
-    it('check: OutPutB OutPutP InPut', (): void => {
-        expect.hasAssertions();
-
+suite('check outList Command cover', () => {
+    test('check: OutPutB OutPutP InPut', (): void => {
         const errList0: string[] = DataCheck(outBase, OutputCommandBaseMap);
         const errList1: string[] = DataCheck(outPlus, OutputCommandPlusMap);
         const errList2: string[] = DataCheck(inputList, inPutVarMap);
 
-        expect(errList0).toHaveLength(0);
-        expect(errList1).toHaveLength(0);
-        expect(errList2).toHaveLength(0);
+        assert.equal(errList0.length, 0);
+        assert.equal(errList1.length, 0);
+        assert.equal(errList2.length, 0);
     });
 });

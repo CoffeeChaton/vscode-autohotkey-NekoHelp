@@ -37,7 +37,7 @@
                 "plugin:jest-formatting/strict"
             ],
             "files": [
-                "**/*.test.ts"
+                "**/*.unit.test.ts"
             ],
             "plugins": [
                 "jest"
@@ -86,6 +86,7 @@
     ],
     "root": true,
     "rules": {
+        "unicorn/prefer-top-level-await": "off",
         "@typescript-eslint/key-spacing": "off",
         "sonarjs/cognitive-complexity": "off",
         "@fluffyfox/ban-eslint-disable": "off",
@@ -287,7 +288,7 @@
         "no-invalid-this": "warn",
         "no-loop-func": "error",
         "no-magic-numbers": [
-            "error",
+            "warn",
             {
                 "ignore": [
                     -1,

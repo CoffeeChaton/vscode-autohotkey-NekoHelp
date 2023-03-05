@@ -1,25 +1,32 @@
-/* eslint-disable unicorn/prefer-module */
+/* eslint-disable unicorn/no-process-exit */
 import { runTests } from '@vscode/test-electron';
 import * as path from 'node:path';
 
-function main(): void {
-    // const __filename = fileURLToPath(import.meta.url);
-    // const __dirname = path.dirname(fileURLToPath(import.meta.url));
+async function go(): Promise<void> {
+    try {
+        const extensionDevelopmentPath = path.resolve(__dirname, '../../');
+        const extensionTestsPath = path.resolve(__dirname, './suite');
+        // console.warn({
+        //     extensionDevelopmentPath,
+        //     extensionTestsPath,
+        // });
 
-    runTests({
-        launchArgs: ['--disable-extensions'],
-        extensionDevelopmentPath: path.resolve(__dirname, '../../'),
-        extensionTestsPath: path.resolve(__dirname, './suite/index'),
-    })
-        .catch((error: unknown): void => {
-            console.error('Failed to run tests');
-            let message = 'Unknown Error';
-            if (error instanceof Error) {
-                message = error.message;
-            }
-            console.error(error);
-            console.log('🚀 ~ main ~ message', message);
+        await runTests({
+            //   version: 'insiders',
+            extensionDevelopmentPath,
+            extensionTestsPath,
         });
+    } catch (error: unknown) {
+        console.error('Failed to run tests');
+
+        let message = 'Unknown Error';
+        if (error instanceof Error) {
+            message = error.message;
+        }
+        console.error(error);
+        console.log('🚀 ~ main ~ message', message);
+        process.exit(1);
+    }
 }
 
-main();
+void go();
