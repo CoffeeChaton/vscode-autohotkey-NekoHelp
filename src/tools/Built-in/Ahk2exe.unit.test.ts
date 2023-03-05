@@ -8,10 +8,10 @@ type TErrObj = {
 };
 
 describe('check Ahk2exeData ruler', () => {
-    const max = 30;
-
     it('check : Ahk2exeData length .EQ. 30', () => {
         expect.hasAssertions();
+
+        const max = 30;
 
         expect(Ahk2exeData).toHaveLength(max);
     });
