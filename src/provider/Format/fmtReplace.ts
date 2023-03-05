@@ -85,6 +85,7 @@ export function lineReplace(AhkTokenLine: TAhkTokenLine, text: string, lStrTrim:
     } = AhkTokenLine;
 
     return (lStrTrim === ''
+            || lStrTrim.startsWith('#')
             || detail.includes(EDetail.inSkipSign2)
             || detail.includes(EDetail.inComment)
             || multiline !== EMultiline.none

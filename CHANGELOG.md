@@ -9,6 +9,15 @@
 
 ## Next 0.0.27(2023-03-XX)
 
+- fix: format `Alpha test options` - `"AhkNekoHelp.format.textReplace"` don't format at `#Directives` line
+
+  ```ahk
+  #Hotstring EndChars -()[]{}':;"/\,.?!`n `t
+  ;                           ^ don't add \s at `#Directives`
+  #Include c:\DEV\XX\ahk_test,XX.ahk
+  ;                          ^ don't add \s at `#Directives`
+  ```
+
 - fix: [diag201](./note/code201.md)
 
 ## 0.0.26(2023-03-04)
