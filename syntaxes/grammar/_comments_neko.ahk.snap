@@ -1,0 +1,112 @@
+>;@ahk-neko-ignore 1 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^ source.ahk comment.line.semicolon.ahk
+#                  ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                   ^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore 2 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^ source.ahk comment.line.semicolon.ahk
+#                  ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                   ^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore 999 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^ source.ahk comment.line.semicolon.ahk
+#                  ^^^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                     ^^^^^ source.ahk comment.line.semicolon.ahk
+>
+>;use 0 to open diag
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore 0 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^ source.ahk comment.line.semicolon.ahk
+#                  ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                   ^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore-fn 1 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                    ^ source.ahk comment.line.semicolon.ahk
+#                     ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                      ^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore-fn 2 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                    ^ source.ahk comment.line.semicolon.ahk
+#                     ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                      ^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore-fn 999 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                    ^ source.ahk comment.line.semicolon.ahk
+#                     ^^^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                        ^^^^^ source.ahk comment.line.semicolon.ahk
+>
+>;use 0 to open diag
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-ignore-fn 0 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                    ^ source.ahk comment.line.semicolon.ahk
+#                     ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                      ^^^^^ source.ahk comment.line.semicolon.ahk
+>;@ahk-neko-format-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-inline-spacing-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                        ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-inline-spacing-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                        ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-inline-spacing-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                        ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>;@ahk-neko-format-inline-spacing-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                        ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk

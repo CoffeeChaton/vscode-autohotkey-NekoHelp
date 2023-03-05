@@ -1,0 +1,17 @@
+>/**
+#^^^ source.ahk comment.block.documentation.ahk
+>* md1
+#^^^^^^ source.ahk comment.block.documentation.ahk
+>; md2
+#^^^^^^ source.ahk comment.block.documentation.ahk
+>* @md3
+#^^ source.ahk comment.block.documentation.ahk comment.block.documentation.ahk
+#  ^^^^ source.ahk comment.block.documentation.ahk comment.block.documentation.ahk storage.comment.block.documentation.ahk
+>; @md4
+#^^ source.ahk comment.block.documentation.ahk comment.block.documentation.ahk
+#  ^^^^ source.ahk comment.block.documentation.ahk comment.block.documentation.ahk storage.comment.block.documentation.ahk
+>*/
+#^^ source.ahk comment.block.documentation.ahk
+>Label_exp0:
+#^^^^^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>

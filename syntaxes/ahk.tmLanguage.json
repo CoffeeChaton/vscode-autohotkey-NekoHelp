@@ -193,12 +193,12 @@
                                 "2": { "name": "entity.name.type.instance.documentation.ahk" },
                                 "3": { "name": "variable.other.documentation.ahk" }
                             },
-                            "match": "^[ \\t]*\\*[ \\t]+(@\\w+)([ \\t]+\\{[^}]+\\})?([ \\t]+\\w+)?",
+                            "match": "^[ \\t]*[;*][ \\t]+(@\\w+)([ \\t]+\\{[^}]+\\})?([ \\t]+\\w+)?",
                             "name": "comment.block.documentation.ahk"
                         },
                         {
                             "captures": { "1": { "name": "storage.comment.block.documentation.ahk" } },
-                            "match": "^[ \\t]*\\*[ \\t]+(@\\w+)",
+                            "match": "^[ \\t]*[;*][ \\t]+(@\\w+)",
                             "name": "comment.block.documentation.ahk"
                         },
                         { "include": "#comment_neko_help_ignore" },

@@ -1,0 +1,362 @@
+>MsgBox % "This message appears in both the compiled and unCompiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>;@Ahk2Exe-IgnoreBegin
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+>MsgBox % "This message does NOT appear in the compiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                             ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>;@Ahk2Exe-IgnoreEnd
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+>MsgBox % "This message appears in both the compiled and unCompiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>MsgBox % "This message appears in both the compiled and unCompiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>
+>
+>;@Ahk2Exe-IgnoreBegin
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+>MsgBox % "This message does NOT appear in the compiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                             ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>;@Ahk2Exe-IgnoreEnd
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+>MsgBox % "This message appears in both the compiled and unCompiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>
+>
+>;Example 1: To replace the standard icons (other than the main icon):
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>;@Ahk2Exe-AddResource Icon1.ico, 160  ; Replaces 'H on blue'
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-AddResource Icon2.ico, 206  ; Replaces 'S on green'
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-AddResource Icon3.ico, 207  ; Replaces 'H on red'
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-AddResource Icon4.ico, 208  ; Replaces 'S on red'
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>
+>;Example 2: [v1.1.34+] To include another script as a separate RCDATA resource (see Embedded Scripts):
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>;@Ahk2Exe-AddResource MyScript1.ahk, #2
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-AddResource MyScript2.ahk, MYRESOURCE
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Bin  [Path]Name [, [Exe_path][Name], Codepage] ; Deprecated
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Base [Path]Name [, [Exe_path][Name], Codepage] ; [v1.1.33.10+]
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Bin  [Path]Name [, [Exe_path][Name], Codepage] ; Deprecated
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Base [Path]Name [, [Exe_path][Name], Codepage] ; [v1.1.33.10+]
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-ConsoleApp
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+>;@Ahk2Exe-Cont Text
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Debug
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_bits, = %A_PtrSize% * 8
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_type, = "%A_IsUnicode%" ? "Unicode" : "ANSI"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-ExeName %A_ScriptName~\\.[^\\.]+$%_%U_type%_%U_bits%
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Let Name = Value , Name = Value, ...
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Let U_company = %A_PriorLine~U)^(.+"){3}(.+)".*$~$2%
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Let U_version = %A_PriorLine~U)^(.+"){1}(.+)".*$~$2%
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>
+>
+>Ver := A_AhkVersion "" ; If quoted literal not empty, do \'SetVersion\'
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^^^^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                   ^ source.ahk
+#                    ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                     ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                      ^ source.ahk comment.line.semicolon.ahk
+#                       ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>;@Ahk2Exe-Obey U_V, = "%A_PriorLine~U)^(.+")(.*)".*$~$2%" ? "SetVersion" : "Nop"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;              ->                                        ->                 ^^^
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>;@Ahk2Exe-%U_V%        %A_AhkVersion%%A_PriorLine~U)^(.+")(.*)".*$~$2%
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;           ^ "Nop" or "SetVersion"
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>
+>
+>;@Ahk2Exe-Obey U_date, FormatTime U_date`, R D2 T2
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_type, = "%A_IsUnicode%" ? "Unicode" : "ANSI"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_bits, U_bits := %A_PtrSize% * 8
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>
+>;@Ahk2Exe-Obey U_au, = "%A_IsUnicode%" ? 2 : 1 ; Script ANSI or Unicode?
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_bits, = %A_PtrSize% * 8
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_bits, U_bits := %A_PtrSize% * 8
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_date, FormatTime U_date`, R D2 T2
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_type, = "%A_IsUnicode%" ? "Unicode" : "ANSI"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_V, = "%A_PriorLine~U)^(.+")(.*)".*$~$2%" ? "SetVersion" : "Nop"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Obey U_au, = "%A_IsUnicode%" ? 2 : 1 ; Script ANSI or Unicode?
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-PostExec "BinMod.exe" "%A_WorkFileName%"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Cont  "%U_au%2.>AUTOHOTKEY SCRIPT<. DATA      
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>
+>;@Ahk2Exe-PostExec "BinMod.exe" "%A_WorkFileName%"
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Cont  "11.UPX." "1.UPX!.", 2
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-ResourceID Name
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                    ^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetMainIcon IcoFile
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetMainIcon AhkXXX.ico
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetMainIcon cat.ico
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetCompanyName Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetCompanyName neko-help
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetCopyright Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                      ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetCopyright Copyright (c) since 2022
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                      ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetDescription Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetDescription AutoHotkey Script Compiler
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetFileVersion Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetFileVersion 0.0.18
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetInternalName Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                         ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetLanguage Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                     ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetLegalTrademarks Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                            ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetName Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                 ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetOrigFilename Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                         ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetOrigFilename XXX.ahk
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                         ^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetProductName Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetProductName DllExportViewer
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetProductVersion Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                           ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetProductVersion 1.1.36
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                           ^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetVersion Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                    ^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-SetVersion     2022.12.17
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                    ^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-Set Prop, Value
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#             ^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-UpdateManifest RequireAdmin , Name, Version, UIAccess
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>;@Ahk2Exe-UseResourceLang LangCode
+#^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+#          ^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
+#                         ^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
+>
+>
+>
+>;https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>/*@Ahk2Exe-Keep
+#^^ source.ahk comment.block.ahk
+#  ^^^^^^^^^ source.ahk comment.block.ahk comment.block.ahk2exe.keep.ahk
+#           ^^^^ source.ahk comment.block.ahk comment.block.ahk2exe.keep.ahk keyword.comment.ahk2exe.keep.ahk
+>MsgBox This message appears only in the compiled script
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.block.ahk
+>*/
+#^^ source.ahk comment.block.ahk
+>MsgBox % "This message appears in both the compiled and uncompiled script"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk
+#       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#        ^ source.ahk meta.command.line.ahk
+#         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk

@@ -33,6 +33,7 @@
         "pnpm clean cache": "pnpm store prune",
         "sort_pack": "sort-package-json",
         "test": "jest",
+        "test_grammar_up_snap": "pnpm vscode-tmgrammar-snap --updateSnapshot syntaxes/grammar/*.ahk",
         "test_vsc": "pnpm run compile && node ./dist/test/runTest.js",
         "up": "dprint config update && pnpm up -L",
         "vscode:prepublish": "pnpm run test && pnpm run auto_fix && pnpm run fmt && pnpm run compile",

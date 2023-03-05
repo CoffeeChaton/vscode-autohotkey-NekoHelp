@@ -1,0 +1,54 @@
+>; normal
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^ source.ahk comment.line.semicolon.ahk
+>
+>(:: foo("case (")
+#^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
+# ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#   ^ source.ahk
+#    ^^^ source.ahk entity.name.function.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#         ^^^^^^ source.ahk string.quoted.double.ahk
+#               ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                ^ source.ahk punctuation.bracket.ahk
+>~[:: foo("case [")
+#^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
+#  ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#    ^ source.ahk
+#     ^^^ source.ahk entity.name.function.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+#         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#          ^^^^^^ source.ahk string.quoted.double.ahk
+#                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                 ^ source.ahk punctuation.bracket.ahk
+>;^Avoid vscode automatic bracket matching, here if it is Str
+#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>
+>~F12::Reload
+#^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
+#    ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#      ^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>foo(case) {
+#^^^ source.ahk entity.name.function.ahk
+#   ^ source.ahk punctuation.bracket.ahk
+#    ^^^^ source.ahk keyword.control.flow.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+#         ^ source.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, % "i am foo, and use at " . case
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                    ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                     ^^^^^^^ source.ahk meta.command.line.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>

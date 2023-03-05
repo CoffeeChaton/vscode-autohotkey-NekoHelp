@@ -1,0 +1,239 @@
+>~F12::Reload
+#^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
+#    ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#      ^^^^^^ source.ahk keyword.control.flow.ahk
+>~F11::ExitApp
+#^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
+#    ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#      ^^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>MsgBox,
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+>    ( LTrim ; has LTrim, this line deep === test2 line deep +1
+#^^^^^ source.ahk string.multiline.ahk
+#     ^^^^^^ source.ahk string.multiline.ahk keyword.multiline.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk comment.line.semicolon.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    )
+#^^^^^ source.ahk string.multiline.ahk
+>
+>MsgBox, % "
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+#       ^ source.ahk meta.command.line.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#         ^ source.ahk meta.command.line.ahk
+#          ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+>    ( LTrim ; has LTrim, this line deep === test2 line deep +1
+#^^^^^ source.ahk string.multiline.ahk
+#     ^^^^^^ source.ahk string.multiline.ahk keyword.multiline.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk comment.line.semicolon.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    )"
+#^^^^^^ source.ahk string.multiline.ahk
+>
+>MsgBox, % "
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+#       ^ source.ahk meta.command.line.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#         ^ source.ahk meta.command.line.ahk
+#          ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+>    ( ;not has LTrim, this line deep === test2 line deep +1
+#^^^^^ source.ahk string.multiline.ahk
+#     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk comment.line.semicolon.ahk
+>deepRaw...
+#^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    deepRaw...
+#^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>deepRaw...
+#^^^^^^^^^^^ source.ahk string.multiline.ahk
+>                            deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>                        deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    )"
+#^^^^^^ source.ahk string.multiline.ahk
+>
+>MsgBox,
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+>    ( ;not has LTrim, this line deep === test2 line deep +1
+#^^^^^ source.ahk string.multiline.ahk
+#     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk comment.line.semicolon.ahk
+>deepRaw...
+#^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    deepRaw...
+#^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>deepRaw...
+#^^^^^^^^^^^ source.ahk string.multiline.ahk
+>                            deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>                        deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    )
+#^^^^^ source.ahk string.multiline.ahk
+>
+>
+>test1 := "
+#^^^^^^ source.ahk
+#      ^^ source.ahk keyword.operator.assignment.ahk
+#        ^ source.ahk
+#         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+>    ( LTrim ; has LTrim, this line deep === test2 line deep +1
+#^^^^^ source.ahk string.multiline.ahk
+#     ^^^^^^ source.ahk string.multiline.ahk keyword.multiline.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk comment.line.semicolon.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        deep+1...
+#^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    )" ; this line deep === test2 line deep +1
+#^^^^^^ source.ahk string.multiline.ahk
+#      ^ source.ahk comment.line.semicolon.ahk
+#       ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+#        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+>----------------------------------------------------------------------------------------------------
+#^ source.ahk keyword.operator.arithmetic.ahk
+# ^ source.ahk keyword.operator.arithmetic.ahk
+#  ^ source.ahk keyword.operator.arithmetic.ahk
+#   ^ source.ahk keyword.operator.arithmetic.ahk
+#    ^ source.ahk keyword.operator.arithmetic.ahk
+#     ^ source.ahk keyword.operator.arithmetic.ahk
+#      ^ source.ahk keyword.operator.arithmetic.ahk
+#       ^ source.ahk keyword.operator.arithmetic.ahk
+#        ^ source.ahk keyword.operator.arithmetic.ahk
+#         ^ source.ahk keyword.operator.arithmetic.ahk
+#          ^ source.ahk keyword.operator.arithmetic.ahk
+#           ^ source.ahk keyword.operator.arithmetic.ahk
+#            ^ source.ahk keyword.operator.arithmetic.ahk
+#             ^ source.ahk keyword.operator.arithmetic.ahk
+#              ^ source.ahk keyword.operator.arithmetic.ahk
+#               ^ source.ahk keyword.operator.arithmetic.ahk
+#                ^ source.ahk keyword.operator.arithmetic.ahk
+#                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                  ^ source.ahk keyword.operator.arithmetic.ahk
+#                   ^ source.ahk keyword.operator.arithmetic.ahk
+#                    ^ source.ahk keyword.operator.arithmetic.ahk
+#                     ^ source.ahk keyword.operator.arithmetic.ahk
+#                      ^ source.ahk keyword.operator.arithmetic.ahk
+#                       ^ source.ahk keyword.operator.arithmetic.ahk
+#                        ^ source.ahk keyword.operator.arithmetic.ahk
+#                         ^ source.ahk keyword.operator.arithmetic.ahk
+#                          ^ source.ahk keyword.operator.arithmetic.ahk
+#                           ^ source.ahk keyword.operator.arithmetic.ahk
+#                            ^ source.ahk keyword.operator.arithmetic.ahk
+#                             ^ source.ahk keyword.operator.arithmetic.ahk
+#                              ^ source.ahk keyword.operator.arithmetic.ahk
+#                               ^ source.ahk keyword.operator.arithmetic.ahk
+#                                ^ source.ahk keyword.operator.arithmetic.ahk
+#                                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                                  ^ source.ahk keyword.operator.arithmetic.ahk
+#                                   ^ source.ahk keyword.operator.arithmetic.ahk
+#                                    ^ source.ahk keyword.operator.arithmetic.ahk
+#                                     ^ source.ahk keyword.operator.arithmetic.ahk
+#                                      ^ source.ahk keyword.operator.arithmetic.ahk
+#                                       ^ source.ahk keyword.operator.arithmetic.ahk
+#                                        ^ source.ahk keyword.operator.arithmetic.ahk
+#                                         ^ source.ahk keyword.operator.arithmetic.ahk
+#                                          ^ source.ahk keyword.operator.arithmetic.ahk
+#                                           ^ source.ahk keyword.operator.arithmetic.ahk
+#                                            ^ source.ahk keyword.operator.arithmetic.ahk
+#                                             ^ source.ahk keyword.operator.arithmetic.ahk
+#                                              ^ source.ahk keyword.operator.arithmetic.ahk
+#                                               ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                  ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                   ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                    ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                     ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                      ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                       ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                        ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                         ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                          ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                           ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                            ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                             ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                              ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                               ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                  ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                   ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                    ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                     ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                      ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                       ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                        ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                         ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                          ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                           ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                            ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                             ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                              ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                               ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                  ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                   ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                    ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                     ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                      ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                       ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                        ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                         ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                          ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                           ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                            ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                             ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                              ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                               ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                                ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                                  ^ source.ahk keyword.operator.arithmetic.ahk
+#                                                                                                   ^ source.ahk keyword.operator.arithmetic.ahk
+>test2 := "
+#^^^^^^ source.ahk
+#      ^^ source.ahk keyword.operator.assignment.ahk
+#        ^ source.ahk
+#         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+>        (  ;not has LTrim, this line deep === test2 line deep +1
+#^^^^^^^^^ source.ahk string.multiline.ahk
+#         ^ source.ahk string.multiline.ahk keyword.multiline.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk comment.line.semicolon.ahk
+>deepRaw...
+#^^^^^^^^^^^ source.ahk string.multiline.ahk
+>    deepRaw...
+#^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>deepRaw...
+#^^^^^^^^^^^ source.ahk string.multiline.ahk
+>                            deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>                        deepRaw...
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        )" ;this line deep === test2 line deep +1
+#^^^^^^^^^^ source.ahk string.multiline.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
