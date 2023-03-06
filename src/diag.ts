@@ -168,7 +168,7 @@ export const Diags: DeepReadonly<TDiags> = {
     },
     121: {
         msg: 'Multiline:join > 15 characters',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag121',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code121.md',
     },
     122: {
         msg: 'ahk-neko-help is not work of (, `) flag now.',
