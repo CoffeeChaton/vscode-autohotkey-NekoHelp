@@ -9,6 +9,7 @@
 
 ## Next 0.0.27(2023-03-XX)
 
+- feat: auto hide status bar
 - fix: format `Alpha test options` - `"AhkNekoHelp.format.textReplace"` don't format at `#Directives` line
 
   ```ahk

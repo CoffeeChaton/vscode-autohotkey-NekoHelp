@@ -29,3 +29,5 @@
     }
 }
 // https://dprint.dev/plugins/typescript/config/
+// cargo install --locked dprint
+// package `dprint v0.34.4` with `dprint v0.34.5` (executable `dprint.exe`)
