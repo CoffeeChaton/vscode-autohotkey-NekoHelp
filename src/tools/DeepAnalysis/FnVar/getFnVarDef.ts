@@ -141,7 +141,7 @@ export function getFnVarDef(
 
         const { SecondWordUp, SecondWordUpCol, fistWordUpCol } = AhkTokenLine;
 
-        if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY' || fistWordUp === 'ELSE') {
+        if (SecondWordUp !== '') {
             OutputVarCommandBase(need, SecondWordUp, SecondWordUpCol);
             OutputVarCommandPlus(need, SecondWordUp, SecondWordUpCol);
             forLoop(need, SecondWordUp, SecondWordUpCol); // for var1 , var2 in
