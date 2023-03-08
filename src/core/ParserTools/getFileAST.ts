@@ -7,7 +7,7 @@ import { getModuleVarMap } from '../../tools/DeepAnalysis/getModuleVarMap';
 import { isAhk } from '../../tools/fsTools/isAhk';
 import { getChildren } from '../getChildren';
 import { getClass } from '../getClass';
-import { ParserBlock } from '../Parser';
+import { ParserSwitchBlock } from '../ParserSwitch';
 import { Pretreatment } from '../Pretreatment';
 import type { TGValMap, TGValMapReadOnly } from './ahkGlobalDef';
 import { ahkGlobalMain } from './ahkGlobalDef';
@@ -129,7 +129,7 @@ export function getFileAST(document: vscode.TextDocument): TMemo | 'isAhk2' {
 
     const GValMap: TGValMap = ahkGlobalMain(DocStrMap);
     const AST: TAstRoot = getChildren<CTopClass>(
-        [getClass, getFunc, ParserBlock.getSwitchBlock, ParserHotStr, ParserLine, ParserHotKey],
+        [getClass, getFunc, ParserSwitchBlock.getSwitchBlock, ParserHotStr, ParserLine, ParserHotKey],
         {
             DocStrMap,
             RangeStartLine: 0,

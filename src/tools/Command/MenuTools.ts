@@ -62,18 +62,16 @@ function getMenuFuncData(lStr: string, col: number): TScanData | null {
  * <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17>
  */
 export function getMenuFunc(AhkTokenLine: TAhkTokenLine): TScanData | null {
-    const { fistWordUp } = AhkTokenLine;
-    if (fistWordUp === 'MENU') {
-        const { lStr, fistWordUpCol } = AhkTokenLine;
-        return getMenuFuncData(lStr, fistWordUpCol);
-    }
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        lStr,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
 
-    if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
-        const { SecondWordUp, SecondWordUpCol, lStr } = AhkTokenLine;
-        return SecondWordUp === 'MENU'
-            ? getMenuFuncData(lStr, SecondWordUpCol)
-            : null;
-    }
+    if (fistWordUp === 'MENU') return getMenuFuncData(lStr, fistWordUpCol);
+    if (SecondWordUp === 'MENU') return getMenuFuncData(lStr, SecondWordUpCol);
 
     return null;
 }

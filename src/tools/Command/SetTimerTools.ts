@@ -27,18 +27,16 @@ function getSetTimerData(lStr: string, col: number): TScanData | null {
 }
 
 export function getSetTimerWrap(AhkTokenLine: TAhkTokenLine): TScanData | null {
-    const { fistWordUp } = AhkTokenLine;
-    if (fistWordUp === 'SETTIMER') {
-        const { lStr, fistWordUpCol } = AhkTokenLine;
-        return getSetTimerData(lStr, fistWordUpCol);
-    }
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        lStr,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
 
-    if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
-        const { SecondWordUp, SecondWordUpCol, lStr } = AhkTokenLine;
-        return SecondWordUp === 'SETTIMER'
-            ? getSetTimerData(lStr, SecondWordUpCol)
-            : null;
-    }
+    if (fistWordUp === 'SETTIMER') return getSetTimerData(lStr, fistWordUpCol);
+    if (SecondWordUp === 'SETTIMER') return getSetTimerData(lStr, SecondWordUpCol);
 
     return null;
 }

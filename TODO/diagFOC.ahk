@@ -30,5 +30,6 @@ fnB(Var) {
 
 /**
 * https://www.autohotkey.com/docs/v1/Language.htm#if-statement
-* Named If statements allow a command to be written on the same line, but mispelled command names are treated as literal text. Such errors may be difficult to detect.
+* Named If statements allow a command to be written on the same line, but mispelled command names are treated as literal text. Such errors may be difficult to detect.*
+* <https://www.autohotkey.com/docs/v1/lib/IfEqual.htm#Remarks>
 */

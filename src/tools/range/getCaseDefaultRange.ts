@@ -3,7 +3,7 @@ import type { TTokenStream } from '../../globalEnum';
 import { getRange } from './getRange';
 import { getRangeOfLine } from './getRangeOfLine';
 
-export function getRangeCaseBlock(
+export function getCaseDefaultRange(
     DocStrMap: TTokenStream,
     defLine: number,
     searchLine: number,
@@ -36,7 +36,7 @@ export function getRangeCaseBlock(
             continue;
         }
         if (
-            (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY')
+            (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT')
             && lStr.includes(':')
         ) {
             const col = DocStrMap[line - 1].textRaw.length;

@@ -36,17 +36,16 @@ function getSortFuncData(lStr: string, col: number): TScanData | null {
  * ```
  */
 export function getSortFunc(AhkTokenLine: TAhkTokenLine): TScanData | null {
-    const { fistWordUp, SecondWordUp, lStr } = AhkTokenLine;
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        lStr,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
 
-    if (fistWordUp === 'SORT') {
-        const { fistWordUpCol } = AhkTokenLine;
-        return getSortFuncData(lStr, fistWordUpCol);
-    }
-
-    if (SecondWordUp === 'SORT') {
-        const { SecondWordUpCol } = AhkTokenLine;
-        return getSortFuncData(lStr, SecondWordUpCol);
-    }
+    if (fistWordUp === 'SORT') return getSortFuncData(lStr, fistWordUpCol);
+    if (SecondWordUp === 'SORT') return getSortFuncData(lStr, SecondWordUpCol);
 
     return null;
 }

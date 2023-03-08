@@ -139,14 +139,13 @@ export function getFnVarDef(
         walrusOperator(need); // :=
         varSetCapacityFunc(need); // VarSetCapacity(varName) or NumGet(varName) or NumGet(&varName)
 
-        if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
-            const { SecondWordUp, SecondWordUpCol } = AhkTokenLine;
+        const { SecondWordUp, SecondWordUpCol, fistWordUpCol } = AhkTokenLine;
 
+        if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY' || fistWordUp === 'ELSE') {
             OutputVarCommandBase(need, SecondWordUp, SecondWordUpCol);
             OutputVarCommandPlus(need, SecondWordUp, SecondWordUpCol);
             forLoop(need, SecondWordUp, SecondWordUpCol); // for var1 , var2 in
         } else if (fistWordUp !== '') {
-            const { fistWordUpCol } = AhkTokenLine;
             OutputVarCommandBase(need, fistWordUp, fistWordUpCol);
             OutputVarCommandPlus(need, fistWordUp, fistWordUpCol);
             forLoop(need, fistWordUp, fistWordUpCol);

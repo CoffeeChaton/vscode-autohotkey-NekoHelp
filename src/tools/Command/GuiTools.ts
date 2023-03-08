@@ -79,18 +79,16 @@ function getMenuFuncData(lStr: string, col: number, flag: 0 | 1): readonly TScan
  * ```
  */
 export function getGuiFunc(AhkTokenLine: TAhkTokenLine, flag: 0 | 1): readonly TScanData[] | null {
-    const { fistWordUp } = AhkTokenLine;
-    if (fistWordUp === 'GUI') {
-        const { lStr, fistWordUpCol } = AhkTokenLine;
-        return getMenuFuncData(lStr, fistWordUpCol, flag);
-    }
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        lStr,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
 
-    if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
-        const { SecondWordUp, SecondWordUpCol, lStr } = AhkTokenLine;
-        return SecondWordUp === 'GUI'
-            ? getMenuFuncData(lStr, SecondWordUpCol, flag)
-            : null;
-    }
+    if (fistWordUp === 'GUI') return getMenuFuncData(lStr, fistWordUpCol, flag);
+    if (SecondWordUp === 'GUI') return getMenuFuncData(lStr, SecondWordUpCol, flag);
 
     return null;
 }

@@ -73,6 +73,9 @@ export type TMultilineFlag =
 
 export type TAhkTokenLine = DeepReadonly<{
     // TODO: replace as ([upName,col])[]
+    /**
+     * first ...
+     */
     fistWordUpCol: number,
     fistWordUp: string,
     SecondWordUp: string,

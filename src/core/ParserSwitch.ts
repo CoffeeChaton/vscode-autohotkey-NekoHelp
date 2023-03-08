@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
 import { CAhkCase, CAhkDefault, CAhkSwitch } from '../AhkSymbol/CAhkSwitch';
 import { getRange } from '../tools/range/getRange';
-import { getRangeCaseBlock } from '../tools/range/getRangeCaseBlock';
+import { getCaseDefaultRange } from '../tools/range/getCaseDefaultRange';
 import type { TFuncInput } from './getChildren';
 import { getChildren } from './getChildren';
 import { getCaseName, getSwitchName } from './ParserTools/getSwitchCaseName';
 import { ParserLine } from './ParserTools/ParserLine';
 
-export const ParserBlock = {
+export const ParserSwitchBlock = {
     getCaseBlock(FuncInput: TFuncInput): CAhkCase | null {
         const { lStr, fistWordUp } = FuncInput.AhkTokenLine;
 
@@ -27,9 +27,9 @@ export const ParserBlock = {
         const name: string | null = getCaseName(DocStrMap[line].textRaw, lStr);
         if (name === null) return null;
 
-        const range = getRangeCaseBlock(DocStrMap, line, line, RangeEndLine, lStr);
+        const range = getCaseDefaultRange(DocStrMap, line, line, RangeEndLine, lStr);
         const ch = getChildren<CAhkCase>(
-            [ParserBlock.getSwitchBlock, ParserLine],
+            [ParserSwitchBlock.getSwitchBlock, ParserLine],
             {
                 DocStrMap,
                 RangeStartLine: range.start.line + 1,
@@ -70,9 +70,9 @@ export const ParserBlock = {
         } = FuncInput;
         const { line, fistWordUpCol } = AhkTokenLine;
 
-        const range = getRangeCaseBlock(DocStrMap, line, line, RangeEndLine, lStr);
+        const range = getCaseDefaultRange(DocStrMap, line, line, RangeEndLine, lStr);
         const ch = getChildren<CAhkDefault>(
-            [ParserBlock.getSwitchBlock, ParserLine],
+            [ParserSwitchBlock.getSwitchBlock, ParserLine],
             {
                 DocStrMap,
                 RangeStartLine: range.start.line + 1,
@@ -113,7 +113,7 @@ export const ParserBlock = {
         const range = getRange(DocStrMap, line, line, RangeEndLine, fistWordUpCol);
 
         const ch = getChildren<CAhkSwitch>(
-            [ParserBlock.getCaseBlock, ParserBlock.getDefaultBlock],
+            [ParserSwitchBlock.getCaseBlock, ParserSwitchBlock.getDefaultBlock],
             {
                 DocStrMap,
                 RangeStartLine: range.start.line + 1,

@@ -114,7 +114,7 @@ export function getCommandErr(params: TAhkTokenLine): CDiagBase | null {
 
     if (fistWordUp === '') return null; // miss
 
-    if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
+    if (SecondWordUp !== '') {
         return getCommandErrCore(params, SecondWordUp, SecondWordUpCol);
     }
     return getCommandErrCore(params, fistWordUp, fistWordUpCol);

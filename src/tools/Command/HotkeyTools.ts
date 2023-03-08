@@ -31,18 +31,16 @@ function getHotkeyData(lStr: string, col: number): TScanData | null {
 }
 
 export function getHotkeyWrap(AhkTokenLine: TAhkTokenLine): TScanData | null {
-    const { fistWordUp } = AhkTokenLine;
-    if (fistWordUp === 'HOTKEY') {
-        const { lStr, fistWordUpCol } = AhkTokenLine;
-        return getHotkeyData(lStr, fistWordUpCol);
-    }
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        lStr,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
 
-    if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY') {
-        const { SecondWordUp, SecondWordUpCol, lStr } = AhkTokenLine;
-        return SecondWordUp === 'HOTKEY'
-            ? getHotkeyData(lStr, SecondWordUpCol)
-            : null;
-    }
+    if (fistWordUp === 'HOTKEY') return getHotkeyData(lStr, fistWordUpCol);
+    if (SecondWordUp === 'HOTKEY') return getHotkeyData(lStr, SecondWordUpCol);
 
     return null;
 }

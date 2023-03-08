@@ -19,28 +19,18 @@ export function getRange(
     RangeEnd: number,
     startCharacter: number,
 ): vscode.Range {
-    //  selectionRange must be contained in fullRange
-
-    const searchLineFix = getSearchLineFix(DocStrMap, searchLine, RangeEnd);
-    const startDeep = (DocStrMap[searchLineFix].deep2.at(-1) ?? 0) - 1;
+    const searchLineFix: number = getSearchLineFix(DocStrMap, searchLine, RangeEnd);
+    const startDeep: number = (DocStrMap[searchLineFix].deep2.at(-1) ?? 0) - 1;
     for (let line = searchLineFix + 1; line <= RangeEnd; line++) {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (DocStrMap[line] === undefined) {
-            log.error(
-                '"DocStrMap[line] === undefined"\nDocStrMap[line - 1] is ',
-                DocStrMap[line - 1],
-            );
-
+            log.error('"DocStrMap[line] is undefined"');
             break;
         }
         if (DocStrMap[line].deep2.includes(startDeep)) {
-            const col = DocStrMap[line].lStr.lastIndexOf('}'); // FIXME
+            const col: number = DocStrMap[line].lStr.lastIndexOf('}'); // FIXME
             return new vscode.Range(defLine, startCharacter, line, col);
         }
-        // if (DocStrMap[line].deep <= startDeep) {
-        //     const col = DocStrMap[line].lStr.lastIndexOf('}');
-        //     return new vscode.Range(defLine, 0, line, col);
-        // }
     }
 
     log.error([

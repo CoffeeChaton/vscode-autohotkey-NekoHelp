@@ -40,15 +40,50 @@ const patternMatch = [
         // dprint-ignore
         // eslint-disable-next-line no-magic-numbers
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 3)
-            .replace(/\s*,/u, '')
+            .replace(/^\s*,/u, '')
+            .trim(),
+    },
+    {
+        // Else Statement
+        name: 'ELSE',
+        //   If False {
+        //       MsgBox % "True"
+        //   } Else MsgBox % "Else"
+        //   ;     ^^^^^^^after Else Cmd
+        //   If False {
+        //       MsgBox % "True"
+        //   } Else , MsgBox % "Else"
+        //   ;      ^ ,
+
+        //   If True { ;<------ check "Else"
+        //       MsgBox % "True"
+        //   } Else MsgBox % "Else"
+        //   ;     ^
+
+        //   If True { ;<------ check "Else"
+        //       MsgBox % "True"
+        //   } Else, MsgBox % "Else"
+        //   ;     ^
+        // dprint-ignore
+        // eslint-disable-next-line no-magic-numbers
+        fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 4)
+            .replace(/^\s*,/u, '')
+            .trim(),
+    },
+    {
+        // Else Statement
+        name: 'FINALLY',
+        // dprint-ignore
+        fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 'FINALLY'.length)
+            .replace(/^\s*,/u, '')
             .trim(),
     },
 ] as const satisfies readonly TPatternMatch[];
 
 /**
- * ```js
- *     if (fistWordUp === 'CASE' || fistWordUp === 'DEFAULT' || fistWordUp === 'TRY')
- * ```
+ * //TODO https://www.autohotkey.com/docs/v1/lib/IfEqual.htm#Remarks
+ *
+ * IfEqual IfGreater ...etc
  */
 export function getSecondUp(lStr: string, fistWordUp: string, fistWordUpCol: number): TSecondUpData {
     const match: TPatternMatch | undefined = patternMatch.find((v: TPatternMatch): boolean => v.name === fistWordUp);

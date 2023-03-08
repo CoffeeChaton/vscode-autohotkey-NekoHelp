@@ -9,6 +9,29 @@
 
 ## Next 0.0.27(2023-03-XX)
 
+- fix: cmd after `Else` `Finally`
+
+  ```ahk
+  If False {
+      MsgBox % "True"
+  } Else MsgBox % "Else"
+  ;     ^^^^^^^after Else Cmd
+  If False {
+      MsgBox % "True"
+  } Else , MsgBox % "Else"
+  ;      ^ ,
+
+  If True { ;<------ check "Else"
+      MsgBox % "True"
+  } Else MsgBox % "Else"
+  ;     ^
+
+  If True { ;<------ check "Else"
+      MsgBox % "True"
+  } Else, MsgBox % "Else"
+  ;     ^
+  ```
+
 - feat: add hoverMultiLine `LTrim` `Join` `C` flag
 - feat: auto hide status bar
 - fix: format `Alpha test options` - `"AhkNekoHelp.format.textReplace"` don't format at `#Directives` line

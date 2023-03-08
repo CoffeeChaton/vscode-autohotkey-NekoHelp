@@ -17,7 +17,7 @@ import { getFuncDocCore } from '../../tools/MD/getFuncDocMD';
 import { getRange } from '../../tools/range/getRange';
 import type { TFuncInput } from '../getChildren';
 import { getChildren } from '../getChildren';
-import { ParserBlock } from '../Parser';
+import { ParserSwitchBlock } from '../ParserSwitch';
 import { ParserLine } from './ParserLine';
 
 function getFuncDetail(line: number, DocStrMap: TTokenStream): string {
@@ -64,7 +64,7 @@ export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
 
     const range = getRange(DocStrMap, line, selectionRange.end.line, RangeEndLine, selectionRange.start.character);
     const ch: (CAhkSwitch | TLineClass)[] = getChildren<CAhkFunc>(
-        [ParserBlock.getSwitchBlock, ParserLine],
+        [ParserSwitchBlock.getSwitchBlock, ParserLine],
         {
             DocStrMap,
             RangeStartLine: range.start.line + 1,
