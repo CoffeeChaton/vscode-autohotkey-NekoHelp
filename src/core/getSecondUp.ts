@@ -41,6 +41,7 @@ const patternMatch = [
         // eslint-disable-next-line no-magic-numbers
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 3)
             .replace(/^\s*,/u, '')
+            .replace(/^\s*\{/u, '')
             .trim(),
     },
     {
@@ -68,6 +69,7 @@ const patternMatch = [
         // eslint-disable-next-line no-magic-numbers
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 4)
             .replace(/^\s*,/u, '')
+            .replace(/^\s*\{/u, '')
             .trim(),
     },
     {
@@ -76,6 +78,7 @@ const patternMatch = [
         // dprint-ignore
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 'FINALLY'.length)
             .replace(/^\s*,/u, '')
+            .replace(/^\s*\{/u, '')
             .trim(),
     },
 ] as const satisfies readonly TPatternMatch[];

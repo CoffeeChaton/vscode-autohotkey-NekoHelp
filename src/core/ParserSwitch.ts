@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { CAhkCase, CAhkDefault, CAhkSwitch } from '../AhkSymbol/CAhkSwitch';
-import { getRange } from '../tools/range/getRange';
 import { getCaseDefaultRange } from '../tools/range/getCaseDefaultRange';
+import { getRange } from '../tools/range/getRange';
 import type { TFuncInput } from './getChildren';
 import { getChildren } from './getChildren';
 import { getCaseName, getSwitchName } from './ParserTools/getSwitchCaseName';
