@@ -9,6 +9,7 @@
 
 ## Next 0.0.27(2023-03-XX)
 
+- fix: identify variable ![exp](image/Changelog/v0-0-27-fix-identify-variable.jpg)
 - fix: cmd after `Else` `Finally`
 
   ```ahk

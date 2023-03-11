@@ -327,10 +327,15 @@ export function Pretreatment(
             if (version === 1) needCheckThisAhk2 = false;
         }
 
+        const textRawTempFix: string = textTrimStart.startsWith('*/')
+            ? textRaw.replace(/^\s*\*\//u, '').padStart(textRaw.length)
+            : textRaw;
+
         // ---------
         const lStr: string = multiline === EMultiline.end
             ? getLStr(textRaw.replace(/^[ \t]*\)"?/u, '').padStart(textRaw.length, ' '))
-            : getLStr(textRaw);
+            : getLStr(textRawTempFix);
+
         const lStrTrim: string = lStr.trim();
         const detail: EDetail[] = [];
         const lineComment: string = textRaw.length - lStr.length > 2
@@ -344,7 +349,7 @@ export function Pretreatment(
         if (lStrTrim === '') {
             result.push({
                 ahkDoc,
-                cll: 0,
+                cll: 1,
                 deep2: [deep],
                 detail,
                 displayErr,
@@ -447,7 +452,9 @@ export function Pretreatment(
             // }
         }
 
-        const cll: 0 | 1 = ContinueLongLine(lStrTrim); // ex: line start with ","
+        const cll: 0 | 1 = multiline === EMultiline.end
+            ? 1
+            : ContinueLongLine(lStrTrim); // ex: line start with ","
 
         const { fistWordUpCol, fistWordUp } = getFistWordUpData({ lStrTrim, lStr, cll });
         const { SecondWordUpCol, SecondWordUp } = getSecondUp(lStr, fistWordUp, fistWordUpCol);
