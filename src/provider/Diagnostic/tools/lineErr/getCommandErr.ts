@@ -73,6 +73,10 @@ function getLoopErr(lStr: string, line: number, wordUpCol: number): CDiagBase | 
         return null; // OK
     }
 
+    if (paramUp === '') {
+        return null; // OK
+    }
+
     //     201: {
     //     msg: 'If Count is a variable reference such as `%varName%` or `% expression`',
     //     path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag201',

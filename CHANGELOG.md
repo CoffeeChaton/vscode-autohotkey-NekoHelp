@@ -9,6 +9,15 @@
 
 ## 0.0.27(2023-03-11)
 
+- fix: remove misdiagnosis of Infinite loop
+
+  ```ahk
+  loop ; <------not any parameter, not need to check c201
+  {
+      MsgBox % "Infinite loop at " A_index
+  }
+  ```
+
 - fix: identify variable ![exp](image/Changelog/v0-0-27-fix-identify-variable.jpg)
 - fix: cmd after `Else` `Finally`
 
