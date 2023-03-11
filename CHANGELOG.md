@@ -1,13 +1,13 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next 0.0.27(2023-03-XX)](#next-00272023-03-xx)
+  - [0.0.27(2023-03-11)](#00272023-03-11)
   - [0.0.26(2023-03-04)](#00262023-03-04)
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next 0.0.27(2023-03-XX)
+## 0.0.27(2023-03-11)
 
 - fix: identify variable ![exp](image/Changelog/v0-0-27-fix-identify-variable.jpg)
 - fix: cmd after `Else` `Finally`
@@ -34,7 +34,6 @@
   ```
 
 - feat: add hoverMultiLine `LTrim` `Join` `C` flag
-- feat: auto hide status bar
 - fix: format `Alpha test options` - `"AhkNekoHelp.format.textReplace"` don't format at `#Directives` line
 
   ```ahk

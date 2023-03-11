@@ -204,19 +204,19 @@ function forIfCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
     };
 }
 
-function focElseCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
+function focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
     AhkTokenLine: TAhkTokenLine,
     matrixBrackets: readonly TBrackets[],
     lnStatus: TLnStatus,
 }): TLnStatus {
-    const { lStr, fistWordUpCol } = AhkTokenLine;
+    const { lStr, fistWordUpCol, fistWordUp } = AhkTokenLine;
 
     /**
      * 1. end if     -> forIfCase
      * 2. else return
      * 3. else foo()
      */
-    const afterElseStr = lStr.slice(fistWordUpCol + 4)
+    const afterElseStr = lStr.slice(fistWordUpCol + fistWordUp.length)
         .replace(/^\s*,/u, '') // fix ----> "else," WTF?
         .trim();
     if (afterElseStr.length > 0) {
@@ -280,7 +280,11 @@ export function getDeepKeywords({
         } // managed by curly braces
 
         if (fistWordUp === 'IF') return forIfCase({ AhkTokenLine, matrixBrackets, lnStatus });
-        if (fistWordUp === 'ELSE') return focElseCase({ AhkTokenLine, matrixBrackets, lnStatus });
+
+        //
+        if (fistWordUp === 'ELSE') return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
+        if (fistWordUp === 'TRY') return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
+        if (fistWordUp === 'FINALLY') return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
 
         // other key word
         return {

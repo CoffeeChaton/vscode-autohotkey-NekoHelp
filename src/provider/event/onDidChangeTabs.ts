@@ -9,21 +9,14 @@ import { fsPathIsAllow } from '../../tools/fsTools/getUriList';
 import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
 import { isAhk, isAhkTab } from '../../tools/fsTools/isAhk';
 import { setBaseDiag } from '../Diagnostic/setBaseDiag';
-import { statusBarItem } from '../vscWindows/statusBarItem';
 
 export function onDidChangeActiveTab(e: vscode.TextEditor | undefined): void {
     if (e === undefined) return;
 
     const { document } = e;
     const { uri } = document;
-    const iaAhkTabSate: boolean = isAhkTab(uri);
-    if (iaAhkTabSate) {
-        statusBarItem.show();
-    } else {
-        statusBarItem.hide();
-    }
 
-    if (iaAhkTabSate && needDiag()) {
+    if (isAhkTab(uri) && needDiag()) {
         const AhkFileData: TAhkFileData | null = pm.getDocMap(uri.fsPath) ?? pm.updateDocDef(document);
         if (AhkFileData === null) return;
 
