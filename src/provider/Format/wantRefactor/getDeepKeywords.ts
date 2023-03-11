@@ -1,6 +1,7 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,4,-999] }] */
 /* eslint-disable max-lines-per-function */
 import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
+import { EMultiline } from '../../../globalEnum';
 import type { TBrackets } from '../../../tools/Bracket';
 
 /**
@@ -308,6 +309,10 @@ export function getDeepKeywords({
 
     const { cll } = AhkTokenLine;
     if (cll === 1) {
+        const { multiline } = AhkTokenLine;
+        if (multiline === EMultiline.end) {
+            return focOccDiff({ AhkTokenLine, matrixBrackets, lnStatus });
+        }
         return { occ, lockList: [...lockList], status: 'managed by cll' };
     }
 
