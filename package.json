@@ -287,6 +287,21 @@
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md)"
+                    },
+                    "AhkNekoHelp.event.FileRenameEvent": {
+                        "type": "number",
+                        "default": 0,
+                        "enum": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "markdownEnumDescriptions": [
+                            "log at background (default) ",
+                            "log and show",
+                            "log and try to Rename `#Include` (beta)"
+                        ],
+                        "markdownDescription": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.FileRenameEvent.md))"
                     }
                 }
             }

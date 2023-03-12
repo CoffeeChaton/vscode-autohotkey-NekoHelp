@@ -23,34 +23,33 @@ export type TRawData = {
     readonly warnMsg: string,
 };
 
-const list = [
-    // 'A_LineFile',
-    'A_WinDir',
-    'A_UserName',
-    'A_Temp',
-    'A_StartupCommon',
-    'A_Startup',
-    'A_StartMenuCommon',
-    'A_StartMenu', // keep sort line reverse
-    'A_ScriptName',
-    'A_ScriptFullPath',
-    'A_ScriptDir', // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
-    'A_ProgramsCommon',
-    'A_Programs', // keep sort line reverse
-    'A_ProgramFiles',
-    'A_MyDocuments',
-    'A_IsCompiled',
-    'A_DesktopCommon',
-    'A_Desktop', // keep sort line reverse
-    'A_ComSpec',
-    'A_ComputerName',
-    'A_AppDataCommon',
-    'A_AppData',
-    'A_AhkPath',
-] as const;
-
 function setWarnMsg(path1: string): string {
     const pathLow: string = path1.toLowerCase();
+    const list = [
+        // 'A_LineFile',
+        'A_WinDir',
+        'A_UserName',
+        'A_Temp',
+        'A_StartupCommon',
+        'A_Startup',
+        'A_StartMenuCommon',
+        'A_StartMenu', // keep sort line reverse
+        'A_ScriptName',
+        'A_ScriptFullPath',
+        'A_ScriptDir', // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+        'A_ProgramsCommon',
+        'A_Programs', // keep sort line reverse
+        'A_ProgramFiles',
+        'A_MyDocuments',
+        'A_IsCompiled',
+        'A_DesktopCommon',
+        'A_Desktop', // keep sort line reverse
+        'A_ComSpec',
+        'A_ComputerName',
+        'A_AppDataCommon',
+        'A_AppData',
+        'A_AhkPath',
+    ] as const;
     const find: string | undefined = list.find((v: string): boolean => pathLow.includes(v.toLowerCase()));
     return find === undefined
         ? ''
@@ -58,7 +57,7 @@ function setWarnMsg(path1: string): string {
 }
 
 function getRawData(path1: string, fsPath: string): TRawData {
-    const warnMsg = setWarnMsg(path1);
+    const warnMsg: string = setWarnMsg(path1);
     if ((/^%A_LineFile%/iu).test(path1)) {
         // [v1.1.11+]: Use %A_LineFile%\.. to refer to the directory which contains the current file
         //    , even if it is not the main script file. For example, #Include %A_LineFile%\..\other.ahk.
@@ -113,6 +112,7 @@ export class CAhkInclude extends vscode.DocumentSymbol {
 
     public readonly IgnoreErrors: boolean;
     public readonly uri: vscode.Uri;
+    public readonly path1: string;
 
     declare public readonly kind: vscode.SymbolKind.Module;
     declare public readonly detail: '';
@@ -126,13 +126,19 @@ export class CAhkInclude extends vscode.DocumentSymbol {
             range,
             selectionRange,
             uri,
-        }: TBaseLineParam,
+            textRaw,
+        }: TBaseLineParam & { textRaw: string },
     ) {
         super(name, '', vscode.SymbolKind.Module, range, selectionRange);
         this.uri = uri;
 
         const path0: string = name.replace(/^\s*#include(?:Again)?\s/iu, '').trim();
         this.IgnoreErrors = (/^\*i\s/iu).test(path0); //  For example: #Include *i SpecialOptions.ahk
+        this.path1 = textRaw
+            .replace(/^\s*#include(?:Again)?\s/iu, '')
+            .trim()
+            .replace(/^\*i\s/iu, '')
+            .trim();
     }
 
     public get rawData(): TRawData {
@@ -140,13 +146,9 @@ export class CAhkInclude extends vscode.DocumentSymbol {
             return this._rawData;
         }
 
-        const path1: string = this.name
-            .replace(/^\s*#include(?:Again)?\s/iu, '')
-            .trim()
-            .replace(/^\*i\s/iu, '')
-            .trim();
-
-        const _rawData: TRawData = getRawData(path1, this.uri.fsPath);
+        const { path1, uri } = this;
+        const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '').trim();
+        const _rawData: TRawData = getRawData(tryRemoveComment, uri.fsPath);
         this._rawData = _rawData;
         return _rawData;
     }

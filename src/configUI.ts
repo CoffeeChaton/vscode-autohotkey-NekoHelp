@@ -1,5 +1,10 @@
 import * as vscode from 'vscode';
-import type { ECommandOption, TConfigKey, TConfigs } from './configUI.data';
+import type {
+    ECommandOption,
+    EFileRenameEvent,
+    TConfigKey,
+    TConfigs,
+} from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
 import { CConfigError } from './tools/DevClass/CConfigError';
@@ -25,6 +30,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             showDevTool: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showDevTool'),
             showFileReport: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFileReport'),
         },
+        event: getConfigs<EFileRenameEvent>(Configs, 'AhkNekoHelp.event.FileRenameEvent'),
         Diag: {
             AMasterSwitch: getConfigs<EDiagMasterSwitch>(Configs, 'AhkNekoHelp.Diag.AMasterSwitch'),
             code107: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code107LegacyAssignment'),
@@ -131,6 +137,9 @@ export function needDiag(): boolean {
     return true;
 }
 
+export function getEventConfig(): TConfigs['event'] {
+    return config.event;
+}
 // vscode.window.setStatusBarMessage(timeSpend);
 // vscode.window.showErrorMessage()
 // vscode.window.showInformationMessage()

@@ -4,15 +4,15 @@ import type { CAhkInclude, TRawData } from '../AhkSymbol/CAhkInclude';
 import { EInclude } from '../AhkSymbol/CAhkInclude';
 import { pm } from '../core/ProjectManager';
 import { enumLog } from '../tools/enumErr';
-import { collectInclude } from './ListAllInclude';
+import { collectInclude } from './tools/collectInclude';
 import { diagOfIncludeTree } from './tools/diagOfIncludeTree';
 
-type TIncludeMap = Map<string, CAhkInclude[]>;
+type TIncludeMap = Map<string, readonly CAhkInclude[]>;
 
 function getIncludeMap(): TIncludeMap {
-    const map: Map<string, CAhkInclude[]> = new Map<string, CAhkInclude[]>();
+    const map: Map<string, readonly CAhkInclude[]> = new Map<string, CAhkInclude[]>();
     for (const [fsPath, AhkFileData] of pm.DocMap) { // keep output order
-        const list: CAhkInclude[] = collectInclude(AhkFileData.AST);
+        const list: readonly CAhkInclude[] = collectInclude(AhkFileData.AST);
 
         if (list.length > 0) {
             map.set(fsPath, list);
@@ -51,7 +51,7 @@ export type TTreeResult = {
 function IncludeTree(docPath: string, searchStack: string[], IncludeMap: TIncludeMap): TTreeResult[] {
     const deep: number = searchStack.length + 1;
 
-    const list: CAhkInclude[] | undefined = IncludeMap.get(docPath);
+    const list: readonly CAhkInclude[] | undefined = IncludeMap.get(docPath);
     if (list === undefined) return [];
 
     const result: TTreeResult[] = [];

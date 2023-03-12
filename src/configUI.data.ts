@@ -9,6 +9,12 @@ export const enum ECommandOption {
     notProvided = 3, // "not provided any Command."
 }
 
+export const enum EFileRenameEvent {
+    AJustLog = 0,
+    BLogAndShow = 1,
+    CTryRename = 2,
+}
+
 export const enum EDiagMasterSwitch {
     never = 'never',
     auto = 'auto',
@@ -44,6 +50,7 @@ type TempConfigs = {
         //  useDiagGlobalVarUnused: boolean, // of global-var
         useModuleValDiag: boolean,
     },
+    event: EFileRenameEvent,
     format: {
         AMasterSwitchUseFormatProvider: boolean,
         formatTextReplace: boolean,

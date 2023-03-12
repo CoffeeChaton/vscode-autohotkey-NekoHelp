@@ -8,7 +8,7 @@ import { getComment } from './getComment';
 import { ParserLabel } from './ParserLabel';
 
 export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | null {
-    const { lStr } = FuncInput.AhkTokenLine;
+    const { lStr, textRaw } = FuncInput.AhkTokenLine;
 
     const strTrim: string = lStr.trim();
     /**
@@ -41,6 +41,7 @@ export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | nu
             selectionRange: rangeOfLine,
             uri,
             AhkTokenLine,
+            textRaw,
         });
     }
 

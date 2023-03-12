@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
-import { getIgnoredList } from '../configUI';
+import { getEventConfig, getIgnoredList } from '../configUI';
+import { EFileRenameEvent } from '../configUI.data';
 import type { TFsPath } from '../globalEnum';
+import { renameFileNameFunc } from '../provider/event/renameFileNameFunc';
 import { log } from '../provider/vscWindows/log';
 import { fsPathIsAllow } from '../tools/fsTools/getUriList';
 import { isAhk } from '../tools/fsTools/isAhk';
@@ -70,7 +72,26 @@ export const pm = {
             '',
             '> "please check #Include"',
         ].join('\n'));
-        log.show();
+
+        const isAutoRename: EFileRenameEvent = getEventConfig(); // fo();
+        if (isAutoRename === EFileRenameEvent.CTryRename) {
+            const AhkFileDataList: TAhkFileData[] = pm.getDocMapValue();
+            for (const { oldUri, newUri } of e.files) {
+                if (oldUri.fsPath.endsWith('.ahk')) {
+                    delOldCache(oldUri); // ...not't open old .ahk
+                    if (newUri.fsPath.endsWith('.ahk')) {
+                        const edit: vscode.WorkspaceEdit = renameFileNameFunc(oldUri, newUri, AhkFileDataList);
+
+                        // eslint-disable-next-line no-await-in-loop
+                        await vscode.workspace.applyEdit(edit);
+                    } // else EXP : let a.ahk -> a.ahk0 or a.0ahk
+                }
+            }
+
+            log.show();
+        } else if (isAutoRename === EFileRenameEvent.BLogAndShow) {
+            log.show();
+        }
     },
 
     updateDocDef(document: vscode.TextDocument): TAhkFileData | null {
