@@ -299,7 +299,7 @@
                         "markdownEnumDescriptions": [
                             "log at background (default) ",
                             "log and show",
-                            "log and try to Rename `#Include` (beta)"
+                            "log and try to Rename `#Include` (`Alpha test options`)"
                         ],
                         "markdownDescription": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.FileRenameEvent.md))"
                     }

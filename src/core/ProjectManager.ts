@@ -59,32 +59,29 @@ export const pm = {
         // TODO add config of package?
         const eventMsg: string[] = e.files
             .filter(({ oldUri, newUri }): boolean => isAhk(oldUri.fsPath) || isAhk(newUri.fsPath))
-            .map(({ oldUri, newUri }): string => `    ${oldUri.fsPath} \n -> ${newUri.fsPath}`);
+            .map((
+                { oldUri, newUri },
+                index: number,
+            ): string => `    ${index} "${oldUri.fsPath}" -> "${newUri.fsPath}",`);
 
         if (eventMsg.length === 0) return;
 
-        const docList0: Thenable<vscode.TextDocument>[] = renameFileNameBefore(e);
-        for (const doc of await Promise.all(docList0)) pm.updateDocDef(doc);
+        for (const doc of await Promise.all(renameFileNameBefore(e))) pm.updateDocDef(doc);
 
         log.info([
-            '> ["FileRenameEvent"]',
+            '> ["FileRenameEvent"] -> "please check #Include"',
+            '[',
             ...eventMsg,
-            '',
-            '> "please check #Include"',
+            ']',
         ].join('\n'));
 
         const isAutoRename: EFileRenameEvent = getEventConfig(); // fo();
         if (isAutoRename === EFileRenameEvent.CTryRename) {
             const AhkFileDataList: TAhkFileData[] = pm.getDocMapValue();
             for (const { oldUri, newUri } of e.files) {
-                if (oldUri.fsPath.endsWith('.ahk')) {
-                    delOldCache(oldUri); // ...not't open old .ahk
-                    if (newUri.fsPath.endsWith('.ahk')) {
-                        const edit: vscode.WorkspaceEdit = renameFileNameFunc(oldUri, newUri, AhkFileDataList);
-
-                        // eslint-disable-next-line no-await-in-loop
-                        await vscode.workspace.applyEdit(edit);
-                    } // else EXP : let a.ahk -> a.ahk0 or a.0ahk
+                if (isAhk(oldUri.fsPath) && isAhk(newUri.fsPath)) { // else EXP : let a.ahk -> a.ahk0 or a.0ahk
+                    // eslint-disable-next-line no-await-in-loop
+                    await renameFileNameFunc(oldUri, newUri, AhkFileDataList);
                 }
             }
 

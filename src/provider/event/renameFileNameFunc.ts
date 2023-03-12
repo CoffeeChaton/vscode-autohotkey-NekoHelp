@@ -5,17 +5,24 @@ import { collectInclude } from '../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { log } from '../vscWindows/log';
 
-export function renameFileNameFunc(
+export async function renameFileNameFunc(
     oldUri: vscode.Uri,
     newUri: vscode.Uri,
     AhkFileDataList: TAhkFileData[],
-): vscode.WorkspaceEdit {
+): Promise<null> {
     const oldFileName: string = path.basename(oldUri.fsPath, '.ahk');
     const newFileName: string = path.basename(newUri.fsPath, '.ahk');
-    log.info(`${oldFileName} -> ${newFileName} ("AhkNekoHelp.event.FileRenameEvent" : 2)`);
+
+    const logList: string[] = [`"${oldFileName}" -> "${newFileName}" ("AhkNekoHelp.event.FileRenameEvent" : 2)`];
+
+    if (oldFileName === newFileName) {
+        // just move file...how show i do?
+        log.info(logList.join('\n'));
+        return null;
+    }
 
     // eslint-disable-next-line security/detect-non-literal-regexp
-    const re = new RegExp(`\\b${oldFileName}$`, 'iu');
+    const re = new RegExp(`(?:^|[/\\\\<])\\b${oldFileName}$`, 'iu');
 
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
     for (const { DocStrMap, uri, AST } of AhkFileDataList) {
@@ -32,13 +39,13 @@ export function renameFileNameFunc(
                 const { line } = range.start;
                 const { textRaw } = DocStrMap[line];
 
-                const Remarks = `\n;;${oldFileName} -> ${newFileName} ; at ${new Date().toISOString()} \n;    `;
+                const Remarks = `    ;; ${oldFileName} -> ${newFileName} ;; at ${new Date().toISOString()} ;;    `;
                 const head: string = textRaw.replace(path1, '');
                 const newText: string = head + path1.replace(oldFileName, newFileName) + Remarks;
                 //
                 const newPos: vscode.Position = new vscode.Position(line, 0);
                 edit.insert(uri, newPos, newText);
-                log.info(`auto edit "${uri.fsPath}" line ${line + 1}`);
+                logList.push(`    auto edit "${uri.fsPath}" line ${line + 1}`);
             }
         }
     }
@@ -48,6 +55,7 @@ export function renameFileNameFunc(
     //     void vscode.window.showTextDocument(editUri);
     // }
 
-    // void vscode.workspace.applyEdit(edit);
-    return edit;
+    log.info(logList.join('\n'));
+    await vscode.workspace.applyEdit(edit);
+    return null;
 }

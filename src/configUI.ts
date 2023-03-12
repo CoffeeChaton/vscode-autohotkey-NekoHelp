@@ -13,7 +13,7 @@ import { str2RegexListCheck } from './tools/str2RegexListCheck';
 /*
     ---set start---
 */
-const enum EStr {
+const enum EStrConfig {
     Config = 'AhkNekoHelp',
 }
 
@@ -75,10 +75,10 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     return ed;
 }
 
-let config: TConfigs = getConfig(vscode.workspace.getConfiguration(EStr.Config));
+let config: TConfigs = getConfig(vscode.workspace.getConfiguration(EStrConfig.Config));
 
 export function configChangEvent(): void {
-    config = getConfig(vscode.workspace.getConfiguration(EStr.Config));
+    config = getConfig(vscode.workspace.getConfiguration(EStrConfig.Config));
 }
 
 /*
