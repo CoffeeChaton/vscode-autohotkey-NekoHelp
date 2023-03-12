@@ -1,15 +1,12 @@
 >;https://www.autohotkey.com/docs/v1/Language.htm#comments
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >; This entire line is a comment.
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >Run Notepad ; This is a comment on the same line as a command.
 #^^^ source.ahk meta.command.line.ahk support.function.ahk
 #   ^^^^^^^^ source.ahk meta.command.line.ahk
-#           ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#            ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#           ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >Run Notepad; not comment
 #^^^ source.ahk meta.command.line.ahk support.function.ahk
 #   ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
@@ -27,22 +24,19 @@
 >
 >#NoEnv ;Comment
 #^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
-#      ^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk
-#       ^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#        ^^^^^^^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk
+#      ^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk
+#       ^^^^^^^^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Hotstring EndChars -()[]{}':;"/\,.?!`n `t ;Comment
 #^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
 #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
-#                                          ^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk
-#                                           ^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                            ^^^^^^^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk
+#                                          ^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk
+#                                           ^^^^^^^^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >#Hotstring EndChars - ()[]{}': ;Comment
 #^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
 #          ^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
-#                              ^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk
-#                               ^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                ^^^^^^^ source.ahk string.parameter.directives.ahk comment.line.semicolon.ahk
+#                              ^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk
+#                               ^^^^^^^^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >MsgBox, % Abs(-1.2) ;Comment Returns 1.2
 #^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -55,7 +49,6 @@
 #              ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #               ^^^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
 #                  ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                   ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                    ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                     ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#                   ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                    ^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >

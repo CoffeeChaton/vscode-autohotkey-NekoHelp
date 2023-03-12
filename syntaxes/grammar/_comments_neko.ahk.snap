@@ -21,8 +21,7 @@
 #                     ^^^^^ source.ahk comment.line.semicolon.ahk
 >
 >;use 0 to open diag
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;@ahk-neko-ignore 0 line
 #^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
 #          ^ source.ahk comment.line.semicolon.ahk
@@ -53,8 +52,7 @@
 #                        ^^^^^ source.ahk comment.line.semicolon.ahk
 >
 >;use 0 to open diag
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;@ahk-neko-ignore-fn 0 line
 #^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
 #          ^ source.ahk comment.line.semicolon.ahk

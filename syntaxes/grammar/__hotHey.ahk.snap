@@ -1,6 +1,5 @@
 >; normal
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >(:: foo("case (")
 #^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
@@ -23,8 +22,7 @@
 #                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                 ^ source.ahk punctuation.bracket.ahk
 >;^Avoid vscode automatic bracket matching, here if it is Str
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >~F12::Reload
 #^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk

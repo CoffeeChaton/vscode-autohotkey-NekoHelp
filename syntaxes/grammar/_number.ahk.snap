@@ -1,6 +1,5 @@
 >;https://www.autohotkey.com/docs/v1/Concepts.htm#numbers
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >;@ahk-neko-ignore 999 line; at 2023/3/5 https://www.autohotkey.com/docs/v1/lib/SetFormat.htm
 #^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
@@ -409,9 +408,8 @@
 #                   ^ source.ahk punctuation.bracket.ahk
 >    ; note https://www.autohotkey.com/docs/v1/lib/SetFormat.htm#Fast
 #^^^ source.ahk
-#   ^ source.ahk comment.line.semicolon.ahk
-#    ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#   ^ source.ahk meta.comment.line.semicolon.ahk
+#    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    MsgBox, % "SetFormat Fast vs. Slow Mode"
 #^^^^ source.ahk
 #    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -442,9 +440,8 @@
 #         ^ source.ahk keyword.operator.assignment.ahk
 #          ^ source.ahk
 #           ^ source.ahk constant.numeric.decimal.ahk
-#            ^ source.ahk comment.line.semicolon.ahk
-#             ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#            ^ source.ahk meta.comment.line.semicolon.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    SetFormat, float, 0.2
 #^^^^ source.ahk
 #    ^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -460,9 +457,8 @@
 #         ^ source.ahk keyword.operator.assignment.ahk
 #          ^ source.ahk
 #           ^ source.ahk constant.numeric.decimal.ahk
-#            ^ source.ahk comment.line.semicolon.ahk
-#             ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#            ^ source.ahk meta.comment.line.semicolon.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    SetFormat, float, 06.0
 #^^^^ source.ahk
 #    ^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -478,15 +474,13 @@
 #         ^ source.ahk keyword.operator.assignment.ahk
 #          ^ source.ahk
 #           ^ source.ahk constant.numeric.decimal.ahk
-#            ^ source.ahk comment.line.semicolon.ahk
-#             ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#              ^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#            ^ source.ahk meta.comment.line.semicolon.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >    ; Convert a decimal integer to hexadecimal:
 #^^^ source.ahk
-#   ^ source.ahk comment.line.semicolon.ahk
-#    ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#   ^ source.ahk meta.comment.line.semicolon.ahk
+#    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    SetFormat, IntegerFast, hex
 #^^^^ source.ahk
 #    ^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -501,18 +495,16 @@
 #         ^ source.ahk keyword.operator.assignment.ahk
 #          ^ source.ahk
 #           ^ source.ahk constant.numeric.decimal.ahk
-#            ^ source.ahk comment.line.semicolon.ahk
-#             ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#            ^ source.ahk meta.comment.line.semicolon.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    Var .= "" ; Necessary due to the "fast" mode.
 #^^^^^^^^ source.ahk
 #        ^^ source.ahk keyword.operator.assignment.ahk
 #          ^ source.ahk
 #           ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
 #            ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
-#             ^ source.ahk comment.line.semicolon.ahk
-#              ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#             ^ source.ahk meta.comment.line.semicolon.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    SetFormat, IntegerFast, d
 #^^^^ source.ahk
 #    ^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -525,8 +517,7 @@
 #^ source.ahk punctuation.bracket.ahk
 >
 >; https://www.autohotkey.com/docs/v1/Concepts.htm#caching
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >MsgBox % "1.0e3    is -> " 1.0e3 ; 1.0e3
 #^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #      ^ source.ahk meta.command.line.ahk
@@ -539,9 +530,8 @@
 #                           ^^^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
 #                              ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk keyword.other.unit.numeric.decimal.ahk
 #                               ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
-#                                ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                                 ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                  ^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#                                ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                 ^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >MsgBox % "1.0e3 +0 is -> " 1.0e3 + 0 ; 1000.0
 #^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #      ^ source.ahk meta.command.line.ahk
@@ -558,14 +548,12 @@
 #                                 ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #                                  ^ source.ahk meta.command.line.ahk
 #                                   ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
-#                                    ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                                     ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                      ^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#                                    ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                     ^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >
 >; fake number
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >MsgBox % "=========fake number================"
 #^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #      ^ source.ahk meta.command.line.ahk
@@ -581,20 +569,17 @@
 #        ^^^^^ source.ahk meta.command.line.ahk
 #             ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #              ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
-#               ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#               ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >MsgBox % 1e3 ; 1e3 is not number, because not any `.`
 #^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #      ^ source.ahk meta.command.line.ahk
 #       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
 #        ^^^^ source.ahk meta.command.line.ahk
-#            ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#             ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#            ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;        ^ is variable but not any value
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >1e2 := "HIHI"
 #^^^^ source.ahk
@@ -610,15 +595,13 @@
 #        ^^^^^ source.ahk meta.command.line.ahk
 #             ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #              ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
-#               ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                 ^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#               ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                ^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >MsgBox % 1e2
 #^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #      ^ source.ahk meta.command.line.ahk
 #       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
 #        ^^^^ source.ahk meta.command.line.ahk
 >;        ^ variable but look like number
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >

@@ -1,6 +1,5 @@
 >; https://www.autohotkey.com/docs/v1/lib/_If.htm#Basic_Operation
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >MyWindowTitle := "My Window"
 #^^^^^^^^^^^^^^ source.ahk
@@ -23,9 +22,8 @@
 #                                               ^ source.ahk punctuation.bracket.ahk
 #                                                ^^^^^^^^^^^^^ source.ahk
 #                                                             ^ source.ahk punctuation.bracket.ahk
-#                                                              ^ source.ahk comment.line.semicolon.ahk
-#                                                               ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                                                ^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                                              ^ source.ahk meta.comment.line.semicolon.ahk
+#                                                               ^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Space::MsgBox % "You pressed Win+Spacebar in Notepad or " MyWindowTitle ;comment
 #^^^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
 #      ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
@@ -37,9 +35,8 @@
 #                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
 #                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                                                          ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                                                        ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                                                                         ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                                                          ^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#                                                                        ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                                                         ^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >~F1::MsgBox % "You pressed Win+Spacebar in Notepad or " MyWindowTitle ;comment
 #^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
 #   ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
@@ -51,7 +48,6 @@
 #               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
 #                                                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                                                       ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                                                     ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
-#                                                                      ^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                                                       ^^^^^^^ source.ahk meta.command.line.ahk comment.line.semicolon.ahk
+#                                                                     ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                                                      ^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >

@@ -178,9 +178,9 @@
                     "name": "comment.line.ahk2exe.ahk"
                 },
                 {
-                    "captures": { "1": { "name": "punctuation.definition.comment.ahk" } },
-                    "match": "(?:^|[ \\t])(;).*",
-                    "name": "comment.line.semicolon.ahk"
+                    "captures": { "1": { "name": "comment.line.semicolon.ahk" } },
+                    "match": "(?:^|[ \\t])(;.*)",
+                    "name": "meta.comment.line.semicolon.ahk"
                 },
                 {
                     "begin": "^[ \\t]*/\\*\\*",

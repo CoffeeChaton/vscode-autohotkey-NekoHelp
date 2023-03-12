@@ -107,9 +107,8 @@
 #^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
 >    )" ; this line deep === test2 line deep +1
 #^^^^^^ source.ahk string.multiline.ahk
-#      ^ source.ahk comment.line.semicolon.ahk
-#       ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#      ^ source.ahk meta.comment.line.semicolon.ahk
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >----------------------------------------------------------------------------------------------------
 #^ source.ahk keyword.operator.arithmetic.ahk
 # ^ source.ahk keyword.operator.arithmetic.ahk
@@ -234,6 +233,5 @@
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
 >        )" ;this line deep === test2 line deep +1
 #^^^^^^^^^^ source.ahk string.multiline.ahk
-#          ^ source.ahk comment.line.semicolon.ahk
-#           ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk meta.comment.line.semicolon.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk

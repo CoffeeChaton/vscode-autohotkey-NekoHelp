@@ -63,8 +63,7 @@
 >
 >
 >;Example 1: To replace the standard icons (other than the main icon):
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;@Ahk2Exe-AddResource Icon1.ico, 160  ; Replaces 'H on blue'
 #^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 #          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
@@ -83,8 +82,7 @@
 #                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 >
 >;Example 2: [v1.1.34+] To include another script as a separate RCDATA resource (see Embedded Scripts):
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;@Ahk2Exe-AddResource MyScript1.ahk, #2
 #^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 #          ^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
@@ -153,23 +151,20 @@
 #                   ^ source.ahk
 #                    ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
 #                     ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
-#                      ^ source.ahk comment.line.semicolon.ahk
-#                       ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                      ^ source.ahk meta.comment.line.semicolon.ahk
+#                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;@Ahk2Exe-Obey U_V, = "%A_PriorLine~U)^(.+")(.*)".*$~$2%" ? "SetVersion" : "Nop"
 #^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 #          ^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
 #              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 >;              ->                                        ->                 ^^^
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;@Ahk2Exe-%U_V%        %A_AhkVersion%%A_PriorLine~U)^(.+")(.*)".*$~$2%
 #^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 #          ^^^^^ source.ahk comment.line.ahk2exe.ahk keyword.comment.ahk2exe.ahk
 #               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.ahk2exe.ahk
 >;           ^ "Nop" or "SetVersion"
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >
 >;@Ahk2Exe-Obey U_date, FormatTime U_date`, R D2 T2
@@ -342,8 +337,7 @@
 >
 >
 >;https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >/*@Ahk2Exe-Keep
 #^^ source.ahk comment.block.ahk
 #  ^^^^^^^^^ source.ahk comment.block.ahk comment.block.ahk2exe.keep.ahk

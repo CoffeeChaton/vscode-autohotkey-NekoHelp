@@ -1,27 +1,23 @@
 >;https://www.autohotkey.com/docs/v1/lib/_Include.htm#Examples
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Include C:\My Documents\Scripts\Utility Subroutines.ahk ;Comment
 #^^^^^^^^ source.ahk entity.name.namespace.import.ahk keyword.control.import.ahk
 #        ^ source.ahk entity.name.namespace.import.ahk
 #         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk entity.name.namespace.import.ahk
-#                                                        ^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk
-#                                                         ^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                                                          ^^^^^^^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk
+#                                                        ^ source.ahk entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk
+#                                                         ^^^^^^^^ source.ahk entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Include %A_ScriptDir% ;Comment
 #^^^^^^^^ source.ahk entity.name.namespace.import.ahk keyword.control.import.ahk
 #        ^ source.ahk entity.name.namespace.import.ahk
 #         ^^^^^^^^^^^^^ source.ahk entity.name.namespace.import.ahk
-#                      ^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk
-#                       ^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                        ^^^^^^^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk
+#                      ^ source.ahk entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk
+#                       ^^^^^^^^ source.ahk entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Include C:\My Scripts ;Comment
 #^^^^^^^^ source.ahk entity.name.namespace.import.ahk keyword.control.import.ahk
 #        ^ source.ahk entity.name.namespace.import.ahk
 #         ^^^^^^^^^^^^^ source.ahk entity.name.namespace.import.ahk
-#                      ^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk
-#                       ^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                        ^^^^^^^ source.ahk entity.name.namespace.import.ahk comment.line.semicolon.ahk
+#                      ^ source.ahk entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk
+#                       ^^^^^^^^ source.ahk entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >#Include FileOrDirName
 #^^^^^^^^ source.ahk entity.name.namespace.import.ahk keyword.control.import.ahk

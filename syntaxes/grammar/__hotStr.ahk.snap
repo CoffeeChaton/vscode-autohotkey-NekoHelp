@@ -1,6 +1,5 @@
 >; normal
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >::ts,,::TypeScript
 #^^ source.ahk string.hotstring.ahk keyword.operator.ahk
 #  ^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
@@ -12,27 +11,22 @@
 #     ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
 #       ^^^^^^^^^^^^ source.ahk string.hotstring.ahk
 >;   ^Avoid vscode automatic bracket matching, here if it is Str
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >;;X-flag
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >; https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/CHANGELOG.md#00252023-02-26
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >;-----------
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >::case0,,::foo() ; "send foo()"
 #^^ source.ahk string.hotstring.ahk keyword.operator.ahk
 #  ^^^^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
 #         ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
 #           ^^^^^ source.ahk string.hotstring.ahk
-#                ^ source.ahk string.hotstring.ahk comment.line.semicolon.ahk
-#                 ^ source.ahk string.hotstring.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                  ^^^^^^^^^^^^^ source.ahk string.hotstring.ahk comment.line.semicolon.ahk
+#                ^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk
+#                 ^^^^^^^^^^^^^^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >:X:case1,,::foo()  ; call foo() function
 #^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
 # ^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk entity.name.function.hotstring.x.flag.ahk
@@ -43,18 +37,16 @@
 #               ^ source.ahk punctuation.bracket.ahk
 #                ^ source.ahk punctuation.bracket.ahk
 #                 ^ source.ahk
-#                  ^ source.ahk comment.line.semicolon.ahk
-#                   ^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#                    ^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                  ^ source.ahk meta.comment.line.semicolon.ahk
+#                   ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >::case2,,::  ; call foo() function
 #^^ source.ahk string.hotstring.ahk keyword.operator.ahk
 #  ^^^^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
 #         ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
 #           ^ source.ahk string.hotstring.ahk
-#            ^ source.ahk string.hotstring.ahk comment.line.semicolon.ahk
-#             ^ source.ahk string.hotstring.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-#              ^^^^^^^^^^^^^^^^^^^^ source.ahk string.hotstring.ahk comment.line.semicolon.ahk
+#            ^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >    foo()
 #^^^^ source.ahk
 #    ^^^ source.ahk entity.name.function.ahk
@@ -82,12 +74,10 @@
 >}
 #^ source.ahk punctuation.bracket.ahk
 >;-----------
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >;-----------
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >name_copied := "XX"
 #^^^^^^^^^^^^ source.ahk
 #            ^^ source.ahk keyword.operator.assignment.ahk
@@ -111,18 +101,14 @@
 #                               ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                                ^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >;                                 ^^^^^^^^^^^var
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;          ^^^^Send key https://www.autohotkey.com/docs/v1/lib/Send.htm
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >;^ X-flag https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >;....
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >name_copied := "XX"
 #^^^^^^^^^^^^ source.ahk
 #            ^^ source.ahk keyword.operator.assignment.ahk
@@ -159,8 +145,7 @@
 #                                 ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                                  ^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >; ^ has space does not affect.
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >:B0X:name1,,::Send % "name 4 is " name_copied
 #^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
 # ^^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk entity.name.function.hotstring.x.flag.ahk
@@ -176,8 +161,7 @@
 #                                ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                                 ^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >;-----------
-#^ source.ahk comment.line.semicolon.ahk punctuation.definition.comment.ahk
-# ^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >~F12::Reload
 #^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
