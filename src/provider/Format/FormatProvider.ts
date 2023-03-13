@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,-999] }] */
 import * as vscode from 'vscode';
 import { getFormatConfig } from '../../configUI';
@@ -9,6 +10,7 @@ import type { TBrackets } from '../../tools/Bracket';
 import type { TFmtCore, TFmtCoreMap } from './FormatType';
 import { fmtDiffInfo } from './tools/fmtDiffInfo';
 import { getFormatFlag } from './tools/getFormatFlag';
+import { getMatrixAhk2exeKeep } from './tools/getMatrixAhk2exeKeep';
 import { getMatrixFileBrackets } from './tools/getMatrixFileBrackets';
 import { getMatrixMultLine } from './tools/getMatrixMultLine';
 import { getMatrixTopLabe } from './tools/getMatrixTopLabe';
@@ -89,6 +91,7 @@ export function FormatCore(
     const matrixTopLabe: readonly (0 | 1)[] = getMatrixTopLabe(AhkFileData, useTopLabelIndent);
     const matrixBrackets: readonly TBrackets[] = getMatrixFileBrackets(DocStrMap);
     const matrixMultLine: readonly (-999 | 0 | 1)[] = getMatrixMultLine(DocStrMap);
+    const matrixAhk2exeKeep: readonly boolean[] = getMatrixAhk2exeKeep(DocStrMap);
     const { mainList, betaList } = getFormatFlag(DocStrMap);
 
     let lnStatus: TLnStatus = {
@@ -104,7 +107,7 @@ export function FormatCore(
         const { line, lStr } = AhkTokenLine;
         const lStrTrim: string = lStr.trim();
 
-        if (line >= fmtStart && line <= fmtEnd && mainList[line]) {
+        if (line >= fmtStart && line <= fmtEnd && mainList[line] && !matrixAhk2exeKeep[line]) {
             const { occ, status } = lnStatus;
             const occHotFix: number = status === EFmtMagicStr.caseA
                 ? occ + 1
