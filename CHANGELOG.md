@@ -10,7 +10,7 @@
 
 ## 0.0.28(2023-03-13)
 
-- feat: add config with file-rename-event [#4](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/4)
+- feat: add config with file-rename-event [#4](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/4) and [#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5)
 
 ## 0.0.27(2023-03-11)
 
