@@ -301,7 +301,7 @@
                             "log and show",
                             "log and try to Rename `#Include` (`Alpha test options`)"
                         ],
-                        "markdownDescription": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.FileRenameEvent.md))"
+                        "markdownDescription": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5))"
                     }
                 }
             }

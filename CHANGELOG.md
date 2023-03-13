@@ -1,18 +1,16 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next 0.0.28(2023-03-XX)](#next-00282023-03-xx)
+  - [0.0.28(2023-03-13)](#00282023-03-13)
   - [0.0.27(2023-03-11)](#00272023-03-11)
   - [0.0.26(2023-03-04)](#00262023-03-04)
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next 0.0.28(2023-03-XX)
+## 0.0.28(2023-03-13)
 
 - feat: add config with file-rename-event [#4](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/4)
-  - [config-document](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.FileRenameEvent.md)
-  - [my old pack](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/blob/db76bb05d3cfdd8c15977b0511c1e635df8e70be/src/tools/Built-in/Command_tools.ts)
 
 ## 0.0.27(2023-03-11)
 
