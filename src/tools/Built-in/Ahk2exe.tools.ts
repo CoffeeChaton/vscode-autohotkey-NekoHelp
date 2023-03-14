@@ -6,7 +6,21 @@ export const { Ahk2exeMdMap, snippetAhk2exe } = (() => {
     const Ahk2exeMdMapRW = new Map<string, vscode.MarkdownString>();
     const snippetAhk2exeRW: vscode.CompletionItem[] = [];
     //
-    for (const v of Ahk2exeData) {
+    // /*@Ahk2Exe-Keep\n$0\n*/
+    const Ahk2ExeKeep = {
+        keyRawName: 'Keep',
+        link: 'https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep',
+        doc: 'The reverse is also possible, i.e. marking a code section to only be executed in the compiled script:',
+        body: '/*@Ahk2Exe-Keep\n$0\n*/',
+        exp: [
+            '/*@Ahk2Exe-Keep',
+            'MsgBox This message appears only in the compiled script',
+            '*/',
+            'MsgBox This message appears in both the compiled and unCompiled script',
+        ],
+    };
+
+    for (const v of [...Ahk2exeData, Ahk2ExeKeep]) {
         const {
             keyRawName,
             link,

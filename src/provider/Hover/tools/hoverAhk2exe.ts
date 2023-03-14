@@ -26,5 +26,17 @@ export function hoverAhk2exe(AhkTokenLine: TAhkTokenLine, position: vscode.Posit
         return null;
     }
 
+    //  `/*@Ahk2Exe-Keep`
+    const maAhk2exeKeep: RegExpMatchArray | null = commentStr.match(/\/\*@Ahk2Exe-Keep\b/iu);
+    if (maAhk2exeKeep !== null) {
+        const col = lStrLen + maAhk2exeKeep[0].length;
+        if (position.character > lStrLen && position.character < col) {
+            const md: vscode.MarkdownString | undefined = Ahk2exeMdMap.get('KEEP');
+            if (md !== undefined) return new vscode.Hover(md);
+        }
+
+        return null;
+    }
+
     return null;
 }
