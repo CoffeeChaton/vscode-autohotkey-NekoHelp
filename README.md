@@ -23,7 +23,9 @@ AutoHotKey v1 edit-support for VS Code
     - [3. Completion of `#Include`](#3-completion-of-include)
     - [4. Completion of `class`](#4-completion-of-class)
   - [ListAllFunctions](#listallfunctions)
-  - [Better highlight of Numbers](#better-highlight-of-numbers)
+  - [Better highlight](#better-highlight)
+    - [of Legacy assignment](#of-legacy-assignment)
+    - [of Numbers](#of-numbers)
   - [Privacy Statement](#privacy-statement)
   - [Performance](#performance)
   - [Credits](#credits)
@@ -289,7 +291,29 @@ support to find like
 
 ![ListAllFunctions](image/ListAllFunctions.png)
 
-## Better highlight of Numbers
+## Better highlight
+
+### of Legacy assignment
+
+semantic-highlight of `MyString = This is a literal string.` equal sign operator (=)
+
+<details><summary>try it</summary>
+
+```ahk
+#Requires AutoHotkey v1.1.33
+
+MyNumber = 123
+MyString = This is a literal string.
+Var := "hi~"
+CopyOfVar = var say %Var% ! ; With the = operator, percent signs are required to retrieve a variable's contents.
+CopyOfVar = var say % Var " !"
+```
+
+</details>
+
+![img](./image/Changelog/v0-0-29-fix-old-set-var.png)
+
+### of Numbers
 
 ![img](image/Changelog/v0-0-7-highlight-of-Numbers.png)
 

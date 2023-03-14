@@ -12,6 +12,19 @@
 ## Next 0.0.29(2023-03-XX)
 
 - fix: not format `/*@Ahk2Exe-Keep` block
+- feat: add semantic-highlight of `MyString = This is a literal string.` equal sign operator (=)
+
+  ```ahk
+  #Requires AutoHotkey v1.1.33
+
+  MyNumber = 123
+  MyString = This is a literal string.
+  Var := "hi~"
+  CopyOfVar = var say %Var% ! ; With the = operator, percent signs are required to retrieve a variable's contents.
+  CopyOfVar = var say % Var " !"
+  ```
+
+  ![img](./image/Changelog/v0-0-29-fix-old-set-var.png)
 
 ## 0.0.28(2023-03-13)
 

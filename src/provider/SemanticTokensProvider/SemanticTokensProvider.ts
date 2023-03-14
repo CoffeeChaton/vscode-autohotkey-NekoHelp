@@ -4,6 +4,7 @@ import { pm } from '../../core/ProjectManager';
 import { CMemo } from '../../tools/CMemo';
 import { DAList2SemanticHighlight } from './DAList2SemanticHighlight';
 import { funcHighlight } from './funcHighlight';
+import { legacyAssignmentHighlight } from './legacyAssignmentHighlight';
 import { ModuleVarSemantic } from './ModuleVarSemantic';
 import { MultilineHighlight } from './MultilineHighlight';
 import { pushToken, TokenModifiers, TokenTypes } from './tools';
@@ -24,6 +25,7 @@ const Semantic = new CMemo<TAhkFileData, vscode.SemanticTokens>((AhkFileData: TA
         ...ModuleVarSemantic(ModuleVar),
         ...funcHighlight(DocStrMap),
         ...MultilineHighlight(DocStrMap),
+        ...legacyAssignmentHighlight(DocStrMap),
     ], tokensBuilder);
 
     return tokensBuilder.build();
