@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-template-curly-in-string */
 import * as vscode from 'vscode';
-import { snippetAhk2exe } from '../../../tools/Built-in/Ahk2exe.tools';
+import { snippetAhk2exeKeep, snippetAhk2exeLine } from '../../../tools/Built-in/Ahk2exe.tools';
 import { nekoExCommentData } from '../../../tools/Built-in/nekoEx/nekoExComment.data';
 
 const nekoExComment: readonly vscode.CompletionItem[] = ((): readonly vscode.CompletionItem[] => {
@@ -38,7 +38,11 @@ export function getCommentCompletion(
 ): vscode.CompletionItem[] | null {
     const subStr: string = document.lineAt(position.line).text.slice(0, position.character);
 
+    if ((/^\s*\/\*@$/u).test(subStr)) {
+        return [...snippetAhk2exeKeep];
+    }
+
     return (/^\s*;@$/u).test(subStr)
-        ? [...nekoExComment, ...snippetAhk2exe]
+        ? [...nekoExComment, ...snippetAhk2exeLine]
         : null;
 }
