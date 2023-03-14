@@ -1,4 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
+import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
+import type { TGuiControlCmdElement } from './GuiControl.data';
 import { GuiControlSubCmdList } from './GuiControl.data';
 
 describe('check GuiControl subCmd ruler', () => {
@@ -51,5 +53,47 @@ describe('check GuiControl subCmd ruler', () => {
             { case: 5, SubCommand: 'Choose', str: 'just doc' },
             { case: 5, SubCommand: 'ChooseString', str: 'just doc' },
         ]);
+    });
+
+    it('check : tmLanguage name has .gui_control.', () => {
+        expect.hasAssertions();
+
+        type TErrObj = {
+            msg: string,
+            value: unknown,
+        };
+
+        const errList0: TErrObj[] = [];
+        JSON.stringify(repository.command_gui_control, (key: string, value: unknown): unknown => {
+            if (key !== 'name') return value;
+
+            if (typeof value !== 'string') {
+                errList0.push({ msg: 'value not string', value });
+                return value;
+            }
+
+            if (!value.includes('.gui_control.')) {
+                errList0.push({ msg: 'name not match .gui_control. ', value });
+            }
+
+            return value;
+        });
+
+        expect(errList0).toHaveLength(0);
+    });
+
+    it('check : tmLanguage ruler', () => {
+        expect.hasAssertions();
+
+        const tmArr: string[] = repository.command_gui_control.begin
+            .replace('(?:^|[ \\t:])\\b(?i:(GuiControl)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?(\\b(?:', '')
+            .replace(')\\b)?[ \\t]*),', '')
+            .split('|');
+
+        const TsArr: string[] = GuiControlSubCmdList
+            .filter(({ SubCommand }: TGuiControlCmdElement): boolean => !SubCommand.includes('('))
+            .map(({ SubCommand }: TGuiControlCmdElement): string => SubCommand);
+
+        expect(tmArr).toStrictEqual(TsArr);
     });
 });

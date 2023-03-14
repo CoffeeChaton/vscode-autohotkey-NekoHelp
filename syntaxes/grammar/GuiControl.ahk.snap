@@ -1,0 +1,77 @@
+>; https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>GuiControl , MyGui:Show , MyButton 
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^^ source.ahk meta.command.line.gui_control.ahk
+#             ^^^^^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#                   ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                       ^^ source.ahk meta.command.line.gui_control.ahk
+#                         ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl , MyGui: , MyListBox , Item1|Item2
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^^ source.ahk meta.command.line.gui_control.ahk
+#             ^^^^^^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#                    ^ source.ahk meta.command.line.gui_control.ahk
+#                     ^^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                                ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                                 ^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                                       ^ source.ahk meta.command.line.gui_control.ahk keyword.operator.arithmetic.ahk
+#                                        ^^^^^ source.ahk meta.command.line.gui_control.ahk
+>
+>GuiControl,, MyListBox, |Red|Green|Blue
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                      ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                       ^ source.ahk meta.command.line.gui_control.ahk
+#                        ^ source.ahk meta.command.line.gui_control.ahk keyword.operator.arithmetic.ahk
+#                         ^^^ source.ahk meta.command.line.gui_control.ahk
+#                            ^ source.ahk meta.command.line.gui_control.ahk keyword.operator.arithmetic.ahk
+#                             ^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                                  ^ source.ahk meta.command.line.gui_control.ahk keyword.operator.arithmetic.ahk
+#                                   ^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, , MyEdit, New text line 1.`nNew text line 2.
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^^ source.ahk meta.command.line.gui_control.ahk
+#             ^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                    ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                     ^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                          ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.ahk
+#                              ^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                                      ^^ source.ahk meta.command.line.gui_control.ahk constant.character.escape.ahk
+#                                        ^^^^ source.ahk meta.command.line.gui_control.ahk
+#                                            ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.ahk
+#                                                ^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, , MyRadio2, 1
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^^ source.ahk meta.command.line.gui_control.ahk
+#             ^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                      ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                       ^ source.ahk meta.command.line.gui_control.ahk
+#                        ^ source.ahk meta.command.line.gui_control.ahk constant.numeric.decimal.ahk
+>GuiControl, Move, OK, x100 y200
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                ^ source.ahk meta.command.line.gui_control.ahk
+#                 ^ source.ahk meta.command.line.gui_control.ahk
+#                  ^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.ahk
+#                    ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                     ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, Focus, LastName
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                 ^ source.ahk meta.command.line.gui_control.ahk
+#                  ^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, Move, MyEdit, x10 y20 w200 h100
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                ^ source.ahk meta.command.line.gui_control.ahk
+#                 ^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                        ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                         ^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>
+>

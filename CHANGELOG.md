@@ -11,6 +11,7 @@
 
 ## Next 0.0.29(2023-03-XX)
 
+- fix: `GuiControl` SubCommand syntax-highlight
 - fix: not format `/*@Ahk2Exe-Keep` block
 - feat: add `/*@Ahk2Exe-Keep` _hover_ && _CompletionItem_
 - feat: add semantic-highlight of `MyString = This is a literal string.` equal sign operator (=)

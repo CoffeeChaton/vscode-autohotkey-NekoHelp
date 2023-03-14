@@ -74,6 +74,7 @@
                     ]
                 },
                 { "include": "#command_gui" },
+                { "include": "#command_gui_control" },
                 {
                     "name": "meta.command.line.ahk",
                     "begin": "(?<=^|[ \\t:])\\b(?i:AutoTrim|BlockInput|Click|ClipWait|Control|ControlClick|ControlFocus|ControlGet|ControlGetFocus|ControlGetPos|ControlGetText|ControlMove|ControlSend|ControlSendRaw|ControlSetText|CoordMode|DetectHiddenText|DetectHiddenWindows|Drive|DriveGet|DriveSpaceFree|Edit|EnvAdd|EnvDiv|EnvGet|EnvMult|EnvSet|EnvSub|EnvUpdate|FileAppend|FileCopy|FileCopyDir|FileCreateDir|FileCreateShortcut|FileDelete|FileEncoding|FileGetAttrib|FileGetShortcut|FileGetSize|FileGetTime|FileGetVersion|FileInstall|FileMove|FileMoveDir|FileRead|FileReadLine|FileRecycle|FileRecycleEmpty|FileRemoveDir|FileSelectFile|FileSelectFolder|FileSetAttrib|FileSetTime|FormatTime|GetKeyState|GroupActivate|GroupAdd|GroupClose|GroupDeactivate|Gui|GuiControl|GuiControlGet|Hotkey|ImageSearch|IniDelete|IniRead|IniWrite|Input|InputBox|KeyHistory|KeyWait|ListHotkeys|ListLines|ListVars|Menu|MouseClick|MouseClickDrag|MouseGetPos|MouseMove|MsgBox|OnExit|OutputDebug|PixelGetColor|PixelSearch|PostMessage|Process|Progress|Random|RegDelete|RegRead|RegWrite|Run|RunAs|RunWait|Send|SendEvent|SendInput|SendLevel|SendMessage|SendMode|SendPlay|SendRaw|SetBatchLines|SetCapsLockState|SetControlDelay|SetDefaultMouseSpeed|SetEnv|SetFormat|SetKeyDelay|SetMouseDelay|SetNumLockState|SetRegView|SetScrollLockState|SetStoreCapsLockMode|SetTimer|SetTitleMatchMode|SetWinDelay|SetWorkingDir|Shutdown|Sleep|Sort|SoundBeep|SoundGet|SoundGetWaveVolume|SoundPlay|SoundSet|SoundSetWaveVolume|SplashImage|SplashTextOff|SplashTextOn|SplitPath|StatusBarGetText|StatusBarWait|StringCaseSense|StringGetPos|StringLeft|StringLen|StringLower|StringMid|StringReplace|StringRight|StringSplit|StringTrimLeft|StringTrimRight|StringUpper|Suspend|SysGet|Thread|ToolTip|Transform|TrayTip|UrlDownloadToFile|WinActivate|WinActivateBottom|WinClose|WinGet|WinGetActiveStats|WinGetActiveTitle|WinGetClass|WinGetPos|WinGetText|WinGetTitle|WinHide|WinKill|WinMaximize|WinMenuSelectItem|WinMinimize|WinMinimizeAll|WinMinimizeAllUndo|WinMove|WinRestore|WinSet|WinSetTitle|WinShow|WinWait|WinWaitActive|WinWaitClose|WinWaitNotActive)\\b(?!\\()",
@@ -138,6 +139,20 @@
                     "name": "keyword.string.gui.other.options.ahk",
                     "captures": { "1": { "name": "constant.numeric.gui.ahk" } }
                 },
+                { "include": "#command_options" },
+                { "include": "#expression" }
+            ]
+        },
+        "command_gui_control": {
+            "name": "meta.command.line.gui_control.ahk",
+            "begin": "(?:^|[ \\t:])\\b(?i:(GuiControl)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?(\\b(?:Text|Move|MoveDraw|Focus|Disable|Enable|Hide|Show|Choose|ChooseString|Font)\\b)?[ \\t]*),",
+            "end": "(\\n)",
+            "beginCaptures": {
+                "1": { "name": "support.function.gui_control.command.ahk" },
+                "2": { "name": "variable.other.constant.gui_control.name.ahk" },
+                "3": { "name": "keyword.command.option.gui_control.param.ahk" }
+            },
+            "patterns": [
                 { "include": "#command_options" },
                 { "include": "#expression" }
             ]
