@@ -16,6 +16,7 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
     // exp #AllowSameLineComments
     // https://www.autohotkey.com/docs/v1/lib/_AllowSameLineComments.htm
     public readonly uri: vscode.Uri;
+
     /**
      * hashtag is without # && toUpperCase()
      * exp : #noEnv -> NOENV
@@ -115,6 +116,7 @@ export class CAhkLabel extends vscode.DocumentSymbol {
     // Label names must be unique throughout the whole script.
     public readonly uri: vscode.Uri;
     public readonly AfterString: '';
+
     /**
      * label: -> LABEL
      */

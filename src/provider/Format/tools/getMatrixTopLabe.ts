@@ -131,6 +131,7 @@ export function getMatrixTopLabe(AhkFileData: TAhkFileData, useTopLabelIndent: b
         // return
         for (let line = start + 1; line < DocStrMapLen; line++) {
             list[line] = 1;
+
             /**
              * Do not indent, even if it is through
              */

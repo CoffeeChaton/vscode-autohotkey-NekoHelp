@@ -19,14 +19,17 @@ export const enum EFnRefBy {
      * by funcName(
      */
     justCall = 1,
+
     /**
      * by "funcName"
      */
     wordWrap = 2,
+
     /**
      * Sort f-flag
      */
     SortFlag = 7,
+
     /**
      * by (?CCallout) https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions
      */

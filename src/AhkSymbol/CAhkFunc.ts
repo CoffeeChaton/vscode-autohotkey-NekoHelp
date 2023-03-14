@@ -8,6 +8,7 @@ import type { CAhkSwitch } from './CAhkSwitch';
 // WTF
 // ---------------------------------------------------------------------------
 type TUpName = string;
+
 /**
  * if keyRawName = first def name -> 0
  * ; else -> string

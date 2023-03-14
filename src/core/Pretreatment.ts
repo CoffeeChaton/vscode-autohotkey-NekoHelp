@@ -174,6 +174,7 @@ export function Pretreatment(
                 cll: 0,
             });
             const { SecondWordUpCol, SecondWordUp } = getSecondUp(lStrHotStrCase, fistWordUp, fistWordUpCol);
+
             /**
              * of hotStr
              *

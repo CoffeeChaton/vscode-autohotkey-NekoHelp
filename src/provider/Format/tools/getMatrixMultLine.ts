@@ -20,6 +20,7 @@ function getDeepLTrim(Multiline: EMultiline, multilineFlag: TMultilineFlag): 0 |
             return 0;
     }
 }
+
 /**
  * -9999 is mean not find of `(lTrim`
  */

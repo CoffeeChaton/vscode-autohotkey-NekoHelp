@@ -102,6 +102,7 @@ export const enum EDiagCode {
      * On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss.
      */
     code601 = 601,
+
     /**
      * Label name of `On:` , `Off:`
      *
@@ -129,6 +130,7 @@ export const enum EDiagCode {
     code816 = 816,
     code824 = 824,
     code825 = 825,
+
     /**
      * - TODO: move 899 -> 8xx
      * - 899 is Command -> func

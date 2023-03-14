@@ -29,6 +29,7 @@ type TempConfigs = {
     },
     Diag: {
         AMasterSwitch: EDiagMasterSwitch,
+
         /**
          * code107LegacyAssignment
          *
@@ -55,10 +56,12 @@ type TempConfigs = {
         AMasterSwitchUseFormatProvider: boolean,
         formatTextReplace: boolean,
         useTopLabelIndent: boolean,
+
         /**
          * "Indent the wih `(` and `)` not close"
          */
         useParenthesesIndent: boolean,
+
         /**
          * "Indent the wih `[` and `]` not close"
          */

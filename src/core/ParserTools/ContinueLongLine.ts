@@ -1,4 +1,5 @@
 import type { DeepReadonly } from '../../globalEnum';
+
 /*
 ```ahk
 ::t3{{::

@@ -31,6 +31,7 @@ function hoverGuiControlParamCore(lStr: string, col: number, character: number):
     const atA1: TScanData | undefined = arr.at(1);
     if (atA1 === undefined) return null;
     const { lPos, RawNameNew } = atA1;
+
     /**
      * Gui, New
      * Gui, GuiName:New

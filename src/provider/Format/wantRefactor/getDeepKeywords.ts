@@ -177,6 +177,7 @@ function forIfCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
 }): TLnStatus {
     const { line } = AhkTokenLine;
     const { occ, lockList } = lnStatus;
+
     /**
      * if (a ; <---------not close
      *  + b
@@ -318,6 +319,7 @@ export function getDeepKeywords({
 
     return focOccDiff({ AhkTokenLine, matrixBrackets, lnStatus });
 }
+
 /**
  * This state machine is so complex that I think it was written by coincidence and monkey patching.
  * Before I create a good enough test collection,

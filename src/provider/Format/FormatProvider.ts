@@ -73,6 +73,7 @@ export function FormatCore(
     const timeStart: number = Date.now();
 
     const newFmtMap = new Map<number, TFmtCore>();
+
     /**
      * always update status
      */

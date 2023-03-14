@@ -86,6 +86,7 @@
     ],
     "root": true,
     "rules": {
+        "@typescript-eslint/lines-around-comment": "off",
         "@typescript-eslint/key-spacing": "off",
         "sonarjs/cognitive-complexity": "off",
         "@fluffyfox/ban-eslint-disable": "off",

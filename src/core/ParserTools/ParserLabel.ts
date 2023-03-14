@@ -18,6 +18,7 @@ export function ParserLabel(FuncInput: TFuncInput): CAhkLabel | null {
     } = AhkTokenLine;
 
     const ahkDoc: string = DocStrMap.at(line - 1)?.ahkDoc ?? '';
+
     /**
      * Generally, aside from whitespace and comments, no other code can be written on the same line as a label.
      */

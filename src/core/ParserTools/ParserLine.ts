@@ -11,6 +11,7 @@ export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | nu
     const { lStr, textRaw } = FuncInput.AhkTokenLine;
 
     const strTrim: string = lStr.trim();
+
     /**
      * CAhkComment
      */
