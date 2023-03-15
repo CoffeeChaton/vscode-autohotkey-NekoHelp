@@ -13,7 +13,7 @@ type TGetMultilineFlag = {
     line: number,
 };
 
-function getMultilineFlag({ textRaw, result, line }: TGetMultilineFlag): TMultilineFlag {
+function getMultilineFlag({ textRaw, result, line }: TGetMultilineFlag): TMultilineFlag | null {
     const arr: readonly string[] = textRaw
         .replace(/^\s*\(\s*/u, replacerSpace)
         .split(' ')
@@ -53,6 +53,8 @@ function getMultilineFlag({ textRaw, result, line }: TGetMultilineFlag): TMultil
         } else if (str.startsWith(';')) {
             flag.R = col;
             break; // -----break-------is line Comments
+        } else if (str.includes(')')) {
+            return null;
         } else {
             switch (str) {
                 case '%':
@@ -117,9 +119,11 @@ export function getMultiline(
     }: TGetMultiline,
 ): [EMultiline, TMultilineFlag] {
     if (multiline === EMultiline.none) {
-        return textTrimStart.startsWith('(') /* && !textTrimStart.includes(')') */
-            ? [EMultiline.start, getMultilineFlag({ textRaw, result, line })]
-            : [EMultiline.none, null]; // 99%
+        if (textTrimStart.startsWith('(')) { // 99%
+            const obj: TMultilineFlag = getMultilineFlag({ textRaw, result, line });
+            if (obj !== null) return [EMultiline.start, getMultilineFlag({ textRaw, result, line })];
+        }
+        return [EMultiline.none, null];
     }
 
     if (multiline === EMultiline.start) {
@@ -135,10 +139,11 @@ export function getMultiline(
     }
 
     // END
-    // if (LTrim === EMultiline.end)
-    return textTrimStart.startsWith('(') && !textTrimStart.includes(')')
-        ? [EMultiline.start, getMultilineFlag({ textRaw, result, line })] // look 0.1% case...
-        : [EMultiline.none, null]; // 99%
+    if (textTrimStart.startsWith('(')) { // 99%
+        const obj: TMultilineFlag = getMultilineFlag({ textRaw, result, line });
+        if (obj !== null) return [EMultiline.start, getMultilineFlag({ textRaw, result, line })]; // look 0.1% case...
+    }
+    return [EMultiline.none, null]; // 99%
 }
 
 // https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section
