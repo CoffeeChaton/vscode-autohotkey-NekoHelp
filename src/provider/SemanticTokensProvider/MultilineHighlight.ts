@@ -35,8 +35,12 @@ export function MultilineHighlight(DocStrMap: TTokenStream): TSemanticTokensLeaf
     ) {
         if (multiline !== EMultiline.mid) continue;
 
-        if (textRaw.length > lStr.length) {
-            setHighlight(line, lStr.length, textRaw.length, 'comment', Tokens);
+        const { length } = textRaw;
+        if (length > lStr.length) {
+            for (let i = lStr.length; i < length; i++) {
+                setHighlight(line, i, i + 1, 'comment', Tokens);
+            }
+            // setHighlight(line, lStr.length, textRaw.length, 'comment', Tokens);
         }
 
         const len = lStr.length;

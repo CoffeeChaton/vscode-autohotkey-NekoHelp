@@ -1,6 +1,6 @@
 export const replacerSpace = (match: string): string => ' '.repeat(match.length);
 
-export const fnReplacerStr = (match: string): string => '_'.repeat(match.length);
+export const fnReplacerStr = (match: string): string => '^'.repeat(match.length);
 
 /**
  * [textFix , '; comment text']
@@ -11,7 +11,7 @@ export function getLStr(textRaw: string): string {
     if ((/^\s*;/u).test(textRaw)) return '';
 
     // https://www.autohotkey.com/docs/v1/misc/EscapeChar.htm
-    const textFix = textRaw.replaceAll(/`[,%`;nrbtvaf]/gu, '__').replaceAll(/"[^"]*"/gu, fnReplacerStr);
+    const textFix = textRaw.replaceAll(/`[,%`;nrbtvaf]/gu, '`^').replaceAll(/"[^"]*"/gu, fnReplacerStr);
     const i = textFix.search(/[ \t];/u);
 
     switch (i) {

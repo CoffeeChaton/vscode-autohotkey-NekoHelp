@@ -37,7 +37,7 @@ export function legacyAssignmentHighlight(DocStrMap: TTokenStream): TSemanticTok
         const len = lStr.length;
         for (let i = 0; i < len; i++) {
             const s = lStr[i];
-            if (s !== ' ' && s === '_') {
+            if (s !== ' ' && s === '^') {
                 setHighlight(line, i, i + 1, 'string', Tokens);
             }
         }
