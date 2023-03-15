@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next 0.0.29(2023-03-XX)](#next-00292023-03-xx)
+  - [v0.0.29(2023-03-15)](#v00292023-03-15)
   - [0.0.28(2023-03-13)](#00282023-03-13)
   - [0.0.27(2023-03-11)](#00272023-03-11)
   - [0.0.26(2023-03-04)](#00262023-03-04)
@@ -9,7 +9,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next 0.0.29(2023-03-XX)
+## v0.0.29(2023-03-15)
 
 - fix: multiline parse error [#6](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/6)
 - fix: `Local Static Global` with `comment` highlight
