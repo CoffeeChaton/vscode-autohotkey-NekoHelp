@@ -11,6 +11,7 @@
 
 ## Next 0.0.29(2023-03-XX)
 
+- fix: multiline parse error [#6](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/6)
 - fix: `GuiControl` SubCommand syntax-highlight
 - fix: not format `/*@Ahk2Exe-Keep` block
 - feat: add `/*@Ahk2Exe-Keep` _hover_ && _CompletionItem_
@@ -77,7 +78,7 @@
   ;                          ^ don't add \s at `#Directives`
   ```
 
-- fix: [diag201](./note/code201.md)
+- fix: [diag201](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code201.md)
 
 ## 0.0.26(2023-03-04)
 

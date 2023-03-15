@@ -208,7 +208,7 @@ support to find like
    }
    ```
 
-3. add jsdoc-style comments of variable ![img](image/CHANGELOG/v0.0.21.png)
+3. add jsdoc-style comments of variable ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0.0.21.png)
 
    ```ahk
    f2(){
@@ -258,7 +258,7 @@ support to find like
 1. Right click then click format document.
 2. or `alt` + `shift` + `f`
 3. format `switch case`
-4. [read more exp](src/provider/Format/exp)
+4. read more exp [note/ahk/format](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/format/)
 5. other setting
 
    ```ahk

@@ -144,7 +144,7 @@ export function getUnknownTextMap(
                     CommandMDMap.has(wordUp)
                     || AVariablesMDMap.has(wordUp) || StatementMDMap.has(wordUp)
                     || Bi_VarMDMap.has(wordUp)
-                    || (/^_+$/u).test(wordUp) // str
+                    // || (/^_+$/u).test(wordUp) // str
                     || (/^\d+$/u).test(wordUp) // just number
                     || (/^0X[\dA-F]+$/u).test(wordUp) // NumHexConst = 0 x [0-9a-fA-F]+
                     || otherKeyword2MD.has(wordUp)
