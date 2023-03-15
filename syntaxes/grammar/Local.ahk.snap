@@ -1,0 +1,41 @@
+>;@ahk-neko-format-inline-spacing-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                        ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>Local ;comment 
+#^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#     ^ source.ahk meta.comment.line.semicolon.ahk
+#      ^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>static ; comment
+#^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#      ^ source.ahk meta.comment.line.semicolon.ahk
+#       ^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>global ;comment
+#^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#      ^ source.ahk meta.comment.line.semicolon.ahk
+#       ^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>Local  ;comment 
+#^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#     ^ source.ahk
+#      ^ source.ahk meta.comment.line.semicolon.ahk
+#       ^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>static  ; comment
+#^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#      ^ source.ahk
+#       ^ source.ahk meta.comment.line.semicolon.ahk
+#        ^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>global  ;comment
+#^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#      ^ source.ahk
+#       ^ source.ahk meta.comment.line.semicolon.ahk
+#        ^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>;@ahk-neko-format-inline-spacing-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                                        ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>

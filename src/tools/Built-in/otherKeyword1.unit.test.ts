@@ -12,7 +12,7 @@ describe('check otherKeyword1 ruler', () => {
 
         const st1 = (repository.other_keyword.patterns[0].match)
             .replace('(?:^|[ \\t{])(?i:', '')
-            .replace(')(?:$|[ \\t])', '');
+            .replace(')(?=$|[ \\t])', '');
 
         expect(st1).toBe(tsStr);
     });

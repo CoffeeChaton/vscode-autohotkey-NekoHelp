@@ -464,7 +464,7 @@
         "other_keyword": {
             "patterns": [
                 {
-                    "match": "(?:^|[ \\t{])(?i:Static|Global|Local)(?:$|[ \\t])",
+                    "match": "(?:^|[ \\t{])(?i:Static|Global|Local)(?=$|[ \\t])",
                     "name": "keyword.other.operator.hasdoc.ahk"
                 },
                 {
