@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.30(2023-03-XX)](#next-v00302023-03-xx)
   - [v0.0.29(2023-03-15)](#v00292023-03-15)
   - [0.0.28(2023-03-13)](#00282023-03-13)
   - [0.0.27(2023-03-11)](#00272023-03-11)
@@ -8,6 +9,17 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## Next v0.0.30(2023-03-XX)
+
+- fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
+  - [ ] part 1, parsing error of Command OutputVar
+  - [ ] part 3, need some time to fix unit-test.
+  - [x] part 4, fix `ListLines` now.
+  - [x] part 5, fix `WinGetTitle`
+  - [x] part 6-1, fix `ControlFocus`
+  - [x] part 6-2, fix `SetTimer`, `FileAppend`, `SetKeyDelay`
+  - [x] part 6-3, fix `OutputDebug` and `#Requires` now.
 
 ## v0.0.29(2023-03-15)
 

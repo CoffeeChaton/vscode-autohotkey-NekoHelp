@@ -84,3 +84,9 @@ Var *Script::FindOrAddVar(LPTSTR aVarName, size_t aVarNameLength, int aScope)
 // Declare built-in var read function.
  #define BIV_DECL_R(name) VarSizeType name(LPTSTR aBuf, LPTSTR aVarName)
 ```
+
+```c++
+// This "new " is a keyword only if followed immediately by an operand,
+// such as "new ClassVar", "new Class.NestedClass()" or "new %Var%()",
+// but not "new := 1" or "x := new + 1" and not '"string" new "string"'.
+```

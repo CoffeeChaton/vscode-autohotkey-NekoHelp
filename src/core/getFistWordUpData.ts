@@ -8,7 +8,10 @@ export function getFistWordCore(lStrTrimFix: string): string {
     const ma2: string | undefined = lStrTrimFix.match(/^(\w+)$/u)?.[1];
     if (ma2 !== undefined) return ma2;
 
-    return lStrTrimFix.match(/^(\w+)[\s,]+(?![:+\-*/~.|&^]=)/u)?.[1]
+    const ma3: string | undefined = lStrTrimFix.match(/^(\w+)\s*,/u)?.[1];
+    if (ma3 !== undefined) return ma3;
+
+    return lStrTrimFix.match(/^(\w+)\s+(?![:+\-*/~.|&^]=)/u)?.[1]
         ?? '';
 }
 

@@ -438,7 +438,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#Requires',
-        insert: '#Requires #Requires AutoHotkey ${1:v1.1.33+}',
+        insert: '#Requires AutoHotkey ${1:v1.1.33+}',
         doc: 'Displays an error and quits if a version requirement is not met.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_Requires.htm',

@@ -207,7 +207,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'CONTROLFOCUS',
         keyRawName: 'ControlFocus',
-        body: 'ControlFocus , [${1:Control}, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
+        body: 'ControlFocus [, ${1:Control}, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: 'Sets input focus to a given control on a window.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlFocus.htm',
@@ -703,12 +703,13 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'FILEAPPEND',
         keyRawName: 'FileAppend',
-        body: 'FileAppend [, ${1:Text}, ${2:Filename}, ${3:Encoding}]',
+        body: 'FileAppend, ${1:Text} [, ${2:Filename}, ${3:Encoding}]',
         doc: 'Writes text to the end of a file (first creating the file, if necessary).',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileAppend.htm',
         exp: [
             'FileAppend , Text, Filename, Encoding',
+            'FileAppend [, Text, Filename, Encoding]',
             '',
             'Var := "~~ your var~~"',
             'FileAppend,',
@@ -1566,12 +1567,16 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'LISTLINES',
         keyRawName: 'ListLines',
-        body: 'ListLines [, ${1|On,Off|}]',
+        body: 'ListLines ${1|On,Off, |}',
         doc: 'Displays the script lines most recently executed.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ListLines.htm',
         exp: [
             'ListLines',
+            '',
+            'ListLines ; If blank or omitted, the history of lines most recently executed is shown.',
+            'ListLines On ; On: Includes subsequently-executed lines in the history. This is the starting default for all scripts.',
+            'ListLines Off ; Off: Omits subsequently-executed lines from the history.',
         ],
         _paramType: [
             'S',
@@ -1780,7 +1785,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'OUTPUTDEBUG',
         keyRawName: 'OutputDebug',
-        body: 'OutputDebug, % "${1:Text}',
+        body: 'OutputDebug, % "${1:Text}"',
         doc: 'Sends a string to the debugger (if any) for display.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/OutputDebug.htm',
@@ -2302,12 +2307,13 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'SETKEYDELAY',
         keyRawName: 'SetKeyDelay',
-        body: 'SetKeyDelay [, ${1:Delay}, ${2:PressDuration}, ${3:Play}]',
+        body: 'SetKeyDelay, ${1:Delay} [, ${2:PressDuration}, ${3:Play}]',
         doc: 'Sets the delay that will occur after each keystroke sent by [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [ControlSend](https://www.autohotkey.com/docs/v1/lib/ControlSend.htm).',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm',
         exp: [
             'SetKeyDelay , Delay, PressDuration, Play',
+            'SetKeyDelay [, Delay, PressDuration, Play]',
         ],
         _paramType: [
             'E',
@@ -2398,12 +2404,13 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'SETTIMER',
         keyRawName: 'SetTimer',
-        body: 'SetTimer [, ${1:Label_or_fnName}, ${2|Period,On,Off|}, ${3:Priority_int}]',
+        body: 'SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off|}, ${3:Priority_int}]',
         doc: 'Causes a subroutine to be launched automatically and repeatedly at a specified time interval.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetTimer.htm',
         exp: [
             'SetTimer , Label_or_fnName, PeriodOnOffDelete, Priority',
+            'SetTimer [, Label_or_fnName, PeriodOnOffDelete, Priority]',
             '',
             ';exp1 of param is 0 functions',
             '~F10:: SetTimer, fn0, -250',
@@ -3310,7 +3317,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'WINGETTITLE',
         keyRawName: 'WinGetTitle',
-        body: 'WinGetTitle, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
+        body: 'WinGetTitle, ${1:OutputVar} ${2:[, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]}',
         doc: 'Retrieves the title of the specified window.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetTitle.htm',

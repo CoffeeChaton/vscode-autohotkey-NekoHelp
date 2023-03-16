@@ -151,9 +151,13 @@ describe('check LineCommand ruler', () => {
                 // ma[0]: '${1|On,Off|}'
                 // ma[1]: 'On,Off|'
                 // check like grammar like ${2|Option1,Option2|}
+                // if ((/\$\{\d+\[,/u).test(ma[1])) {
+                //     // is ${2:[,
+                //     continue;
+                // }
                 if (ma[0].includes('|')) {
                     const tempMa: RegExpMatchArray | null = ma[1].match(/^[\w,()-]+\|$/u);
-                    if (tempMa === null && keyRawName !== 'SoundGet') { // N/A
+                    if (tempMa === null) { // N/A
                         errList4.push(`${keyRawName} => ${ma[1]}`);
                     }
                 } else if (!(/^[.\w #:\\-]+$/u).test(ma[1])) {
@@ -164,8 +168,13 @@ describe('check LineCommand ruler', () => {
 
         expect(errList2).toStrictEqual([]);
         expect(errList3).toStrictEqual([]);
-        expect(errList4).toStrictEqual([]);
-        expect(errList5).toStrictEqual([]);
+        expect(errList4).toStrictEqual([
+            'ListLines => On,Off, |',
+            'SoundGet => MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|',
+        ]);
+        expect(errList5).toStrictEqual([
+            'WinGetTitle => [, ${3:WinTitle', // part 2 is ...
+        ]);
     });
 
     it('check: tmLanguage', () => {
