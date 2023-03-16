@@ -13,7 +13,7 @@
 ## Next v0.0.30(2023-03-XX)
 
 - fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
-  - [ ] part 1, parsing error of Command OutputVar
+  - [x] part 1, parsing error of Command OutputVar
   - [ ] part 3, need some time to fix unit-test.
   - [x] part 4, fix `ListLines` now.
   - [x] part 5, fix `WinGetTitle`

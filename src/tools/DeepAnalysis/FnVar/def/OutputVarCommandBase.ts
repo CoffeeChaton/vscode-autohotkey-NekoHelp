@@ -23,17 +23,27 @@ export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: 
         fnMode,
     } = need;
 
-    const ma: RegExpMatchArray | null = lStr.slice(col + len).match(/\b(\w+)\b/u);
+    // const mma = lStr
+    //     .slice(col + len)
+    //     .replace(/^\s*,?\s*/u, '')
+    //     .padStart(lStr.length, ' ');
+
+    const strF: string = lStr
+        .slice(col + len)
+        .replace(/^\s*,?\s*/u, '')
+        .padStart(lStr.length, ' ');
+
+    const ma: RegExpMatchArray | null = strF
+        .match(/^\s*(\w+)\b/u);
     if (ma === null) return null;
 
-    const character: number = (ma.index ?? 0) + col + len;
     const RawName: string = ma[1];
     const UpName: string = RawName.toUpperCase();
     if (paramMap.has(UpName) || GValMap.has(UpName)) return null;
 
     const value: TValMetaIn = getValMeta({
         line,
-        character,
+        character: strF.indexOf(RawName),
         RawName,
         valMap,
         lineComment,
