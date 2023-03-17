@@ -15,9 +15,9 @@
 - fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
   - [x] part 1, parsing error of Command OutputVar
   - [ ] part 3, need some time to fix unit-test.
-  - [x] part 4, fix `ListLines` now.
+  - [ ] part 4, fix `ListLines` now, add select CodeAction(_yellow light bulb_) to format it?
   - [x] part 5, fix `WinGetTitle`
-  - [x] part 6-1, fix `ControlFocus`
+  - [x] part 6-1, fix `ControlFocus` , and add unit_test
   - [x] part 6-2, fix `SetTimer`, `FileAppend`, `SetKeyDelay`
   - [x] part 6-3, fix `OutputDebug` and `#Requires` now.
 

@@ -29,8 +29,10 @@ Deep Analysis All Files
 Deep Analysis : 745 Symbol, function : 665 , method: 80
 paramMapSize is 1926
 valMapSize is 2032
-textMapSize is 360
-All Size is 4318
-Done in 9 ms
+textMapSize is 363
+All Size is 4321
+Done in 4 ms
+; at v0.0.29
+
 ; +6ms with c511 c512 c513, because not with weakMap cache
 */

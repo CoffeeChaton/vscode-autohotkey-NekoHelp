@@ -186,7 +186,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'CONTROLCLICK',
         keyRawName: 'ControlClick',
         body:
-            'ControlClick , [${1:Control_or_Pos}, ${2:WinTitle}, ${3:WinText}, ${4:WhichButton}, ${5:ClickCount}, ${6:Options}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
+            'ControlClick, [${1:Control_or_Pos}, ${2:WinTitle}, ${3:WinText}, ${4:WhichButton}, ${5:ClickCount}, ${6:Options}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
         doc: 'Sends a mouse button or mouse wheel event to a control.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlClick.htm',

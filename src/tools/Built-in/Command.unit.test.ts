@@ -246,4 +246,34 @@ describe('check LineCommand ruler', () => {
             ['WinWaitNotActive', 'https://www.autohotkey.com/docs/v1/lib/WinWaitActive.htm'],
         ]);
     });
+
+    it('check: #7 6-1 (https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)', () => {
+        // > There are a couple of commands that have a space after the comma (ControlFocus for example).
+        expect.hasAssertions();
+
+        const errList: TErrObj[] = [];
+        for (const v of LineCommand) {
+            const { keyRawName, body } = v;
+
+            if (
+                body === keyRawName
+                || body.startsWith(`${keyRawName},`)
+                || body.startsWith(`${keyRawName} [,`)
+                || body.startsWith(`${keyRawName} $`)
+            ) {
+                continue;
+            }
+
+            errList.push({
+                msg: '--86--267--52--79--64',
+                value: {
+                    keyRawName,
+                    msg: 'Comma is not standardized',
+                    body,
+                },
+            });
+        }
+
+        expect(errList).toHaveLength(0);
+    });
 });
