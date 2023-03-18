@@ -1,17 +1,18 @@
 export function getFistWordCore(lStrTrimFix: string): string {
-    const ma1: string | undefined = lStrTrimFix.match(/^(default)\s*:/iu)?.[1];
+    const str: string = lStrTrimFix.trim();
+    const ma1: string | undefined = str.match(/^(default)\s*:/iu)?.[1];
     if (ma1 !== undefined) return ma1;
 
     /**
      * } else$
      */
-    const ma2: string | undefined = lStrTrimFix.match(/^(\w+)$/u)?.[1];
+    const ma2: string | undefined = str.match(/^(\w+)$/u)?.[1];
     if (ma2 !== undefined) return ma2;
 
-    const ma3: string | undefined = lStrTrimFix.match(/^(\w+)\s*,/u)?.[1];
+    const ma3: string | undefined = str.match(/^(\w+)\s*,/u)?.[1];
     if (ma3 !== undefined) return ma3;
 
-    return lStrTrimFix.match(/^(\w+)\s+(?![:+\-*/~.|&^]=)/u)?.[1]
+    return str.match(/^(\w+)\s+(?![:+\-*/~.|&^]=)/u)?.[1]
         ?? '';
 }
 
