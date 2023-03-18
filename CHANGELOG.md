@@ -12,6 +12,9 @@
 
 ## Next v0.0.30(2023-03-XX)
 
+- fix: format `Alpha test options`
+  1. avoid working at `SecondWordUp` line.
+  2. fix avoid `!==` -> `!= =` now
 - fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
   - [x] part 1, parsing error of Command OutputVar
   - [ ] part 3, need some time to fix unit-test.

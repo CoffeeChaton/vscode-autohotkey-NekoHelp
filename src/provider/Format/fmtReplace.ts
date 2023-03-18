@@ -5,7 +5,8 @@ import { CommandMDMap } from '../../tools/Built-in/Command.tools';
 function textReplace(textElement: string): string {
     return textElement.replaceAll(/ *, */gu, ', ')
         .replaceAll(/ *:= */gu, ' := ')
-        .replaceAll(/ *!= */gu, ' != ')
+        .replaceAll(/ *!= *(?!=)/gu, ' != ')
+        .replaceAll(/ *!== */gu, ' !== ')
         // .replaceAll(/ *== */g, ' == ') test err
         // .replaceAll(/ *>= */g, ' >= ') test err
         // .replaceAll(/ *<= */g, ' <= ') test err
@@ -32,7 +33,7 @@ function textReplace(textElement: string): string {
         .replaceAll(/\bwhile\s*\(/gu, 'while (')
         .replaceAll(/\bWhile\s*\(/gu, 'While (')
         .replaceAll(/\bWHILE\s*\(/gu, 'WHILE (')
-        .replaceAll(/ *;/gu, ' ;');
+        .replaceAll(/ +;/gu, ' ;');
 
     // \s === [ \f\n\r\t\v]
     // need more TEST & options
@@ -82,16 +83,19 @@ export function lineReplace(AhkTokenLine: TAhkTokenLine, text: string, lStrTrim:
         detail,
         multiline,
         fistWordUp,
+        SecondWordUp,
     } = AhkTokenLine;
 
     return (lStrTrim === ''
-            || lStrTrim.startsWith('#')
+            || (lStrTrim.startsWith('#') && !(/^#if[ \t]/iu).test(lStrTrim))
             || detail.includes(EDetail.inSkipSign2)
             || detail.includes(EDetail.inComment)
             || multiline !== EMultiline.none
             || detail.includes(EDetail.isHotKeyLine)
             || detail.includes(EDetail.isHotStrLine)
-            || CommandMDMap.has(fistWordUp))
+            || CommandMDMap.has(fistWordUp)
+            || CommandMDMap.has(SecondWordUp))
         ? text
         : fnStrGroup(text);
 }
+// Text Replace Alpha test options
