@@ -65,7 +65,7 @@ function RemoveFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
     for (const { col, AhkTokenLine } of list) {
         const { textRaw, line } = AhkTokenLine;
         const strF: string = textRaw.slice(col).trim();
-        if ((/^,\s*[^,]/u).test(strF)) {
+        if ((/^,[ \t]*[^, \t]/u).test(strF)) {
             map.set(line, {
                 line,
                 oldText: textRaw,
@@ -77,7 +77,7 @@ function RemoveFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
     return map;
 }
 
-function unRemoveFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
+function addFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
     const map = new Map<number, TFmtCore>();
     for (const { col, AhkTokenLine } of list) {
         const { textRaw, line } = AhkTokenLine;
@@ -149,7 +149,7 @@ export async function CmdFirstCommaStyleSwitch(
 
     const diffMap: TFmtCoreMap = select === 0
         ? RemoveFirstOptComma(list)
-        : unRemoveFirstOptComma(list);
+        : addFirstOptComma(list);
 
     const WorkspaceEdit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
     const editList: vscode.TextEdit[] = applyVscodeEdit(diffMap);
