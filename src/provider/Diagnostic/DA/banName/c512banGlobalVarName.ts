@@ -1,10 +1,10 @@
 // It is related to the whole pm, be careful not to use weakmap memory
 import type { CAhkFunc, TValMapOut } from '../../../../AhkSymbol/CAhkFunc';
 import { getDiagConfig } from '../../../../configUI';
-import type { CDiagFn } from '../../../../provider/Diagnostic/tools/CDiagFn';
-import { C512Class } from '../../../../provider/Diagnostic/tools/CDiagFnLib/C512Class';
-import type { TFullFuncMap } from '../../../Func/getAllFunc';
-import { getAllFunc } from '../../../Func/getAllFunc';
+import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
+import { getAllFunc } from '../../../../tools/Func/getAllFunc';
+import type { CDiagFn } from '../../tools/CDiagFn';
+import { C512Class } from '../../tools/CDiagFnLib/C512Class';
 
 export function c512banGlobalVarName(
     ModuleValMap: TValMapOut,

@@ -1,11 +1,11 @@
 import type { CAhkFunc } from '../../../../AhkSymbol/CAhkFunc';
 import type { TAstRoot } from '../../../../AhkSymbol/TAhkSymbolIn';
 import { getDiagConfig } from '../../../../configUI';
-import type { CDiagFn } from '../../../../provider/Diagnostic/tools/CDiagFn';
-import { C511Class } from '../../../../provider/Diagnostic/tools/CDiagFnLib/C511Class';
-import type { TFullFuncMap } from '../../../Func/getAllFunc';
-import { getAllFunc } from '../../../Func/getAllFunc';
-import { getDAListTop } from '../../getDAList';
+import { getDAListTop } from '../../../../tools/DeepAnalysis/getDAList';
+import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
+import { getAllFunc } from '../../../../tools/Func/getAllFunc';
+import type { CDiagFn } from '../../tools/CDiagFn';
+import { C511Class } from '../../tools/CDiagFnLib/C511Class';
 
 export function c511banVarNam(
     AST: TAstRoot,
