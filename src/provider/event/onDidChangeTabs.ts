@@ -4,10 +4,10 @@ import { getIgnoredList, needDiag } from '../../configUI';
 import { rmFileDiag } from '../../core/diagColl';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { delOldCache, pm } from '../../core/ProjectManager';
-import { digDAFile } from '../../tools/DeepAnalysis/Diag/digDAFile';
 import { fsPathIsAllow } from '../../tools/fsTools/getUriList';
 import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
 import { isAhk, isAhkTab } from '../../tools/fsTools/isAhk';
+import { digDAFile } from '../Diagnostic/digDAFile';
 import { setBaseDiag } from '../Diagnostic/setBaseDiag';
 
 export function onDidChangeActiveTab(e: vscode.TextEditor | undefined): void {

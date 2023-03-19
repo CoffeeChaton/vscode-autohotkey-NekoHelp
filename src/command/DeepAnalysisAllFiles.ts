@@ -1,7 +1,7 @@
 import type { CAhkFunc } from '../AhkSymbol/CAhkFunc';
 import { pm } from '../core/ProjectManager';
+import { digDAFile } from '../provider/Diagnostic/digDAFile';
 import { setBaseDiag } from '../provider/Diagnostic/setBaseDiag';
-import { digDAFile } from '../tools/DeepAnalysis/Diag/digDAFile';
 import { getDAListTop } from '../tools/DeepAnalysis/getDAList';
 import { WordFrequencyStatistics } from './tools/WordFrequencyStatistics';
 

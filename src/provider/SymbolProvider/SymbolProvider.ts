@@ -3,8 +3,8 @@ import type * as vscode from 'vscode';
 import { needDiag, showTimeSpend, useSymbolProvider } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
-import { digDAFile } from '../../tools/DeepAnalysis/Diag/digDAFile';
 import { isAhkTab } from '../../tools/fsTools/isAhk';
+import { digDAFile } from '../Diagnostic/digDAFile';
 import { setBaseDiag } from '../Diagnostic/setBaseDiag';
 
 function SymbolProviderCore(document: vscode.TextDocument): vscode.DocumentSymbol[] {

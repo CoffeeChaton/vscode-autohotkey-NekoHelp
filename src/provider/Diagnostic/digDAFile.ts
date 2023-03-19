@@ -1,26 +1,26 @@
 import type * as vscode from 'vscode';
-import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
-import { getDiagConfig } from '../../../configUI';
-import { diagColl } from '../../../core/diagColl';
-import type { TAhkFileData } from '../../../core/ProjectManager';
-import type { TAhkTokenLine } from '../../../globalEnum';
-import { CDiagFn } from '../../../provider/Diagnostic/tools/CDiagFn';
-import type { C500Class } from '../../../provider/Diagnostic/tools/CDiagFnLib/C500Class';
-import type { C501Class } from '../../../provider/Diagnostic/tools/CDiagFnLib/C501Class';
-import type { C502Class } from '../../../provider/Diagnostic/tools/CDiagFnLib/C502Class';
-import { EPrefixC502 } from '../../../provider/Diagnostic/tools/CDiagFnLib/C502Class';
-import type { C504Class } from '../../../provider/Diagnostic/tools/CDiagFnLib/C504Class';
-import type { C505Class } from '../../../provider/Diagnostic/tools/CDiagFnLib/C505Class';
-import type { C506Class } from '../../../provider/Diagnostic/tools/CDiagFnLib/C506Class';
-import { getDAListTop } from '../getDAList';
-import { c511banVarNam } from './banName/c511banVarNam';
-import { c512banGlobalVarName } from './banName/c512banGlobalVarName';
-import { c513banLabelName } from './banName/c513banLabelName';
-import { caseSensitivityVar } from './caseSensitivity';
-import { C506DiagNumberStyle } from './otherDiag/C506DiagNumberStyle';
-import { NeverUsedParam, NeverUsedVar } from './param/paramNeverUsed';
-import { c505ErrParamParsedError } from './param/paramParsedErrRange';
-import { paramVariadicErr } from './param/paramVariadicErr';
+import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
+import { getDiagConfig } from '../../configUI';
+import { diagColl } from '../../core/diagColl';
+import type { TAhkFileData } from '../../core/ProjectManager';
+import type { TAhkTokenLine } from '../../globalEnum';
+import { c511banVarNam } from '../../tools/DeepAnalysis/Diag/banName/c511banVarNam';
+import { c512banGlobalVarName } from '../../tools/DeepAnalysis/Diag/banName/c512banGlobalVarName';
+import { c513banLabelName } from '../../tools/DeepAnalysis/Diag/banName/c513banLabelName';
+import { caseSensitivityVar } from '../../tools/DeepAnalysis/Diag/caseSensitivity';
+import { C506DiagNumberStyle } from '../../tools/DeepAnalysis/Diag/otherDiag/C506DiagNumberStyle';
+import { NeverUsedParam, NeverUsedVar } from '../../tools/DeepAnalysis/Diag/param/paramNeverUsed';
+import { c505ErrParamParsedError } from '../../tools/DeepAnalysis/Diag/param/paramParsedErrRange';
+import { paramVariadicErr } from '../../tools/DeepAnalysis/Diag/param/paramVariadicErr';
+import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
+import { CDiagFn } from './tools/CDiagFn';
+import type { C500Class } from './tools/CDiagFnLib/C500Class';
+import type { C501Class } from './tools/CDiagFnLib/C501Class';
+import type { C502Class } from './tools/CDiagFnLib/C502Class';
+import { EPrefixC502 } from './tools/CDiagFnLib/C502Class';
+import type { C504Class } from './tools/CDiagFnLib/C504Class';
+import type { C505Class } from './tools/CDiagFnLib/C505Class';
+import type { C506Class } from './tools/CDiagFnLib/C506Class';
 
 type TDaDiagCache = {
     DADiagList: readonly CDiagFn[],
