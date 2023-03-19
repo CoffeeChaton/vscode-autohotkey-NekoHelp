@@ -45,7 +45,7 @@ Moved to new page [[jump]](./code121.md)
 
 ```js
 122: {
-    msg: 'ahk-neko-help not supported "," or "`" flag now.',
+    msg: 'ahk-neko-help not supported "," flag now.', // `-flag is support at v0.0.31(2023-03-xx) https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/CHANGELOG.md
     path: 'https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section',
 },
 ```

@@ -173,7 +173,7 @@ export const Diags: DeepReadonly<TDiags> = {
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code121.md',
     },
     122: {
-        msg: 'ahk-neko-help is not work of (, `) flag now.',
+        msg: 'ahk-neko-help is not work of "," flag now.',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag122',
     },
     124: {

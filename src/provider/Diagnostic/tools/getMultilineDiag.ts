@@ -33,8 +33,8 @@ function diagEMultilineStart(multilineFlag: NonNull<TMultilineFlag>, line: numbe
         unknownFlag,
         isExpress,
         PercentFlag, // Percent: TPos[]; // %
-        commaFlag, // comma: TPos[]; // ,
-        accentFlag,
+        commaFlag, // ,-flag
+        // accentFlag, // `
     } = multilineFlag;
 
     const diagList: CDiagBase[] = [
@@ -49,7 +49,7 @@ function diagEMultilineStart(multilineFlag: NonNull<TMultilineFlag>, line: numbe
             .map((Pos: TPos): CDiagBase => fnMakeDiag(Pos, EDiagCode.code121, line, vscode.DiagnosticSeverity.Warning)),
     ];
 
-    if (commaFlag.length > 0 || accentFlag.length > 0) {
+    if (commaFlag.length > 0) {
         diagList.push(fnMakeDiag(PercentFlag[0], EDiagCode.code122, line, vscode.DiagnosticSeverity.Information));
     }
 

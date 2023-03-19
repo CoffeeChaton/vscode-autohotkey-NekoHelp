@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.31(2023-03-xx)](#next-v00312023-03-xx)
   - [v0.0.30(2023-03-19)](#v00302023-03-19)
   - [v0.0.29(2023-03-15)](#v00292023-03-15)
   - [0.0.28(2023-03-13)](#00282023-03-13)
@@ -9,6 +10,60 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## Next v0.0.31(2023-03-xx)
+
+- fix: multi-line has \`-flag semantic-highlight
+  ![multi-line-semantic-highlight has `-flag](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/image/Changelog/v0-0-31-multi-line-semantic-highlight.jpg)
+  <details>
+    <summary>try it</summary>
+
+  ```ahk
+  ::a1::
+          ( ` LTrim
+              F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+          ) ; F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+      ;                       ^ has `
+  Return
+
+  ::a2::
+          ( LTrim ; with out `flag
+              F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+          ) ; F4U5$4qIVVJ7S4uj%F5QM6gS3yY4*
+      ;                      ^ miss `
+
+  Return
+
+  ~F1::
+      MsgBox, % "
+          ( LTrim
+              F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+          )" ; F4U5$4qIVVJ7S4uj%F5QM6gS3yY4*
+  Return ;                    ^ miss `
+
+  ~F2::
+      MsgBox,
+          ( LTrim
+              F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+          ) ; F4U5$4qIVVJ7S4uj%F5QM6gS3yY4*
+  Return ;                   ^ miss `
+
+  ~F3::
+      MsgBox, % "
+          ( ` LTrim
+              F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+          )" ;F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+  Return ;                    ^ has `
+
+  ~F4::
+      MsgBox,
+          ( LTrim ` %
+              F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+          ) ; F4U5$4qIVVJ7S4uj`%F5QM6gS3yY4*
+  Return ;                    ^ has `
+  ```
+
+  </details>
 
 ## v0.0.30(2023-03-19)
 

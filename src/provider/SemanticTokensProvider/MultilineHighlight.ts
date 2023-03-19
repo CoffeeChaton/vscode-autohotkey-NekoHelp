@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { TTokenStream } from '../../globalEnum';
+import type { TAhkTokenLine, TTokenStream } from '../../globalEnum';
 import { EMultiline } from '../../globalEnum';
 import type { TokenTypes, TSemanticTokensLeaf } from './tools';
 
@@ -22,17 +22,42 @@ function setHighlight(
     });
 }
 
+function fixAccentFlag(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): null {
+    const {
+        multilineFlag,
+        lStr,
+        textRaw,
+        line,
+    } = AhkTokenLine;
+    if (multilineFlag === null) return null;
+    const { accentFlag } = multilineFlag;
+
+    if (accentFlag.length === 1) {
+        const len: number = lStr.length;
+        for (let i = 0; i < len; i++) {
+            const s: string = textRaw[i];
+            if (s === '`') {
+                setHighlight(line, i, i + 1, 'string', Tokens);
+                if (i + 1 < len) {
+                    setHighlight(line, i + 1, i + 2, 'string', Tokens);
+                }
+            }
+        }
+    }
+
+    return null;
+}
+
 export function MultilineHighlight(DocStrMap: TTokenStream): TSemanticTokensLeaf[] {
     const Tokens: TSemanticTokensLeaf[] = [];
 
-    for (
+    for (const AhkTokenLine of DocStrMap) {
         const {
             multiline,
             lStr,
             textRaw,
             line,
-        } of DocStrMap
-    ) {
+        } = AhkTokenLine;
         if (multiline !== EMultiline.mid) continue;
 
         const { length } = textRaw;
@@ -50,23 +75,8 @@ export function MultilineHighlight(DocStrMap: TTokenStream): TSemanticTokensLeaf
                 setHighlight(line, i, i + 1, 'keyword', Tokens);
             }
         }
-        // for (const ma of lStr.matchAll(/(\S+)/ug)) {
-        //     const rawName: string = ma[1].trim();
-        //     if ((/^_+$/u).test(rawName)) continue;
 
-        //     const ch: number | undefined = ma.index;
-        //     if (ch === undefined) continue;
-
-        //     if ((/^\w+\(/u).test(rawName)) {
-        //         setHighlight(line, ch, ch + rawName.indexOf('('), 'function', Tokens);
-        //     } else if ((/^\d+$/u).test(rawName) || (/^\d?\.\d+$/u).test(rawName)) {
-        //         setHighlight(line, ch, ch + rawName.length, 'number', Tokens);
-        //     } else if ((/^\w+$/u).test(rawName)) {
-        //         setHighlight(line, ch, ch + rawName.length, 'variable', Tokens);
-        //     } else {
-        //         setHighlight(line, ch, ch + rawName.length, 'keyword', Tokens);
-        //     }
-        // }
+        fixAccentFlag(AhkTokenLine, Tokens);
     }
 
     return Tokens;
