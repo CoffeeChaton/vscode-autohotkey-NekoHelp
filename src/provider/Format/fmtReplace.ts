@@ -33,7 +33,7 @@ function textReplace(textElement: string): string {
         .replaceAll(/\bwhile\s*\(/gu, 'while (')
         .replaceAll(/\bWhile\s*\(/gu, 'While (')
         .replaceAll(/\bWHILE\s*\(/gu, 'WHILE (')
-        .replaceAll(/ +;/gu, ' ;');
+        .replaceAll(/ *;/gu, ' ;');
 
     // \s === [ \f\n\r\t\v]
     // need more TEST & options
