@@ -4,10 +4,15 @@ import { EDetail } from '../../../globalEnum';
 export function getMatrixAhk2exeKeep(DocStrMap: TTokenStream): readonly boolean[] {
     const list: boolean[] = [];
 
-    let isAhk2exeKeep = false; // `/*@Ahk2Exe-Keep`
+    let isAhk2exeKeep = false;
+    // `/*@Ahk2Exe-Keep`
+    // `/*@ahk-neko-format-ignore-block`
 
     for (const { detail, textRaw } of DocStrMap) {
-        if (!isAhk2exeKeep && detail.includes(EDetail.inComment) && (/^\s*\/\*@Ahk2Exe-Keep\b/iu).test(textRaw)) {
+        if (
+            !isAhk2exeKeep && detail.includes(EDetail.inComment)
+            && (/^\s*\/\*@(?:Ahk2Exe-Keep|ahk-neko-format-ignore-block)\b/iu).test(textRaw)
+        ) {
             isAhk2exeKeep = true;
         }
 

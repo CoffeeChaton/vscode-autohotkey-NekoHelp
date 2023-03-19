@@ -32,6 +32,35 @@ const nekoExComment: readonly vscode.CompletionItem[] = ((): readonly vscode.Com
     return arr;
 })();
 
+/**
+ * ```ahk
+ * /*@ahk-neko-format-ignore-block
+ *
+ * ```
+ */
+const nekoFormatIgnoreBlockMd: vscode.MarkdownString = new vscode.MarkdownString(
+    'ignore any format in /* block */',
+    true,
+).appendCodeblock([
+    '/*@ahk-neko-format-ignore-block',
+    '     any code while not format, I think this will reduce the interference with git-diff.',
+    '  any code',
+    '*/',
+].join('\n'));
+
+const nekoFormatIgnoreBlock: vscode.CompletionItem = ((): vscode.CompletionItem => {
+    const item: vscode.CompletionItem = new vscode.CompletionItem({
+        label: '@ahk-neko-format-ignore-block',
+        // description: 'neko',
+    });
+    item.kind = vscode.CompletionItemKind.Snippet;
+    item.insertText = new vscode.SnippetString('ahk-neko-format-ignore-block\n');
+    item.detail = 'by-neko-help';
+    item.documentation = nekoFormatIgnoreBlockMd;
+
+    return item;
+})();
+
 export function getCommentCompletion(
     document: vscode.TextDocument,
     position: vscode.Position,
@@ -39,7 +68,7 @@ export function getCommentCompletion(
     const subStr: string = document.lineAt(position.line).text.slice(0, position.character);
 
     if ((/^\s*\/\*@$/u).test(subStr)) {
-        return [...snippetAhk2exeKeep];
+        return [...snippetAhk2exeKeep, nekoFormatIgnoreBlock];
     }
 
     return (/^\s*;@$/u).test(subStr)

@@ -267,6 +267,9 @@ support to find like
    ;@ahk-neko-format-ignore-end
    ;@ahk-neko-format-inline-spacing-ignore-start
    ;@ahk-neko-format-inline-spacing-ignore-end
+   /*@ahk-neko-format-ignore-block
+        ^ I think this will reduce the interference with git-diff.
+   */
    ```
 
 ## IntelliSense

@@ -222,11 +222,18 @@
                     ]
                 },
                 {
-                    "begin": "^[ \\t]*/\\*(?i:(@Ahk2Exe-(Keep)\\b))",
-                    "beginCaptures": {
-                        "1": { "name": "comment.block.ahk2exe.keep.ahk" },
-                        "2": { "name": "keyword.comment.ahk2exe.keep.ahk" }
-                    },
+                    "begin": "^[ \\t]*/\\*(?i:@ahk-neko-format-(ignore-block)\\b)",
+                    "beginCaptures": { "1": { "name": "keyword.comment.format.ignore.block.ahk" } },
+                    "end": "^[ \\t]*\\*/",
+                    "name": "comment.block.ahk",
+                    "patterns": [
+                        { "include": "#comment_neko_help_ignore" },
+                        { "include": "#comment_ahk2exe" }
+                    ]
+                },
+                {
+                    "begin": "^[ \\t]*/\\*(?i:@Ahk2Exe-(Keep)\\b)",
+                    "beginCaptures": { "1": { "name": "keyword.comment.ahk2exe.keep.ahk" } },
                     "end": "^[ \\t]*\\*/",
                     "name": "comment.block.ahk",
                     "patterns": [

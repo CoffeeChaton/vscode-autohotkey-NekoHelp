@@ -13,6 +13,7 @@
 
 ## Next v0.0.31(2023-03-xx)
 
+- feat: add `/*@ahk-neko-format-ignore-block` to not format block, I think this will reduce the interference with git-diff.
 - feat: at simple case ,the Legacy Assignment `a = str` , use syntax-highlight replace [v0.0.29(2023-03-15)](#v00292023-03-15) semantic-highlight.
   1. fix: use syntax-highlight, vscode to correctly match the brackets. [Bracket pair](https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization)
   2. fix: use syntax-highlight, vscode can use it at `hover markdown code-block` or any scene where [semantic-highlight](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide) is not called

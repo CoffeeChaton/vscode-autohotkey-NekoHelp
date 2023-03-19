@@ -108,3 +108,11 @@
 #           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
 #                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
 #                                        ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>
+>/*@ahk-neko-format-ignore-block
+#^^^^^^^^^^^^^^^^^^^ source.ahk comment.block.ahk
+#                   ^^^^^^^^^^^^ source.ahk comment.block.ahk keyword.comment.format.ignore.block.ahk
+>* something
+#^^^^^^^^^^^^ source.ahk comment.block.ahk
+>*/
+#^^ source.ahk comment.block.ahk

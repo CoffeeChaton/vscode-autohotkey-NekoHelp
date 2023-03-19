@@ -18,3 +18,7 @@
 ;@ahk-neko-format-inline-spacing-ignore-end
 ;@ahk-neko-format-inline-spacing-ignore-start
 ;@ahk-neko-format-inline-spacing-ignore-end
+
+/*@ahk-neko-format-ignore-block
+* something
+*/
