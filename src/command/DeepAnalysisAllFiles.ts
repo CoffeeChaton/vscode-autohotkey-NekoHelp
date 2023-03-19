@@ -33,6 +33,5 @@ textMapSize is 363
 All Size is 4321
 Done in 4 ms
 ; at v0.0.29
-
-; +6ms with c511 c512 c513, because not with weakMap cache
+; at v0.0.30
 */
