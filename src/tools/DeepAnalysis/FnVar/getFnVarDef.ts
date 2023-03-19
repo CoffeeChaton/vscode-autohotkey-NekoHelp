@@ -4,11 +4,13 @@ import type { TGValMap } from '../../../core/ParserTools/ahkGlobalDef';
 import type { TVarData } from '../../../core/ParserTools/varMixedAnnouncement';
 import { varMixedAnnouncement } from '../../../core/ParserTools/varMixedAnnouncement';
 import type { TTokenStream } from '../../../globalEnum';
+import { EDetail } from '../../../globalEnum';
 import type { TBrackets } from '../../Bracket';
 import { forLoop } from './def/forLoop';
 import { getValMeta } from './def/getValMeta';
 import { OutputVarCommandBase } from './def/OutputVarCommandBase';
 import { OutputVarCommandPlus } from './def/OutputVarCommandPlus';
+import { setVarByLegacyAssignment } from './def/setVarByLegacyAssignment';
 import { varSetCapacityFunc } from './def/varSetCapacityFunc';
 import { walrusOperator } from './def/walrusOperator';
 import { EFnMode } from './EFnMode';
@@ -139,7 +141,12 @@ export function getFnVarDef(
         walrusOperator(need); // :=
         varSetCapacityFunc(need); // VarSetCapacity(varName) or NumGet(varName) or NumGet(&varName)
 
-        const { SecondWordUp, SecondWordUpCol, fistWordUpCol } = AhkTokenLine;
+        const {
+            SecondWordUp,
+            SecondWordUpCol,
+            fistWordUpCol,
+            detail,
+        } = AhkTokenLine;
 
         if (SecondWordUp !== '') {
             OutputVarCommandBase(need, SecondWordUp, SecondWordUpCol);
@@ -151,6 +158,9 @@ export function getFnVarDef(
             forLoop(need, fistWordUp, fistWordUpCol);
         }
 
+        if (detail.includes(EDetail.inSkipSign2)) {
+            setVarByLegacyAssignment(need);
+        }
         // not plan to support this case....
         // DllCall("DllFile\Function" , Type1, Arg1, Type2, Arg2, "Cdecl ReturnType")
         // ----------------------------------------------------------------^

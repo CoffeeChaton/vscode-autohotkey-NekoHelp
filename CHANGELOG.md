@@ -13,6 +13,7 @@
 
 ## Next v0.0.31(2023-03-xx)
 
+- feat: set Var By Legacy Assignment `a = str`
 - fix: multi-line has \`-flag semantic-highlight
   ![multi-line-semantic-highlight has `-flag](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/image/Changelog/v0-0-31-multi-line-semantic-highlight.jpg)
   <details>
