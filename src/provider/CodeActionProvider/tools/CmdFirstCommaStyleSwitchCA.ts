@@ -9,9 +9,9 @@ function setFmtCmdFirstCommaCA(
     AhkFileData: TAhkFileData,
     selection: vscode.Selection,
 ): [vscode.CodeAction] {
-    const CA1 = new vscode.CodeAction('[fmt] add/Remove the first optional comma of command');
+    const CA1 = new vscode.CodeAction('[fmt][beta] add/Remove the first optional comma of command');
     CA1.command = {
-        title: '[fmt] add/Remove the first optional comma of command',
+        title: '[fmt][beta] add/Remove the first optional comma of command',
         command: ECommand.CmdFirstCommaStyleSwitch,
         tooltip: 'by neko-help (beta)',
         arguments: [

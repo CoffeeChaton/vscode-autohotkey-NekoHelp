@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.30(2023-03-XX)](#next-v00302023-03-xx)
+  - [v0.0.30(2023-03-19)](#v00302023-03-19)
   - [v0.0.29(2023-03-15)](#v00292023-03-15)
   - [0.0.28(2023-03-13)](#00282023-03-13)
   - [0.0.27(2023-03-11)](#00272023-03-11)
@@ -10,22 +10,23 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.30(2023-03-XX)
+## v0.0.30(2023-03-19)
 
 - fix: format `Alpha test options`
   1. avoid working at `SecondWordUp` line.
   2. fix avoid `!==` -> `!= =` now
 - fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
   - [x] part 1, parsing error of Command OutputVar
-  - [ ] part 3-1, need some time to fix unit-test, Help users tab to `$0`
+  - [x] ~~part 3-1, need some time to fix unit-test, Help users tab to `$0`~~, `$0` is need to use at part 4-2
   - [x] part 3-2, add select CodeAction(_yellow light bulb_) to format it
-  - [x] part 4, fix `ListLines` now
+  - [x] part 4-1, fix `ListLines` now
+  - [ ] part 4-2, let `[` -> `,[$0` , this helps users to tab to delete this, and using unit-test.
   - [x] part 5, fix `WinGetTitle`
   - [x] part 6-1, fix `ControlFocus` , and add unit_test
   - [x] part 6-2, fix `SetTimer`, `FileAppend`, `SetKeyDelay`
   - [x] part 6-3, fix `OutputDebug` and `#Requires` now.
 
-- fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7) part 3-2
+- fix: about part 3-2 [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
   > in v1.1 the initial comma after a command is optional
 
   add select CodeAction(_yellow light bulb_) to format like it.

@@ -123,17 +123,17 @@ export async function CmdFirstCommaStyleSwitch(
     selection: vscode.Selection,
 ): Promise<void> {
     type TCommand = {
-        select: 0 | 1,
+        select: 1 | 2,
         label: string,
     };
 
     const sate: TCommand | undefined = await vscode.window.showQuickPick<TCommand>([
         {
-            select: 0,
+            select: 1,
             label: '1 -> try "Sleep, 1000" -> "Sleep 1000" ; (Remove first optional comma after command)',
         },
         {
-            select: 1,
+            select: 2,
             label: '2 -> try "Sleep 1000" -> "Sleep, 1000" ; (add first optional comma after command)',
         },
     ]);
@@ -142,12 +142,12 @@ export async function CmdFirstCommaStyleSwitch(
     const t1: number = Date.now();
 
     const { select, label } = sate;
-    fmtLog.info(label);
+    fmtLog.info(`'${label}'`);
 
     const { DocStrMap, uri } = AhkFileData;
     const list: readonly TCmdSwitchComma[] = getCmdSwitchCommaList(DocStrMap, selection);
 
-    const diffMap: TFmtCoreMap = select === 0
+    const diffMap: TFmtCoreMap = select === 1
         ? RemoveFirstOptComma(list)
         : addFirstOptComma(list);
 
@@ -158,7 +158,7 @@ export async function CmdFirstCommaStyleSwitch(
 
     await vscode.workspace.applyEdit(WorkspaceEdit);
 
-    fmtLog.info(`ms : -> ${ms} , of label`);
+    fmtLog.info(`ms : -> ${ms} , of '${label}'`);
     if (editList.length > 0) {
         fmtLog.show();
     }
