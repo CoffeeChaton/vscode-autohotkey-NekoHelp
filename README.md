@@ -297,21 +297,8 @@ support to find like
 
 semantic-highlight of `MyString = This is a literal string.` equal sign operator (=)
 
-<details><summary>try it</summary>
-
-```ahk
-#Requires AutoHotkey v1.1.33
-
-MyNumber = 123
-MyString = This is a literal string.
-Var := "hi~"
-CopyOfVar = var say %Var% ! ; With the = operator, percent signs are required to retrieve a variable's contents.
-CopyOfVar = var say % Var " !"
-```
-
-</details>
-
-![img](./image/Changelog/v0-0-29-fix-old-set-var.png)
+[__legacy_assignment](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/syntaxes/grammar/__legacy_assignment.ahk)
+![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-31-legacy-assignment.png)
 
 ### of Numbers
 

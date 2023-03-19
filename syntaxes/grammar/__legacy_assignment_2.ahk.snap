@@ -1,0 +1,66 @@
+>
+>OutputVar := "i am OutputVar now"
+#^^^^^^^^^^ source.ahk
+#          ^^ source.ahk keyword.operator.assignment.ahk
+#            ^ source.ahk
+#             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#              ^^^^^^^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
+#                                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>el_error_line = text := "--%A_Sec%--%A_MSec%--%OutputVar%-->>> " A_ThisFunc `nfn_print(text) % foo + coo() +0 ; comment
+#^^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk
+#               ^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                            ^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk variable.other.constant.builtin.ahk
+#                                 ^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                                     ^^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk variable.other.constant.builtin.ahk
+#                                           ^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                                                                 ^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk variable.other.constant.builtin.ahk
+#                                                                           ^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                                                                            ^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk constant.character.escape.ahk
+#                                                                              ^^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                                                                                             ^^ source.ahk meta.old_set_var_case0.ahk
+#                                                                                               ^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                                                                   ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk keyword.operator.arithmetic.ahk
+#                                                                                                    ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                                                                     ^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk entity.name.function.ahk
+#                                                                                                        ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk punctuation.bracket.ahk
+#                                                                                                         ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk punctuation.bracket.ahk
+#                                                                                                          ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                                                                           ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk keyword.operator.arithmetic.ahk
+#                                                                                                            ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk constant.numeric.decimal.ahk
+#                                                                                                             ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk meta.comment.line.semicolon.ahk
+#                                                                                                              ^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>el_error_line = % OutputVar "%-->>> " A_ThisFunc "`nfn_print(text)" ; comment
+#^^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk
+#               ^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                ^^ source.ahk meta.old_set_var_case0.ahk
+#                  ^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                            ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                             ^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk
+#                                    ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                     ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                      ^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk variable.other.constant.builtin.ahk
+#                                                ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                 ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                  ^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                                    ^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk
+#                                                                  ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                                   ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk meta.comment.line.semicolon.ahk
+#                                                                    ^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>el_error_line = str str %OutputVar%str--str % OutputVar "%-->>> " A_ThisFunc "`nfn_print(text)" ; comment
+#^^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk string.old_set_var.ahk
+#                                            ^^ source.ahk meta.old_set_var_case0.ahk
+#                                              ^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                        ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                         ^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk
+#                                                                ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                                 ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                                  ^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk variable.other.constant.builtin.ahk
+#                                                                            ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk
+#                                                                             ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                                              ^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                                                                ^^^^^^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk
+#                                                                                              ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                                                               ^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk meta.comment.line.semicolon.ahk
+#                                                                                                ^^^^^^^^^ source.ahk meta.old_set_var_case0.ahk meta.old_set_var_expression.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>

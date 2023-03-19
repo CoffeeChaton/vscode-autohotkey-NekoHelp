@@ -14,52 +14,16 @@
 ## Next v0.0.31(2023-03-xx)
 
 - feat: at simple case ,the Legacy Assignment `a = str` , use syntax-highlight replace [v0.0.29(2023-03-15)](#v00292023-03-15) semantic-highlight.
-  1. fix: use syntax-highlight, vscode to correctly match the brackets.
-  2. perf: in older computers, syntax-highlight comes faster than semantic-highlight <https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization>
-  3. fix: use syntax-highlight, can display the builtin_variable (`A_var`) ,escaped_char , and numbers (`0`) at the right of the equal sign.
-  <details>
-    <summary>code</summary>
-
-  ```ahk
-  Random(Min = "", Max = "") {
-      Random, v, %Min%, %Max%
-      Return, v
-  }
-
-  fn_hot_strings_error_line() {
-      local
-      OutputVar := Random(0, 99)
-      ;@ahk-neko-ignore 1 line
-      el_error_line = text := "--------------%A_Sec%--%A_MSec%--%OutputVar%------------->>> " A_ThisFunc `nfn_print(text) ; comment
-      SendInput {Text}%el_error_line%
-
-      Sleep, 1000
-      c := 0
-      el_error_line_arr0 := ""
-      ;@ahk-neko-ignore 1 line
-      el_error_line_arr%c% = text := "--------------%A_Sec%--%A_MSec%--%OutputVar%--01----------->>> " A_ThisFunc `nfn_print(text) ; comment
-      MsgBox, % "el_error_line%c% is `n" el_error_line_arr%c%
-      MsgBox, % "el_error_line_arr0 is `n" el_error_line_arr0
-
-      0_err := ""
-      ;@ahk-neko-ignore 1 line
-      %c%_err = text := "--------------%A_Sec%--%A_MSec%--%OutputVar%--01----------->>> " A_ThisFunc `nfn_print(text) ; comment
-      MsgBox, % "%c%_err is `n" %c%_err
-      MsgBox, % "0_err `n" 0_err
-
-      ListLines
-  }
-
-  ::el,,::
-      fn_hot_strings_error_line()
-  Return
-  ```
-
-  </details>
-  ![img to show](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-31-legacy-assignment.png)
+  1. fix: use syntax-highlight, vscode to correctly match the brackets. [Bracket pair](https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization)
+  2. fix: use syntax-highlight, vscode can use it at `hover markdown code-block` or any scene where [semantic-highlight](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide) is not called
+  3. perf: in most cases syntax-highlight comes faster than i provide-semantic-highlight. [vscode optimizations](https://code.visualstudio.com/blogs/2017/02/08/syntax-highlighting-optimizations)
+  4. fix: use syntax-highlight, can display the builtin_variable (`A_var`) ,escaped_char , and numbers (`0`) at the right of the equal sign.
+     ![img to show](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-31-legacy-assignment.png)
+  5. try it now <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/syntaxes/grammar/__legacy_assignment.ahk>
+  6. semantic-highlight will only work when syntax-highlight does not hit now.
 
 - feat: set Var By Legacy Assignment `a = str`
-- fix: multi-line has \`-flag semantic-highlight
+- fix: multi-line has \`-flag (by semantic-highlight)
   ![multi-line-semantic-highlight has `-flag](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-31-multi-line-semantic-highlight.jpg)
   <details>
     <summary>try it</summary>
