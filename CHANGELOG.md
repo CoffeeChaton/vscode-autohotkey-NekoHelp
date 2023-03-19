@@ -13,6 +13,19 @@
 
 ## Next v0.0.31(2023-03-xx)
 
+- feat:add diag code507, can't set `0xNumber` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
+  > check Checks the variable name startWith `0x`
+
+  ```ahk
+  0x001 := "9999" ; Cannot set 0xNumber as variable
+  MsgBox, % 0x001 ; show "0x001"
+  MsgBox, % 0x001 + 0 ; show 0, Because "0x001" + 0    ->    0 + 0    ->   0
+
+  0x001 := 9999 ; Cannot set 0xNumber as variable
+  MsgBox, % 0x001 ; "0x001"
+  MsgBox, % 0x001 + 0 ;
+  ```
+
 - feat: add `/*@ahk-neko-format-ignore-block` to not format block, I think this will reduce the interference with git-diff.
 - feat: at simple case ,the Legacy Assignment `a = str` , use syntax-highlight replace [v0.0.29(2023-03-15)](#v00292023-03-15) semantic-highlight.
   1. fix: use syntax-highlight, vscode to correctly match the brackets. [Bracket pair](https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization)

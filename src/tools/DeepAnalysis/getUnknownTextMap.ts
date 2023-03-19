@@ -108,6 +108,13 @@ export function getUnknownTextMap(
                 continue;
             }
 
+            if (
+                (/^\d+$/u).test(wordUp) // just number
+                || (/^0X[\dA-F]+$/u).test(wordUp) // NumHexConst = 0 x [0-9a-fA-F]+
+            ) {
+                continue;
+            }
+
             const oldParam: TParamMetaIn | undefined = paramMap.get(wordUp);
             if (oldParam !== undefined) {
                 pushRef(oldParam, keyRawName, line, character);
@@ -145,8 +152,6 @@ export function getUnknownTextMap(
                     || AVariablesMDMap.has(wordUp) || StatementMDMap.has(wordUp)
                     || Bi_VarMDMap.has(wordUp)
                     // || (/^_+$/u).test(wordUp) // str
-                    || (/^\d+$/u).test(wordUp) // just number
-                    || (/^0X[\dA-F]+$/u).test(wordUp) // NumHexConst = 0 x [0-9a-fA-F]+
                     || otherKeyword2MD.has(wordUp)
                     || WinTitleMDMap.has(wordUp)
                     /*

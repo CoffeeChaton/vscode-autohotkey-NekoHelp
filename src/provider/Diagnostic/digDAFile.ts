@@ -16,7 +16,9 @@ import { EPrefixC502 } from './DA/CDiagFnLib/C502Class';
 import type { C504Class } from './DA/CDiagFnLib/C504Class';
 import type { C505Class } from './DA/CDiagFnLib/C505Class';
 import type { C506Class } from './DA/CDiagFnLib/C506Class';
+import type { C507Class } from './DA/CDiagFnLib/C507Class';
 import { C506DiagNumberStyle } from './DA/otherDiag/C506DiagNumberStyle';
+import { C507SetVarErr0xNumber } from './DA/otherDiag/C5070xNumberSetVarErr';
 import { NeverUsedParam, NeverUsedVar } from './DA/param/paramNeverUsed';
 import { c505ErrParamParsedError } from './DA/param/paramParsedErrRange';
 import { paramVariadicErr } from './DA/param/paramVariadicErr';
@@ -63,6 +65,7 @@ function diagDAFileCore(
     const code504List: C504Class[] = [];
     const code505List: C505Class[] = [];
     const code506List: C506Class[] = [];
+    const code507List: C507Class[] = [];
 
     for (const { paramMap, valMap, textMap } of DAList) {
         NeverUsedVar(valMap, code500List, code500Max, displayErrList);
@@ -72,14 +75,19 @@ function diagDAFileCore(
         paramVariadicErr(paramMap, code504List);
         c505ErrParamParsedError(paramMap, code505List);
         C506DiagNumberStyle(textMap, code506List);
+        C507SetVarErr0xNumber(paramMap, code507List);
+        C507SetVarErr0xNumber(valMap, code507List);
+
         // TODO diag? https://stackoverflow.com/questions/12684985/why-doesnt-autohotkey-support-default-parameters-in-the-middle-of-the-parameter
     }
+    const { ModuleValMap, ModuleTextMap } = AhkFileData.ModuleVar;
+
     if (useModuleValDiag) {
-        const { ModuleValMap, ModuleTextMap } = AhkFileData.ModuleVar;
         NeverUsedVar(ModuleValMap, code500List, code500Max, displayErrList);
         caseSensitivityVar(EPrefixC502.var, ModuleValMap, code502List, code502Max, displayErrList);
-        C506DiagNumberStyle(ModuleTextMap, code506List);
     }
+    C506DiagNumberStyle(ModuleTextMap, code506List);
+    C507SetVarErr0xNumber(ModuleValMap, code507List);
 
     const DADiagList: readonly CDiagFn[] = [
         ...code500List,
@@ -89,6 +97,7 @@ function diagDAFileCore(
         ...code504List,
         ...code505List,
         ...code506List,
+        ...code507List,
     ];
 
     wm.set(DAList, {
