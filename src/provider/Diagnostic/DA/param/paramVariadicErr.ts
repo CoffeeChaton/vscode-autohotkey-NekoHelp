@@ -1,5 +1,5 @@
 import type { TParamMapOut } from '../../../../AhkSymbol/CAhkFunc';
-import { C504Class } from '../../tools/CDiagFnLib/C504Class';
+import { C504Class } from '../CDiagFnLib/C504Class';
 
 export function paramVariadicErr(paramMap: TParamMapOut, code504List: C504Class[]): void {
     const rightIndex: number = paramMap.size - 1;

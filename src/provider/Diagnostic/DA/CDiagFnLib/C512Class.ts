@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc, TValMetaOut } from '../../../../AhkSymbol/CAhkFunc';
 import { EDiagCodeDA } from '../../../../diag';
-import { CDiagFn } from '../CDiagFn';
+import { CDiagFn } from '../../tools/CDiagFn';
 
 export class C512Class extends CDiagFn {
     public constructor(v: TValMetaOut, ahkFn: CAhkFunc) {

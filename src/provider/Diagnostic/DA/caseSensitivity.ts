@@ -1,7 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TC502New, TParamMapOut, TValMapOut } from '../../../AhkSymbol/CAhkFunc';
-import type { EPrefixC502 } from '../tools/CDiagFnLib/C502Class';
-import { C502Class } from '../tools/CDiagFnLib/C502Class';
+import type { EPrefixC502 } from './CDiagFnLib/C502Class';
+import { C502Class } from './CDiagFnLib/C502Class';
 
 function getRangeOfC502(
     defRangeList: readonly vscode.Range[],

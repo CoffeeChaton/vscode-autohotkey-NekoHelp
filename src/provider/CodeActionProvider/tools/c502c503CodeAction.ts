@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { C502Class } from '../../Diagnostic/tools/CDiagFnLib/C502Class';
+import type { C502Class } from '../../Diagnostic/DA/CDiagFnLib/C502Class';
 
 // replace ref like Def
 function getCA0(uri: vscode.Uri, defStr: string, refRange: vscode.Range): vscode.CodeAction {

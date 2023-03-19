@@ -9,18 +9,18 @@ import { c511banVarNam } from './DA/banName/c511banVarNam';
 import { c512banGlobalVarName } from './DA/banName/c512banGlobalVarName';
 import { c513banLabelName } from './DA/banName/c513banLabelName';
 import { caseSensitivityVar } from './DA/caseSensitivity';
+import type { C500Class } from './DA/CDiagFnLib/C500Class';
+import type { C501Class } from './DA/CDiagFnLib/C501Class';
+import type { C502Class } from './DA/CDiagFnLib/C502Class';
+import { EPrefixC502 } from './DA/CDiagFnLib/C502Class';
+import type { C504Class } from './DA/CDiagFnLib/C504Class';
+import type { C505Class } from './DA/CDiagFnLib/C505Class';
+import type { C506Class } from './DA/CDiagFnLib/C506Class';
 import { C506DiagNumberStyle } from './DA/otherDiag/C506DiagNumberStyle';
 import { NeverUsedParam, NeverUsedVar } from './DA/param/paramNeverUsed';
 import { c505ErrParamParsedError } from './DA/param/paramParsedErrRange';
 import { paramVariadicErr } from './DA/param/paramVariadicErr';
 import { CDiagFn } from './tools/CDiagFn';
-import type { C500Class } from './tools/CDiagFnLib/C500Class';
-import type { C501Class } from './tools/CDiagFnLib/C501Class';
-import type { C502Class } from './tools/CDiagFnLib/C502Class';
-import { EPrefixC502 } from './tools/CDiagFnLib/C502Class';
-import type { C504Class } from './tools/CDiagFnLib/C504Class';
-import type { C505Class } from './tools/CDiagFnLib/C505Class';
-import type { C506Class } from './tools/CDiagFnLib/C506Class';
 
 type TDaDiagCache = {
     DADiagList: readonly CDiagFn[],

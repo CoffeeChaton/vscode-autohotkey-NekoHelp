@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { EDiagCodeDA } from '../../../../diag';
-import { CDiagFn } from '../CDiagFn';
+import { CDiagFn } from '../../tools/CDiagFn';
 
 export const enum EPrefixC502 {
     var = 'var',

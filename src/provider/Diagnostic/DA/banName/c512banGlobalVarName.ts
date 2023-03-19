@@ -4,7 +4,7 @@ import { getDiagConfig } from '../../../../configUI';
 import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
 import type { CDiagFn } from '../../tools/CDiagFn';
-import { C512Class } from '../../tools/CDiagFnLib/C512Class';
+import { C512Class } from '../CDiagFnLib/C512Class';
 
 export function c512banGlobalVarName(
     ModuleValMap: TValMapOut,

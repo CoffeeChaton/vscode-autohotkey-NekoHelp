@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { C506Class } from '../../Diagnostic/tools/CDiagFnLib/C506Class';
+import type { C506Class } from '../../Diagnostic/DA/CDiagFnLib/C506Class';
 
 export function c506CodeAction(uri: vscode.Uri, diag: C506Class): vscode.CodeAction[] {
     const { range, keyUpName } = diag;

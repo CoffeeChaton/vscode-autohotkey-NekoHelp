@@ -6,7 +6,7 @@ import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
 import { findAllLabelMap } from '../../../../tools/labels';
 import type { CDiagFn } from '../../tools/CDiagFn';
-import { C513Class } from '../../tools/CDiagFnLib/C513Class';
+import { C513Class } from '../CDiagFnLib/C513Class';
 
 export function c513banLabelName(
     AST: TAstRoot,

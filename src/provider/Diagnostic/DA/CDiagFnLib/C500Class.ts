@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { DiagsDA, EDiagCodeDA } from '../../../../diag';
-import { CDiagFn } from '../CDiagFn';
+import { CDiagFn } from '../../tools/CDiagFn';
 
 export class C500Class extends CDiagFn {
     //

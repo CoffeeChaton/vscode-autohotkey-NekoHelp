@@ -5,7 +5,7 @@ import { getDAListTop } from '../../../../tools/DeepAnalysis/getDAList';
 import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
 import type { CDiagFn } from '../../tools/CDiagFn';
-import { C511Class } from '../../tools/CDiagFnLib/C511Class';
+import { C511Class } from '../CDiagFnLib/C511Class';
 
 export function c511banVarNam(
     AST: TAstRoot,
