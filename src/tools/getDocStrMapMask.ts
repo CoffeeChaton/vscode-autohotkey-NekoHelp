@@ -1,11 +1,11 @@
 import type * as vscode from 'vscode';
-import type { TAhkToken, TTokenStream } from '../globalEnum';
+import type { TAhkTokenLine, TTokenStream } from '../globalEnum';
 import { log } from '../provider/vscWindows/log';
 
 function getDocStrMapMaskSlowMode(range: vscode.Range, DocStrMap: TTokenStream): TTokenStream {
     const startLine: number = range.start.line;
     const endLine: number = range.end.line;
-    const AhkTokenList: TAhkToken = [];
+    const AhkTokenList: TAhkTokenLine[] = [];
     for (const e of DocStrMap) {
         if (e.line < startLine) continue;
         if (e.line > endLine) break;

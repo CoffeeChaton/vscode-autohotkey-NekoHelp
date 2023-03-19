@@ -104,8 +104,6 @@ export type TAhkTokenLine = DeepReadonly<{
     // I know this is not Complete and correct Token.
 }>;
 
-export type TAhkToken = TAhkTokenLine[];
-
 export type TTokenStream = readonly TAhkTokenLine[];
 
 /**
