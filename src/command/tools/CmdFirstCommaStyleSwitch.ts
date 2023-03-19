@@ -11,14 +11,9 @@ type TCmdSwitchComma = {
     AhkTokenLine: TAhkTokenLine,
 };
 
-function getCmdSwitchCommaList(DocStrMap: TTokenStream, selection: vscode.Selection): readonly TCmdSwitchComma[] {
+function getCmdSwitchCommaList(DocStrMap: TTokenStream, s: number, e: number): readonly TCmdSwitchComma[] {
     const result: TCmdSwitchComma[] = [];
     const logList: string[] = ['"match cmd" : ['];
-    const { start, end } = selection;
-    const s: number = start.line;
-    const e: number = end.line;
-    fmtLog.info(`select range of line [${s}, ${e}]`);
-
     for (let i = s; i <= e; i++) {
         const AhkTokenLine: TAhkTokenLine = DocStrMap[i];
         const {
@@ -42,8 +37,7 @@ function getCmdSwitchCommaList(DocStrMap: TTokenStream, selection: vscode.Select
                 logList.push(`    ${line} -> "${textRaw.slice(fistWordUpCol, lStr.length).trim()}"`);
                 continue;
             }
-        }
-        if (CommandMDMap.has(SecondWordUp)) {
+        } else if (CommandMDMap.has(SecondWordUp)) {
             const col: number = SecondWordUp.length + SecondWordUpCol;
             if (lStr.trimEnd().length !== col) {
                 result.push({
@@ -145,21 +139,23 @@ export async function CmdFirstCommaStyleSwitch(
     fmtLog.info(`'${label}'`);
 
     const { DocStrMap, uri } = AhkFileData;
-    const list: readonly TCmdSwitchComma[] = getCmdSwitchCommaList(DocStrMap, selection);
+    const { start, end } = selection;
+    const s: number = start.line;
+    const e: number = end.line;
+    fmtLog.info(`select range of line [${s}, ${e}]`);
+    const list: readonly TCmdSwitchComma[] = getCmdSwitchCommaList(DocStrMap, s, e);
 
     const diffMap: TFmtCoreMap = select === 1
         ? RemoveFirstOptComma(list)
         : addFirstOptComma(list);
 
-    const WorkspaceEdit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
     const editList: vscode.TextEdit[] = applyVscodeEdit(diffMap);
-    WorkspaceEdit.set(uri, editList);
-    const ms: number = Date.now() - t1;
-
-    await vscode.workspace.applyEdit(WorkspaceEdit);
-
-    fmtLog.info(`ms : -> ${ms} , of '${label}'`);
     if (editList.length > 0) {
+        const WorkspaceEdit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
+        WorkspaceEdit.set(uri, editList);
+        await vscode.workspace.applyEdit(WorkspaceEdit);
+        const ms: number = Date.now() - t1;
+        fmtLog.info(`ms : -> ${ms} , of '${label}'`);
         fmtLog.show();
     }
 }
