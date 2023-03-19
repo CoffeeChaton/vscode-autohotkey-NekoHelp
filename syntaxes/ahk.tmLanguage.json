@@ -9,6 +9,7 @@
         { "include": "#hotkey" },
         { "include": "#directives" },
         { "include": "#class_def_line" },
+        { "include": "#old_set_var_legacy_assignment" },
         { "include": "#string_multi_line" },
         { "include": "#command" },
         { "include": "#builtin_variable" },
@@ -503,6 +504,58 @@
             "end": "^[ \\t]*\\)(?:\")?",
             "name": "string.multiline.ahk",
             "patterns": [ { "include": "#escaped_char" } ]
+        },
+        "old_set_var_legacy_assignment": {
+            "patterns": [
+                {
+                    "begin": "^[ \\t]*\\w+[ \\t]*=(?!=)(.*)",
+                    "beginCaptures": {
+                        "1": {
+                            "patterns": [
+                                { "include": "#escaped_char" },
+                                { "include": "#comment" },
+                                { "include": "#builtin_variable" },
+                                { "include": "#number" }
+                            ],
+                            "name": "string.old_set_var_case0.ahk"
+                        }
+                    },
+                    "end": "\\n",
+                    "name": "meta.meta.old_set_var_case0.ahk"
+                },
+                {
+                    "begin": "^[ \\t]*\\w+%\\w+%[ \\t]*=(?!=)(.*)",
+                    "beginCaptures": {
+                        "1": {
+                            "patterns": [
+                                { "include": "#escaped_char" },
+                                { "include": "#comment" },
+                                { "include": "#builtin_variable" },
+                                { "include": "#number" }
+                            ],
+                            "name": "string.old_set_var_ase1.ahk"
+                        }
+                    },
+                    "end": "\\n",
+                    "name": "meta.meta.old_set_var_case1.ahk"
+                },
+                {
+                    "begin": "^[ \\t]*%\\w+%\\w+[ \\t]*=(?!=)(.*)",
+                    "beginCaptures": {
+                        "1": {
+                            "patterns": [
+                                { "include": "#escaped_char" },
+                                { "include": "#comment" },
+                                { "include": "#builtin_variable" },
+                                { "include": "#number" }
+                            ],
+                            "name": "string.old_set_var_ase2.ahk"
+                        }
+                    },
+                    "end": "\\n",
+                    "name": "meta.meta.old_set_var_case2.ahk"
+                }
+            ]
         }
     },
     "scopeName": "source.ahk"

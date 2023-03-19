@@ -35,13 +35,13 @@ describe('check tmLanguage ruler', () => {
                 errList0.push({ msg: 'name not match a-z_0-9', value });
             }
 
-            if (!(/[a-z]\.ahk$/u).test(value)) {
+            if (!(/[a-z]\d?\.ahk$/u).test(value)) {
                 errList0.push({ msg: 'name not end with .ahk', value });
             }
 
             return value;
         });
 
-        expect(errList0).toHaveLength(0);
+        expect(errList0).toStrictEqual([]);
     });
 });

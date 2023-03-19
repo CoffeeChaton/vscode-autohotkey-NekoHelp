@@ -30,10 +30,18 @@ export function legacyAssignmentHighlight(DocStrMap: TTokenStream): TSemanticTok
             detail,
             lStr,
             line,
+            textRaw,
         } of DocStrMap
     ) {
         if (!detail.includes(EDetail.inSkipSign2)) continue;
 
+        if (
+            (/^[ \t]*\w+[ \t]*=(?!=)/u).test(textRaw)
+            || (/^[ \t]*\w+%\w+%[ \t]*=(?!=)/u).test(textRaw)
+            || (/^[ \t]*%\w+%\w+[ \t]*=(?!=)/u).test(textRaw)
+        ) {
+            continue; // Simple case, taken over by syntax-highlight
+        }
         const len = lStr.length;
         for (let i = 0; i < len; i++) {
             const s = lStr[i];
