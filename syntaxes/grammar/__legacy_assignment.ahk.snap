@@ -1,0 +1,233 @@
+>Random(Min = "", Max = "") {
+#^^^^^^ source.ahk entity.name.function.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+#       ^^^^ source.ahk
+#           ^ source.ahk keyword.operator.assignment.ahk
+#            ^ source.ahk
+#             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#              ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#               ^ source.ahk punctuation.ahk
+#                ^^^^^ source.ahk
+#                     ^ source.ahk keyword.operator.assignment.ahk
+#                      ^ source.ahk
+#                       ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                         ^ source.ahk punctuation.bracket.ahk
+#                          ^ source.ahk
+#                           ^ source.ahk punctuation.bracket.ahk
+>    Random, v, %Min%, %Max%
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^^ source.ahk meta.command.line.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                ^^^ source.ahk meta.command.line.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                     ^ source.ahk meta.command.line.ahk
+#                      ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                       ^^^ source.ahk meta.command.line.ahk
+#                          ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>    Return, v
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk keyword.control.flow.ahk
+#          ^ source.ahk punctuation.ahk
+#           ^^^ source.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>fn_hot_strings_error_line() {
+#^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk entity.name.function.ahk
+#                         ^ source.ahk punctuation.bracket.ahk
+#                          ^ source.ahk punctuation.bracket.ahk
+#                           ^ source.ahk
+#                            ^ source.ahk punctuation.bracket.ahk
+>    local
+#^^^ source.ahk
+#   ^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+>    OutputVar := Random(0, 99)
+#^^^^^^^^^^^^^^ source.ahk
+#              ^^ source.ahk keyword.operator.assignment.ahk
+#                ^ source.ahk
+#                 ^^^^^^ source.ahk entity.name.function.ahk
+#                       ^ source.ahk punctuation.bracket.ahk
+#                        ^ source.ahk constant.numeric.decimal.ahk
+#                         ^ source.ahk punctuation.ahk
+#                          ^ source.ahk
+#                           ^^ source.ahk constant.numeric.decimal.ahk
+#                             ^ source.ahk punctuation.bracket.ahk
+>    ;@ahk-neko-ignore 1 line
+#^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#              ^ source.ahk comment.line.semicolon.ahk
+#               ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                     ^ source.ahk comment.line.semicolon.ahk
+#                      ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                       ^^^^^ source.ahk comment.line.semicolon.ahk
+>    el_error_line = text := "--------------%A_Sec%--%A_MSec%--%OutputVar%------------->>> " A_ThisFunc `nfn_print(text) ; comment
+#^^^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk
+#                   ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk
+#                                            ^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk variable.other.constant.builtin.ahk
+#                                                 ^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk
+#                                                     ^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk variable.other.constant.builtin.ahk
+#                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk
+#                                                                                            ^^^^^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk variable.other.constant.builtin.ahk
+#                                                                                                      ^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk
+#                                                                                                       ^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk constant.character.escape.ahk
+#                                                                                                         ^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk
+#                                                                                                                       ^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk meta.comment.line.semicolon.ahk
+#                                                                                                                        ^^^^^^^^^ source.ahk meta.meta.old_set_var_case0.ahk string.old_set_var_case0.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    SendInput {Text}%el_error_line%
+#^^^^ source.ahk
+#    ^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#               ^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                     ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                  ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>
+>    Sleep, 1000
+#^^^^ source.ahk
+#    ^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#         ^ source.ahk meta.command.line.ahk punctuation.ahk
+#          ^ source.ahk meta.command.line.ahk
+#           ^^^^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+>    c := 0
+#^^^^^^ source.ahk
+#      ^^ source.ahk keyword.operator.assignment.ahk
+#        ^ source.ahk
+#         ^ source.ahk constant.numeric.decimal.ahk
+>    el_error_line_arr0 := ""
+#^^^^^^^^^^^^^^^^^^^^^^^ source.ahk
+#                       ^^ source.ahk keyword.operator.assignment.ahk
+#                         ^ source.ahk
+#                          ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                           ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    ;@ahk-neko-ignore 1 line
+#^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#              ^ source.ahk comment.line.semicolon.ahk
+#               ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                     ^ source.ahk comment.line.semicolon.ahk
+#                      ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                       ^^^^^ source.ahk comment.line.semicolon.ahk
+>    el_error_line_arr%c% = text := "--------------%A_Sec%--%A_MSec%--%OutputVar%--01----------->>> " A_ThisFunc `nfn_print(text) ; comment
+#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk
+#                          ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk
+#                                                   ^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk variable.other.constant.builtin.ahk
+#                                                        ^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk
+#                                                            ^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk variable.other.constant.builtin.ahk
+#                                                                  ^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk
+#                                                                                  ^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk constant.numeric.decimal.ahk
+#                                                                                    ^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk
+#                                                                                                     ^^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk variable.other.constant.builtin.ahk
+#                                                                                                               ^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk
+#                                                                                                                ^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk constant.character.escape.ahk
+#                                                                                                                  ^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk
+#                                                                                                                                ^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk meta.comment.line.semicolon.ahk
+#                                                                                                                                 ^^^^^^^^^ source.ahk meta.meta.old_set_var_case1.ahk string.old_set_var_ase1.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    MsgBox, % "el_error_line%c% is `n" el_error_line_arr%c%
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                   ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                     ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                      ^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                        ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                                         ^ source.ahk meta.command.line.ahk
+#                                                          ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>    MsgBox, % "el_error_line_arr0 is `n" el_error_line_arr0
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                     ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                       ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                        ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>    0_err := ""
+#^^^^^^^^^^ source.ahk
+#          ^^ source.ahk keyword.operator.assignment.ahk
+#            ^ source.ahk
+#             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#              ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    ;@ahk-neko-ignore 1 line
+#^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#              ^ source.ahk comment.line.semicolon.ahk
+#               ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                     ^ source.ahk comment.line.semicolon.ahk
+#                      ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                       ^^^^^ source.ahk comment.line.semicolon.ahk
+>    %c%_err = text := "--------------%A_Sec%--%A_MSec%--%OutputVar%--01----------->>> " A_ThisFunc `nfn_print(text) ; comment
+#^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk
+#                                      ^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk variable.other.constant.builtin.ahk
+#                                           ^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk
+#                                               ^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk variable.other.constant.builtin.ahk
+#                                                     ^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk
+#                                                                     ^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk constant.numeric.decimal.ahk
+#                                                                       ^^^^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk
+#                                                                                        ^^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk variable.other.constant.builtin.ahk
+#                                                                                                  ^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk
+#                                                                                                   ^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk constant.character.escape.ahk
+#                                                                                                     ^^^^^^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk
+#                                                                                                                   ^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk meta.comment.line.semicolon.ahk
+#                                                                                                                    ^^^^^^^^^ source.ahk meta.meta.old_set_var_case2.ahk string.old_set_var_ase2.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    MsgBox, % "%c%_err is `n" %c%_err
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                          ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                            ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                             ^ source.ahk meta.command.line.ahk
+#                              ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                               ^ source.ahk meta.command.line.ahk
+#                                ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                 ^^^^ source.ahk meta.command.line.ahk
+>    MsgBox, % "0_err `n" 0_err
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                     ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                       ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                        ^^^^^^ source.ahk meta.command.line.ahk
+>
+>    ListLines
+#^^^^ source.ahk
+#    ^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>::el,,::
+#^^ source.ahk string.hotstring.ahk keyword.operator.ahk
+#  ^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
+#      ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
+>    fn_hot_strings_error_line()
+#^^^^ source.ahk
+#    ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk entity.name.function.ahk
+#                             ^ source.ahk punctuation.bracket.ahk
+#                              ^ source.ahk punctuation.bracket.ahk
+>Return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
