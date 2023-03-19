@@ -14,6 +14,7 @@ import { getFileReport } from './command/getFileReport/getFileReport';
 import { ListAllFuncMain } from './command/ListAllFunc';
 import { ListAllInclude } from './command/ListAllInclude';
 import { ListIncludeTree } from './command/ListIncludeTree';
+import { CmdFirstCommaStyleSwitch } from './command/tools/CmdFirstCommaStyleSwitch';
 import { UpdateCacheAsync, UpdateCacheUi } from './command/UpdateCache';
 import { configChangEvent } from './configUI';
 import { diagColl, rmAllDiag } from './core/diagColl';
@@ -74,6 +75,7 @@ export function activate(context: ExtensionContext): void {
         commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
         commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
+        commands.registerCommand(ECommand.CmdFirstCommaStyleSwitch, CmdFirstCommaStyleSwitch),
         commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
         commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),
         commands.registerCommand(ECommand.ListAllInclude, ListAllInclude),

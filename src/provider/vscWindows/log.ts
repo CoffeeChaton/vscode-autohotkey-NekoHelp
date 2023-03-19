@@ -13,4 +13,11 @@ export const fmtLog = {
         }
         fmtLogNull.info(value);
     },
+    show(): void {
+        if (fmtLogNull === null) {
+            fmtLogNull = vscode.window.createOutputChannel('AHK Neko Help [Format-log]', { log: true });
+            fmtLogNull.info('fmt log active!');
+        }
+        fmtLogNull.show();
+    },
 };

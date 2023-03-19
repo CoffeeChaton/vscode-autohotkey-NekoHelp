@@ -13,6 +13,7 @@ import { getFileAllFunc } from '../../tools/visitor/getFileAllFuncList';
 import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { posAtFnRef } from '../Def/posAtFnRef';
+import { CmdFirstCommaStyleSwitchCA } from './tools/CmdFirstCommaStyleSwitchCA';
 
 function atFnHead(
     ahkFn: CAhkFunc,
@@ -67,8 +68,12 @@ function atFnHead(
 function posAtFnReference(
     AhkFileData: TAhkFileData,
     active: vscode.Position,
-    wordUp: string,
+    document: vscode.TextDocument,
 ): never[] | [vscode.CodeAction] {
+    const range: vscode.Range | undefined = document.getWordRangeAtPosition(active, /(?<![.`#])\b\w+\b/u);
+    if (range === undefined) return [];
+
+    const wordUp: string = document.getText(range).toUpperCase();
     const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[active.line];
 
     const wordUpFix: string = getFucDefWordUpFix(AhkTokenLine, wordUp, active.character);
@@ -106,7 +111,7 @@ export function otherCodeAction(
     const ahkFn: CAhkFunc | undefined = getFileAllFunc.up(AhkFileData.AST)
         .find((ahkFunc: CAhkFunc): boolean => ahkFunc.nameRange.contains(active));
 
-    const need: vscode.CodeAction[] = [];
+    const need: vscode.CodeAction[] = [...CmdFirstCommaStyleSwitchCA(AhkFileData, selection)];
 
     const { CodeAction2GotoDefRef } = getCustomize();
 
@@ -115,11 +120,7 @@ export function otherCodeAction(
     }
 
     if (ahkFn === undefined && CodeAction2GotoDefRef) {
-        const range: vscode.Range | undefined = document.getWordRangeAtPosition(active, /(?<![.`#])\b\w+\b/u);
-        if (range === undefined) return [];
-        const wordUp: string = document.getText(range).toUpperCase();
-
-        need.push(...posAtFnReference(AhkFileData, active, wordUp));
+        need.push(...posAtFnReference(AhkFileData, active, document));
     }
 
     return need;

@@ -17,12 +17,24 @@
   2. fix avoid `!==` -> `!= =` now
 - fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
   - [x] part 1, parsing error of Command OutputVar
-  - [ ] part 3, need some time to fix unit-test.
-  - [ ] part 4, fix `ListLines` now, add select CodeAction(_yellow light bulb_) to format it?
+  - [ ] part 3-1, need some time to fix unit-test, Help users tab to `$0`
+  - [x] part 3-2, add select CodeAction(_yellow light bulb_) to format it
+  - [x] part 4, fix `ListLines` now
   - [x] part 5, fix `WinGetTitle`
   - [x] part 6-1, fix `ControlFocus` , and add unit_test
   - [x] part 6-2, fix `SetTimer`, `FileAppend`, `SetKeyDelay`
   - [x] part 6-3, fix `OutputDebug` and `#Requires` now.
+
+- fix: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7) part 3-2
+  > in v1.1 the initial comma after a command is optional
+
+  add select CodeAction(_yellow light bulb_) to format like it.
+
+  1. for default-format, users generally do not check whether the results of formatting changes are normal, so for the sake of conservatism , my default configuration is to adjust only the indent (the blank symbol in front)
+  2. for `Alpha test options` format, I want to think about how to stitch this command to the format function ().
+  3. Now only provide a small light bulb for formatting, and output some logs.
+
+  exp: mp4 is at <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7#issuecomment-1475112828>
 
 ## v0.0.29(2023-03-15)
 
