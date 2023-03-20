@@ -24,7 +24,7 @@ export function C507SetVarErr0xNumber(
     displayErrList: readonly boolean[],
 ): void {
     for (const [keyUpName, v] of paramOrValMap) {
-        if ((/^0X[\dA-F]+$/u).test(keyUpName)) {
+        if ((/^0X[\dA-F]+$/u).test(keyUpName) || (/^\d+$/u).test(keyUpName)) {
             const { defRangeList, refRangeList } = v;
             for (const range of [...defRangeList, ...refRangeList]) {
                 if (displayErrList[range.start.line]) {

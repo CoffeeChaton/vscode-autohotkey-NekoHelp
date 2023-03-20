@@ -108,12 +108,8 @@ export function getUnknownTextMap(
                 continue;
             }
 
-            if ((/^\d+$/u).test(wordUp)) { // just number
-                continue;
-            }
-
             if (
-                (/^0X[\dA-F]+$/u).test(wordUp) // NumHexConst = 0 x [0-9a-fA-F]+
+                ((/^0X[\dA-F]+$/u).test(wordUp) || (/^\d+$/u).test(wordUp)) // NumHexConst = 0 x [0-9a-fA-F]+
                 && !(L === '%' && R === '%') // code507.md exp2, some-case is legal, but unreasonable
             ) {
                 continue;

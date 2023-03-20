@@ -19,7 +19,7 @@ export const enum EDiagCodeDA {
     code504 = 504, // Variadic param * >1
     code505 = 505, // param parsed Error -> unknown style
     code506 = 506, // base8 base2 diag of not support number formats
-    code507 = 507, // avoid set `0xNumber` as variable , exp: `0x001 := 9999`
+    code507 = 507, // avoid set `Number` as variable , exp: `0x001 := 9999`
     // ban name
     code511 = 511, // ban var/param name same function-name.
     code512 = 512, // ban global-var name same function-name.
@@ -61,7 +61,7 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
         path: 'https://www.autohotkey.com/docs/v1/Concepts.htm#numbers',
     },
     507: {
-        msg: 'avoid set `0xNumber` as variable , exp: `0x001 := 9999`',
+        msg: 'avoid set `Number` as variable , exp: `0x001 := 9999` or `0 := "AA"`',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md',
     },
     511: {

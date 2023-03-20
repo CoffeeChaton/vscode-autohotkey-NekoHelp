@@ -1,4 +1,4 @@
-# code507 avoid set `0xNumber` as variable
+# code507 avoid set `Number` as variable
 
 ## exp1
 
@@ -7,15 +7,15 @@ Because ahk v1.1, don't warn before running, so I provide this option.
 ```ahk
 #Warn, All, MsgBox
 
-0x001 := "9999" ; Cannot set 0xNumber as variable
+0x001 := "9999"
 MsgBox, % 0x001 ; show "0x001"
 MsgBox, % 0x001 + 0 ; show 0, Because "0x001" + 0    ->    0 + 0    ->   0
 
-0x001 := 9999 ; Cannot set 0xNumber as variable
+0x001 := 9999
 MsgBox, % 0x001 ; "0x001"
 MsgBox, % 0x001 + 0 ;
 
-0x001 := "str-str-str" ; Cannot set 0xNumber as variable
+0x001 := "str-str-str"
 MsgBox, % 0x001 ; "0x001"
 MsgBox, % 0x001 + 0 ;
 ```
@@ -46,3 +46,21 @@ MsgBox, %0x21% ;AA
 ```
 
 ![code507](./img/code507.png)
+
+## exp3
+
+```ahk
+#Warn, All, MsgBox
+
+1 := "AA"
+MsgBox, % 1 ;1
+MsgBox, % 1 +0 ;1
+MsgBox, % 1 "BB" ;1BB
+MsgBox, %1% ;AA
+
+20 = "AA"
+MsgBox, % 20 ;20
+MsgBox, % 20 +0 ;20
+MsgBox, % 20 "BB" ;20BB
+MsgBox, %20% ;AA
+```
