@@ -62,7 +62,7 @@ function CompletionItemCore(
 
     const DA: CAhkFunc | null = getDAWithPos(AST, position);
     const PartStr: string | null = getPartStr(lStr, position);
-    const subStr = lStr.slice(0, position.character).trim();
+    const subStr: string = lStr.slice(0, position.character).trim();
 
     const completions: vscode.CompletionItem[] = [
         ...wrapClass(position, textRaw, lStr, topSymbol, DocStrMap, DA), // '.'

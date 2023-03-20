@@ -53,4 +53,29 @@ describe('check #Directive ruler', () => {
             ['#LTrim', 'https://www.autohotkey.com/docs/v1/Scripts.htm#LTrim'],
         ]);
     });
+
+    it('check: #7 6-1 (https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)', () => {
+        // > There are a couple of commands that have a space after the comma (ControlFocus for example).
+        expect.hasAssertions();
+
+        const errList: string[] = [];
+        for (const v of DirectivesList) {
+            const { keyRawName, insert } = v;
+
+            if (
+                insert === keyRawName
+                || insert.startsWith(`${keyRawName},`)
+                || insert.startsWith(`${keyRawName} [,`)
+                || insert.startsWith(`${keyRawName} $`)
+            ) {
+                continue;
+            }
+
+            errList.push(keyRawName);
+        }
+
+        expect(errList).toStrictEqual(
+            ['#Requires'], // The document is signed as `#Requires Requirement`
+        );
+    });
 });

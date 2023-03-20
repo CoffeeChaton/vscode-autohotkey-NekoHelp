@@ -473,7 +473,7 @@ export const Statement: TStatementElement[] = [
     {
         upName: 'LOOP',
         keyRawName: 'Loop',
-        body: 'Loop, ${1:number}',
+        body: 'Loop, ${1:10} {\n\n}',
         doc: 'Performs a series of commands repeatedly: either the specified number of times or until [break](https://www.autohotkey.com/docs/v1/lib/Break.htm) is encountered.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Loop.htm',
@@ -589,7 +589,15 @@ export const Statement: TStatementElement[] = [
     {
         upName: 'TRY',
         keyRawName: 'Try',
-        body: 'Try',
+        body: [
+            'Try {',
+            '$0',
+            '} Catch error {',
+            '',
+            '} Finally {',
+            '',
+            '}',
+        ].join('\n'),
         doc: 'Guards one or more statements (commands or expressions) against runtime errors and exceptions thrown by the [throw](https://www.autohotkey.com/docs/v1/lib/Throw.htm) command.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Try.htm',
@@ -619,7 +627,7 @@ export const Statement: TStatementElement[] = [
     {
         upName: 'WHILE',
         keyRawName: 'While',
-        body: 'While ($0) {\n    \n}',
+        body: 'While ($0) {\n\n}',
         doc: 'Performs a series of commands repeatedly until the specified [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) evaluates to false.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/While.htm',
