@@ -13,8 +13,7 @@
 
 ## Next v0.0.31(2023-03-xx)
 
-- feat:add diag code507, avoid set `0xNumber` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
-  > check Checks the variable name startWith `0x`
+- feat:add diag code507, avoid set `number` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
 
   ```ahk
   #Warn, All, MsgBox

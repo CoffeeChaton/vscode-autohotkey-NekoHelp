@@ -20,22 +20,7 @@
 
 ### diag107
 
-[SetEnv (Var = Value)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm)
-
-> **Deprecated:** This command or a legacy assignment is not recommended for use in new scripts. Use [expression assignments](https://www.autohotkey.com/docs/v1/lib/SetExpression.htm) like `Var := Value` instead.
-
-```js
-107: {
-    msg: 'assign warning',
-    path: 'https://www.autohotkey.com/docs/v1/lib/SetEnv.htm',
-},
-```
-
-![diag107](./img/diag107.png)
-
-> Can you find the right option quickly?
-
-try it [diag107](./ahk/diag107.ahk)
+Moved to new page [\[jump\]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code107.md)
 
 ### diag121
 
