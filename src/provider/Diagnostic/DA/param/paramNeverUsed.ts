@@ -1,4 +1,5 @@
 import type { TParamMapOut, TValMapOut } from '../../../../AhkSymbol/CAhkFunc';
+import { AVariablesMDMap } from '../../../../tools/Built-in/A_Variables.tools';
 import { Bi_VarMDMap } from '../../../../tools/Built-in/BiVariables.tools';
 import { C500Class } from '../CDiagFnLib/C500Class';
 import { C501Class } from '../CDiagFnLib/C501Class';
@@ -29,7 +30,7 @@ export function NeverUsedVar(
         if (v.refRangeList.length > 0) continue;
         // if (v.defRangeList.length > 1) return; // don't open this with out debug
         if (
-            key.startsWith('A_')
+            AVariablesMDMap.has(key)
             || key.startsWith('_')
             || Bi_VarMDMap.has(key)
             || !displayErrList[v.defRangeList[0].start.line]
