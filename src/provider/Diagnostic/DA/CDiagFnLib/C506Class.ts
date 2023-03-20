@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import type { TTextMapOut } from '../../../../AhkSymbol/CAhkFunc';
 import { DiagsDA, EDiagCodeDA } from '../../../../diag';
 import { CDiagFn } from '../../tools/CDiagFn';
 
@@ -28,11 +29,27 @@ export class C506Class extends CDiagFn {
         super({
             value: EDiagCodeDA.code506,
             range,
-            severity: vscode.DiagnosticSeverity.Error,
+            severity: vscode.DiagnosticSeverity.Warning,
             tags: [],
             message: DiagsDA[EDiagCodeDA.code506].msg,
         });
 
         this.keyUpName = keyUpName;
+    }
+}
+
+export function C506DiagNumberStyle(
+    textMap: TTextMapOut,
+    code506List: C506Class[],
+    displayErrList: readonly boolean[],
+): void {
+    for (const [keyUpName, v] of textMap) {
+        if ((/^0o[0-7]+$/iu).test(keyUpName) || (/^0b[01]+$/iu).test(keyUpName)) {
+            for (const range of v.refRangeList) {
+                if (displayErrList[range.start.line]) {
+                    code506List.push(new C506Class({ range, keyUpName }));
+                }
+            }
+        }
     }
 }

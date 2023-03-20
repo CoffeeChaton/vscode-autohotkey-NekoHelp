@@ -16,9 +16,9 @@ import { EPrefixC502 } from './DA/CDiagFnLib/C502Class';
 import type { C504Class } from './DA/CDiagFnLib/C504Class';
 import type { C505Class } from './DA/CDiagFnLib/C505Class';
 import type { C506Class } from './DA/CDiagFnLib/C506Class';
+import { C506DiagNumberStyle } from './DA/CDiagFnLib/C506Class';
 import type { C507Class } from './DA/CDiagFnLib/C507Class';
-import { C506DiagNumberStyle } from './DA/otherDiag/C506DiagNumberStyle';
-import { C507SetVarErr0xNumber } from './DA/otherDiag/C5070xNumberSetVarErr';
+import { C507SetVarErr0xNumber } from './DA/CDiagFnLib/C507Class';
 import { NeverUsedParam, NeverUsedVar } from './DA/param/paramNeverUsed';
 import { c505ErrParamParsedError } from './DA/param/paramParsedErrRange';
 import { paramVariadicErr } from './DA/param/paramVariadicErr';
@@ -74,9 +74,9 @@ function diagDAFileCore(
         caseSensitivityVar(EPrefixC502.param, paramMap, code503List, code503Max, displayErrList);
         paramVariadicErr(paramMap, code504List);
         c505ErrParamParsedError(paramMap, code505List);
-        C506DiagNumberStyle(textMap, code506List);
-        C507SetVarErr0xNumber(paramMap, code507List);
-        C507SetVarErr0xNumber(valMap, code507List);
+        C506DiagNumberStyle(textMap, code506List, displayErrList);
+        C507SetVarErr0xNumber(paramMap, code507List, displayErrList);
+        C507SetVarErr0xNumber(valMap, code507List, displayErrList);
 
         // TODO diag? https://stackoverflow.com/questions/12684985/why-doesnt-autohotkey-support-default-parameters-in-the-middle-of-the-parameter
     }
@@ -86,8 +86,8 @@ function diagDAFileCore(
         NeverUsedVar(ModuleValMap, code500List, code500Max, displayErrList);
         caseSensitivityVar(EPrefixC502.var, ModuleValMap, code502List, code502Max, displayErrList);
     }
-    C506DiagNumberStyle(ModuleTextMap, code506List);
-    C507SetVarErr0xNumber(ModuleValMap, code507List);
+    C506DiagNumberStyle(ModuleTextMap, code506List, displayErrList);
+    C507SetVarErr0xNumber(ModuleValMap, code507List, displayErrList);
 
     const DADiagList: readonly CDiagFn[] = [
         ...code500List,
