@@ -37,6 +37,8 @@
   MsgBox, %0x21% ;AA
   ```
 
+  ![code507](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/note/img/diag507.png)
+
 - feat: add `/*@ahk-neko-format-ignore-block` to not format block, I think this will reduce the interference with git-diff.
 - feat: at simple case ,the Legacy Assignment `a = str` , use syntax-highlight replace [v0.0.29(2023-03-15)](#v00292023-03-15) semantic-highlight.
   1. fix: use syntax-highlight, vscode to correctly match the brackets. [Bracket pair](https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization)

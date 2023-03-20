@@ -44,3 +44,5 @@ MsgBox, % 0x21 +0 ;0x21 +0 -> 33 +0 -> 33
 MsgBox, % 0x21 "BB" ;0x21BB
 MsgBox, %0x21% ;AA
 ```
+
+![code507](./img/code507.png)
