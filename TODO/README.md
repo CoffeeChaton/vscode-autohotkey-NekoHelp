@@ -76,3 +76,6 @@ Object
 
 <!-- - [not use switch in js](https://github.com/microsoft/TypeScript/pull/50225) -->
 <!-- - more diag of `fn()` or `label:` are using but not find def, _Deprecated_ now, ahk's diagnostics at startup, seems to be enough -->
+
+<https://github.com/microsoft/vscode/wiki/Virtual-Workspaces>
+<https://github.com/microsoft/language-server-protocol/issues/1264>

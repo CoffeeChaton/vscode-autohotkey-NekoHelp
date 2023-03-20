@@ -13,17 +13,28 @@
 
 ## Next v0.0.31(2023-03-xx)
 
-- feat:add diag code507, can't set `0xNumber` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
+- feat:add diag code507, avoid set `0xNumber` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
   > check Checks the variable name startWith `0x`
 
   ```ahk
-  0x001 := "9999" ; Cannot set 0xNumber as variable
-  MsgBox, % 0x001 ; show "0x001"
-  MsgBox, % 0x001 + 0 ; show 0, Because "0x001" + 0    ->    0 + 0    ->   0
+  #Warn, All, MsgBox
 
-  0x001 := 9999 ; Cannot set 0xNumber as variable
-  MsgBox, % 0x001 ; "0x001"
-  MsgBox, % 0x001 + 0 ;
+  Transform, 0x23, BitNot, 0xf0f
+  ;          ^ show warn message at this, When the code review is tired, this kind of code may be accidentally approved to enter the official code
+  MsgBox, % 0x23 ;0x23
+  MsgBox, %0x23% ;4294963440 ;If this is after 2000 lines, this will be a happy trap
+
+  Transform, num, BitNot, 0xf0f
+  MsgBox, % num ;4294963440
+  MsgBox, %num% ;4294963440
+
+
+  0x21 := "AA" 
+  ;^ show warn message at this
+  MsgBox, % 0x21 ;0x21
+  MsgBox, % 0x21 +0 ;0x21 +0 -> 33 +0 -> 33
+  MsgBox, % 0x21 "BB" ;0x21BB
+  MsgBox, %0x21% ;AA
   ```
 
 - feat: add `/*@ahk-neko-format-ignore-block` to not format block, I think this will reduce the interference with git-diff.
