@@ -105,6 +105,10 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         ? 0
         : cll; // 0 | 1
 
+    const cllFix2WithMultiLine: 0 | 1 = lStrTrim === '' && MultLine === 1 && WarnLineBodyWarn.startsWith(';')
+        ? 1
+        : 0;
+
     /**
      * ```ahk
      * if (
@@ -123,6 +127,7 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         0,
         occ // fix this now...
             + cllFix2
+            + cllFix2WithMultiLine
             + tempFixOfBracketsChange
             + cllFix
             + switchDeep
