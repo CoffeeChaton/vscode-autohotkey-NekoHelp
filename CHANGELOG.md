@@ -14,7 +14,55 @@
 ## Next v0.0.31(2023-03-xx)
 
 - fix: class/functions range
-- feat:add diag code507, avoid set `number` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
+
+  ```ahk
+  if (1 > 0){
+  } else { MsgBox % "err"
+  ;      ^ "{" is not end with line ...}
+  }
+
+  Try { MsgBox, % "try"
+  ;   ^ "{" is not end with line ...}
+  } Catch error {
+
+  } Finally { MsgBox, % "Finally"
+  ;         ^ "{" is not end with line ...}
+  }
+  ```
+
+- feat: add diag [code118](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code118.md)
+
+  ```ahk
+  #Warn, All, MsgBox
+
+  foo(4)
+  ; 
+
+  foo(key) {
+      MsgBox, % "key is " key
+      i := 0
+      Switch key {
+          Case 0: { i := 999 ; skip `i := 999` && `#Warn` not work
+          ;        ^^^^^^^^^^ diag this as code118
+                  MsgBox, % "case0"
+          }
+          Case 1: {
+                  MsgBox, % "case1-2"
+              }
+              MsgBox, % "case1-3"
+          Case 2, 3: MsgBox, % "case2-1" ; normal work
+              MsgBox, % "case2-2"
+          Default:
+                  MsgBox, % "Default-1"
+                  MsgBox, % "Default-2"
+      }
+
+      ListLines
+      MsgBox, % "i is " i
+  }
+  ```
+
+- feat: add diag code507, avoid set `number` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
 - feat: add `/*@ahk-neko-format-ignore-block` to not format block, I think this will reduce the interference with git-diff.
 - feat: at simple case ,the Legacy Assignment `a = str` , use syntax-highlight replace [v0.0.29(2023-03-15)](#v00292023-03-15) semantic-highlight.
   1. fix: use syntax-highlight, vscode to correctly match the brackets. [Bracket pair](https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization)

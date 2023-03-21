@@ -53,6 +53,7 @@ describe('check diag-md uri', () => {
         expect(fileList).toStrictEqual([
             'ahk',
             'code107.md',
+            'code118.md',
             'code121.md',
             'code122.md',
             'code124.md',

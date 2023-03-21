@@ -251,7 +251,7 @@ describe('check LineCommand ruler', () => {
         // > There are a couple of commands that have a space after the comma (ControlFocus for example).
         expect.hasAssertions();
 
-        const errList: TErrObj[] = [];
+        const errList: string[] = [];
         for (const v of LineCommand) {
             const { keyRawName, body } = v;
 
@@ -264,14 +264,7 @@ describe('check LineCommand ruler', () => {
                 continue;
             }
 
-            errList.push({
-                msg: '--86--267--52--79--64',
-                value: {
-                    keyRawName,
-                    msg: 'Comma is not standardized',
-                    body,
-                },
-            });
+            errList.push(keyRawName);
         }
 
         expect(errList).toHaveLength(0);

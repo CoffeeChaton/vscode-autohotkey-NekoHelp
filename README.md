@@ -33,7 +33,8 @@ AutoHotKey v1 edit-support for VS Code
 
 ## Install
 
-Install extension via Visual Studio Marketplace [AutoHotkey NekoHelp](https://marketplace.visualstudio.com/items?itemName=cat1122.vscode-autohotkey-neko-help).
+1. Install extension via Visual Studio Marketplace [AutoHotkey NekoHelp](https://marketplace.visualstudio.com/items?itemName=cat1122.vscode-autohotkey-neko-help).
+2. Install `.vsix` from my github <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/releases>
 
 ## FunctionSymbol
 

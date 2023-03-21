@@ -79,8 +79,10 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
 
 export const enum EDiagCode {
     code107 = 107, // :=
-    code111 = 111, // 111~114 is switch err
+    // 111~114 is switch err
+    code111 = 111,
     code113 = 113,
+    code118 = 118,
 
     // 120~130 is Multiline-Diag
     code120 = 120, // unknown-flag
@@ -167,6 +169,10 @@ export const Diags: DeepReadonly<TDiags> = {
     113: {
         msg: '`Case :` not find ',
         path: 'https://www.autohotkey.com/docs/v1/lib/Switch.htm',
+    },
+    118: {
+        msg: 'This part may be skipped by ahk-1.1',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code118.md',
     },
     120: {
         msg: 'unknown options of Multiline',

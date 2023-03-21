@@ -31,7 +31,8 @@
         "sonarjs",
         "sukka",
         "tmgrammar",
-        "Verdana"
+        "Verdana",
+        "vsix"
     ],
     "ignoreWords": [],
     "import": []

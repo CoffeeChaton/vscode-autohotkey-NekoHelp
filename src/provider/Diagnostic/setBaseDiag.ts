@@ -25,7 +25,7 @@ function baseDiagnostic(DocStrMap: TTokenStream, AST: TAstRoot): readonly CDiagB
 
     const diagList: readonly CDiagBase[] = [
         ...getLineErr(DocStrMap),
-        ...getTreeErr(AST, displayErrList),
+        ...getTreeErr(AST, displayErrList, DocStrMap),
         ...getMultilineDiag(DocStrMap),
     ];
     wm.set(DocStrMap, diagList);
