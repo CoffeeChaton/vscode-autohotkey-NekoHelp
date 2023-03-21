@@ -1,7 +1,12 @@
 import * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
-import { Diags, DiagsDA, EDiagCodeDA } from '../../diag';
+import {
+    Diags,
+    DiagsDA,
+    EDiagCode,
+    EDiagCodeDA,
+} from '../../diag';
 import { EDiagBase } from '../../Enum/EDiagBase';
 import { isAhk } from '../../tools/fsTools/isAhk';
 import { C502Class } from '../Diagnostic/DA/CDiagFnLib/C502Class';
@@ -12,6 +17,7 @@ import { otherCodeAction } from './otherCodeAction';
 import { c501ignoreArgNeverUsed } from './tools/c501ignoreArgNeverUsed';
 import { c502c503CodeAction } from './tools/c502c503CodeAction';
 import { c506CodeAction } from './tools/c506CodeAction';
+import { CACode118fix } from './tools/CACode118fix';
 
 type TEditNeed = {
     uri: vscode.Uri,
@@ -46,8 +52,13 @@ function getEditNeed(AhkFileData: TAhkFileData, line: number): TEditNeed {
 
 function setIgnore(diag: CDiagBase, editNeed: TEditNeed): vscode.CodeAction {
     const { uri, ignoreLine, Position } = editNeed;
+    const { value } = diag.code;
+    if (value === EDiagCode.code118) {
+        return CACode118fix(diag, uri);
+    }
+    const { path } = Diags[value];
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
-    const { path } = Diags[diag.code.value];
+
     edit.insert(
         uri,
         Position,

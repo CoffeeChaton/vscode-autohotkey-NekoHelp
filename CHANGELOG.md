@@ -30,7 +30,7 @@
   }
   ```
 
-- feat: add diag [code118](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code118.md)
+- feat: add diag [code118](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code118.md) and auto fix it.
 
   ```ahk
   #Warn, All, MsgBox
