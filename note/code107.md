@@ -1,5 +1,12 @@
 # code107
 
+```js
+107: {
+    msg: '(legacy assignment), try to use `:=` replace',
+    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code107.md',
+},
+```
+
 [SetEnv (Var = Value)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm)
 
 > **Deprecated:** This command or a legacy assignment is not recommended for use in new scripts. Use [expression assignments](https://www.autohotkey.com/docs/v1/lib/SetExpression.htm) like `Var := Value` instead.

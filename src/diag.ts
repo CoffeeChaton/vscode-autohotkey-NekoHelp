@@ -4,7 +4,6 @@ import type { DeepReadonly } from './globalEnum';
 type TLink =
     | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag${number}.ahk`
     | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code${number}.md`
-    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#${string}`
     | `https://www.autohotkey.com/docs/v1/${string}`;
 
 // ScriptError(_T("Global variables must not be declared in this function."), aLineText);
@@ -70,7 +69,7 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
     },
     512: {
         msg: 'global-var name same func-Name',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag511.ahk',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag511.ahk', // i know this is 511
     },
     513: {
         msg: 'label-var name same func-Name',
@@ -159,7 +158,7 @@ export type TDiags = {
 export const Diags: DeepReadonly<TDiags> = {
     107: {
         msg: '(legacy assignment), try to use `:=` replace',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag107',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code107.md',
     },
     111: {
         msg: '`Default:` Too much ',
@@ -179,23 +178,23 @@ export const Diags: DeepReadonly<TDiags> = {
     },
     122: {
         msg: 'ahk-neko-help is not work of "," flag now.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag122',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code122.md',
     },
     124: {
         msg: '`"` is not closed',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag124',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code124.md',
     },
     125: {
         msg: '`%` is miss to closed',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag125',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code125.md',
     },
     126: {
         msg: 'Multiline just allow like `%VarName%` of style1.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag126',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code126.md',
     },
     127: {
         msg: 'Multiline just allow like `" VarName "` of style2, `"` need to use whitespace pack varName.',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag127',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code127.md',
     },
     201: {
         msg: 'If Count is a variable reference such as `%varName%` or `% expression`',

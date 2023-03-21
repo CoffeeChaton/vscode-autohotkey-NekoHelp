@@ -1,4 +1,4 @@
-# config-rename-option
+# Rename.functionInStr
 
 - `false` default not to rename "funcName" case
 
@@ -37,6 +37,7 @@
   }
   ```
 
+- note: because vscode, there is no way to press `f2` again, let me provide an option to selection, so it can only be set in `settings.json`
 - always provide logging like
 
   ```log
@@ -46,4 +47,4 @@
   ] For safety, do not replace "fnA" case, please use ctrl+f search the following case
   ```
 
-  ![img](./img/config-rename-option.png)
+  ![img](../img/config-rename-option.png)

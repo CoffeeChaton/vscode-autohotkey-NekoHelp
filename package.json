@@ -286,7 +286,7 @@
                     "AhkNekoHelp.Rename.functionInStr": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md)"
+                        "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.functionInStr.md)"
                     },
                     "AhkNekoHelp.event.FileRenameEvent": {
                         "type": "number",

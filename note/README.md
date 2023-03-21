@@ -18,9 +18,11 @@
 
 ## Diagnostic
 
+It is expected to remove this jump list in 2023/5/1
+
 ### diag107
 
-Moved to new page [\[jump\]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code107.md)
+Moved to new page [[jump]](./code107.md)
 
 ### diag121
 
@@ -28,61 +30,19 @@ Moved to new page [[jump]](./code121.md)
 
 ### diag122
 
-```js
-122: {
-    msg: 'ahk-neko-help not supported "," flag now.', // `-flag is support at v0.0.31(2023-03-xx) https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/CHANGELOG.md
-    path: 'https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section',
-},
-```
-
-please use tell me, how to use this flag? [report](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues)
+Moved to new page [[jump]](./code122.md)
 
 ### diag124
 
-```js
-124: {
-    msg: '`"` is not closed',
-    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag124',
-},
-```
-
-![diag124](./img/diag124.png)
-
-> try it [diag124](./ahk/diag124.ahk)
+Moved to new page [[jump]](./code124.md)
 
 ### diag125
 
-```js
-125: {
-    msg: '`%` miss to closed',
-    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag125',
-},
-```
-
-![diag125](./img/diag125.png)
-
-> - [Multiline](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section) style1 / exp1 just support `%varName%` style.
-> - at this exp `% var%` `%` has a space, this error is at line `9`, but ahk-L report this error at line `5`.
-> - try it [diag125](./ahk/diag125.ahk)
+Moved to new page [[jump]](./code125.md)
 
 ### diag126
 
-```js
-126: {
-    msg: '`%` variable name contains an illegal character',
-    path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/tree/main/note#diag126',
-},
-```
-
-![diag126](./img/diag126.png)
-
-> - [Multiline](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section) style1 / exp1 just support `%varName%` style.
-> - try to write like line `11` `12` `13`, this error is at line `11`, but ahk-L report error at line `6`.
-> - I know there has some highlight bug at line 12 of `.a` and line 13 of `[" b"]`. at _v0.0.12(2022-10-28)_
-
-if [Multiline](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation-section) is very big, this diagnostic can help you to find the problem more quickly.
-
-> try it [diag126](./ahk/diag126.ahk)
+Moved to new page [[jump]](./code126.md)
 
 ### diag201
 
@@ -90,22 +50,7 @@ Moved to new page [[jump]](./code201.md)
 
 ### diag506
 
-```js
-506: {
-    msg: 'ahk v1 not support of this number formats',
-    path: 'https://www.autohotkey.com/docs/v1/Concepts.htm#numbers',
-},
-```
-
-`c506` is diagnosis of ahk v1 not support number formats [number](https://www.autohotkey.com/docs/v1/Concepts.htm#numbers)
-
-> base10 `99` === base2 `0o1100011` === base8 `0b143` === base16 `0x63`, but ahk v1 just support base10 base16
->
-> AutoHotkey supports these number formats:
->
-> - Decimal integers, such as `123`, `00123` or `-1`.
-> - Hexadecimal integers, such as `0x7B`, `0x007B` or `-0x1`.
-> - Decimal floating-point numbers, such as `3.14159`.
+Moved to new page [[jump]](./code506.md)
 
 ## about str or %
 
