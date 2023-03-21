@@ -396,62 +396,61 @@ export function Pretreatment(
          * // deep2
          */
         let deep2: number[] = [deep];
-        if (!lStrTrim.includes('::')) {
-            // {$                     || ^{
-            if (lStrTrim.endsWith('{') || lStrTrim.startsWith('{')) {
-                detail.push(EDetail.deepAdd);
-            }
 
-            /**
-             *  // case of this ....
-             *
-             * WM_COMMAND(wParam, lParam)
-             * {
-             *    static view := {
-             *    (Join,
-             *        65406: "Lines"
-             *        65407: "Variables"
-             *        65408: "Hotkeys"
-             *        65409: "KeyHistory"
-             *    )}
-             * ;  ^ -----------------------------------------here this ...case
-             *    if (wParam = 65410) ; Refresh
-             *        return Refresh()
-             *    if view[wParam]
-             *        return SetView(view[wParam])
-             * }
-             */
-            const lStrTrimFix: string = multiline === EMultiline.end
-                ? lStrTrim.replace(/^\)\s*/u, '')
-                : lStrTrim;
-
-            // ^}
-            if (lStrTrimFix.startsWith('}')) {
-                detail.push(EDetail.deepSubtract);
-            }
-            deep2 = callDeep2(lStrTrimFix, deep);
-            // eslint-disable-next-line unicorn/prefer-at
-            deep = deep2[deep2.length - 1];
-            // deep++;
-
-            // // {{{{
-            // const addDeep: number = callDeep(lStrTrim, '{');
-            // if (addDeep > 1) {
-            //     deep--;
-            //     deep += addDeep;
-            // }
-
-            // deep--;
-
-            // // eslint-disable-next-line no-tabs
-            // // }   } else RunWait "%AhkPath%" %AhkSw% "%wk%",,Hide
-
-            // const diffDeep: number = callDeep(lStrTrimFix, '}');
-            // if (diffDeep > 1) {
-            //     deep++;
-            //     deep -= diffDeep;
-            // }
+        // {$                     || ^{
+        if (lStrTrim.endsWith('{') || lStrTrim.startsWith('{')) {
+            detail.push(EDetail.deepAdd);
         }
+
+        /**
+         *  // case of this ....
+         *
+         * WM_COMMAND(wParam, lParam)
+         * {
+         *    static view := {
+         *    (Join,
+         *        65406: "Lines"
+         *        65407: "Variables"
+         *        65408: "Hotkeys"
+         *        65409: "KeyHistory"
+         *    )}
+         * ;  ^ -----------------------------------------here this ...case
+         *    if (wParam = 65410) ; Refresh
+         *        return Refresh()
+         *    if view[wParam]
+         *        return SetView(view[wParam])
+         * }
+         */
+        const lStrTrimFix: string = multiline === EMultiline.end
+            ? lStrTrim.replace(/^\)\s*/u, '')
+            : lStrTrim;
+
+        // ^}
+        if (lStrTrimFix.startsWith('}')) {
+            detail.push(EDetail.deepSubtract);
+        }
+        deep2 = callDeep2(lStrTrimFix, deep);
+        // eslint-disable-next-line unicorn/prefer-at
+        deep = deep2[deep2.length - 1];
+        // deep++;
+
+        // // {{{{
+        // const addDeep: number = callDeep(lStrTrim, '{');
+        // if (addDeep > 1) {
+        //     deep--;
+        //     deep += addDeep;
+        // }
+
+        // deep--;
+
+        // // eslint-disable-next-line no-tabs
+        // // }   } else RunWait "%AhkPath%" %AhkSw% "%wk%",,Hide
+
+        // const diffDeep: number = callDeep(lStrTrimFix, '}');
+        // if (diffDeep > 1) {
+        //     deep++;
+        //     deep -= diffDeep;
+        // }
 
         const cll: 0 | 1 = multiline === EMultiline.end
             ? 1
@@ -459,6 +458,16 @@ export function Pretreatment(
 
         const { fistWordUpCol, fistWordUp } = getFistWordUpData({ lStrTrim, lStr, cll });
         const { SecondWordUpCol, SecondWordUp } = getSecondUp(lStr, fistWordUp, fistWordUpCol);
+        if (['ELSE', 'FINALLY', 'TRY'].includes(fistWordUp)) {
+            // else { MsgBox % "CC"   <---- case of this
+            // else { ; comment <-------not case of this
+            const focRightStr: string = lStr.slice(fistWordUpCol + fistWordUp.length).trim();
+            if (focRightStr.startsWith('{') && !focRightStr.endsWith('{')) {
+                detail.push(EDetail.deepAdd);
+                deep2 = [...deep2, deep + 1];
+                deep++;
+            }
+        }
 
         result.push({
             ahkDoc,

@@ -13,31 +13,8 @@
 
 ## Next v0.0.31(2023-03-xx)
 
+- fix: class/functions range
 - feat:add diag code507, avoid set `number` as variable [note](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md)
-
-  ```ahk
-  #Warn, All, MsgBox
-
-  Transform, 0x23, BitNot, 0xf0f
-  ;          ^ show warn message at this, When the code review is tired, this kind of code may be accidentally approved to enter the official code
-  MsgBox, % 0x23 ;0x23
-  MsgBox, %0x23% ;4294963440 ;If this is after 2000 lines, this will be a happy trap
-
-  Transform, num, BitNot, 0xf0f
-  MsgBox, % num ;4294963440
-  MsgBox, %num% ;4294963440
-
-
-  0x21 := "AA" 
-  ;^ show warn message at this
-  MsgBox, % 0x21 ;0x21
-  MsgBox, % 0x21 +0 ;0x21 +0 -> 33 +0 -> 33
-  MsgBox, % 0x21 "BB" ;0x21BB
-  MsgBox, %0x21% ;AA
-  ```
-
-  ![code507](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/note/img/code507.png)
-
 - feat: add `/*@ahk-neko-format-ignore-block` to not format block, I think this will reduce the interference with git-diff.
 - feat: at simple case ,the Legacy Assignment `a = str` , use syntax-highlight replace [v0.0.29(2023-03-15)](#v00292023-03-15) semantic-highlight.
   1. fix: use syntax-highlight, vscode to correctly match the brackets. [Bracket pair](https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization)
