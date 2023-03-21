@@ -129,7 +129,7 @@
   CopyOfVar = var say % Var " !"
   ```
 
-  ![img](./image/Changelog/v0-0-29-fix-old-set-var.png)
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-29-fix-old-set-var.png)
 
 ## 0.0.28(2023-03-13)
 
@@ -146,7 +146,7 @@
   }
   ```
 
-- fix: identify variable ![exp](image/Changelog/v0-0-27-fix-identify-variable.jpg)
+- fix: identify variable ![exp](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-27-fix-identify-variable.jpg)
 - fix: cmd after `Else` `Finally`
 
   ```ahk
@@ -185,7 +185,7 @@
 ## 0.0.26(2023-03-04)
 
 - add: hover at `Menu` / `Gui` / `GuiControl` SubCommand , exp: `Menu DeleteAll`
-  ![hover at menu sub-cmd](image/Changelog/v0-0-26-hover-at-menu-sub-cmd.png)
+  ![hover at menu sub-cmd](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-26-hover-at-menu-sub-cmd.png)
 - add: more Completion of `Sub-commands` && provide config control `"AhkNekoHelp.snippets.expandSubCommand"` [(Preview it)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md)
 - fix: some uri from old-packages to new-packages
 - fix: limit completion of `Menu` / `Gui` / `GuiControl` sub-command
