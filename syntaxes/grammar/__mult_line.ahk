@@ -52,3 +52,20 @@ deepRaw...
                             deepRaw...
                         deepRaw...
         )" ;this line deep === test2 line deep +1
+
+
+bar(str1, opt) {
+
+}
+
+foo() {
+
+    bar("
+        (
+            w            -> up
+            s            -> down
+            a            -> left
+            d            -> right
+        )", "w",0)
+    ;    ^mulit-line end
+}

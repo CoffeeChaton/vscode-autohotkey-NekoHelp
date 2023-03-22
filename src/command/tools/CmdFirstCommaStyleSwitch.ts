@@ -117,25 +117,35 @@ export async function CmdFirstCommaStyleSwitch(
     selection: vscode.Selection,
 ): Promise<void> {
     type TCommand = {
-        select: 1 | 2,
         label: string,
+        fn: (list: readonly TCmdSwitchComma[]) => TFmtCoreMap,
     };
 
-    const sate: TCommand | undefined = await vscode.window.showQuickPick<TCommand>([
+    const select: TCommand | undefined = await vscode.window.showQuickPick<TCommand>([
         {
-            select: 1,
             label: '1 -> try "Sleep, 1000" -> "Sleep 1000" ; (Remove first optional comma after command)',
+            fn: RemoveFirstOptComma,
         },
         {
-            select: 2,
             label: '2 -> try "Sleep 1000" -> "Sleep, 1000" ; (add first optional comma after command)',
+            fn: addFirstOptComma,
         },
-    ]);
+        // {
+        //     label: '3 -> try "#Warn, All, MsgBox" -> "#Warn All, MsgBox" ; (Remove first optional comma after command)',
+        //     fn: RemoveFirstOptComma, // FIXME
+        // },
+        // {
+        //     label: '4 -> try "#Warn All, MsgBox" -> "#Warn, All, MsgBox" ; (add first optional comma after command)',
+        //     fn: addFirstOptComma, // FIXME
+        // },
+    ], {
+        title: 'I am moving this command to the formatting options',
+    });
 
-    if (sate === undefined) return;
+    if (select === undefined) return;
     const t1: number = Date.now();
 
-    const { select, label } = sate;
+    const { label, fn } = select;
     fmtLog.info(`'${label}'`);
 
     const { DocStrMap, uri } = AhkFileData;
@@ -145,9 +155,7 @@ export async function CmdFirstCommaStyleSwitch(
     fmtLog.info(`select range of line [${s}, ${e}]`);
     const list: readonly TCmdSwitchComma[] = getCmdSwitchCommaList(DocStrMap, s, e);
 
-    const diffMap: TFmtCoreMap = select === 1
-        ? RemoveFirstOptComma(list)
-        : addFirstOptComma(list);
+    const diffMap: TFmtCoreMap = fn(list);
 
     const editList: vscode.TextEdit[] = applyVscodeEdit(diffMap);
     if (editList.length > 0) {

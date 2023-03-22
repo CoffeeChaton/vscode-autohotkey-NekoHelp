@@ -235,3 +235,57 @@
 #^^^^^^^^^^ source.ahk string.multiline.ahk
 #          ^ source.ahk meta.comment.line.semicolon.ahk
 #           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>
+>bar(str1, opt) {
+#^^^ source.ahk entity.name.function.ahk
+#   ^ source.ahk punctuation.bracket.ahk
+#    ^^^^ source.ahk
+#        ^ source.ahk punctuation.ahk
+#         ^^^^ source.ahk
+#             ^ source.ahk punctuation.bracket.ahk
+#              ^ source.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+>
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>foo() {
+#^^^ source.ahk entity.name.function.ahk
+#   ^ source.ahk punctuation.bracket.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+#     ^ source.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+>
+>    bar("
+#^^^^ source.ahk
+#    ^^^ source.ahk entity.name.function.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+>        (
+#^^^^^^^^^ source.ahk string.multiline.ahk
+>            w            -> up
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            s            -> down
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            a            -> left
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            d            -> right
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        )", "w",0)
+#^^^^^^^^^^ source.ahk string.multiline.ahk
+#          ^ source.ahk punctuation.ahk
+#           ^ source.ahk
+#            ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#             ^ source.ahk string.quoted.double.ahk
+#              ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#               ^ source.ahk punctuation.ahk
+#                ^ source.ahk constant.numeric.decimal.ahk
+#                 ^ source.ahk punctuation.bracket.ahk
+>    ;    ^mulit-line end
+#^^^ source.ahk
+#   ^ source.ahk meta.comment.line.semicolon.ahk
+#    ^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
