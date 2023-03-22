@@ -1,0 +1,47 @@
+>;https://www.autohotkey.com/docs/v1/lib/Send.htm#keynames
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>~F11:: foo()
+#^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
+#    ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#      ^ source.ahk
+#       ^^^ source.ahk entity.name.function.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+#           ^ source.ahk punctuation.bracket.ahk
+>
+>foo() {
+#^^^ source.ahk entity.name.function.ahk
+#   ^ source.ahk punctuation.bracket.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+#     ^ source.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+>    Send, {}}
+#^^^^ source.ahk
+#    ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#           ^ source.ahk meta.command.line.ahk string.command.option.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>    GoSub, Label1
+#^^^^ source.ahk
+#    ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#         ^^ source.ahk meta.goto.gosub.ahk
+#           ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>Label1:
+#^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>    Send, {{}
+#^^^^ source.ahk
+#    ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#           ^ source.ahk meta.command.line.ahk string.command.option.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>Return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>

@@ -13,6 +13,8 @@
 
 ## Next v0.0.31(2023-03-xx)
 
+- fix: `{{}` or `{}}` bracket pair error syntax-highlight, exp [`Send {{}`](https://www.autohotkey.com/docs/v1/lib/Send.htm#keynames)
+  ![fix Bracket pair](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-31-bracket-pair.png)
 - fix: class/functions range
 
   ```ahk
