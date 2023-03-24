@@ -9,7 +9,8 @@ import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
 import { UpdateCacheAsync } from '../UpdateCache';
 import { mkDirByPathSync } from './mkDirByPathSync';
 
-function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: readonly string[]): void {
+function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: readonly string[]): readonly string[] {
+    const snapList: string[] = [];
     for (const AhkFileData of AhkFileDataList) {
         const {
             uri,
@@ -40,6 +41,7 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             `1. jump <file:${fsPath}>`,
             `2. neko-help-version : \`${version}\``,
             `3. parser use : \`${ms}\` ms`,
+            '4. Important reminder: Please be advised that **the snapshot files contain the source code for your project.** This means that any sensitive or confidential information within your code may also be included in the snapshot. Therefore, we strongly advise against uploading the snapshot to the report-bug feature or any other public forum. If you need to report a bug that involves a neko-help, we recommend reviewing the contents of the file carefully to ensure that no sensitive information is disclosed before uploading it. Thank you for your cooperation in maintaining the security and confidentiality of your code.',
             '',
             '- [snap](#snap)',
             `  - [lineMsg](#${'lineMsg'.toLowerCase()})`,
@@ -73,8 +75,6 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
                 }
                 return value;
             }, 4),
-
-            // JSON.stringify(ModuleVar, null, space),
             '```',
             '',
             '## GValMap',
@@ -89,9 +89,14 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             '```',
             '',
         ].join('\r\n');
+
+        const mdPath: string = path.join(targetDir, `${basename}.md`);
+        snapList.push(mdPath);
         // eslint-disable-next-line security/detect-non-literal-fs-filename
-        fs.writeFileSync(path.join(targetDir, `${basename}.md`), data);
+        fs.writeFileSync(mdPath, data);
     }
+
+    return snapList;
 }
 
 export async function generateAhkNekoSnapshot(): Promise<void> {
@@ -121,15 +126,12 @@ export async function generateAhkNekoSnapshot(): Promise<void> {
     }
 
     const AhkFileDataList: readonly TAhkFileData[] = await UpdateCacheAsync(false);
-    generateSnapshot(AhkFileDataList, rootList);
+    const snapList: readonly string[] = generateSnapshot(AhkFileDataList, rootList);
 
     log.info(
         'snapshot created at',
         JSON.stringify(
-            rootList.map((v: string): string => (path.join(
-                v,
-                '.ahk-neko-snapshot',
-            ))),
+            snapList,
             null,
             4,
         ),
