@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.31(2023-03-xx)](#next-v00312023-03-xx)
+  - [v0.0.31(2023-03-24)](#v00312023-03-24)
   - [v0.0.30(2023-03-19)](#v00302023-03-19)
   - [v0.0.29(2023-03-15)](#v00292023-03-15)
   - [0.0.28(2023-03-13)](#00282023-03-13)
@@ -11,7 +11,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.31(2023-03-xx)
+## v0.0.31(2023-03-24)
 
 - feat: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
   - [x] part 3-3, add format opt, format the signature format for the ahk-v1.1 online documentation, by remove [#Directive](https://www.autohotkey.com/docs/v1/lib/#hash) first optional comma, read doc [removeFirstCommaDirective](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaDirective.md)
