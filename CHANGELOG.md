@@ -132,6 +132,7 @@
   1. with open `c-flag` && `LTrim-flag`
   2. in multi-line block has `^\s*;` only comment line, this line indent level will be `1` level to the left compared to other lines.
   3. <<https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/format/multi-line-with-c-flag-fmt.ahk>>
+- feat: devTools add `generate snapshot`
 
 ## v0.0.30(2023-03-19)
 

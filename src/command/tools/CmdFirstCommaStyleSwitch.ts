@@ -11,7 +11,12 @@ type TCmdSwitchComma = {
     AhkTokenLine: TAhkTokenLine,
 };
 
-function getCmdSwitchCommaList(DocStrMap: TTokenStream, s: number, e: number): readonly TCmdSwitchComma[] {
+type TResultCmdSwitchCommaList = {
+    result: readonly TCmdSwitchComma[],
+    logList: string[],
+};
+
+function getCmdSwitchCommaList(DocStrMap: TTokenStream, s: number, e: number): TResultCmdSwitchCommaList {
     const result: TCmdSwitchComma[] = [];
     const logList: string[] = ['"match cmd" : ['];
     for (let i = s; i <= e; i++) {
@@ -50,8 +55,11 @@ function getCmdSwitchCommaList(DocStrMap: TTokenStream, s: number, e: number): r
     }
 
     logList.push(']');
-    fmtLog.info(logList.join('\n'));
-    return result;
+
+    return {
+        result,
+        logList,
+    };
 }
 
 function RemoveFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
@@ -88,7 +96,7 @@ function addFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
     return map;
 }
 
-function applyVscodeEdit(map: TFmtCoreMap): vscode.TextEdit[] {
+function logFmtEdit(map: TFmtCoreMap): void {
     const logList: string[] = [];
     for (const { line, oldText, newText } of map.values()) {
         logList.push(
@@ -108,8 +116,6 @@ function applyVscodeEdit(map: TFmtCoreMap): vscode.TextEdit[] {
     } else {
         fmtLog.info('"not any to apply" : [ ]');
     }
-
-    return FormatCoreWrap(map);
 }
 
 export async function CmdFirstCommaStyleSwitch(
@@ -153,11 +159,13 @@ export async function CmdFirstCommaStyleSwitch(
     const s: number = start.line;
     const e: number = end.line;
     fmtLog.info(`select range of line [${s}, ${e}]`);
-    const list: readonly TCmdSwitchComma[] = getCmdSwitchCommaList(DocStrMap, s, e);
+    const { result, logList } = getCmdSwitchCommaList(DocStrMap, s, e);
+    fmtLog.info(logList.join('\n'));
 
-    const diffMap: TFmtCoreMap = fn(list);
+    const diffMap: TFmtCoreMap = fn(result);
+    logFmtEdit(diffMap);
 
-    const editList: vscode.TextEdit[] = applyVscodeEdit(diffMap);
+    const editList: vscode.TextEdit[] = FormatCoreWrap(diffMap);
     if (editList.length > 0) {
         const WorkspaceEdit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
         WorkspaceEdit.set(uri, editList);

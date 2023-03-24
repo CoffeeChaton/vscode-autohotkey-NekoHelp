@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
+import { A1DevTools } from './A1DevTools/A1DevTools';
 import { AnalysisFuncReferenceWrap } from './AnalysisFuncReference/AnalysisFuncReference';
 import { DeepAnalysisAllFiles } from './DeepAnalysisAllFiles';
-import { pressureTest } from './DevMode';
 import { FormatAllFile } from './FormatAllFile';
 import { ListAllFuncMain } from './ListAllFunc';
 import { ListAllInclude } from './ListAllInclude';
@@ -16,7 +16,7 @@ export function statusBarClick(): void {
 
     void vscode.window.showQuickPick<TPick>([
         { label: '0 -> Refresh Resource from workspace', fn: UpdateCacheUi },
-        { label: '1 -> dev tools', fn: pressureTest },
+        { label: '1 -> dev tools', fn: A1DevTools },
         { label: '2 -> list all #Include List', fn: ListAllInclude },
         { label: '3 -> list all #Include Tree', fn: ListIncludeTree },
         { label: '4 -> list all Function()', fn: ListAllFuncMain },

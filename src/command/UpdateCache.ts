@@ -8,7 +8,7 @@ import { getUriList } from '../tools/fsTools/getUriList';
 import type { TShowFileParam } from '../tools/fsTools/showFileList';
 import { showFileList } from '../tools/fsTools/showFileList';
 
-export async function UpdateCacheAsync(clearCache: boolean): Promise<TAhkFileData[]> {
+export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TAhkFileData[]> {
     rmAllDiag();
     pm.DocMap.clear();
     if (clearCache) {
@@ -46,7 +46,7 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<TAhkFileDat
 
 export async function UpdateCacheUi(): Promise<void> {
     const t1: number = Date.now();
-    const list: TAhkFileData[] = await UpdateCacheAsync(true);
+    const list: readonly TAhkFileData[] = await UpdateCacheAsync(true);
     const t2: number = Date.now();
     const fileList: TShowFileParam[] = list
         .map(({ uri, ms }: TAhkFileData): TShowFileParam => ({ fsPath: uri.fsPath, ms }));

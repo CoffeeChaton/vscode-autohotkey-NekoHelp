@@ -1,16 +1,16 @@
 /* eslint-disable @fluffyfox/prefer-timer-id */
 import * as vscode from 'vscode';
-import { log } from '../provider/vscWindows/log';
-import { statusBarItem } from '../provider/vscWindows/statusBarItem';
+import { log } from '../../provider/vscWindows/log';
+import { statusBarItem } from '../../provider/vscWindows/statusBarItem';
 import {
     arrSum,
     avgMin5,
     stdDevFn,
     stdMin5,
-} from './tools/myMath';
-import type { TPickReturn } from './tools/pressureTestConfig';
-import { pressureTestConfig } from './tools/pressureTestConfig';
-import { UpdateCacheAsync } from './UpdateCache';
+} from '../tools/myMath';
+import type { TPickReturn } from '../tools/pressureTestConfig';
+import { pressureTestConfig } from '../tools/pressureTestConfig';
+import { UpdateCacheAsync } from '../UpdateCache';
 
 const DevModeData: number[] = [];
 
