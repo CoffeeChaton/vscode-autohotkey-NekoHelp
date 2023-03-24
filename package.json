@@ -190,6 +190,11 @@
                         "default": false,
                         "markdownDescription": "`Alpha test options`, It is **not recommended** to turn on except for advanced users."
                     },
+                    "AhkNekoHelp.format.removeFirstCommaDirective": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaDirective.md)) Remove the first comma after #Directive"
+                    },
                     "AhkNekoHelp.format.useTopLabelIndent": {
                         "type": "boolean",
                         "default": true,

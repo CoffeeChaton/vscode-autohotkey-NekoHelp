@@ -4,7 +4,7 @@
 /* eslint-disable no-template-curly-in-string */
 
 type TDirectivesList = Readonly<{
-    keyRawName: string,
+    keyRawName: `#${string}`,
     insert: string,
     doc: string,
 
@@ -31,7 +31,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#ClipboardTimeout',
-        insert: '#ClipboardTimeout, ${1:Milliseconds}',
+        insert: '#ClipboardTimeout ${1:Milliseconds}',
         doc: 'Changes how long the script keeps trying to access the clipboard when the first attempt fails.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_ClipboardTimeout.htm',
@@ -46,7 +46,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#CommentFlag',
-        insert: '#CommentFlag, ${1:NewString}',
+        insert: '#CommentFlag ${1:NewString}',
         doc: 'Changes the script\'s comment symbol from semicolon to some other string.\n**Deprecated:** This directive is not recommended for use in new scripts. Use the default comment flag (semicolon) instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/_CommentFlag.htm',
@@ -56,7 +56,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#Delimiter',
-        insert: '#Delimiter, ${1:NewString}',
+        insert: '#Delimiter ${1:NewString}',
         doc: '**Deprecated:** These directives are not recommended for use in new scripts. Use the default dereference character (percent) and the default delimiter character (comma) instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/_EscapeChar.htm#Delimiter',
@@ -66,7 +66,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#DerefChar',
-        insert: '#DerefChar, ${1:NewString}',
+        insert: '#DerefChar ${1:NewString}',
         doc: '**Deprecated:** These directives are not recommended for use in new scripts. Use the default dereference character (percent) and the default delimiter character (comma) instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/_EscapeChar.htm#DerefChar',
@@ -90,7 +90,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#EscapeChar',
-        insert: '#EscapeChar, ${1:NewString}',
+        insert: '#EscapeChar ${1:NewString}',
         doc: 'Changes the script\'s escape character (e.g. accent vs. backslash).**Deprecated:** This directive is not recommended for use in new scripts. Use the default escape character (accent/backtick) instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/_EscapeChar.htm',
@@ -98,7 +98,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#HotkeyInterval',
-        insert: '#HotkeyInterval, ${1:Milliseconds}',
+        insert: '#HotkeyInterval ${1:Milliseconds}',
         doc: 'Along with [#MaxHotkeysPerInterval](https://www.autohotkey.com/docs/v1/lib/_MaxHotkeysPerInterval.htm), specifies the rate of [hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm) activations beyond which a warning dialog will be displayed.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_HotkeyInterval.htm',
@@ -114,7 +114,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#HotkeyModifierTimeout',
-        insert: '#HotkeyModifierTimeout, ${1:Milliseconds}',
+        insert: '#HotkeyModifierTimeout ${1:Milliseconds}',
         doc: 'Affects the behavior of [hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm) modifiers: `Ctrl`, `Alt`, `Win`, and `Shift`.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_HotkeyModifierTimeout.htm',
@@ -131,7 +131,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#Hotstring',
-        insert: '#Hotstring, ${1|NoMouse,EndChars NewChars,NewOptions|}',
+        insert: '#Hotstring ${1|NoMouse,EndChars NewChars,NewOptions|}',
         doc: 'Changes [hotstring](https://www.autohotkey.com/docs/v1/Hotstrings.htm) options or ending characters.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm',
@@ -143,7 +143,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#If',
-        insert: '#If, $0',
+        insert: '#If',
         doc: 'Creates context-sensitive [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm) and [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm). Such hotkeys perform a different action (or none at all) depending on the result of an expression.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_If.htm',
@@ -161,7 +161,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#IfTimeout',
-        insert: '#IfTimeout, ${1:Timeout}',
+        insert: '#IfTimeout ${1:Timeout}',
         doc: 'Sets the maximum time that may be spent evaluating a single #If expression.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_IfTimeout.htm',
@@ -258,7 +258,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#InputLevel',
-        insert: '#InputLevel, ${1:0}',
+        insert: '#InputLevel ${1:0}',
         doc: 'Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings. [Level] - An integer between 0 and 100. If omitted, it defaults to 0.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_InputLevel.htm',
@@ -296,7 +296,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#KeyHistory',
-        insert: '#KeyHistory, ${1:MaxEvents}',
+        insert: '#KeyHistory ${1:MaxEvents}',
         doc: 'Sets the maximum number of keyboard and mouse events displayed by the KeyHistory window. You can set it to 0 to disable key history.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_KeyHistory.htm',
@@ -312,7 +312,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#LTrim',
-        insert: '#LTrim, ${1|On,Off|}',
+        insert: '#LTrim ${1|On,Off|}',
         doc: 'LTrim: Omits spaces and tabs at the beginning of each line. This is primarily used to allow the continuation section to be indented. Also, this option may be turned on for multiple continuation sections by specifying #LTrim on a line by itself. #LTrim is positional: it affects all continuation sections physically beneath it. The setting may be turned off via #LTrim Off.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/Scripts.htm#LTrim',
@@ -322,7 +322,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#MaxHotkeysPerInterval',
-        insert: '#MaxHotkeysPerInterval, ${1:Value}',
+        insert: '#MaxHotkeysPerInterval ${1:Value}',
         doc: 'Along with #HotkeyInterval, specifies the rate of hotkey activations beyond which a warning dialog will be displayed.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_MaxHotkeysPerInterval.htm',
@@ -334,7 +334,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#MaxMem',
-        insert: '#MaxMem, ${1:Megabytes}',
+        insert: '#MaxMem ${1:Megabytes}',
         doc: 'Sets the maximum capacity of each variable to the specified number of megabytes.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_MaxMem.htm',
@@ -349,7 +349,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#MaxThreads',
-        insert: '#MaxThreads, ${1:Value}',
+        insert: '#MaxThreads ${1:Value}',
         doc: 'Sets the maximum number of simultaneous threads.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_MaxThreads.htm',
@@ -364,7 +364,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#MaxThreadsBuffer',
-        insert: '#MaxThreadsBuffer, ${1|On,Off|}',
+        insert: '#MaxThreadsBuffer ${1|On,Off|}',
         doc: 'Causes some or all hotkeys to buffer rather than ignore keypresses when their #MaxThreadsPerHotkey limit has been reached.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_MaxThreadsBuffer.htm',
@@ -379,7 +379,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#MaxThreadsPerHotkey',
-        insert: '#MaxThreadsPerHotkey, ${1:Value}',
+        insert: '#MaxThreadsPerHotkey ${1:Value}',
         doc: 'Sets the maximum number of simultaneous threads per hotkey or hotstring.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_MaxThreadsPerHotkey.htm',
@@ -394,7 +394,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#MenuMaskKey',
-        insert: '#MenuMaskKey, ${1:KeyName}',
+        insert: '#MenuMaskKey ${1:KeyName}',
         doc: 'Changes which key is used to mask `Win` or `Alt` keyup events.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_MenuMaskKey.htm',
@@ -454,7 +454,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#SingleInstance',
-        insert: '#SingleInstance, ${1|force,ignore,prompt,off|}',
+        insert: '#SingleInstance ${1|force,ignore,prompt,off|}',
         doc: 'Determines whether a script is allowed to run again when it is already running.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_SingleInstance.htm',
@@ -470,7 +470,7 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#UseHook',
-        insert: '#UseHook, ${1|On,Off|}',
+        insert: '#UseHook ${1|On,Off|}',
         doc: 'Forces the use of the hook to implement all or some keyboard [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm).',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_UseHook.htm',
@@ -488,7 +488,7 @@ export const DirectivesList: TDirectivesList[] = [
     {
         keyRawName: '#Warn',
         insert:
-            '#Warn,$0 ${1|All,Unreachable,ClassOverwrite,LocalSameAsGlobal,UseEnv,UseUnsetLocal,UseUnsetGlobal|}, ${2|MsgBox,StdOut,OutputDebug,Off|}',
+            '#Warn ${1|All,Unreachable,ClassOverwrite,LocalSameAsGlobal,UseEnv,UseUnsetLocal,UseUnsetGlobal|}, ${2|MsgBox,StdOut,OutputDebug,Off|}',
         doc: 'Enables or disables warnings for specific conditions which may indicate an error, such as a typo or missing "global" declaration.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_Warn.htm',

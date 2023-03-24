@@ -2,9 +2,12 @@
 import type * as vscode from 'vscode';
 import type { TConfigs } from '../../configUI.data';
 import type { DeepReadonly, TAhkTokenLine } from '../../globalEnum';
+import { EMultiline } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
+import { DirectivesMDMap } from '../../tools/Built-in/Directives.tool';
 import { lineReplace } from './fmtReplace';
 import type { TFmtCore } from './FormatType';
+import { removeFirstCommaDirective } from './removeFirstCommaDirective';
 import type { TFormatFlag } from './tools/getFormatFlag';
 
 type TWarnUse =
@@ -24,8 +27,24 @@ type TWarnUse =
     };
 
 function wrap(args: TWarnUse, text: string, AhkTokenLine: TAhkTokenLine): TFmtCore {
-    const { lStrTrim, formatTextReplace, betaList } = args;
-    const { line, textRaw } = AhkTokenLine;
+    const {
+        lStrTrim,
+        formatTextReplace,
+        betaList,
+        userConfigs,
+    } = args;
+    const { line, textRaw, multiline } = AhkTokenLine;
+
+    if (
+        userConfigs.removeFirstCommaDirective
+        && lStrTrim.startsWith('#')
+        && multiline === EMultiline.none
+    ) {
+        const ma: RegExpMatchArray | null = lStrTrim.match(/^#(\w+)[ \t]*,/u);
+        if (ma !== null && DirectivesMDMap.has(ma[1].toUpperCase())) {
+            return removeFirstCommaDirective(text, ma[1], AhkTokenLine);
+        }
+    }
 
     const newText: string = formatTextReplace && betaList[line]
         ? lineReplace(AhkTokenLine, text, lStrTrim) // Alpha test options

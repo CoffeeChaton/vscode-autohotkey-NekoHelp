@@ -30,7 +30,7 @@ export function hoverDirectives(
     const ah: CAhkDirectives | CAhkInclude | undefined = findDirectivesWithPos(AstRoot, position);
     if (ah === undefined) return undefined;
 
-    const md: vscode.MarkdownString | undefined = DirectivesMDMap.get(ah.hashtag);
+    const md: vscode.MarkdownString | undefined = DirectivesMDMap.get(ah.hashtag)?.md;
     if (md !== undefined) return md;
     return unknownDirectivesMD;
 }

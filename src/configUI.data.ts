@@ -55,6 +55,16 @@ type TempConfigs = {
     format: {
         AMasterSwitchUseFormatProvider: boolean,
         formatTextReplace: boolean,
+
+        /**
+         * ```ahk
+         * #Warn, All, MsgBox
+         * ; to
+         * #Warn All, MsgBox
+         * ;    ^rm first ,`
+         * ```
+         */
+        removeFirstCommaDirective: boolean,
         useTopLabelIndent: boolean,
 
         /**

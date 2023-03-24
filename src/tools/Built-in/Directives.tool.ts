@@ -1,13 +1,17 @@
 import * as vscode from 'vscode';
 import { DirectivesList } from './Directives.data';
 
-type TDirectivesMDMap = ReadonlyMap<string, vscode.MarkdownString>;
+type TDirectivesMDMap = ReadonlyMap<string, {
+    md: vscode.MarkdownString,
+    keyRawName: `#${string}`,
+}>;
 type TSnippetDirective = readonly vscode.CompletionItem[];
 
 export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDirectivesMDMap] => {
     //
     // initialize
-    const map2 = new Map<string, vscode.MarkdownString>();
+    const map = new Map<string, { md: vscode.MarkdownString, keyRawName: `#${string}` }>();
+
     const List1: vscode.CompletionItem[] = [];
     for (const v of DirectivesList) {
         const {
@@ -30,7 +34,10 @@ export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDi
 
         md.supportHtml = true;
 
-        map2.set(keyRawName.toUpperCase().replace('#', ''), md);
+        map.set(keyRawName.toUpperCase().replace('#', ''), {
+            md,
+            keyRawName,
+        });
 
         if (!recommended) continue;
 
@@ -51,7 +58,7 @@ export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDi
      * after initialization clear
      */
     DirectivesList.length = 0;
-    return [List1, map2]; // [Array(29),Map(35)]
+    return [List1, map]; // [Array(29),Map(35)]
 })();
 
 export function snipDirectives(subStr: string): readonly vscode.CompletionItem[] {

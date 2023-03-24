@@ -75,6 +75,7 @@ describe('check package ruler', () => {
                 // [2]
                 ['AhkNekoHelp.format.AMasterSwitchUseFormatProvider', 'boolean'],
                 ['AhkNekoHelp.format.textReplace', 'boolean'],
+                ['AhkNekoHelp.format.removeFirstCommaDirective', 'boolean'],
                 ['AhkNekoHelp.format.useTopLabelIndent', 'boolean'],
                 ['AhkNekoHelp.format.useParenthesesIndent', 'boolean'],
                 ['AhkNekoHelp.format.useSquareBracketsIndent', 'boolean'],

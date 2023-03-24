@@ -62,20 +62,23 @@ describe('check #Directive ruler', () => {
         for (const v of DirectivesList) {
             const { keyRawName, insert } = v;
 
-            if (
-                insert === keyRawName
-                || insert.startsWith(`${keyRawName},`)
-                || insert.startsWith(`${keyRawName} [,`)
-                || insert.startsWith(`${keyRawName} $`)
-            ) {
+            if (insert === keyRawName) continue;
+
+            if (!insert.startsWith(`${keyRawName} `)) {
+                errList.push(`${keyRawName} ;insert not start with keyRawName`);
                 continue;
             }
 
-            errList.push(keyRawName);
+            const str: string = insert.replace(keyRawName, '').replace(/^ /u, '');
+            if (str.trimStart().startsWith(',')) {
+                errList.push(`${keyRawName} ;first optional comma`);
+                continue;
+            }
+            if (!str.startsWith('${1')) {
+                errList.push(keyRawName);
+            }
         }
 
-        expect(errList).toStrictEqual(
-            ['#Requires'], // The document is signed as `#Requires Requirement`
-        );
+        expect(errList).toStrictEqual(['#Requires']);
     });
 });

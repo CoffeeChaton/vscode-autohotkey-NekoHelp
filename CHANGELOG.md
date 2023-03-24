@@ -13,6 +13,9 @@
 
 ## Next v0.0.31(2023-03-xx)
 
+- feat: [#7](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/7)
+  - [x] part 3-3, add format opt, format the signature format for the ahk-v1.1 online documentation, by remove [#Directive](https://www.autohotkey.com/docs/v1/lib/#hash) first optional comma, read doc [removeFirstCommaDirective](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaDirective.md)
+  - [x] part 3-4, fix: Adjusted completion - the part about `#Directive`, conforming to the signature of the document (meaning there is no first optional comma).
 - fix: `{{}` or `{}}` bracket pair error syntax-highlight, exp [`Send {{}`](https://www.autohotkey.com/docs/v1/lib/Send.htm#keynames)
   ![fix Bracket pair](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-31-bracket-pair.png)
 - fix: class/functions range

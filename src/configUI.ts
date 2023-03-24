@@ -51,6 +51,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
                 'AhkNekoHelp.format.AMasterSwitchUseFormatProvider',
             ),
             formatTextReplace: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.textReplace'),
+            removeFirstCommaDirective: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.removeFirstCommaDirective'),
             useTopLabelIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useTopLabelIndent'),
             useParenthesesIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useParenthesesIndent'),
             useSquareBracketsIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useSquareBracketsIndent'),
