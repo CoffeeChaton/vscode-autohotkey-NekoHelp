@@ -21,18 +21,16 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             ms,
         } = AhkFileData;
         const { fsPath } = uri;
-        const selectRT: string = rootList.find((rt: string): boolean => fsPath.startsWith(rt))
-            ?? rootList[0];
 
-        const basename: string = path.basename(fsPath);
-        const a: string = fsPath
-            .slice(0, fsPath.length - basename.length);
-        const b: string = a.replace(selectRT, '');
-        const targetDir: string = path.join(
+        const { dir, base } = path.parse(fsPath);
+        const selectRT: string = rootList.find((rt: string): boolean => dir.startsWith(rt)) ?? rootList[0];
+
+        const targetDir: string = path.normalize(path.join(
             selectRT,
             '.ahk-neko-snapshot',
-            b,
-        );
+            path.relative(selectRT, dir),
+        ));
+
         mkDirByPathSync(targetDir);
 
         const data: string = [
@@ -45,7 +43,7 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             '',
             '- [snap](#snap)',
             `  - [lineMsg](#${'lineMsg'.toLowerCase()})`,
-            '  - [AST](#ast)',
+            '  - [symbol tree](#symbol-tree)',
             `  - [ModuleVar](#${'ModuleVar'.toLowerCase()})`,
             `  - [GValMap](#${'GValMap'.toLowerCase()})`,
             '',
@@ -55,7 +53,7 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             JSON.stringify(DocStrMap, null, 4),
             '```',
             '',
-            '## AST',
+            '## symbol tree',
             '',
             '```jsonc',
             JSON.stringify(AST, (key: string, value: unknown): unknown => {
@@ -90,7 +88,7 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             '',
         ].join('\r\n');
 
-        const mdPath: string = path.join(targetDir, `${basename}.md`);
+        const mdPath: string = path.join(targetDir, `${base}.md`);
         snapList.push(mdPath);
         // eslint-disable-next-line security/detect-non-literal-fs-filename
         fs.writeFileSync(mdPath, data);
@@ -117,6 +115,7 @@ export async function generateAhkNekoSnapshot(): Promise<void> {
         return;
     }
 
+    const t1: number = Date.now();
     const rootList: readonly string[] = getWorkspaceRoot().map((uri: vscode.Uri): string => uri.fsPath);
     if (rootList.length === 0) {
         void vscode.window.showInformationMessage(
@@ -126,15 +125,13 @@ export async function generateAhkNekoSnapshot(): Promise<void> {
     }
 
     const AhkFileDataList: readonly TAhkFileData[] = await UpdateCacheAsync(false);
-    const snapList: readonly string[] = generateSnapshot(AhkFileDataList, rootList);
+    const snapList: readonly string[] = generateSnapshot(AhkFileDataList, rootList)
+        .map((fsPath: string, i: number): string => `${i} -> '${fsPath}'`);
 
     log.info(
         'snapshot created at',
-        JSON.stringify(
-            snapList,
-            null,
-            4,
-        ),
+        JSON.stringify(snapList, null, 4),
+        `Done : ${Date.now() - t1} ms`,
     );
     log.show();
 }
