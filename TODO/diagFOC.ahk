@@ -1,4 +1,4 @@
-#Warn, All, MsgBox
+#Warn All, MsgBox
 
 MsgBox, % "call fnA(0)"
 fnA(0) ; "A" -> B -> C

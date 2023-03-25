@@ -84,6 +84,7 @@ export function FormatCore(
     const {
         AMasterSwitchUseFormatProvider,
         formatTextReplace,
+        removeFirstCommaDirective,
         useTopLabelIndent,
     } = userConfigs;
     if (!AMasterSwitchUseFormatProvider) return newFmtMap;
@@ -146,7 +147,7 @@ export function FormatCore(
         // memo.push({ ...lnStatus });
     }
 
-    if (formatTextReplace) {
+    if (formatTextReplace || removeFirstCommaDirective) {
         const { fsPath } = uri;
         fmtDiffInfo({
             newFmtMap,

@@ -7,6 +7,7 @@
 .eslintrc.json
 .git
 .gitattributes
+.github/
 .gitignore
 .heapprofile
 .heapsnapshot

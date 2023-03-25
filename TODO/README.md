@@ -79,3 +79,5 @@ Object
 
 <https://github.com/microsoft/vscode/wiki/Virtual-Workspaces>
 <https://github.com/microsoft/language-server-protocol/issues/1264>
+
+- lint : Limit foc complementary positions ( `if` `for` `else` )

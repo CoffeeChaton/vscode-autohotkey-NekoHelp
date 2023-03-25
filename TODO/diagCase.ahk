@@ -1,4 +1,4 @@
-#Warn, All, MsgBox
+#Warn All, MsgBox
 
 fn(A_LineNumber, 1) ; b is 1
 fn(A_LineNumber, 0) ; b is 1

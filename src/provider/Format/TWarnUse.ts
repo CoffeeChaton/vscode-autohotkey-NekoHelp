@@ -144,11 +144,14 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
 
     const deepFix = Math.max(
         0,
-        occ // fix this now...
-            + cllFix2
-            + cllFix2WithMultiLine
-            + tempFixOfBracketsChange
+        0
+            // fix this now...
+            + occ
             + cllFix
+            + cllFix2 // if (occ -> range like switch-range) then rm cll to format...
+            + cllFix2WithMultiLine
+            // OK
+            + tempFixOfBracketsChange
             + switchDeep
             + MultLine // matrix
             + topLabelDeep // matrix
