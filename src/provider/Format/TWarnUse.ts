@@ -26,7 +26,7 @@ type TWarnUse =
         brackets: TBrackets,
     };
 
-function wrap(args: TWarnUse, text: string, AhkTokenLine: TAhkTokenLine): TFmtCore {
+function fmtPlus(args: TWarnUse, text: string, AhkTokenLine: TAhkTokenLine): TFmtCore {
     const {
         lStrTrim,
         formatTextReplace,
@@ -90,12 +90,12 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
      * keep warning of this line!
      */
     if (MultLine === -999) {
-        return wrap(args, textRaw, AhkTokenLine); // in multi-line and not open LTrim flag
+        return fmtPlus(args, textRaw, AhkTokenLine); // in multi-line and not open LTrim flag
     }
 
     const WarnLineBodyWarn: string = textRaw.trimStart();
     if (WarnLineBodyWarn === '') {
-        return wrap(args, '', AhkTokenLine);
+        return fmtPlus(args, '', AhkTokenLine);
     }
 
     /**
@@ -142,7 +142,7 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         ? -1
         : 0;
 
-    const deepFix = Math.max(
+    const deepFix: number = Math.max(
         0,
         0
             // fix this now...
@@ -168,5 +168,5 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         : 1;
 
     const DeepStr = TabSpaces.repeat(deepFix * TabSize);
-    return wrap(args, `${DeepStr}${WarnLineBodyWarn}`, AhkTokenLine);
+    return fmtPlus(args, `${DeepStr}${WarnLineBodyWarn}`, AhkTokenLine);
 }

@@ -90,3 +90,7 @@ Var *Script::FindOrAddVar(LPTSTR aVarName, size_t aVarNameLength, int aScope)
 // such as "new ClassVar", "new Class.NestedClass()" or "new %Var%()",
 // but not "new := 1" or "x := new + 1" and not '"string" new "string"'.
 ```
+
+```c++
+#define OUTPUT_VAR (*sArgVar) // ExpandArgs() has ensured this first ArgVar is always initialized, so there's never any need to check mArgc > 0.
+```

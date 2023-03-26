@@ -1,5 +1,20 @@
 # code507 avoid set `Number` as variable
 
+## Also avoid overwriting command line parameters
+
+> original - <https://www.autohotkey.com/docs/v1/Scripts.htm#cmd_args_old>\
+> **Legacy:** The command line parameters are also stored in the [variables](https://www.autohotkey.com/docs/v1/Variables.htm) %1%, %2%, and so on, as in versions prior to [\[v1.1.27\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.27.00). In addition, %0% contains the number of parameters passed (0 if none). However, these variables cannot be referenced directly in an expression because they would be seen as numbers rather than variables. The following example exits the script when too few parameters are passed to it:
+>
+> ```ahk
+> if 0 < 3  ; The left side of a non-expression if-statement is always the name of a variable.
+> {
+>    MsgBox This script requires at least 3 incoming parameters but it only received %0%.
+>    ExitApp
+> }
+> ```
+>
+> ...skip below
+
 ## exp1
 
 Because ahk v1.1, don't warn before running, so I provide this option.
