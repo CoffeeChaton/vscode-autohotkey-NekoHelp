@@ -1,10 +1,4 @@
-import type { DocumentSelector, ExtensionContext } from 'vscode';
-import {
-    commands,
-    languages,
-    window,
-    workspace,
-} from 'vscode';
+import * as vscode from 'vscode';
 import { AnalyzeFuncMain } from './command/AnalyzeFunc/AnalyzeThisFunc';
 import { CmdFindFuncRef } from './command/CmdFindFuncRef';
 import { CmdGotoFuncDef } from './command/CmdGotoFuncDef';
@@ -38,58 +32,58 @@ import { statusBarItem } from './provider/vscWindows/statusBarItem';
 import { WorkspaceSymbolProvider } from './provider/WorkspaceSymbolProvider/WorkspaceSymbolProvider';
 
 // main
-export function activate(context: ExtensionContext): void {
-    const selector: DocumentSelector = { language: 'ahk' }; // scheme: 'file'
+export function activate(context: vscode.ExtensionContext): void {
+    const selector: vscode.DocumentSelector = { language: 'ahk' }; // scheme: 'file'
     context.subscriptions.push(
         // languages-------------------
         // languages.registerFoldingRangeProvider
-        languages.registerCodeActionsProvider(selector, CodeActionProvider),
-        languages.registerCodeLensProvider(selector, CodeLensProvider),
-        languages.registerCompletionItemProvider(selector, CompletionItemProvider, '', '@', '.', '{', '#', '_'),
-        languages.registerDefinitionProvider(selector, DefProvider),
-        languages.registerDocumentFormattingEditProvider(selector, FormatProvider),
-        languages.registerDocumentRangeFormattingEditProvider(selector, RangeFormatProvider),
-        languages.registerDocumentSemanticTokensProvider(selector, AhkFullSemanticHighlight, legend),
-        languages.registerDocumentSymbolProvider(selector, SymbolProvider),
-        languages.registerHoverProvider(selector, HoverProvider),
-        languages.registerOnTypeFormattingEditProvider(selector, OnTypeFormattingEditProvider, '\n'),
-        languages.registerReferenceProvider(selector, ReferenceProvider),
-        languages.registerRenameProvider(selector, RenameProvider),
-        languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
+        vscode.languages.registerCodeActionsProvider(selector, CodeActionProvider),
+        vscode.languages.registerCodeLensProvider(selector, CodeLensProvider),
+        vscode.languages.registerCompletionItemProvider(selector, CompletionItemProvider, '', '@', '.', '{', '#', '_'),
+        vscode.languages.registerDefinitionProvider(selector, DefProvider),
+        vscode.languages.registerDocumentFormattingEditProvider(selector, FormatProvider),
+        vscode.languages.registerDocumentRangeFormattingEditProvider(selector, RangeFormatProvider),
+        vscode.languages.registerDocumentSemanticTokensProvider(selector, AhkFullSemanticHighlight, legend),
+        vscode.languages.registerDocumentSymbolProvider(selector, SymbolProvider),
+        vscode.languages.registerHoverProvider(selector, HoverProvider),
+        vscode.languages.registerOnTypeFormattingEditProvider(selector, OnTypeFormattingEditProvider, '\n'),
+        vscode.languages.registerReferenceProvider(selector, ReferenceProvider),
+        vscode.languages.registerRenameProvider(selector, RenameProvider),
+        vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
         // workspace-------------------
         // workspace.onDidOpenTextDocument(pm.OpenFile),
         // workspace.onDidSaveTextDocument(pm.OnDidSaveTextDocument),
         // workspace.registerTextDocumentContentProvider(selector, e),
-        workspace.onDidChangeConfiguration(configChangEvent),
-        workspace.onDidChangeTextDocument(pm.changeDoc),
-        workspace.onDidCreateFiles(pm.createMap),
-        workspace.onDidDeleteFiles(pm.delMap),
-        workspace.onDidRenameFiles(pm.renameFiles),
+        vscode.workspace.onDidChangeConfiguration(configChangEvent),
+        vscode.workspace.onDidChangeTextDocument(pm.changeDoc),
+        vscode.workspace.onDidCreateFiles(pm.createMap),
+        vscode.workspace.onDidDeleteFiles(pm.delMap),
+        vscode.workspace.onDidRenameFiles(pm.renameFiles),
         // window----------------------
         // window.onDidChangeVisibleTextEditors(onChangeVisibleTabs),
         // window.tabGroups.onDidChangeTabGroups(onDidChangeTabGroups),
-        window.onDidChangeActiveTextEditor(onDidChangeActiveTab),
-        window.tabGroups.onDidChangeTabs(onDidChangeTabs),
+        vscode.window.onDidChangeActiveTextEditor(onDidChangeActiveTab),
+        vscode.window.tabGroups.onDidChangeTabs(onDidChangeTabs),
         // commands--------------------
         // commands.registerCommand(ECommand.CompletionMsgBox, CompletionMsgBox),
-        commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
-        commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
-        commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
-        commands.registerCommand(ECommand.CmdFirstCommaStyleSwitch, CmdFirstCommaStyleSwitch),
-        commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
-        commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),
-        commands.registerCommand(ECommand.ListAllInclude, ListAllInclude),
-        commands.registerCommand(ECommand.ListIncludeTree, ListIncludeTree),
-        commands.registerCommand(ECommand.showFileReport, getFileReport),
-        commands.registerCommand(ECommand.showFuncAnalyze, AnalyzeFuncMain),
-        commands.registerCommand(ECommand.showUnknownAnalyze, showUnknownAnalyze),
+        vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
+        vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
+        vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
+        vscode.commands.registerCommand(ECommand.CmdFirstCommaStyleSwitch, CmdFirstCommaStyleSwitch),
+        vscode.commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
+        vscode.commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),
+        vscode.commands.registerCommand(ECommand.ListAllInclude, ListAllInclude),
+        vscode.commands.registerCommand(ECommand.ListIncludeTree, ListIncludeTree),
+        vscode.commands.registerCommand(ECommand.showFileReport, getFileReport),
+        vscode.commands.registerCommand(ECommand.showFuncAnalyze, AnalyzeFuncMain),
+        vscode.commands.registerCommand(ECommand.showUnknownAnalyze, showUnknownAnalyze),
         // root dispose
         log,
         statusBarItem,
         diagColl,
     );
-    //
-    void commands.executeCommand('setContext', 'AhkNekoHelpExtension.showMyCommand', true);
+
+    void vscode.commands.executeCommand('setContext', 'AhkNekoHelpExtension.showMyCommand', true);
     void UpdateCacheAsync(true); // not await
 }
 
