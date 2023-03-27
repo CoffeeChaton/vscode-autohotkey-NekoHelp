@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import type { DeepReadonly } from '../globalEnum';
 import type { EFnMode } from '../tools/DeepAnalysis/FnVar/EFnMode';
+import { ToUpCase } from '../tools/str/ToUpCase';
 import type { TLineClass } from './CAhkLine';
 import type { CAhkSwitch } from './CAhkSwitch';
 
@@ -120,7 +121,7 @@ export class CAhkFunc extends vscode.DocumentSymbol {
             : vscode.SymbolKind.Method;
         super(name, detail, kind, range, selectionRange);
         this.selectionRangeText = selectionRangeText;
-        this.upName = name.toUpperCase();
+        this.upName = ToUpCase(name);
         this.md = md;
         this.uri = uri;
         this.defStack = defStack;

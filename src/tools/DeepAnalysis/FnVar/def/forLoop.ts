@@ -1,6 +1,7 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,3,4,10] }] */
 import * as vscode from 'vscode';
 import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
+import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { wrapFnValDef } from './wrapFnValDef';
 
@@ -14,7 +15,7 @@ function wrap(arg: TGetFnDefNeed, character: number, RawName: string): void {
         fnMode,
     } = arg;
 
-    const UpName: string = RawName.toUpperCase();
+    const UpName: string = ToUpCase(RawName);
     if (paramMap.has(UpName) || GValMap.has(UpName)) return;
 
     const defRange: vscode.Range = new vscode.Range(

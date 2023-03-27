@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import type { TParamMapIn, TParamMetaIn } from '../../AhkSymbol/CAhkFunc';
 import type { TTokenStream } from '../../globalEnum';
 import { replacerSpace } from '../str/removeSpecialChar';
+import { ToUpCase } from '../str/ToUpCase';
 
 type TParamData = {
     isByRef: boolean,
@@ -91,7 +92,7 @@ export function getParamDef(fnName: string, selectionRange: vscode.Range, DocStr
 
             const ArgAnalysis: TParamMetaIn = getParamDefNeed(param, line, ch, lineComment);
 
-            const key: string = ArgAnalysis.keyRawName.toUpperCase();
+            const key: string = ToUpCase(ArgAnalysis.keyRawName);
             paramMap.set(key, ArgAnalysis);
         }
     }

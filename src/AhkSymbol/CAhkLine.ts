@@ -1,6 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../globalEnum';
+import { ToUpCase } from '../tools/str/ToUpCase';
 import type { CAhkInclude } from './CAhkInclude';
 
 export type TBaseLineParam = {
@@ -42,7 +43,7 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
         );
         super(name, '#Directives', vscode.SymbolKind.Event, range, selectionRangeFix);
         this.uri = uri;
-        this.hashtag = name.replace('#', '').toUpperCase();
+        this.hashtag = ToUpCase(name.replace('#', ''));
     }
 }
 
@@ -138,7 +139,7 @@ export class CAhkLabel extends vscode.DocumentSymbol {
     ) {
         super(name, 'label', vscode.SymbolKind.Namespace, range, selectionRange);
         this.uri = uri;
-        this.upName = name.slice(0, -1).toUpperCase();
+        this.upName = ToUpCase(name.slice(0, -1));
         this.AfterString = '';
         this.md = md;
     }

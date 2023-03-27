@@ -1,6 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getClassDef } from './getClassDef';
 import { getDefSwitch } from './getDefSwitch';
 import { getDefWithLabel } from './getDefWithLabel';
@@ -24,7 +25,7 @@ function DefProviderCore(
         /(?<![.`])[#$@\w\u{A1}-\u{FFFF}]+/u,
     );
     if (range === undefined) return null;
-    const wordUp: string = document.getText(range).toUpperCase();
+    const wordUp: string = ToUpCase(document.getText(range));
 
     if ((/^0x[A-F\d]+$/iu).test(wordUp) || (/^\d+$/u).test(wordUp)) return null;
 

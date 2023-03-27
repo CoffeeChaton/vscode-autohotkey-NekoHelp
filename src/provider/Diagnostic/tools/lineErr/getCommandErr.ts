@@ -5,6 +5,7 @@ import { CommandErrMap } from '../../../../tools/Built-in/Command.tools';
 import { RegRootList } from '../../../../tools/Built-in/RegRoot/RegRootKey';
 import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import { ToUpCase } from '../../../../tools/str/ToUpCase';
 import { CDiagBase } from '../CDiagBase';
 
 type TLoopData = { lPos: number, section: string };
@@ -41,7 +42,7 @@ function getLoopErr(lStr: string, line: number, wordUpCol: number): CDiagBase | 
     const colL: number = lPos;
     const colR: number = lPos + section.length;
 
-    const paramUp: string = section.toUpperCase();
+    const paramUp: string = ToUpCase(section);
     const isOldRegLoop: boolean = RegRootList.some((key): boolean => paramUp.includes(key));
 
     if (isOldRegLoop) {

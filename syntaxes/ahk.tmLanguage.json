@@ -346,7 +346,7 @@
                     "name": "support.function.com.ahk"
                 },
                 {
-                    "match": "\\w+(?=\\()",
+                    "match": "[#$@\\w\\x{A1}-\\x{FFFF}]+(?=\\()",
                     "name": "entity.name.function.ahk"
                 },
                 {

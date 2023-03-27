@@ -5,6 +5,7 @@ import { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TTopSymbol } from '../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 
 function getThisMethodCore(ahClass: CAhkClass, wordUp: string): [vscode.Location] | null {
     const method: CAhkFunc | undefined = ahClass
@@ -42,7 +43,7 @@ export function getThisMethod(
                 .find((ah: TTopSymbol): ah is CAhkClass => ah instanceof CAhkClass && ah.range.contains(position));
 
             if (matchClass !== undefined) {
-                return getThisMethodCore(matchClass, wordRaw.toUpperCase());
+                return getThisMethodCore(matchClass, ToUpCase(wordRaw));
             }
         }
     }

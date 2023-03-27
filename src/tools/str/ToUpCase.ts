@@ -9,5 +9,5 @@ export function ToUpCase(str: string): string {
     if ((/^[#$@\w]+$/iu).test(str)) { // just ascii range
         return str.toUpperCase();
     }
-    return str.replaceAll(/[a-z]/u, (substring: string): string => substring.toUpperCase());
+    return str.replaceAll(/[a-z]/gu, (substring: string): string => substring.toUpperCase());
 }

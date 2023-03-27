@@ -18,6 +18,7 @@ import { CommandMDMap } from '../Built-in/Command.tools';
 import { otherKeyword2MD } from '../Built-in/otherKeyword2.tools';
 import { StatementMDMap } from '../Built-in/statement.tools';
 import { WinTitleMDMap } from '../Built-in/WinTitle/WinTitleParameter.tools';
+import { ToUpCase } from '../str/ToUpCase';
 import { newC502 } from './FnVar/def/c502';
 
 function pushRef(
@@ -74,7 +75,7 @@ export function getUnknownTextMap(
         // eslint-disable-next-line security/detect-unsafe-regex
         for (const v of lStr.matchAll(/(?<!\.)([#$@\w\u{A1}-\u{FFFF}]+)\b(?!\(|[ \t]*:[^=])/gu)) {
             const keyRawName: string = v[1];
-            const wordUp: string = keyRawName.toUpperCase();
+            const wordUp: string = ToUpCase(keyRawName);
 
             const character: number | undefined = v.index;
             const { input } = v;

@@ -6,6 +6,7 @@ import type { TAhkBaseObj } from '../../../tools/Built-in/ahkBase_tools';
 import { ahkBaseUp } from '../../../tools/Built-in/ahkBase_tools';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { ahkValDefRegex } from '../../../tools/regexTools';
+import { ToUpCase } from '../../../tools/str/ToUpCase';
 import { getWmThis } from './getWmThis';
 import { parsingUserDefClassRecursive } from './parsingUserDefClassRecursive';
 
@@ -76,7 +77,7 @@ export function valTrack(ChapterArr: readonly string[], AhkTokenList: TTokenStre
     const nameList: string[] = valTrackCore(ChapterArr, ahkBaseObj, AhkTokenList);
 
     for (const name of nameList) {
-        const c0: CAhkClass | null = getUserDefTopClassSymbol(name.toUpperCase());
+        const c0: CAhkClass | null = getUserDefTopClassSymbol(ToUpCase(name));
         if (c0 === null) continue;
 
         const ahkThis: vscode.CompletionItem[] = ChapterArr.length === 1

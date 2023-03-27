@@ -15,6 +15,7 @@ import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
 import type { TGValMap } from '../../core/ParserTools/ahkGlobalDef';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
+import { ToUpCase } from '../str/ToUpCase';
 import { getFileAllClass } from '../visitor/getFileAllClassList';
 import { getFileAllFunc } from '../visitor/getFileAllFuncList';
 import { newC502 } from './FnVar/def/c502';
@@ -90,7 +91,7 @@ function moveGValMap2ModuleMap(GValMap: TGValMap, ModuleValMap: TValMapIn): void
 
         //
         for (const { rawName, range } of refRangeList) {
-            const oldDef: TValMetaIn | undefined = ModuleValMap.get(rawName.toUpperCase());
+            const oldDef: TValMetaIn | undefined = ModuleValMap.get(ToUpCase(rawName));
             if (oldDef !== undefined) {
                 oldDef.refRangeList.push(range);
                 oldDef.c502Array.push(newC502(oldDef.keyRawName, rawName));

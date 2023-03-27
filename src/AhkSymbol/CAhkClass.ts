@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import * as vscode from 'vscode';
+import { ToUpCase } from '../tools/str/ToUpCase';
 import type { CAhkFunc } from './CAhkFunc';
 
 type TCAhkClassInstanceVarParam = {
@@ -99,7 +100,7 @@ export class CAhkClass extends vscode.DocumentSymbol {
     ) {
         super(name, '', vscode.SymbolKind.Class, range, selectionRange);
         this.insertText = insertText;
-        this.upName = name.toUpperCase();
+        this.upName = ToUpCase(name);
         this.uri = uri;
         this.children = ch;
         this.Base = Base;

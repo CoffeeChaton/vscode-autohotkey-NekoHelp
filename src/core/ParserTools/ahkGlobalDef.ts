@@ -5,6 +5,7 @@ import { EDetail } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TVarData } from './varMixedAnnouncement';
 import { varMixedAnnouncement } from './varMixedAnnouncement';
 
@@ -37,7 +38,7 @@ function setGlobalVar(
     }: { varDataList: TVarData[], line: number, GValMap: Map<string, TGlobalVal>, by: EGlobalDefBy },
 ): void {
     for (const { ch, rawName } of varDataList) {
-        const ValUpName: string = rawName.toUpperCase();
+        const ValUpName: string = ToUpCase(rawName);
         const oldVal: TGlobalVal | undefined = GValMap.get(ValUpName);
 
         const element: TGValData = {

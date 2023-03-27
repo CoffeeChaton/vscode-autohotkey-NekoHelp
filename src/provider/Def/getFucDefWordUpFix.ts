@@ -1,5 +1,6 @@
 import type { TAhkTokenLine } from '../../globalEnum';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { fnRefTextRawReg } from './getFnRef';
 
 export function getFucDefWordUpFix(AhkTokenLine: TAhkTokenLine, wordUp: string, character: number): string {
@@ -8,8 +9,8 @@ export function getFucDefWordUpFix(AhkTokenLine: TAhkTokenLine, wordUp: string, 
      */
     if ((/^g/iu).test(wordUp)) {
         for (const { RawNameNew, lPos } of getGuiFunc(AhkTokenLine, 0) ?? []) {
-            if (`G${RawNameNew.toUpperCase()}` === wordUp && (character >= lPos || character <= lPos + wordUp.length)) {
-                return RawNameNew.toUpperCase();
+            if (`G${ToUpCase(RawNameNew)}` === wordUp && (character >= lPos || character <= lPos + wordUp.length)) {
+                return ToUpCase(RawNameNew);
             }
         }
     }
@@ -19,8 +20,8 @@ export function getFucDefWordUpFix(AhkTokenLine: TAhkTokenLine, wordUp: string, 
      */
     if ((/^v/iu).test(wordUp)) {
         for (const { RawNameNew, lPos } of getGuiFunc(AhkTokenLine, 1) ?? []) {
-            if (`V${RawNameNew.toUpperCase()}` === wordUp && (character >= lPos || character <= lPos + wordUp.length)) {
-                return RawNameNew.toUpperCase();
+            if (`V${ToUpCase(RawNameNew)}` === wordUp && (character >= lPos || character <= lPos + wordUp.length)) {
+                return ToUpCase(RawNameNew);
             }
         }
     }
@@ -28,9 +29,9 @@ export function getFucDefWordUpFix(AhkTokenLine: TAhkTokenLine, wordUp: string, 
     if ((/^hwnd/iu).test(wordUp)) {
         for (const { RawNameNew, lPos } of getGuiFunc(AhkTokenLine, 1) ?? []) {
             if (
-                `HWND${RawNameNew.toUpperCase()}` === wordUp && (character >= lPos || character <= lPos + wordUp.length)
+                `HWND${ToUpCase(RawNameNew)}` === wordUp && (character >= lPos || character <= lPos + wordUp.length)
             ) {
-                return RawNameNew.toUpperCase();
+                return ToUpCase(RawNameNew);
             }
         }
     }

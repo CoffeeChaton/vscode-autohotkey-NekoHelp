@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import type { CAhkClass, TClassChildren } from '../../../AhkSymbol/CAhkClass';
 import { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
+import { ToUpCase } from '../../../tools/str/ToUpCase';
 
 function getKindOfCh(kind: vscode.SymbolKind): vscode.CompletionItemKind {
     // dprint-ignore
@@ -48,7 +49,7 @@ export function parsingUserDefClassRecursive(
         } else if (
             // track
             ch.kind === vscode.SymbolKind.Class
-            && ChapterArr[deep].toUpperCase() === ch.upName
+            && ToUpCase(ChapterArr[deep]) === ch.upName
         ) {
             itemS.push(...parsingUserDefClassRecursive(ch, newTrack, ChapterArr, deep + 1)); // getCh
         }
@@ -56,7 +57,7 @@ export function parsingUserDefClassRecursive(
 
     const { Base } = ahkClass;
     if (Base !== '') {
-        const c1: CAhkClass | null = getUserDefTopClassSymbol(Base.toUpperCase());
+        const c1: CAhkClass | null = getUserDefTopClassSymbol(ToUpCase(Base));
         if (c1 !== null) {
             itemS.push(...parsingUserDefClassRecursive(c1, newTrack, ChapterArr, deep));
         }

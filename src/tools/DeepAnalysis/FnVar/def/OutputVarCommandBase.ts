@@ -1,5 +1,6 @@
 import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
 import { OutputCommandBaseMap } from '../../../Built-in/Command.tools';
+import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
 
@@ -39,7 +40,7 @@ export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: 
     if (ma === null) return null;
 
     const RawName: string = ma[1];
-    const UpName: string = RawName.toUpperCase();
+    const UpName: string = ToUpCase(RawName);
     if (paramMap.has(UpName) || GValMap.has(UpName)) return null;
 
     const value: TValMetaIn = getValMeta({

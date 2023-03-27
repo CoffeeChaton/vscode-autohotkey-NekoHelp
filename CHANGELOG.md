@@ -16,6 +16,10 @@
 
 - feat: [#8](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/8)
   - [ ] part 8-1: add unicode-name with `/^[#$@\w\u{A1}-\u{FFFF}]+$/iu`
+  - [ ] part 8-1-1: add `ToUpCase()` of Case sensitivity <https://www.autohotkey.com/docs/v1/Concepts.htm#names>
+        >
+        > 1. None for ASCII characters. For example, CurrentDate is the same as currentdate.
+        > 2. However, uppercase non - ASCII characters such as 'Ä' are not considered equal to their lowercase counterparts
 
 ## v0.0.31(2023-03-24)
 

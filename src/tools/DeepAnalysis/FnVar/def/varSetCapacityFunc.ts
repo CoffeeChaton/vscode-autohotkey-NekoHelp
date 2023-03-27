@@ -1,4 +1,5 @@
 import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
+import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
 
@@ -31,7 +32,7 @@ export function varSetCapacityFunc({
         if (ch === undefined) continue;
 
         const RawName: string = v[1];
-        const UpName: string = RawName.toUpperCase();
+        const UpName: string = ToUpCase(RawName);
         if (paramMap.has(UpName) || GValMap.has(UpName)) continue;
 
         const character: number = ch + v[0].indexOf(RawName, v[0].indexOf('('));
@@ -44,6 +45,6 @@ export function varSetCapacityFunc({
             lineComment,
             fnMode,
         });
-        valMap.set(RawName.toUpperCase(), value);
+        valMap.set(ToUpCase(RawName), value);
     }
 }

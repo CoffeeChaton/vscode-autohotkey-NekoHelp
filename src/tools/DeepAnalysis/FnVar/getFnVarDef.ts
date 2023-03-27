@@ -6,6 +6,7 @@ import { varMixedAnnouncement } from '../../../core/ParserTools/varMixedAnnounce
 import type { TTokenStream } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
 import type { TBrackets } from '../../Bracket';
+import { ToUpCase } from '../../str/ToUpCase';
 import { forLoop } from './def/forLoop';
 import { getValMeta } from './def/getValMeta';
 import { OutputVarCommandBase } from './def/OutputVarCommandBase';
@@ -43,7 +44,7 @@ function setVarMix({
                     : EFnMode.static,
             },
         );
-        valMap.set(rawName.toUpperCase(), value);
+        valMap.set(ToUpCase(rawName), value);
     }
 }
 

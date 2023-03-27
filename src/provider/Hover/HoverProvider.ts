@@ -15,6 +15,7 @@ import { numberFindWinMsg } from '../../tools/Built-in/Windows_MessagesRe_Tools'
 import { hoverWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { DeepAnalysisHover } from './tools/DeepAnalysisHover';
 import { hoverAhk2exe } from './tools/hoverAhk2exe';
@@ -39,7 +40,7 @@ function HoverOfFunc(
     );
     if (range === undefined) return null;
 
-    const wordUp: string = document.getText(range).toUpperCase();
+    const wordUp: string = ToUpCase(document.getText(range));
     const DA: CAhkFunc | null = getFuncWithName(wordUp);
     if (DA !== null) return DA.md;
 
@@ -87,7 +88,7 @@ function HoverProviderCore(
     );
     if (range === undefined) return null;
 
-    const wordUp: string = document.getText(range).toUpperCase();
+    const wordUp: string = ToUpCase(document.getText(range));
 
     const ahkClassMd: vscode.MarkdownString | null = hoverClassName(AhkFileData, position, wordUp);
     if (ahkClassMd !== null) return new vscode.Hover(ahkClassMd);

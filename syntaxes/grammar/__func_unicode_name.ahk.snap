@@ -1,0 +1,153 @@
+>
+>
+>/**
+#^^^ source.ahk comment.block.documentation.ahk
+>* - [ ] part 8-1-1: add `ToUpCase()` of Case sensitivity <https://www.autohotkey.com/docs/v1/Concepts.htm#names>
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.block.documentation.ahk
+>* >
+#^^^^ source.ahk comment.block.documentation.ahk
+>* > 1. None for ASCII characters. For example, CurrentDate is the same as currentdate.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.block.documentation.ahk
+>* > 2. However, uppercase non - ASCII characters such as 'Ä' are not considered equal to their lowercase counterparts
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.block.documentation.ahk
+>*/
+#^^ source.ahk comment.block.documentation.ahk
+>foooÄ(paramA) {
+#^^^^^ source.ahk entity.name.function.ahk
+#     ^ source.ahk punctuation.bracket.ahk
+#      ^^^^^^ source.ahk
+#            ^ source.ahk punctuation.bracket.ahk
+#             ^ source.ahk
+#              ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, % "fnA -> foooÄ say " paramA
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                 ^^^^^^^ source.ahk meta.command.line.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>foooä(paramB) {
+#^^^^^ source.ahk entity.name.function.ahk
+#     ^ source.ahk punctuation.bracket.ahk
+#      ^^^^^^ source.ahk
+#            ^ source.ahk punctuation.bracket.ahk
+#             ^ source.ahk
+#              ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, % "fnB -> foooä say " paramB
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                 ^^^^^^^ source.ahk meta.command.line.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>foooäÄ(paramC) {
+#^^^^^^ source.ahk entity.name.function.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+#       ^^^^^^ source.ahk
+#             ^ source.ahk punctuation.bracket.ahk
+#              ^ source.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, % "fnC -> foooä say " paramC
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                 ^^^^^^^ source.ahk meta.command.line.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>foooÄä(paramD) {
+#^^^^^^ source.ahk entity.name.function.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+#       ^^^^^^ source.ahk
+#             ^ source.ahk punctuation.bracket.ahk
+#              ^ source.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, % "fnD -> foooä say " paramD
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                 ^^^^^^^ source.ahk meta.command.line.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>foooÄä(paramD)
+#^^^^^^ source.ahk entity.name.function.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+#       ^^^^^^ source.ahk
+#             ^ source.ahk punctuation.bracket.ahk
+>foooäÄ(paramC)
+#^^^^^^ source.ahk entity.name.function.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+#       ^^^^^^ source.ahk
+#             ^ source.ahk punctuation.bracket.ahk
+>
+>foooÄ("A")
+#^^^^^ source.ahk entity.name.function.ahk
+#     ^ source.ahk punctuation.bracket.ahk
+#      ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#       ^ source.ahk string.quoted.double.ahk
+#        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+>foooä("B")
+#^^^^^ source.ahk entity.name.function.ahk
+#     ^ source.ahk punctuation.bracket.ahk
+#      ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#       ^ source.ahk string.quoted.double.ahk
+#        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+>
+>g#fn() {
+#^^^^ source.ahk entity.name.function.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+#     ^ source.ahk punctuation.bracket.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+>    g#fn()
+#^^^^ source.ahk
+#    ^^^^ source.ahk entity.name.function.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>#fn() {
+#^ source.ahk keyword.operator.arithmetic.ahk
+# ^^ source.ahk entity.name.function.ahk
+#   ^ source.ahk punctuation.bracket.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+#     ^ source.ahk
+#      ^ source.ahk punctuation.bracket.ahk
+>    #fn()
+#^^^^ source.ahk
+#    ^ source.ahk keyword.operator.arithmetic.ahk
+#     ^^ source.ahk entity.name.function.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk

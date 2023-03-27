@@ -9,6 +9,7 @@ import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { getUserDefTopClassSymbol } from '../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { findLabel } from '../../tools/labels';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TFnRefLike } from '../Def/getFnRef';
 import { EFnRefBy, getFuncRef } from '../Def/getFnRef';
 import { log } from '../vscWindows/log';
@@ -86,7 +87,7 @@ function checkRenameNewName(newName: string): string {
         { str: 'label', fn: findLabel },
     ];
 
-    const newNameUp: string = newName.toUpperCase();
+    const newNameUp: string = ToUpCase(newName);
 
     for (const { fn, str } of checkList) {
         const ahkSymbol: CAhkClass | CAhkFunc | CAhkLabel | null = fn(newNameUp);

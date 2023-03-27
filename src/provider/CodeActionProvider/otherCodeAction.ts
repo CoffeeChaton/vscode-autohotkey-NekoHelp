@@ -9,6 +9,7 @@ import { getCustomize } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getFileAllFunc } from '../../tools/visitor/getFileAllFuncList';
 import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
@@ -77,7 +78,7 @@ function posAtFnReference(
     );
     if (range === undefined) return [];
 
-    const wordUp: string = document.getText(range).toUpperCase();
+    const wordUp: string = ToUpCase(document.getText(range));
     const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[active.line];
 
     const wordUpFix: string = getFucDefWordUpFix(AhkTokenLine, wordUp, active.character);

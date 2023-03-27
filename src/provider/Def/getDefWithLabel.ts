@@ -10,13 +10,14 @@ import { getMenuFunc } from '../../tools/Command/MenuTools';
 import { getSetTimerWrap } from '../../tools/Command/SetTimerTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { findLabel } from '../../tools/labels';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 
 function LabelRefHotkey(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range | null {
     const HotkeyData: TScanData | null = getHotkeyWrap(AhkTokenLine);
     if (HotkeyData === null) return null;
 
     const { RawNameNew, lPos } = HotkeyData;
-    if (RawNameNew.toUpperCase() !== wordUp) return null;
+    if (ToUpCase(RawNameNew) !== wordUp) return null;
 
     const { line } = AhkTokenLine;
     return new vscode.Range(
@@ -30,7 +31,7 @@ function LabelRefMenu(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range
     if (MenuData === null) return null;
 
     const { RawNameNew, lPos } = MenuData;
-    if (RawNameNew.toUpperCase() !== wordUp) return null;
+    if (ToUpCase(RawNameNew) !== wordUp) return null;
 
     const { line } = AhkTokenLine;
     return new vscode.Range(
@@ -43,7 +44,7 @@ function LabelRefGui(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range 
     const GuiDataList: readonly TScanData[] | null = getGuiFunc(AhkTokenLine, 0);
     if (GuiDataList !== null) {
         for (const { RawNameNew, lPos } of GuiDataList) {
-            if (RawNameNew.toUpperCase() === wordUp) {
+            if (ToUpCase(RawNameNew) === wordUp) {
                 const { line } = AhkTokenLine;
                 return new vscode.Range(
                     new vscode.Position(line, lPos),
@@ -64,7 +65,7 @@ function getLabelRef(wordUp: string): vscode.Location[] {
     for (const { DocStrMap, uri } of pm.getDocMapValue()) {
         for (const AhkTokenLine of DocStrMap) {
             const { detail, lStr, line } = AhkTokenLine;
-            if (detail.includes(EDetail.isLabelLine) && lStr.trim().toUpperCase() === (`${wordUp}:`)) {
+            if (detail.includes(EDetail.isLabelLine) && ToUpCase(lStr.trim()) === (`${wordUp}:`)) {
                 List.push(
                     new vscode.Location(
                         uri,
@@ -181,13 +182,13 @@ export function getDefWithLabel(
         ?? getMenuFunc(AhkTokenLine)
         ?? getSetTimerWrap(AhkTokenLine); // don't find `Sort`
 
-    if (Data?.RawNameNew.toUpperCase() === wordUpCase) return getDefWithLabelCore(wordUpCase);
+    if (ToUpCase(Data?.RawNameNew ?? '') === wordUpCase) return getDefWithLabelCore(wordUpCase);
 
     const GuiDataList: readonly TScanData[] | null = getGuiFunc(AhkTokenLine, 0);
     if (GuiDataList !== null) {
         const wordUpCaseFix: string = wordUpCase.replace(/^g/iu, '');
         for (const { RawNameNew } of GuiDataList) {
-            if (RawNameNew.toUpperCase() === wordUpCaseFix) {
+            if (ToUpCase(RawNameNew) === wordUpCaseFix) {
                 return getDefWithLabelCore(wordUpCaseFix);
             }
         }

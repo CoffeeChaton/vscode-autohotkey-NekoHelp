@@ -6,6 +6,7 @@ import { getMenuFunc } from '../../tools/Command/MenuTools';
 import { getSetTimerWrap } from '../../tools/Command/SetTimerTools';
 import { getSortFunc } from '../../tools/Command/sotrTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { fnRefLStr, fnRefTextRaw, fnRefTextRawReg } from './getFnRef';
 
 /**
@@ -62,7 +63,7 @@ export function posAtFnRef(
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 
-        const upName: string = ma[1].toUpperCase();
+        const upName: string = ToUpCase(ma[1]);
         if (upName === wordUpFix && (character >= col || character <= col + len)) return true;
     }
     // expansion--end

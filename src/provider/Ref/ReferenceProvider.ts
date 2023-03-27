@@ -1,6 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getClassDef } from '../Def/getClassDef';
 import { posAtLabelDef } from '../Def/getDefWithLabel';
 import { getFuncDef } from '../Def/getFuncDef';
@@ -20,7 +21,7 @@ function ReferenceProviderCore(
         /(?<![.`])\b[#$@\w\u{A1}-\u{FFFF}]+\b/iu,
     );
     if (range === undefined) return null;
-    const wordUp: string = document.getText(range).toUpperCase();
+    const wordUp: string = ToUpCase(document.getText(range));
 
     const labelRef: vscode.Location[] | null = posAtLabelDef(AhkFileData, position, wordUp);
     if (labelRef !== null) return labelRef;

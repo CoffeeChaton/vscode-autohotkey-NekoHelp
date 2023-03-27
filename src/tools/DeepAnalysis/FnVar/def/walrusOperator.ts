@@ -1,4 +1,5 @@
 import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
+import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
 
@@ -36,7 +37,7 @@ export function walrusOperator({
         if (character === undefined) continue;
 
         const RawName: string = v[1];
-        const UpName: string = RawName.toUpperCase();
+        const UpName: string = ToUpCase(RawName);
         if (paramMap.has(UpName) || GValMap.has(UpName)) continue;
 
         const value: TValMetaIn = getValMeta({

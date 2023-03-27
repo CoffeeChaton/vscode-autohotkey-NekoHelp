@@ -11,9 +11,9 @@ export function hoverAhk2exe(AhkTokenLine: TAhkTokenLine, position: vscode.Posit
     const commentStr: string = textRaw.slice(lStrLen);
     const maAhk2exe: RegExpMatchArray | null = commentStr.match(/^;@ahk2exe-(\S+)/iu);
     if (maAhk2exe !== null) {
-        const col = lStrLen + maAhk2exe[0].length;
+        const col: number = lStrLen + maAhk2exe[0].length;
         if (position.character > lStrLen && position.character < col) {
-            const upKey = maAhk2exe[1].toUpperCase();
+            const upKey: string = maAhk2exe[1].toUpperCase();
             const md: vscode.MarkdownString | undefined = Ahk2exeMdMap.get(upKey);
             if (md !== undefined) return new vscode.Hover(md);
 

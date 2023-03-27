@@ -5,6 +5,7 @@ import type { TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
 import type { TTokenStream } from '../../../globalEnum';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { getObjChapterArr } from '../../../tools/Obj/getObjChapterArr';
+import { ToUpCase } from '../../../tools/str/ToUpCase';
 import { headIsThis } from './headIsThis';
 import { RefClassWithName } from './RefClassWithName';
 import { valTrack } from './valTrack';
@@ -37,7 +38,7 @@ function findClassDef(
     // class cName{};
     // ...
     // cName.  ; <--
-    const AhkClass: CAhkClass | null = getUserDefTopClassSymbol(Head.toUpperCase());
+    const AhkClass: CAhkClass | null = getUserDefTopClassSymbol(ToUpCase(Head));
     if (AhkClass !== null) return RefClassWithName(ChapterArr, AhkClass);
 
     // a := new ClassName

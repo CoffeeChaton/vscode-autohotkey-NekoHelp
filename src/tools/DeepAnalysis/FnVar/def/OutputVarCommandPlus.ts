@@ -1,4 +1,5 @@
 import { OutputCommandPlusMap } from '../../../Built-in/Command.tools';
+import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
 import type { TScanData } from './spiltCommandAll';
@@ -38,7 +39,7 @@ export function OutputVarCommandPlus(need: TGetFnDefNeed, keyWord: string, col: 
         .padStart(lStr.length, ' ');
 
     for (const { RawNameNew, lPos } of pickCommand(needArr, spiltCommandAll(strF))) {
-        const UpName: string = RawNameNew.toUpperCase();
+        const UpName: string = ToUpCase(RawNameNew);
         if (paramMap.has(UpName) || GValMap.has(UpName)) continue;
 
         valMap.set(

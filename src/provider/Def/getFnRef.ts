@@ -13,6 +13,7 @@ import { getSortFunc } from '../../tools/Command/sotrTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
 import { findLabel } from '../../tools/labels';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 
 export const enum EFnRefBy {
     /**
@@ -71,7 +72,7 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 
-        const upName: string = ma[1].toUpperCase();
+        const upName: string = ToUpCase(ma[1]);
 
         arr.push({
             upName,
@@ -103,7 +104,7 @@ export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 
-        const upName: string = ma[1].toUpperCase();
+        const upName: string = ToUpCase(ma[1]);
 
         arr.push({
             upName,
@@ -136,7 +137,7 @@ export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
         //                                      ^^^        ^
         // eslint-disable-next-line security/detect-unsafe-regex
         for (const maa of ma[1].matchAll(/(?<=\(\?C)([#$@\w\u{A1}-\u{FFFF}]+)\)/giu)) {
-            const upName: string = maa[1].toUpperCase();
+            const upName: string = ToUpCase(maa[1]);
             arr.push({
                 upName,
                 line,
@@ -192,7 +193,7 @@ export const fileFuncRef = new CMemo<TAhkFileData, ReadonlyMap<string, TFuncRef[
                 const Data: TScanData | null = fn(AhkTokenLine);
                 if (Data !== null) {
                     const { RawNameNew, lPos } = Data;
-                    const upName: string = RawNameNew.toUpperCase();
+                    const upName: string = ToUpCase(RawNameNew);
                     const arr: TFuncRef[] = map.get(upName) ?? [];
 
                     arr.push({
@@ -207,7 +208,7 @@ export const fileFuncRef = new CMemo<TAhkFileData, ReadonlyMap<string, TFuncRef[
             const guiFnList: readonly TScanData[] | null = getGuiFunc(AhkTokenLine, 0);
             if (guiFnList !== null) {
                 for (const { RawNameNew, lPos } of guiFnList) {
-                    const upName: string = RawNameNew.toUpperCase();
+                    const upName: string = ToUpCase(RawNameNew);
                     const arr: TFuncRef[] = map.get(upName) ?? [];
                     arr.push({
                         line,
