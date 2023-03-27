@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type {
@@ -66,14 +67,22 @@ export function getUnknownTextMap(
             continue;
         }
 
+        if (detail.includes(EDetail.isDirectivesLine) && !(/^#if\b/iu).test(lStr.trimStart())) {
+            continue;
+        }
+
         /**
          * //FIXME:
          * b:=0
          * a:={b:10}
          * ;   ^ b is key, not var
          */
-        // eslint-disable-next-line security/detect-unsafe-regex
-        for (const v of lStr.matchAll(/(?<!\.)([#$@\w\u{A1}-\u{FFFF}]+)(?!\(|[ \t]*:[^=])/gu)) {
+        for (
+            const v of lStr.matchAll(
+                // eslint-disable-next-line security/detect-unsafe-regex
+                /(?<=[/%`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)(?=[/%`)+\-*&!'",.:;<=>?[\\^\]{|}~ \t]|$)/gu,
+            ) //          ^ A   without .                                                          ^ B without (
+        ) {
             const keyRawName: string = v[1];
             const wordUp: string = ToUpCase(keyRawName);
 
@@ -107,6 +116,17 @@ export function getUnknownTextMap(
             const R: string = input[character + keyRawName.length];
             if (L === '{' && R === '}') {
                 // send {text} <-- text is not variable
+                continue;
+            }
+
+            const strObjCase: string = input
+                .slice(character + keyRawName.length)
+                .trim();
+
+            if (strObjCase.startsWith(':') && !strObjCase.startsWith(':=')) {
+                // a:= {a:b,c:d}
+                // ^var
+                //      ^ not var
                 continue;
             }
 

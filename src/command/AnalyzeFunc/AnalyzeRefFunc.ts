@@ -15,7 +15,8 @@ function getRefFuncMap(AhkTokenList: TTokenStream): TRefFuncInfoMap {
     const refFuncMap: TRefFuncInfoMap = new Map();
     for (const { line, textRaw, lStr } of AhkTokenList) {
         // eslint-disable-next-line security/detect-unsafe-regex
-        for (const ma of lStr.matchAll(/(?<![.`%])([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
+        for (const ma of lStr.matchAll(/(?<=[`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
+            //                                  ^ with out . %
             const ch: number | undefined = ma.index;
             if (ch === undefined) continue;
 
