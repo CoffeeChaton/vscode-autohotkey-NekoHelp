@@ -14,6 +14,7 @@
 
 ## Next v0.0.32(2023-04-xx)
 
+- fix: support *goto def* / *find all ref* of  `#fn()` <-> `#fn(){`
 - fix: parser `#Directives` && remove `code603` `unknown #Directives in ahk-v1` `code603` ... because of `#1 := 2`
 - feat: [#8](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/8)
   - [ ] part 8-1: add unicode-name with `/^[#$@\w\u{A1}-\u{FFFF}]+$/iu`
