@@ -96,16 +96,7 @@ export function getDirectivesErr(ch: TAhkSymbol): CDiagBase[] {
     }
 
     // check is unknown Directives or not
-    return DirectivesMDMap.has(hashtag)
-        ? []
-        : [
-            new CDiagBase({
-                value: EDiagCode.code603,
-                range: selectionRange,
-                severity: vscode.DiagnosticSeverity.Warning,
-                tags: [],
-            }),
-        ];
+    return [];
 }
 
 /*

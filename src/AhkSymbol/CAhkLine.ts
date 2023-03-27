@@ -35,6 +35,7 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
             selectionRange,
             uri,
         }: TBaseLineParam,
+        hashtag: string,
     ) {
         const { start } = selectionRange;
         const selectionRangeFix = new vscode.Range(
@@ -43,7 +44,7 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
         );
         super(name, '#Directives', vscode.SymbolKind.Event, range, selectionRangeFix);
         this.uri = uri;
-        this.hashtag = ToUpCase(name.replace('#', ''));
+        this.hashtag = hashtag;
     }
 }
 

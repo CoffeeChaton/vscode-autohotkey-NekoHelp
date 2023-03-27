@@ -119,7 +119,7 @@ export const enum EDiagCode {
     /**
      * Unknown #Directives
      */
-    code603 = 603,
+    // code603 = 603,
 
     // code701 = 701, // 701~799 is Command error
     // 800~899 is Deprecated / Old Syntax
@@ -223,10 +223,10 @@ export const Diags: DeepReadonly<TDiags> = {
         msg: 'recommended that the following names not be used: On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss.',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md',
     },
-    603: {
-        msg: 'unknown #Directives in ahk-v1',
-        path: 'https://www.autohotkey.com/docs/v1/lib/index.htm',
-    },
+    // 603: {
+    //     msg: 'unknown #Directives in ahk-v1',
+    //     path: 'https://www.autohotkey.com/docs/v1/lib/index.htm',
+    // },
     801: {
         msg: 'Deprecated: Use `Loop, Reg, KeyName` instead.',
         path: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#old',
