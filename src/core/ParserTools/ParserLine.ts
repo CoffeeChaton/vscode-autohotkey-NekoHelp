@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
 import { CAhkInclude } from '../../AhkSymbol/CAhkInclude';
-import type { CAhkComment, CAhkLabel, TLineClass } from '../../AhkSymbol/CAhkLine';
+import type { CAhkComment, TLineClass } from '../../AhkSymbol/CAhkLine';
 import { CAhkDirectives } from '../../AhkSymbol/CAhkLine';
+import { EDetail } from '../../globalEnum';
 import { DirectivesMDMap } from '../../tools/Built-in/Directives.tool';
 import { getRangeOfLine } from '../../tools/range/getRangeOfLine';
 import type { TFuncInput } from '../getChildren';
@@ -9,7 +10,13 @@ import { getComment } from './getComment';
 import { ParserLabel } from './ParserLabel';
 
 export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | null {
-    const { lStr, textRaw } = FuncInput.AhkTokenLine;
+    const { AhkTokenLine, uri } = FuncInput;
+    const {
+        lStr,
+        textRaw,
+        line,
+        detail,
+    } = AhkTokenLine;
 
     const strTrim: string = lStr.trim();
 
@@ -21,16 +28,15 @@ export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | nu
     /**
      * just of label:
      */
-    const label: CAhkLabel | null = ParserLabel(FuncInput);
-    if (label !== null) return label;
-
-    const { AhkTokenLine, uri } = FuncInput;
-    const { line } = AhkTokenLine;
+    if (detail.includes(EDetail.isLabelLine)) {
+        return ParserLabel(FuncInput);
+    }
 
     /**
      * just of #include and #Directives
      */
     if (!strTrim.startsWith('#')) return null;
+    if (!detail.includes(EDetail.isDirectivesLine)) return null;
     const rangeOfLine: vscode.Range = getRangeOfLine(line, lStr, lStr.length);
 
     /**
@@ -50,7 +56,7 @@ export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | nu
     /**
      * just of #NoEnv [#$@\w\u{A1}-\u{FFFF}]+
      */
-    const ma: RegExpMatchArray | null = strTrim.match(/^(#\w+)[ \t]/u);
+    const ma: RegExpMatchArray | null = strTrim.match(/^(#\w+)/u); // core-check it now
     if (ma === null) return null;
     const name: string = ma[1];
     const col: number = lStr.indexOf('#');

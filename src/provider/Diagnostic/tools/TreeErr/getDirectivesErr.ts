@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import { CAhkDirectives } from '../../../../AhkSymbol/CAhkLine';
 import type { TAhkSymbol } from '../../../../AhkSymbol/TAhkSymbolIn';
 import { EDiagCode } from '../../../../diag';
-import { DirectivesMDMap } from '../../../../tools/Built-in/Directives.tool';
 import { CDiagBase } from '../CDiagBase';
 
 type TDiagMsg = {

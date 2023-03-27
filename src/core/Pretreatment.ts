@@ -6,6 +6,7 @@ import type { TAhkTokenLine, TMultilineFlag, TTokenStream } from '../globalEnum'
 import { EDetail, EMultiline } from '../globalEnum';
 import { getIgnore } from '../provider/Diagnostic/getIgnore';
 import { log } from '../provider/vscWindows/log';
+import { DirectivesMDMap } from '../tools/Built-in/Directives.tool';
 import { getMultiline } from '../tools/str/getMultiline';
 import { getMultilineLStr } from '../tools/str/getMultilineLStr';
 import { docCommentBlock, EDocBlock, inCommentBlock } from '../tools/str/inCommentBlock';
@@ -367,6 +368,32 @@ export function Pretreatment(
                 textRaw,
             });
             continue;
+        }
+
+        if ((/^#\w+(?:[ \t,]|$)/u).test(lStrTrim)) {
+            const maDirectives: RegExpMatchArray | null = lStrTrim.match(/^#(\w+)/u);
+            if (maDirectives !== null && DirectivesMDMap.has(maDirectives[1].toUpperCase())) {
+                // of label-line
+                result.push({
+                    ahkDoc,
+                    cll: 0,
+                    deep2: [deep],
+                    detail: [...detail, EDetail.isDirectivesLine],
+                    displayErr,
+                    displayFnErr,
+                    fistWordUp: '',
+                    fistWordUpCol: -1,
+                    line,
+                    lineComment,
+                    lStr,
+                    multiline,
+                    multilineFlag: null,
+                    SecondWordUp: '',
+                    SecondWordUpCol: -1,
+                    textRaw,
+                });
+                continue;
+            }
         }
 
         // eslint-disable-next-line security/detect-unsafe-regex

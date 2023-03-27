@@ -29,6 +29,7 @@ export const enum EDetail {
     isHotStrLine = 9,
     isHotKeyLine = 10,
     isLabelLine = 11,
+    isDirectivesLine = 12,
 }
 
 /**

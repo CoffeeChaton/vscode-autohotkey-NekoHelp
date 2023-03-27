@@ -69,8 +69,8 @@ function HoverProviderCore(
     if (position.character > lStr.length) return hoverAhk2exe(AhkTokenLine, position);
 
     // ex: #Warn
-    const DirectivesMd: vscode.MarkdownString | undefined = hoverDirectives(position, AST);
-    if (DirectivesMd !== undefined) return new vscode.Hover(DirectivesMd);
+    const DirectivesMd: vscode.MarkdownString | null = hoverDirectives(position, AhkTokenLine);
+    if (DirectivesMd !== null) return new vscode.Hover(DirectivesMd);
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);
     // eslint-disable-next-line @typescript-eslint/prefer-optional-chain

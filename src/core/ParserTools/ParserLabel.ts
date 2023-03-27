@@ -1,21 +1,12 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { CAhkLabel } from '../../AhkSymbol/CAhkLine';
-import { EDetail } from '../../globalEnum';
 import { getRangeOfLine } from '../../tools/range/getRangeOfLine';
 import type { TFuncInput } from '../getChildren';
 
-export function ParserLabel(FuncInput: TFuncInput): CAhkLabel | null {
-    if (!FuncInput.AhkTokenLine.detail.includes(EDetail.isLabelLine)) {
-        return null;
-    }
-
+export function ParserLabel(FuncInput: TFuncInput): CAhkLabel {
     const { AhkTokenLine, uri, DocStrMap } = FuncInput;
-    const {
-        textRaw,
-        line,
-        lStr,
-    } = AhkTokenLine;
+    const { textRaw, line, lStr } = AhkTokenLine;
 
     const ahkDoc: string = DocStrMap.at(line - 1)?.ahkDoc ?? '';
 
