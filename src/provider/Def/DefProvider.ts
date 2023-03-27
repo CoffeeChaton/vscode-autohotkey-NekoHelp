@@ -18,7 +18,11 @@ function DefProviderCore(
     const methodDef: vscode.Location[] | null = getThisMethod(AhkFileData, position);
     if (methodDef !== null) return methodDef;
 
-    const range: vscode.Range | undefined = document.getWordRangeAtPosition(position, /(?<![.`#])\b\w+\b/u);
+    const range: vscode.Range | undefined = document.getWordRangeAtPosition(
+        position,
+        // eslint-disable-next-line security/detect-unsafe-regex
+        /(?<![.`])[#$@\w\u{A1}-\u{FFFF}]+/u,
+    );
     if (range === undefined) return null;
     const wordUp: string = document.getText(range).toUpperCase();
 

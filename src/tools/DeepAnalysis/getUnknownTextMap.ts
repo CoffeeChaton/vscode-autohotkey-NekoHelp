@@ -71,7 +71,8 @@ export function getUnknownTextMap(
          * a:={b:10}
          * ;   ^ b is key, not var
          */
-        for (const v of lStr.matchAll(/(?<![.#])\b(\w+)\b(?!\(|\s*:[^=])/gu)) {
+        // eslint-disable-next-line security/detect-unsafe-regex
+        for (const v of lStr.matchAll(/(?<!\.)([#$@\w\u{A1}-\u{FFFF}]+)\b(?!\(|[ \t]*:[^=])/gu)) {
             const keyRawName: string = v[1];
             const wordUp: string = keyRawName.toUpperCase();
 

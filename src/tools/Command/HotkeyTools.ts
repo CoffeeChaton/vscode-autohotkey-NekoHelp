@@ -22,7 +22,8 @@ function getHotkeyData(lStr: string, col: number): TScanData | null {
 
     const { RawNameNew, lPos } = a3;
 
-    if (!(/^\w+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if (!(/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
 
     return {
         RawNameNew,

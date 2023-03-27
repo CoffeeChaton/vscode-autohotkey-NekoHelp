@@ -369,8 +369,9 @@ export function Pretreatment(
             continue;
         }
 
-        if ((/^\w+:$/u).test(lStrTrim)) {
-            // of hotKey
+        // eslint-disable-next-line security/detect-unsafe-regex
+        if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStrTrim)) {
+            // of label-line
             result.push({
                 ahkDoc,
                 cll: 0,

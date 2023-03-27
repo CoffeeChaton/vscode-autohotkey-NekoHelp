@@ -58,7 +58,7 @@ function LabelRefGui(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range 
 function getLabelRef(wordUp: string): vscode.Location[] {
     // TODO for performance use keyword match replace regex!
     // eslint-disable-next-line security/detect-non-literal-regexp
-    const reg = new RegExp(`(\\b(?:goto|goSub|Break|Continue|SetTimer)\\b\\s*,?\\s*)\\b${wordUp}\\b`, 'iu');
+    const reg = new RegExp(`(\\b(?:goto|goSub|Break|Continue|SetTimer)[ \\t]*,?[ \\t]*)\\b${wordUp}\\b`, 'iu');
 
     const List: vscode.Location[] = [];
     for (const { DocStrMap, uri } of pm.getDocMapValue()) {
@@ -122,7 +122,8 @@ export function posAtLabelDef(
 ): vscode.Location[] | null {
     const { lStr } = AhkFileData.DocStrMap[position.line];
 
-    if ((/^\w+:$/u).test(lStr.trim())) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
         return getLabelRef(wordUp);
     }
     return null;
@@ -159,13 +160,21 @@ export function getDefWithLabel(
     const { lStr } = AhkTokenLine;
     const lStrFix: string = lStr.slice(0, Math.max(0, position.character));
 
-    if ((/^\w+:$/u).test(lStr.trim())) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
         return [new vscode.Location(uri, position)]; // let auto call Ref
     }
 
-    if ((/\b(?:goto|goSub|Break|Continue|OnExit)[\s,]+\w*$/iu).test(lStrFix)) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)) {
+        // eslint-disable-next-line security/detect-unsafe-regex
+        const s2: string = lStrFix.replace(/[#$@\w\u{A1}-\u{FFFF}]*$/iu, '')
+            .replace(/,?\s*$/u, '')
+            .trim();
+        if ((/\b(?:goto|goSub|Break|Continue|OnExit)$/iu).test(s2)) {
+            return getDefWithLabelCore(wordUpCase);
+        }
         // OnExit , Label
-        return getDefWithLabelCore(wordUpCase);
     }
 
     const Data: TScanData | null = getHotkeyWrap(AhkTokenLine)

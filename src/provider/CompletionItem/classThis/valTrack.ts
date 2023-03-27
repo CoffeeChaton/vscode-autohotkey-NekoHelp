@@ -17,7 +17,8 @@ type TMathName = {
 
 function matchClassName({ ChapterArr, strPart, ahkBaseObj }: TMathName): string | null {
     // case 1: https://www.autohotkey.com/docs/v1/Objects.htm#Objects_as_Functions
-    const ahkNewClass: RegExpMatchArray | null = strPart.match(/^new\s*(\w+)/iu);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const ahkNewClass: RegExpMatchArray | null = strPart.match(/^new[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)/iu);
     if (ahkNewClass !== null) {
         return ahkNewClass[1];
     }

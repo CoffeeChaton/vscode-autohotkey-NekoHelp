@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-unsafe-regex */
 import { getCommandOptions } from '../../configUI';
 import { ECommandOption } from '../../configUI.data';
 import type { TAhkTokenLine } from '../../globalEnum';
@@ -11,10 +12,10 @@ const snippetCommandFilter: readonly CSnippetCommand[] = snippetCommand.filter((
 export function getSnippetCommand(subStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
     const { fistWordUp } = AhkTokenLine;
     // ^ ~~ $  need close
-    const isOK: boolean = (/^\w+$/u).test(subStr)
-        || (fistWordUp === 'CASE' && (/^case\s[^:]+:\s*\w*$/iu).test(subStr))
-        || (fistWordUp === 'DEFAULT' && (/^default\s*:\s*\w*$/iu).test(subStr))
-        || (!subStr.trim().startsWith(':') && (/::\s*\w*$/iu).test(subStr)); // allow hotkey
+    const isOK: boolean = (/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(subStr)
+        || (fistWordUp === 'CASE' && (/^case\s[^:]+:[ \t]*\w*$/iu).test(subStr))
+        || (fistWordUp === 'DEFAULT' && (/^default\s*:[ \t]*\w*$/iu).test(subStr))
+        || (!subStr.trim().startsWith(':') && (/::[ \t]*\w*$/iu).test(subStr)); // allow hotkey
 
     // || (/^[{}]\s*\w*$/iu).test(subStr);
     // { MsgBox hi!

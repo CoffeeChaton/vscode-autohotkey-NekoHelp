@@ -70,7 +70,11 @@ function posAtFnReference(
     active: vscode.Position,
     document: vscode.TextDocument,
 ): never[] | [vscode.CodeAction] {
-    const range: vscode.Range | undefined = document.getWordRangeAtPosition(active, /(?<![.`#])\b\w+\b/u);
+    const range: vscode.Range | undefined = document.getWordRangeAtPosition(
+        active,
+        // eslint-disable-next-line security/detect-unsafe-regex
+        /(?<![.`])[#$@\w\u{A1}-\u{FFFF}]+/u,
+    );
     if (range === undefined) return [];
 
     const wordUp: string = document.getText(range).toUpperCase();

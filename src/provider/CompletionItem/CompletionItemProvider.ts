@@ -34,7 +34,8 @@ import { completionSubCommand } from './SubCommand/completionSubCommand';
 function getPartStr(lStr: string, position: vscode.Position): string | null {
     const match: RegExpMatchArray | null = lStr
         .slice(0, position.character)
-        .match(/(?<![.`{}#])\b(\w+)$/u);
+        // eslint-disable-next-line security/detect-unsafe-regex
+        .match(/(?<![.`{}])([#$@\w\u{A1}-\u{FFFF}]+)$/u);
 
     return match === null
         ? null
@@ -53,7 +54,8 @@ function CompletionItemCore(
     const { lStr, textRaw, fistWordUp } = AhkTokenLine;
 
     if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) return IncludeFsPath(document.uri.fsPath);
-    if ((/\bnew[ \t]+\w*$/iu).test(lStr.slice(0, position.character))) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/\bnew[ \t]+[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStr.slice(0, position.character))) {
         return listAllFuncClass()
             .filter((v: vscode.CompletionItem): boolean => v.kind === vscode.CompletionItemKind.Class);
     }

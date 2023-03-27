@@ -45,7 +45,8 @@ export function isSetVarTradition(textTrimStart: string): boolean {
         return false;
     }
 
-    return (/^[%\w.[\]]+$/u).test(eqLeftStr);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    return (/^[%#$@\w\u{A1}-\u{FFFF}]+$/u).test(eqLeftStr);
 }
 
 export function SetVarTradition(textRaw: string): string {

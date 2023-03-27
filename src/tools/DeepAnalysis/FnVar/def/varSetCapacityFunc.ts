@@ -22,7 +22,10 @@ export function varSetCapacityFunc({
 
     if (!lStr.includes('(')) return;
     for (
-        const v of lStr.matchAll(/(?<![.%`])\b(?:VarSetCapacity|NumGet|[TL]V_GetText)\(\s*&?(\w+)\b(?!\()/giu)
+        const v of lStr.matchAll(
+            // eslint-disable-next-line security/detect-unsafe-regex
+            /(?<![.%`])\b(?:VarSetCapacity|NumGet|[TL]V_GetText)\([ \t]*&?([#$@\w\u{A1}-\u{FFFF}]+)(?!\()/giu,
+        )
     ) {
         const ch: number | undefined = v.index;
         if (ch === undefined) continue;

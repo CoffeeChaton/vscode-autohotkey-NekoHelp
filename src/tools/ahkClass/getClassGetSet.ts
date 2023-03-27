@@ -9,7 +9,8 @@ export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
     const lStrTrim = lStr.trim();
     if (lStrTrim.includes('(') || lStrTrim.includes('=')) return null;
 
-    const ma: RegExpMatchArray | null = lStrTrim.match(/^(\w+)(?:\[\])?\s*\{?$/u);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const ma: RegExpMatchArray | null = lStrTrim.match(/^([#$@\w\u{A1}-\u{FFFF}]+)(?:\[\])?[ \t]*\{?$/u);
     if (ma === null) return null;
 
     const {
@@ -22,7 +23,8 @@ export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
 
     return new CAhkClassGetSet({
         name: ma[1],
-        range: getRange(DocStrMap, line, line, RangeEndLine, textRaw.search(/\w/u)),
+        // eslint-disable-next-line security/detect-unsafe-regex
+        range: getRange(DocStrMap, line, line, RangeEndLine, textRaw.search(/[#$@\w\u{A1}-\u{FFFF}]/u)),
         selectionRange: getRangeOfLine(line, lStr, textRaw.length),
         uri,
     });

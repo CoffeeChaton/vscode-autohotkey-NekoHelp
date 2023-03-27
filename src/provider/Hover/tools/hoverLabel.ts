@@ -17,13 +17,23 @@ export function hoverLabel(
     const { lStr, detail } = AhkTokenLine;
     const lStrFix: string = lStr.slice(0, Math.max(0, position.character));
 
-    if (
-        detail.includes(EDetail.isLabelLine)
-        || (/\b(?:goto|goSub|Break|Continue|OnExit)[\s,]+\w*$/iu).test(lStrFix)
-    ) {
+    if (detail.includes(EDetail.isLabelLine)) {
         // OnExit , Label
         const label: CAhkLabel | null = findLabel(wordUp);
         if (label !== null) return label.md;
+    }
+
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)) {
+        // eslint-disable-next-line security/detect-unsafe-regex
+        const s2: string = lStrFix.replace(/[#$@\w\u{A1}-\u{FFFF}]*$/iu, '')
+            .replace(/,?\s*$/u, '')
+            .trim();
+        if ((/\b(?:goto|goSub|Break|Continue|OnExit)$/iu).test(s2)) {
+            const label: CAhkLabel | null = findLabel(wordUp);
+            if (label !== null) return label.md;
+        }
+        // OnExit , Label
     }
 
     return null;

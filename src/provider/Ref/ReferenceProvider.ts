@@ -14,7 +14,11 @@ function ReferenceProviderCore(
     const AhkFileData: TAhkFileData | null = pm.getDocMap(document.uri.fsPath) ?? pm.updateDocDef(document);
     if (AhkFileData === null) return null;
 
-    const range: vscode.Range | undefined = document.getWordRangeAtPosition(position, /(?<![.`])\b\w+\b/iu);
+    const range: vscode.Range | undefined = document.getWordRangeAtPosition(
+        position,
+        // eslint-disable-next-line security/detect-unsafe-regex
+        /(?<![.`])\b[#$@\w\u{A1}-\u{FFFF}]+\b/iu,
+    );
     if (range === undefined) return null;
     const wordUp: string = document.getText(range).toUpperCase();
 

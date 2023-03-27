@@ -10,7 +10,8 @@ function pickCommand(needArr: number[] | readonly number[], AllCut: TScanData[])
     for (const make of needArr) {
         const ScanData: TScanData | undefined = AllCut[make] as TScanData | undefined; // some arg is optional
         if (ScanData === undefined) break;
-        if (!(/^\w+$/u).test(ScanData.RawNameNew)) continue; // TODO diag This, Output usually not have %
+        // eslint-disable-next-line security/detect-unsafe-regex
+        if (!(/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(ScanData.RawNameNew)) continue; // TODO diag This, Output usually not have %
         needPartScan.push(ScanData);
     }
 

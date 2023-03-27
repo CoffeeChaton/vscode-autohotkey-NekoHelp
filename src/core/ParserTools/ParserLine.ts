@@ -47,9 +47,9 @@ export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | nu
     }
 
     /**
-     * just of #NoEnv
+     * just of #NoEnv [#$@\w\u{A1}-\u{FFFF}]+
      */
-    const ma: RegExpMatchArray | null = strTrim.match(/^(#\w+)\b/u);
+    const ma: RegExpMatchArray | null = strTrim.match(/^(#\w+)\b[ \t]*(?![:+\-*/.|&^]=)/u);
     if (ma === null) return null;
     const name: string = ma[1];
     const col: number = lStr.indexOf('#');

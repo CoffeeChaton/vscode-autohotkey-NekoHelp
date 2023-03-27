@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-unsafe-regex */
 import * as vscode from 'vscode';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
@@ -36,10 +37,12 @@ export function legacyAssignmentHighlight(DocStrMap: TTokenStream): TSemanticTok
         if (!detail.includes(EDetail.inSkipSign2)) continue;
 
         if (
-            (/^[ \t]*\w+[ \t]*=(?!=)/u).test(textRaw) // \w+
-            || (/^[ \t]*\w+%\w+%[ \t]*=(?!=)/u).test(textRaw) // Arr_%i%
-            || (/^[ \t]*%\w+%\w+[ \t]*=(?!=)/u).test(textRaw) // %I%_Arr
-            || (/^[ \t]*%\w+%\w+%\w+%[ \t]*=(?!=)/u).test(textRaw) // %I%_Arr_%j%
+            (/^[ \t]*[#$@\w\u{A1}-\u{FFFF}]+[ \t]*=(?!=)/u).test(textRaw) // \w+
+            || (/^[ \t]*[#$@\w\u{A1}-\u{FFFF}]+%[#$@\w\u{A1}-\u{FFFF}]+%[ \t]*=(?!=)/u).test(textRaw) // Arr_%i%
+            || (/^[ \t]*%[#$@\w\u{A1}-\u{FFFF}]+%[#$@\w\u{A1}-\u{FFFF}]+[ \t]*=(?!=)/u).test(textRaw) // %I%_Arr
+            || (/^[ \t]*%[#$@\w\u{A1}-\u{FFFF}]+%[#$@\w\u{A1}-\u{FFFF}]+%[#$@\w\u{A1}-\u{FFFF}]+%[ \t]*=(?!=)/u).test(
+                textRaw, // %I%_Arr_%j%
+            )
         ) {
             continue; // Simple case, taken over by syntax-highlight
         }

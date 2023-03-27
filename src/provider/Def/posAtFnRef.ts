@@ -57,7 +57,8 @@ export function posAtFnRef(
 
     // not ref... but allow goto-def
     // expansion--start
-    for (const ma of AhkTokenLine.textRaw.matchAll(/(?<![.`%#]|new\s)\b(\w+)\(/giu)) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    for (const ma of AhkTokenLine.textRaw.matchAll(/(?<![.`%]|new[ \t]+)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 

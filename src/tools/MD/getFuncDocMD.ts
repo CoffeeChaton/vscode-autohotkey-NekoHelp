@@ -17,14 +17,16 @@ function getReturnText(lStr: string, textRaw: string, col: number): string {
         : '';
 
     // func
-    const Func: RegExpMatchArray | null = name.match(/^(\w+)\(/u);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const Func: RegExpMatchArray | null = name.match(/^([#$@\w\u{A1}-\u{FFFF}]+)\(/u);
     if (Func !== null) {
         return `    Return ${Func[1]}(...) ${comment}`;
     }
 
     // obj
     if (name.includes('{') && name.includes(':')) {
-        const returnObj: RegExpMatchArray | null = name.match(/^(\{\s*\w+\s*:\s*\S{0,20})/u);
+        // eslint-disable-next-line security/detect-unsafe-regex
+        const returnObj: RegExpMatchArray | null = name.match(/^(\{[ \t]*[#$@\w\u{A1}-\u{FFFF}]+[ \t]*:\s*\S{0,20})/u);
         if (returnObj !== null) {
             return `    Return ${returnObj[1].trim()} ${comment}`;
         }

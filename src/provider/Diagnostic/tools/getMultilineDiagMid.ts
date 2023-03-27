@@ -22,7 +22,7 @@ export function diagEMultilineMidStyle1(line: number, lStr: string): [] | [CDiag
 
         // %A_LineFile%
         //    ^ this  <---- true
-        if (satePercent && (/^\W$/u).test(s)) {
+        if (satePercent && !(/^\w$/u).test(s)) {
             const l1 = lStr.lastIndexOf('%', i);
             const l2 = l1 > -1
                 ? l1

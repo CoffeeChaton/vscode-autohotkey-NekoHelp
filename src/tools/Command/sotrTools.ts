@@ -15,7 +15,8 @@ function getSortFuncData(lStr: string, col: number): TScanData | null {
     if (a2 === undefined) return null;
 
     const { RawNameNew, lPos } = a2;
-    const ma: RegExpMatchArray | null = RawNameNew.match(/\bf[ \t]+(\w+)\b/iu);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const ma: RegExpMatchArray | null = RawNameNew.match(/\bf[ \t]+([#$@\w\u{A1}-\u{FFFF}]+)\b/iu);
     if (ma === null) return null;
 
     const ln: number | undefined = ma.index;

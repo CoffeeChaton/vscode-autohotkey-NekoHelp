@@ -31,7 +31,8 @@ export function getThisMethod(
     const { lStr } = AhkTokenLine;
 
     const { character } = position;
-    for (const ma of lStr.matchAll(/(?<=\bthis)\.(\w+)\(/giu)) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    for (const ma of lStr.matchAll(/(?<=\bthis)\.([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
         const { index } = ma;
         if (undefined === index) continue;
         const wordRaw: string = ma[1];

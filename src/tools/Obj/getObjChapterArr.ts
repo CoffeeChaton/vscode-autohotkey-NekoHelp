@@ -3,7 +3,8 @@ export function getObjChapterArr(textRaw: string, character: number): readonly s
 
     const ma: RegExpMatchArray | null = textRaw
         .slice(0, character)
-        .match(/([\w.]+)$/u); // not supported className["foo"]
+        // eslint-disable-next-line security/detect-unsafe-regex
+        .match(/([#$@\w\u{A1}-\u{FFFF}.]+)$/u); // not supported className["foo"]
 
     if (ma === null) return null;
 

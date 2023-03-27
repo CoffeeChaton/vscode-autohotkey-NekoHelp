@@ -26,7 +26,8 @@ function getMenuFuncData(lStr: string, col: number): TScanData | null {
         if (a4 === undefined) return null;
         const { RawNameNew, lPos } = a4;
 
-        if (!(/^\w+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
+        // eslint-disable-next-line security/detect-unsafe-regex
+        if (!(/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
 
         return {
             RawNameNew,
@@ -42,7 +43,8 @@ function getMenuFuncData(lStr: string, col: number): TScanData | null {
         if (a5 === undefined) return null;
         const { RawNameNew, lPos } = a5;
 
-        if (!(/^\w+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
+        // eslint-disable-next-line security/detect-unsafe-regex
+        if (!(/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
 
         return {
             RawNameNew,

@@ -32,7 +32,6 @@ function wrap(arg: TGetFnDefNeed, character: number, RawName: string): void {
     valMap.set(UpName, value);
 }
 
-// \s*for\b\s+[\w,\s]*\bin
 // For var1,var2 in Range
 export function forLoop(arg: TGetFnDefNeed, keyWord: string, col: number): void {
     if (keyWord !== 'FOR') return;
@@ -49,7 +48,8 @@ export function forLoop(arg: TGetFnDefNeed, keyWord: string, col: number): void 
 
     const strPart: string = lStr.slice(replaceFor, col2 + 1); // .padStart(lStr.length, ' ');
 
-    const keyMatch: RegExpMatchArray | null = strPart.match(/\s*(\w+)[,\s]/iu);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const keyMatch: RegExpMatchArray | null = strPart.match(/[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)[, \t]/iu);
     if (keyMatch === null) return;
 
     const keyPos: number = replaceFor + keyMatch[0].lastIndexOf(keyMatch[1]);

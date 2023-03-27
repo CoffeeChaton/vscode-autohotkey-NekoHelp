@@ -65,7 +65,8 @@ export type TFuncRef = Omit<TLineFnCall, 'upName'>;
 export function fnRefLStr(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
     const { lStr, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
-    for (const ma of lStr.matchAll(/(?<![.`%#]|new\s)\b(\w+)\(/giu)) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    for (const ma of lStr.matchAll(/(?<![.`%]|new[ \t])([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
         // -------------------------------------------------^funcName(      of lStr
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
@@ -90,7 +91,8 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
 export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
     const { lStr, textRaw, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
-    for (const ma of textRaw.slice(0, lStr.length).matchAll(/(?<=")(\w+)"/giu)) {
+    // eslint-disable-next-line security/detect-unsafe-regex
+    for (const ma of textRaw.slice(0, lStr.length).matchAll(/(?<=")([#$@\w\u{A1}-\u{FFFF}]+)"/giu)) {
         // ------------------------------------------------------------------------^funcName // of textRaw
         // RegisterCallback("funcName")
         // Func("funcName")
@@ -132,7 +134,8 @@ export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
         //                      "               (?CFuncName)
         //                      ^ not close     (?C        )
         //                                      ^^^        ^
-        for (const maa of ma[1].matchAll(/(?<=\(\?C)(\w+)\)/giu)) {
+        // eslint-disable-next-line security/detect-unsafe-regex
+        for (const maa of ma[1].matchAll(/(?<=\(\?C)([#$@\w\u{A1}-\u{FFFF}]+)\)/giu)) {
             const upName: string = maa[1].toUpperCase();
             arr.push({
                 upName,

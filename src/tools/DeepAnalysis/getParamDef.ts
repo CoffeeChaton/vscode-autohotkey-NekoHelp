@@ -37,7 +37,8 @@ function getParamDefNeed(
         new vscode.Position(line, ch + keyRawName.length),
     );
 
-    const parsedErrRange: vscode.Range | null = (/^\w+$/u).test(keyRawName)
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const parsedErrRange: vscode.Range | null = (/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(keyRawName)
         ? null
         : range;
 
@@ -66,8 +67,8 @@ export function getParamDef(fnName: string, selectionRange: vscode.Range, DocStr
         if (line < startLine) continue;
         if (line > endLine) break;
         let lStrFix: string = lStr;
-        if (startLine === line) lStrFix = lStrFix.replace(/^[ \t}]*\w+\(/u, replacerSpace);
-        //  if (startLine === line) lStrFix = lStrFix.replace(/^\s*\w+\(/u, replacerSpace);
+        // eslint-disable-next-line security/detect-unsafe-regex
+        if (startLine === line) lStrFix = lStrFix.replace(/^[ \t}]*[#$@\w\u{A1}-\u{FFFF}]+\(/u, replacerSpace);
         if (endLine === line) {
             lStrFix = lStrFix
                 .replace(/\{\s*$/u, replacerSpace)
@@ -77,7 +78,7 @@ export function getParamDef(fnName: string, selectionRange: vscode.Range, DocStr
         if (lStrFix.trim() === '') break;
 
         const strF: string = lStrFix
-            .replaceAll(/:?=\s*[-+]?[.\w^]+/gu, replacerSpace); // Test 0x00ffffff  , -0.5 , 0.8
+            .replaceAll(/:?=\s*[-+]?[.x\da-f^]+/giu, replacerSpace); // Test 0x00ffffff  , -0.5 , 0.8
 
         const strF2: string = strF.replaceAll(/\bByRef\b/giu, replacerSpace);
 
