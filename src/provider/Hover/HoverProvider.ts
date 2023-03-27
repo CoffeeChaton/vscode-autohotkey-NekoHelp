@@ -36,7 +36,7 @@ function HoverOfFunc(
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         // eslint-disable-next-line security/detect-unsafe-regex
-        /(?<![.`%])\b[#$@\w\u{A1}-\u{FFFF}]+(?=\()/u,
+        /(?<![.`%])[#$@\w\u{A1}-\u{FFFF}]+(?=\()/u,
     );
     if (range === undefined) return null;
 
@@ -84,7 +84,7 @@ function HoverProviderCore(
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         // eslint-disable-next-line security/detect-unsafe-regex
-        /(?<![.`])\b[#$@\w\u{A1}-\u{FFFF}]+\b(?!\()/u,
+        /(?<![.`])[#$@\w\u{A1}-\u{FFFF}]+(?!\()/u,
     );
     if (range === undefined) return null;
 

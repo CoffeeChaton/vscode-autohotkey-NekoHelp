@@ -56,11 +56,65 @@ function LabelRefGui(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range 
     return null;
 }
 
+function LabelRefKeyWord(
+    col: number,
+    wordUp: string,
+    AhkTokenLine: TAhkTokenLine,
+    uri: vscode.Uri,
+): never[] | [vscode.Location] {
+    //
+    const { lStr, line } = AhkTokenLine;
+
+    const strF: string = lStr
+        .slice(col)
+        .trimStart()
+        .replace(/,[ \t]*/u, '')
+        .padStart(lStr.length);
+
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const ma: RegExpMatchArray | null = strF.match(/^\s*([#$@\w\u{A1}-\u{FFFF}]+)/u);
+    if (ma === null) return [];
+
+    const wordUp2: string = ToUpCase(ma[1]);
+    if (wordUp2 !== wordUp) return [];
+
+    const col2: number = strF.search(/\S/u);
+
+    return [
+        new vscode.Location(
+            uri,
+            new vscode.Range(
+                new vscode.Position(line, col2),
+                new vscode.Position(line, col2 + wordUp2.length),
+            ),
+        ),
+    ];
+}
+
+function LabelRefKeyWordWrap(
+    wordUp: string,
+    AhkTokenLine: TAhkTokenLine,
+    uri: vscode.Uri,
+): never[] | [vscode.Location] {
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
+
+    const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER'];
+    if (list.includes(fistWordUp)) {
+        return LabelRefKeyWord(fistWordUpCol + fistWordUp.length, wordUp, AhkTokenLine, uri);
+    }
+    if (list.includes(SecondWordUp)) {
+        return LabelRefKeyWord(SecondWordUpCol + SecondWordUp.length, wordUp, AhkTokenLine, uri);
+    }
+    return [];
+}
+
 function getLabelRef(wordUp: string): vscode.Location[] {
     // TODO for performance use keyword match replace regex!
-    // eslint-disable-next-line security/detect-non-literal-regexp
-    const reg = new RegExp(`(\\b(?:goto|goSub|Break|Continue|SetTimer)[ \\t]*,?[ \\t]*)\\b${wordUp}\\b`, 'iu');
-
     const List: vscode.Location[] = [];
     for (const { DocStrMap, uri } of pm.getDocMapValue()) {
         for (const AhkTokenLine of DocStrMap) {
@@ -95,21 +149,7 @@ function getLabelRef(wordUp: string): vscode.Location[] {
                 continue;
             }
 
-            const ma: RegExpMatchArray | null = lStr.match(reg);
-            if (ma === null) continue;
-            const { index } = ma;
-            if (index === undefined) continue;
-            const col: number = ma[1].length + index;
-
-            List.push(
-                new vscode.Location(
-                    uri,
-                    new vscode.Range(
-                        new vscode.Position(line, col),
-                        new vscode.Position(line, col + wordUp.length),
-                    ),
-                ),
-            );
+            List.push(...LabelRefKeyWordWrap(wordUp, AhkTokenLine, uri));
         }
     }
 
@@ -157,26 +197,36 @@ export function getDefWithLabel(
 ): vscode.Location[] | null {
     const { DocStrMap } = AhkFileData;
 
-    const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
+    const { line, character } = position;
+    const AhkTokenLine: TAhkTokenLine = DocStrMap[line];
     const { lStr } = AhkTokenLine;
-    const lStrFix: string = lStr.slice(0, Math.max(0, position.character));
+    const lStrFix: string = lStr.slice(0, Math.max(0, character));
 
     // eslint-disable-next-line security/detect-unsafe-regex
     if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
         return [new vscode.Location(uri, position)]; // let auto call Ref
     }
 
-    // eslint-disable-next-line security/detect-unsafe-regex
-    if ((/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)) {
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
+    const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER'];
+    if (
+        list.includes(fistWordUp)
+        && character > fistWordUp.length + fistWordUpCol
         // eslint-disable-next-line security/detect-unsafe-regex
-        const s2: string = lStrFix.replace(/[#$@\w\u{A1}-\u{FFFF}]*$/iu, '')
-            .replace(/,?\s*$/u, '')
-            .trim();
-        if ((/\b(?:goto|goSub|Break|Continue|OnExit)$/iu).test(s2)) {
-            return getDefWithLabelCore(wordUpCase);
-        }
-        // OnExit , Label
-    }
+        && (/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)
+    ) return getDefWithLabelCore(wordUpCase);
+
+    if (
+        list.includes(SecondWordUp)
+        && character > SecondWordUp.length + SecondWordUpCol
+        // eslint-disable-next-line security/detect-unsafe-regex
+        && (/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)
+    ) return getDefWithLabelCore(wordUpCase);
 
     const Data: TScanData | null = getHotkeyWrap(AhkTokenLine)
         ?? getMenuFunc(AhkTokenLine)

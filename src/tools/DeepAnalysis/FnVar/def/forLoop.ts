@@ -61,7 +61,8 @@ export function forLoop(arg: TGetFnDefNeed, keyWord: string, col: number): void 
     // has value
 
     const replaceComma: number = col3 + 1;
-    const valMatch: RegExpMatchArray | null = strPart.slice(replaceComma).match(/\s*(\w+)\b/iu);
+    // eslint-disable-next-line security/detect-unsafe-regex
+    const valMatch: RegExpMatchArray | null = strPart.slice(replaceComma).match(/\s*([#$@\w\u{A1}-\u{FFFF}]+)/iu);
     if (valMatch === null) return;
 
     const valuePos: number = replaceFor + replaceComma + valMatch[0].lastIndexOf(valMatch[1]);
