@@ -27,7 +27,7 @@ export const ParserSwitchBlock = {
         const name: string | null = getCaseName(DocStrMap[line].textRaw, lStr);
         if (name === null) return null;
 
-        const range = getCaseDefaultRange(DocStrMap, line, line, RangeEndLine, lStr);
+        const range = getCaseDefaultRange(DocStrMap, line, line, RangeEndLine, fistWordUpCol);
         const ch = getChildren<CAhkCase>(
             [ParserSwitchBlock.getSwitchBlock, ParserLine],
             {
@@ -70,7 +70,7 @@ export const ParserSwitchBlock = {
         } = FuncInput;
         const { line, fistWordUpCol } = AhkTokenLine;
 
-        const range = getCaseDefaultRange(DocStrMap, line, line, RangeEndLine, lStr);
+        const range = getCaseDefaultRange(DocStrMap, line, line, RangeEndLine, fistWordUpCol);
         const ch = getChildren<CAhkDefault>(
             [ParserSwitchBlock.getSwitchBlock, ParserLine],
             {

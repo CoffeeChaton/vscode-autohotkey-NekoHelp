@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable complexity */
 /* eslint-disable max-lines-per-function */
 import * as path from 'node:path';

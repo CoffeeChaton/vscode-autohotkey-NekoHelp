@@ -7,9 +7,9 @@ export function getCaseDefaultRange(
     defLine: number,
     searchLine: number,
     RangeEnd: number,
-    defLStr: string,
+    fistWordUpCol0: number,
 ): vscode.Range {
-    const startPos: vscode.Position = new vscode.Position(defLine, defLStr.search(/case|default/iu));
+    const startPos: vscode.Position = new vscode.Position(defLine, fistWordUpCol0);
     const nextLine = searchLine + 1;
     let Resolved = -1;
     for (let line = nextLine; line <= RangeEnd; line++) {
