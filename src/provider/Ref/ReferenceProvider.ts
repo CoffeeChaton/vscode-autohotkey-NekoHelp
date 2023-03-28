@@ -18,8 +18,8 @@ function ReferenceProviderCore(
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         // eslint-disable-next-line security/detect-unsafe-regex
-        /(?<=[`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/iu,
-        //        with out . %
+        /(?<=[%()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/iu,
+        //        with out . `
     );
     if (range === undefined) return null;
     const wordUp: string = ToUpCase(document.getText(range));

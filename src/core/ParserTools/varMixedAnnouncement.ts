@@ -37,8 +37,13 @@ export function varMixedAnnouncement(strF: string, BracketsRaw: TBrackets): TVar
         Brackets = calcBracket(RawNameNew, Brackets);
 
         if (RawNameNew.includes(':=')) {
-            // eslint-disable-next-line security/detect-unsafe-regex
-            for (const ma of RawNameNew.matchAll(/(?<![.`%])([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/giu)) {
+            for (
+                const ma of RawNameNew.matchAll(
+                    // eslint-disable-next-line security/detect-unsafe-regex
+                    /(?<=[/`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/giu,
+                )
+            ) {
+                //                                      without . %
                 const rawName: string = ma[1].trim();
                 if (isLookLikeVar(rawName)) {
                     varDataList.push({
