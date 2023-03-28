@@ -16,9 +16,9 @@
         { "include": "#other_keyword" },
         { "include": "#flow_of_control" },
         { "include": "#number" },
-        { "include": "#keyword_operator" },
         { "include": "#string" },
         { "include": "#func_call" },
+        { "include": "#keyword_operator" },
         { "include": "#keyword_mouse_keyboard" }
     ],
     "repository": {

@@ -137,16 +137,14 @@
 #^ source.ahk punctuation.bracket.ahk
 >
 >#fn() {
-#^ source.ahk keyword.operator.arithmetic.ahk
-# ^^ source.ahk entity.name.function.ahk
+#^^^ source.ahk entity.name.function.ahk
 #   ^ source.ahk punctuation.bracket.ahk
 #    ^ source.ahk punctuation.bracket.ahk
 #     ^ source.ahk
 #      ^ source.ahk punctuation.bracket.ahk
 >    #fn()
 #^^^^ source.ahk
-#    ^ source.ahk keyword.operator.arithmetic.ahk
-#     ^^ source.ahk entity.name.function.ahk
+#    ^^^ source.ahk entity.name.function.ahk
 #       ^ source.ahk punctuation.bracket.ahk
 #        ^ source.ahk punctuation.bracket.ahk
 >}
