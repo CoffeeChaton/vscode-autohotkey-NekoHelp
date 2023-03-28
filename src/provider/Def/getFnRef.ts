@@ -67,10 +67,15 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
     const { lStr, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
     // eslint-disable-next-line security/detect-unsafe-regex
-    for (const ma of lStr.matchAll(/(?<![.`%]|new[ \t])([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
-        // -------------------------------------------------^funcName(      of lStr
+    for (const ma of lStr.matchAll(/(?<=[/`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
+        // -----------------------------------^ with out . %                         ^funcName(      of lStr
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
+
+        if ((/(?<=[%./`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)new$/iu).test(lStr.slice(0, col).trimEnd())) {
+            // ^ \b ..
+            continue;
+        }
 
         const upName: string = ToUpCase(ma[1]);
 

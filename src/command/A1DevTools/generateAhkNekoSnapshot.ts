@@ -4,6 +4,7 @@ import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { version } from '../../../package.json';
 import type { TAhkFileData } from '../../core/ProjectManager';
+import { fileFuncRef } from '../../provider/Def/getFnRef';
 import { log } from '../../provider/vscWindows/log';
 import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
 import { UpdateCacheAsync } from '../UpdateCache';
@@ -79,6 +80,17 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             '',
             '```jsonc',
             JSON.stringify(GValMap, (key: string, value: unknown): unknown => {
+                if (value instanceof Map) {
+                    return Object.fromEntries(value) as unknown;
+                }
+                return value;
+            }, 4),
+            '```',
+            '',
+            '## func-ref',
+            '',
+            '```jsonc',
+            JSON.stringify(fileFuncRef.up(AhkFileData), (key: string, value: unknown): unknown => {
                 if (value instanceof Map) {
                     return Object.fromEntries(value) as unknown;
                 }
