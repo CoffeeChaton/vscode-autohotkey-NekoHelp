@@ -34,12 +34,21 @@ import { WorkspaceSymbolProvider } from './provider/WorkspaceSymbolProvider/Work
 // main
 export function activate(context: vscode.ExtensionContext): void {
     const selector: vscode.DocumentSelector = { language: 'ahk' }; // scheme: 'file'
+    const triggerCharacters: readonly string[] = [
+        '_',
+        '.',
+        '',
+        '{',
+        '@',
+        '#',
+        '$',
+    ];
     context.subscriptions.push(
         // languages-------------------
         // languages.registerFoldingRangeProvider
         vscode.languages.registerCodeActionsProvider(selector, CodeActionProvider),
         vscode.languages.registerCodeLensProvider(selector, CodeLensProvider),
-        vscode.languages.registerCompletionItemProvider(selector, CompletionItemProvider, '', '@', '.', '{', '#', '_'),
+        vscode.languages.registerCompletionItemProvider(selector, CompletionItemProvider, ...triggerCharacters),
         vscode.languages.registerDefinitionProvider(selector, DefProvider),
         vscode.languages.registerDocumentFormattingEditProvider(selector, FormatProvider),
         vscode.languages.registerDocumentRangeFormattingEditProvider(selector, RangeFormatProvider),

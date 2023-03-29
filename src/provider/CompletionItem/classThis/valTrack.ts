@@ -34,6 +34,16 @@ function matchClassName({ ChapterArr, strPart, ahkBaseObj }: TMathName): string 
     return null;
 }
 
+function valTrackWithErr(lStr: string, fistWordUpCol: number): string {
+    return ToUpCase(
+        lStr
+            .slice(fistWordUpCol + 'CATCH'.length)
+            .trim()
+            .replace(/\{$/u, '')
+            .trim(),
+    );
+}
+
 function valTrackCore(
     ChapterArr: readonly string[],
     ahkBaseObj: TAhkBaseObj,
@@ -42,12 +52,9 @@ function valTrackCore(
     const Head: string = ChapterArr[0];
 
     const reg: RegExp = ahkValDefRegex(Head);
-    // eslint-disable-next-line security/detect-non-literal-regexp
-    const cacheReg = new RegExp(`\\b${Head}\\b`, 'iu');
-
     const classNameList: string[] = []; // value name
-    for (const { lStr, fistWordUp } of AhkTokenList) {
-        if (fistWordUp === 'CATCH' && cacheReg.test(lStr)) {
+    for (const { lStr, fistWordUp, fistWordUpCol } of AhkTokenList) {
+        if (fistWordUp === 'CATCH' && valTrackWithErr(lStr, fistWordUpCol) === ToUpCase(Head)) {
             // eslint-disable-next-line no-param-reassign
             ahkBaseObj.ahkCatch = true;
         }

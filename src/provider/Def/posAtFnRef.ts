@@ -58,10 +58,20 @@ export function posAtFnRef(
 
     // not ref... but allow goto-def
     // expansion--start
-    // eslint-disable-next-line security/detect-unsafe-regex
-    for (const ma of AhkTokenLine.textRaw.matchAll(/(?<![.`%]|new[ \t]+)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
+    for (
+        const ma of AhkTokenLine.textRaw.matchAll(
+            // eslint-disable-next-line security/detect-unsafe-regex
+            /(?<=[/()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu,
+            // without           (?<![.`%)
+        )
+    ) {
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
+
+        if ((/(?<=[%./`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)new$/iu).test(AhkTokenLine.textRaw.slice(0, col).trimEnd())) {
+            // ^ \b ..
+            continue;
+        }
 
         const upName: string = ToUpCase(ma[1]);
         if (upName === wordUpFix && (character >= col || character <= col + len)) return true;

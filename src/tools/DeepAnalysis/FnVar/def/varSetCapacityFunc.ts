@@ -25,7 +25,7 @@ export function varSetCapacityFunc({
     for (
         const v of lStr.matchAll(
             // eslint-disable-next-line security/detect-unsafe-regex
-            /(?<![.%`])\b(?:VarSetCapacity|NumGet|[TL]V_GetText)\([ \t]*&?([#$@\w\u{A1}-\u{FFFF}]+)(?=[/%`)+\-*&!'",.:;<=>?[\\^\]{|}~ \t]|$)/giu,
+            /(?:VarSetCapacity|NumGet|[TL]V_GetText)\([ \t]*&?([#$@\w\u{A1}-\u{FFFF}]+)(?=[/%`)+\-*&!'",.:;<=>?[\\^\]{|}~ \t]|$)/giu,
             //                                                                                             ^ with out \(
         )
     ) {

@@ -1,4 +1,5 @@
-/* eslint-disable security/detect-non-literal-regexp */
 export function ahkValDefRegex(valName: string): RegExp {
-    return new RegExp(`(?<![.])\\b${valName}\\b[ \\t]*:=`, 'iu');
+    // eslint-disable-next-line security/detect-non-literal-regexp
+    return new RegExp(`(?<=[/\`()+\\-*&!'",:;<=>?[\\\\^\\]{|}~ \\t]|^)${valName}\\b[ \\t]*:=`, 'iu');
+    // -----------------------------------^ with out . %
 }
