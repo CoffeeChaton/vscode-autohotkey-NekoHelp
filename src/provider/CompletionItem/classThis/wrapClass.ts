@@ -3,7 +3,7 @@ import type { CAhkClass } from '../../../AhkSymbol/CAhkClass';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../../core/ProjectManager';
-import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
+import type { TTokenStream } from '../../../globalEnum';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { getObjChapterArr } from '../../../tools/Obj/getObjChapterArr';
 import { ToUpCase } from '../../../tools/str/ToUpCase';
@@ -28,18 +28,13 @@ function setVarTrackRange(
     const { allowList } = ModuleVar;
 
     // Minimum detectable area
-    // let i: number = position.line;
-    // for (i; i >= 0; i--) {
-    //     if (!allowList[i]) {
-    //         break;
-    //     }
-    // }
-    // return DocStrMap.slice(
-    //     i,
-    //     position.line,
-    // );
-
-    return DocStrMap.filter((AhkTokenLine: TAhkTokenLine): boolean => allowList[AhkTokenLine.line]);
+    let i: number = position.line;
+    for (i; i >= 0; i--) {
+        if (!allowList[i]) {
+            break;
+        }
+    }
+    return DocStrMap.slice(i, position.line);
 }
 
 function findClassDef(

@@ -14,6 +14,8 @@
 
 ## Next v0.0.32(2023-04-xx)
 
+- feat: limit `.` Completion range
+  > now it is fix, when using `.` for code completion outside the function/method Range, the situation inside the function is accidentally tracked.
 - fix: `Switch Case` range error
 - fix: parser `#Directives` && remove `code603` as `unknown #Directives in ahk-v1` ... because of `#1 := 2`
 - feat: try to add unicode-name support [#8-1](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/8)
