@@ -2,7 +2,8 @@ import type * as vscode from 'vscode';
 import type { CAhkClass } from '../../../AhkSymbol/CAhkClass';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
-import type { TTokenStream } from '../../../globalEnum';
+import type { TAhkFileData } from '../../../core/ProjectManager';
+import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { getObjChapterArr } from '../../../tools/Obj/getObjChapterArr';
 import { ToUpCase } from '../../../tools/str/ToUpCase';
@@ -12,24 +13,40 @@ import { valTrack } from './valTrack';
 
 function setVarTrackRange(
     position: vscode.Position,
-    DocStrMap: TTokenStream,
+    AhkFileData: TAhkFileData,
     DA: CAhkFunc | null,
 ): TTokenStream {
-    const varSearchStartLine: number = (DA === null)
-        ? 0
-        : DA.selectionRange.end.line;
+    const { DocStrMap, ModuleVar } = AhkFileData;
 
-    return DocStrMap.slice(
-        varSearchStartLine,
-        position.line,
-    );
+    if (DA !== null) {
+        return DocStrMap.slice(
+            DA.selectionRange.end.line,
+            position.line,
+        );
+    }
+
+    const { allowList } = ModuleVar;
+
+    // Minimum detectable area
+    // let i: number = position.line;
+    // for (i; i >= 0; i--) {
+    //     if (!allowList[i]) {
+    //         break;
+    //     }
+    // }
+    // return DocStrMap.slice(
+    //     i,
+    //     position.line,
+    // );
+
+    return DocStrMap.filter((AhkTokenLine: TAhkTokenLine): boolean => allowList[AhkTokenLine.line]);
 }
 
 function findClassDef(
     position: vscode.Position,
     ChapterArr: readonly string[],
     topSymbol: TTopSymbol | undefined,
-    DocStrMap: TTokenStream,
+    AhkFileData: TAhkFileData,
     DA: CAhkFunc | null,
 ): vscode.CompletionItem[] {
     const Head: string = ChapterArr[0];
@@ -43,7 +60,7 @@ function findClassDef(
 
     // a := new ClassName
     // a.  ;<---
-    const AhkTokenList: TTokenStream = setVarTrackRange(position, DocStrMap, DA);
+    const AhkTokenList: TTokenStream = setVarTrackRange(position, AhkFileData, DA);
     return valTrack(ChapterArr, AhkTokenList);
 }
 
@@ -53,7 +70,7 @@ export function wrapClass(
     textRaw: string,
     lStr: string,
     topSymbol: TTopSymbol | undefined,
-    DocStrMap: TTokenStream,
+    AhkFileData: TAhkFileData,
     DA: CAhkFunc | null,
 ): vscode.CompletionItem[] {
     const col = position.character;
@@ -64,5 +81,5 @@ export function wrapClass(
     const ChapterArr: readonly string[] | null = getObjChapterArr(textRaw, col);
     return ChapterArr === null
         ? []
-        : findClassDef(position, ChapterArr, topSymbol, DocStrMap, DA);
+        : findClassDef(position, ChapterArr, topSymbol, AhkFileData, DA);
 }

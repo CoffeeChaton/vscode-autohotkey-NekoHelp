@@ -68,7 +68,7 @@ function CompletionItemCore(
     const subStr: string = lStr.slice(0, position.character).trim();
 
     const completions: vscode.CompletionItem[] = [
-        ...wrapClass(position, textRaw, lStr, topSymbol, DocStrMap, DA), // '.'
+        ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
         ...ahkSend(AhkFileData, position), // '{'
         ...snipDirectives(subStr),
         ...getSnippetOtherKeyWord1(lStr),
