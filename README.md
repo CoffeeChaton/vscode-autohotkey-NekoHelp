@@ -8,6 +8,7 @@ AutoHotKey v1 edit-support for VS Code
 
 - [vscode-autohotkey-NekoHelp](#vscode-autohotkey-nekohelp)
   - [Install](#install)
+  - [Youtube](#youtube)
   - [FunctionSymbol](#functionsymbol)
   - [CodeSymbol](#codesymbol)
   - [GotoDefinition](#gotodefinition)
@@ -35,6 +36,12 @@ AutoHotKey v1 edit-support for VS Code
 
 1. Install extension via Visual Studio Marketplace [AutoHotkey NekoHelp](https://marketplace.visualstudio.com/items?itemName=cat1122.vscode-autohotkey-neko-help).
 2. Install `.vsix` from my github <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/releases>
+
+## Youtube
+
+[vsc-ahk-neko-help](https://www.youtube.com/channel/UCo2ef7R7OEApaSuZLyaQNiA)
+
+<!-- `f1` ->`ScreenCast Mode` -->
 
 ## FunctionSymbol
 
