@@ -82,21 +82,29 @@ function CompletionItemCore(
 
     if (PartStr !== null) {
         completions.push(
-            ...getSnippetStartWihA(PartStr),
-            ...getSnippetWinTitleParam(PartStr),
-            ...getSnippetStatement(PartStr, fistWordUp),
-            ...getSnippetWinMsg(PartStr),
-            ...getSnipBiVar(PartStr),
             ...ModuleVar2Completion(ModuleVar, DA, PartStr, document.uri.fsPath),
             ...listAllFuncClass(),
-            ...BuiltInFunc2Completion(PartStr),
-            ...getSnipStartJoy(PartStr),
-            ...getSnipStartNum(PartStr),
-            ...getSnipStartF(PartStr),
-            ...getSnippetOtherKeyWord2(PartStr),
         );
 
-        if (DA !== null) completions.push(...DeepAnalysisToCompletionItem(DA, PartStr));
+        if (DA !== null) {
+            completions.push(...DeepAnalysisToCompletionItem(DA, PartStr));
+        }
+
+        if ((/^\w+$/u).test(PartStr)) {
+            // built in just has ascii
+            completions.push(
+                ...getSnippetStartWihA(PartStr),
+                ...getSnippetWinTitleParam(PartStr),
+                ...getSnippetStatement(PartStr, fistWordUp),
+                ...getSnippetWinMsg(PartStr),
+                ...getSnipBiVar(PartStr),
+                ...BuiltInFunc2Completion(PartStr),
+                ...getSnipStartJoy(PartStr),
+                ...getSnipStartNum(PartStr),
+                ...getSnipStartF(PartStr),
+                ...getSnippetOtherKeyWord2(PartStr),
+            );
+        }
     }
 
     return completions;

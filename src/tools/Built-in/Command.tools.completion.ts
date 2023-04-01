@@ -12,7 +12,7 @@ const snippetCommandFilter: readonly CSnippetCommand[] = snippetCommand.filter((
 export function getSnippetCommand(subStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
     const { fistWordUp } = AhkTokenLine;
     // ^ ~~ $  need close
-    const isOK: boolean = (/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(subStr)
+    const isOK: boolean = (/^\w+$/u).test(subStr)
         || (fistWordUp === 'CASE' && (/^case\s[^:]+:[ \t]*\w*$/iu).test(subStr))
         || (fistWordUp === 'DEFAULT' && (/^default\s*:[ \t]*\w*$/iu).test(subStr))
         || (!subStr.trim().startsWith(':') && (/::[ \t]*\w*$/iu).test(subStr)); // allow hotkey
