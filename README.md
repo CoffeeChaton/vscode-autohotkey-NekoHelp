@@ -18,6 +18,7 @@ AutoHotKey v1 edit-support for VS Code
   - [Hover](#hover)
   - [Diagnostic and lint](#diagnostic-and-lint)
   - [Format](#format)
+  - [SignatureHelp](#signaturehelp)
   - [IntelliSense](#intellisense)
     - [1. Snippets of your function](#1-snippets-of-your-function)
     - [2. Completion of function variables](#2-completion-of-function-variables)
@@ -42,7 +43,11 @@ AutoHotKey v1 edit-support for VS Code
 [vsc-ahk-neko-help](https://www.youtube.com/channel/UCo2ef7R7OEApaSuZLyaQNiA)
 
 1. support unicode (utf-16 Plane 0), look [unicode-support](https://www.youtube.com/watch?v=qLs_CQXo7Is)
-2. Completion across files, look [class] [function] [global-var]
+2. [4K 30sec](https://www.youtube.com/watch?v=w3mTBDKqHLQ)
+   1. across files information
+   2. SignatureHelp
+   3. Completion
+   4. unicode support
 
 <!-- `f1` ->`ScreenCast Mode` -->
 
@@ -282,6 +287,13 @@ support to find like
         ^ I think this will reduce the interference with git-diff.
    */
    ```
+
+## SignatureHelp
+
+- Not yet supported functions-used not in a line case.
+
+- [x] `Signature` of `user-def-function`
+- [ ] `Signature` of `built-in function` and `command` coming soon.
 
 ## IntelliSense
 

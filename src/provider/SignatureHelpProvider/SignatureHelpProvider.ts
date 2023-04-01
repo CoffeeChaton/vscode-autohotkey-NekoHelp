@@ -59,7 +59,16 @@ function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Position): vs
         if (brackets !== 0) {
             const fnSymbol: CAhkFunc | null = getFuncWithName(upName);
             if (fnSymbol !== null) {
-                const { paramMap, selectionRangeText } = fnSymbol;
+                const {
+                    paramMap,
+                    selectionRange,
+                    uri,
+                    selectionRangeText,
+                } = fnSymbol;
+                if (AhkFileData.uri.fsPath === uri.fsPath && selectionRange.contains(position)) {
+                    return null;
+                }
+
                 const parameters: vscode.ParameterInformation[] = [];
                 for (const { keyRawName } of paramMap.values()) {
                     parameters.push(new vscode.ParameterInformation(keyRawName));

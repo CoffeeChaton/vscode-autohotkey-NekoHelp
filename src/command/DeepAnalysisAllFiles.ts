@@ -27,7 +27,7 @@ Problems (Ctrl+Shift+M) - Total 84 Problems
 
 Deep Analysis All Files
 Deep Analysis All Files
-Deep Analysis : 745 Symbol, function : 665 , method: 80
+Deep Analysis : 747 Symbol, function : 667 , method: 80
 paramMapSize is 1926
 valMapSize is 2034
 textMapSize is 361

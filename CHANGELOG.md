@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.32(2023-04-xx)](#next-v00322023-04-xx)
+  - [v0.0.32(2023-04-01)](#v00322023-04-01)
   - [v0.0.31(2023-03-24)](#v00312023-03-24)
   - [v0.0.30(2023-03-19)](#v00302023-03-19)
   - [v0.0.29(2023-03-15)](#v00292023-03-15)
@@ -12,7 +12,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.32(2023-04-xx)
+## v0.0.32(2023-04-01)
 
 - feat: limit `.` Completion range of file top level
   > now it is fix, when using `.` for code completion outside the function/method Range, the situation inside the function is accidentally tracked.
