@@ -14,7 +14,7 @@
 
 ## Next v0.0.32(2023-04-xx)
 
-- feat: limit `.` Completion range
+- feat: limit `.` Completion range of file top level
   > now it is fix, when using `.` for code completion outside the function/method Range, the situation inside the function is accidentally tracked.
 - fix: `Switch Case` range error
 - fix: parser `#Directives` && remove `code603` as `unknown #Directives in ahk-v1` ... because of `#1 := 2`
@@ -24,6 +24,8 @@
     >
     > 1. None for ASCII characters. For example, CurrentDate is the same as currentdate.
     > 2. However, uppercase non - ASCII characters such as 'Ä' are not considered equal to their lowercase counterparts
+
+- feat: add `Signature` of `user-def-function` , but `built-in function` and `command` not yet.
 
 ## v0.0.31(2023-03-24)
 

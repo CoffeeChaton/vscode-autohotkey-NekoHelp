@@ -26,6 +26,7 @@ import { HoverProvider } from './provider/Hover/HoverProvider';
 import { ReferenceProvider } from './provider/Ref/ReferenceProvider';
 import { RenameProvider } from './provider/Rename/RenameProvider';
 import { AhkFullSemanticHighlight, legend } from './provider/SemanticTokensProvider/SemanticTokensProvider';
+import { SignatureHelpProvider } from './provider/SignatureHelpProvider/SignatureHelpProvider';
 import { SymbolProvider } from './provider/SymbolProvider/SymbolProvider';
 import { log } from './provider/vscWindows/log';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
@@ -43,6 +44,10 @@ export function activate(context: vscode.ExtensionContext): void {
         '#',
         '$',
     ];
+    const metadata: vscode.SignatureHelpProviderMetadata = {
+        triggerCharacters: ['(', ','],
+        retriggerCharacters: ['(', ',', ')'],
+    };
     context.subscriptions.push(
         // languages-------------------
         // languages.registerFoldingRangeProvider
@@ -59,6 +64,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerReferenceProvider(selector, ReferenceProvider),
         vscode.languages.registerRenameProvider(selector, RenameProvider),
         vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
+        vscode.languages.registerSignatureHelpProvider(selector, SignatureHelpProvider, metadata),
         // workspace-------------------
         // workspace.onDidOpenTextDocument(pm.OpenFile),
         // workspace.onDidSaveTextDocument(pm.OnDidSaveTextDocument),
