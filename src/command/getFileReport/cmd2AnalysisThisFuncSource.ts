@@ -32,7 +32,7 @@ export async function cmd2AnalysisThisFuncSource(document: vscode.TextDocument):
     }
 
     const { DocStrMap } = AhkFileData;
-    const refMap: ReadonlyMap<string, TFuncRef[]> = fileFuncRef.up(AhkFileData);
+    const refMap: ReadonlyMap<string, readonly TFuncRef[]> = fileFuncRef.up(AhkFileData);
     const fnMap: TFullFuncMap = getAllFunc();
 
     const refUseDef: TRefUseDef = new Map();

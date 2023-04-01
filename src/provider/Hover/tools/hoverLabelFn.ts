@@ -20,11 +20,11 @@ export function hoverLabelOrFunc(
     wordUp: string,
     position: vscode.Position,
 ): vscode.MarkdownString | null {
-    const refMap: ReadonlyMap<string, TFuncRef[]> = fileFuncRef.up(AhkFileData);
+    const refMap: ReadonlyMap<string, readonly TFuncRef[]> = fileFuncRef.up(AhkFileData);
     const { character, line } = position;
     const wordUpFix: string = getFucDefWordUpFix(AhkTokenLine, wordUp, character);
 
-    const locList: TFuncRef[] | undefined = refMap.get(wordUpFix);
+    const locList: readonly TFuncRef[] | undefined = refMap.get(wordUpFix);
     if (locList === undefined) return null;
 
     for (const { line: refLine, col, by } of locList) {

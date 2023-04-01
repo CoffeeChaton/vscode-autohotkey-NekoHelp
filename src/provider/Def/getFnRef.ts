@@ -63,7 +63,7 @@ export type TLineFnCall = {
 
 export type TFuncRef = Omit<TLineFnCall, 'upName'>;
 
-export function fnRefLStr(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
+export function fnRefLStr(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     const { lStr, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
     // eslint-disable-next-line security/detect-unsafe-regex
@@ -94,7 +94,7 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
     return arr;
 }
 
-export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
+export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     const { lStr, textRaw, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
     // eslint-disable-next-line security/detect-unsafe-regex
@@ -126,7 +126,7 @@ export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
     return arr;
 }
 
-export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): TLineFnCall[] {
+export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     // `RegEx` CallOut Functions<https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
     const { lStr, textRaw, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
@@ -165,7 +165,7 @@ const CmdRefFuncList = [
     { fn: getSortFunc, by: EFnRefBy.SortFlag },
 ] as const satisfies readonly TFnRefWithCmd[];
 
-export const fileFuncRef = new CMemo<TAhkFileData, ReadonlyMap<string, TFuncRef[]>>(
+export const fileFuncRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TFuncRef[]>>(
     (AhkFileData: TAhkFileData): Map<string, TFuncRef[]> => {
         const { DocStrMap, AST } = AhkFileData;
         const filterLineList: number[] = getDAListTop(AST)

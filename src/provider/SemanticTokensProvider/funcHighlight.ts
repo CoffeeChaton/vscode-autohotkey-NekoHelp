@@ -89,7 +89,7 @@ function HotkeyHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLea
 
 function regFnHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): 0 | 1 {
     // I need to check San = =||
-    const DataList: TLineFnCall[] = fnRefTextRawReg(AhkTokenLine);
+    const DataList: readonly TLineFnCall[] = fnRefTextRawReg(AhkTokenLine);
     if (DataList.length === 0) return 0;
 
     for (const Data of DataList) {

@@ -41,6 +41,9 @@ AutoHotKey v1 edit-support for VS Code
 
 [vsc-ahk-neko-help](https://www.youtube.com/channel/UCo2ef7R7OEApaSuZLyaQNiA)
 
+1. support unicode (utf-16 Plane 0), look [unicode-support](https://www.youtube.com/watch?v=qLs_CQXo7Is)
+2. Completion across files, look [class] [function] [global-var]
+
 <!-- `f1` ->`ScreenCast Mode` -->
 
 ## FunctionSymbol

@@ -19,7 +19,7 @@
 - fix: `Switch Case` range error
 - fix: parser `#Directives` && remove `code603` as `unknown #Directives in ahk-v1` ... because of `#1 := 2`
 - feat: try to add unicode-name support [#8-1](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/8)
-  - part 8-1: add unicode-name with `/^[#$@\w\u{A1}-\u{FFFF}]+$/iu`
+  - part 8-1: add unicode-name with utf-16 Plane 0 `/^[#$@\w\u{A1}-\u{FFFF}]+$/iu`
   - add `ToUpCase()` of Case sensitivity <https://www.autohotkey.com/docs/v1/Concepts.htm#names>
     >
     > 1. None for ASCII characters. For example, CurrentDate is the same as currentdate.
