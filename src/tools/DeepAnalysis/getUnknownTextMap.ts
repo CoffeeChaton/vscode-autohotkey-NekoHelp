@@ -71,17 +71,11 @@ export function getUnknownTextMap(
             continue;
         }
 
-        /**
-         * //FIXME:
-         * b:=0
-         * a:={b:10}
-         * ;   ^ b is key, not var
-         */
         for (
             const v of lStr.matchAll(
                 // eslint-disable-next-line security/detect-unsafe-regex
-                /(?<=[/%`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)(?=[/%`)+\-*&!'",.:;<=>?[\\^\]{|}~ \t]|$)/gu,
-            ) //          ^ A   without .                                                          ^ B without (
+                /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)(?=[.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/gu,
+            ) //          ^ A   without .` and #$@                                                          ^ B without (
         ) {
             const keyRawName: string = v[1];
             const wordUp: string = ToUpCase(keyRawName);
@@ -127,6 +121,12 @@ export function getUnknownTextMap(
                 // a:= {a:b,c:d}
                 // ^var
                 //      ^ not var
+
+                /**
+                 * b:=0
+                 * a:={b:10}
+                 * ;   ^ b is key, not var
+                 */
                 continue;
             }
 
