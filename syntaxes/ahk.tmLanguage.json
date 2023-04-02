@@ -36,7 +36,7 @@
         },
         "class_def_line": {
             "name": "meta.block.class.ahk",
-            "begin": "(?:^[ \\t}]*)\\b(?i:(class)\\b[ \\t]+(\\w+)(?:[ \\t]+(extends)[ \\t]+(\\w+))?)",
+            "begin": "(?:^[ \\t}]*)\\b(?i:(class)\\b[ \\t]+([#$@\\w\\x{A1}-\\x{FFFF}]+)(?:[ \\t]+(extends)[ \\t]+(\\w+))?)",
             "end": "\n",
             "beginCaptures": {
                 "1": { "name": "storage.type.class.ahk" },
