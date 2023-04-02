@@ -56,6 +56,28 @@ describe('check BuiltInFunctionObj ruler', () => {
         expect(st1).toBe(arr1.join('|'));
     });
 
+    it('check : sign', () => {
+        expect.hasAssertions();
+
+        const errList: string[] = [];
+        for (const v of funcDataList) {
+            const {
+                keyRawName,
+                sign,
+            } = v;
+
+            if (!sign.startsWith(`${keyRawName}(`)) {
+                errList.push(`${keyRawName}  startsWith`);
+            }
+
+            if (!sign.endsWith(')')) {
+                errList.push(`${keyRawName}  endsWith`);
+            }
+        }
+
+        expect(errList).toStrictEqual([]);
+    });
+
     it('check : uri', () => {
         expect.hasAssertions();
 

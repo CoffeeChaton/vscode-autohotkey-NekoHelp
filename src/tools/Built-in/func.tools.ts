@@ -12,7 +12,8 @@ type TSnip = { readonly [k in TrGroup]: readonly vscode.CompletionItem[] };
 export type TBiFuncMsg = {
     readonly md: vscode.MarkdownString,
     readonly keyRawName: string,
-    readonly uri: string,
+    readonly link: string,
+    readonly sign: string,
 };
 type TBiFuncMap = ReadonlyMap<string, TBiFuncMsg>;
 
@@ -37,15 +38,15 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
 
     const makeMd = (v: TV): vscode.MarkdownString => {
         const {
-            keyRawName,
             group,
             msg,
             link,
             exp,
+            sign,
         } = v;
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown(`Built-in Function (${group})`)
-            .appendCodeblock(`${keyRawName}()`, 'ahk')
+            .appendCodeblock(sign, 'ahk')
             .appendMarkdown(msg.join('\n'))
             .appendMarkdown('\n')
             .appendMarkdown(`[(Read Doc)](${link})`)
@@ -72,8 +73,9 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
         return item;
     };
 
-    const otherComObjFuncList = [
+    const otherComObjFuncList: TV[] = [
         {
+            upName: 'COMOBJMISSING',
             group: 'COM',
             keyRawName: 'ComObjMissing',
             link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
@@ -88,8 +90,10 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
                 '; is Deprecated',
                 'ParamObj := ComObjMissing()',
             ],
+            sign: 'ComObjMissing()',
         },
         {
+            upName: 'COMOBJPARAMETER',
             group: 'COM',
             keyRawName: 'ComObjParameter',
             link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
@@ -103,8 +107,10 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
                 '; is Deprecated',
                 'MP := ComObjParameter(10,0x80020004)',
             ],
+            sign: 'ComObjParameter(VarType, Value [, Flags])',
         },
         {
+            upName: 'COMOBJENWRAP',
             group: 'COM',
             keyRawName: 'ComObjEnwrap',
             link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
@@ -119,8 +125,10 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
                 '; is Deprecated',
                 'ComObject := ComObjEnwrap(DispPtr)',
             ],
+            sign: 'ComObjEnwrap(DispPtr)',
         },
         {
+            upName: 'COMOBJUNWRAP',
             group: 'COM',
             keyRawName: 'ComObjUnwrap',
             link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
@@ -133,24 +141,41 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
                 '; is Deprecated',
                 'DispPtr := ComObjUnwrap(ComObject)',
             ],
+            sign: 'ComObjUnwrap(ComObject)',
         },
-    ] as const;
+    ];
 
     for (const vv of otherComObjFuncList) {
-        const { keyRawName, link } = vv;
-        const upName = keyRawName.toUpperCase();
-        const v = {
+        const {
+            keyRawName,
+            link,
             upName,
-            ...vv,
-        };
-        const md: vscode.MarkdownString = makeMd(v);
-        map2.set(upName, { keyRawName, md, uri: link });
+            sign,
+        } = vv;
+
+        const md: vscode.MarkdownString = makeMd(vv);
+        map2.set(upName, {
+            keyRawName,
+            md,
+            link,
+            sign,
+        });
     }
 
     for (const v of funcDataList) {
-        const { keyRawName, upName, link } = v;
+        const {
+            keyRawName,
+            upName,
+            link,
+            sign,
+        } = v;
         const md: vscode.MarkdownString = makeMd(v);
-        map2.set(upName, { keyRawName, md, uri: link });
+        map2.set(upName, {
+            keyRawName,
+            md,
+            link,
+            sign,
+        });
 
         const item: vscode.CompletionItem = makeSnip(v, md);
 
@@ -193,7 +218,8 @@ const ComObjResult: TBiFuncMsg = {
         )
         .appendMarkdown('\n')
         .appendMarkdown('[(Read Doc)](https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm#Remarks)'),
-    uri: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm#Remarks',
+    link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm#Remarks',
+    sign: 'ComObj_XXX()',
 };
 
 export function getBuiltInFuncMD(keyUp: string): TBiFuncMsg | undefined {

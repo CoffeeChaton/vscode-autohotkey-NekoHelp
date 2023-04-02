@@ -8,11 +8,11 @@ export function BuiltInFn2StrList(DocStrMap: TTokenStream, refBuiltInFn: Readonl
     // )"
     const arr: string[] = [];
 
-    for (const [_k, [refList, { keyRawName, uri }]] of refBuiltInFn) {
+    for (const [_k, [refList, { keyRawName, link }]] of refBuiltInFn) {
         arr.push(
             `${keyRawName} :="`,
             '( LTrim C',
-            `${keyRawName}() ; ${uri}`,
+            `${keyRawName}() ; ${link}`,
             '[ln, col]',
         );
         for (const { line, col } of refList) {
