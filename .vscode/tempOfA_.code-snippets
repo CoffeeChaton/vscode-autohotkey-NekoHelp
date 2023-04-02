@@ -14,7 +14,7 @@
         ],
         "description": "just a temp snippets"
     },
-        "makeDoc1": {
+    "makeDoc1": {
         "scope": "typescript",
         // "prefix": ".01",
         "body": [

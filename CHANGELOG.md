@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.33(2023-04-XX)](#next-v00332023-04-xx)
   - [v0.0.32(2023-04-01)](#v00322023-04-01)
   - [v0.0.31(2023-03-24)](#v00312023-03-24)
   - [v0.0.30(2023-03-19)](#v00302023-03-19)
@@ -11,6 +12,14 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## Next v0.0.33(2023-04-XX)
+
+- feat: Snapshot use min 10 ms to Reduce diff interference
+- fix: if `.` Completion find `catch error` t then end
+- [ ] part 3-5, add format switch of `Command` first optional comma, exp : `MsgBox, % "text"` <--> `MsgBox % "text"`
+- [ ] part 4-2, let `Click [, ${1:Options}]` -> `Click,[$0 ${1:Options}]`
+- [ ] feat: add `Signature` of `built-in function` and `command` .
 
 ## v0.0.32(2023-04-01)
 

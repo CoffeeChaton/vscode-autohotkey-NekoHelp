@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4] }] */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -32,6 +33,10 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             path.relative(selectRT, dir),
         ));
 
+        const ms_min = 10;
+        const msFix: number = ms <= ms_min
+            ? ms_min
+            : ms;
         mkDirByPathSync(targetDir);
 
         const data: string = [
@@ -39,7 +44,7 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             '',
             `1. jump <file:${fsPath}>`,
             `2. neko-help-version : \`${version}\``,
-            `3. parser use : \`${ms}\` ms`,
+            `3. parser use : \`${msFix}\` ms (min 10ms to Reduce diff interference)`,
             '4. Important reminder: Please be advised that **the snapshot files contain the source code for your project.** This means that any sensitive or confidential information within your code may also be included in the snapshot. Therefore, we strongly advise against uploading the snapshot to the report-bug feature or any other public forum. If you need to report a bug that involves a neko-help, we recommend reviewing the contents of the file carefully to ensure that no sensitive information is disclosed before uploading it. Thank you for your cooperation in maintaining the security and confidentiality of your code.',
             '',
             '- [snap](#snap)',

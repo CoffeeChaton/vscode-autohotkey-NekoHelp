@@ -22,7 +22,7 @@ export async function renameFileNameFunc(
     }
 
     // eslint-disable-next-line security/detect-non-literal-regexp
-    const re = new RegExp(`(?:^|[/\\\\<])\\b${oldFileName}$`, 'iu');
+    const re = new RegExp(`(?<=^|[/\\\\<])${oldFileName}$`, 'iu');
 
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
     for (const { DocStrMap, uri, AST } of AhkFileDataList) {

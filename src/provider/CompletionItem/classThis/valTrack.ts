@@ -57,6 +57,7 @@ function valTrackCore(
         if (fistWordUp === 'CATCH' && valTrackWithErr(lStr, fistWordUpCol) === ToUpCase(Head)) {
             // eslint-disable-next-line no-param-reassign
             ahkBaseObj.ahkCatch = true;
+            break;
         }
         const col: number = lStr.search(reg);
         if (col === -1) continue;
