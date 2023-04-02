@@ -63,7 +63,10 @@ export function SetVarTradition(textRaw: string): string {
         const s = textRaw[i];
 
         if (sate['`']) {
-            lStr += s; // i need to check/diag  `[,%`;nrbtvaf] ?
+            lStr += (/[,%`;nrbtvaf]/u).test(s)
+                ? '^' // i need to check/diag  `[,%`;nrbtvaf] ?
+                : s;
+
             sate['`'] = false;
             continue;
         }

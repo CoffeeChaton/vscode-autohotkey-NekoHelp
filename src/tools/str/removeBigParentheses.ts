@@ -1,4 +1,5 @@
-export function removeBigParentheses(lStr: string): string {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function removeBigParentheses(lStr: string): string {
     let textFix = '';
     let deep = 0;
     const sL = lStr.length;

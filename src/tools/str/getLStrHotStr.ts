@@ -1,4 +1,4 @@
-import { getLStr } from '../../tools/str/removeSpecialChar';
+import { getLStr } from './removeSpecialChar';
 
 /**
  * fix of hotStr https://www.autohotkey.com/docs/v1/Hotstrings.htm#intro
