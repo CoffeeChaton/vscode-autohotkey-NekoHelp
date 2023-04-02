@@ -40,7 +40,8 @@ export function varMixedAnnouncement(strF: string, BracketsRaw: TBrackets): TVar
             for (
                 const ma of RawNameNew.matchAll(
                     // eslint-disable-next-line security/detect-unsafe-regex
-                    /(?<=[/`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/giu,
+                    /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/giu,
+                    // with out .`% and #$@
                 )
             ) {
                 //                                      without . %

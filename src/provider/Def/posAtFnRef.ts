@@ -61,15 +61,20 @@ export function posAtFnRef(
     for (
         const ma of AhkTokenLine.textRaw.matchAll(
             // eslint-disable-next-line security/detect-unsafe-regex
-            /(?<=[/()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu,
-            // without           (?<![.`%)
+            /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu,
+            // // without .`% and #$@
         )
     ) {
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 
-        if ((/(?<=[%./`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)new$/iu).test(AhkTokenLine.textRaw.slice(0, col).trimEnd())) {
-            // ^ \b ..
+        if (
+            // eslint-disable-next-line security/detect-unsafe-regex
+            (/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(
+                // ^ all case , mock \b ..
+                AhkTokenLine.textRaw.slice(0, col).trimEnd(),
+            )
+        ) {
             continue;
         }
 

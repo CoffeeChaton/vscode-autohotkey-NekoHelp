@@ -22,8 +22,8 @@ function DefProviderCore(
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         // eslint-disable-next-line security/detect-unsafe-regex
-        /(?<=[%/()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/u,
-        // with out . `
+        /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/u,
+        // // without .` and #$@
     );
     if (range === undefined) return null;
     const wordUp: string = ToUpCase(document.getText(range));

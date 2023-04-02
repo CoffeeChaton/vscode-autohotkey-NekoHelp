@@ -26,12 +26,13 @@ my project:
 Problems (Ctrl+Shift+M) - Total 84 Problems
 
 Deep Analysis All Files
-Deep Analysis All Files
-Deep Analysis : 747 Symbol, function : 667 , method: 80
-paramMapSize is 1926
+Deep Analysis : 748 Symbol, function : 668 , method: 80
+paramMapSize is 1935
 valMapSize is 2034
-textMapSize is 361
-All Size is 4321
-Done in 4 ms
+textMapSize is 358
+All Size is 4327
+Done in 3 ms
 ; at v0.0.31 add 2 valMapSize of `oldVar = str str`
+; at v0.0.33 + `fn_param_parser_error` to check fn_param_error
+;            - `n -> `^, textMapSize--
 */

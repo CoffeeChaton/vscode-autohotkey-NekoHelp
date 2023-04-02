@@ -27,7 +27,7 @@ export function hoverLabel(
     if ((/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)) {
         // eslint-disable-next-line security/detect-unsafe-regex
         const s2: string = lStrFix.replace(/[#$@\w\u{A1}-\u{FFFF}]*$/iu, '')
-            .replace(/,?\s*$/u, '')
+            .replace(/,?[ \t]*$/u, '')
             .trim();
         if ((/\b(?:goto|goSub|Break|Continue|OnExit)$/iu).test(s2)) {
             const label: CAhkLabel | null = findLabel(wordUp);

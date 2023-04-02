@@ -35,8 +35,8 @@ function getPartStr(lStr: string, position: vscode.Position): string | null {
     const match: RegExpMatchArray | null = lStr
         .slice(0, position.character)
         // eslint-disable-next-line security/detect-unsafe-regex
-        .match(/(?<=[/()+\-*&!'",:;<=>?[\\^\]|~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)$/u);
-    // without           (?<![.`{}])
+        .match(/(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)$/u);
+    //                  ^ without .` and #$@
 
     return match === null
         ? null

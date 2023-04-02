@@ -15,11 +15,15 @@
 
 ## Next v0.0.33(2023-04-XX)
 
-- feat: Snapshot use min 10 ms to Reduce diff interference
-- fix: if `.` Completion find `catch error` t then end
-- [ ] part 3-5, add format switch of `Command` first optional comma, exp : `MsgBox, % "text"` <--> `MsgBox % "text"`
-- [ ] part 4-2, let `Click [, ${1:Options}]` -> `Click,[$0 ${1:Options}]`
-- [ ] feat: add `Signature` of `built-in function` and `command` .
+- feat: Snapshot use min `10` ms to Reduce diff interference
+- fix: if `.` Completion find `catch error` then end
+- fix: param parser error (True/false)
+
+  ```ahk
+  fn_exp(ByRef a, b := false, c := true) {
+
+  }
+  ```
 
 ## v0.0.32(2023-04-01)
 

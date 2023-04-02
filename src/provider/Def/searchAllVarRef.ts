@@ -5,7 +5,10 @@ import { EDetail } from '../../globalEnum';
 
 export function searchAllVarRef(wordUp: string): vscode.Location[] {
     // eslint-disable-next-line security/detect-non-literal-regexp
-    const reg = new RegExp(`\\b(${wordUp})\\b`, 'giu');
+    const reg = new RegExp(
+        `(${wordUp})`,
+        'giu',
+    );
 
     const List: vscode.Location[] = [];
     for (const { DocStrMap, uri } of pm.getDocMapValue()) {

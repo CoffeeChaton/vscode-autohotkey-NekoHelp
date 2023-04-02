@@ -74,8 +74,8 @@ function posAtFnReference(
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         active,
         // eslint-disable-next-line security/detect-unsafe-regex
-        /(?<=[/%()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/u,
-        //            without . `
+        /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/u,
+        // without .` and #$@
     );
     if (range === undefined) return [];
 

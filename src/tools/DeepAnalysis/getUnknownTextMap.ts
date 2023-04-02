@@ -75,7 +75,7 @@ export function getUnknownTextMap(
             const v of lStr.matchAll(
                 // eslint-disable-next-line security/detect-unsafe-regex
                 /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)(?=[.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/gu,
-            ) //          ^ A   without .` and #$@                                                          ^ B without (
+            ) //          ^ A   without .` and #$@                                                          ^ B without ( and #$@
         ) {
             const keyRawName: string = v[1];
             const wordUp: string = ToUpCase(keyRawName);

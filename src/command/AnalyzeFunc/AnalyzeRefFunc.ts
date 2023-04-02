@@ -14,9 +14,13 @@ type TRefFuncInfoMap = Map<string, TMsg[]>;
 function getRefFuncMap(AhkTokenList: TTokenStream): TRefFuncInfoMap {
     const refFuncMap: TRefFuncInfoMap = new Map();
     for (const { line, textRaw, lStr } of AhkTokenList) {
-        // eslint-disable-next-line security/detect-unsafe-regex
-        for (const ma of lStr.matchAll(/(?<=[`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
-            //                                  ^ with out . %
+        for (
+            const ma of lStr.matchAll(
+                // eslint-disable-next-line security/detect-unsafe-regex
+                /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu,
+                //       ^ with out .`% and #$@
+            )
+        ) {
             const ch: number | undefined = ma.index;
             if (ch === undefined) continue;
 

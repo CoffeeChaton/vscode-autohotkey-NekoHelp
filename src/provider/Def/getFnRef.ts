@@ -67,13 +67,14 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     const { lStr, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
     // eslint-disable-next-line security/detect-unsafe-regex
-    for (const ma of lStr.matchAll(/(?<=[/`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
-        // -----------------------------------^ with out . %                         ^funcName(      of lStr
+    for (const ma of lStr.matchAll(/(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
+        // -----------------------------------^ without .`% and #$@                         ^funcName(      of lStr
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 
-        if ((/(?<=[%./`()+\-*&!'",:;<=>?[\\^\]{|}~ \t]|^)new$/iu).test(lStr.slice(0, col).trimEnd())) {
-            // ^ \b ..
+        // eslint-disable-next-line security/detect-unsafe-regex
+        if ((/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(lStr.slice(0, col).trimEnd())) {
+            // ^ all case mock \b
             continue;
         }
 
