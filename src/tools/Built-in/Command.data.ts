@@ -19,7 +19,7 @@ type TCommandParams = {
     sign: string,
     name: string,
     isOpt: boolean,
-    defVal: string,
+    defaultVal: string, // default value
 };
 
 export type TCommandElement = Readonly<{
@@ -36,13 +36,21 @@ export type TCommandElement = Readonly<{
     _params?: TCommandParams[],
 
     /**
-     * S -> string?
-     * O -> output
-     * E -> number?
-     * I -> input varName
-     * F -> functionName
-     * L -> label
-     * FO -> funcObject
+     * # part 1 of doc
+     * <https://www.autohotkey.com/docs/v1/Language.htm#commands>
+     * - OutputVar -> O
+     * - InputVar > I
+     * - Text -> S
+     * - Number -> E
+     *
+     * ## part 2 , quick mnemonic of me
+     * - S -> string
+     * - O -> output varName
+     * - E -> number
+     * - I -> input varName
+     * - F -> functionName
+     * - L -> label
+     * - FO -> funcObject
      */
     _paramType: string[],
 }>;

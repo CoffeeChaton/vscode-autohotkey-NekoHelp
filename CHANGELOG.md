@@ -20,6 +20,48 @@
 - fix: sign of user-def param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case.
 - fix: sign of nested function (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
 - fix: not show sign at func/method def-range
+- fix: core command vs Assign ...
+
+  ```ahk
+  #Requires AutoHotkey v1.1.33+
+
+  ; all is variables
+  MsgBox := 1
+  MsgBox += 1
+  MsgBox -= 1
+  MsgBox *=1
+  MsgBox /=1
+  MsgBox //=1
+  MsgBox .= 1
+  MsgBox |=1
+  MsgBox &=1
+  MsgBox ^=1
+  MsgBox >>=1
+  MsgBox <<=1
+  MsgBox >>>=1
+  ```
+
+  ```ahk
+  #Requires AutoHotkey v1.1.33+
+
+  ; all is command
+  MsgBox, = 1
+  MsgBox, := 1
+  MsgBox, += 1
+  MsgBox, -= 1
+  MsgBox, *=1
+  MsgBox, /=1
+  MsgBox, //=1
+  MsgBox, .= 1
+  MsgBox, |=1
+  MsgBox, &=1
+  MsgBox, ^=1
+  MsgBox, >>=1
+  MsgBox, <<=1
+  MsgBox, >>>=1
+  ```
+
+- [ ] feat: Avoid variable names same as command names.
 
 ## v0.0.33(2023-04-02)
 

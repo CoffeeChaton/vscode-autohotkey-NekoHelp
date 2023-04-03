@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine, TTokenStream } from '../../globalEnum';
+import { EMultiline } from '../../globalEnum';
 import { FormatCoreWrap } from '../../provider/Format/FormatProvider';
 import type { TFmtCore, TFmtCoreMap } from '../../provider/Format/FormatType';
 import { fmtLog } from '../../provider/vscWindows/log';
@@ -62,16 +63,54 @@ function getCmdSwitchCommaList(DocStrMap: TTokenStream, s: number, e: number): T
     };
 }
 
-function RemoveFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
+function RemoveFirstOptComma(list: readonly TCmdSwitchComma[], DocStrMap: TTokenStream): TFmtCoreMap {
     const map = new Map<number, TFmtCore>();
     for (const { col, AhkTokenLine } of list) {
         const { textRaw, line } = AhkTokenLine;
         const strF: string = textRaw.slice(col).trim();
-        if ((/^,[ \t]*[^, \t]/u).test(strF)) {
+        if (strF.startsWith(',')) {
+            /**
+             * ```ahk
+             * MsgBox, ; <--- if miss , It will becomes non-working!
+             *    ( LTrim
+             *      str--str--str
+             *    )
+             * ```
+             */
+
+            let nextLineIsMultiline = false;
+            for (let i = line + 1; i < DocStrMap.length; i++) {
+                const nextLineToken: TAhkTokenLine = DocStrMap[i];
+                if (nextLineToken.cll === 0) {
+                    break;
+                }
+                if (nextLineToken.multiline === EMultiline.start) {
+                    nextLineIsMultiline = true;
+                    break;
+                }
+            }
+            if (nextLineIsMultiline) {
+                continue;
+            }
+
+            const strF2: string = strF.replace(/,[ \t]*/u, '');
+            if (strF2.startsWith(',')) continue; // miss first param
+
+            if (
+                ['=', ':=', '+=', '-=', '*=', '/=', '//=', '.=', '|=', '&=', '^=', '>>=', '<<=', '>>>=']
+                    .some((v: string): boolean => strF2.startsWith(v))
+            ) {
+                continue;
+            }
+
+            // avoid 1. space-param
+            // avoid 2. MsgBox :=
+            // avoid 2. MsgBox =
+            // avoid 3. MsgBox, //next line is (LTrim
             map.set(line, {
                 line,
                 oldText: textRaw,
-                newText: textRaw.slice(0, col).trimEnd() + strF.replace(/^,\s*/u, ' ').trimEnd(),
+                newText: textRaw.slice(0, col).trimEnd() + strF.replace(/^,[ \t]*/u, ' ').trimEnd(),
                 hasOperatorFormat: false,
             });
         }
@@ -79,7 +118,7 @@ function RemoveFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
     return map;
 }
 
-function addFirstOptComma(list: readonly TCmdSwitchComma[]): TFmtCoreMap {
+function addFirstOptComma(list: readonly TCmdSwitchComma[], _DocStrMap: TTokenStream): TFmtCoreMap {
     const map = new Map<number, TFmtCore>();
     for (const { col, AhkTokenLine } of list) {
         const { textRaw, line } = AhkTokenLine;
@@ -124,7 +163,7 @@ export async function CmdFirstCommaStyleSwitch(
 ): Promise<void> {
     type TCommand = {
         label: string,
-        fn: (list: readonly TCmdSwitchComma[]) => TFmtCoreMap,
+        fn: (list: readonly TCmdSwitchComma[], DocStrMap: TTokenStream) => TFmtCoreMap,
     };
 
     const select: TCommand | undefined = await vscode.window.showQuickPick<TCommand>([
@@ -136,14 +175,6 @@ export async function CmdFirstCommaStyleSwitch(
             label: '2 -> try "Sleep 1000" -> "Sleep, 1000" ; (add first optional comma after command)',
             fn: addFirstOptComma,
         },
-        // {
-        //     label: '3 -> try "#Warn, All, MsgBox" -> "#Warn All, MsgBox" ; (Remove first optional comma after command)',
-        //     fn: RemoveFirstOptComma, // FIXME
-        // },
-        // {
-        //     label: '4 -> try "#Warn All, MsgBox" -> "#Warn, All, MsgBox" ; (add first optional comma after command)',
-        //     fn: addFirstOptComma, // FIXME
-        // },
     ], {
         title: 'I am moving this command to the formatting options',
     });
@@ -162,7 +193,7 @@ export async function CmdFirstCommaStyleSwitch(
     const { result, logList } = getCmdSwitchCommaList(DocStrMap, s, e);
     fmtLog.info(logList.join('\n'));
 
-    const diffMap: TFmtCoreMap = fn(result);
+    const diffMap: TFmtCoreMap = fn(result, DocStrMap);
     logFmtEdit(diffMap);
 
     const editList: vscode.TextEdit[] = FormatCoreWrap(diffMap);

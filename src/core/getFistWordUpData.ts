@@ -1,6 +1,6 @@
 export function getFistWordCore(lStrTrimFix: string): string {
     const str: string = lStrTrimFix.trim();
-    const ma1: string | undefined = str.match(/^(default)\s*:/iu)?.[1];
+    const ma1: string | undefined = str.match(/^(default)[ \t]*:/iu)?.[1];
     if (ma1 !== undefined) return ma1;
 
     /**
@@ -9,10 +9,35 @@ export function getFistWordCore(lStrTrimFix: string): string {
     const ma2: string | undefined = str.match(/^(\w+)$/u)?.[1];
     if (ma2 !== undefined) return ma2;
 
-    const ma3: string | undefined = str.match(/^(\w+)\s*,/u)?.[1];
+    const ma3: string | undefined = str.match(/^(\w+)[ \t]*,/u)?.[1];
     if (ma3 !== undefined) return ma3;
 
-    return str.match(/^(\w+)\s+(?![:+\-*/~.|&^]=)/u)?.[1]
+    const strF: string = lStrTrimFix.replace(/^\w+[ \t]*/u, '');
+    if (
+        ['=', ':=', '+=', '-=', '*=', '/=', '//=', '.=', '|=', '&=', '^=', '>>=', '<<=', '>>>=']
+            .some((v: string): boolean => strF.startsWith(v))
+    ) {
+        // #Requires AutoHotkey v1.1.33+
+
+        // MsgBox = 1
+        // MsgBox := 1
+        // MsgBox += 1
+        // MsgBox -= 1
+        // MsgBox *=1
+        // MsgBox /=1
+        // MsgBox //=1
+        // MsgBox .= 1
+        // MsgBox |=1
+        // MsgBox &=1
+        // MsgBox ^=1
+        // MsgBox >>=1
+        // MsgBox <<=1
+        // MsgBox >>>=1
+
+        return '';
+    }
+
+    return str.match(/^(\w+)[ \t]/u)?.[1]
         ?? '';
 }
 
@@ -53,7 +78,7 @@ export function getFistWordUpData(
     const fistWord: string = lStrTrim.match(/^(\w+)$/u)?.[1]
         ?? getFistWord(lStrTrim);
 
-    const fistWordUpCol = fistWord === ''
+    const fistWordUpCol: number = fistWord === ''
         ? -1
         : lStr.indexOf(fistWord);
 
