@@ -86,6 +86,7 @@
     ],
     "root": true,
     "rules": {
+        "regexp/no-missing-g-flag": "warn",
         "sonarjs/no-unused-collection": "warn",
         "@typescript-eslint/lines-around-comment": "off",
         "@typescript-eslint/key-spacing": "off",
