@@ -48,6 +48,9 @@ AutoHotKey v1 edit-support for VS Code
    2. SignatureHelp
    3. Completion
    4. unicode support
+3. (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
+   1. sign of user-def param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case
+   2. sign of nested function case.
 
 <!-- `f1` ->`ScreenCast Mode` -->
 
@@ -292,8 +295,9 @@ support to find like
 
 - Not yet supported functions-used not in a line case.
 
-- [x] `Signature` of `user-def-function`
-- [ ] `Signature` of `built-in function` and `command` coming soon.
+- [x] `Signature` of `user-def-function` [youtube 4k 90-sec](https://www.youtube.com/watch?v=WcMzNcVWcYA)
+- [x] `Signature` of `built-in function`
+- [ ] `command` coming soon.
 
 ## IntelliSense
 

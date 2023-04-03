@@ -17,6 +17,8 @@
 ## Next v0.0.34(2023-04-XX)
 
 - feat: add sign of build-in function
+- fix: sign of user-def param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case.
+- fix: sign of nested function (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
 - fix: not show sign at func/method def-range
 
 ## v0.0.33(2023-04-02)
