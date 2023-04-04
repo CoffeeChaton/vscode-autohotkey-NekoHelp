@@ -60,7 +60,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerDocumentSemanticTokensProvider(selector, AhkFullSemanticHighlight, legend),
         vscode.languages.registerDocumentSymbolProvider(selector, SymbolProvider),
         vscode.languages.registerHoverProvider(selector, HoverProvider),
-        vscode.languages.registerOnTypeFormattingEditProvider(selector, OnTypeFormattingEditProvider, '\n'),
+        vscode.languages.registerOnTypeFormattingEditProvider(selector, OnTypeFormattingEditProvider, '\n', '\r\n'),
         vscode.languages.registerReferenceProvider(selector, ReferenceProvider),
         vscode.languages.registerRenameProvider(selector, RenameProvider),
         vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),

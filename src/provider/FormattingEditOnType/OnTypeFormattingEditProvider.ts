@@ -11,14 +11,13 @@ export const OnTypeFormattingEditProvider: vscode.OnTypeFormattingEditProvider =
         options: vscode.FormattingOptions,
         _token: vscode.CancellationToken,
     ): vscode.ProviderResult<vscode.TextEdit[]> {
-        if (ch === '\n') {
+        if (ch === '\n' || ch === '\r\n') {
             const map: TFmtCoreMap = FormatCore({
                 document,
                 options,
-                fmtStart: position.line,
-                fmtEnd: position.line - 1,
+                fmtStart: position.line - 1,
+                fmtEnd: position.line,
                 from: EFormatChannel.byFormatOnType,
-                needDiff: false,
             });
 
             const e: TFmtCore | undefined = map.get(position.line - 1);
