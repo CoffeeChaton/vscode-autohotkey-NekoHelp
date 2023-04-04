@@ -28,7 +28,6 @@ type TFmtCoreArgs = {
     fmtStart: number,
     fmtEnd: number,
     from: EFormatChannel,
-    needDiff: boolean,
 };
 
 export function FormatCoreWrap(map: TFmtCoreMap): vscode.TextEdit[] {
@@ -128,6 +127,7 @@ export function FormatCore(
                     formatTextReplace: formatTextReplace && betaList[line],
                     userConfigs,
                     betaList,
+                    DocStrMap,
                 }, AhkTokenLine),
             );
         } else if (line > fmtEnd) {
@@ -157,8 +157,6 @@ export function FormatCore(
         });
     }
 
-    // console.log({ ms: Date.now() - timeStart, memo });
-
     return newFmtMap;
 }
 
@@ -174,7 +172,6 @@ export const FormatProvider: vscode.DocumentFormattingEditProvider = {
             fmtStart: 0,
             fmtEnd: document.lineCount - 1,
             from: EFormatChannel.byFormatAllFile,
-            needDiff: true,
         }));
     },
 };

@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import type {
     ECommandOption,
     EFileRenameEvent,
+    ErmFirstCommaCommand,
     TConfigKey,
     TConfigs,
 } from './configUI.data';
@@ -52,6 +53,11 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             ),
             formatTextReplace: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.textReplace'),
             removeFirstCommaDirective: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.removeFirstCommaDirective'),
+            removeFirstCommaCommand: getConfigs<ErmFirstCommaCommand>(
+                Configs,
+                'AhkNekoHelp.format.removeFirstCommaCommand',
+            ),
+
             useTopLabelIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useTopLabelIndent'),
             useParenthesesIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useParenthesesIndent'),
             useSquareBracketsIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useSquareBracketsIndent'),

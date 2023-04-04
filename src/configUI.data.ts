@@ -21,6 +21,12 @@ export const enum EDiagMasterSwitch {
     alway = 'alway',
 }
 
+export const enum ErmFirstCommaCommand {
+    notFmt = 0,
+    to1 = 1,
+    to2 = 2,
+}
+
 type TempConfigs = {
     CodeLens: {
         showFuncReference: boolean,
@@ -65,6 +71,7 @@ type TempConfigs = {
          * ```
          */
         removeFirstCommaDirective: boolean,
+        removeFirstCommaCommand: ErmFirstCommaCommand,
         useTopLabelIndent: boolean,
 
         /**

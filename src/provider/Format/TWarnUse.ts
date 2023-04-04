@@ -1,13 +1,17 @@
+/* eslint-disable max-lines-per-function */
 /* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,-999] }] */
 import type * as vscode from 'vscode';
 import type { TConfigs } from '../../configUI.data';
-import type { DeepReadonly, TAhkTokenLine } from '../../globalEnum';
-import { EMultiline } from '../../globalEnum';
+import type { DeepReadonly, TAhkTokenLine, TTokenStream } from '../../globalEnum';
+import { EDetail } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
+import { CommandMDMap } from '../../tools/Built-in/Command.tools';
 import { DirectivesMDMap } from '../../tools/Built-in/Directives.tool';
 import { lineReplace } from './fmtReplace';
 import type { TFmtCore } from './FormatType';
 import { removeFirstCommaDirective } from './removeFirstCommaDirective';
+import { rmFirstCommaCommand } from './rmFirstCommaCommand';
+import { ToFmtCore } from './ToFmtCore';
 import type { TFormatFlag } from './tools/getFormatFlag';
 
 type TWarnUse =
@@ -24,38 +28,77 @@ type TWarnUse =
     }>
     & {
         brackets: TBrackets,
+        DocStrMap: TTokenStream,
     };
 
-function fmtPlus(args: TWarnUse, text: string, AhkTokenLine: TAhkTokenLine): TFmtCore {
+function fmtPlus(
+    {
+        args,
+        indentBlank,
+        textRawTrimStart,
+        AhkTokenLine,
+    }: { args: TWarnUse, indentBlank: string, textRawTrimStart: string, AhkTokenLine: TAhkTokenLine },
+): TFmtCore {
     const {
         lStrTrim,
         formatTextReplace,
         betaList,
         userConfigs,
     } = args;
-    const { line, textRaw, multiline } = AhkTokenLine;
+    const { line, textRaw, detail } = AhkTokenLine;
 
-    if (
-        userConfigs.removeFirstCommaDirective
-        && lStrTrim.startsWith('#')
-        && multiline === EMultiline.none
-    ) {
+    if (userConfigs.removeFirstCommaDirective && detail.includes(EDetail.isDirectivesLine)) {
         const ma: RegExpMatchArray | null = lStrTrim.match(/^#(\w+)[ \t]*,/u);
         if (ma !== null && DirectivesMDMap.has(ma[1].toUpperCase())) {
-            return removeFirstCommaDirective(text, ma[1], AhkTokenLine);
+            return removeFirstCommaDirective(
+                {
+                    indentBlank,
+                    textRawTrimStart,
+                    ma1: ma[1],
+                    AhkTokenLine,
+                },
+            );
+        }
+    }
+
+    if (userConfigs.removeFirstCommaCommand > 0) {
+        const { removeFirstCommaCommand } = userConfigs;
+
+        const { DocStrMap } = args;
+        const {
+            fistWordUp,
+            fistWordUpCol,
+            SecondWordUp,
+            SecondWordUpCol,
+        } = AhkTokenLine;
+        if (CommandMDMap.has(fistWordUp)) {
+            const textNewTrimStart: string = rmFirstCommaCommand({
+                col: fistWordUp.length + fistWordUpCol,
+                removeFirstCommaCommand,
+                AhkTokenLine,
+                DocStrMap,
+            });
+
+            return ToFmtCore({ line, textRaw, newText: `${indentBlank}${textNewTrimStart}` });
+        }
+
+        if (CommandMDMap.has(SecondWordUp)) {
+            const textNewTrimStart: string = rmFirstCommaCommand({
+                col: SecondWordUp.length + SecondWordUpCol,
+                removeFirstCommaCommand,
+                AhkTokenLine,
+                DocStrMap,
+            });
+
+            return ToFmtCore({ line, textRaw, newText: `${indentBlank}${textNewTrimStart}` });
         }
     }
 
     const newText: string = formatTextReplace && betaList[line]
-        ? lineReplace(AhkTokenLine, text, lStrTrim) // Alpha test options
-        : text;
+        ? lineReplace(AhkTokenLine, `${indentBlank}${textRawTrimStart}`, lStrTrim) // Alpha test options
+        : `${indentBlank}${textRawTrimStart}`;
 
-    return {
-        line,
-        oldText: textRaw,
-        newText,
-        hasOperatorFormat: newText !== text,
-    };
+    return ToFmtCore({ line, textRaw, newText });
 }
 
 function brackets2Deep(brackets: TBrackets, userConfigs: TConfigs['format']): number {
@@ -84,18 +127,18 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         MultLine,
         userConfigs,
     } = args;
-    const { textRaw, cll } = AhkTokenLine;
+    const { textRaw, cll, line } = AhkTokenLine;
 
     /**
      * keep warning of this line!
      */
     if (MultLine === -999) {
-        return fmtPlus(args, textRaw, AhkTokenLine); // in multi-line and not open LTrim flag
+        return ToFmtCore({ line, textRaw, newText: textRaw });
     }
 
-    const WarnLineBodyWarn: string = textRaw.trimStart();
-    if (WarnLineBodyWarn === '') {
-        return fmtPlus(args, '', AhkTokenLine);
+    const textRawTrimStart: string = textRaw.trimStart();
+    if (textRawTrimStart === '') {
+        return ToFmtCore({ line, textRaw, newText: '' });
     }
 
     /**
@@ -124,7 +167,7 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         ? 0
         : cll; // 0 | 1
 
-    const cllFix2WithMultiLine: 0 | 1 = lStrTrim === '' && MultLine === 1 && WarnLineBodyWarn.startsWith(';')
+    const cllFix2WithMultiLine: 0 | 1 = lStrTrim === '' && MultLine === 1 && textRawTrimStart.startsWith(';')
         ? 1
         : 0;
 
@@ -167,6 +210,10 @@ export function fn_Warn_thisLineText_WARN(args: TWarnUse, AhkTokenLine: TAhkToke
         ? tabSize
         : 1;
 
-    const DeepStr = TabSpaces.repeat(deepFix * TabSize);
-    return fmtPlus(args, `${DeepStr}${WarnLineBodyWarn}`, AhkTokenLine);
+    return fmtPlus({
+        args,
+        indentBlank: TabSpaces.repeat(deepFix * TabSize),
+        textRawTrimStart,
+        AhkTokenLine,
+    });
 }

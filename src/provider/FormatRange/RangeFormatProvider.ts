@@ -15,7 +15,6 @@ export const RangeFormatProvider: vscode.DocumentRangeFormattingEditProvider = {
             fmtStart: range.start.line,
             fmtEnd: range.end.line,
             from: EFormatChannel.byFormatRange,
-            needDiff: true,
         }));
     },
 };

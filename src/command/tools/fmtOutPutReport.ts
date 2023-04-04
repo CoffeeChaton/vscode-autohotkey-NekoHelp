@@ -12,7 +12,6 @@ export async function fmtOutPutReport(document: vscode.TextDocument): Promise<vo
         fmtStart: 0,
         fmtEnd: document.lineCount - 1,
         from: EFormatChannel.byFormatAllFile,
-        needDiff: true,
     }));
 
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();

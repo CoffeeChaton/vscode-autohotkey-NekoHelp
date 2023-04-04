@@ -25,7 +25,6 @@ async function formatByPathAsync(
             fmtStart: 0,
             fmtEnd: document.lineCount - 1,
             from: EFormatChannel.byFormatAllFile,
-            needDiff: true,
         })),
     );
     const ms: number = Date.now() - t1;

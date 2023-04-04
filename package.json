@@ -195,6 +195,21 @@
                         "default": false,
                         "markdownDescription": "([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaDirective.md)) Remove the first comma after #Directive"
                     },
+                    "AhkNekoHelp.format.removeFirstCommaCommand": {
+                        "type": "number",
+                        "default": 0,
+                        "enum": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "markdownEnumDescriptions": [
+                            "Not doing anything",
+                            "try `Sleep 1000` -> `Sleep, 1000` ; (add first optional comma after command)",
+                            "try `Sleep, 1000` -> `Sleep 1000` ; (Remove first optional comma after command)"
+                        ],
+                        "markdownDescription": "(beta-test)([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaCommand.md)) add/remove the first comma after Command"
+                    },
                     "AhkNekoHelp.format.useTopLabelIndent": {
                         "type": "boolean",
                         "default": true,
