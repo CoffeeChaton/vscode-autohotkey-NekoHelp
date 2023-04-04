@@ -61,17 +61,51 @@ describe('check BuiltInFunctionObj ruler', () => {
 
         const errList: string[] = [];
         for (const v of funcDataList) {
-            const {
-                keyRawName,
-                sign,
-            } = v;
+            const { keyRawName, sign } = v;
 
-            if (!sign.startsWith(`${keyRawName}(`)) {
-                errList.push(`${keyRawName}  startsWith`);
+            if (!sign.startsWith(`${keyRawName}(`) || !sign.endsWith(')')) {
+                errList.push(`${keyRawName}  startsWith endWith`);
+                continue;
             }
 
-            if (!sign.endsWith(')')) {
-                errList.push(`${keyRawName}  endsWith`);
+            const param: string = sign
+                .replace(`${keyRawName}(`, '')
+                .replace(/\)$/u, '');
+
+            if (param === '') continue;
+
+            if (param.includes('[') && !param.includes(']')) {
+                errList.push(`${keyRawName}  miss ]`);
+                continue;
+            }
+
+            if (!param.includes('[') && param.includes(']')) {
+                errList.push(`${keyRawName}  miss [`);
+                continue;
+            }
+
+            const paramList: string[] = param
+                .replaceAll('[', '')
+                .replaceAll(']', '')
+                .split(',')
+                .map((s: string): string => (
+                    s
+                        .replace(/^\s*ByRef\s*/u, '')
+                        .replace(/:=.*/u, '')
+                        .trim()
+                ));
+
+            const someParam: string | undefined = paramList
+                .find((s: string): boolean => !(/^\w+\*?$/u).test(s));
+            if (someParam !== undefined) {
+                errList.push(`${keyRawName}() , ${someParam} style`);
+            }
+
+            const pp: string | undefined = [...paramList]
+                .slice(0, paramList.length - 1)
+                .find((s: string) => s.endsWith('*'));
+            if (pp !== undefined) {
+                errList.push(`${keyRawName}() , ${pp} `);
             }
         }
 

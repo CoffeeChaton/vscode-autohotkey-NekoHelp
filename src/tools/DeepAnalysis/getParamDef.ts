@@ -79,8 +79,11 @@ export function getParamDef(fnName: string, selectionRange: vscode.Range, DocStr
         if (lStrFix.trim() === '') break;
 
         const strF: string = lStrFix
-            .replaceAll(/:?=\s*[-+]?[.x\da-f^TruLs]+/giu, replacerSpace);
-        // Test 0x00ffffff  ,
+            .replaceAll(/:?=\s*\^+/gu, replacerSpace)
+            .replaceAll(/:?=\s*(?:true|false)/giu, replacerSpace)
+            .replaceAll(/:?=\s*[-+]?[.x\da-f^]+/giu, replacerSpace);
+        // := "" string
+        // := 0x00ffffff
         // -0.5 , 0.8
         //  1.0e^3
         // True, false

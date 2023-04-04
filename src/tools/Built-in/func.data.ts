@@ -346,7 +346,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'SysColor := 15',
             'bc := DllCall("GetSysColor", "Int", SysColor, "UInt")',
         ],
-        sign: 'DllCall("DllFile\\Function" [, Type1, Arg1, Type2, Arg2, "Cdecl ReturnType"])',
+        sign: 'DllCall(DllFile_Function [, Type1, Arg1, Type2, Arg2, ReturnType])',
     },
     {
         upName: 'EXCEPTION',
@@ -430,7 +430,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'arr := [13, 240]',
             'MsgBox % Format("{2:x}{1:02x}", arr*)',
         ],
-        sign: 'Format(FormatStr [, Values...])',
+        sign: 'Format(FormatStr [, Values*])',
     },
     {
         upName: 'FUNC',
@@ -761,7 +761,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Add(Options, Field1, Field2, ...)',
         ],
-        sign: 'LV_Add([Options, Field1, Field2, ...])',
+        sign: 'LV_Add([Options, Field*])',
     },
     {
         upName: 'LV_DELETE',
@@ -837,7 +837,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Insert(RowNumber , Options, Col1, Col2, ...)',
         ],
-        sign: 'LV_Insert(RowNumber [, Options, Col1, Col2, ...])',
+        sign: 'LV_Insert(RowNumber [, Options, Col*])',
     },
     {
         upName: 'LV_INSERTCOL',
@@ -861,7 +861,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Modify(RowNumber , Options, NewCol1, NewCol2, ...)',
         ],
-        sign: 'LV_Modify(RowNumber [, Options, NewCol1, NewCol2, ...])',
+        sign: 'LV_Modify(RowNumber [, Options, NewCol*])',
     },
     {
         upName: 'LV_MODIFYCOL',
@@ -902,7 +902,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'array := [1, 2, 3, 4]',
             'MsgBox, % Max(array*) ; Returns 4',
         ],
-        sign: 'Max(Number1 [, Number2, ...])',
+        sign: 'Max(Number1 [, Number*])',
     },
     {
         upName: 'MENUGETHANDLE',
@@ -941,7 +941,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'array := [1, 2, 3, 4]',
             'MsgBox, % Max(array*) ; Returns 1',
         ],
-        sign: 'Min(Number1 [, Number2, ...])',
+        sign: 'Min(Number1 [, Number*])',
     },
     {
         upName: 'MOD',
@@ -1225,7 +1225,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '        MsgBox % NumGet(params+0, "float") ", " NumGet(params+A_PtrSize, "int64")',
             '}',
         ],
-        sign: 'RegisterCallback("FunctionName" [, Options := "", ParamCount := FormalCount, EventInfo := Address])',
+        sign: 'RegisterCallback(FunctionName [, Options := "", ParamCount := FormalCount, EventInfo := Address])',
     },
     {
         upName: 'ROUND',
@@ -1291,7 +1291,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'SB_SetParts(Width1, Width2, ... Width255)',
         ],
-        sign: 'SB_SetParts([Width1, Width2, ... Width255])',
+        sign: 'SB_SetParts([Width*])',
     },
     {
         upName: 'SIN',
