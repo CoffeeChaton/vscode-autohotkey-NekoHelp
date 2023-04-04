@@ -14,7 +14,6 @@ import { getFileAllFunc } from '../../tools/visitor/getFileAllFuncList';
 import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { posAtFnRef } from '../Def/posAtFnRef';
-import { CmdFirstCommaStyleSwitchCA } from './tools/CmdFirstCommaStyleSwitchCA';
 
 function atFnHead(
     ahkFn: CAhkFunc,
@@ -117,7 +116,7 @@ export function otherCodeAction(
     const ahkFn: CAhkFunc | undefined = getFileAllFunc.up(AhkFileData.AST)
         .find((ahkFunc: CAhkFunc): boolean => ahkFunc.nameRange.contains(active));
 
-    const need: vscode.CodeAction[] = [...CmdFirstCommaStyleSwitchCA(AhkFileData, selection)];
+    const need: vscode.CodeAction[] = [];
 
     const { CodeAction2GotoDefRef } = getCustomize();
 

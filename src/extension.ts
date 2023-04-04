@@ -8,7 +8,6 @@ import { getFileReport } from './command/getFileReport/getFileReport';
 import { ListAllFuncMain } from './command/ListAllFunc';
 import { ListAllInclude } from './command/ListAllInclude';
 import { ListIncludeTree } from './command/ListIncludeTree';
-import { CmdFirstCommaStyleSwitch } from './command/tools/CmdFirstCommaStyleSwitch';
 import { UpdateCacheAsync, UpdateCacheUi } from './command/UpdateCache';
 import { configChangEvent } from './configUI';
 import { diagColl, rmAllDiag } from './core/diagColl';
@@ -84,7 +83,6 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
-        vscode.commands.registerCommand(ECommand.CmdFirstCommaStyleSwitch, CmdFirstCommaStyleSwitch),
         vscode.commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
         vscode.commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),
         vscode.commands.registerCommand(ECommand.ListAllInclude, ListAllInclude),
