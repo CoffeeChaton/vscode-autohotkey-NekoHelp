@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { A1DevTools } from './A1DevTools/A1DevTools';
 import { AnalysisFuncReferenceWrap } from './AnalysisFuncReference/AnalysisFuncReference';
 import { DeepAnalysisAllFiles } from './DeepAnalysisAllFiles';
-import { FormatAllFile } from './FormatAllFile';
+import { FormatAllFile } from './FormatAllFile/FormatAllFile';
 import { ListAllFuncMain } from './ListAllFunc';
 import { ListAllInclude } from './ListAllInclude';
 import { ListIncludeTree } from './ListIncludeTree';

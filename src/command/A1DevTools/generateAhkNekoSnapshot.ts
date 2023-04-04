@@ -8,8 +8,8 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { fileFuncRef } from '../../provider/Def/getFnRef';
 import { log } from '../../provider/vscWindows/log';
 import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
-import { UpdateCacheAsync } from '../UpdateCache';
 import { mkDirByPathSync } from '../../tools/fsTools/mkDirByPathSync';
+import { UpdateCacheAsync } from '../UpdateCache';
 
 function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: readonly string[]): readonly string[] {
     const snapList: string[] = [];

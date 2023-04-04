@@ -5,12 +5,12 @@ import { EMultiline } from '../../globalEnum';
 export function rmFirstCommaCommand(
     {
         col,
-        removeFirstCommaCommand,
+        cmdTo1_or_2,
         AhkTokenLine,
         DocStrMap,
     }: {
         col: number,
-        removeFirstCommaCommand: ErmFirstCommaCommand,
+        cmdTo1_or_2: ErmFirstCommaCommand,
         AhkTokenLine: TAhkTokenLine,
         DocStrMap: TTokenStream,
     },
@@ -18,7 +18,7 @@ export function rmFirstCommaCommand(
     //
     const { textRaw, lStr } = AhkTokenLine;
 
-    if (removeFirstCommaCommand === ErmFirstCommaCommand.notFmt) {
+    if (cmdTo1_or_2 === ErmFirstCommaCommand.notFmt) {
         return textRaw.trim();
     }
 
@@ -27,7 +27,7 @@ export function rmFirstCommaCommand(
         || col === lStr.trimEnd().length + 1
     ) return textRaw.trim();
 
-    if (removeFirstCommaCommand === ErmFirstCommaCommand.to1) {
+    if (cmdTo1_or_2 === ErmFirstCommaCommand.to1) {
         return (/^[ \t]*,/u).test(lStr.slice(col))
             ? textRaw.slice(0, col).trim() + textRaw.slice(col)
                 .replace(/^[ \t]*,[ \t]*/u, ', ')
@@ -38,7 +38,7 @@ export function rmFirstCommaCommand(
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (removeFirstCommaCommand === ErmFirstCommaCommand.to2) {
+    if (cmdTo1_or_2 === ErmFirstCommaCommand.to2) {
         const strF: string = textRaw.slice(col).trim();
         if (!strF.startsWith(',')) {
             const space = ' ';

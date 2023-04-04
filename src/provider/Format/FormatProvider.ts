@@ -2,7 +2,7 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,-999] }] */
 import * as vscode from 'vscode';
 import { getFormatConfig } from '../../configUI';
-import type { TConfigs } from '../../configUI.data';
+import type { ErmFirstCommaCommand, TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { EFormatChannel } from '../../globalEnum';
@@ -28,6 +28,8 @@ type TFmtCoreArgs = {
     fmtStart: number,
     fmtEnd: number,
     from: EFormatChannel,
+
+    cmdTo1_or_2: ErmFirstCommaCommand,
 };
 
 export function FormatCoreWrap(map: TFmtCoreMap): vscode.TextEdit[] {
@@ -67,6 +69,7 @@ export function FormatCore(
         fmtStart,
         fmtEnd,
         from,
+        cmdTo1_or_2,
     }: TFmtCoreArgs,
 ): TFmtCoreMap {
     const timeStart: number = Date.now();
@@ -128,6 +131,7 @@ export function FormatCore(
                     userConfigs,
                     betaList,
                     DocStrMap,
+                    cmdTo1_or_2,
                 }, AhkTokenLine),
             );
         } else if (line > fmtEnd) {
@@ -172,6 +176,7 @@ export const FormatProvider: vscode.DocumentFormattingEditProvider = {
             fmtStart: 0,
             fmtEnd: document.lineCount - 1,
             from: EFormatChannel.byFormatAllFile,
+            cmdTo1_or_2: getFormatConfig().removeFirstCommaCommand,
         }));
     },
 };

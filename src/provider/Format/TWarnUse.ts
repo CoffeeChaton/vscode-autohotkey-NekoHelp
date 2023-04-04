@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 /* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,-999] }] */
 import type * as vscode from 'vscode';
-import type { TConfigs } from '../../configUI.data';
+import type { ErmFirstCommaCommand, TConfigs } from '../../configUI.data';
 import type { DeepReadonly, TAhkTokenLine, TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
@@ -25,6 +25,7 @@ type TWarnUse =
         MultLine: -999 | 0 | 1,
         userConfigs: TConfigs['format'],
         betaList: TFormatFlag['betaList'],
+        cmdTo1_or_2: ErmFirstCommaCommand,
     }>
     & {
         brackets: TBrackets,
@@ -44,6 +45,8 @@ function fmtPlus(
         formatTextReplace,
         betaList,
         userConfigs,
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        cmdTo1_or_2,
     } = args;
     const { line, textRaw, detail } = AhkTokenLine;
 
@@ -61,9 +64,7 @@ function fmtPlus(
         }
     }
 
-    if (userConfigs.removeFirstCommaCommand > 0) {
-        const { removeFirstCommaCommand } = userConfigs;
-
+    if (cmdTo1_or_2 > 0) {
         const { DocStrMap } = args;
         const {
             fistWordUp,
@@ -74,7 +75,7 @@ function fmtPlus(
         if (CommandMDMap.has(fistWordUp)) {
             const textNewTrimStart: string = rmFirstCommaCommand({
                 col: fistWordUp.length + fistWordUpCol,
-                removeFirstCommaCommand,
+                cmdTo1_or_2,
                 AhkTokenLine,
                 DocStrMap,
             });
@@ -85,7 +86,7 @@ function fmtPlus(
         if (CommandMDMap.has(SecondWordUp)) {
             const textNewTrimStart: string = rmFirstCommaCommand({
                 col: SecondWordUp.length + SecondWordUpCol,
-                removeFirstCommaCommand,
+                cmdTo1_or_2,
                 AhkTokenLine,
                 DocStrMap,
             });

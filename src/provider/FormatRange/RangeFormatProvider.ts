@@ -1,4 +1,5 @@
 import type * as vscode from 'vscode';
+import { getFormatConfig } from '../../configUI';
 import { EFormatChannel } from '../../globalEnum';
 import { FormatCore, FormatCoreWrap } from '../Format/FormatProvider';
 
@@ -15,6 +16,7 @@ export const RangeFormatProvider: vscode.DocumentRangeFormattingEditProvider = {
             fmtStart: range.start.line,
             fmtEnd: range.end.line,
             from: EFormatChannel.byFormatRange,
+            cmdTo1_or_2: getFormatConfig().removeFirstCommaCommand,
         }));
     },
 };

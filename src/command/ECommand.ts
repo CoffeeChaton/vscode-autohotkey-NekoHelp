@@ -1,8 +1,7 @@
 export const enum ECommand {
     CmdFindFuncRef = 'ahk.nekoHelp.CmdFindFuncRef',
     CmdGotoFuncDef = 'ahk.nekoHelp.CmdGotoFuncDef',
-    CmdFirstCommaStyleSwitch = 'ahk.nekoHelp.CmdFirstCommaStyleSwitch',
-    CompletionMsgBox = 'ahk.nekoHelp.CompletionMsgBox',
+    CompletionMsgBox = 'ahk.nekoHelp.CompletionMsgBox', // TODO
     ListAllFunc = 'ahk.nekoHelp.ListAllFunc',
     ListAllInclude = 'ahk.nekoHelp.ListAllInclude',
     ListIncludeTree = 'ahk.nekoHelp.ListIncludeTree',
