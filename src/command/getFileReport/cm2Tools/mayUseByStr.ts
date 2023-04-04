@@ -7,32 +7,7 @@ export function mayUseByStr(DocStrMap: TTokenStream, refJustBy2: Readonly<TRefJu
     // ln xx ; textRaw
     // )"
 
-    const arr: string[] = [
-        '; exp --------------------------------',
-        ';#NoEnv',
-        ';#Warn All',
-        ';SetControlDelay, 0',
-        ';',
-        ';~F9:: fn_exp(["fnA","fnB"])',
-        ';~F10:: fn_exp(["fnB","fnA"])',
-        ';',
-        ';fn_exp(fnList){',
-        ';    For _Key, fn in fnList {',
-        ';        funcOnj := Func(fn)',
-        ';        funcOnj.Call()',
-        ';    }',
-        ';}',
-        ';',
-        ';fnA(){',
-        ';    MsgBox, % "i am fnA"',
-        ';}',
-        ';',
-        ';fnB(){',
-        ';    MsgBox, % "i am fnB"',
-        ';}',
-        '; exp end----------------------------------',
-        '',
-    ];
+    const arr: string[] = [];
 
     for (const [_k, [refList, { name, uri, range }]] of refJustBy2) {
         const { fsPath } = uri;
@@ -51,5 +26,33 @@ export function mayUseByStr(DocStrMap: TTokenStream, refJustBy2: Readonly<TRefJu
         arr.push(...msg);
     }
 
-    return arr;
+    return arr.length > 0
+        ? [
+            '; exp --------------------------------',
+            ';#NoEnv',
+            ';#Warn All',
+            ';SetControlDelay, 0',
+            ';',
+            ';~F9:: fn_exp(["fnA","fnB"])',
+            ';~F10:: fn_exp(["fnB","fnA"])',
+            ';',
+            ';fn_exp(fnList){',
+            ';    For _Key, fn in fnList {',
+            ';        funcOnj := Func(fn)',
+            ';        funcOnj.Call()',
+            ';    }',
+            ';}',
+            ';',
+            ';fnA(){',
+            ';    MsgBox, % "i am fnA"',
+            ';}',
+            ';',
+            ';fnB(){',
+            ';    MsgBox, % "i am fnB"',
+            ';}',
+            '; exp end----------------------------------',
+            '',
+            ...arr,
+        ]
+        : [];
 }

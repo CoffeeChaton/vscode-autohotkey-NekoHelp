@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { pm } from '../core/ProjectManager';
-import { msgWithPos } from './tools/msgWithPos';
+import { msgWithPos } from '../tools/MD/msgWithPos';
 
 function ListAllFunc(showLink: boolean): null {
     const t1: number = Date.now();
