@@ -6,8 +6,7 @@ import { getMenuFunc } from '../../tools/Command/MenuTools';
 import { getSetTimerWrap } from '../../tools/Command/SetTimerTools';
 import { getSortFunc } from '../../tools/Command/sotrTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
-import type { TLineFnCall } from '../Def/getFnRef';
-import { fnRefTextRawReg } from '../Def/getFnRef';
+import { regFnHighlight } from './regFnHighlight';
 import type { TSemanticTokensLeaf } from './tools';
 
 function GuiFuncHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): 0 | 1 {
@@ -84,45 +83,6 @@ function HotkeyHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLea
         // AltTab (and others): These are special Alt-Tab hotkey actions that are described here.
         // WTF ... ahk is too many cases ...
     });
-    return 1;
-}
-
-function regFnHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): 0 | 1 {
-    // I need to check San = =||
-    const DataList: readonly TLineFnCall[] = fnRefTextRawReg(AhkTokenLine);
-    if (DataList.length === 0) return 0;
-
-    for (const Data of DataList) {
-        const { upName, col } = Data;
-
-        const { line } = AhkTokenLine;
-        Tokens.push(
-            {
-                range: new vscode.Range(
-                    new vscode.Position(line, col - '(?C'.length), //
-                    new vscode.Position(line, col),
-                ),
-                tokenType: 'keyword',
-                tokenModifiers: [],
-            },
-            {
-                range: new vscode.Range(
-                    new vscode.Position(line, col),
-                    new vscode.Position(line, col + upName.length),
-                ),
-                tokenType: 'function',
-                tokenModifiers: [],
-            },
-            {
-                range: new vscode.Range(
-                    new vscode.Position(line, col + upName.length),
-                    new vscode.Position(line, col + upName.length + ')'.length),
-                ),
-                tokenType: 'keyword',
-                tokenModifiers: [],
-            },
-        );
-    }
     return 1;
 }
 

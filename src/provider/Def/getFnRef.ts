@@ -1,4 +1,4 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,7,8,11,12,13,14] }] */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,7,8,9,10,11,12,13,14] }] */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
@@ -32,9 +32,24 @@ export const enum EFnRefBy {
     SortFlag = 7,
 
     /**
-     * by (?CCallout) https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions
+     * by -> (?CCallout)\
+     * or -> (?CNumber)\
+     * <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
      */
-    Reg = 8,
+    Reg1 = 8,
+
+    /**
+     * by (?C:Function)\
+     * <https://www.autohotkey.com/board/topic/36196-regex-callouts/page-2>
+     */
+    Reg2 = 9,
+
+    /**
+     * by (?CNumber:Function)\
+     * <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#auto>
+     */
+    Reg3 = 10,
+
     //
     SetTimer = 11,
     Hotkey = 12,
@@ -127,6 +142,57 @@ export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[
     return arr;
 }
 
+/**
+ *  (?CNumber:Function)
+ *     Number   -> part1 -> https://www.regular-expressions.info/pcre.html (?C1) to (?C255) call pcre_callout
+ *     :        -> part2
+ *     Function -> part3
+ */
+type TRegCallFn = {
+    // part1_text: string,
+    // part1_offset: number,
+
+    // part2_offset: number,
+
+    part3_text: string,
+    part3_offset: number,
+    by: EFnRefBy.Reg1 | EFnRefBy.Reg2 | EFnRefBy.Reg3,
+};
+
+function fnRegCallFn(maa1: string): TRegCallFn | null {
+    // Reg1 -> (?CCallout)
+    //      -> (?CNumber)
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(maa1)) {
+        return {
+            part3_text: maa1,
+            part3_offset: 0,
+            by: EFnRefBy.Reg1,
+        };
+    }
+
+    // Reg2 -> (?C:Function)
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/^:[#$@\w\u{A1}-\u{FFFF}]+$/u).test(maa1)) {
+        return {
+            part3_text: maa1.replace(/^:/u, ''),
+            part3_offset: 1, // ':'.length
+            by: EFnRefBy.Reg2,
+        };
+    }
+
+    // Reg3 -> (?CNumber:Function)
+    // eslint-disable-next-line security/detect-unsafe-regex
+    if ((/^\d+:[#$@\w\u{A1}-\u{FFFF}]+$/u).test(maa1)) {
+        return {
+            part3_text: maa1.replace(/^\d+:/u, ''),
+            part3_offset: maa1.indexOf(':') + 1,
+            by: EFnRefBy.Reg3,
+        };
+    }
+    return null;
+}
+
 export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     // `RegEx` CallOut Functions<https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
     const { lStr, textRaw, line } = AhkTokenLine;
@@ -141,14 +207,23 @@ export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): readonly TLineFnCa
         //                      "               (?CFuncName)
         //                      ^ not close     (?C        )
         //                                      ^^^        ^
-        // eslint-disable-next-line security/detect-unsafe-regex
-        for (const maa of ma[1].matchAll(/(?<=\(\?C)([#$@\w\u{A1}-\u{FFFF}]+)\)/giu)) {
-            const upName: string = ToUpCase(maa[1]);
+
+        for (const maa of ma[1].matchAll(/(?<=\(\?C)(.+)\)/giu)) {
+            // (?CNumber)
+            // (?C:Function)
+            // (?CNumber:Function)
+
+            const RegCallFn: TRegCallFn | null = fnRegCallFn(maa[1]);
+            if (RegCallFn === null) continue;
+
+            const { part3_text, part3_offset, by } = RegCallFn;
+            const upName: string = ToUpCase(part3_text);
+
             arr.push({
                 upName,
                 line,
-                col: '"'.length + col + (maa.index ?? 0),
-                by: EFnRefBy.Reg,
+                col: '"'.length + col + (maa.index ?? 0) + part3_offset,
+                by,
             });
         }
     }

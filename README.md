@@ -154,6 +154,7 @@ support to find like
    ```
 
 5. `RegEx` CallOut Functions<https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
+   or `(?CNumber:Function)` <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#auto>
 
    ```ahk
    Haystack := "The quick brown fox jumps over the lazy dog."

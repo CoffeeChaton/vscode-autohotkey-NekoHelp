@@ -1,0 +1,274 @@
+>Loop, 10 {
+#^^^^ source.ahk keyword.control.flow.ahk
+#    ^ source.ahk punctuation.ahk
+#     ^ source.ahk
+#      ^^ source.ahk constant.numeric.decimal.ahk
+#        ^ source.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+>
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>Loop Files, % A_ProgramFiles "\*.txt", R  ; Recurse into subfolders.
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
+#    ^ source.ahk meta.loop.ahk
+#     ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
+#          ^ source.ahk punctuation.ahk
+#           ^ source.ahk
+#            ^ source.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk
+#              ^^^^^^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                            ^ source.ahk
+#                             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                              ^^^^^^ source.ahk string.quoted.double.ahk
+#                                    ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                     ^ source.ahk punctuation.ahk
+#                                      ^^^ source.ahk
+#                                         ^ source.ahk meta.comment.line.semicolon.ahk
+#                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>{
+#^ source.ahk punctuation.bracket.ahk
+>    MsgBox, 4, , Filename = %A_LoopFileFullPath%`n`nContinue?
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                          ^ source.ahk meta.command.line.ahk keyword.operator.assignment.ahk
+#                           ^ source.ahk meta.command.line.ahk
+#                            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                             ^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                               ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                                ^^ source.ahk meta.command.line.ahk constant.character.escape.ahk
+#                                                  ^^ source.ahk meta.command.line.ahk constant.character.escape.ahk
+#                                                    ^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                            ^ source.ahk meta.command.line.ahk keyword.operator.ternary.ahk
+>    IfMsgBox, No
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk punctuation.ahk
+#             ^^^^ source.ahk
+>        break
+#^^^^^^^^ source.ahk
+#        ^^^^^ source.ahk keyword.control.flow.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>Colors := "red,green,blue"
+#^^^^^^^ source.ahk
+#       ^^ source.ahk keyword.operator.assignment.ahk
+#         ^ source.ahk
+#          ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#           ^^^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
+#                         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>Loop, Parse, Colors, `,
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
+#    ^^ source.ahk meta.loop.ahk
+#      ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
+#           ^ source.ahk punctuation.ahk
+#            ^^^^^^^ source.ahk
+#                   ^ source.ahk punctuation.ahk
+#                    ^ source.ahk
+#                     ^^ source.ahk constant.character.escape.ahk
+>    MsgBox, % "Color number " A_Index " is " A_LoopField "."
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                            ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                             ^ source.ahk meta.command.line.ahk
+#                              ^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                     ^ source.ahk meta.command.line.ahk
+#                                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                       ^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                           ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                            ^ source.ahk meta.command.line.ahk
+#                                             ^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                                        ^ source.ahk meta.command.line.ahk
+#                                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                          ^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                           ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>
+>Loop, Parse, clipboard, `n, `r
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
+#    ^^ source.ahk meta.loop.ahk
+#      ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
+#           ^ source.ahk punctuation.ahk
+#            ^ source.ahk
+#             ^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                      ^ source.ahk punctuation.ahk
+#                       ^ source.ahk
+#                        ^^ source.ahk constant.character.escape.ahk
+#                          ^ source.ahk punctuation.ahk
+#                           ^ source.ahk
+#                            ^^ source.ahk constant.character.escape.ahk
+>{
+#^ source.ahk punctuation.bracket.ahk
+>    MsgBox, 4, ,% "File number " A_Index " is " A_LoopField ".`n`nContinue?"
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                 ^ source.ahk meta.command.line.ahk
+#                  ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                   ^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                               ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                ^ source.ahk meta.command.line.ahk
+#                                 ^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                        ^ source.ahk meta.command.line.ahk
+#                                         ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                          ^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                               ^ source.ahk meta.command.line.ahk
+#                                                ^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                                           ^ source.ahk meta.command.line.ahk
+#                                                            ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                             ^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                              ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                                                ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                                                  ^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                           ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    IfMsgBox, No
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk punctuation.ahk
+#             ^^^^ source.ahk
+>        break
+#^^^^^^^^ source.ahk
+#        ^^^^^ source.ahk keyword.control.flow.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>Loop, Read, C:\Log File.txt
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
+#    ^^ source.ahk meta.loop.ahk
+#      ^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
+#          ^ source.ahk punctuation.ahk
+#           ^^ source.ahk
+#             ^ source.ahk keyword.operator.ternary.ahk
+#              ^^^^^^^^^^^^^^ source.ahk
+>{
+#^ source.ahk punctuation.bracket.ahk
+>    last_line := A_LoopReadLine  ; When lo
+#^^^^^^^^^^^^^^ source.ahk
+#              ^^ source.ahk keyword.operator.assignment.ahk
+#                ^ source.ahk
+#                 ^^^^^^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                               ^ source.ahk
+#                                ^ source.ahk meta.comment.line.semicolon.ahk
+#                                 ^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>
+>Loop, Reg, HKEY_CURRENT_USER\Software\Microsoft\Windows, KVR
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
+#    ^^ source.ahk meta.loop.ahk
+#      ^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
+#         ^ source.ahk punctuation.ahk
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk
+#                                                       ^ source.ahk punctuation.ahk
+#                                                        ^^^^^ source.ahk
+>{ ; TODO   ^ HKEY_LOCAL_MACHINE syntax-highlight]
+#^ source.ahk punctuation.bracket.ahk
+# ^ source.ahk meta.comment.line.semicolon.ahk
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    if (A_LoopRegType = "key")
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.control.flow.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^^^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                     ^ source.ahk
+#                      ^ source.ahk keyword.operator.assignment.ahk
+#                       ^ source.ahk
+#                        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                         ^^^ source.ahk string.quoted.double.ahk
+#                            ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                             ^ source.ahk punctuation.bracket.ahk
+>        value := ""
+#^^^^^^^^^^^^^^ source.ahk
+#              ^^ source.ahk keyword.operator.assignment.ahk
+#                ^ source.ahk
+#                 ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                  ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    else
+#^^^^ source.ahk
+#    ^^^^ source.ahk keyword.control.flow.ahk
+>    {
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+>        RegRead, value
+#^^^^^^^^ source.ahk
+#        ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^^^^^^ source.ahk meta.command.line.ahk
+>        if ErrorLevel
+#^^^^^^^^ source.ahk
+#        ^^ source.ahk keyword.control.flow.ahk
+#          ^ source.ahk
+#           ^^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+>            value := "*error*"
+#^^^^^^^^^^^^^^^^^^ source.ahk
+#                  ^^ source.ahk keyword.operator.assignment.ahk
+#                    ^ source.ahk
+#                     ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                      ^^^^^^^ source.ahk string.quoted.double.ahk
+#                             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    }
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, 4, , %A_LoopRegName% = %value% (%A_LoopRegType%)`n`nContinue?
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                  ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                               ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                ^ source.ahk meta.command.line.ahk
+#                                 ^ source.ahk meta.command.line.ahk keyword.operator.assignment.ahk
+#                                  ^ source.ahk meta.command.line.ahk
+#                                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                    ^^^^^ source.ahk meta.command.line.ahk
+#                                         ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                          ^ source.ahk meta.command.line.ahk
+#                                           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                                            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                             ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                                          ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                                           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                                                            ^^ source.ahk meta.command.line.ahk constant.character.escape.ahk
+#                                                              ^^ source.ahk meta.command.line.ahk constant.character.escape.ahk
+#                                                                ^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                                        ^ source.ahk meta.command.line.ahk keyword.operator.ternary.ahk
+>    IfMsgBox, NO
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk punctuation.ahk
+#             ^^^^ source.ahk
+>        break
+#^^^^^^^^ source.ahk
+#        ^^^^^ source.ahk keyword.control.flow.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>

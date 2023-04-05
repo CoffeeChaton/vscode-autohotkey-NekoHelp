@@ -23,6 +23,12 @@
 - feat: add format option as `AhkNekoHelp.format.removeFirstCommaCommand`
 - feat: cmd - `format all file` add option to select `AhkNekoHelp.format.removeFirstCommaCommand`
 - feat: add sign of build-in function
+- fix: support 4-style of `(?CNumber:Function)` <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#syntax>
+  1. `(?CFuncCallOut)`
+  2. `(?C:FuncCallOut)`
+  3. `(?CNumber:FuncCallOut)`
+  4. `(?CNumber)`
+     ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-regular-expression-call-outs.png)
 - fix: sign of func last-param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case.
 - fix: sign of nested function (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
 - fix: not show sign at func/method def-range
