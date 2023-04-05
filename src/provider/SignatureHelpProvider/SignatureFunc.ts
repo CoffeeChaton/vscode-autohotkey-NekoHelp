@@ -4,6 +4,7 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import type { TBiFuncMsg } from '../../tools/Built-in/func.tools';
 import { getBuiltInFuncMD } from '../../tools/Built-in/func.tools';
+import { CMemo } from '../../tools/CMemo';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import type { TLineFnCall } from '../Def/getFnRef';
@@ -11,19 +12,19 @@ import { fnRefLStr } from '../Def/getFnRef';
 import { SignBiFn } from './SignatureFuncBuiltIn';
 import { SignUserFn } from './SignatureFuncUser';
 
+const memoFnRefType1 = new CMemo<TAhkTokenLine, readonly TLineFnCall[]>(
+    (AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] => fnRefLStr(AhkTokenLine),
+);
+
 export function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Position): vscode.SignatureHelp | null {
     const { line, character } = position;
     const { DocStrMap, AST } = AhkFileData;
     const AhkTokenLine: TAhkTokenLine = DocStrMap[line];
-    const fnRefType1: readonly TLineFnCall[] = [...fnRefLStr(AhkTokenLine)];
-    if (fnRefType1.length === 0) {
-        return null;
-    }
+    const fnRefType1: readonly TLineFnCall[] = memoFnRefType1.up(AhkTokenLine);
+    if (fnRefType1.length === 0) return null;
 
     const leftFn: readonly TLineFnCall[] = fnRefType1.filter(({ col }: TLineFnCall): boolean => col < character);
-    if (leftFn.length === 0) {
-        return null;
-    }
+    if (leftFn.length === 0) return null;
 
     const DA: CAhkFunc | null = getDAWithPos(AST, position);
 
@@ -34,14 +35,13 @@ export function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Positi
     const leftStr: string = lStr
         .slice(leftFn[0].col)
         .padStart(lStr.length);
-    // const basePair =;
+
     for (const fnRefData of [...leftFn].reverse()) {
         const { upName, col } = fnRefData;
         let comma = 0;
         let brackets = 0;
         for (let i = col; i < character; i++) {
             const s: string = leftStr[i];
-            // eslint-disable-next-line unicorn/prefer-switch
             if (s === '(') {
                 brackets++;
             } else if (s === ')') {
