@@ -6,6 +6,7 @@ import { EDetail } from '../../../globalEnum';
 import { snippetGui } from '../../../tools/Built-in/Gui/gui.tools';
 import { snippetGuiControl } from '../../../tools/Built-in/GuiControl/GuiControl.tools';
 import { snippetMenu } from '../../../tools/Built-in/Menu/Menu.tools';
+import { snippetSysGet } from '../../../tools/Built-in/SysGet/SysGet.tools';
 import { enumLog } from '../../../tools/enumErr';
 
 function getSubStr2(subStr: string, fistWordUp: string, detail: readonly EDetail[]): string {
@@ -41,6 +42,7 @@ export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine
             if ('Gui'.toLowerCase().startsWith(subStr2)) list.push(...snippetGui);
             if ('GuiControl'.toLowerCase().startsWith(subStr2)) list.push(...snippetGuiControl);
             if ('Menu'.toLowerCase().startsWith(subStr2)) list.push(...snippetMenu);
+            if ('SysGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetSysGet);
 
             // todo something
             return list;

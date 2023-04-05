@@ -1,0 +1,72 @@
+>SysGet, OutputVar, MonitorCount
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                   ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+>SysGet, OutputVar, MonitorPrimary
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                   ^^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+>SysGet, OutputVar, Monitor , N
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                   ^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+#                          ^ source.ahk meta.command.line.sysget.ahk
+#                           ^ source.ahk meta.command.line.sysget.ahk punctuation.ahk
+#                            ^^ source.ahk meta.command.line.sysget.ahk
+>SysGet, OutputVar, MonitorWorkArea , N
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                   ^^^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+#                                  ^ source.ahk meta.command.line.sysget.ahk
+#                                   ^ source.ahk meta.command.line.sysget.ahk punctuation.ahk
+#                                    ^^ source.ahk meta.command.line.sysget.ahk
+>SysGet, OutputVar, MonitorName , N
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                   ^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+#                              ^ source.ahk meta.command.line.sysget.ahk
+#                               ^ source.ahk meta.command.line.sysget.ahk punctuation.ahk
+#                                ^^ source.ahk meta.command.line.sysget.ahk
+>SysGet, OutputVar, 65
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+#       ^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.line.ahk
+#                   ^^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+>
+>SysGet OutputVar, MonitorCount
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                  ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+>SysGet OutputVar, MonitorPrimary
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                  ^^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+>SysGet OutputVar, Monitor , N
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                  ^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+#                         ^ source.ahk meta.command.line.sysget.ahk
+#                          ^ source.ahk meta.command.line.sysget.ahk punctuation.ahk
+#                           ^^ source.ahk meta.command.line.sysget.ahk
+>SysGet OutputVar, MonitorWorkArea , N
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                  ^^^^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+#                                 ^ source.ahk meta.command.line.sysget.ahk
+#                                  ^ source.ahk meta.command.line.sysget.ahk punctuation.ahk
+#                                   ^^ source.ahk meta.command.line.sysget.ahk
+>SysGet OutputVar, MonitorName , N
+#^^^^^^ source.ahk meta.command.line.sysget.ahk support.function.command.sysget.ahk
+#      ^^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk
+#                  ^^^^^^^^^^^ source.ahk meta.command.line.sysget.ahk keyword.command.option.param.sysget.ahk
+#                             ^ source.ahk meta.command.line.sysget.ahk
+#                              ^ source.ahk meta.command.line.sysget.ahk punctuation.ahk
+#                               ^^ source.ahk meta.command.line.sysget.ahk
+>SysGet OutputVar, 65
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                 ^ source.ahk meta.command.line.ahk
+#                  ^^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk

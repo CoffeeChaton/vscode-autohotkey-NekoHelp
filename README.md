@@ -383,7 +383,7 @@ _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=z
 ## Privacy Statement
 
 - Do not upload any information.
-- without vscode provided api, not any third party dependencies, Safe and Privacy.
+- only use vscode provided api, not any third party dependencies, Safe and Privacy.
 - just scan workspaces or open file. not auto scan any file without workspaces.
 - If you need to place .ahk in other folders, this Extensions support [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces).
 

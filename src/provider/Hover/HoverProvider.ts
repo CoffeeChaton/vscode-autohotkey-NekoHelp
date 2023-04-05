@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
@@ -28,6 +29,7 @@ import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
 import { hoverMenuParam } from './tools/hoverMenuParam';
 import { hoverMultiLine } from './tools/hoverMultiLine';
+import { hoverSysGetParam } from './tools/hoverSysGetParam';
 
 function HoverOfFunc(
     document: vscode.TextDocument,
@@ -113,6 +115,9 @@ function HoverProviderCore(
 
     const MenuParam: vscode.MarkdownString | null = hoverMenuParam(AhkTokenLine, position);
     if (MenuParam !== null) return new vscode.Hover(MenuParam);
+
+    const SysGetParam: vscode.MarkdownString | null = hoverSysGetParam(AhkTokenLine, position);
+    if (SysGetParam !== null) return new vscode.Hover(SysGetParam);
 
     if (AhkFunc !== null) {
         const DAmd: vscode.MarkdownString | null = DeepAnalysisHover(AhkFunc, wordUp, position);

@@ -75,6 +75,7 @@
                     ]
                 },
                 { "include": "#command_gui" },
+                { "include": "#command_sysget" },
                 { "include": "#command_gui_control" },
                 {
                     "name": "meta.command.line.ahk",
@@ -151,6 +152,16 @@
                 { "include": "#command_options" },
                 { "include": "#expression" }
             ]
+        },
+        "command_sysget": {
+            "name": "meta.command.line.sysget.ahk",
+            "begin": "(?:^|[ \\t:])\\b(?i:(SysGet)\\b[ \\t]*,?[ \\t]*(?:[#$@\\w\\x{A1}-\\x{FFFF}]+)[ \\t]*,[ \\t]*\\b(MonitorCount|MonitorPrimary|Monitor|MonitorWorkArea|MonitorName)\\b)",
+            "end": "(\\n)",
+            "beginCaptures": {
+                "1": { "name": "support.function.command.sysget.ahk" },
+                "2": { "name": "keyword.command.option.param.sysget.ahk" }
+            },
+            "patterns": [ { "include": "#expression" } ]
         },
         "command_gui_control": {
             "name": "meta.command.line.gui_control.ahk",

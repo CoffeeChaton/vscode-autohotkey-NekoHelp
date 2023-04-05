@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as vscode from 'vscode';
-import { GuiControlSubCmdList } from './GuiControl.data';
+import { SysGetSubCmdList } from './SysGet.data';
 
-export const { snippetGuiControl, GuiControlMDMap } = (() => {
+export const { snippetSysGet, SysGetMDMap } = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
-    for (const v of GuiControlSubCmdList) {
+    for (const v of SysGetSubCmdList) {
         const {
             SubCommand,
             body,
@@ -16,7 +16,7 @@ export const { snippetGuiControl, GuiControlMDMap } = (() => {
         } = v;
         const upName: string = SubCommand.toUpperCase();
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-            .appendMarkdown(`GuiControl - ${SubCommand}`)
+            .appendMarkdown(`SysGet - ${SubCommand}`)
             .appendCodeblock(body, 'ahk')
             .appendMarkdown(`[(Read Doc)](${link})\n\n`)
             .appendMarkdown(doc)
@@ -28,12 +28,12 @@ export const { snippetGuiControl, GuiControlMDMap } = (() => {
         MDMapRW.set(upName, md);
 
         const item: vscode.CompletionItem = new vscode.CompletionItem({
-            label: `GuiControl, ${SubCommand}`, // Left
+            label: `SysGet, ${SubCommand}`, // Left
             description: 'sub-command', // Right
         });
         item.kind = vscode.CompletionItemKind.Keyword;
         item.insertText = new vscode.SnippetString(body);
-        item.detail = 'GuiControl';
+        item.detail = 'SysGet';
         item.documentation = md;
 
         snippetListRW.push(item);
@@ -42,12 +42,12 @@ export const { snippetGuiControl, GuiControlMDMap } = (() => {
     /**
      * after initialization clear
      */
-    GuiControlSubCmdList.length = 0;
+    SysGetSubCmdList.length = 0;
 
     // ---
     // ---
     return {
-        snippetGuiControl: snippetListRW as readonly vscode.CompletionItem[],
-        GuiControlMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetSysGet: snippetListRW as readonly vscode.CompletionItem[],
+        SysGetMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
     };
 })();
