@@ -399,6 +399,15 @@ export function Pretreatment(
 
         // eslint-disable-next-line security/detect-unsafe-regex
         if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStrTrim)) {
+            const maDefault: boolean = (/^default:$/iu).test(lStrTrim);
+            const fistWord: '' | 'DEFAULT' = maDefault
+                ? 'DEFAULT'
+                : '';
+
+            const fistWordUpCol: number = maDefault
+                ? lStr.search(/\S/u)
+                : -1;
+
             // of label-line
             result.push({
                 ahkDoc,
@@ -407,8 +416,8 @@ export function Pretreatment(
                 detail: [...detail, EDetail.isLabelLine],
                 displayErr,
                 displayFnErr,
-                fistWordUp: '',
-                fistWordUpCol: -1,
+                fistWordUp: fistWord,
+                fistWordUpCol,
                 line,
                 lineComment,
                 lStr,

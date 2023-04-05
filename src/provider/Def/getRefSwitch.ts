@@ -34,9 +34,11 @@ export function getRefSwitch(
         const sw: CAhkSwitch | undefined = searchAstRefSwitch(AST, position).at(-1);
         if (sw === undefined) return null;
 
-        return sw
-            .children
-            .map((ch: CAhkCase | CAhkDefault): vscode.Location => new vscode.Location(ch.uri, ch.selectionRange));
+        return [
+            new vscode.Location(sw.uri, sw.selectionRange),
+            ...sw.children
+                .map((ch: CAhkCase | CAhkDefault): vscode.Location => new vscode.Location(ch.uri, ch.selectionRange)),
+        ];
     }
 
     return null;
