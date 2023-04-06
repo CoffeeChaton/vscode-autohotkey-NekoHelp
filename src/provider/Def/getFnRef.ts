@@ -208,7 +208,9 @@ export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): readonly TLineFnCa
         //                      ^ not close     (?C        )
         //                                      ^^^        ^
 
-        for (const maa of ma[1].matchAll(/(?<=\(\?C)(.+)\)/giu)) {
+        // eslint-disable-next-line security/detect-unsafe-regex
+        for (const maa of ma[1].matchAll(/(?<=\(\?C)([:#$@\w\u{A1}-\u{FFFF}]+)\)/giu)) {
+            //                                               ^ : and var-name
             // (?CNumber)
             // (?C:Function)
             // (?CNumber:Function)
