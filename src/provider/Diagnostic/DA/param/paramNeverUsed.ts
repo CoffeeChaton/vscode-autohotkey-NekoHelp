@@ -28,12 +28,14 @@ export function NeverUsedVar(
 
     for (const [key, v] of valMap) {
         if (v.refRangeList.length > 0) continue;
+
         // if (v.defRangeList.length > 1) return; // don't open this with out debug
         if (
             AVariablesMDMap.has(key)
             || key.startsWith('_')
             || Bi_VarMDMap.has(key)
             || !displayErrList[v.defRangeList[0].start.line]
+            || key === 'PCRE_CALLOUT'
         ) {
             continue;
         }

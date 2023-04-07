@@ -62,6 +62,7 @@ describe('check diag-md uri', () => {
             'code127.md',
             'code201.md',
             'code304.md',
+            'code500.md',
             'code506.md',
             'code507.md',
             'code601.md',

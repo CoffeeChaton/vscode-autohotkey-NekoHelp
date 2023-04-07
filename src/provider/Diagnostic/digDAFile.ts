@@ -45,7 +45,8 @@ function diagDAFileCore(
         useModuleValDiag,
     } = getDiagConfig();
 
-    const DAList: readonly CAhkFunc[] = getDAListTop(AhkFileData.AST);
+    const { AST, ModuleVar } = AhkFileData;
+    const DAList: readonly CAhkFunc[] = getDAListTop(AST);
     const cache: TDaDiagCache | undefined = wm.get(DAList);
     if (
         cache !== undefined
@@ -80,7 +81,7 @@ function diagDAFileCore(
 
         // TODO diag? https://stackoverflow.com/questions/12684985/why-doesnt-autohotkey-support-default-parameters-in-the-middle-of-the-parameter
     }
-    const { ModuleValMap, ModuleTextMap } = AhkFileData.ModuleVar;
+    const { ModuleValMap, ModuleTextMap } = ModuleVar;
 
     if (useModuleValDiag) {
         NeverUsedVar(ModuleValMap, code500List, code500Max, displayErrList);

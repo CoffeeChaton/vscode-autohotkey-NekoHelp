@@ -127,7 +127,7 @@
                         "default": 20,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "(code500) var is assigned but never used, a file max warn number. use ```0``` to close warn."
+                        "markdownDescription": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md)) var is assigned but never used, a file max warn number. use ```0``` to close warn."
                     },
                     "AhkNekoHelp.Diag.code502": {
                         "type": "number",
@@ -372,7 +372,7 @@
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",
         "eslint-config-sukka": "^1.7.2",
-        "eslint-import-resolver-typescript": "^3.5.4",
+        "eslint-import-resolver-typescript": "^3.5.5",
         "eslint-plugin-fp": "^2.3.0",
         "eslint-plugin-immutable": "^1.0.0",
         "eslint-plugin-import": "^2.27.5",

@@ -16,6 +16,7 @@
 
 ## Next v0.0.34(2023-04-XX)
 
+- feat: `c500` ignore `PCRE_CallOut` var-name
 - feat: add [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) SubCommand
   1. syntax-highlight
   2. completion

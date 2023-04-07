@@ -3,7 +3,7 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import type { TScanData } from '../DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../DeepAnalysis/FnVar/def/spiltCommandAll';
 
-function getMenuFuncData(lStr: string, col: number, flag: 0 | 1): readonly TScanData[] | null {
+function getGuiFuncData(lStr: string, col: number, flag: 0 | 1): readonly TScanData[] | null {
     const strF: string = lStr
         .slice(col)
         .replace(/^\s*GUI\b\s*,?\s*/iu, 'GUI,')
@@ -89,8 +89,8 @@ export function getGuiFunc(AhkTokenLine: TAhkTokenLine, flag: 0 | 1): readonly T
         SecondWordUpCol,
     } = AhkTokenLine;
 
-    if (fistWordUp === 'GUI') return getMenuFuncData(lStr, fistWordUpCol, flag);
-    if (SecondWordUp === 'GUI') return getMenuFuncData(lStr, SecondWordUpCol, flag);
+    if (fistWordUp === 'GUI') return getGuiFuncData(lStr, fistWordUpCol, flag);
+    if (SecondWordUp === 'GUI') return getGuiFuncData(lStr, SecondWordUpCol, flag);
 
     return null;
 }

@@ -1,7 +1,6 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3] }] */
 import * as vscode from 'vscode';
 import type { TTokenStream } from '../../globalEnum';
-import { EDetail } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
@@ -20,6 +19,7 @@ export const enum EGlobalDefBy {
     byGui = 2,
     byRef = 3,
 }
+
 export type TGlobalVal = {
     defRangeList: TGValData[],
     refRangeList: TGValData[],
@@ -61,11 +61,6 @@ function setGlobalVar(
     }
 }
 
-function isGlobal(detail: readonly EDetail[], lStr: string): boolean {
-    return detail.includes(EDetail.deepAdd)
-        && (/^\s*\{\s*global[,\s]/iu).test(lStr);
-}
-
 export function ahkGlobalMain(DocStrMap: TTokenStream): TGValMap {
     const GValMap = new Map<TUpName, TGlobalVal>();
     let lastLineIsGlobal = false;
@@ -73,7 +68,6 @@ export function ahkGlobalMain(DocStrMap: TTokenStream): TGValMap {
     for (const AhkTokenLine of DocStrMap) {
         const {
             cll,
-            detail,
             fistWordUp,
             line,
             lStr,
@@ -94,7 +88,7 @@ export function ahkGlobalMain(DocStrMap: TTokenStream): TGValMap {
             continue;
         }
 
-        if (fistWordUp === 'GLOBAL' || isGlobal(detail, lStr)) {
+        if (fistWordUp === 'GLOBAL') {
             if ((/\bGLOBAL\s*$/iu).test(lStr)) continue;
             lastLineIsGlobal = true;
             BracketsRaw = [0, 0, 0];
