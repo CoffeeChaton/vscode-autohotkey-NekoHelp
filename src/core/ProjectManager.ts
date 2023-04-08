@@ -56,7 +56,6 @@ export const pm = {
     },
 
     async renameFiles(e: vscode.FileRenameEvent): Promise<void> {
-        // TODO add config of package?
         const eventMsg: string[] = e.files
             .filter(({ oldUri, newUri }): boolean => isAhk(oldUri.fsPath) || isAhk(newUri.fsPath))
             .map((

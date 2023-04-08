@@ -18,12 +18,13 @@ import { EDetail } from '../../globalEnum';
 import { ToUpCase } from '../str/ToUpCase';
 import { getFileAllClass } from '../visitor/getFileAllClassList';
 import { getFileAllFunc } from '../visitor/getFileAllFuncList';
-import { newC502 } from './FnVar/def/c502';
 import { wrapFnValDef } from './FnVar/def/wrapFnValDef';
 import { EFnMode } from './FnVar/EFnMode';
 import { getFnVarDef } from './FnVar/getFnVarDef';
 import { getDAListTop } from './getDAList';
 import { getUnknownTextMap } from './getUnknownTextMap';
+import { pushDef } from './pushDef';
+import { pushRef } from './pushRef';
 
 export type TModuleVar = {
     readonly ModuleValMap: TValMapOut,
@@ -79,23 +80,27 @@ function getModuleAllowList(DocStrMap: TTokenStream, Ast: TAstRoot): readonly bo
 function moveGValMap2ModuleMap(GValMap: TGValMap, ModuleValMap: TValMapIn): void {
     for (const [upName, { defRangeList, refRangeList }] of GValMap) {
         for (const { rawName, range } of defRangeList) {
-            const value: TValMetaIn = wrapFnValDef({
-                RawNameNew: rawName,
-                valMap: ModuleValMap,
-                defRange: range,
-                lineComment: '',
-                fnMode: EFnMode.global,
-                Associated: null,
-            });
-            ModuleValMap.set(upName, value);
+            const oldDef: TValMetaIn | undefined = ModuleValMap.get(ToUpCase(rawName));
+            if (oldDef === undefined) {
+                const value: TValMetaIn = wrapFnValDef({
+                    RawNameNew: rawName,
+                    valMap: ModuleValMap,
+                    defRange: range,
+                    lineComment: '',
+                    fnMode: EFnMode.global,
+                    Associated: null,
+                });
+                ModuleValMap.set(upName, value);
+            } else {
+                pushDef(oldDef, rawName, range.start.line, range.start.character);
+            }
         }
 
         //
         for (const { rawName, range } of refRangeList) {
             const oldDef: TValMetaIn | undefined = ModuleValMap.get(ToUpCase(rawName));
             if (oldDef !== undefined) {
-                oldDef.refRangeList.push(range);
-                oldDef.c502Array.push(newC502(oldDef.keyRawName, rawName));
+                pushRef(oldDef, rawName, range.start.line, range.start.character);
             }
         }
     }
@@ -109,7 +114,7 @@ function moveTextMap2ModuleMap(AST: TAstRoot, valMap: TValMapIn): void {
             const oldVal: TValMetaIn | undefined = valMap.get(k);
             if (oldVal === undefined) continue;
             oldVal.refRangeList.push(...v.refRangeList);
-            textMapRW.delete(k);
+            textMapRW.delete(k); // eval
         }
     }
 }
@@ -125,14 +130,15 @@ export function getModuleVarMap(
     const name: string = path.basename(fsPath);
 
     const allowList: readonly boolean[] = getModuleAllowList(DocStrMap, AST);
-    const { valMap } = getFnVarDef(allowList, AhkTokenList, paramMap, new Map(), EFnMode.global, DocStrMap);
-    const ModuleTextMap: TTextMapIn = getUnknownTextMap(allowList, AhkTokenList, paramMap, valMap, GValMap, name);
+    // dprint-ignore
+    const { valMap: ModuleValMap } = getFnVarDef(allowList, AhkTokenList, paramMap, new Map(), EFnMode.global, DocStrMap);
+    const ModuleTextMap: TTextMapIn = getUnknownTextMap(allowList, AhkTokenList, paramMap, ModuleValMap, GValMap, name);
 
-    moveGValMap2ModuleMap(GValMap, valMap);
-    moveTextMap2ModuleMap(AST, valMap);
+    moveGValMap2ModuleMap(GValMap, ModuleValMap);
+    moveTextMap2ModuleMap(AST, ModuleValMap);
 
     return {
-        ModuleValMap: valMap,
+        ModuleValMap,
         ModuleTextMap,
         allowList,
     };
