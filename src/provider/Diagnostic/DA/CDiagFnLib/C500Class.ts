@@ -26,10 +26,16 @@ function isPseudoArrayCh(AssociatedList: TValMetaOut['AssociatedList']): boolean
     for (const { by } of AssociatedList) {
         if (
             [
+                //
                 EPseudoArray.byGuiControlGet_Cmd_PosX,
                 EPseudoArray.byGuiControlGet_Cmd_PosY,
                 EPseudoArray.byGuiControlGet_Cmd_PosH,
                 EPseudoArray.byGuiControlGet_Cmd_PosW,
+                //
+                EPseudoArray.bySysGet_CMD_Bottom,
+                EPseudoArray.bySysGet_CMD_Left,
+                EPseudoArray.bySysGet_CMD_Right,
+                EPseudoArray.bySysGet_CMD_Top,
             ].includes(by)
         ) {
             return true;

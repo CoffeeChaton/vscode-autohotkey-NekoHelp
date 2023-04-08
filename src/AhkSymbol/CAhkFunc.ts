@@ -43,6 +43,12 @@ export const enum EPseudoArray {
     byGuiControlGet_Cmd_PosY = 112,
     byGuiControlGet_Cmd_PosH = 113,
     byGuiControlGet_Cmd_PosW = 114,
+
+    bySysGet_CMD = 200,
+    bySysGet_CMD_Bottom = 201,
+    bySysGet_CMD_Left = 202,
+    bySysGet_CMD_Right = 203,
+    bySysGet_CMD_Top = 204,
 }
 
 export type TAssociated = {
