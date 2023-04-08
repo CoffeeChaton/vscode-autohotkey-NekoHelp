@@ -98,7 +98,11 @@ export function getUnknownTextMap(
                 .slice(character + keyRawName.length)
                 .trim();
 
-            if (strObjCase.startsWith(':') && !strObjCase.startsWith(':=')) {
+            if (
+                strObjCase.startsWith(':') //
+                && !strObjCase.startsWith(':=')
+                && (/[,{]$/u).test(input.slice(0, character).trimEnd())
+            ) {
                 // a:= {a:b,c:d}
                 // ^var
                 //      ^ not var
@@ -108,6 +112,8 @@ export function getUnknownTextMap(
                  * a:={b:10}
                  * ;   ^ b is key, not var
                  */
+                // a:= b ? b : 10
+                //         ^var
                 continue;
             }
 
