@@ -29,6 +29,7 @@ function wrap(arg: TGetFnDefNeed, character: number, RawName: string): void {
         defRange,
         lineComment,
         fnMode,
+        Associated: null,
     });
     valMap.set(UpName, value);
 }

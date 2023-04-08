@@ -1,15 +1,16 @@
 import * as vscode from 'vscode';
-import type { TValMapIn, TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
+import type { TAssociated, TValMapIn, TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
 import type { EFnMode } from '../EFnMode';
 import { wrapFnValDef } from './wrapFnValDef';
 
-type TValMeta = {
+export type TValMeta = {
     line: number,
     character: number,
     RawName: string,
     valMap: TValMapIn,
     lineComment: string,
     fnMode: EFnMode,
+    Associated: TAssociated | null,
 };
 
 export function getValMeta(
@@ -20,6 +21,7 @@ export function getValMeta(
         valMap,
         lineComment,
         fnMode,
+        Associated,
     }: TValMeta,
 ): TValMetaIn {
     const defRange: vscode.Range = new vscode.Range(
@@ -33,5 +35,6 @@ export function getValMeta(
         defRange,
         lineComment,
         fnMode,
+        Associated,
     });
 }

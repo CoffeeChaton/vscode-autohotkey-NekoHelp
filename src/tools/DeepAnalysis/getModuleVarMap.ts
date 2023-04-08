@@ -85,6 +85,7 @@ function moveGValMap2ModuleMap(GValMap: TGValMap, ModuleValMap: TValMapIn): void
                 defRange: range,
                 lineComment: '',
                 fnMode: EFnMode.global,
+                Associated: null,
             });
             ModuleValMap.set(upName, value);
         }

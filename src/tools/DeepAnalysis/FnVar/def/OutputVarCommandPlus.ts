@@ -51,6 +51,7 @@ export function OutputVarCommandPlus(need: TGetFnDefNeed, keyWord: string, col: 
                 valMap,
                 lineComment,
                 fnMode,
+                Associated: null,
             }),
         );
     }

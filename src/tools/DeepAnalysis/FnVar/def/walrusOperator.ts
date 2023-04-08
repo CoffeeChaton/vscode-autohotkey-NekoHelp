@@ -48,6 +48,7 @@ export function walrusOperator({
             valMap,
             lineComment,
             fnMode,
+            Associated: null,
         });
         valMap.set(UpName, value);
     }

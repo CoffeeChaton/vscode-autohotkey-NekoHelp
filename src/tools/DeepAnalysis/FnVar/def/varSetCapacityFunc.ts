@@ -45,6 +45,7 @@ export function varSetCapacityFunc({
             valMap,
             lineComment,
             fnMode,
+            Associated: null,
         });
         valMap.set(ToUpCase(RawName), value);
     }

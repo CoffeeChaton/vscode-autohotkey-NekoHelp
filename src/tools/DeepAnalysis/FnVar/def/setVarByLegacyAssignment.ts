@@ -35,6 +35,7 @@ export function setVarByLegacyAssignment({
         valMap,
         lineComment,
         fnMode,
+        Associated: null,
     });
     valMap.set(UpName, value);
 }

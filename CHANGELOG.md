@@ -16,6 +16,7 @@
 
 ## Next v0.0.34(2023-04-XX)
 
+- feat: `c501` ignore `isByRef` param
 - feat: `c500` ignore `PCRE_CallOut` var-name
 - feat: add [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) SubCommand
   1. syntax-highlight
@@ -33,6 +34,7 @@
 - fix: sign of func last-param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case.
 - fix: sign of nested function (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
 - fix: not show sign at func/method def-range
+- fix: core `+= -= *= ...etc` from `ref` -> `def` , to fix `c500` case
 - fix: core switch-default
 - fix: core command vs Assign ...
 

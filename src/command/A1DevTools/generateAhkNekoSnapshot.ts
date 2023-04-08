@@ -66,6 +66,9 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
                 if (value instanceof Map) {
                     return Object.fromEntries(value) as unknown;
                 }
+                if (key === 'AssociatedList' && Array.isArray(value) && value.length === 0) {
+                    return undefined;
+                }
                 return value;
             }, 4),
             '```',
@@ -76,6 +79,9 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
             JSON.stringify(ModuleVar, (key: string, value: unknown): unknown => {
                 if (value instanceof Map) {
                     return Object.fromEntries(value) as unknown;
+                }
+                if (key === 'AssociatedList' && Array.isArray(value) && value.length === 0) {
+                    return undefined;
                 }
                 return value;
             }, 4),

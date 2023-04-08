@@ -37,7 +37,7 @@ export type TDiagsDA = {
 export const DiagsDA: DeepReadonly<TDiagsDA> = {
     500: {
         msg: 'var is assigned but never used.',
-        path: 'https://www.autohotkey.com/docs/v1/Variables.htm',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md',
     },
     501: {
         msg: 'param is assigned but never used.',

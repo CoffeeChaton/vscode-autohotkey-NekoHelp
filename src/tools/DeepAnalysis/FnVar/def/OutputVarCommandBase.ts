@@ -1,8 +1,10 @@
-import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
+import type { TAssociated, TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
 import { OutputCommandBaseMap } from '../../../Built-in/Command.tools';
 import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
+import { pseudoArray } from './pseudoArray/pseudoArray';
+import { pseudoArrayPushDef } from './pseudoArray/pseudoArrayPushDef';
 
 /**
  * OutputVar
@@ -24,11 +26,6 @@ export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: 
         fnMode,
     } = need;
 
-    // const mma = lStr
-    //     .slice(col + len)
-    //     .replace(/^\s*,?\s*/u, '')
-    //     .padStart(lStr.length, ' ');
-
     const strF: string = lStr
         .slice(col + len)
         .replace(/^\s*,?\s*/u, '')
@@ -36,13 +33,15 @@ export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: 
 
     const ma: RegExpMatchArray | null = strF
         // eslint-disable-next-line security/detect-unsafe-regex
-        .match(/^[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)/u);
+        .match(/^[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)(?:[ \t,]|$)/u);
     if (ma === null) return null;
 
     const RawName: string = ma[1];
+
     const UpName: string = ToUpCase(RawName);
     if (paramMap.has(UpName) || GValMap.has(UpName)) return null;
 
+    const Associated: TAssociated | null = pseudoArray(lStr, line, keyWord, col);
     const value: TValMetaIn = getValMeta({
         line,
         character: strF.indexOf(RawName),
@@ -50,8 +49,14 @@ export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: 
         valMap,
         lineComment,
         fnMode,
+        Associated,
     });
     valMap.set(UpName, value);
+
+    if (Associated !== null) {
+        pseudoArrayPushDef(need, Associated);
+    }
+
     return null;
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import * as vscode from 'vscode';
 import type { DeepReadonly } from '../globalEnum';
 import type { EFnMode } from '../tools/DeepAnalysis/FnVar/EFnMode';
@@ -32,6 +33,26 @@ export type TParamMapIn = Map<TUpName, TParamMetaIn>; // k = valNameUP
 
 export type TParamMapOut = ReadonlyMap<TUpName, TParamMetaOut>; // k = valNameUP
 
+/**
+ * https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11
+ */
+
+export const enum EPseudoArray {
+    byGuiControlGet_Cmd_Pos = 100,
+    byGuiControlGet_Cmd_PosX = 111,
+    byGuiControlGet_Cmd_PosY = 112,
+    byGuiControlGet_Cmd_PosH = 113,
+    byGuiControlGet_Cmd_PosW = 114,
+}
+
+export type TAssociated = {
+    faRawName: string,
+    chList: ({ chName: string, by: EPseudoArray })[],
+    line: number,
+    col: number,
+    by: EPseudoArray,
+};
+
 export type TValMetaIn = {
     keyRawName: string,
     defRangeList: vscode.Range[],
@@ -40,6 +61,7 @@ export type TValMetaIn = {
     commentList: string[], // c++ style comments
     jsDocStyle: string, //
     fnMode: EFnMode,
+    AssociatedList: TAssociated[],
 };
 export type TValMetaOut = DeepReadonly<TValMetaIn>;
 

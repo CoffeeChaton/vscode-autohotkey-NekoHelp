@@ -42,6 +42,7 @@ function setVarMix({
                 fnMode: fistWordVarMix === 'LOCAL'
                     ? EFnMode.forceLocal
                     : EFnMode.static,
+                Associated: null,
             },
         );
         valMap.set(ToUpCase(rawName), value);

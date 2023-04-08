@@ -20,27 +20,8 @@ import { otherKeyword2MD } from '../Built-in/otherKeyword2.tools';
 import { StatementMDMap } from '../Built-in/statement.tools';
 import { WinTitleMDMap } from '../Built-in/WinTitle/WinTitleParameter.tools';
 import { ToUpCase } from '../str/ToUpCase';
-import { newC502 } from './FnVar/def/c502';
-
-function pushRef(
-    oldDef: TParamMetaIn | TValMetaIn,
-    keyRawName: string,
-    line: number,
-    character: number,
-): void {
-    const startPos: vscode.Position = new vscode.Position(line, character);
-    if (oldDef.defRangeList.some((defRange: vscode.Range): boolean => defRange.contains(startPos))) {
-        return;
-    }
-
-    const range: vscode.Range = new vscode.Range(
-        startPos,
-        new vscode.Position(line, character + keyRawName.length),
-    );
-
-    oldDef.refRangeList.push(range);
-    oldDef.c502Array.push(newC502(oldDef.keyRawName, keyRawName));
-}
+import { pushDef } from './pushDef';
+import { pushRef } from './pushRef';
 
 // eslint-disable-next-line max-params
 export function getUnknownTextMap(
@@ -137,15 +118,24 @@ export function getUnknownTextMap(
                 continue;
             }
 
+            const strF = lStr.slice(character + keyRawName.length).trimStart();
+
             const oldParam: TParamMetaIn | undefined = paramMap.get(wordUp);
             if (oldParam !== undefined) {
-                pushRef(oldParam, keyRawName, line, character);
+                // dprint-ignore
+                const _void0: null = [':=', '+=', '-=', '*=', '/=', '//=', '.=', '|=', '&=', '^=', '>>=', '<<=', '>>>='].some((vvv: string): boolean => strF.startsWith(vvv))
+                    ? pushDef(oldParam, keyRawName, line, character)
+                    : pushRef(oldParam, keyRawName, line, character);
+
                 continue;
             }
 
             const oldVal: TValMetaIn | undefined = valMap.get(wordUp);
             if (oldVal !== undefined) {
-                pushRef(oldVal, keyRawName, line, character);
+                // dprint-ignore
+                const _void0: null = [':=', '+=', '-=', '*=', '/=', '//=', '.=', '|=', '&=', '^=', '>>=', '<<=', '>>>='].some((vvv: string): boolean => strF.startsWith(vvv))
+                    ? pushDef(oldVal, keyRawName, line, character)
+                    : pushRef(oldVal, keyRawName, line, character);
                 continue;
             }
 

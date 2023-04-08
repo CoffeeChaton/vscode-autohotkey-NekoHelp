@@ -368,7 +368,7 @@
         "@vscode/test-electron": "^2.3.0",
         "@vscode/vsce": "^2.18.0",
         "esbuild": "^0.17.15",
-        "eslint": "^8.37.0",
+        "eslint": "^8.38.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",
         "eslint-config-sukka": "^1.7.2",
@@ -388,7 +388,7 @@
         "husky": "^8.0.3",
         "jest": "^29.5.0",
         "sort-package-json": "^2.4.1",
-        "typescript": "5.0.3",
+        "typescript": "5.0.4",
         "vscode-tmgrammar-test": "^0.1.1"
     },
     "engines": {
