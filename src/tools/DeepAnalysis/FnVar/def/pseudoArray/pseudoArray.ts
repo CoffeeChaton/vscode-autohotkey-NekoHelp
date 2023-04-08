@@ -3,6 +3,7 @@
 import type { TAssociated } from '../../../../../AhkSymbol/CAhkFunc';
 import { GuiControlGet_CMD_Pos_Core } from './GuiControlGet_CMD_Pos_Core';
 import { SysGet_CMD } from './SysGet_CMD';
+import { WinGet_CMD_List } from './WinGet_CMD_List';
 
 export function pseudoArray(
     lStr: string,
@@ -15,6 +16,10 @@ export function pseudoArray(
     }
     if (keyWord === 'SysGet'.toUpperCase()) {
         return SysGet_CMD(lStr, line, col);
+    }
+
+    if (keyWord === 'WinGet'.toUpperCase()) {
+        return WinGet_CMD_List(lStr, line, col);
     }
 
     return null;

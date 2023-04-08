@@ -36,6 +36,9 @@ function isPseudoArrayCh(AssociatedList: TValMetaOut['AssociatedList']): boolean
                 EPseudoArray.bySysGet_CMD_Left,
                 EPseudoArray.bySysGet_CMD_Right,
                 EPseudoArray.bySysGet_CMD_Top,
+
+                //
+                EPseudoArray.byWinGet_CMD_list1,
             ].includes(by)
         ) {
             return true;

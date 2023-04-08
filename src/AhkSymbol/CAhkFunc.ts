@@ -49,6 +49,10 @@ export const enum EPseudoArray {
     bySysGet_CMD_Left = 202,
     bySysGet_CMD_Right = 203,
     bySysGet_CMD_Top = 204,
+
+    byWinGet_CMD_list = 300,
+    byWinGet_CMD_list1 = 301,
+    // Infinitely filled masquerade array...I don't know what to do with it =_= thanks you ahk
 }
 
 export type TAssociated = {
