@@ -62,9 +62,9 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             useParenthesesIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useParenthesesIndent'),
             useSquareBracketsIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useSquareBracketsIndent'),
         },
-        baseScanIgnoredList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.baseScan.IgnoredList'),
+        files_exclude: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.files.exclude'),
         snippets: {
-            blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.blockFilesList'),
+            blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.exclude'),
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
             subCmdPlus: getConfigs<TConfigs['snippets']['subCmdPlus']>(Configs, 'AhkNekoHelp.snippets.subCmdPlus'),
         },
@@ -77,7 +77,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     } as const;
 
     statusBarItem.color = ed.statusBarDisplayColor;
-    void str2RegexListCheck(ed.baseScanIgnoredList);
+    void str2RegexListCheck(ed.files_exclude);
     void str2RegexListCheck(ed.snippets.blockFilesList);
     return ed;
 }
@@ -109,7 +109,7 @@ export function useSymbolProvider(): boolean {
 }
 
 export function getIgnoredList(): readonly RegExp[] {
-    return str2RegexListCheck(config.baseScanIgnoredList);
+    return str2RegexListCheck(config.files_exclude);
 }
 
 export function getSnippetBlockFilesList(): readonly RegExp[] {

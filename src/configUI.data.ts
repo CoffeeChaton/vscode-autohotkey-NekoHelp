@@ -84,7 +84,7 @@ type TempConfigs = {
          */
         useSquareBracketsIndent: boolean,
     },
-    baseScanIgnoredList: readonly string[],
+    files_exclude: readonly string[],
     snippets: {
         blockFilesList: readonly string[],
         CommandOption: ECommandOption,

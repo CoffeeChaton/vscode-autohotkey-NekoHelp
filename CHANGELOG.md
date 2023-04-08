@@ -16,73 +16,83 @@
 
 ## Next v0.0.34(2023-04-XX)
 
-- _api-change_: `AhkNekoHelp.snippets.expandSubCommand` -> `AhkNekoHelp.snippets.subCmdPlus`
-- feat: not complete fn/class has `#` exp: `#foo()` need to use the `foo` call complete.
-- fix: complete of func/class starts with `#@$` duplicate insertion problem.
-- feat: `c501` ignore `isByRef` param
-- feat: `c500` ignore `PCRE_CallOut` var-name
-- feat: add [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) SubCommand
-  1. syntax-highlight
-  2. completion
-  3. hover
-- feat: add format option as `AhkNekoHelp.format.removeFirstCommaCommand`
-- feat: cmd - `format all file` add option to select `AhkNekoHelp.format.removeFirstCommaCommand`
-- fix: support 4-style of `(?CNumber:Function)` <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#syntax>
-  1. `(?CFuncCallOut)`
-  2. `(?C:FuncCallOut)`
-  3. `(?CNumber:FuncCallOut)`
-  4. `(?CNumber)`
-     ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-regular-expression-call-outs.png)
-- feat: add sign of build-in function
-- fix: sign of func last-param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case.
-- fix: sign of nested function (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
-- fix: not show sign at func/method def-range
-- fix: core `+= -= *= ...etc` from `ref` -> `def` , to fix `c500` case
-- fix: core switch-default
-- fix: variable reference range identification
-  > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-variable-reference-range-identification.png)
-  > ![img2](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-variable-reference-range-identification-2.png)
+1. api-change
 
-- fix: core command vs Assign ...
+   1. `AhkNekoHelp.baseScan.IgnoredList` -> `AhkNekoHelp.files.exclude`
+   2. `AhkNekoHelp.snippets.blockFilesList` -> `AhkNekoHelp.snippets.exclude`
+   3. `AhkNekoHelp.snippets.expandSubCommand` -> `AhkNekoHelp.snippets.subCmdPlus`
 
-  ```ahk
-  #Requires AutoHotkey v1.1.33+
+2. sign
 
-  ; all is variables
-  MsgBox := 1
-  MsgBox += 1
-  MsgBox -= 1
-  MsgBox *=1
-  MsgBox /=1
-  MsgBox //=1
-  MsgBox .= 1
-  MsgBox |=1
-  MsgBox &=1
-  MsgBox ^=1
-  MsgBox >>=1
-  MsgBox <<=1
-  MsgBox >>>=1
-  ```
+   - feat: add sign of build-in function
+   - fix: sign of func last-param is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) case.
+   - fix: sign of nested function (4k 90-sec)<https://youtu.be/WcMzNcVWcYA>
+   - fix: not show sign at func/method def-range
 
-  ```ahk
-  #Requires AutoHotkey v1.1.33+
+3. fix
 
-  ; all is command
-  MsgBox, = 1
-  MsgBox, := 1
-  MsgBox, += 1
-  MsgBox, -= 1
-  MsgBox, *=1
-  MsgBox, /=1
-  MsgBox, //=1
-  MsgBox, .= 1
-  MsgBox, |=1
-  MsgBox, &=1
-  MsgBox, ^=1
-  MsgBox, >>=1
-  MsgBox, <<=1
-  MsgBox, >>>=1
-  ```
+   - feat: not complete fn/class has `#` exp: `#foo()` need to use the `foo` call complete.
+   - fix: complete of func/class starts with `#@$` duplicate insertion problem.
+   - feat: `c501` ignore `isByRef` param
+   - feat: `c500` ignore `PCRE_CallOut` var-name
+   - feat: add [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) SubCommand
+     1. syntax-highlight
+     2. completion
+     3. hover
+   - feat: add format option as `AhkNekoHelp.format.removeFirstCommaCommand`
+   - feat: cmd - `format all file` add option to select `AhkNekoHelp.format.removeFirstCommaCommand`
+   - fix: support 4-style of `(?CNumber:Function)` <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#syntax>
+     1. `(?CFuncCallOut)`
+     2. `(?C:FuncCallOut)`
+     3. `(?CNumber:FuncCallOut)`
+     4. `(?CNumber)`
+        ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-regular-expression-call-outs.png)
+   - fix: core `+= -= *= ...etc` from `ref` -> `def` , to fix `c500` case
+   - fix: core switch-default
+   - fix: variable reference range identification
+     > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-variable-reference-range-identification.png)
+     > ![img2](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-variable-reference-range-identification-2.png)
+
+   - fix: core command vs Assign ...
+
+     ```ahk
+     #Requires AutoHotkey v1.1.33+
+
+     ; all is variables
+     MsgBox := 1
+     MsgBox += 1
+     MsgBox -= 1
+     MsgBox *=1
+     MsgBox /=1
+     MsgBox //=1
+     MsgBox .= 1
+     MsgBox |=1
+     MsgBox &=1
+     MsgBox ^=1
+     MsgBox >>=1
+     MsgBox <<=1
+     MsgBox >>>=1
+     ```
+
+     ```ahk
+     #Requires AutoHotkey v1.1.33+
+
+     ; all is command
+     MsgBox, = 1
+     MsgBox, := 1
+     MsgBox, += 1
+     MsgBox, -= 1
+     MsgBox, *=1
+     MsgBox, /=1
+     MsgBox, //=1
+     MsgBox, .= 1
+     MsgBox, |=1
+     MsgBox, &=1
+     MsgBox, ^=1
+     MsgBox, >>=1
+     MsgBox, <<=1
+     MsgBox, >>>=1
+     ```
 
 ## v0.0.33(2023-04-02)
 

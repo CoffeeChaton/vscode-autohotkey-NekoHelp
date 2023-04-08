@@ -82,11 +82,11 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.format.useSquareBracketsIndent', 'boolean'],
                 // [3]
                 ['AhkNekoHelp.snippets.CommandOption', 'number'],
-                ['AhkNekoHelp.snippets.blockFilesList', 'array'],
+                ['AhkNekoHelp.snippets.exclude', 'array'],
                 ['AhkNekoHelp.snippets.subCmdPlus', 'object'],
 
                 // misc
-                ['AhkNekoHelp.baseScan.IgnoredList', 'array'],
+                ['AhkNekoHelp.files.exclude', 'array'],
                 ['AhkNekoHelp.statusBar.displayColor', 'string'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],

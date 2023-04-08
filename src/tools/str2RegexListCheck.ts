@@ -15,7 +15,7 @@ const RegexMemo = new CMemo<readonly string[], readonly RegExp[]>((strList: read
         for (const str of strList) {
             errRuler = str;
             // eslint-disable-next-line security/detect-non-literal-regexp
-            const re = new RegExp(str, 'u');
+            const re = new RegExp(str, 'iu');
             regexList.push(re);
         }
     } catch (error: unknown) {
