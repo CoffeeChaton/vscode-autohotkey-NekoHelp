@@ -54,10 +54,12 @@ function CompletionItemCore(
     const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
     const { lStr, textRaw, fistWordUp } = AhkTokenLine;
 
+    const subStr: string = lStr.slice(0, position.character).trim();
+
     if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) return IncludeFsPath(document.uri.fsPath);
     // eslint-disable-next-line security/detect-unsafe-regex
     if ((/\bnew[ \t]+[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStr.slice(0, position.character))) {
-        return listAllFuncClass()
+        return listAllFuncClass(subStr)
             .filter((v: vscode.CompletionItem): boolean => v.kind === vscode.CompletionItemKind.Class);
     }
 
@@ -65,7 +67,6 @@ function CompletionItemCore(
 
     const DA: CAhkFunc | null = getDAWithPos(AST, position);
     const PartStr: string | null = getPartStr(lStr, position);
-    const subStr: string = lStr.slice(0, position.character).trim();
 
     const completions: vscode.CompletionItem[] = [
         ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
@@ -83,7 +84,7 @@ function CompletionItemCore(
     if (PartStr !== null) {
         completions.push(
             ...ModuleVar2Completion(ModuleVar, DA, PartStr, document.uri.fsPath),
-            ...listAllFuncClass(),
+            ...listAllFuncClass(subStr),
         );
 
         if (DA !== null) {

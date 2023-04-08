@@ -9,18 +9,27 @@ import { fsPathIsAllow } from '../../../tools/fsTools/getUriList';
 import { getFileAllClass } from '../../../tools/visitor/getFileAllClassList';
 import { getFileAllFunc } from '../../../tools/visitor/getFileAllFuncList';
 
+export class CUserFnClass extends vscode.CompletionItem {
+    //
+    declare public readonly label: vscode.CompletionItemLabel;
+
+    public constructor(label: vscode.CompletionItemLabel) {
+        super(label);
+    }
+}
+
 function setClassSnip(
     fileName: string,
     AC: CAhkClass,
-): vscode.CompletionItem {
+): CUserFnClass {
     const { name, insertText } = AC;
 
-    const item: vscode.CompletionItem = new vscode.CompletionItem({
+    const item: CUserFnClass = new CUserFnClass({
         label: name,
         description: fileName,
     });
 
-    item.insertText = insertText;
+    item.insertText = insertText.replace(/^[#$@]/u, '');
     item.detail = 'neko help';
 
     item.kind = vscode.CompletionItemKind.Class;
@@ -31,15 +40,15 @@ function setClassSnip(
 function setFuncSnip(
     fileName: string,
     func: CAhkFunc,
-): vscode.CompletionItem {
+): CUserFnClass {
     const { md, name, selectionRangeText } = func;
 
-    const item: vscode.CompletionItem = new vscode.CompletionItem({
+    const item: CUserFnClass = new CUserFnClass({
         label: `${name}()`,
         description: fileName,
     });
 
-    item.insertText = selectionRangeText;
+    item.insertText = selectionRangeText.replace(/^[#$@]/u, '');
     item.detail = 'neko help';
 
     item.kind = vscode.CompletionItemKind.Function;
@@ -47,33 +56,38 @@ function setFuncSnip(
     return item;
 }
 
-const wm = new WeakMap<TAstRoot, readonly vscode.CompletionItem[]>();
+const wm = new WeakMap<TAstRoot, readonly CUserFnClass[]>();
 
-function partSnip(AstRoot: TAstRoot, fileName: string): readonly vscode.CompletionItem[] {
-    const cache: readonly vscode.CompletionItem[] | undefined = wm.get(AstRoot);
+function partSnip(AstRoot: TAstRoot, fileName: string): readonly CUserFnClass[] {
+    const cache: readonly CUserFnClass[] | undefined = wm.get(AstRoot);
     if (cache !== undefined) {
         return cache;
     }
 
-    const item: readonly vscode.CompletionItem[] = [
+    const item: readonly CUserFnClass[] = [
         ...getFileAllFunc.up(AstRoot)
-            .map((ahkFunc: CAhkFunc): vscode.CompletionItem => setFuncSnip(fileName, ahkFunc)),
+            .map((ahkFunc: CAhkFunc): CUserFnClass => setFuncSnip(fileName, ahkFunc)),
         ...getFileAllClass(AstRoot)
-            .map((ahkClass: CAhkClass): vscode.CompletionItem => setClassSnip(fileName, ahkClass)),
+            .map((ahkClass: CAhkClass): CUserFnClass => setClassSnip(fileName, ahkClass)),
     ];
 
     wm.set(AstRoot, item);
     return item;
 }
 
-export function listAllFuncClass(): vscode.CompletionItem[] {
+export function listAllFuncClass(subStr: string): CUserFnClass[] {
     const filesBlockList: readonly RegExp[] = getSnippetBlockFilesList();
 
-    const item: vscode.CompletionItem[] = [];
+    const item: CUserFnClass[] = [];
     for (const { uri, AST } of pm.DocMap.values()) { // keep output order is OK
         if (!fsPathIsAllow(uri.fsPath.replaceAll('\\', '/'), filesBlockList)) continue;
 
         item.push(...partSnip(AST, path.basename(uri.fsPath)));
     }
+
+    if (subStr.startsWith('#') && !(/^#if\b/iu).test(subStr)) {
+        return item.filter((v: CUserFnClass): boolean => v.label.label.includes('#'));
+    }
+
     return item;
 }
