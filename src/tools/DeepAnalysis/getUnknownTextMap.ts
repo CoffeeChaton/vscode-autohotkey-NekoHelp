@@ -37,6 +37,7 @@ export function getUnknownTextMap(
         const {
             lStr,
             line,
+            fistWordUp,
             fistWordUpCol,
             SecondWordUpCol,
             detail,
@@ -114,7 +115,12 @@ export function getUnknownTextMap(
                  */
                 // a:= b ? b : 10
                 //         ^var
-                continue;
+
+                if (fistWordUp === 'CASE' && lStr.indexOf(':') === strObjCase.padStart(lStr.length).indexOf(':')) {
+                    // nothing
+                } else {
+                    continue;
+                }
             }
 
             if (

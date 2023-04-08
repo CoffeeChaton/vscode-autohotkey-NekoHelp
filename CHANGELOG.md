@@ -39,6 +39,8 @@
 - fix: core switch-default
 - fix: variable reference range identification
   > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-variable-reference-range-identification.png)
+  > ![img2](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-34-variable-reference-range-identification-2.png)
+
 - fix: core command vs Assign ...
 
   ```ahk
