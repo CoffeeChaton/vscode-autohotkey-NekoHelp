@@ -257,10 +257,34 @@
                         },
                         "markdownDescription": "Disable IntelliSense when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-style** ```\"\\\"```"
                     },
-                    "AhkNekoHelp.snippets.expandSubCommand": {
-                        "type": "boolean",
-                        "default": true,
-                        "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` / `SysGet` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.expandSubCommand.md))"
+                    "AhkNekoHelp.snippets.subCmdPlus": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Menu": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "Gui": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "GuiControl": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "SysGet": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        },
+                        "default": {
+                            "Menu": true,
+                            "Gui": true,
+                            "GuiControl": true,
+                            "SysGet": true
+                        },
+                        "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` / `SysGet` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.subCmdPlus.md))"
                     }
                 }
             },

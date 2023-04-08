@@ -88,7 +88,12 @@ type TempConfigs = {
     snippets: {
         blockFilesList: readonly string[],
         CommandOption: ECommandOption,
-        expandSubCommand: boolean,
+        subCmdPlus: {
+            Menu: boolean,
+            Gui: boolean,
+            GuiControl: boolean,
+            SysGet: boolean,
+        },
     },
     statusBarDisplayColor: string,
     useSymbolProvider: boolean,

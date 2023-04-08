@@ -1,4 +1,4 @@
-# snippets.expandSubCommand
+# snippets.subCmdPlus
 
 ## true(default)
 

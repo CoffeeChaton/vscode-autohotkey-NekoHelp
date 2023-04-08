@@ -66,7 +66,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         snippets: {
             blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.blockFilesList'),
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
-            expandSubCommand: getConfigs<boolean>(Configs, 'AhkNekoHelp.snippets.expandSubCommand'),
+            subCmdPlus: getConfigs<TConfigs['snippets']['subCmdPlus']>(Configs, 'AhkNekoHelp.snippets.subCmdPlus'),
         },
         statusBarDisplayColor: getConfigs<string>(Configs, 'AhkNekoHelp.statusBar.displayColor'),
         useSymbolProvider: getConfigs<boolean>(Configs, 'AhkNekoHelp.useSymbolProvider'),

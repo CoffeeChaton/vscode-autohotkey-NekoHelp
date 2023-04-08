@@ -24,8 +24,7 @@ function getSubStr2(subStr: string, fistWordUp: string, detail: readonly EDetail
 }
 
 export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine): readonly vscode.CompletionItem[] {
-    const { CommandOption, expandSubCommand } = getCommandOptions();
-    if (!expandSubCommand) return [];
+    const { CommandOption, subCmdPlus } = getCommandOptions();
     if (CommandOption === ECommandOption.notProvided) return [];
 
     const { fistWordUp, detail } = AhkTokenLine;
@@ -39,10 +38,12 @@ export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine
 
             const list: vscode.CompletionItem[] = [];
 
-            if ('Gui'.toLowerCase().startsWith(subStr2)) list.push(...snippetGui);
-            if ('GuiControl'.toLowerCase().startsWith(subStr2)) list.push(...snippetGuiControl);
-            if ('Menu'.toLowerCase().startsWith(subStr2)) list.push(...snippetMenu);
-            if ('SysGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetSysGet);
+            if (subCmdPlus.Gui && 'Gui'.toLowerCase().startsWith(subStr2)) list.push(...snippetGui);
+            if (subCmdPlus.GuiControl && 'GuiControl'.toLowerCase().startsWith(subStr2)) {
+                list.push(...snippetGuiControl);
+            }
+            if (subCmdPlus.Menu && 'Menu'.toLowerCase().startsWith(subStr2)) list.push(...snippetMenu);
+            if (subCmdPlus.SysGet && 'SysGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetSysGet);
 
             // todo something
             return list;

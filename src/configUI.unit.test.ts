@@ -83,7 +83,7 @@ describe('check package ruler', () => {
                 // [3]
                 ['AhkNekoHelp.snippets.CommandOption', 'number'],
                 ['AhkNekoHelp.snippets.blockFilesList', 'array'],
-                ['AhkNekoHelp.snippets.expandSubCommand', 'boolean'],
+                ['AhkNekoHelp.snippets.subCmdPlus', 'object'],
 
                 // misc
                 ['AhkNekoHelp.baseScan.IgnoredList', 'array'],
