@@ -34,9 +34,8 @@ type TWinMsg = ReadonlyMap<string, [number, string]>;
 /**
  * 1000 -> ['WM_DDE_EXECUTE', 'WM_DDE_LAST']
  */
-type TWinMsgRe = ReadonlyMap<number, string[]>;
 
-export const [winMsg, winMsgRe] = ((): [TWinMsg, TWinMsgRe] => {
+export const winMsg: TWinMsg = ((): TWinMsg => {
     const wmEnum = {
         WM_NULL: 0x0000,
         WM_CREATE: 0x0001,
@@ -264,14 +263,10 @@ export const [winMsg, winMsgRe] = ((): [TWinMsg, TWinMsgRe] => {
     } as const;
 
     const map1 = new Map<string, [number, string]>();
-    const map2 = new Map<number, string[]>();
     for (const [k, v] of Object.entries(wmEnum)) {
         map1.set(k, [v, to0X(v)]);
-        //
-        const oldV: string[] = map2.get(v) ?? [];
-        map2.set(v, [...oldV, k]);
     }
 
-    return [map1, map2];
+    return map1;
     //
 })();

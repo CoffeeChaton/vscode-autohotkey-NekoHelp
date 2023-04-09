@@ -12,7 +12,6 @@ import { getHoverOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools'
 import { getHoverOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tools';
 import { getHoverStatement } from '../../tools/Built-in/statement.tools';
 import { hover2winMsgMd } from '../../tools/Built-in/Windows_Messages_Tools';
-import { numberFindWinMsg } from '../../tools/Built-in/Windows_MessagesRe_Tools';
 import { hoverWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
@@ -146,7 +145,6 @@ function HoverProviderCore(
             hoverBiVar,
             hoverGlobalVar,
             hover2winMsgMd,
-            numberFindWinMsg,
         ] as const satisfies readonly TFn[]
     ) {
         const md: vscode.MarkdownString | null | undefined = fn(wordUp);

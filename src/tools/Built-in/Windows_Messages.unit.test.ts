@@ -2,7 +2,6 @@ import {
     base16toNumber,
     to0X,
     winMsg,
-    winMsgRe,
 } from './Windows_Messages';
 
 describe('check Windows_Messages', () => {
@@ -38,9 +37,6 @@ describe('check Windows_Messages', () => {
 
         // eslint-disable-next-line no-magic-numbers
         expect(winMsg.size === 207).toBeTruthy();
-
-        // eslint-disable-next-line no-magic-numbers
-        expect(winMsgRe.size === 201).toBeTruthy();
     });
 
     it('1000 to "0x03E8"', () => {
