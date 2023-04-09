@@ -32,7 +32,6 @@ export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: 
         .padStart(lStr.length, ' ');
 
     const ma: RegExpMatchArray | null = strF
-        // eslint-disable-next-line security/detect-unsafe-regex
         .match(/^[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)(?:[ \t,]|$)/u);
     if (ma === null) return null;
 

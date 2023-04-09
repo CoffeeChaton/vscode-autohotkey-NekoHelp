@@ -31,7 +31,7 @@ export function walrusOperator({
     // >>=
     // <<=
     // >>>=
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     for (const v of lStr.matchAll(/(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/gu)) {
         //                                     // without .`% and #$@
         const character: number | undefined = v.index;

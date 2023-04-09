@@ -44,7 +44,7 @@ export function getClass(FuncInput: TFuncInput): CAhkClass | null {
 
     // class ClassName extends BaseClassName
     //       ^^^^^^^^^
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     const ma: RegExpMatchArray | null = lStrFix.match(/([#$@\w\u{A1}-\u{FFFF}]+)/iu);
     if (ma === null) return null;
 

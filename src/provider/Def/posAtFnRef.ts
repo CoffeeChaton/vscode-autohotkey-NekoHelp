@@ -60,7 +60,6 @@ export function posAtFnRef(
     // expansion--start
     for (
         const ma of AhkTokenLine.textRaw.matchAll(
-            // eslint-disable-next-line security/detect-unsafe-regex
             /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu,
             // // without .`% and #$@
         )
@@ -69,7 +68,6 @@ export function posAtFnRef(
         if (col === undefined) continue;
 
         if (
-            // eslint-disable-next-line security/detect-unsafe-regex
             (/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(
                 // ^ all case , mock \b ..
                 AhkTokenLine.textRaw.slice(0, col).trimEnd(),

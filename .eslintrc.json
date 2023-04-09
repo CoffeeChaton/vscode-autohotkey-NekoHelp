@@ -354,7 +354,7 @@
         "require-await": "error",
         "require-unicode-regexp": "error",
         "security/detect-object-injection": "off",
-        "security/detect-unsafe-regex": "warn",
+        "security/detect-unsafe-regex": "off",
         "sort-imports": "off",
         "sort-keys": "off",
         "unicorn/custom-error-definition": "error",

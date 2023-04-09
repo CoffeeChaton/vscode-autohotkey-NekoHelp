@@ -72,7 +72,6 @@ function posAtFnReference(
 ): never[] | [vscode.CodeAction] {
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         active,
-        // eslint-disable-next-line security/detect-unsafe-regex
         /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/u,
         // without .` and #$@
     );

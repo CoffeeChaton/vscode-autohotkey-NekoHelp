@@ -38,7 +38,6 @@ function getParamDefNeed(
         new vscode.Position(line, ch + keyRawName.length),
     );
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     const parsedErrRange: vscode.Range | null = (/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(keyRawName)
         ? null
         : range;
@@ -68,7 +67,7 @@ export function getParamDef(fnName: string, selectionRange: vscode.Range, DocStr
         if (line < startLine) continue;
         if (line > endLine) break;
         let lStrFix: string = lStr;
-        // eslint-disable-next-line security/detect-unsafe-regex
+
         if (startLine === line) lStrFix = lStrFix.replace(/^[ \t}]*[#$@\w\u{A1}-\u{FFFF}]+\(/u, replacerSpace);
         if (endLine === line) {
             lStrFix = lStrFix

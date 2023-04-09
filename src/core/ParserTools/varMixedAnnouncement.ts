@@ -9,7 +9,6 @@ export type TVarData = {
 
 function isLookLikeVar(rawName: string): boolean {
     return !(
-        // eslint-disable-next-line security/detect-unsafe-regex
         !(/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(rawName)
         || (/^_+$/u).test(rawName) // str
         || (/^\d+$/u).test(rawName) // just number
@@ -39,7 +38,6 @@ export function varMixedAnnouncement(strF: string, BracketsRaw: TBrackets): TVar
         if (RawNameNew.includes(':=')) {
             for (
                 const ma of RawNameNew.matchAll(
-                    // eslint-disable-next-line security/detect-unsafe-regex
                     /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/giu,
                     // with out .`% and #$@
                 )

@@ -50,7 +50,6 @@ export function forLoop(arg: TGetFnDefNeed, keyWord: string, col: number): void 
 
     const strPart: string = lStr.slice(replaceFor, col2 + 1); // .padStart(lStr.length, ' ');
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     const keyMatch: RegExpMatchArray | null = strPart.match(/[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)[, \t]/iu);
     if (keyMatch === null) return;
 
@@ -62,7 +61,7 @@ export function forLoop(arg: TGetFnDefNeed, keyWord: string, col: number): void 
     // has value
 
     const replaceComma: number = col3 + 1;
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     const valMatch: RegExpMatchArray | null = strPart.slice(replaceComma).match(/\s*([#$@\w\u{A1}-\u{FFFF}]+)/iu);
     if (valMatch === null) return;
 

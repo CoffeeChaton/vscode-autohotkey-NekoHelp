@@ -81,13 +81,12 @@ export type TFuncRef = Omit<TLineFnCall, 'upName'>;
 export function fnRefLStr(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     const { lStr, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     for (const ma of lStr.matchAll(/(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
         // -----------------------------------^ without .`% and #$@                         ^funcName(      of lStr
         const col: number | undefined = ma.index;
         if (col === undefined) continue;
 
-        // eslint-disable-next-line security/detect-unsafe-regex
         if ((/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(lStr.slice(0, col).trimEnd())) {
             // ^ all case mock \b
             continue;
@@ -113,7 +112,7 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
 export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     const { lStr, textRaw, line } = AhkTokenLine;
     const arr: TLineFnCall[] = [];
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     for (const ma of textRaw.slice(0, lStr.length).matchAll(/(?<=")([#$@\w\u{A1}-\u{FFFF}]+)"/giu)) {
         // ------------------------------------------------------------------------^funcName // of textRaw
         // RegisterCallback("funcName")
@@ -162,7 +161,7 @@ type TRegCallFn = {
 function fnRegCallFn(maa1: string): TRegCallFn | null {
     // Reg1 -> (?CCallout)
     //      -> (?CNumber)
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(maa1)) {
         return {
             part3_text: maa1,
@@ -172,7 +171,7 @@ function fnRegCallFn(maa1: string): TRegCallFn | null {
     }
 
     // Reg2 -> (?C:Function)
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     if ((/^:[#$@\w\u{A1}-\u{FFFF}]+$/u).test(maa1)) {
         return {
             part3_text: maa1.replace(/^:/u, ''),
@@ -182,7 +181,7 @@ function fnRegCallFn(maa1: string): TRegCallFn | null {
     }
 
     // Reg3 -> (?CNumber:Function)
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     if ((/^\d+:[#$@\w\u{A1}-\u{FFFF}]+$/u).test(maa1)) {
         return {
             part3_text: maa1.replace(/^\d+:/u, ''),
@@ -208,7 +207,6 @@ export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): readonly TLineFnCa
         //                      ^ not close     (?C        )
         //                                      ^^^        ^
 
-        // eslint-disable-next-line security/detect-unsafe-regex
         for (const maa of ma[1].matchAll(/(?<=\(\?C)([:#$@\w\u{A1}-\u{FFFF}]+)\)/giu)) {
             //                                               ^ : and var-name
             // (?CNumber)

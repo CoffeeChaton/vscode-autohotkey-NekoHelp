@@ -17,7 +17,6 @@ function ReferenceProviderCore(
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
-        // eslint-disable-next-line security/detect-unsafe-regex
         /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/iu,
         //      without .` and #$@
     );

@@ -33,9 +33,7 @@ function getGuiFuncData(lStr: string, col: number, flag: 0 | 1): readonly TScanD
 
         const list: TScanData[] = [];
         const reg: RegExp = flag === 0
-            // eslint-disable-next-line security/detect-unsafe-regex
             ? /\bg([#$@\w\u{A1}-\u{FFFF}]+)/giu
-            // eslint-disable-next-line security/detect-unsafe-regex
             : /\b(?:v|hwnd)([#$@\w\u{A1}-\u{FFFF}]+)/giu; // Gui, Add, ListView, hwndHMainLV01
 
         for (const ma of lStrFix.matchAll(reg)) {

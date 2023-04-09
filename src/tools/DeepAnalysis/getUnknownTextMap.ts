@@ -55,7 +55,6 @@ export function getUnknownTextMap(
 
         for (
             const v of lStr.matchAll(
-                // eslint-disable-next-line security/detect-unsafe-regex
                 /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)(?=[.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/gu,
             ) //          ^ A   without .` and #$@                                                          ^ B without ( and #$@
         ) {

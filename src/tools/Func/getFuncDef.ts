@@ -7,7 +7,6 @@ export type TFuncDefData = {
 };
 
 function getFuncDefData(DocStrMap: TTokenStream, defLine: number, searchLine: number, name: string): TFuncDefData {
-    // eslint-disable-next-line security/detect-unsafe-regex
     const colS: number = DocStrMap[defLine].lStr.search(/[#$@\w\u{A1}-\u{FFFF}]+/u);
     const colE: number = DocStrMap[searchLine].lStr.lastIndexOf(')') + 1;
     //  const colFixE = colE === -1 ? DocStrMap[searchLine].lStr.length : colE;
@@ -55,7 +54,6 @@ export function getFuncDef(DocStrMap: TTokenStream, defLine: number): TFuncDefDa
     if (defLine + 1 === DocStrMap.length) return null;
     const textFixTrim: string = DocStrMap[defLine].lStr.replace(/^[ \t}]*/u, '').trim();
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     const fnHead: RegExpMatchArray | null = textFixTrim.match(/^([#$@\w\u{A1}-\u{FFFF}]+)\(/u); //  funcName(...
     if (fnHead === null) return null;
 

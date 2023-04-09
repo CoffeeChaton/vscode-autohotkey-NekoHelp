@@ -18,7 +18,6 @@ function getSetTimerData(lStr: string, col: number): TScanData | null {
 
     const { RawNameNew, lPos } = a2;
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     if (!(/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawNameNew)) return null; // % FuncObj or %label%
 
     return {

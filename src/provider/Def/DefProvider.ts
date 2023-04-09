@@ -21,7 +21,6 @@ function DefProviderCore(
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
-        // eslint-disable-next-line security/detect-unsafe-regex
         /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+/u,
         // // without .` and #$@
     );

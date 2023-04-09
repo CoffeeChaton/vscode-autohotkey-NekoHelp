@@ -24,7 +24,6 @@ export function varSetCapacityFunc({
     if (!lStr.includes('(')) return;
     for (
         const v of lStr.matchAll(
-            // eslint-disable-next-line security/detect-unsafe-regex
             /(?:VarSetCapacity|NumGet|[TL]V_GetText)\([ \t]*&?([#$@\w\u{A1}-\u{FFFF}]+)(?=[.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/giu,
             //                                                                                             ^ without ( and #$@
         )

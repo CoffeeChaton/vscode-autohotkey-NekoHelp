@@ -397,7 +397,6 @@ export function Pretreatment(
             }
         }
 
-        // eslint-disable-next-line security/detect-unsafe-regex
         if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStrTrim)) {
             const maDefault: boolean = (/^default:$/iu).test(lStrTrim);
             const fistWord: '' | 'DEFAULT' = maDefault

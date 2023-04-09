@@ -71,7 +71,6 @@ function LabelRefKeyWord(
         .replace(/,[ \t]*/u, '')
         .padStart(lStr.length);
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     const ma: RegExpMatchArray | null = strF.match(/^\s*([#$@\w\u{A1}-\u{FFFF}]+)/u);
     if (ma === null) return [];
 
@@ -163,7 +162,6 @@ export function posAtLabelDef(
 ): vscode.Location[] | null {
     const { lStr } = AhkFileData.DocStrMap[position.line];
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
         return getLabelRef(wordUp);
     }
@@ -202,7 +200,6 @@ export function getDefWithLabel(
     const { lStr } = AhkTokenLine;
     const lStrFix: string = lStr.slice(0, Math.max(0, character));
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
         return [new vscode.Location(uri, position)]; // let auto call Ref
     }
@@ -217,14 +214,12 @@ export function getDefWithLabel(
     if (
         list.includes(fistWordUp)
         && character > fistWordUp.length + fistWordUpCol
-        // eslint-disable-next-line security/detect-unsafe-regex
         && (/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)
     ) return getDefWithLabelCore(wordUpCase);
 
     if (
         list.includes(SecondWordUp)
         && character > SecondWordUp.length + SecondWordUpCol
-        // eslint-disable-next-line security/detect-unsafe-regex
         && (/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)
     ) return getDefWithLabelCore(wordUpCase);
 

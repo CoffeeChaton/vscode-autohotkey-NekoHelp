@@ -23,9 +23,7 @@ export function hoverLabel(
         if (label !== null) return label.md;
     }
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     if ((/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)) {
-        // eslint-disable-next-line security/detect-unsafe-regex
         const s2: string = lStrFix.replace(/[#$@\w\u{A1}-\u{FFFF}]*$/iu, '')
             .replace(/,?[ \t]*$/u, '')
             .trim();

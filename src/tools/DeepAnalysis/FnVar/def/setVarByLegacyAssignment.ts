@@ -18,7 +18,6 @@ export function setVarByLegacyAssignment({
     // .replace(/^[{} \t]*/u, '') // TODO: old legacyAssignment  diag/core is support `{`
     // .padStart(lStr.length);
 
-    // eslint-disable-next-line security/detect-unsafe-regex
     const v: RegExpMatchArray | null = strF.match(/^[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*=/u);
     if (v === null) return;
 
