@@ -19,7 +19,7 @@ import { getSnippetOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tool
 import { ahkSend } from '../../tools/Built-in/Send_tools';
 import { getSnippetStatement } from '../../tools/Built-in/statement.tools';
 import { getSnipStatement2 } from '../../tools/Built-in/statement2.tools';
-import { getSnippetWinMsg } from '../../tools/Built-in/Windows_Messages_Tools';
+import { getSnippetWinMsg } from '../../tools/Built-in/Windows_Messages/Windows_Messages.tools';
 import { getSnippetWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { wrapClass } from './classThis/wrapClass';

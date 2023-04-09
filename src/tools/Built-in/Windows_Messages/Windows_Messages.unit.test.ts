@@ -2,7 +2,7 @@ import {
     base16toNumber,
     to0X,
     winMsg,
-} from './Windows_Messages';
+} from './Windows_Messages.data';
 
 describe('check Windows_Messages', () => {
     it('check Windows_Messages name ruler', () => {

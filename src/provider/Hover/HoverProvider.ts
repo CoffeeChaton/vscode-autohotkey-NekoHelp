@@ -11,7 +11,7 @@ import { getBuiltInFuncMD } from '../../tools/Built-in/func.tools';
 import { getHoverOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools';
 import { getHoverOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tools';
 import { getHoverStatement } from '../../tools/Built-in/statement.tools';
-import { hover2winMsgMd } from '../../tools/Built-in/Windows_Messages_Tools';
+import { hover2winMsgMd } from '../../tools/Built-in/Windows_Messages/Windows_Messages.tools';
 import { hoverWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';

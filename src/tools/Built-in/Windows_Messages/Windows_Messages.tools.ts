@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { winMsg } from './Windows_Messages';
+import { winMsg } from './Windows_Messages.data';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const { snippetWinMsg, winMsgMDMap } = (() => {
