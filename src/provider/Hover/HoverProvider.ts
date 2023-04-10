@@ -6,6 +6,7 @@ import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { hoverAVar } from '../../tools/Built-in/A_Variables.tools';
 import { hoverBiVar } from '../../tools/Built-in/BiVariables.tools';
+import { hoverWindowsClassIdentifiers } from '../../tools/Built-in/CLSID/WindowsClassIdentifiers.tools';
 import { getHoverCommand2 } from '../../tools/Built-in/Command.tools';
 import { getBuiltInFuncMD } from '../../tools/Built-in/func.tools';
 import { getHoverOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools';
@@ -148,6 +149,9 @@ function HoverProviderCore(
         const md: vscode.MarkdownString | null | undefined = fn(wordUp);
         if (md !== undefined && md !== null) return new vscode.Hover(md);
     }
+
+    const mdCLSID: vscode.MarkdownString | null = hoverWindowsClassIdentifiers(AhkTokenLine, position);
+    if (mdCLSID !== null) return new vscode.Hover(mdCLSID);
 
     return null;
 }

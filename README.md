@@ -153,7 +153,7 @@ support to find like
    }
    ```
 
-5. `RegEx` CallOut Functions<https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
+5. `RegEx` CallOut Functions<https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>\
    or `(?CNumber:Function)` <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#auto>
 
    ```ahk
@@ -195,7 +195,7 @@ support to find like
 - (default via `F2`) rename with your can use [[🔍Find Ref of Function]](#find-ref-of-function) to find.
 - check of Rename newName
   1. check newFnName has been defined as `function` `class` `label`
-  2. default not rename `"fnName"` , can use `AhkNekoHelp.Rename.functionInStr` open it [[Read more]](note/code601.md)
+  2. default not rename `"fnName"` , can use `AhkNekoHelp.Rename.functionInStr` open it [[Read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md)
   3. _warn_ this extension not match `fn%var%()` or `%fn%%var%()` or `str = fnName` case
 
 ## Hover
@@ -248,6 +248,8 @@ support to find like
        MsgBox, % style2 ; try to hover of "style2"!
    }
    ```
+
+4. [`CLSID`](https://www.autohotkey.com/docs/v1/misc/CLSID-List.htm) hover [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
 
 ## Diagnostic and lint
 
@@ -390,7 +392,7 @@ _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=z
 
 ## Performance
 
-- The best way to improve startup times is to exclude unnecessary files, via [settings.json](https://code.visualstudio.com/docs/getstarted/settings) `AhkNekoHelp.baseScan.IgnoredList`
+- The best way to improve startup times is to exclude unnecessary files, via [settings.json](https://code.visualstudio.com/docs/getstarted/settings) `AhkNekoHelp.files.exclude`
 - When editing becomes slow, split the file, via [`#Include`](https://www.autohotkey.com/docs/v1/lib/_Include.htm)
 
 - via `'Refresh Resource'` to find each file parsing time.

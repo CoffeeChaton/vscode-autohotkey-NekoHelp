@@ -6,6 +6,7 @@ import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { getSnippetStartWihA } from '../../tools/Built-in/A_Variables.tools';
 import { getSnipBiVar } from '../../tools/Built-in/BiVariables.tools';
+import { getSnippetCLSID } from '../../tools/Built-in/CLSID/WindowsClassIdentifiers.tools';
 import { getSnippetCommand } from '../../tools/Built-in/Command.tools.completion';
 import { snipDirectives } from '../../tools/Built-in/Directives.tool';
 import { BuiltInFunc2Completion } from '../../tools/Built-in/func.tools';
@@ -34,7 +35,6 @@ import { completionSubCommand } from './SubCommand/completionSubCommand';
 function getPartStr(lStr: string, position: vscode.Position): string | null {
     const match: RegExpMatchArray | null = lStr
         .slice(0, position.character)
-        // eslint-disable-next-line security/detect-unsafe-regex
         .match(/(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)$/u);
     //                  ^ without .` and #$@
 
@@ -46,6 +46,7 @@ function getPartStr(lStr: string, position: vscode.Position): string | null {
 function CompletionItemCore(
     document: vscode.TextDocument,
     position: vscode.Position,
+    context: vscode.CompletionContext,
 ): vscode.CompletionItem[] {
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return [];
@@ -57,7 +58,7 @@ function CompletionItemCore(
     const subStr: string = lStr.slice(0, position.character).trim();
 
     if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) return IncludeFsPath(document.uri.fsPath);
-    // eslint-disable-next-line security/detect-unsafe-regex
+
     if ((/\bnew[ \t]+[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStr.slice(0, position.character))) {
         return listAllFuncClass(subStr)
             .filter((v: vscode.CompletionItem): boolean => v.kind === vscode.CompletionItemKind.Class);
@@ -79,6 +80,7 @@ function CompletionItemCore(
         ...getSnipStatement2(subStr),
         ...getSnipJustSnip(subStr),
         ...getSnipMouseKeyboard(subStr),
+        ...getSnippetCLSID(AhkTokenLine, position, context),
     ];
 
     if (PartStr !== null) {
@@ -123,7 +125,7 @@ export const CompletionItemProvider: vscode.CompletionItemProvider = {
             const commentCompletion: vscode.CompletionItem[] | null = getCommentCompletion(document, position);
             if (commentCompletion !== null) return commentCompletion;
         }
-        return CompletionItemCore(document, position);
+        return CompletionItemCore(document, position, context);
     },
 };
 

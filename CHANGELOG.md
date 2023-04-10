@@ -17,6 +17,7 @@
 
 ## Next v0.0.35(2023-04-)
 
+- feat: add `CLSID` hover/Completion [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
 - feat: del hover `numbers` to guess `winMsg`.
 
 ## v0.0.34(2023-04-08)
