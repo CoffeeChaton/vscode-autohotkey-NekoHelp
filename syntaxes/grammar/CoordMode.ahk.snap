@@ -1,0 +1,78 @@
+>CoordMode, ToolTip, Screen
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                  ^^ source.ahk meta.command.line.coordmode.ahk
+#                    ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Pixel, Screen
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                ^^ source.ahk meta.command.line.coordmode.ahk
+#                  ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Mouse, Screen
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                ^^ source.ahk meta.command.line.coordmode.ahk
+#                  ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Caret, Screen
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                ^^ source.ahk meta.command.line.coordmode.ahk
+#                  ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Menu, Screen
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#               ^^ source.ahk meta.command.line.coordmode.ahk
+#                 ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>
+>CoordMode, ToolTip, Screen
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                  ^^ source.ahk meta.command.line.coordmode.ahk
+#                    ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, ToolTip, Relative
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                  ^^ source.ahk meta.command.line.coordmode.ahk
+#                    ^^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, ToolTip, Window
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                  ^^ source.ahk meta.command.line.coordmode.ahk
+#                    ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, ToolTip, Client
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+#                  ^^ source.ahk meta.command.line.coordmode.ahk
+#                    ^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>
+>
+>CoordMode, ToolTip
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Pixel
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Mouse
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Caret
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>CoordMode, Menu
+#^^^^^^^^^ source.ahk meta.command.line.coordmode.ahk support.function.command.coordmode.ahk
+#         ^^ source.ahk meta.command.line.coordmode.ahk
+#           ^^^^ source.ahk meta.command.line.coordmode.ahk keyword.command.option.param.coordmode.ahk
+>
