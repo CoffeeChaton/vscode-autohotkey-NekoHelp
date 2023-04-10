@@ -85,8 +85,8 @@ function HoverProviderCore(
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
-        /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+(?!\()/u,
-        //      without .%` and #$@
+        /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+(?!\()/u,
+        //      without .` and #$@
     );
     if (range === undefined) return null;
 
