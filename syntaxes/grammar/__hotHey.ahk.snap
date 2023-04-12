@@ -1,8 +1,9 @@
->; normal
-#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>#Warn All, MsgBox
+#^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#     ^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
 >
 >(:: foo("case (")
-#^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
+#^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
 # ^^ source.ahk meta.hotkey.line.ahk
 #   ^ source.ahk
 #    ^^^ source.ahk entity.name.function.ahk
@@ -13,7 +14,7 @@
 #                ^ source.ahk punctuation.bracket.ahk
 >~[:: foo("case [")
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
-# ^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
+# ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
 #  ^^ source.ahk meta.hotkey.line.ahk
 #    ^ source.ahk
 #     ^^^ source.ahk entity.name.function.ahk
@@ -27,7 +28,7 @@
 >
 >~F12::Reload
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
-# ^^^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk markup.bold.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
 #    ^^ source.ahk meta.hotkey.line.ahk
 #      ^^^^^^ source.ahk keyword.control.flow.ahk
 >
@@ -51,4 +52,80 @@
 #                                     ^^^^^^^ source.ahk meta.command.line.ahk
 >}
 #^ source.ahk punctuation.bracket.ahk
+>
+>
+>F1::MsgBox, % A_ThisHotkey
+#^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#  ^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+>
+>w & s::
+#^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk
+#    ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+>    MsgBox, % A_ThisHotkey
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>a Up::
+#^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.up.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+>    MsgBox, % A_ThisHotkey
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>c & b::
+#^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk
+#    ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+>    MsgBox, % A_ThisHotkey
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>F10 & F11 Up::
+#^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^^ source.ahk meta.hotkey.line.ahk
+#      ^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.up.hotkey.ahk
+#            ^^ source.ahk meta.hotkey.line.ahk
+>    MsgBox, % A_ThisHotkey
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
 >

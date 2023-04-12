@@ -86,6 +86,7 @@
     ],
     "root": true,
     "rules": {
+        "@typescript-eslint/no-unsafe-enum-comparison": "warn",
         "regexp/no-missing-g-flag": "warn",
         "sonarjs/no-unused-collection": "warn",
         "@typescript-eslint/lines-around-comment": "off",

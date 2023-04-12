@@ -392,17 +392,38 @@
         },
         "hotkey": {
             "name": "meta.hotkey.line.ahk",
-            "begin": "^([#!^+&<>*~$]+|(?:<\\^>!))?([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+)([ \\t]&[ \\t]([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+))?(?=::)",
+            "begin": "^([#!^+&<>*~$]+|(?:<\\^>!))?([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+)([ \\t]&[ \\t]([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+))?([ \\t]+(?i:UP))?(?=::)",
             "beginCaptures": {
                 "1": { "name": "storage.modifier.hotkey.ahk" },
                 "2": {
-                    "name": "string.2.storage.modifier.hotkey.ahk",
-                    "patterns": [ { "include": "#keylist" } ]
+                    "name": "meta.2.hotkey.line.ahk",
+                    "patterns": [
+                        { "include": "#keylist" },
+                        {
+                            "match": "[!-/]|[:-@]|[\\[-`]|[\\{-~]",
+                            "name": "string.2.storage.modifier.hotkey.ahk"
+                        },
+                        {
+                            "match": "(?<![a-zA-Z0-9])[a-zA-Z0-9](?![a-zA-Z0-9])",
+                            "name": "markup.bold.hotkey.ahk"
+                        }
+                    ]
                 },
                 "4": {
-                    "name": "string.4.storage.modifier.hotkey.ahk",
-                    "patterns": [ { "include": "#keylist" } ]
-                }
+                    "name": "meta.4.hotkey.line.ahk",
+                    "patterns": [
+                        { "include": "#keylist" },
+                        {
+                            "match": "[!-/]|[:-@]|[\\[-`]|[\\{-~]",
+                            "name": "string.2.storage.modifier.hotkey.ahk"
+                        },
+                        {
+                            "match": "(?<![a-zA-Z0-9])[a-zA-Z0-9](?![a-zA-Z0-9])",
+                            "name": "markup.bold.hotkey.ahk"
+                        }
+                    ]
+                },
+                "5": { "name": "storage.modifier.up.hotkey.ahk" }
             },
             "end": "::",
             "patterns": [ { "include": "#comment" } ]

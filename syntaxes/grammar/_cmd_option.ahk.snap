@@ -3,7 +3,7 @@
 >
 >~F11:: foo()
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
-# ^^^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk markup.bold.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
 #    ^^ source.ahk meta.hotkey.line.ahk
 #      ^ source.ahk
 #       ^^^ source.ahk entity.name.function.ahk

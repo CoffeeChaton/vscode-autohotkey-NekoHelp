@@ -18,6 +18,7 @@ import { getFistWordUpData } from './getFistWordUpData';
 import { getSecondUp } from './getSecondUp';
 import { callDeep2 } from './ParserTools/calcDeep';
 import { ContinueLongLine } from './ParserTools/ContinueLongLine';
+import { isHotKeyLine } from './ParserTools/isHotKeyLine';
 
 /**
  * Avoid too many messages
@@ -217,7 +218,10 @@ export function Pretreatment(
              */
             const lStrA: string = getLStr(textRaw);
 
-            if (lStrA.includes('::')) {
+            if (
+                lStrA.includes('::')
+                && isHotKeyLine(textTrimStart)
+            ) {
                 const lStr: string = lStrA.replace(/[^:]+::/u, '').padStart(lStrA.length, ' ');
                 const { fistWordUpCol, fistWordUp } = getFistWordUpData({ lStrTrim: lStr.trim(), lStr, cll: 0 });
                 const { SecondWordUpCol, SecondWordUp } = getSecondUp(lStr, fistWordUp, fistWordUpCol);
