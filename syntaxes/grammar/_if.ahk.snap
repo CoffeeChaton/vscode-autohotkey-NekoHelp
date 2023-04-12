@@ -25,8 +25,9 @@
 #                                                              ^ source.ahk meta.comment.line.semicolon.ahk
 #                                                               ^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Space::MsgBox % "You pressed Win+Spacebar in Notepad or " MyWindowTitle ;comment
-#^^^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
-#      ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk markup.bold.hotkey.ahk
+#      ^^ source.ahk meta.hotkey.line.ahk
 #        ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #              ^ source.ahk meta.command.line.ahk
 #               ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
@@ -38,8 +39,9 @@
 #                                                                        ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
 #                                                                         ^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >~F1::MsgBox % "You pressed Win+Spacebar in Notepad or " MyWindowTitle ;comment
-#^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
-#   ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
 #     ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #           ^ source.ahk meta.command.line.ahk
 #            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk

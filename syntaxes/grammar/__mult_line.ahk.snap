@@ -1,10 +1,12 @@
 >~F12::Reload
-#^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
-#    ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
 #      ^^^^^^ source.ahk keyword.control.flow.ahk
 >~F11::ExitApp
-#^^^^ source.ahk hotkey.ahk string.entity.name.function.label.hotkey.ahk
-#    ^^ source.ahk hotkey.ahk punctuation.definition.equals.colon.ahk
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
 #      ^^^^^^^ source.ahk keyword.control.flow.ahk
 >
 >MsgBox,

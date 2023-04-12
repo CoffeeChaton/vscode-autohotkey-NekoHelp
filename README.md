@@ -399,10 +399,11 @@ _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=z
 
 ## Credits
 
-- [AutoHotkey Plus by cweijan](https://github.com/cweijan/vscode-autohotkey)
-- [AutoHotkey by stef-levesque](https://github.com/stef-levesque/vscode-autohotkey)
-- [AutoHotkey_L-Docs](https://github.com/Lexikos/AutoHotkey_L-Docs)
-- [AutoHotkey_L](https://github.com/Lexikos/AutoHotkey_L)
+- [AutoHotkey by stef-levesque](https://github.com/stef-levesque/vscode-autohotkey) : ancestor of the series
+- [AutoHotkey Plus by cweijan](https://github.com/cweijan/vscode-autohotkey) : project start
+- [AutoHotkey_L-Docs](https://github.com/Lexikos/AutoHotkey_L-Docs) : Embed documents of completion/hover etc.
+- [AutoHotkey_L](https://github.com/Lexikos/AutoHotkey_L) : Refer to the implementation of the c++ function
+- [helsmy/AutoHotKey Simple Support](https://github.com/helsmy/vscode-autohotkey) : [hotkey/hotstring regexp](https://github.com/helsmy/vscode-autohotkey/issues/17)
 
 ## otherSuggest
 
