@@ -128,4 +128,707 @@
 >return
 #^^^^^^ source.ahk keyword.control.flow.ahk
 >
+>*LWin:: MsgBox, % A_ThisHotkey
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+#       ^ source.ahk
+#        ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#              ^ source.ahk meta.command.line.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                 ^ source.ahk meta.command.line.ahk
+#                  ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+>*LWin Up:: MsgBox, % A_ThisHotkey
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.up.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^ source.ahk
+#           ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.line.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                    ^ source.ahk meta.command.line.ahk
+#                     ^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
 >
+><^>!m::MsgBox, You pressed AltGr+m.
+#^^^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#    ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+#       ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                 ^^ source.ahk meta.command.line.ahk
+><^<!m::MsgBox, You pressed LeftControl+LeftAlt+m.
+#^^^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#    ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+#       ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                      ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                       ^^^^^^^ source.ahk meta.command.line.ahk
+#                                              ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                               ^^ source.ahk meta.command.line.ahk
+>
+>LControl & RAlt::MsgBox, You pressed AltGr itself.
+#^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#               ^^ source.ahk meta.hotkey.line.ahk
+#                 ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                       ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>*#c::Run, Calc.exe  ; Win+C, Shift+Win+C, Ctrl+Win+C, etc. will all trigger this hotkey.
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+#     ^^^ source.ahk meta.command.line.ahk support.function.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.ahk
+#         ^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                   ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>*ScrollLock::Run, Notepad  ; Pressing ScrollLock will trigger this hotkey even when modifier key(s) are down.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#           ^^ source.ahk meta.hotkey.line.ahk
+#             ^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                 ^^^^^^^^^ source.ahk meta.command.line.ahk
+#                          ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>~RButton::MsgBox, You clicked the right mouse button.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                        ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                             ^^^^^^^^ source.ahk meta.command.line.ahk
+>~RButton & C::MsgBox, You pressed C while holding down the right mouse button.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#            ^^ source.ahk meta.hotkey.line.ahk
+#              ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                                 ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                                                      ^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>AppsKey::ToolTip, Press < or > to cycle through windows.
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^ source.ahk meta.hotkey.line.ahk
+#         ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                 ^^^^^^^ source.ahk meta.command.line.ahk
+#                        ^ source.ahk meta.command.line.ahk keyword.operator.comparison.ahk
+#                         ^^^^ source.ahk meta.command.line.ahk
+#                             ^ source.ahk meta.command.line.ahk keyword.operator.comparison.ahk
+#                              ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>AppsKey Up::ToolTip
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.up.hotkey.ahk
+#          ^^ source.ahk meta.hotkey.line.ahk
+#            ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+>~AppsKey & <::Send, !+{Esc}
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
+#            ^^ source.ahk meta.hotkey.line.ahk
+#              ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                     ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                      ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                       ^^^ source.ahk meta.command.line.ahk
+#                          ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>~AppsKey & >::Send, !{Esc}
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
+#            ^^ source.ahk meta.hotkey.line.ahk
+#              ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                     ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                      ^^^ source.ahk meta.command.line.ahk
+#                         ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>
+>*LWin::Send, {LControl down}
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+#       ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#            ^ source.ahk meta.command.line.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#              ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>*LWin Up::Send, {LControl up}
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.up.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#              ^ source.ahk meta.command.line.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                 ^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                            ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>
+>LControl & F1::return  ; Make left-control a prefix by using it in front of "&" at least once.
+#^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#             ^^ source.ahk meta.hotkey.line.ahk
+#               ^^^^^^ source.ahk keyword.control.flow.ahk
+#                     ^ source.ahk
+#                      ^ source.ahk meta.comment.line.semicolon.ahk
+#                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>LControl::MsgBox, You released LControl without having used it to modify any other key.
+#^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>^Numpad0::
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+>^Numpad1::
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+>    MsgBox, Pressing either Control+Numpad0 or Control+Numpad1 will display this message.
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                   ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                    ^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                      ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                                       ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                                            ^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                                                                ^^^^^^^^^ source.ahk meta.command.line.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>RWin::return
+#^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+#      ^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>#IfWinActive ahk_class Notepad
+#^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#            ^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>^a::MsgBox, You pressed Ctrl-A while Notepad is active. Pressing Ctrl-A in any other window will pass the Ctrl-A keystroke to that window.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#  ^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                            ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                                     ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                                                                              ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>#c::MsgBox, You pressed Win-C while Notepad is active.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#  ^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                           ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                            ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>#IfWinActive
+#^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+>#c::MsgBox, You pressed Win-C while any window except Notepad is active.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#  ^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                           ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>#If MouseIsOver("ahk_class Shell_TrayWnd") ; For MouseIsOver, see #If example 1.
+#^^^ source.ahk meta._if.keyword.control.directives.ahk keyword.control.directives._if.ahk
+#   ^ source.ahk meta._if.keyword.control.directives.ahk
+#    ^^^^^^^^^^^ source.ahk entity.name.function.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+#                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
+#                                        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                         ^ source.ahk punctuation.bracket.ahk
+#                                          ^ source.ahk meta.comment.line.semicolon.ahk
+#                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WheelUp::Send, {Volume_Up}     ; Wheel over taskbar: increase/decrease volume.
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^ source.ahk meta.hotkey.line.ahk
+#         ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                ^^^^^^^^^ source.ahk meta.command.line.ahk
+#                         ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                          ^^^^ source.ahk meta.command.line.ahk
+#                              ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WheelDown::Send, {Volume_Down} ;
+#^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                  ^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                             ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                              ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                               ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>RControl & RShift::AltTab  ; Hold down right-control then press right-shift repeatedly to move forward.
+#^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                 ^^ source.ahk meta.hotkey.line.ahk
+#                   ^^^^^^^ source.ahk
+#                          ^ source.ahk meta.comment.line.semicolon.ahk
+#                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>RControl & Enter::ShiftAltTab  ; Without even having to release right-control, press Enter to reverse direction.
+#^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                ^^ source.ahk meta.hotkey.line.ahk
+#                  ^^^^^^^^^^^^ source.ahk
+#                              ^ source.ahk meta.comment.line.semicolon.ahk
+#                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>MButton & WheelDown::MsgBox, You turned the mouse wheel down while holding down the middle button.
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                   ^^ source.ahk meta.hotkey.line.ahk
+#                     ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                            ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                            ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>^!WheelUp::MsgBox, You rotated the wheel up while holding down Control+Alt.
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                                      ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                                                       ^^^^ source.ahk meta.command.line.ahk
+>
+>~LControl & WheelUp::  ; Scroll left.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^^ source.ahk meta.hotkey.line.ahk
+#            ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                   ^^ source.ahk meta.hotkey.line.ahk
+#                     ^ source.ahk
+#                      ^ source.ahk meta.comment.line.semicolon.ahk
+#                       ^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    ControlGetFocus, fcontrol, A
+#^^^^ source.ahk
+#    ^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                    ^^^^^^^^^ source.ahk meta.command.line.ahk
+#                             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                              ^^ source.ahk meta.command.line.ahk
+>    Loop 2 ; <-- Increase this value to scroll faster.
+#^^^^ source.ahk
+#    ^^^^ source.ahk keyword.control.flow.ahk
+#        ^ source.ahk
+#         ^ source.ahk constant.numeric.decimal.ahk
+#          ^ source.ahk meta.comment.line.semicolon.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>        SendMessage, 0x0114, 0, 0, %fcontrol%, A  ; 0x0114 is WM_HSCROLL and the 0 after it is SB_LINELEFT.
+#^^^^^^^^ source.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                    ^ source.ahk meta.command.line.ahk
+#                     ^^ source.ahk meta.command.line.ahk constant.numeric.hexadecimal.ahk keyword.other.unit.numeric.hexadecimal.ahk
+#                       ^^^^ source.ahk meta.command.line.ahk constant.numeric.hexadecimal.ahk
+#                           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                            ^ source.ahk meta.command.line.ahk
+#                             ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#                              ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                               ^ source.ahk meta.command.line.ahk
+#                                ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#                                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                                  ^ source.ahk meta.command.line.ahk
+#                                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                    ^^^^^^^^ source.ahk meta.command.line.ahk
+#                                            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                                              ^^^ source.ahk meta.command.line.ahk
+#                                                 ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>~LControl & WheelDown::  ; Scroll right.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^^ source.ahk meta.hotkey.line.ahk
+#            ^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                     ^^ source.ahk meta.hotkey.line.ahk
+#                       ^ source.ahk
+#                        ^ source.ahk meta.comment.line.semicolon.ahk
+#                         ^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    ControlGetFocus, fcontrol, A
+#^^^^ source.ahk
+#    ^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                    ^^^^^^^^^ source.ahk meta.command.line.ahk
+#                             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                              ^^ source.ahk meta.command.line.ahk
+>    Loop 2 ; <-- Increase this value to scroll faster.
+#^^^^ source.ahk
+#    ^^^^ source.ahk keyword.control.flow.ahk
+#        ^ source.ahk
+#         ^ source.ahk constant.numeric.decimal.ahk
+#          ^ source.ahk meta.comment.line.semicolon.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>        SendMessage, 0x0114, 1, 0, %fcontrol%, A  ; 0x0114 is WM_HSCROLL and the 1 after it is SB_LINERIGHT.
+#^^^^^^^^ source.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                    ^ source.ahk meta.command.line.ahk
+#                     ^^ source.ahk meta.command.line.ahk constant.numeric.hexadecimal.ahk keyword.other.unit.numeric.hexadecimal.ahk
+#                       ^^^^ source.ahk meta.command.line.ahk constant.numeric.hexadecimal.ahk
+#                           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                            ^ source.ahk meta.command.line.ahk
+#                             ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#                              ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                               ^ source.ahk meta.command.line.ahk
+#                                ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#                                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                                  ^ source.ahk meta.command.line.ahk
+#                                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                    ^^^^^^^^ source.ahk meta.command.line.ahk
+#                                            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                                              ^^^ source.ahk meta.command.line.ahk
+#                                                 ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>NumpadEnd::
+#^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^ source.ahk meta.hotkey.line.ahk
+>Numpad1::
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^ source.ahk meta.hotkey.line.ahk
+>    MsgBox, This hotkey is launched regardless of whether NumLock is on.
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>~RButton & LButton::MsgBox, You pressed the left mouse button while holding down the right.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                  ^^ source.ahk meta.hotkey.line.ahk
+#                    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                           ^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                 ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                                      ^ source.ahk meta.command.line.ahk
+#                                                       ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>RButton & WheelUp::MsgBox, You turned the mouse wheel up while holding down the right button.
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                 ^^ source.ahk meta.hotkey.line.ahk
+#                   ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                         ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                          ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                          ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>Joy2::
+#^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+>    if not GetKeyState("Control") ; Neither the left nor right Control key is down.
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.control.flow.ahk
+#      ^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#           ^^^^^^^^^^^ source.ahk support.function.ahk
+#                      ^ source.ahk punctuation.bracket.ahk
+#                       ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                        ^^^^^^^ source.ahk string.quoted.double.ahk
+#                               ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                ^ source.ahk punctuation.bracket.ahk
+#                                 ^ source.ahk meta.comment.line.semicolon.ahk
+#                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>        return ; i.e. Do nothing.
+#^^^^^^^^ source.ahk
+#        ^^^^^^ source.ahk keyword.control.flow.ahk
+#              ^ source.ahk meta.comment.line.semicolon.ahk
+#               ^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    MsgBox, You pressed the first joystick's second button while holding down the Control key.
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                            ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                 ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                    ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>^!s::Send, {Delete}
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+#     ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#         ^ source.ahk meta.command.line.ahk punctuation.ahk
+#          ^ source.ahk meta.command.line.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#            ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>
+>^!s::
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+>    KeyWait, Control
+#^^^^ source.ahk
+#    ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#            ^^^^^^^^ source.ahk meta.command.line.ahk
+>    KeyWait, Alt
+#^^^^ source.ahk
+#    ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#            ^^^^ source.ahk meta.command.line.ahk
+>    Send, {Delete}
+#^^^^ source.ahk
+#    ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#           ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>RAlt & j::AltTab
+#^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^^ source.ahk meta.hotkey.line.ahk
+#       ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^^^^ source.ahk
+>RAlt & k::ShiftAltTab
+#^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^^ source.ahk meta.hotkey.line.ahk
+#       ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^^^^^^^^^ source.ahk
+>
+>MButton::AltTabMenu
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^ source.ahk meta.hotkey.line.ahk
+#         ^^^^^^^^^^^ source.ahk
+>WheelDown::AltTab
+#^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#         ^^ source.ahk meta.hotkey.line.ahk
+#           ^^^^^^^ source.ahk
+>WheelUp::ShiftAltTab
+#^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#       ^^ source.ahk meta.hotkey.line.ahk
+#         ^^^^^^^^^^^^ source.ahk
+>
+>LCtrl & CapsLock::AltTab
+#^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
+#                ^^ source.ahk meta.hotkey.line.ahk
+#                  ^^^^^^^ source.ahk
+>#IfWinExist ahk_group AltTabWindow  ; Indicates that the alt-tab menu is present on the screen.
+#^^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+#                                   ^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk
+#                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>*MButton::Send, {Blind}{Escape}  ; The * prefix allows it to fire whether or not Alt is held down.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#        ^^ source.ahk meta.hotkey.line.ahk
+#          ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#              ^ source.ahk meta.command.line.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                 ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                      ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                       ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                        ^^^^^^ source.ahk meta.command.line.ahk
+#                              ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                               ^ source.ahk meta.command.line.ahk
+#                                ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>#If
+#^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+>
+>*F1::Send, {Alt down}{tab} ; Asterisk is required in this case.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+#     ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#         ^ source.ahk meta.command.line.ahk punctuation.ahk
+#          ^ source.ahk meta.command.line.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#            ^^^^^^^^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                     ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                      ^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                         ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                          ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>!F2::Send, {Alt up}  ; Release the Alt key, which activates the selected window.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+#     ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#         ^ source.ahk meta.command.line.ahk punctuation.ahk
+#          ^ source.ahk meta.command.line.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#            ^^^^^^ source.ahk meta.command.line.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>#IfWinExist ahk_group AltTabWindow
+#^^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>~*Esc::Send, {Alt up}  ; When the menu is cancelled, release the Alt key automatically.
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#     ^^ source.ahk meta.hotkey.line.ahk
+#       ^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#            ^ source.ahk meta.command.line.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#              ^^^^^^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+#                     ^ source.ahk meta.command.line.ahk
+#                      ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>;*Esc::Send {Esc}{Alt up}  ; Without tilde (~), Escape would need to be sent.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>#If
+#^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+>
+>^+o::
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+>^+e::
+#^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+#  ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+>    editor_open_folder() {
+#^^^^ source.ahk
+#    ^^^^^^^^^^^^^^^^^^ source.ahk entity.name.function.ahk
+#                      ^ source.ahk punctuation.bracket.ahk
+#                       ^ source.ahk punctuation.bracket.ahk
+#                        ^ source.ahk
+#                         ^ source.ahk punctuation.bracket.ahk
+>        WinGetTitle, path, A
+#^^^^^^^^ source.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                    ^^^^^ source.ahk meta.command.line.ahk
+#                         ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                          ^^ source.ahk meta.command.line.ahk
+>        if RegExMatch(path, "\*?\K(.*)\\[^\\]+(?= [-*] )", path)
+#^^^^^^^^ source.ahk
+#        ^^ source.ahk keyword.control.flow.ahk
+#          ^ source.ahk
+#           ^^^^^^^^^^ source.ahk support.function.ahk
+#                     ^ source.ahk punctuation.bracket.ahk
+#                      ^^^^ source.ahk
+#                          ^ source.ahk punctuation.ahk
+#                           ^ source.ahk
+#                            ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
+#                                                        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                         ^ source.ahk punctuation.ahk
+#                                                          ^^^^^ source.ahk
+#                                                               ^ source.ahk punctuation.bracket.ahk
+>            if (FileExist(path) && A_ThisHotkey = "^+e")
+#^^^^^^^^^^^^ source.ahk
+#            ^^ source.ahk keyword.control.flow.ahk
+#              ^ source.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+#                ^^^^^^^^^ source.ahk support.function.ahk
+#                         ^ source.ahk punctuation.bracket.ahk
+#                          ^^^^ source.ahk
+#                              ^ source.ahk punctuation.bracket.ahk
+#                               ^ source.ahk
+#                                ^ source.ahk keyword.operator.arithmetic.ahk
+#                                 ^ source.ahk keyword.operator.arithmetic.ahk
+#                                  ^ source.ahk
+#                                   ^^^^^^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                                               ^ source.ahk
+#                                                ^ source.ahk keyword.operator.assignment.ahk
+#                                                 ^ source.ahk
+#                                                  ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                   ^^^ source.ahk string.quoted.double.ahk
+#                                                      ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                       ^ source.ahk punctuation.bracket.ahk
+>                Run, explorer.exe /select`,"%path%"
+#^^^^^^^^^^^^^^^^ source.ahk
+#                ^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                    ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                  ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
+#                                   ^^^^^^ source.ahk meta.command.line.ahk
+#                                         ^^ source.ahk meta.command.line.ahk constant.character.escape.ahk
+#                                           ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                            ^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                  ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>        else
+#^^^^^^^^ source.ahk
+#        ^^^^ source.ahk keyword.control.flow.ahk
+>            Run, explorer.exe "%path1%"
+#^^^^^^^^^^^^ source.ahk
+#            ^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                               ^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    }
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
