@@ -89,6 +89,8 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.files.exclude', 'array'],
                 ['AhkNekoHelp.statusBar.displayColor', 'string'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
+                ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
+
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
                 ['AhkNekoHelp.Rename.functionInStr', 'boolean'],
                 ['AhkNekoHelp.event.FileRenameEvent', 'number'],

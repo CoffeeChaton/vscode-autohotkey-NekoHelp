@@ -17,9 +17,16 @@
 
 ## Next v0.0.35(2023-04-)
 
+- fix: keyList
+- fix: hotkey line Parsing
+- fix: `hotkey` syntax-highlight, thanks of [helsmy](https://github.com/helsmy/vscode-autohotkey/issues/17)
+- fix: part-3 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
+- fix: part-4 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
+- fix: part-6 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
+- license: update to LGPL-3.0
 - fix: hover the var of `some%var%` case
 - feat: add `CLSID` hover/Completion [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
-- feat: del hover `numbers` to guess `winMsg`.
+- feat: remove hover `numbers` to guess `winMsg`.
 
 ## v0.0.34(2023-04-08)
 

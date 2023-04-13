@@ -322,6 +322,11 @@
                         "default": true,
                         "markdownDescription": "use [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), if you like other plugins SymBolProvider, can close this."
                     },
+                    "AhkNekoHelp.SymbolProvider.showInclude": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), at [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) show [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm)."
+                    },
                     "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
                         "type": "boolean",
                         "default": false,

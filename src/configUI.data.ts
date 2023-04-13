@@ -96,7 +96,10 @@ type TempConfigs = {
         },
     },
     statusBarDisplayColor: string,
-    useSymbolProvider: boolean,
+    SymbolProvider: {
+        useSymbolProvider: boolean,
+        showInclude: boolean,
+    },
     customize: {
         CodeAction2GotoDefRef: boolean,
     },

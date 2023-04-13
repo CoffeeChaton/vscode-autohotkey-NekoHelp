@@ -69,7 +69,10 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             subCmdPlus: getConfigs<TConfigs['snippets']['subCmdPlus']>(Configs, 'AhkNekoHelp.snippets.subCmdPlus'),
         },
         statusBarDisplayColor: getConfigs<string>(Configs, 'AhkNekoHelp.statusBar.displayColor'),
-        useSymbolProvider: getConfigs<boolean>(Configs, 'AhkNekoHelp.useSymbolProvider'),
+        SymbolProvider: {
+            useSymbolProvider: getConfigs<boolean>(Configs, 'AhkNekoHelp.useSymbolProvider'),
+            showInclude: getConfigs<boolean>(Configs, 'AhkNekoHelp.SymbolProvider.showInclude'),
+        },
         customize: {
             CodeAction2GotoDefRef: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.CodeAction2GotoDefRef'),
         },
@@ -104,8 +107,8 @@ export function getFormatConfig(): TConfigs['format'] {
     return config.format;
 }
 
-export function useSymbolProvider(): boolean {
-    return config.useSymbolProvider;
+export function getSymbolProviderConfig(): TConfigs['SymbolProvider'] {
+    return config.SymbolProvider;
 }
 
 export function getIgnoredList(): readonly RegExp[] {

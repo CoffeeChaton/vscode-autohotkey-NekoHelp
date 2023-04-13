@@ -1,6 +1,8 @@
 import * as path from 'node:path';
 import type * as vscode from 'vscode';
-import { needDiag, showTimeSpend, useSymbolProvider } from '../../configUI';
+import { CAhkInclude } from '../../AhkSymbol/CAhkInclude';
+import type { TTopSymbol } from '../../AhkSymbol/TAhkSymbolIn';
+import { getSymbolProviderConfig, needDiag, showTimeSpend } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { isAhkTab } from '../../tools/fsTools/isAhk';
@@ -19,9 +21,11 @@ function SymbolProviderCore(document: vscode.TextDocument): vscode.DocumentSymbo
 
     showTimeSpend(path.basename(document.uri.fsPath));
 
-    return useSymbolProvider()
-        ? [...AST]
-        : [];
+    const { useSymbolProvider, showInclude } = getSymbolProviderConfig();
+    if (!useSymbolProvider) return [];
+
+    if (showInclude) return [...AST];
+    return [...AST].filter((topSymbol: TTopSymbol): boolean => !(topSymbol instanceof CAhkInclude));
 }
 
 export const SymbolProvider: vscode.DocumentSymbolProvider = {
