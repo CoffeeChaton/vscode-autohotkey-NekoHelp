@@ -22,14 +22,20 @@ function wrapItem(
     const item: vscode.CompletionItem = new vscode.CompletionItem(AhkSymbol.name.trim(), getKindOfCh(AhkSymbol.kind));
     item.detail = 'neko help; (wrapClass)';
     if (AhkSymbol instanceof CAhkFunc) {
-        item.documentation = AhkSymbol.md;
-        item.label = AhkSymbol.selectionRangeText;
-        item.insertText = AhkSymbol.selectionRangeText;
+        const { md, selectionRangeText, range } = AhkSymbol;
+        item.documentation = new vscode.MarkdownString('', true)
+            .appendCodeblock(`line: ${range.start.line}`)
+            .appendMarkdown(md.value);
+        item.label = selectionRangeText;
+        item.insertText = selectionRangeText;
         return item;
     }
 
-    const md: vscode.MarkdownString = new vscode.MarkdownString('', true);
-    md.appendMarkdown([...track].reverse().join('   \n'));
+    const { selectionRange } = AhkSymbol;
+
+    const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
+        .appendCodeblock(`line: ${selectionRange.start.line}`)
+        .appendMarkdown([...track].reverse().join('   \n'));
     item.documentation = md;
     return item;
 }
