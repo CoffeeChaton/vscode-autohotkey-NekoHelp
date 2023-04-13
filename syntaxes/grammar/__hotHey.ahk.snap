@@ -66,7 +66,7 @@
 >
 >w & s::
 #^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-# ^^^ source.ahk meta.hotkey.line.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #    ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #     ^^ source.ahk meta.hotkey.line.ahk
 >    MsgBox, % A_ThisHotkey
@@ -97,7 +97,7 @@
 >
 >c & b::
 #^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-# ^^^ source.ahk meta.hotkey.line.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #    ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #     ^^ source.ahk meta.hotkey.line.ahk
 >    MsgBox, % A_ThisHotkey
@@ -113,7 +113,7 @@
 >
 >F10 & F11 Up::
 #^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#   ^^^ source.ahk meta.hotkey.line.ahk
+#   ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #      ^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #         ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.up.hotkey.ahk
 #            ^^ source.ahk meta.hotkey.line.ahk
@@ -175,7 +175,7 @@
 >
 >LControl & RAlt::MsgBox, You pressed AltGr itself.
 #^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #               ^^ source.ahk meta.hotkey.line.ahk
 #                 ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -213,7 +213,7 @@
 >~RButton & C::MsgBox, You pressed C while holding down the right mouse button.
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #            ^^ source.ahk meta.hotkey.line.ahk
 #              ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -240,7 +240,7 @@
 >~AppsKey & <::Send, !+{Esc}
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
 #            ^^ source.ahk meta.hotkey.line.ahk
 #              ^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -254,7 +254,7 @@
 >~AppsKey & >::Send, !{Esc}
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk string.2.storage.modifier.hotkey.ahk
 #            ^^ source.ahk meta.hotkey.line.ahk
 #              ^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -289,7 +289,7 @@
 >
 >LControl & F1::return  ; Make left-control a prefix by using it in front of "&" at least once.
 #^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #             ^^ source.ahk meta.hotkey.line.ahk
 #               ^^^^^^ source.ahk keyword.control.flow.ahk
@@ -405,7 +405,7 @@
 >
 >RControl & RShift::AltTab  ; Hold down right-control then press right-shift repeatedly to move forward.
 #^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                 ^^ source.ahk meta.hotkey.line.ahk
 #                   ^^^^^^^ source.ahk
@@ -413,7 +413,7 @@
 #                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >RControl & Enter::ShiftAltTab  ; Without even having to release right-control, press Enter to reverse direction.
 #^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                ^^ source.ahk meta.hotkey.line.ahk
 #                  ^^^^^^^^^^^^ source.ahk
@@ -422,7 +422,7 @@
 >
 >MButton & WheelDown::MsgBox, You turned the mouse wheel down while holding down the middle button.
 #^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#       ^^^ source.ahk meta.hotkey.line.ahk
+#       ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #          ^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                   ^^ source.ahk meta.hotkey.line.ahk
 #                     ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -443,7 +443,7 @@
 >~LControl & WheelUp::  ; Scroll left.
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#         ^^^ source.ahk meta.hotkey.line.ahk
+#         ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #            ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                   ^^ source.ahk meta.hotkey.line.ahk
 #                     ^ source.ahk
@@ -491,7 +491,7 @@
 >~LControl & WheelDown::  ; Scroll right.
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#         ^^^ source.ahk meta.hotkey.line.ahk
+#         ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #            ^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                     ^^ source.ahk meta.hotkey.line.ahk
 #                       ^ source.ahk
@@ -555,7 +555,7 @@
 >~RButton & LButton::MsgBox, You pressed the left mouse button while holding down the right.
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#        ^^^ source.ahk meta.hotkey.line.ahk
+#        ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #           ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                  ^^ source.ahk meta.hotkey.line.ahk
 #                    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -567,7 +567,7 @@
 #                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >RButton & WheelUp::MsgBox, You turned the mouse wheel up while holding down the right button.
 #^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#       ^^^ source.ahk meta.hotkey.line.ahk
+#       ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #          ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                 ^^ source.ahk meta.hotkey.line.ahk
 #                   ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -646,13 +646,13 @@
 >
 >RAlt & j::AltTab
 #^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#    ^^^ source.ahk meta.hotkey.line.ahk
+#    ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #       ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #        ^^ source.ahk meta.hotkey.line.ahk
 #          ^^^^^^^ source.ahk
 >RAlt & k::ShiftAltTab
 #^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#    ^^^ source.ahk meta.hotkey.line.ahk
+#    ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #       ^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #        ^^ source.ahk meta.hotkey.line.ahk
 #          ^^^^^^^^^^^^ source.ahk
@@ -672,7 +672,7 @@
 >
 >LCtrl & CapsLock::AltTab
 #^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
-#     ^^^ source.ahk meta.hotkey.line.ahk
+#     ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
 #        ^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.4.hotkey.line.ahk markup.bold.hotkey.ahk
 #                ^^ source.ahk meta.hotkey.line.ahk
 #                  ^^^^^^^ source.ahk

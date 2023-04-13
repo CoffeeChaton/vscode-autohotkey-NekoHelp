@@ -409,6 +409,7 @@
                         }
                     ]
                 },
+                "3": { "name": "storage.modifier.and.hotkey.ahk" },
                 "4": {
                     "name": "meta.4.hotkey.line.ahk",
                     "patterns": [

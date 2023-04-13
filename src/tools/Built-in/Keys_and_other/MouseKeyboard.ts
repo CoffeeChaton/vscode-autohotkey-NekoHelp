@@ -63,8 +63,8 @@ const MouseKeyboardSnip: readonly vscode.CompletionItem[] = ((): readonly vscode
             'Alt',
             'LAlt',
             'RAlt',
-            'AltDown',
-            'AltUp',
+            // 'Alt Down',
+            // 'Alt Up',
             //
             'Shift',
             'LShift',
@@ -73,12 +73,12 @@ const MouseKeyboardSnip: readonly vscode.CompletionItem[] = ((): readonly vscode
             'ShiftUp',
             //
 
-            'CtrlDown',
-            'CtrlUp',
-            'LWinDown',
-            'LWinUp',
-            'RWinDown',
-            'RWinUp',
+            // Ctrl down
+            // Ctrl up
+            // LWin Down
+            // LWin Up
+            // RWin Down
+            // RWin Up
         ],
     };
 

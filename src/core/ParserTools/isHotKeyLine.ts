@@ -3,7 +3,7 @@
 /* eslint-disable regexp/no-obscure-range */
 /* eslint-disable regexp/no-dupe-disjunctions */
 
-import { keyListUpSet } from '../../tools/Built-in/Keys_and_other/KeyList';
+import { keyListUpSet } from '../../tools/Built-in/Keys_and_other/keyList.data';
 
 // /^([#!^+&<>*~$]+|(?:<\^[<>]!))?([!-/]|[:-@]|[\[-`]|[\{-~]|[a-zA-Z0-9]+)([ \t]&[ \t]([!-/]|[:-@]|[\[-`]|[\{-~]|[a-zA-Z0-9]+))?([ \t]+(?i:UP))?(?=::)/ui
 

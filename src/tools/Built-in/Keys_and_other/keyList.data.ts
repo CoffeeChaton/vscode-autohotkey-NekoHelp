@@ -167,22 +167,12 @@ export const keyList: readonly string[] = [
     'Alt',
     'LAlt',
     'RAlt',
-    'AltDown',
-    'AltUp',
     //
     'Shift',
     'LShift',
     'RShift',
-    'ShiftDown',
-    'ShiftUp',
     //
-    'CtrlDown',
-    'CtrlUp',
-    'LWinDown',
-    'LWinUp',
-    'RWinDown',
-    'RWinUp',
-    //
+
     'AppsKey',
     'PrintScreen',
     'CtrlBreak',

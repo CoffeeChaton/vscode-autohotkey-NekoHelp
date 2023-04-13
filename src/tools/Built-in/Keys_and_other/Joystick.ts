@@ -73,7 +73,7 @@ const JoySnippets: readonly vscode.CompletionItem[] = ((): readonly vscode.Compl
 })();
 
 export function getSnipStartJoy(PartStr: string): readonly vscode.CompletionItem[] {
-    return PartStr.startsWith('Jo') // Jo
+    return PartStr.startsWith('J') // Jo
         ? JoySnippets
         : [];
 }
