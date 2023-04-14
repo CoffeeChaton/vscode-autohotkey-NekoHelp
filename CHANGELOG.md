@@ -17,8 +17,28 @@
 
 ## Next v0.0.35(2023-04-)
 
-- fix: keyList
-- fix: hotkey line Parsing
+- fix: object key syntax-highlight [#13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13)
+  > 4 of 7 fixed
+
+```ahk
+xyz := ""
+obj := [foo, bar, baz, continue]
+;                      ^^^^^^^^^ fix
+obj := { foo: true, bar: xyz, baz: 000, continue: "string" }
+;                                       ^^^^^^^^ fix
+obj := { true: "Yes", false: "No", null: ""}
+;        ^^^^         ^^^^^ Shouldn't be Highlighted
+obj := { Click: "", MsgBox: "" }
+;        ^^^^^ Shouldn't be Highlighted
+
+obj := { local: "OK" }
+;        ^^^^^ fix
+obj := { global : "NOT OK"}
+;        ^^^^^^ fix
+```
+
+- fix: keyList Completion Data
+- fix: core hotkey line Parsing
 - fix: `hotkey` syntax-highlight, thanks of [helsmy](https://github.com/helsmy/vscode-autohotkey/issues/17)
 - fix: part-3 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
 - fix: part-4 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-array-sort-compare */
 import { repository } from '../../../syntaxes/ahk.tmLanguage.json';
 import { Statement } from './statement.data';
 
@@ -73,15 +74,19 @@ describe('check Statement ruler', () => {
     it('check : tmLanguage', () => {
         expect.hasAssertions();
 
-        const arr1: readonly string[] = Statement.map((v): string => v.keyRawName);
+        const arr1: readonly string[] = Statement
+            .map((v): string => v.keyRawName);
 
-        const st1: string = (repository.flow_of_control.patterns.at(-1)?.match ?? '')
+        const st1: string[] = (repository.flow_of_control.patterns.at(-1)?.match ?? '')
             .replace('\\b(?!MsgBox)(?<![.#])(?i:', '')
-            .replace(')\\b(?!\\()', '');
+            .replace(')\\b(?!\\()', '')
+            .split('|');
+        st1.push('Continue');
+        st1.sort();
 
         // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
         expect(arr1).toStrictEqual([...arr1].sort());
-        expect(st1).toBe(arr1.join('|'));
+        expect(arr1).toStrictEqual(st1);
     });
 
     it('check : uri', () => {

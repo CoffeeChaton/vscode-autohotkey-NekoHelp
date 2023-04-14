@@ -45,8 +45,7 @@
 #                           ^ source.ahk
 #                            ^ source.ahk punctuation.bracket.ahk
 >    local
-#^^^ source.ahk
-#   ^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#^^^^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
 >    OutputVar := Random(0, 99)
 #^^^^^^^^^^^^^^ source.ahk
 #              ^^ source.ahk keyword.operator.assignment.ahk
