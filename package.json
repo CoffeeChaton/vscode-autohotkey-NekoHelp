@@ -325,7 +325,7 @@
                             "focus mode + return type",
                             "full Information mode"
                         ],
-                        "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/SignatureHelp.Information.md))"
+                        "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/customize.signatureHelp.md))"
                     },
                     "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
                         "type": "boolean",

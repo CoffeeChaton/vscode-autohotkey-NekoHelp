@@ -2,6 +2,8 @@
 
 ## exp
 
+> [youtube 4k 2min](https://www.youtube.com/watch?v=clvD7z7YjHM)
+
 1. `@param {type} param_name information`
 2. `@return {type} information`
 

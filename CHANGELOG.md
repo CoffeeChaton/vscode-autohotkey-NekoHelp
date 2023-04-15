@@ -23,13 +23,13 @@
 2. license: update to LGPL-3.0
 3. [issues #12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757) style
    1. part-1 of #12
-      - [youtube 4k 2min]()
-      - [x] user-defined-functions style, via: `"AhkNekoHelp.customize.signatureHelp"`
+      - [youtube 4k 2min](https://www.youtube.com/watch?v=clvD7z7YjHM)
+      - [x] user-defined-functions style, via: `"AhkNekoHelp.customize.signatureHelp"` [Read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/customize.signatureHelp.md)
       - [ ] build-in-functions , (0/111)
    2. part-2 of #12 , via: `"AhkNekoHelp.customize.HoverFunctionDocStyle"`
    3. part-3 of #12 , via: `"AhkNekoHelp.SymbolProvider.showInclude"`
    4. part-4 of #12 , change to string color
-   5. part-5 of #12
+   5. [ ] part-5 of #12, _Go to Definition_ of `#Include c:\DEV\dev_main_P7\ahk_test.ahk` (just support absolute path)
    6. part-6 of #12, parsing error at via `.` completion
 
 4. [issues #13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13) object key syntax-highlight
