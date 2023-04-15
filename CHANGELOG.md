@@ -17,10 +17,8 @@
 
 ## Next v0.0.35(2023-04-)
 
-1. api-change
-   1. `AhkNekoHelp.baseScan.IgnoredList` -> `AhkNekoHelp.files.exclude`
-
-2. license: update to LGPL-3.0
+1. api-change `AhkNekoHelp.baseScan.IgnoredList` -> `AhkNekoHelp.files.exclude`
+2. license: update to LGPL-3.0 (<https://github.com/helsmy/vscode-autohotkey/issues/17>)
 3. [issues #12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757) style
    1. part-1 of #12
       - [youtube 4k 2min](https://www.youtube.com/watch?v=clvD7z7YjHM)
@@ -29,7 +27,7 @@
    2. part-2 of #12 , via: `"AhkNekoHelp.customize.HoverFunctionDocStyle"`
    3. part-3 of #12 , via: `"AhkNekoHelp.SymbolProvider.showInclude"`
    4. part-4 of #12 , change to string color
-   5. [ ] part-5 of #12, _Go to Definition_ of `#Include c:\DEV\dev_main_P7\ahk_test.ahk` (just support absolute path)
+   5. part-5 of #12, _Go to Definition_ of `#Include c:\DEV\dev_main_P7\ahk_test.ahk` (just support `absolute path` and start with `%A_LineFile%\` style)
    6. part-6 of #12, parsing error at via `.` completion
 
 4. [issues #13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13) object key syntax-highlight

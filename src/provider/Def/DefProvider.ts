@@ -8,6 +8,7 @@ import { getDefWithLabel } from './getDefWithLabel';
 import { getFuncDef } from './getFuncDef';
 import { getThisMethod } from './getThisMethod';
 import { getValDefInFunc } from './getValDefInFunc';
+import { gotoIncludeDef } from './gotoIncludeDef';
 
 function DefProviderCore(
     document: vscode.TextDocument,
@@ -15,6 +16,9 @@ function DefProviderCore(
 ): vscode.Location[] | null {
     const AhkFileData: TAhkFileData | null = pm.getDocMap(document.uri.fsPath) ?? pm.updateDocDef(document);
     if (AhkFileData === null) return null;
+
+    const IncludeFile: vscode.Location | null = gotoIncludeDef(AhkFileData, position);
+    if (IncludeFile !== null) return [IncludeFile];
 
     const methodDef: vscode.Location[] | null = getThisMethod(AhkFileData, position);
     if (methodDef !== null) return methodDef;
