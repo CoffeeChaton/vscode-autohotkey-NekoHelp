@@ -1,4 +1,4 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4] }] */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4,5] }] */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -12,28 +12,32 @@ describe('check package ruler', () => {
         const msg: [string, string][] = [];
 
         for (const [k, v] of Object.entries(contributes.configuration[0].properties)) {
-            if (!k.startsWith('AhkNekoHelp.CodeLens')) errList0.push(k);
+            if (!k.startsWith('AhkNekoHelp.CodeLens.')) errList0.push(k);
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[1].properties)) {
-            if (!k.startsWith('AhkNekoHelp.Diag')) errList0.push(k);
+            if (!k.startsWith('AhkNekoHelp.Diag.')) errList0.push(k);
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[2].properties)) {
-            if (!k.startsWith('AhkNekoHelp.format')) errList0.push(k);
+            if (!k.startsWith('AhkNekoHelp.format.')) errList0.push(k);
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[3].properties)) {
-            if (!k.startsWith('AhkNekoHelp.snippets')) errList0.push(k);
+            if (!k.startsWith('AhkNekoHelp.snippets.')) errList0.push(k);
             msg.push([k, v.type as unknown as string]);
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[4].properties)) {
-            if (!k.startsWith('AhkNekoHelp.')) errList0.push(k);
+            if (!k.startsWith('AhkNekoHelp.customize.')) errList0.push(k);
+            msg.push([k, v.type as unknown as string]);
+        }
 
+        for (const [k, v] of Object.entries(contributes.configuration[5].properties)) {
+            if (!k.startsWith('AhkNekoHelp.')) errList0.push(k);
             msg.push([k, v.type as unknown as string]);
         }
 
@@ -85,14 +89,16 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.snippets.exclude', 'array'],
                 ['AhkNekoHelp.snippets.subCmdPlus', 'object'],
 
+                // [4]
+                ['AhkNekoHelp.customize.statusBarDisplayColor', 'string'],
+                ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
+                ['AhkNekoHelp.customize.signatureHelp', 'number'],
+                ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
+
                 // misc
                 ['AhkNekoHelp.files.exclude', 'array'],
-                ['AhkNekoHelp.statusBar.displayColor', 'string'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
-
-                ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
-                ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
 
                 ['AhkNekoHelp.Rename.functionInStr', 'boolean'],
                 ['AhkNekoHelp.event.FileRenameEvent', 'number'],

@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import type { contributes } from '../package.json';
 import type { DeepReadonly } from './globalEnum';
 
@@ -5,7 +6,6 @@ export const enum ECommandOption {
     All = 0, // "Don't filter Command, Provides all entered commands.",
     Recommended = 1, // "filter not recommended Command. (Referral rules from AhkNekoHelp.)",
     noSameFunc = 2, // "filter Command with the pack has same name function. exp: of ",
-    // eslint-disable-next-line no-magic-numbers
     notProvided = 3, // "not provided any Command."
 }
 
@@ -95,14 +95,15 @@ type TempConfigs = {
             SysGet: boolean,
         },
     },
-    statusBarDisplayColor: string,
     SymbolProvider: {
         useSymbolProvider: boolean,
         showInclude: boolean,
     },
     customize: {
+        statusBarDisplayColor: string,
         CodeAction2GotoDefRef: boolean,
         HoverFunctionDocStyle: 1 | 2,
+        signatureHelp: 0 | 1 | 2 | 3,
     },
     RenameFunctionInStr: boolean,
 };

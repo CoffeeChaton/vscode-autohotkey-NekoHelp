@@ -17,37 +17,49 @@
 
 ## Next v0.0.35(2023-04-)
 
-- fix: object key syntax-highlight [#13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13)
-  > 4 of 7 fixed
+1. api-change
+   1. `AhkNekoHelp.baseScan.IgnoredList` -> `AhkNekoHelp.files.exclude`
 
-```ahk
-xyz := ""
-obj := [foo, bar, baz, continue]
-;                      ^^^^^^^^^ fix
-obj := { foo: true, bar: xyz, baz: 000, continue: "string" }
-;                                       ^^^^^^^^ fix
-obj := { true: "Yes", false: "No", null: ""}
-;        ^^^^         ^^^^^ Shouldn't be Highlighted
-obj := { Click: "", MsgBox: "" }
-;        ^^^^^ Shouldn't be Highlighted
+2. license: update to LGPL-3.0
+3. [issues #12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757) style
+   1. part-1 of #12
+      - [youtube 4k 2min]()
+      - [x] user-defined-functions style, via: `"AhkNekoHelp.customize.signatureHelp"`
+      - [ ] build-in-functions , (0/111)
+   2. part-2 of #12 , via: `"AhkNekoHelp.customize.HoverFunctionDocStyle"`
+   3. part-3 of #12 , via: `"AhkNekoHelp.SymbolProvider.showInclude"`
+   4. part-4 of #12 , change to string color
+   5. part-5 of #12
+   6. part-6 of #12, parsing error at via `.` completion
 
-obj := { local: "OK" }
-;        ^^^^^ fix
-obj := { global : "NOT OK"}
-;        ^^^^^^ fix
-```
+4. [issues #13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13) object key syntax-highlight
 
-- fix: keyList Completion Data
-- fix: core hotkey line Parsing
-- fix: `hotkey` syntax-highlight, thanks of [helsmy](https://github.com/helsmy/vscode-autohotkey/issues/17)
-- fix: part-2 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
-- fix: part-3 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
-- fix: part-4 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
-- fix: part-6 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
-- license: update to LGPL-3.0
-- fix: hover the var of `some%var%` case
-- feat: add `CLSID` hover/Completion [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
-- feat: remove hover `numbers` to guess `winMsg`.
+   > 4 of 7 fixed
+
+   ```ahk
+   xyz := ""
+   obj := [foo, bar, baz, continue]
+   ;                      ^^^^^^^^^ fix
+   obj := { foo: true, bar: xyz, baz: 000, continue: "string" }
+   ;                                       ^^^^^^^^ fix
+   obj := { true: "Yes", false: "No", null: ""}
+   ;        ^^^^         ^^^^^ Shouldn't be Highlighted
+   obj := { Click: "", MsgBox: "" }
+   ;        ^^^^^ Shouldn't be Highlighted
+
+   obj := { local: "OK" }
+   ;        ^^^^^ fix
+   obj := { global : "NOT OK"}
+   ;        ^^^^^^ fix
+   ```
+
+5. other
+   - fix: hover the var of `some%var%` case
+   - feat: add `CLSID` hover/Completion [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
+   - feat: remove hover `numbers` to guess `winMsg`.
+   - fix: keyList Completion Data
+   - fix: core hotkey line Parsing
+   - fix: `hotkey` syntax-highlight, thanks of [helsmy](https://github.com/helsmy/vscode-autohotkey/issues/17)
 
 ## v0.0.34(2023-04-08)
 

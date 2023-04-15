@@ -290,7 +290,53 @@
             },
             {
                 "type": "object",
-                "title": "5. misc",
+                "title": "5. customize or style",
+                "properties": {
+                    "AhkNekoHelp.customize.statusBarDisplayColor": {
+                        "type": "string",
+                        "default": "",
+                        "markdownDescription": "color of [status bar](https://code.visualstudio.com/api/extension-capabilities/extending-workbench), use HTML Color, exp: ```#e783e1``` or ```rgb(255,255,100)```"
+                    },
+                    "AhkNekoHelp.customize.HoverFunctionDocStyle": {
+                        "type": "number",
+                        "default": 1,
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "markdownEnumDescriptions": [
+                            "```ahk\nfoo(){\n\n}\n```",
+                            "```ahk\nfoo()\n{\n\n}\n```"
+                        ],
+                        "markdownDescription": "`1` K&R style\n```ahk\nfoo(){\n\n}\n```\n`2` Allman-style\n```ahk\nfoo()\n{\n\n}\n```\njust of hover/completion style, not affect format"
+                    },
+                    "AhkNekoHelp.customize.signatureHelp": {
+                        "type": "number",
+                        "default": 2,
+                        "enum": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "markdownEnumDescriptions": [
+                            "concise mode",
+                            "focus mode",
+                            "focus mode + return type",
+                            "full Information mode"
+                        ],
+                        "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/SignatureHelp.Information.md))"
+                    },
+                    "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "6. misc",
                 "properties": {
                     "AhkNekoHelp.files.exclude": {
                         "type": "array",
@@ -312,11 +358,6 @@
                         },
                         "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Files.exclude.md)) # Files.exclude \n\nWhen building the dataset, we exclude certain folders and files using a list of regular expressions. This list includes patterns for excluding folders like 'temp' and 'history', as well as files like '.ahk2' and '.ahk2'.\n\n- Note that I have standardized the two types of paths that can be used in Windows (common `\\` and compatible `/`) to a single Linux-style path `/` that doesn't require JavaScript to escape, and the default regular expression flags are `u` and `i`, [u-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode), [i-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase).\n\n| regex            | Description                      |\n| :--------------- | :------------------------------- |\n| `/\\.`           | a file/fold name startWith `.`   |\n| `/node_modules/` | the path includes `node_modules` |\n| `/build/`        | A built-fold in pattern          |\n| `/temp/`         | A temp-fold in pattern           |\n| `/ahk2/`         | A ahk2-fold in pattern           |\n| `\\.ah2$`         | file-name end with ah2           |\n| `/backup/`       | A backup-fold in pattern         |\n| `/history/`      | A history-fold in pattern        |"
                     },
-                    "AhkNekoHelp.statusBar.displayColor": {
-                        "type": "string",
-                        "default": "",
-                        "markdownDescription": "color of [status bar](https://code.visualstudio.com/api/extension-capabilities/extending-workbench), use HTML Color, exp: ```#e783e1``` or ```rgb(255,255,100)```"
-                    },
                     "AhkNekoHelp.useSymbolProvider": {
                         "type": "boolean",
                         "default": true,
@@ -326,24 +367,6 @@
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), at [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) show [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm)."
-                    },
-                    "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
-                        "type": "boolean",
-                        "default": false,
-                        "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)"
-                    },
-                    "AhkNekoHelp.customize.HoverFunctionDocStyle": {
-                        "type": "number",
-                        "default": 1,
-                        "enum": [
-                            1,
-                            2
-                        ],
-                        "markdownEnumDescriptions": [
-                            "```ahk\nfoo(){\n\n}\n```",
-                            "```ahk\nfoo()\n{\n\n}\n```"
-                        ],
-                        "markdownDescription": "`1` K&R style\n```ahk\nfoo(){\n\n}\n```\n`2` Allman-style\n```ahk\nfoo()\n{\n\n}\n```\njust of hover/completion style, not affect format"
                     },
                     "AhkNekoHelp.Rename.functionInStr": {
                         "type": "boolean",
