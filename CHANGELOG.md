@@ -40,6 +40,7 @@ obj := { global : "NOT OK"}
 - fix: keyList Completion Data
 - fix: core hotkey line Parsing
 - fix: `hotkey` syntax-highlight, thanks of [helsmy](https://github.com/helsmy/vscode-autohotkey/issues/17)
+- fix: part-2 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
 - fix: part-3 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
 - fix: part-4 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)
 - fix: part-6 of [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)

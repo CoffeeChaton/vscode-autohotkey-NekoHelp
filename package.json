@@ -332,6 +332,19 @@
                         "default": false,
                         "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)"
                     },
+                    "AhkNekoHelp.customize.HoverFunctionDocStyle": {
+                        "type": "number",
+                        "default": 1,
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "markdownEnumDescriptions": [
+                            "```ahk\nfoo(){\n\n}\n```",
+                            "```ahk\nfoo()\n{\n\n}\n```"
+                        ],
+                        "markdownDescription": "`1` K&R style\n```ahk\nfoo(){\n\n}\n```\n`2` Allman-style\n```ahk\nfoo()\n{\n\n}\n```\njust of hover/completion style, not affect format"
+                    },
                     "AhkNekoHelp.Rename.functionInStr": {
                         "type": "boolean",
                         "default": false,

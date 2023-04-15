@@ -24,6 +24,14 @@ function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigK
     return ed;
 }
 
+type TOldSate = {
+    customizeHoverFunctionDocStyle: 1 | 2 | null,
+};
+
+const oldState: TOldSate = {
+    customizeHoverFunctionDocStyle: null,
+};
+
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
         CodeLens: {
@@ -75,6 +83,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         },
         customize: {
             CodeAction2GotoDefRef: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.CodeAction2GotoDefRef'),
+            HoverFunctionDocStyle: getConfigs<1 | 2>(Configs, 'AhkNekoHelp.customize.HoverFunctionDocStyle'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
     } as const;
@@ -82,6 +91,17 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     statusBarItem.color = ed.statusBarDisplayColor;
     void str2RegexListCheck(ed.files_exclude);
     void str2RegexListCheck(ed.snippets.blockFilesList);
+
+    const { customizeHoverFunctionDocStyle } = oldState;
+    if (customizeHoverFunctionDocStyle === null) {
+        oldState.customizeHoverFunctionDocStyle = ed.customize.HoverFunctionDocStyle;
+    } else if (customizeHoverFunctionDocStyle !== ed.customize.HoverFunctionDocStyle) {
+        oldState.customizeHoverFunctionDocStyle = ed.customize.HoverFunctionDocStyle;
+        void vscode.window.showWarningMessage(
+            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.customize.HoverFunctionDocStyle")',
+        );
+    }
+
     return ed;
 }
 

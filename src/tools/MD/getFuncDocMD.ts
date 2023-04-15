@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { getCustomize } from '../../configUI';
 import { EMode } from '../../Enum/EMode';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
@@ -99,9 +100,18 @@ export function getFuncDocCore(
     const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
         .appendMarkdown(`(${kindStr})     of     ${fileName}\n`)
         .appendMarkdown(classStackStr)
-        .appendCodeblock(`${selectionRangeText}{`, 'ahk')
-        .appendCodeblock(returnList.filter((s: string): boolean => s !== '').join('\n'), 'ahk')
-        .appendCodeblock('}', 'ahk');
+        .appendCodeblock(
+            `${selectionRangeText}${
+                getCustomize().HoverFunctionDocStyle === 1
+                    ? ''
+                    : '\n'
+            }{\n${
+                returnList
+                    .filter((s: string): boolean => s !== '')
+                    .join('\n')
+            }\n}`,
+            'ahk',
+        );
 
     if (ahkDoc !== '') {
         md.appendMarkdown('\n\n***\n\n')

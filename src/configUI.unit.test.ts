@@ -92,6 +92,8 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
 
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
+                ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
+
                 ['AhkNekoHelp.Rename.functionInStr', 'boolean'],
                 ['AhkNekoHelp.event.FileRenameEvent', 'number'],
             ],

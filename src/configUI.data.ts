@@ -102,6 +102,7 @@ type TempConfigs = {
     },
     customize: {
         CodeAction2GotoDefRef: boolean,
+        HoverFunctionDocStyle: 1 | 2,
     },
     RenameFunctionInStr: boolean,
 };

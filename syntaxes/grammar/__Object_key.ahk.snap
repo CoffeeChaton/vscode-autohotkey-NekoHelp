@@ -1,0 +1,130 @@
+>xyz := ""
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>obj := [foo, bar, baz, continue]
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^ source.ahk
+#           ^ source.ahk punctuation.ahk
+#            ^^^^ source.ahk
+#                ^ source.ahk punctuation.ahk
+#                 ^^^^ source.ahk
+#                     ^ source.ahk punctuation.ahk
+#                      ^^^^^^^^^ source.ahk
+#                               ^ source.ahk punctuation.bracket.ahk
+>;                      ^^^^^^^^^ fix
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>obj := { foo: true, bar: xyz, baz: 000, continue: "string" }
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^^ source.ahk
+#            ^ source.ahk keyword.operator.ternary.ahk
+#             ^ source.ahk
+#              ^^^^ source.ahk variable.other.constant.builtin.ahk
+#                  ^ source.ahk punctuation.ahk
+#                   ^^^^ source.ahk
+#                       ^ source.ahk keyword.operator.ternary.ahk
+#                        ^^^^ source.ahk
+#                            ^ source.ahk punctuation.ahk
+#                             ^^^^ source.ahk
+#                                 ^ source.ahk keyword.operator.ternary.ahk
+#                                  ^ source.ahk
+#                                   ^^^ source.ahk constant.numeric.decimal.ahk
+#                                      ^ source.ahk punctuation.ahk
+#                                       ^^^^^^^^^ source.ahk
+#                                                ^ source.ahk keyword.operator.ternary.ahk
+#                                                 ^ source.ahk
+#                                                  ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                   ^^^^^^ source.ahk string.quoted.double.ahk
+#                                                         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                          ^ source.ahk
+#                                                           ^ source.ahk punctuation.bracket.ahk
+>;                                       ^^^^^^^^ fix
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>obj := { true: "Yes", false: "No", null: ""}
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk
+#         ^^^^ source.ahk variable.other.constant.builtin.ahk
+#             ^ source.ahk keyword.operator.ternary.ahk
+#              ^ source.ahk
+#               ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                ^^^ source.ahk string.quoted.double.ahk
+#                   ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                    ^ source.ahk punctuation.ahk
+#                     ^ source.ahk
+#                      ^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                           ^ source.ahk keyword.operator.ternary.ahk
+#                            ^ source.ahk
+#                             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                              ^^ source.ahk string.quoted.double.ahk
+#                                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                 ^ source.ahk punctuation.ahk
+#                                  ^^^^^ source.ahk
+#                                       ^ source.ahk keyword.operator.ternary.ahk
+#                                        ^ source.ahk
+#                                         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                          ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                           ^ source.ahk punctuation.bracket.ahk
+>;        ^^^^         ^^^^^ Shouldn't be Highlighted
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>obj := { Click: "", MsgBox: "" }
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk
+#         ^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#              ^ source.ahk meta.command.line.ahk keyword.operator.ternary.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                 ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                   ^^^^^^^ source.ahk meta.command.line.ahk
+#                          ^ source.ahk meta.command.line.ahk keyword.operator.ternary.ahk
+#                           ^ source.ahk meta.command.line.ahk
+#                            ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                             ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                              ^ source.ahk meta.command.line.ahk
+#                               ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
+>;        ^^^^^ Shouldn't be Highlighted
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>obj := { local: "OK" }
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^^^^ source.ahk
+#              ^ source.ahk keyword.operator.ternary.ahk
+#               ^ source.ahk
+#                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                 ^^ source.ahk string.quoted.double.ahk
+#                   ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                    ^ source.ahk
+#                     ^ source.ahk punctuation.bracket.ahk
+>;        ^^^^^ fix
+#^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>obj := { global : "NOT OK"}
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^^^^^^ source.ahk
+#                ^ source.ahk keyword.operator.ternary.ahk
+#                 ^ source.ahk
+#                  ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                   ^^^^^^ source.ahk string.quoted.double.ahk
+#                         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                          ^ source.ahk punctuation.bracket.ahk
+>;        ^^^^^^ fix
+#^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
