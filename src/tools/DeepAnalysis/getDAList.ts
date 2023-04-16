@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 import { CAhkClass } from '../../AhkSymbol/CAhkClass';
 import { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkSymbolList, TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
@@ -23,6 +25,24 @@ const DAListMemo = new CMemo<TAstRoot, readonly CAhkFunc[]>((AstRoot: TAstRoot):
     return result;
 });
 
-export function getDAListTop(AstRoot: TAstRoot): readonly CAhkFunc[] {
-    return DAListMemo.up(AstRoot);
+export function getDAListTop(AST: TAstRoot): readonly CAhkFunc[] {
+    return DAListMemo.up(AST);
+}
+
+const MethodMapMemo = new CMemo<TAstRoot, ReadonlyMap<string, CAhkFunc>>(
+    (AST: TAstRoot): ReadonlyMap<string, CAhkFunc> => {
+        const map = new Map<string, CAhkFunc>();
+
+        for (const method of DAListMemo.up(AST)) {
+            if (method.kind === vscode.SymbolKind.Method) {
+                map.set(method.upName, method);
+            }
+        }
+
+        return map;
+    },
+);
+
+export function getFileAllMethod(AST: TAstRoot): ReadonlyMap<string, CAhkFunc> {
+    return MethodMapMemo.up(AST);
 }

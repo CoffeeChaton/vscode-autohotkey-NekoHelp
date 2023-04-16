@@ -6,6 +6,7 @@ import { getClassDef } from './getClassDef';
 import { getDefSwitch } from './getDefSwitch';
 import { getDefWithLabel } from './getDefWithLabel';
 import { getFuncDef } from './getFuncDef';
+import { getMethodDef } from './getMethodDef';
 import { getThisMethod } from './getThisMethod';
 import { getValDefInFunc } from './getValDefInFunc';
 import { gotoIncludeDef } from './gotoIncludeDef';
@@ -22,6 +23,9 @@ function DefProviderCore(
 
     const methodDef: vscode.Location[] | null = getThisMethod(AhkFileData, position);
     if (methodDef !== null) return methodDef;
+
+    const methodDef2: vscode.Location[] | null = getMethodDef(document, position);
+    if (methodDef2 !== null) return methodDef2;
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
