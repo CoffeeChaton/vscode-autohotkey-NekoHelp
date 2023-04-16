@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.35(2023-04-)](#next-v00352023-04-)
+  - [v0.0.35(2023-04-16)](#v00352023-04-16)
   - [v0.0.34(2023-04-08)](#v00342023-04-08)
   - [v0.0.33(2023-04-02)](#v00332023-04-02)
   - [v0.0.32(2023-04-01)](#v00322023-04-01)
@@ -15,7 +15,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.35(2023-04-)
+## v0.0.35(2023-04-16)
 
 1. api-change `AhkNekoHelp.baseScan.IgnoredList` -> `AhkNekoHelp.files.exclude`
 2. license: update to LGPL-3.0 (<https://github.com/helsmy/vscode-autohotkey/issues/17>)

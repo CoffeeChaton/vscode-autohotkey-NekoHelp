@@ -29,8 +29,8 @@ Deep Analysis All Files
 Deep Analysis : 748 Symbol, function : 668 , method: 80
 paramMapSize is 1935
 valMapSize is 2034
-textMapSize is 358
-All Size is 4327
+textMapSize is 359
+All Size is 4328
 Done in 3 ms
 ; at v0.0.31 add 2 valMapSize of `oldVar = str str`
 ; at v0.0.33 + `fn_param_parser_error` to check fn_param_error
