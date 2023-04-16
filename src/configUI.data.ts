@@ -29,6 +29,7 @@ export const enum ErmFirstCommaCommand {
 
 type TempConfigs = {
     CodeLens: {
+        showClassReference: boolean,
         showFuncReference: boolean,
         showDevTool: boolean,
         showFileReport: boolean,

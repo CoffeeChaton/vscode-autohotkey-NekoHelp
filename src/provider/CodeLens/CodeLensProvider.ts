@@ -1,27 +1,33 @@
 import * as vscode from 'vscode';
 import type { AnalyzeFuncMain } from '../../command/AnalyzeFunc/AnalyzeThisFunc';
+import type { CmdFindClassRef } from '../../command/CmdFindClassRef';
 import type { CmdFindFuncRef } from '../../command/CmdFindFuncRef';
 import { ECommand } from '../../command/ECommand';
 import type { getFileReport } from '../../command/getFileReport/getFileReport';
 import { getCodeLenConfig } from '../../configUI';
-import type { TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
+import { getFileAllClass } from '../../tools/visitor/getFileAllClassList';
 import { getFuncRef } from '../Def/getFnRef';
+import { searchAllClassRef } from '../Def/searchAllClassRef';
 import type { showUnknownAnalyze } from './showUnknownAnalyze';
 
 const enum ECodeLensStr {
     tooltip = 'by neko-help dev tools',
 }
 
-function CodeLensCore(
-    document: vscode.TextDocument,
-    { showFuncReference, showDevTool, showFileReport }: TConfigs['CodeLens'],
-): vscode.CodeLens[] {
+function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
     const { fsPath } = document.uri;
     const AhkFileData: TAhkFileData | undefined = pm.getDocMap(fsPath);
     if (AhkFileData === undefined) return [];
+
+    const {
+        showClassReference,
+        showDevTool,
+        showFileReport,
+        showFuncReference,
+    } = getCodeLenConfig();
 
     const { AST, DocStrMap, uri } = AhkFileData;
 
@@ -35,8 +41,6 @@ function CodeLensCore(
             }),
         ]
         : [];
-
-    if (!showFuncReference && !showDevTool) return need;
 
     for (const fnSymbol of getDAListTop(AST)) {
         if (showDevTool) {
@@ -77,6 +81,24 @@ function CodeLensCore(
         }
     }
 
+    if (showClassReference) {
+        for (const ahkClass of getFileAllClass(AST)) {
+            const refList: readonly vscode.Location[] = searchAllClassRef(ahkClass);
+            const cmdClass: vscode.Command = {
+                title: `Reference ${refList.length - 1}`,
+                command: ECommand.CmdFindClassRef,
+                tooltip: ECodeLensStr.tooltip,
+                arguments: [
+                    uri,
+                    ahkClass.range.start,
+                    ahkClass,
+                    refList,
+                ] satisfies Parameters<typeof CmdFindClassRef>,
+            };
+            need.push(new vscode.CodeLens(ahkClass.range, cmdClass));
+        }
+    }
+
     return need;
 }
 
@@ -86,6 +108,6 @@ export const CodeLensProvider: vscode.CodeLensProvider = {
         document: vscode.TextDocument,
         _token: vscode.CancellationToken,
     ): vscode.ProviderResult<vscode.CodeLens[]> {
-        return CodeLensCore(document, getCodeLenConfig());
+        return CodeLensCore(document);
     },
 };

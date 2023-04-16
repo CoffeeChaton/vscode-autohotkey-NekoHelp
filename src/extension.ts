@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { AnalyzeFuncMain } from './command/AnalyzeFunc/AnalyzeThisFunc';
+import { CmdFindClassRef } from './command/CmdFindClassRef';
 import { CmdFindFuncRef } from './command/CmdFindFuncRef';
 import { CmdGotoFuncDef } from './command/CmdGotoFuncDef';
 import { statusBarClick } from './command/Command';
@@ -83,6 +84,7 @@ export function activate(context: vscode.ExtensionContext): void {
         // commands.registerCommand(ECommand.CompletionMsgBox, CompletionMsgBox),
         vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
+        vscode.commands.registerCommand(ECommand.CmdFindClassRef, CmdFindClassRef),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
         vscode.commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
         vscode.commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),

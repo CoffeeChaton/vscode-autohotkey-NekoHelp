@@ -69,6 +69,11 @@
                 "type": "object",
                 "title": "1. CodeLens",
                 "properties": {
+                    "AhkNekoHelp.CodeLens.showClassReference": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "show Reference at Class def line"
+                    },
                     "AhkNekoHelp.CodeLens.showFuncReference": {
                         "type": "boolean",
                         "default": false,

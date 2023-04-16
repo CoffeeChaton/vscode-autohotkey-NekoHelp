@@ -60,6 +60,7 @@ describe('check package ruler', () => {
         expect(msg).toStrictEqual(
             [
                 // [0]
+                ['AhkNekoHelp.CodeLens.showClassReference', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showFuncReference', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showDevTool', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showFileReport', 'boolean'],

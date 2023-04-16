@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import type { CAhkClass } from '../../AhkSymbol/CAhkClass';
 import { getUserDefTopClassSymbol } from '../../tools/DeepAnalysis/getUserDefTopClassSymbol';
-import { searchAllVarRef } from './searchAllVarRef';
+import { searchAllClassRef } from './searchAllClassRef';
 
 export function getClassDef(
     wordUp: string,
@@ -13,7 +13,7 @@ export function getClassDef(
     }
 
     return listAllUsing
-        ? searchAllVarRef(wordUp)
+        ? [...searchAllClassRef(classDef)]
         : [new vscode.Location(classDef.uri, classDef.selectionRange)]; // ssd -> 0~1 ms
 }
 

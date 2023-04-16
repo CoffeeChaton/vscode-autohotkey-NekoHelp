@@ -29,6 +29,10 @@
    4. part-4 of #12 , change to string color
    5. part-5 of #12, _Go to Definition_ of `#Include c:\DEV\dev_main_P7\ahk_test.ahk` (just support `absolute path` and start with `%A_LineFile%\` style)
    6. part-6 of #12, parsing error at via `.` completion
+   7. _skip
+   8. part-8
+      1. [x] class : find all references && CodeLens via (`"AhkNekoHelp.CodeLens.showClassReference"`)
+      2. [ ] method : not support it now
 
 4. [issues #13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13) object key syntax-highlight
 
@@ -54,6 +58,8 @@
 5. other
    - feat: add `CLSID` hover/Completion [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
    - feat: remove hover `numbers` to guess `winMsg`.
+   - feat: find all ref of `class` use cache
+   - fix: find all ref of `class` after support unicode-name
    - fix: hover the var of `some%var%` case
    - fix: via `.` completion error (with .ahk not any class/function)
    - fix: keyList Completion Data

@@ -31,6 +31,7 @@ let oldSignatureHelpInformation: 0 | 1 | 2 | 3 | null = null;
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
         CodeLens: {
+            showClassReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showClassReference'),
             showFuncReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFuncReference'),
             showDevTool: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showDevTool'),
             showFileReport: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFileReport'),
