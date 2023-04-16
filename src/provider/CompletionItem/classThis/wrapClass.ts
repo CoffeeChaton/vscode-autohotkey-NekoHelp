@@ -29,7 +29,7 @@ function setVarTrackRange(
 
     // Minimum detectable area
     let i: number = position.line;
-    for (i; i >= 0; i--) {
+    for (i; i > 0; i--) {
         if (!allowList[i]) {
             break;
         }

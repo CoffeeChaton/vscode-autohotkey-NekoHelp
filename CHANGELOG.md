@@ -52,9 +52,10 @@
    ```
 
 5. other
-   - fix: hover the var of `some%var%` case
    - feat: add `CLSID` hover/Completion [(youtube 4K 1min)](https://www.youtube.com/watch?v=mwzmmMJxax0)
    - feat: remove hover `numbers` to guess `winMsg`.
+   - fix: hover the var of `some%var%` case
+   - fix: via `.` completion error (with .ahk not any class/function)
    - fix: keyList Completion Data
    - fix: core hotkey line Parsing
    - fix: `hotkey` syntax-highlight, thanks of [helsmy](https://github.com/helsmy/vscode-autohotkey/issues/17)
