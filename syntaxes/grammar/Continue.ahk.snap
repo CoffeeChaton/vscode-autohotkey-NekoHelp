@@ -1,0 +1,111 @@
+>;@ahk-neko-format-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>
+>continue Label1
+#^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#        ^ source.ahk meta.goto.gosub.ahk
+#         ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+>continue, Label1
+#^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#        ^^ source.ahk meta.goto.gosub.ahk
+#          ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+>continue, Label1 ;
+#^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#        ^^ source.ahk meta.goto.gosub.ahk
+#          ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+#                ^^ source.ahk meta.goto.gosub.ahk comment.line.gosub.ahk
+>continue ;
+#^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#        ^^ source.ahk meta.goto.gosub.ahk comment.line.gosub.ahk
+>continue, ;  
+#^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#        ^ source.ahk meta.goto.gosub.ahk
+#         ^^^^ source.ahk meta.goto.gosub.ahk comment.line.gosub.ahk
+>
+>    continue Label1
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#            ^ source.ahk meta.goto.gosub.ahk
+#             ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+>    continue, Label1
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#            ^^ source.ahk meta.goto.gosub.ahk
+#              ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+>    continue, Label1 ;
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#            ^^ source.ahk meta.goto.gosub.ahk
+#              ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+#                    ^^ source.ahk meta.goto.gosub.ahk comment.line.gosub.ahk
+>    continue ;
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#            ^^ source.ahk meta.goto.gosub.ahk comment.line.gosub.ahk
+>    continue, ;  
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#            ^ source.ahk meta.goto.gosub.ahk
+#             ^^^^ source.ahk meta.goto.gosub.ahk comment.line.gosub.ahk
+>
+>xyz := ""
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#        ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>obj := [foo, bar, baz, continue]
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^ source.ahk
+#           ^ source.ahk punctuation.ahk
+#            ^^^^ source.ahk
+#                ^ source.ahk punctuation.ahk
+#                 ^^^^ source.ahk
+#                     ^ source.ahk punctuation.ahk
+#                      ^^^^^^^^^ source.ahk
+#                               ^ source.ahk punctuation.bracket.ahk
+>;                      ^^^^^^^^^ fix
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>obj := { foo: true, bar: xyz, baz: 000, continue: "string" }
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.operator.assignment.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^^^ source.ahk
+#            ^ source.ahk keyword.operator.ternary.ahk
+#             ^ source.ahk
+#              ^^^^ source.ahk variable.other.constant.builtin.ahk
+#                  ^ source.ahk punctuation.ahk
+#                   ^^^^ source.ahk
+#                       ^ source.ahk keyword.operator.ternary.ahk
+#                        ^^^^ source.ahk
+#                            ^ source.ahk punctuation.ahk
+#                             ^^^^ source.ahk
+#                                 ^ source.ahk keyword.operator.ternary.ahk
+#                                  ^ source.ahk
+#                                   ^^^ source.ahk constant.numeric.decimal.ahk
+#                                      ^ source.ahk punctuation.ahk
+#                                       ^^^^^^^^^ source.ahk
+#                                                ^ source.ahk keyword.operator.ternary.ahk
+#                                                 ^ source.ahk
+#                                                  ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                   ^^^^^^ source.ahk string.quoted.double.ahk
+#                                                         ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                                          ^ source.ahk
+#                                                           ^ source.ahk punctuation.bracket.ahk
+>;                                       ^^^^^^^^ fix
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>;@ahk-neko-format-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk

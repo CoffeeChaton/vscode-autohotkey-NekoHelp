@@ -54,7 +54,7 @@
 #             ^^^^ source.ahk
 >        break
 #^^^^^^^^ source.ahk
-#        ^^^^^ source.ahk keyword.control.flow.ahk
+#        ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
 >}
 #^ source.ahk punctuation.bracket.ahk
 >
@@ -148,7 +148,7 @@
 #             ^^^^ source.ahk
 >        break
 #^^^^^^^^ source.ahk
-#        ^^^^^ source.ahk keyword.control.flow.ahk
+#        ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
 >}
 #^ source.ahk punctuation.bracket.ahk
 >
@@ -267,7 +267,7 @@
 #             ^^^^ source.ahk
 >        break
 #^^^^^^^^ source.ahk
-#        ^^^^^ source.ahk keyword.control.flow.ahk
+#        ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
 >}
 #^ source.ahk punctuation.bracket.ahk
 >

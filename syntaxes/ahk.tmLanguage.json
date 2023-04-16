@@ -344,11 +344,12 @@
         "flow_of_control": {
             "patterns": [
                 {
-                    "match": "\\b(?!MsgBox)(?<![.#])(?i:(goto|goSub|Break|Continue|OnExit))\\b[ \\t]*?,?[ \\t]*([a-zA-Z_]\\w*)",
+                    "match": "\\b(?!MsgBox)(?<![.#])(?i:(goto|goSub|Break|Continue|OnExit))\\b[ \\t]*?,?[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+)?[ \\t]*([ \\t]+;.*)?$",
                     "name": "meta.goto.gosub.ahk",
                     "captures": {
                         "1": { "name": "keyword.control.flow.ahk" },
-                        "2": { "name": "entity.name.function.label.ahk" }
+                        "2": { "name": "entity.name.function.label.ahk" },
+                        "3": { "name": "comment.line.gosub.ahk" }
                     }
                 },
                 { "include": "#flow_of_control_loop_plus" },
