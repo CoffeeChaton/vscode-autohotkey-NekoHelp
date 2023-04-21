@@ -133,6 +133,8 @@
         ],
         "@typescript-eslint/no-this-alias": "warn",
         "@typescript-eslint/no-type-alias": "off",
+        "@typescript-eslint/prefer-string-starts-ends-with": "warn",
+        "@typescript-eslint/prefer-nullish-coalescing": "warn",
         "@typescript-eslint/no-unnecessary-condition": [
             "error",
             {

@@ -21,10 +21,10 @@ function DefProviderCore(
     const IncludeFile: vscode.Location | null = gotoIncludeDef(AhkFileData, position);
     if (IncludeFile !== null) return [IncludeFile];
 
-    const methodDef: vscode.Location[] | null = getThisMethod(AhkFileData, position);
-    if (methodDef !== null) return methodDef;
+    const methodDef: vscode.Location | null = getThisMethod(AhkFileData, position);
+    if (methodDef !== null) return [methodDef];
 
-    const methodDef2: vscode.Location[] | null = getMethodDef(document, position);
+    const methodDef2: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);
     if (methodDef2 !== null) return methodDef2;
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(

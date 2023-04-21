@@ -6,6 +6,7 @@ import type {
     ErmFirstCommaCommand,
     TConfigKey,
     TConfigs,
+    TDefProviderMethod,
 } from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
@@ -37,6 +38,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             showFileReport: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFileReport'),
         },
         event: getConfigs<EFileRenameEvent>(Configs, 'AhkNekoHelp.event.FileRenameEvent'),
+        DefinitionProviderMethod: getConfigs<TDefProviderMethod>(Configs, 'AhkNekoHelp.DefinitionProvider.Method'),
         Diag: {
             AMasterSwitch: getConfigs<EDiagMasterSwitch>(Configs, 'AhkNekoHelp.Diag.AMasterSwitch'),
             code107: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code107LegacyAssignment'),
@@ -127,6 +129,10 @@ export function showTimeSpend(showText: string): void {
 
 export function getCodeLenConfig(): TConfigs['CodeLens'] {
     return config.CodeLens;
+}
+
+export function getDefinitionProviderMethodConfig(): TConfigs['DefinitionProviderMethod'] {
+    return config.DefinitionProviderMethod;
 }
 
 export function getFormatConfig(): TConfigs['format'] {

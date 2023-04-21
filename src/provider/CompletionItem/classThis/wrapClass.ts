@@ -11,7 +11,7 @@ import { headIsThis } from './headIsThis';
 import { RefClassWithName } from './RefClassWithName';
 import { valTrack } from './valTrack';
 
-function setVarTrackRange(
+export function setVarTrackRange(
     position: vscode.Position,
     AhkFileData: TAhkFileData,
     DA: CAhkFunc | null,

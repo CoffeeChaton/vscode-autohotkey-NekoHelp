@@ -18,7 +18,7 @@
 
 ## Next v0.0.36(2023-04-XX)
 
-- feat: add _Go to Definition_ of `xxx.Method(` quick_mode
+- feat: add _Go to Definition_ of `xxx.Method(` via `""AhkNekoHelp.DefinitionProvider.Method""`
 
 ## v0.0.35(2023-04-16)
 

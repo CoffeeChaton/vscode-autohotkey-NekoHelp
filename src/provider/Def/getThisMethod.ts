@@ -7,25 +7,20 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 
-function getThisMethodCore(ahClass: CAhkClass, wordUp: string): [vscode.Location] | null {
+function getThisMethodCore(ahClass: CAhkClass, wordUp: string): vscode.Location | null {
     const method: CAhkFunc | undefined = ahClass
         .children
         .find((ch: TClassChildren): ch is CAhkFunc => ch instanceof CAhkFunc && ch.upName === wordUp);
 
-    if (method === undefined) return null;
-
-    return [
-        new vscode.Location(
-            method.uri,
-            method.selectionRange,
-        ),
-    ];
+    return method === undefined
+        ? null
+        : new vscode.Location(method.uri, method.selectionRange);
 }
 
 export function getThisMethod(
     AhkFileData: TAhkFileData,
     position: vscode.Position,
-): vscode.Location[] | null {
+): vscode.Location | null {
     const { DocStrMap, AST } = AhkFileData;
 
     const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
