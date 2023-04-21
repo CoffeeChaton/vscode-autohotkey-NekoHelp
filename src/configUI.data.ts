@@ -27,7 +27,7 @@ export const enum ErmFirstCommaCommand {
     to2 = 2,
 }
 
-export type TDefProviderMethod = 'loose_mode' | 'precision_mode' | 'precision_or_loose_mode';
+export type TMethodMode = 'loose_mode' | 'precision_mode' | 'precision_or_loose_mode';
 type TempConfigs = {
     CodeLens: {
         showClassReference: boolean,
@@ -35,7 +35,9 @@ type TempConfigs = {
         showDevTool: boolean,
         showFileReport: boolean,
     },
-    DefinitionProviderMethod: TDefProviderMethod,
+    method: {
+        gotoDef: TMethodMode,
+    },
     Diag: {
         AMasterSwitch: EDiagMasterSwitch,
 

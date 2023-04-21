@@ -343,9 +343,9 @@
                 "type": "object",
                 "title": "6. misc",
                 "properties": {
-                    "AhkNekoHelp.DefinitionProvider.Method": {
+                    "AhkNekoHelp.method.gotoDef": {
                         "type": "string",
-                        "default": "loose_mode",
+                        "default": "precision_or_loose_mode",
                         "enum": [
                             "loose_mode",
                             "precision_mode",
@@ -356,7 +356,7 @@
                             "slower, more accurate, but cannot be traced across functions, similar to `.` Completion.",
                             "if `precision mode` can't find def, then use loose."
                         ],
-                        "markdownDescription": "```ahk\nTODO(){\njust support \"loose_mode\" now\n}\n```"
+                        "markdownDescription": "all opt is beta"
                     },
                     "AhkNekoHelp.files.exclude": {
                         "type": "array",

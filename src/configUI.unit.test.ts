@@ -97,7 +97,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
 
                 // misc
-                ['AhkNekoHelp.DefinitionProvider.Method', 'string'],
+                ['AhkNekoHelp.method.gotoDef', 'string'],
                 ['AhkNekoHelp.files.exclude', 'array'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
