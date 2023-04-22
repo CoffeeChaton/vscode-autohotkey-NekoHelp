@@ -28,6 +28,7 @@ AutoHotKey v1 edit-support for VS Code
   - [Better highlight](#better-highlight)
     - [of Legacy assignment](#of-legacy-assignment)
     - [of Numbers](#of-numbers)
+  - [Quick Log Msg](#quick-log-msg)
   - [Privacy Statement](#privacy-statement)
   - [Performance](#performance)
   - [Credits](#credits)
@@ -382,6 +383,16 @@ _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=z
   ```
 
   </details>
+
+## Quick Log Msg
+
+default via `ctrl+alt+l`
+
+```jsonc
+{
+    "AhkNekoHelp.customize.displayLogMessage": "MsgBox % \"♥ ~ {selectText} \" {selectText} \" at \" A_ThisFunc"
+}
+```
 
 ## Privacy Statement
 

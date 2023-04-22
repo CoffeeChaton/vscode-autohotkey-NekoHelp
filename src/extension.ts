@@ -4,6 +4,7 @@ import { CmdFindClassRef } from './command/CmdFindClassRef';
 import { CmdFindFuncRef } from './command/CmdFindFuncRef';
 import { CmdGotoFuncDef } from './command/CmdGotoFuncDef';
 import { statusBarClick } from './command/Command';
+import { displayLogMessageFn } from './command/displayLogMessageFn';
 import { ECommand } from './command/ECommand';
 import { getFileReport } from './command/getFileReport/getFileReport';
 import { ListAllFuncMain } from './command/ListAllFunc';
@@ -82,8 +83,10 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.window.tabGroups.onDidChangeTabs(onDidChangeTabs),
         // commands--------------------
         // commands.registerCommand(ECommand.CompletionMsgBox, CompletionMsgBox),
+        // "ahk.nekoHelp.displayLogMessage"
         vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
+        vscode.commands.registerCommand('ahk.nekoHelp.displayLogMessage', displayLogMessageFn),
         vscode.commands.registerCommand(ECommand.CmdFindClassRef, CmdFindClassRef),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
         vscode.commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),

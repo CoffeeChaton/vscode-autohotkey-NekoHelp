@@ -95,6 +95,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
                 ['AhkNekoHelp.customize.signatureHelp', 'number'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
+                ['AhkNekoHelp.customize.displayLogMessage', 'string'],
 
                 // misc
                 ['AhkNekoHelp.method', 'object'],

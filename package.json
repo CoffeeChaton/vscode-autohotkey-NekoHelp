@@ -62,6 +62,17 @@
             {
                 "command": "ahk.nekoHelp.ListAllFunc",
                 "title": "ahk-neko-help:List all userDef function()"
+            },
+            {
+                "command": "ahk.nekoHelp.displayLogMessage",
+                "title": "Console Log: Display Log Message"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "ahk.nekoHelp.displayLogMessage",
+                "key": "ctrl+alt+l",
+                "when": "editorLangId == ahk"
             }
         ],
         "configuration": [
@@ -336,6 +347,11 @@
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)"
+                    },
+                    "AhkNekoHelp.customize.displayLogMessage": {
+                        "type": "string",
+                        "default": "MsgBox % \"♥ ~ {selectText} \" {selectText} \" at \" A_ThisFunc",
+                        "markdownDescription": "default key is `ctrl+alt+l`, use `{selectText}` (case sensitive)"
                     }
                 }
             },

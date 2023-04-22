@@ -84,6 +84,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             CodeAction2GotoDefRef: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.CodeAction2GotoDefRef'),
             HoverFunctionDocStyle: getConfigs<1 | 2>(Configs, 'AhkNekoHelp.customize.HoverFunctionDocStyle'),
             signatureHelp: getConfigs<0 | 1 | 2>(Configs, 'AhkNekoHelp.customize.signatureHelp'),
+            displayLogMessage: getConfigs<string>(Configs, 'AhkNekoHelp.customize.displayLogMessage'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
     } as const;
