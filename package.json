@@ -363,12 +363,12 @@
                                     "precision_mode",
                                     "precision_or_loose_mode"
                                 ],
-                                "default": "precision_or_loose_mode"
+                                "default": "precision_mode"
                             }
                         },
                         "default": {
                             "gotoDef": "precision_mode",
-                            "hover": "precision_or_loose_mode"
+                            "hover": "precision_mode"
                         },
                         "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))"
                     },

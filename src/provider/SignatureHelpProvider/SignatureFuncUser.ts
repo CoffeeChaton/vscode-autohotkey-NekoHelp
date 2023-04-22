@@ -56,7 +56,7 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
             ? SignatureFuncSnipText2Sign(selectionRangeText)
             : selectionRangeText;
 
-        const label1: string = returnSign === ''
+        const label1: string = returnSign === '' || style > 0
             ? label0
             : `${returnSign} := ${label0}`;
 
@@ -65,15 +65,22 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
         if (style >= 2) {
             const mdValue: string = md.value;
             const colS: number = mdValue.search(/\n\s*Return\b/u);
-            const colE: number = mdValue.search(/\n\*{3}/u);
+            const colS2: number = colS === -1
+                ? mdValue.indexOf('{') + 1
+                : colS;
+            const colE: number = mdValue.indexOf('\n```\n');
+            const colE2: number = colE === -1
+                ? mdValue.length
+                : colE + '\n```\n'.length;
+
             const split: '{' | '\n{' = getCustomize().HoverFunctionDocStyle === 1
                 ? '{'
                 : '\n{';
-            doc.appendCodeblock(`${name}(...)${split}${mdValue.slice(colS, colE)}`);
+            doc.appendCodeblock(`${name}(...)${split}${mdValue.slice(colS2, colE2)}`);
 
-            if (style === 3) {
+            if (style === 3 && colE !== -1) {
                 let flag = true;
-                for (const ss10 of mdValue.slice(colE + '***\n'.length).split('\n')) {
+                for (const ss10 of mdValue.slice(colE + '\n```\n'.length).split('\n')) {
                     if ((/^\s*@param\b/iu).test(ss10)) {
                         flag = false;
                     } else if (!flag) {

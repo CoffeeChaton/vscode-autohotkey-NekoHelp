@@ -28,6 +28,7 @@
   3. flow of control like: `Continue` `if` `else`
   4. Flow of Control plus like : `IfBetween` `LoopFiles`
   5. Special Keys like : `{Text}` `{Up}`
+- fix: sign of use-function not any return value miss `}` case.
 
 ## v0.0.35(2023-04-16)
 

@@ -3,6 +3,7 @@
 ## loose_mode
 
 loose and fast.
+However, when different classes have the same `method()` name, the `method()` under different `class` will be provided at the same time and cannot be accurately jumped to the most suitable one, but it is suitable for cases where methods are frequently called across functions, or when initializing Objects is more complicated.
 
 ```ahk
 class JSON
@@ -27,6 +28,10 @@ foo(param0){
     ;      ^^^^^ goto JSON/JSON5 , because there has the method has name `parse`
     ; goto any class has method `parse`
 }
+
+a := new JSON
+a.parse()
+; ^^^^^ goto `JSON.parse()` and `JSON.parse()`
 ```
 
 ## precision_mode

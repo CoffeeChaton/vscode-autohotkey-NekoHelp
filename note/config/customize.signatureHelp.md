@@ -24,11 +24,11 @@ mW := fn_img_m("1_r_N", 500, 0, 0, 500, 600, 5, 5, img_url, 0.85, err_code, 15 *
 * @param {number} x_offset +10
 * @param {number} y_offset +10
 * @param {string} bmp_primitive img_url := "synthesis\main_win_1|synthesis\main_win_2"  use "|" split img_path 
-* @param {number 0.9-1.0} Percentage 0.9~1.0
+* @param {number} Percentage `Range(0.9,1.0)`
 * @param {string} error_mod err_code := "--err--91--23"
-* @param {number ms} wait_time 10*1000
-* @param {string send_msg} waiting_work "^{1}"
-* @param {string send_msg} finish_work "g"
+* @param {number} wait_time ms like `10*1000`
+* @param {string} waiting_work send_msg like `"^{1}"`
+* @param {string} finish_work send_msg like `"g"`
 * @exp
 *
 * ```ahk
