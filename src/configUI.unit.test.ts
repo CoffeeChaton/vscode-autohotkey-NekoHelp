@@ -98,7 +98,6 @@ describe('check package ruler', () => {
 
                 // misc
                 ['AhkNekoHelp.method', 'object'],
-                ['AhkNekoHelp.method.gotoDef', 'string'],
                 ['AhkNekoHelp.files.exclude', 'array'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],

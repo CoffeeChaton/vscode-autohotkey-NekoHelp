@@ -29,13 +29,15 @@ export function getDAListTop(AST: TAstRoot): readonly CAhkFunc[] {
     return DAListMemo.up(AST);
 }
 
-const MethodMapMemo = new CMemo<TAstRoot, ReadonlyMap<string, CAhkFunc>>(
-    (AST: TAstRoot): ReadonlyMap<string, CAhkFunc> => {
-        const map = new Map<string, CAhkFunc>();
+const MethodMapMemo = new CMemo<TAstRoot, ReadonlyMap<string, CAhkFunc[]>>(
+    (AST: TAstRoot): ReadonlyMap<string, CAhkFunc[]> => {
+        const map = new Map<string, CAhkFunc[]>();
 
         for (const method of DAListMemo.up(AST)) {
             if (method.kind === vscode.SymbolKind.Method) {
-                map.set(method.upName, method);
+                const arr: CAhkFunc[] = map.get(method.upName) ?? [];
+                arr.push(method);
+                map.set(method.upName, arr);
             }
         }
 
@@ -43,6 +45,6 @@ const MethodMapMemo = new CMemo<TAstRoot, ReadonlyMap<string, CAhkFunc>>(
     },
 );
 
-export function getFileAllMethod(AST: TAstRoot): ReadonlyMap<string, CAhkFunc> {
+export function getFileAllMethod(AST: TAstRoot): ReadonlyMap<string, CAhkFunc[]> {
     return MethodMapMemo.up(AST);
 }

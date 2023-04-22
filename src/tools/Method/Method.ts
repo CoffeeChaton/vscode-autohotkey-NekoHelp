@@ -105,8 +105,8 @@ function getMethodLooseMode(wordUp: string): readonly CAhkFunc[] {
     const list: CAhkFunc[] = [];
     for (const AhkFileData of pm.getDocMapValue()) {
         const { AST } = AhkFileData;
-        const method: CAhkFunc | undefined = getFileAllMethod(AST).get(wordUp);
-        if (method !== undefined) list.push(method);
+        const method: CAhkFunc[] | undefined = getFileAllMethod(AST).get(wordUp);
+        if (method !== undefined) list.push(...method);
     }
 
     return list;
