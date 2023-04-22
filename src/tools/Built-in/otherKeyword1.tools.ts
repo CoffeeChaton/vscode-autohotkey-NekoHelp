@@ -1,4 +1,6 @@
 import * as vscode from 'vscode';
+import type { TAhkTokenLine } from '../../globalEnum';
+import { EDetail } from '../../globalEnum';
 import { CSnippetCommand } from './CSnippetCommand';
 import { otherKeyword1 } from './otherKeyword1.data';
 
@@ -41,7 +43,9 @@ export function getHoverOtherKeyWord1(wordUp: string): vscode.MarkdownString | u
     return OtherKeyWordMDMap.get(wordUp);
 }
 
-export function getSnippetOtherKeyWord1(lStr: string): readonly CSnippetCommand[] {
+export function getSnippetOtherKeyWord1(lStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
+    if (AhkTokenLine.detail.includes(EDetail.inComment)) return [];
+
     return (/^[ \t{]*\w*$/iu).test(lStr)
         ? snippetOtherKeyword
         : [];

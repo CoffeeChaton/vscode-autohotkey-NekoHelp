@@ -1,4 +1,6 @@
 import * as vscode from 'vscode';
+import type { TAhkTokenLine } from '../../globalEnum';
+import { EDetail } from '../../globalEnum';
 import { CommandMDMap } from './Command.tools';
 import { Statement } from './statement.data';
 
@@ -52,7 +54,13 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
     return [map1, List2]; // [Map(19), Array(19)]
 })();
 
-export function getSnippetStatement(PartStr: string, fistWordUp: string): readonly vscode.CompletionItem[] {
+export function getSnippetStatement(
+    PartStr: string,
+    fistWordUp: string,
+    AhkTokenLine: TAhkTokenLine,
+): readonly vscode.CompletionItem[] {
+    if (AhkTokenLine.detail.includes(EDetail.inComment)) return [];
+
     if (CommandMDMap.has(fistWordUp)) {
         return [];
     }

@@ -28,6 +28,7 @@ export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine
     if (CommandOption === ECommandOption.notProvided) return [];
 
     const { fistWordUp, detail } = AhkTokenLine;
+    if (detail.includes(EDetail.inComment)) return [];
 
     switch (CommandOption) {
         case ECommandOption.All:

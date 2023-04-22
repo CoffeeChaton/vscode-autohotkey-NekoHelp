@@ -36,6 +36,8 @@ const sendBigBlock: readonly vscode.CompletionItem[] = ((): readonly vscode.Comp
 export function ahkSend(AhkFileData: TAhkFileData, position: vscode.Position): readonly vscode.CompletionItem[] {
     const { DocStrMap } = AhkFileData;
     const { textRaw, lStr, detail } = DocStrMap[position.line];
+    if (detail.includes(EDetail.inComment)) return [];
+
     if (
         (/\b(?:Control)?Send(?:Input|Play|Event)?\b/iu).test(lStr)
         || detail.includes(EDetail.isHotStrLine)

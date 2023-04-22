@@ -22,6 +22,12 @@
   1. only _Completion_ support `class in class` , _Go to Definition_ not yet supported.
 - feat: snippet Completions for @param JSDoc Tags
   > reference <https://devblogs.microsoft.com/typescript/announcing-typescript-5-1-beta/#snippet-completions-for-param-jsdoc-tags>
+- fix: don't provide snippet completions in comment
+  1. SubCommand like: `Gui` `GuiControl` `Menu` `SysGet`
+  2. otherKeyword1 like: `Class` `Static` `Global` `Local`
+  3. flow of control like: `Continue` `if` `else`
+  4. Flow of Control plus like : `IfBetween` `LoopFiles`
+  5. Special Keys like : `{Text}` `{Up}`
 
 ## v0.0.35(2023-04-16)
 

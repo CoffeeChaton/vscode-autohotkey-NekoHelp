@@ -74,11 +74,11 @@ function CompletionItemCore(
         ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
         ...ahkSend(AhkFileData, position), // '{'
         ...snipDirectives(subStr),
-        ...getSnippetOtherKeyWord1(lStr),
+        ...getSnippetOtherKeyWord1(lStr, AhkTokenLine),
         ...getSnippetCommand(subStr, AhkTokenLine),
         ...completionSubCommand(subStr, AhkTokenLine),
         ...globalValCompletion(DocStrMap, position),
-        ...getSnipStatement2(subStr),
+        ...getSnipStatement2(subStr, AhkTokenLine),
         ...getSnipJustSnip(subStr),
         ...getSnipMouseKeyboard(subStr),
         ...getSnippetCLSID(AhkTokenLine, position, context),
@@ -100,7 +100,7 @@ function CompletionItemCore(
             completions.push(
                 ...getSnippetStartWihA(PartStr),
                 ...getSnippetWinTitleParam(PartStr),
-                ...getSnippetStatement(PartStr, fistWordUp),
+                ...getSnippetStatement(PartStr, fistWordUp, AhkTokenLine),
                 ...getSnippetWinMsg(PartStr),
                 ...getSnipBiVar(PartStr),
                 ...BuiltInFunc2Completion(PartStr),
