@@ -20,6 +20,8 @@
 
 - feat: add _Go to Definition_ and _hover_ of `xxx.Method(` via `"AhkNekoHelp.method"` [doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md)
   1. only _Completion_ support `class in class` , _Go to Definition_ not yet supported.
+- feat: snippet Completions for @param JSDoc Tags
+  > reference <https://devblogs.microsoft.com/typescript/announcing-typescript-5-1-beta/#snippet-completions-for-param-jsdoc-tags>
 
 ## v0.0.35(2023-04-16)
 

@@ -23,6 +23,7 @@ import { getSnipStatement2 } from '../../tools/Built-in/statement2.tools';
 import { getSnippetWinMsg } from '../../tools/Built-in/Windows_Messages/Windows_Messages.tools';
 import { getSnippetWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
+import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
 import { wrapClass } from './classThis/wrapClass';
 import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
@@ -81,6 +82,7 @@ function CompletionItemCore(
         ...getSnipJustSnip(subStr),
         ...getSnipMouseKeyboard(subStr),
         ...getSnippetCLSID(AhkTokenLine, position, context),
+        ...ahkDocCompletions(AhkFileData, AhkTokenLine, position, context),
     ];
 
     if (PartStr !== null) {
