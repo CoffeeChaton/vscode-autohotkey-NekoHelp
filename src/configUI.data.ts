@@ -27,7 +27,12 @@ export const enum ErmFirstCommaCommand {
     to2 = 2,
 }
 
-export type TMethodMode = 'loose_mode' | 'precision_mode' | 'precision_or_loose_mode';
+export type TMethodModeOpt = 'loose_mode' | 'precision_mode' | 'precision_or_loose_mode';
+export type TMethod = {
+    gotoDef: TMethodModeOpt,
+    hover: TMethodModeOpt,
+};
+
 type TempConfigs = {
     CodeLens: {
         showClassReference: boolean,
@@ -35,9 +40,7 @@ type TempConfigs = {
         showDevTool: boolean,
         showFileReport: boolean,
     },
-    method: {
-        gotoDef: TMethodMode,
-    },
+    method: TMethod,
     Diag: {
         AMasterSwitch: EDiagMasterSwitch,
 

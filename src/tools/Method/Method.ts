@@ -1,7 +1,7 @@
 import type * as vscode from 'vscode';
 import { CAhkClass } from '../../AhkSymbol/CAhkClass';
 import { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
-import type { TMethodMode } from '../../configUI.data';
+import type { TMethodModeOpt } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { getFileAllMethod } from '../DeepAnalysis/getDAList';
@@ -116,7 +116,7 @@ export function getMethodRef2Def(
     document: vscode.TextDocument,
     position: vscode.Position,
     AhkFileData: TAhkFileData,
-    mode: TMethodMode,
+    mode: TMethodModeOpt,
 ): readonly CAhkFunc[] | null {
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,

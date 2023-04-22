@@ -9,7 +9,7 @@
                     "enum": ["on", "inline", "off"]
                 }],
                 "default": "on",
-                "description": ["TODO1", "TODO2", "TODO3"]
+                "markdownEnumDescriptions": ["TODO1", "TODO2", "TODO3"]
             },
             "comments": {
                 "anyOf": [{ "type": "boolean" }, {
@@ -17,7 +17,7 @@
                     "enum": ["on", "inline", "off"]
                 }],
                 "default": "on",
-                "description": ["TODO1", "TODO2", "TODO3"]
+                "markdownEnumDescriptions": ["TODO1", "TODO2", "TODO3"]
             },
             "other": {
                 "anyOf": [{ "type": "boolean" }, {
@@ -25,7 +25,7 @@
                     "enum": ["on", "inline", "off"]
                 }],
                 "default": "on",
-                "description": ["TODO1", "TODO2", "TODO3"]
+                "markdownEnumDescriptions": ["TODO1", "TODO2", "TODO3"]
             }
         },
         "default": {

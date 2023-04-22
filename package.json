@@ -343,20 +343,34 @@
                 "type": "object",
                 "title": "6. misc",
                 "properties": {
-                    "AhkNekoHelp.method.gotoDef": {
-                        "type": "string",
-                        "default": "precision_or_loose_mode",
-                        "enum": [
-                            "loose_mode",
-                            "precision_mode",
-                            "precision_or_loose_mode"
-                        ],
-                        "markdownEnumDescriptions": [
-                            "fast and more matching conditions, when there is no method with the same name in the tool area, this is recommended.",
-                            "slower, more accurate, but cannot be traced across functions, similar to `.` Completion.",
-                            "if `precision mode` can't find def, then use loose."
-                        ],
-                        "markdownDescription": "all opt is beta"
+                    "AhkNekoHelp.method": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "gotoDef": {
+                                "type": "string",
+                                "enum": [
+                                    "loose_mode",
+                                    "precision_mode",
+                                    "precision_or_loose_mode"
+                                ],
+                                "default": "precision_mode"
+                            },
+                            "hover": {
+                                "type": "string",
+                                "enum": [
+                                    "loose_mode",
+                                    "precision_mode",
+                                    "precision_or_loose_mode"
+                                ],
+                                "default": "precision_or_loose_mode"
+                            }
+                        },
+                        "default": {
+                            "gotoDef": "precision_mode",
+                            "hover": "precision_or_loose_mode"
+                        },
+                        "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))"
                     },
                     "AhkNekoHelp.files.exclude": {
                         "type": "array",

@@ -28,6 +28,7 @@ import { hoverGuiParam } from './tools/hoverGuiParam';
 import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
 import { hoverMenuParam } from './tools/hoverMenuParam';
+import { hoverMethod } from './tools/hoverMethod';
 import { hoverMultiLine } from './tools/hoverMultiLine';
 import { hoverSysGetParam } from './tools/hoverSysGetParam';
 
@@ -82,6 +83,9 @@ function HoverProviderCore(
 
     const haveFunc: vscode.MarkdownString | null = HoverOfFunc(document, position);
     if (haveFunc !== null) return new vscode.Hover(haveFunc);
+
+    const Method: vscode.MarkdownString | null = hoverMethod(document, position, AhkFileData);
+    if (Method !== null) return new vscode.Hover(Method);
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,

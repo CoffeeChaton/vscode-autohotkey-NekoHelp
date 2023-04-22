@@ -18,7 +18,7 @@
 
 ## Next v0.0.36(2023-04-XX)
 
-- feat: add _Go to Definition_ of `xxx.Method(` via `"AhkNekoHelp.method.gotoDef"`
+- feat: add _Go to Definition_ and _hover_ of `xxx.Method(` via `"AhkNekoHelp.method"` [doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md)
   1. only _Completion_ support `class in class` , _Go to Definition_ not yet supported.
 
 ## v0.0.35(2023-04-16)

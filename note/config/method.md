@@ -32,7 +32,8 @@ foo(param0){
 ## precision_mode
 
 Imitate human habits and track variables, but cannot track across functions.
-In addition, due to technical limitations, new class needs to be on a separate line.
+In addition, due to technical limitations, there is only the := symbol between the obj variable name and the new class.
+
 like :
 
 ```ahk

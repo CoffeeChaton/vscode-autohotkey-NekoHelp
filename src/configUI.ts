@@ -6,7 +6,7 @@ import type {
     ErmFirstCommaCommand,
     TConfigKey,
     TConfigs,
-    TMethodMode,
+    TMethod,
 } from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
@@ -38,9 +38,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             showFileReport: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFileReport'),
         },
         event: getConfigs<EFileRenameEvent>(Configs, 'AhkNekoHelp.event.FileRenameEvent'),
-        method: {
-            gotoDef: getConfigs<TMethodMode>(Configs, 'AhkNekoHelp.method.gotoDef'),
-        },
+        method: getConfigs<TMethod>(Configs, 'AhkNekoHelp.method'),
         Diag: {
             AMasterSwitch: getConfigs<EDiagMasterSwitch>(Configs, 'AhkNekoHelp.Diag.AMasterSwitch'),
             code107: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code107LegacyAssignment'),
