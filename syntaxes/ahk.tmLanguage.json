@@ -82,6 +82,7 @@
                 { "include": "#command_gui" },
                 { "include": "#command_sysget" },
                 { "include": "#command_gui_control" },
+                { "include": "#command_hotkey" },
                 {
                     "name": "meta.command.line.coordmode.ahk",
                     "begin": "(?:^|[ \\t:])\\b(?i:(CoordMode)\\b[ \\t]*,?[ \\t]*\\b(ToolTip|Pixel|Mouse|Caret|Menu)\\b(?:[ \\t]*,[ \\t]*\\b(Screen|Relative|Window|Client)\\b)?)",
@@ -203,6 +204,43 @@
             "patterns": [
                 { "include": "#command_options" },
                 { "include": "#expression" }
+            ]
+        },
+        "command_hotkey": {
+            "patterns": [
+                {
+                    "name": "meta.command.if.hotkey.command.ahk",
+                    "begin": "(?:^|[ \\t:])\\b(?i:(hotkey)\\b[ \\t]*,?[ \\t]*)(?i:\\b(IF|IfWinActive|IfWinExist|IfWinNotActive|IfWinNotExist)\\b)",
+                    "end": "(\\n)",
+                    "beginCaptures": {
+                        "1": { "name": "support.function.hotkey.command.ahk" },
+                        "2": { "name": "keyword.control.flow.hotkey.command.ahk" }
+                    },
+                    "patterns": [ { "include": "#expression" } ]
+                },
+                {
+                    "name": "meta.command.key.hotkey.command.ahk",
+                    "begin": "(?:^|[ \\t:])\\b(?i:(hotkey)\\b[ \\t]*,?[ \\t]*)([^,]*)",
+                    "end": "(\\n)",
+                    "beginCaptures": {
+                        "1": { "name": "support.function.hotkey.command.ahk" },
+                        "2": {
+                            "name": "meta.hotkey.command.ahk",
+                            "patterns": [
+                                { "include": "#keylist" },
+                                {
+                                    "match": "[!-/]|[:-@]|[\\[-`]|[\\{-~]",
+                                    "name": "string.2.storage.modifier.hotkey.command.ahk"
+                                },
+                                {
+                                    "match": "(?<![a-zA-Z0-9])[a-zA-Z0-9](?![a-zA-Z0-9])",
+                                    "name": "markup.bold.hotkey.command.ahk"
+                                }
+                            ]
+                        }
+                    },
+                    "patterns": [ { "include": "#expression" } ]
+                }
             ]
         },
         "comment_ahk2exe": {

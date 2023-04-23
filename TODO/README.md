@@ -19,7 +19,6 @@
 - [info magic of `,`](https://www.autohotkey.com/docs/v1/Variables.htm#comma) ex: `x:=1, y=2, a=b=c` or `x:=1, %y%=2`
 - Parser: -> AST
 - Scanner: -> Token
-- test of <https://www.autohotkey.com/docs/v1/scripts/index.htm>
 - add: support of `user-def-.h.ahk`
 - test: add vscode.test
 - add diag of [The "is" operator is not supported in expressions.](https://www.autohotkey.com/boards/viewtopic.php?f=76&t=111131)

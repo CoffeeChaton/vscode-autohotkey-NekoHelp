@@ -20,6 +20,8 @@
 
 ## Next v0.0.38(2023-04-XX)
 
+- fix: `hotkey, if` and `hotkey, key` syntax-highlight
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-hotkey.png)
 - fix: `Gui` `Range` option syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-gui-opt-range.png)
 

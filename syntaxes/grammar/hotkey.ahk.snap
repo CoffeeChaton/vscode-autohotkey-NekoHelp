@@ -1,0 +1,280 @@
+>;@ahk-neko-format-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>
+>;cmd, param
+#^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>hotkey, #x           , toggle_follow
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.key.hotkey.command.ahk
+#        ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#         ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.command.ahk
+#          ^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                     ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                      ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>hotkey, +$LButton    , click_through
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.key.hotkey.command.ahk
+#        ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#         ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#          ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.ahk
+#                 ^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                     ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                      ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>Hotkey, IfWinActive , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                   ^ source.ahk meta.command.if.hotkey.command.ahk
+#                    ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                     ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                              ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                               ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey, IfWinExist , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                  ^ source.ahk meta.command.if.hotkey.command.ahk
+#                   ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                    ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                             ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                              ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey, If , Expression
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#          ^ source.ahk meta.command.if.hotkey.command.ahk
+#           ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#            ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey, If, % FunctionObject
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#          ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#           ^ source.ahk meta.command.if.hotkey.command.ahk
+#            ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.definition.variable.percent.ahk
+#             ^^^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>
+>
+>;cmd ,param
+#^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>hotkey ,#x           , toggle_follow
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.key.hotkey.command.ahk
+#        ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#         ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.command.ahk
+#          ^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                     ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                      ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>hotkey ,+$LButton    , click_through
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.key.hotkey.command.ahk
+#        ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#         ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#          ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.ahk
+#                 ^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                     ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                      ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>Hotkey ,IfWinActive , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                   ^ source.ahk meta.command.if.hotkey.command.ahk
+#                    ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                     ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                              ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                               ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey ,IfWinExist , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                  ^ source.ahk meta.command.if.hotkey.command.ahk
+#                   ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                    ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                             ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                              ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey ,If , Expression
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#          ^ source.ahk meta.command.if.hotkey.command.ahk
+#           ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#            ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey ,If, % FunctionObject
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^ source.ahk meta.command.if.hotkey.command.ahk
+#        ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#          ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#           ^ source.ahk meta.command.if.hotkey.command.ahk
+#            ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.definition.variable.percent.ahk
+#             ^^^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>
+>;cmd   ,    param
+#^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>hotkey   ,  #x           , toggle_follow
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+#            ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#             ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.command.ahk
+#              ^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                         ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                          ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>hotkey  ,    +$LButton    , click_through
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+#             ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#              ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#               ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.ahk
+#                      ^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                          ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                           ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>Hotkey   ,     IfWinActive , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#               ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                          ^ source.ahk meta.command.if.hotkey.command.ahk
+#                           ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                            ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                                     ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                                      ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey   ,          IfWinExist , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                    ^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                              ^ source.ahk meta.command.if.hotkey.command.ahk
+#                               ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                                ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                                         ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                                          ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey      ,      If , Expression
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                   ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                     ^ source.ahk meta.command.if.hotkey.command.ahk
+#                      ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                       ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey    ,    If, % FunctionObject
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#               ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                 ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.if.hotkey.command.ahk
+#                   ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.definition.variable.percent.ahk
+#                    ^^^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>
+>
+>;cmd param (without,)
+#^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>hotkey #x           , toggle_follow
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^ source.ahk meta.command.key.hotkey.command.ahk
+#       ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#        ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.command.ahk
+#         ^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                    ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                     ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>hotkey +$LButton    , click_through
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^ source.ahk meta.command.key.hotkey.command.ahk
+#       ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#        ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#         ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.ahk
+#                ^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                    ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                     ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>Hotkey IfWinActive , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^ source.ahk meta.command.if.hotkey.command.ahk
+#       ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                  ^ source.ahk meta.command.if.hotkey.command.ahk
+#                   ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                    ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                             ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                              ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey IfWinExist , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^ source.ahk meta.command.if.hotkey.command.ahk
+#       ^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                 ^ source.ahk meta.command.if.hotkey.command.ahk
+#                  ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                   ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                            ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                             ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey If , Expression
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^ source.ahk meta.command.if.hotkey.command.ahk
+#       ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#         ^ source.ahk meta.command.if.hotkey.command.ahk
+#          ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#           ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey If, % FunctionObject
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^ source.ahk meta.command.if.hotkey.command.ahk
+#       ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#         ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#          ^ source.ahk meta.command.if.hotkey.command.ahk
+#           ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.definition.variable.percent.ahk
+#            ^^^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>
+>;cmd           param (without,)
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>hotkey       #x           , toggle_follow
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+#             ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#              ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.command.ahk
+#               ^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                          ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                           ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>hotkey    +$LButton    , click_through
+#^^^^^^ source.ahk meta.command.key.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^ source.ahk meta.command.key.hotkey.command.ahk
+#          ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#           ^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk string.2.storage.modifier.hotkey.command.ahk
+#            ^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk markup.bold.hotkey.ahk
+#                   ^^^^ source.ahk meta.command.key.hotkey.command.ahk meta.hotkey.command.ahk
+#                       ^ source.ahk meta.command.key.hotkey.command.ahk punctuation.ahk
+#                        ^^^^^^^^^^^^^^ source.ahk meta.command.key.hotkey.command.ahk
+>Hotkey   IfWinActive , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^ source.ahk meta.command.if.hotkey.command.ahk
+#         ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                    ^ source.ahk meta.command.if.hotkey.command.ahk
+#                     ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                      ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                               ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                                ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey           IfWinExist , WinTitle, WinText
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                 ^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#                           ^ source.ahk meta.command.if.hotkey.command.ahk
+#                            ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                             ^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#                                      ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                                       ^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey      If , Expression
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#            ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#              ^ source.ahk meta.command.if.hotkey.command.ahk
+#               ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>Hotkey      If, % FunctionObject
+#^^^^^^ source.ahk meta.command.if.hotkey.command.ahk support.function.hotkey.command.ahk
+#      ^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+#            ^^ source.ahk meta.command.if.hotkey.command.ahk keyword.control.flow.hotkey.command.ahk
+#              ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.ahk
+#               ^ source.ahk meta.command.if.hotkey.command.ahk
+#                ^ source.ahk meta.command.if.hotkey.command.ahk punctuation.definition.variable.percent.ahk
+#                 ^^^^^^^^^^^^^^^ source.ahk meta.command.if.hotkey.command.ahk
+>
+>;@ahk-neko-format-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
