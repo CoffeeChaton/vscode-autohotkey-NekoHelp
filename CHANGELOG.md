@@ -20,6 +20,7 @@
 
 ## Next v0.0.38(2023-04-XX)
 
+- test: add test from ahk-doc <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - fix: `hotkey, if` and `hotkey, key` syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-hotkey.png)
 - fix: `Gui` `Range` option syntax-highlight

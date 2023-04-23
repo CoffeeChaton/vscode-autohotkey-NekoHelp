@@ -51,6 +51,7 @@ export type TCommandElement = Readonly<{
      * - F -> functionName
      * - L -> label
      * - FO -> funcObject
+     * - G -> Gui-label
      */
     _paramType: string[],
 }>;
@@ -296,7 +297,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'CONTROLGETPOS',
         keyRawName: 'ControlGetPos',
         body:
-            'ControlGetPos, [${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:Control}, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}]',
+            'ControlGetPos, [${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:Control}, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]',
         doc: 'Retrieves the position and size of a control.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlGetPos.htm',
@@ -318,6 +319,7 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'O',
             'O',
+            'S',
             'S',
             'S',
             'S',

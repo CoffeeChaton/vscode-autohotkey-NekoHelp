@@ -44,6 +44,11 @@ Loop, Parse, clipboard, `n, `r
 // TODO obj fn()
 
 // -------
+// ComObjEnwrap()',
+// ComObjMissing()',
+// ComObjParameter()',
+// ComObjUnwrap()',
+// Object()',
 // ObjClone()
 // ObjCount()
 // ObjDelete()

@@ -165,7 +165,7 @@ export const Statement: TStatementElement[] = [
         link: 'https://www.autohotkey.com/docs/v1/lib/Exit.htm',
         exp: [
             '#z::',
-            '    Gosub, Sub2',
+            '    GoSub, Sub2',
             '    MsgBox, % "This MsgBox will never happen because of the EXIT."',
             'Return',
             '',
@@ -232,7 +232,7 @@ export const Statement: TStatementElement[] = [
         body: 'GoSub, ${1:Label}',
         doc: 'Jumps to the specified label and continues execution until [Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) is encountered.',
         recommended: true,
-        link: 'https://www.autohotkey.com/docs/v1/lib/Gosub.htm',
+        link: 'https://www.autohotkey.com/docs/v1/lib/GoSub.htm',
         exp: [
             'GoSub, Label1 ',
             '    MsgBox, The Label1 subroutine has returned (it is finished).',
@@ -531,7 +531,7 @@ export const Statement: TStatementElement[] = [
         upName: 'RETURN',
         keyRawName: 'Return',
         body: 'Return',
-        doc: 'Returns from a subroutine to which execution had previously jumped via [function-call](https://www.autohotkey.com/docs/v1/Functions.htm), [Gosub](https://www.autohotkey.com/docs/v1/lib/Gosub.htm), [Hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm) activation, [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), or other means.',
+        doc: 'Returns from a subroutine to which execution had previously jumped via [function-call](https://www.autohotkey.com/docs/v1/Functions.htm), [GoSub](https://www.autohotkey.com/docs/v1/lib/GoSub.htm), [Hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm) activation, [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), or other means.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Return.htm',
         exp: [

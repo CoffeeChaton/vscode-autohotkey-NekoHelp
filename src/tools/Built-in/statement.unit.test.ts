@@ -112,8 +112,6 @@ describe('check Statement ruler', () => {
             [
                 ['Case', 'https://www.autohotkey.com/docs/v1/lib/Switch.htm'],
                 ['Default', 'https://www.autohotkey.com/docs/v1/lib/Switch.htm'],
-                // GoSub -> Gosub
-                ['GoSub', 'https://www.autohotkey.com/docs/v1/lib/Gosub.htm'],
                 ['If', 'https://www.autohotkey.com/docs/v1/lib/IfExpression.htm'],
                 // If / IfEqual / IfNotEqual / IfLess / IfLessOrEqual / IfGreater / IfGreaterOrEqual
                 ['IfGreater', 'https://www.autohotkey.com/docs/v1/lib/IfEqual.htm'],
