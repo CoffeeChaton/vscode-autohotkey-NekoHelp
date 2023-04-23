@@ -51,7 +51,7 @@ describe('check Ahk2exeData ruler', () => {
         expect.hasAssertions();
 
         const st1: string = (repository.comment_ahk2exe.match)
-            .replace('^[ \\t]*;(?i:@Ahk2Exe-(', '')
+            .replace('^[ \\t]*;(?i:(@Ahk2Exe-)(', '')
             .replace(')\\b).*', '');
 
         const arr: string = Ahk2exeData

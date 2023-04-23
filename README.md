@@ -28,6 +28,7 @@ AutoHotKey v1 edit-support for VS Code
   - [Better highlight](#better-highlight)
     - [of Legacy assignment](#of-legacy-assignment)
     - [of Numbers](#of-numbers)
+    - [of ahk2exe](#of-ahk2exe)
   - [Quick Log Msg](#quick-log-msg)
   - [Privacy Statement](#privacy-statement)
   - [Performance](#performance)
@@ -385,6 +386,35 @@ _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=z
   }
   ```
 
+  </details>
+
+### of ahk2exe
+
+![img1](./image/ahk2exe-1.png)
+
+- feat: the `@Ahk2Exe` of `;@Ahk2Exe-XXX` provide semantics as `"other.customize.keyword.comment.ahk2exe.ahk"`
+
+  <details>
+    <summary>other-style</summary>
+
+  ```jsonc
+  // settings.json
+  {
+      "editor.tokenColorCustomizations": {
+          "textMateRules": [
+              {
+                  "scope": "other.customize.keyword.comment.ahk2exe.ahk",
+                  "settings": {
+                      "foreground": "#C678DD"
+                  }
+              }
+          ]
+      }
+  }
+  ```
+
+  ![img2](./image/ahk2exe-2.png)
+  > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1518496989>
   </details>
 
 ## Quick Log Msg

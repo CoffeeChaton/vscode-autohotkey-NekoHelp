@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [v0.0.37(2023-04-23)](#v00372023-04-23)
   - [v0.0.36(2023-04-23)](#v00362023-04-23)
   - [v0.0.35(2023-04-16)](#v00352023-04-16)
   - [v0.0.34(2023-04-08)](#v00342023-04-08)
@@ -15,6 +16,28 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## v0.0.37(2023-04-23)
+
+- feat: the `@Ahk2Exe` of `;@Ahk2Exe-XXX` provide semantics as `"other.customize.keyword.comment.ahk2exe.ahk"`
+
+  ```jsonc
+  // settings.json
+  {
+      "editor.tokenColorCustomizations": {
+          "textMateRules": [
+              {
+                  "scope": "other.customize.keyword.comment.ahk2exe.ahk",
+                  "settings": {
+                      "foreground": "#C678DD"
+                  }
+              }
+          ]
+      }
+  }
+  ```
+
+  > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1518496989>
 
 ## v0.0.36(2023-04-23)
 

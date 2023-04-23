@@ -198,8 +198,11 @@
             ]
         },
         "comment_ahk2exe": {
-            "captures": { "1": { "name": "keyword.comment.ahk2exe.ahk" } },
-            "match": "^[ \\t]*;(?i:@Ahk2Exe-(IgnoreBegin|IgnoreEnd|AddResource|Bin|Base|ConsoleApp|Cont|Debug|ExeName|Let|Nop|Obey|PostExec|ResourceID|SetMainIcon|SetCompanyName|SetCopyright|SetDescription|SetFileVersion|SetInternalName|SetLanguage|SetLegalTrademarks|SetName|SetOrigFilename|SetProductName|SetProductVersion|SetVersion|Set|UpdateManifest|UseResourceLang)\\b).*",
+            "captures": {
+                "1": { "name": "other.customize.keyword.comment.ahk2exe.ahk" },
+                "2": { "name": "keyword.comment.ahk2exe.ahk" }
+            },
+            "match": "^[ \\t]*;(?i:(@Ahk2Exe-)(IgnoreBegin|IgnoreEnd|AddResource|Bin|Base|ConsoleApp|Cont|Debug|ExeName|Let|Nop|Obey|PostExec|ResourceID|SetMainIcon|SetCompanyName|SetCopyright|SetDescription|SetFileVersion|SetInternalName|SetLanguage|SetLegalTrademarks|SetName|SetOrigFilename|SetProductName|SetProductVersion|SetVersion|Set|UpdateManifest|UseResourceLang)\\b).*",
             "name": "comment.line.ahk2exe.ahk"
         },
         "comment_neko_help_ignore": {
@@ -228,8 +231,11 @@
                 { "include": "#comment_neko_help_ignore" },
                 { "include": "#comment_ahk2exe" },
                 {
-                    "captures": { "1": { "name": "keyword.comment.ahk2exe.ahk" } },
-                    "match": "^[ \\t]*;(?i:@Ahk2Exe-(%\\w+%)).*",
+                    "captures": {
+                        "1": { "name": "other.customize.keyword.comment.ahk2exe.ahk" },
+                        "2": { "name": "keyword.comment.ahk2exe.ahk" }
+                    },
+                    "match": "^[ \\t]*;(?i:(@Ahk2Exe-)(%\\w+%)).*",
                     "name": "comment.line.ahk2exe.ahk"
                 },
                 {
@@ -271,8 +277,11 @@
                     ]
                 },
                 {
-                    "begin": "^[ \\t]*/\\*(?i:@Ahk2Exe-(Keep)\\b)",
-                    "beginCaptures": { "1": { "name": "keyword.comment.ahk2exe.keep.ahk" } },
+                    "begin": "^[ \\t]*/\\*(?i:(@Ahk2Exe-)(Keep)\\b)",
+                    "beginCaptures": {
+                        "1": { "name": "other.customize.keyword.comment.ahk2exe.ahk" },
+                        "2": { "name": "keyword.comment.ahk2exe.keep.ahk" }
+                    },
                     "end": "^[ \\t]*\\*/",
                     "name": "comment.block.ahk",
                     "patterns": [
