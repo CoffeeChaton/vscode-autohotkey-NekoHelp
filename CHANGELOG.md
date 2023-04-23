@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.36(2023-04-XX)](#next-v00362023-04-xx)
+  - [v0.0.36(2023-04-23)](#v00362023-04-23)
   - [v0.0.35(2023-04-16)](#v00352023-04-16)
   - [v0.0.34(2023-04-08)](#v00342023-04-08)
   - [v0.0.33(2023-04-02)](#v00332023-04-02)
@@ -16,11 +16,11 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.36(2023-04-XX)
+## v0.0.36(2023-04-23)
 
 - feat: add [Quick Log Msg](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#quick-log-msg)
 - feat: add _Go to Definition_ and _hover_ of `xxx.Method(` via `"AhkNekoHelp.method"` [doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md)
-  1. only _Completion_ support `class in class` , _Go to Definition_ not yet supported.
+  1. only _Completion_ support `class in class` , other not yet supported.
 - feat: snippet Completions for @param JSDoc Tags
   > reference <https://devblogs.microsoft.com/typescript/announcing-typescript-5-1-beta/#snippet-completions-for-param-jsdoc-tags>
 - fix: don't provide snippet completions in comment
