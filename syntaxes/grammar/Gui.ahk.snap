@@ -1,0 +1,74 @@
+>Gui, Add, UpDown, vMyUpDown Range1-10, 5
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
+#                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
+#                                 ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk constant.numeric.gui.ahk
+#                                  ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk
+#                                   ^^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+#                                     ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                                      ^ source.ahk meta.command.line.gui.ahk
+#                                       ^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+>; https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#UpDown
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Gui, Add, UpDown, vMyUpDown Range1-1000, 5
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
+#                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
+#                                 ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk constant.numeric.gui.ahk
+#                                  ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk
+#                                   ^^^^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+#                                       ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                                        ^ source.ahk meta.command.line.gui.ahk
+#                                         ^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+>Gui, Add, UpDown, vMyUpDown Range-50-50, 5
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
+#                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
+#                                 ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk
+#                                  ^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk constant.numeric.gui.ahk
+#                                    ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk
+#                                     ^^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+#                                       ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                                        ^ source.ahk meta.command.line.gui.ahk
+#                                         ^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+>Gui, Add, UpDown, vMyUpDown Range-10--5, 5
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
+#                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
+#                                 ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk
+#                                  ^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk constant.numeric.gui.ahk
+#                                    ^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk
+#                                     ^ source.ahk meta.command.line.gui.ahk keyword.operator.arithmetic.ahk
+#                                      ^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+#                                       ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                                        ^ source.ahk meta.command.line.gui.ahk
+#                                         ^ source.ahk meta.command.line.gui.ahk constant.numeric.decimal.ahk
+>
+>; Range(?:-)?\d
+#^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>; https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#UpDown_Options
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk

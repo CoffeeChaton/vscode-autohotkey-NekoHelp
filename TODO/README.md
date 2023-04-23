@@ -1,6 +1,5 @@
 # TODO TODO list
 
-- [add test of tmLanguage.json](https://github.com/Microsoft/TypeScript-TmLanguage)
 - [diag of `If Var op Value`](https://www.autohotkey.com/docs/v1/Language.htm#if-statement)
 - add `RegExMatch((Text := q.Read()), "OU)([^\x00-\x7F])", Found)` of `Found`...
 - add diag auto check of `catch{} ;null catch`

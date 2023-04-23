@@ -156,6 +156,14 @@
                     "captures": { "1": { "name": "constant.numeric.gui.ahk" } }
                 },
                 {
+                    "match": "\\b(?i:(Range))-?(\\d+)-",
+                    "name": "meta.keyword.string.gui.range.ahk",
+                    "captures": {
+                        "1": { "name": "keyword.string.gui.range.ahk" },
+                        "2": { "name": "constant.numeric.gui.ahk" }
+                    }
+                },
+                {
                     "match": "\\b(?i:bold|italic|strike|underline|norm)\\b",
                     "name": "keyword.string.gui.font.style.ahk"
                 },

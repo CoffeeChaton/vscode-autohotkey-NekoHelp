@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.38(2023-04-XX)](#next-v00382023-04-xx)
   - [v0.0.37(2023-04-23)](#v00372023-04-23)
   - [v0.0.36(2023-04-23)](#v00362023-04-23)
   - [v0.0.35(2023-04-16)](#v00352023-04-16)
@@ -17,9 +18,24 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
+## Next v0.0.38(2023-04-XX)
+
+- fix: `Gui` `Range` option syntax-highlight
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-gui-opt-range.png)
+
+- [issues #12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757) style
+  - part-8
+    1. class : fix it at [v0.0.35(2023-04-16)](#v00352023-04-16)
+    2. //TODO method : not support it now
+       - CodeLens
+       - find all references
+
 ## v0.0.37(2023-04-23)
 
 - feat: the `@Ahk2Exe` of `;@Ahk2Exe-XXX` provide semantics as `"other.customize.keyword.comment.ahk2exe.ahk"`
+
+  <details>
+    <summary>settings.json</summary>
 
   ```jsonc
   // settings.json
@@ -38,6 +54,7 @@
   ```
 
   > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1518496989>
+  </details>
 
 ## v0.0.36(2023-04-23)
 
