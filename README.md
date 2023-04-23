@@ -303,6 +303,9 @@ support to find like
 - [x] `Signature` of `built-in function`
 - [ ] `command` coming soon.
 
+- calc `[]` and `{}` , at function arguments.
+  ![img](image/sign.gif)
+
 ## IntelliSense
 
 ### 1. Snippets of your function
@@ -389,6 +392,7 @@ _theme from [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=z
 default via `ctrl+alt+l`
 
 ```jsonc
+// settings.json
 {
     "AhkNekoHelp.customize.displayLogMessage": "MsgBox % \"♥ ~ {selectText} \" {selectText} \" at \" A_ThisFunc"
 }

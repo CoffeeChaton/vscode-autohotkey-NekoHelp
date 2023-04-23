@@ -68,13 +68,6 @@
                 "title": "Console Log: Display Log Message"
             }
         ],
-        "keybindings": [
-            {
-                "command": "ahk.nekoHelp.displayLogMessage",
-                "key": "ctrl+alt+l",
-                "when": "editorLangId == ahk"
-            }
-        ],
         "configuration": [
             {
                 "type": "object",
@@ -448,6 +441,13 @@
                 "path": "./syntaxes/ahk.tmLanguage.json"
             }
         ],
+        "keybindings": [
+            {
+                "command": "ahk.nekoHelp.displayLogMessage",
+                "key": "ctrl+alt+l",
+                "when": "editorLangId == ahk"
+            }
+        ],
         "languages": [
             {
                 "id": "ahk",
@@ -482,7 +482,7 @@
         "@typescript-eslint/parser": "^5.59.0",
         "@vscode/test-electron": "^2.3.0",
         "@vscode/vsce": "^2.19.0",
-        "esbuild": "^0.17.17",
+        "esbuild": "^0.17.18",
         "eslint": "^8.39.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",

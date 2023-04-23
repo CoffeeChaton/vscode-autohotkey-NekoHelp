@@ -30,6 +30,9 @@
   4. Flow of Control plus like : `IfBetween` `LoopFiles`
   5. Special Keys like : `{Text}` `{Up}`
 - fix: sign of use-function not any return value miss `}` case.
+- feat: sign calc `[]` and `{}` , at function arguments.
+  > `foo(a, [0,1,2,3], {k:"v",k2:"v2"}, d)`
+  > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/sign.gif)
 
 ## v0.0.35(2023-04-16)
 

@@ -21,10 +21,7 @@ export function rmFileDiag(uri: vscode.Uri): void {
 }
 
 export function rmAllDiag(): void {
-    // eslint-disable-next-line unicorn/no-array-for-each
-    diagColl.forEach((uri: vscode.Uri, diagnostics: readonly vscode.Diagnostic[]): void => {
-        //  if (!isAhk(uri.fsPath)) return;
-
+    for (const [uri, diagnostics] of diagColl) {
         diagColl.set(uri, getWithOutNekoDiag(diagnostics));
-    });
+    }
 }

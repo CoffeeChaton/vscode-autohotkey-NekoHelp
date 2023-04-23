@@ -40,8 +40,32 @@ export function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Positi
         const { upName, col } = fnRefData;
         let comma = 0;
         let brackets = 0;
+        let brackets2 = 0;
+        let brackets3 = 0;
+
         for (let i = col; i < character; i++) {
             const s: string = leftStr[i];
+            switch (s) {
+                case '[':
+                    brackets2++;
+                    break;
+                case ']':
+                    brackets2--;
+                    break;
+
+                case '{':
+                    brackets3++;
+                    break;
+                case '}':
+                    brackets3--;
+                    break;
+                default:
+                    break;
+            }
+
+            //
+            if (brackets2 > 0 || brackets3 > 0) continue;
+
             if (s === '(') {
                 brackets++;
             } else if (s === ')') {
