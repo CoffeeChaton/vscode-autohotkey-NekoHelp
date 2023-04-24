@@ -38,6 +38,24 @@
      }
     ```
 
+- feat: support `method` findAllRef / CodeLens support `__New()`
+
+  ```js
+  let a = [
+      // support method
+      '__New meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_NewDelete
+
+      // not plan to support
+      '__Get meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Meta_Functions
+      '__Set meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Meta_Functions
+      '__Call meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Meta_Functions
+
+      '__Delete meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_NewDelete
+      '__Handle property (File)', // https://www.autohotkey.com/docs/v1/lib/File.htm#__Handle
+      '__Init method', // 'https://www.autohotkey.com/docs/v1/Objects.htm#Custom_Classes_var'
+  ];
+  ```
+
 ## v0.0.37(2023-04-23)
 
 - feat: the `@Ahk2Exe` of `;@Ahk2Exe-XXX` provide semantics as `"other.customize.keyword.comment.ahk2exe.ahk"`

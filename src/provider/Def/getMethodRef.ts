@@ -7,6 +7,7 @@ import { enumLog } from '../../tools/enumErr';
 import type { TMethodRef } from '../../tools/Method/fileMethodRef';
 import { fileMethodRef } from '../../tools/Method/fileMethodRef';
 import { getMethodPrecisionMode } from '../../tools/Method/Method';
+import { searchAllClassRefNew } from './searchAllClassRefNew';
 
 function MethodRef2Location(
     uri: vscode.Uri,
@@ -39,8 +40,14 @@ function MethodRef2LocationPrecision(
 export function getMethodRef(DA: CAhkFunc): vscode.Location[] | null {
     const { findAllRef } = getMethodConfig();
 
-    const wordUp: string = DA.upName;
     const list: vscode.Location[] = [new vscode.Location(DA.uri, DA.selectionRange)];
+
+    const wordUp: string = DA.upName;
+    if (wordUp === '__NEW') {
+        const className: string = DA.defStack[0];
+        return searchAllClassRefNew(className, list);
+        //
+    }
 
     for (const AhkFileData of pm.getDocMapValue()) {
         const refList: readonly TMethodRef[] | undefined = fileMethodRef.up(AhkFileData).get(wordUp);
