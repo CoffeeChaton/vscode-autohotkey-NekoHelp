@@ -6,6 +6,7 @@ import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { RefLike2Location } from './getFnRef';
 import { getFucDefWordUpFix } from './getFucDefWordUpFix';
+import { getMethodRef } from './getMethodRef';
 import { isPosAtMethodName } from './isPosAtMethodName';
 import { posAtFnRef } from './posAtFnRef';
 
@@ -17,7 +18,12 @@ export function getFuncDef(
 ): vscode.Location[] | null {
     const { AST, DocStrMap } = AhkFileData;
 
-    if (isPosAtMethodName(getDAWithPos(AST, position), position)) return null;
+    const DA: CAhkFunc | null = getDAWithPos(AST, position);
+    if (DA !== null && isPosAtMethodName(DA, position)) {
+        return listAllUsing
+            ? getMethodRef(DA)
+            : [new vscode.Location(DA.uri, DA.nameRange)];
+    }
 
     const { line, character } = position;
     const AhkTokenLine: TAhkTokenLine = DocStrMap[line];

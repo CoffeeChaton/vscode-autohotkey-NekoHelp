@@ -86,7 +86,7 @@ function class2Method(
     return arr;
 }
 
-function getMethodPrecisionMode(
+export function getMethodPrecisionMode(
     ref: TMethodRef,
     AhkFileData: TAhkFileData,
 ): readonly CAhkFunc[] | null {

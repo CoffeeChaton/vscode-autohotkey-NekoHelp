@@ -33,6 +33,10 @@ const indexDataMap3 = new Map<string, TIndexData>();
 // 7 - sub-command
 // 8 - built-in method/property
 const indexDataMap6 = new Map<string, TIndexData>();
+// 99 - Ahk2Exe compiler
+
+// eslint-disable-next-line sonarjs/no-unused-collection
+const arr7: TIndexData[] = [];
 
 for (const Data of indexData) {
     const keyRawName: string = Data[0];
@@ -53,6 +57,18 @@ for (const Data of indexData) {
         case 6:
             indexDataMap6.set(keyRawName, Data);
             break;
+        case 7:
+            if (
+                Data[0].includes('Transform')
+                || Data[0].includes('(Gui)')
+                || Data[0].includes('(GuiControl)')
+                || Data[0].includes('(Menu)')
+            ) {
+                continue;
+            }
+            arr7.push(Data);
+            break;
+
         default:
             break;
     }

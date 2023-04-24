@@ -31,6 +31,7 @@ export type TMethodModeOpt = 'loose_mode' | 'precision_mode' | 'precision_or_loo
 export type TMethod = {
     gotoDef: TMethodModeOpt,
     hover: TMethodModeOpt,
+    findAllRef: 'loose_mode' | 'precision_mode',
 };
 
 type TempConfigs = {
