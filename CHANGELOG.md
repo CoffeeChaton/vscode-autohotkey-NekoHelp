@@ -28,10 +28,15 @@
 
 - [issues #12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757) style
   - part-8
-    1. class : fix it at [v0.0.35(2023-04-16)](#v00352023-04-16)
-    2. method
-       - find all references (via `"AhkNekoHelp.method"`)
-       - CodeLens
+
+    ```jsonc
+    "AhkNekoHelp.method": {
+       "gotoDef": "precision_mode", // v0.0.36(2023-04-23)
+       "hover": "precision_mode", // v0.0.36(2023-04-23)
+       "findAllRef": "precision_mode",
+       "CodeLens": "none"
+     }
+    ```
 
 ## v0.0.37(2023-04-23)
 

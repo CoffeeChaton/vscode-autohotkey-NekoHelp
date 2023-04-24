@@ -32,6 +32,7 @@ export type TMethod = {
     gotoDef: TMethodModeOpt,
     hover: TMethodModeOpt,
     findAllRef: 'loose_mode' | 'precision_mode',
+    CodeLens: 'loose_mode' | 'none' | 'precision_mode',
 };
 
 type TempConfigs = {

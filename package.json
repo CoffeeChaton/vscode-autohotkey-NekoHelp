@@ -381,12 +381,22 @@
                                     "precision_mode"
                                 ],
                                 "default": "precision_mode"
+                            },
+                            "CodeLens": {
+                                "type": "string",
+                                "enum": [
+                                    "none",
+                                    "loose_mode",
+                                    "precision_mode"
+                                ],
+                                "default": "none"
                             }
                         },
                         "default": {
                             "gotoDef": "precision_mode",
                             "hover": "precision_mode",
-                            "findAllRef": "precision_mode"
+                            "findAllRef": "precision_mode",
+                            "CodeLens": "none"
                         },
                         "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))"
                     },
