@@ -63,6 +63,9 @@ for (const Data of indexData) {
                 || Data[0].includes('(Gui)')
                 || Data[0].includes('(GuiControl)')
                 || Data[0].includes('(Menu)')
+                || Data[0].includes('(SysGet)')
+                || Data[0].includes('(WinSet)')
+                // || Data[0].includes('(WinGet)')
             ) {
                 continue;
             }
@@ -77,6 +80,8 @@ for (const Data of indexData) {
 describe('check cmd sign ruler', () => {
     it('check : 0 - directive', () => {
         expect.hasAssertions();
+
+        // console.log('🚀 ~ arr7:', arr7);
 
         const myList: string[] = DirectivesList.map(({ keyRawName }): `#${string}` => keyRawName);
         const doc: string[] = [...indexDataMap0.keys()];

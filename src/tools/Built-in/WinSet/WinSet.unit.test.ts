@@ -98,23 +98,20 @@ describe('check WinSet subCmd ruler', () => {
         expect(errList0).toHaveLength(0);
     });
 
-    /*
     it('check : tmLanguage ruler', () => {
         expect.hasAssertions();
 
-        const tmArr: string[] = repository.command_sysget.begin
+        const tmArr: string[] = repository.command_winset.begin
             .replace(
-                '(?:^|[ \\t:])\\b(?i:(SysGet)\\b[ \\t]*,?[ \\t]*(?:[#$@\\w\\x{A1}-\\x{FFFF}]+)[ \\t]*,[ \\t]*\\b(',
+                '(?:^|[ \\t:])\\b(?i:(WinSet)\\b[ \\t]*,?[ \\t]*\\b(',
                 '',
             )
             .replace(')\\b)', '')
             .split('|');
 
-        const TsArr: string[] = SysGetSubCmdList
-            .filter(({ SubCommand }: TSysGetCmdElement): boolean => !SubCommand.includes('('))
-            .map(({ SubCommand }: TSysGetCmdElement): string => SubCommand);
+        const TsArr: string[] = WinSetSubCmdList
+            .map((v): string => v.SubCommand);
 
         expect(tmArr).toStrictEqual(TsArr);
     });
-    */
 });
