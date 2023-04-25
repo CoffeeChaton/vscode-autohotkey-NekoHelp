@@ -1,0 +1,11 @@
+WinSet, AlwaysOnTop, OnOffToggle, WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Bottom, , WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Top, , WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Disable, , WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Enable, , WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Redraw, , WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Style, N, WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, ExStyle, N, WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Region, options, WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, Transparent, N, WinTitle, WinText, ExcludeTitle, ExcludeText
+WinSet, TransColor, Color, WinTitle, WinText, ExcludeTitle, ExcludeText

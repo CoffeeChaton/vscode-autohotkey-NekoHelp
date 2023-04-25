@@ -31,6 +31,7 @@ import { hoverMenuParam } from './tools/hoverMenuParam';
 import { hoverMethod } from './tools/hoverMethod';
 import { hoverMultiLine } from './tools/hoverMultiLine';
 import { hoverSysGetParam } from './tools/hoverSysGetParam';
+import { hoverWinSetParam } from './tools/hoverWinSetParam';
 
 function HoverOfFunc(
     document: vscode.TextDocument,
@@ -120,6 +121,9 @@ function HoverProviderCore(
 
     const SysGetParam: vscode.MarkdownString | null = hoverSysGetParam(AhkTokenLine, position);
     if (SysGetParam !== null) return new vscode.Hover(SysGetParam);
+
+    const WinSetParam: vscode.MarkdownString | null = hoverWinSetParam(AhkTokenLine, position);
+    if (WinSetParam !== null) return new vscode.Hover(WinSetParam);
 
     if (AhkFunc !== null) {
         const DAmd: vscode.MarkdownString | null = DeepAnalysisHover(AhkFunc, wordUp, position);

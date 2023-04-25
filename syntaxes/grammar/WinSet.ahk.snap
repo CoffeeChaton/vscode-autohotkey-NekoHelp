@@ -1,0 +1,154 @@
+>WinSet, AlwaysOnTop, OnOffToggle, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                    ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                 ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                           ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Bottom, , WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#              ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.winset.ahk
+#                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                 ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                           ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Top, , WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#           ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#            ^ source.ahk meta.command.line.winset.ahk
+#             ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#              ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                       ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                        ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                 ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                              ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                               ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Disable, , WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#               ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.winset.ahk
+#                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                  ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                           ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                            ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                    ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                     ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                  ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                   ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Enable, , WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#              ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.winset.ahk
+#                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                 ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                           ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Redraw, , WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#              ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.winset.ahk
+#                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                 ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                           ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Style, N, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#             ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#              ^^ source.ahk meta.command.line.winset.ahk
+#                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                 ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                           ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, ExStyle, N, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#               ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                ^^ source.ahk meta.command.line.winset.ahk
+#                  ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                   ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                            ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                             ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                     ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                      ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                    ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Region, options, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#              ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#               ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                       ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                        ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                 ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                  ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                           ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                        ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                         ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, Transparent, N, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                    ^^ source.ahk meta.command.line.winset.ahk
+#                      ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                       ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                 ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                         ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                          ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                       ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                        ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+>WinSet, TransColor, Color, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winset.ahk support.function.command.winset.ahk
+#      ^^ source.ahk meta.command.line.winset.ahk
+#        ^^^^^^^^^^ source.ahk meta.command.line.winset.ahk keyword.command.option.param.winset.ahk
+#                  ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                   ^^^^^^ source.ahk meta.command.line.winset.ahk
+#                         ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                          ^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                   ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                    ^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                            ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                             ^^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
+#                                                          ^ source.ahk meta.command.line.winset.ahk punctuation.ahk
+#                                                           ^^^^^^^^^^^^ source.ahk meta.command.line.winset.ahk
