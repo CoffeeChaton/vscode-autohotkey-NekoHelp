@@ -20,6 +20,7 @@
 
 ## Next v0.0.38(2023-04-XX)
 
+- feat: format-all-file `'select command first optional comma style'` only show if `"AhkNekoHelp.format.removeFirstCommaCommand" > 0`.
 - feat: add [WinSet](https://www.autohotkey.com/docs/v1/lib/WinSet.htm) SubCommand
   1. syntax-highlight
   2. completion (default: `false`)
