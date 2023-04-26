@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
@@ -31,6 +32,7 @@ import { hoverMenuParam } from './tools/hoverMenuParam';
 import { hoverMethod } from './tools/hoverMethod';
 import { hoverMultiLine } from './tools/hoverMultiLine';
 import { hoverSysGetParam } from './tools/hoverSysGetParam';
+import { hoverWinGetParam } from './tools/hoverWinGetParam';
 import { hoverWinSetParam } from './tools/hoverWinSetParam';
 
 function HoverOfFunc(
@@ -110,20 +112,19 @@ function HoverProviderCore(
     );
     if (hoverLabelOrFuncMd !== null) return new vscode.Hover(hoverLabelOrFuncMd);
 
-    const guiParam: vscode.MarkdownString | null = hoverGuiParam(AhkTokenLine, position);
-    if (guiParam !== null) return new vscode.Hover(guiParam);
-
-    const GuiControlParam: vscode.MarkdownString | null = hoverGuiControlParam(AhkTokenLine, position);
-    if (GuiControlParam !== null) return new vscode.Hover(GuiControlParam);
-
-    const MenuParam: vscode.MarkdownString | null = hoverMenuParam(AhkTokenLine, position);
-    if (MenuParam !== null) return new vscode.Hover(MenuParam);
-
-    const SysGetParam: vscode.MarkdownString | null = hoverSysGetParam(AhkTokenLine, position);
-    if (SysGetParam !== null) return new vscode.Hover(SysGetParam);
-
-    const WinSetParam: vscode.MarkdownString | null = hoverWinSetParam(AhkTokenLine, position);
-    if (WinSetParam !== null) return new vscode.Hover(WinSetParam);
+    type TF0 = (AhkTokenLine: TAhkTokenLine, position: vscode.Position) => vscode.MarkdownString | null;
+    const fnList: TF0[] = [
+        hoverGuiParam,
+        hoverGuiControlParam,
+        hoverMenuParam,
+        hoverSysGetParam,
+        hoverWinSetParam,
+        hoverWinGetParam,
+    ];
+    for (const fn of fnList) {
+        const param: vscode.MarkdownString | null = fn(AhkTokenLine, position);
+        if (param !== null) return new vscode.Hover(param);
+    }
 
     if (AhkFunc !== null) {
         const DAmd: vscode.MarkdownString | null = DeepAnalysisHover(AhkFunc, wordUp, position);

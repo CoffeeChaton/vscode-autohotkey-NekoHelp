@@ -104,6 +104,7 @@ type TempConfigs = {
             GuiControl: boolean,
             SysGet: boolean,
             WinSet?: boolean, // api-change
+            WinGet?: boolean, // api-change
         },
     },
     SymbolProvider: {

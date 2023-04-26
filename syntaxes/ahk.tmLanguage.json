@@ -82,6 +82,7 @@
                 { "include": "#command_gui" },
                 { "include": "#command_sysget" },
                 { "include": "#command_winset" },
+                { "include": "#command_winget" },
                 { "include": "#command_gui_control" },
                 { "include": "#command_hotkey" },
                 {
@@ -200,6 +201,16 @@
             "beginCaptures": {
                 "1": { "name": "support.function.command.winset.ahk" },
                 "2": { "name": "keyword.command.option.param.winset.ahk" }
+            },
+            "patterns": [ { "include": "#expression" } ]
+        },
+        "command_winget": {
+            "name": "meta.command.line.winget.ahk",
+            "begin": "(?:^|[ \\t:])\\b(?i:(WinGet)\\b[ \\t]*,?[ \\t]*(?:[#$@\\w\\x{A1}-\\x{FFFF}]+)[ \\t]*,?[ \\t]*\\b(ID|IDLast|PID|ProcessName|ProcessPath|Count|List|MinMax|ControlList|ControlListHwnd|Transparent|TransColor|Style|ExStyle)\\b)",
+            "end": "(\\n)",
+            "beginCaptures": {
+                "1": { "name": "support.function.command.winget.ahk" },
+                "2": { "name": "keyword.command.option.param.winget.ahk" }
             },
             "patterns": [ { "include": "#expression" } ]
         },

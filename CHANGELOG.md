@@ -25,6 +25,10 @@
   1. syntax-highlight
   2. completion (default: `false`)
   3. hover
+- feat: add [WinGet](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#SubCommands) SubCommand
+  1. syntax-highlight
+  2. completion (default: `false`)
+  3. hover
 - test: add test from ahk-doc <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - fix: `hotkey, if` and `hotkey, key` syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-hotkey.png)
@@ -54,7 +58,6 @@
       '__Get meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Meta_Functions
       '__Set meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Meta_Functions
       '__Call meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Meta_Functions
-
       '__Delete meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_NewDelete
       '__Handle property (File)', // https://www.autohotkey.com/docs/v1/lib/File.htm#__Handle
       '__Init method', // 'https://www.autohotkey.com/docs/v1/Objects.htm#Custom_Classes_var'

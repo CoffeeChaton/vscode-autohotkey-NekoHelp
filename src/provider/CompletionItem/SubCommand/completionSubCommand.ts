@@ -7,6 +7,7 @@ import { snippetGui } from '../../../tools/Built-in/Gui/gui.tools';
 import { snippetGuiControl } from '../../../tools/Built-in/GuiControl/GuiControl.tools';
 import { snippetMenu } from '../../../tools/Built-in/Menu/Menu.tools';
 import { snippetSysGet } from '../../../tools/Built-in/SysGet/SysGet.tools';
+import { snippetWinGet } from '../../../tools/Built-in/WinGet/WinGet.tools';
 import { snippetWinSet } from '../../../tools/Built-in/WinSet/WinSet.tools';
 import { enumLog } from '../../../tools/enumErr';
 
@@ -47,6 +48,7 @@ export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine
             if (subCmdPlus.Menu && 'Menu'.toLowerCase().startsWith(subStr2)) list.push(...snippetMenu);
             if (subCmdPlus.SysGet && 'SysGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetSysGet);
             if (subCmdPlus.WinSet === true && 'WinSet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinSet);
+            if (subCmdPlus.WinGet === true && 'WinGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinGet);
 
             // todo something
             return list;

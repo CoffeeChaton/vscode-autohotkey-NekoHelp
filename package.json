@@ -289,6 +289,10 @@
                             "WinSet": {
                                 "type": "boolean",
                                 "default": false
+                            },
+                            "WinGet": {
+                                "type": "boolean",
+                                "default": false
                             }
                         },
                         "default": {
@@ -296,7 +300,8 @@
                             "Gui": true,
                             "GuiControl": true,
                             "SysGet": true,
-                            "WinSet": false
+                            "WinSet": false,
+                            "WinGet": false
                         },
                         "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` / `SysGet` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.subCmdPlus.md))"
                     }
@@ -500,7 +505,7 @@
         "@swc/jest": "^0.2.26",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.5.1",
-        "@types/node": "^18.16.0",
+        "@types/node": "^18.16.1",
         "@types/vscode": "^1.77.0",
         "@typescript-eslint/eslint-plugin": "^5.59.1",
         "@typescript-eslint/parser": "^5.59.1",

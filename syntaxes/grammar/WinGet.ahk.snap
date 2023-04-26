@@ -1,0 +1,422 @@
+>
+>; ID
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , ID, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                      ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                       ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                 ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                          ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                       ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                        ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>WinGet, active_id, ID, A
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                   ^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                     ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                      ^^ source.ahk meta.command.line.winget.ahk
+>WinMaximize, ahk_id %active_id%
+#^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#            ^ source.ahk meta.command.line.ahk
+#             ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                     ^^^^^^^^^ source.ahk meta.command.line.ahk
+#                              ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>MsgBox, "The active window's ID is " active_id
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+#       ^ source.ahk meta.command.line.ahk
+#        ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#         ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                   ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                    ^^^^^^^^^^ source.ahk meta.command.line.ahk
+>
+>; IDLast
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , IDLast, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                          ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                           ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                    ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                     ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                             ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                              ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                           ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                            ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; PID
+#^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , PID, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                       ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                        ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                 ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                  ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                          ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                           ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                        ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                         ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; ProcessName
+#^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , ProcessName, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                               ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                          ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                  ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                   ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                                ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                                 ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; ProcessPath
+#^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , ProcessPath, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                               ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                          ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                  ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                   ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                                ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                                 ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; Count
+#^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , Count, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                          ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                   ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                    ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                            ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                             ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                          ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                           ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; List
+#^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , List, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                        ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                         ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                  ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                   ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                           ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                            ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                          ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>WinGet, id_list, List,,, Program Manager
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                 ^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                     ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                      ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                       ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                        ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>Loop, %id_list%
+#^^^^ source.ahk keyword.control.flow.ahk
+#    ^ source.ahk punctuation.ahk
+#     ^ source.ahk
+#      ^ source.ahk punctuation.definition.variable.percent.ahk
+#       ^^^^^^^ source.ahk
+#              ^ source.ahk punctuation.definition.variable.percent.ahk
+>{
+#^ source.ahk punctuation.bracket.ahk
+>    i := A_Index
+#^^^^^^ source.ahk
+#      ^^ source.ahk keyword.operator.assignment.ahk
+#        ^ source.ahk
+#         ^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+>    this_id := id_list%A_Index%
+#^^^^^^^^^^^^ source.ahk
+#            ^^ source.ahk keyword.operator.assignment.ahk
+#              ^^^^^^^^ source.ahk
+#                      ^ source.ahk punctuation.definition.variable.percent.ahk
+#                       ^^^^^^^ source.ahk variable.other.constant.builtin.ahk
+#                              ^ source.ahk punctuation.definition.variable.percent.ahk
+>    WinActivate, ahk_id %this_id%
+#^^^^ source.ahk
+#    ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.ahk
+#                 ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                       ^ source.ahk meta.command.line.ahk
+#                        ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                         ^^^^^^^ source.ahk meta.command.line.ahk
+#                                ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>    WinGetClass, this_class, ahk_id %this_id%
+#^^^^ source.ahk
+#    ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                            ^ source.ahk meta.command.line.ahk
+#                             ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                   ^ source.ahk meta.command.line.ahk
+#                                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                     ^^^^^^^ source.ahk meta.command.line.ahk
+#                                            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>    WinGetTitle, this_title, ahk_id %this_id%
+#^^^^ source.ahk
+#    ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                            ^ source.ahk meta.command.line.ahk
+#                             ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
+#                                   ^ source.ahk meta.command.line.ahk
+#                                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                     ^^^^^^^ source.ahk meta.command.line.ahk
+#                                            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+>    MsgBox, 4, ,
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+>        (LTrim
+#^^^^^^^^^ source.ahk string.multiline.ahk
+#         ^^^^^^ source.ahk string.multiline.ahk keyword.multiline.ahk
+>            Visiting All Windows
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            %i% of %id_list%
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            ahk_id %this_id%
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            ahk_class %this_class%
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>            %this_title%
+#^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>
+>            Continue?
+#^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.multiline.ahk
+>        )
+#^^^^^^^^^ source.ahk string.multiline.ahk
+>
+>    IfMsgBox, NO
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk punctuation.ahk
+#             ^^^^ source.ahk
+>        break
+#^^^^^^^^ source.ahk
+#        ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>; MinMax
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , MinMax, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                          ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                           ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                    ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                     ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                             ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                              ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                           ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                            ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; ControlList
+#^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , ControlList, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                               ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                          ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                  ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                   ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                                ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                                 ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>WinGet, ActiveControlList, ControlList, A
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                           ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                                      ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                       ^^ source.ahk meta.command.line.winget.ahk
+>Loop, Parse, ActiveControlList, `n
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
+#    ^^ source.ahk meta.loop.ahk
+#      ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
+#           ^ source.ahk punctuation.ahk
+#            ^^^^^^^^^^^^^^^^^^ source.ahk
+#                              ^ source.ahk punctuation.ahk
+#                               ^ source.ahk
+#                                ^^ source.ahk constant.character.escape.ahk
+>{
+#^ source.ahk punctuation.bracket.ahk
+>    MsgBox, 4,, % "Control #" A_Index " is [" A_LoopField "]`nContinue?"
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk constant.numeric.decimal.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^ source.ahk meta.command.line.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                 ^ source.ahk meta.command.line.ahk
+#                  ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                   ^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                            ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                             ^ source.ahk meta.command.line.ahk
+#                              ^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                     ^ source.ahk meta.command.line.ahk
+#                                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                       ^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                            ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                             ^ source.ahk meta.command.line.ahk
+#                                              ^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                                         ^ source.ahk meta.command.line.ahk
+#                                                          ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                                                           ^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                            ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                                              ^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                                                       ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    IfMsgBox, No
+#^^^^ source.ahk
+#    ^^^^^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk punctuation.ahk
+#             ^^^^ source.ahk
+>        break
+#^^^^^^^^ source.ahk
+#        ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>; ControlListHwnd
+#^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , ControlListHwnd, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                                   ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                    ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                             ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                              ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                      ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                       ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                                    ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                                     ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; Transparent
+#^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , Transparent, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                               ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                          ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                  ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                   ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                                ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                                 ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>MouseGetPos,,, MouseWin
+#^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#           ^ source.ahk meta.command.line.ahk punctuation.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.ahk
+#             ^ source.ahk meta.command.line.ahk punctuation.ahk
+#              ^^^^^^^^^ source.ahk meta.command.line.ahk
+>WinGet, Transparent_var, Transparent, ahk_id %MouseWin% ; Transparency of window under the mouse cursor.
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                         ^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                                    ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                     ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                             ^ source.ahk meta.command.line.winget.ahk punctuation.definition.variable.percent.ahk
+#                                              ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                      ^ source.ahk meta.command.line.winget.ahk punctuation.definition.variable.percent.ahk
+#                                                       ^ source.ahk meta.command.line.winget.ahk meta.comment.line.semicolon.ahk
+#                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>; TransColor
+#^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , TransColor, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                              ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                               ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                        ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                         ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                 ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                  ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                               ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                                ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; Style
+#^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , Style, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                         ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                          ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                   ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                    ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                            ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                             ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                          ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                           ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>
+>; ExStyle
+#^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>WinGet, OutputVar , ExStyle, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^ source.ahk meta.command.line.winget.ahk support.function.command.winget.ahk
+#      ^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                    ^^^^^^^ source.ahk meta.command.line.winget.ahk keyword.command.option.param.winget.ahk
+#                           ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                            ^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                     ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                      ^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                              ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                               ^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+#                                                            ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
+#                                                             ^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
+>
+>

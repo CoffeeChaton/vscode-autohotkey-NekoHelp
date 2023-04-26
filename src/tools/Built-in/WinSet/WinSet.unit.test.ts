@@ -1,7 +1,6 @@
 /* eslint-disable jest/no-commented-out-tests */
 /* eslint-disable no-template-curly-in-string */
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
-// import type { TWinSetCmdElement } from './WinSet.data';
 import { WinSetSubCmdList } from './WinSet.data';
 
 describe('check WinSet subCmd ruler', () => {

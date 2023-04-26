@@ -7,6 +7,7 @@
 3. if first word start with `G` `Gu` `Gui` or `GuiControl` provide `GuiControl sub-Command` completion.
 4. if first word start with `S` `Sy` `SysGet` provide `SysGet sub-Command` completion.
 5. `WinSet` ...
+6. `WinGet` ...
 
 ![exp menu command expand](../../image/snippets.expandSubCommand/true-menu.png)
 ![exp gui command expand](../../image/snippets.expandSubCommand/true-gui.png)
