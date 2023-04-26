@@ -29,6 +29,7 @@
   1. syntax-highlight
   2. completion (default: `false`)
   3. hover
+- feat: sub-cmd completion `[` -> `,[$0`
 - test: add test from ahk-doc <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - fix: `hotkey, if` and `hotkey, key` syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-hotkey.png)

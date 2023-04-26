@@ -32,7 +32,13 @@ export const { snippetGui, GuiMDMap } = (() => {
             description: 'sub-command', // Right
         });
         item.kind = vscode.CompletionItemKind.Keyword;
-        item.insertText = new vscode.SnippetString(body);
+        const body2: string = body.includes('[')
+            ? body
+                .replaceAll(/\s*,\s*\[/gu, '[')
+                .replaceAll(/\[\s*,\s*/gu, '[')
+                .replaceAll(/\s*\[\s*/gu, ',[$0 ')
+            : body;
+        item.insertText = new vscode.SnippetString(body2);
         item.detail = 'Gui';
         item.documentation = md;
 
