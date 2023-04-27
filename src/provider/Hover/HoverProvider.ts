@@ -5,16 +5,16 @@ import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
-import { hoverAVar } from '../../tools/Built-in/A_Variables.tools';
-import { hoverBiVar } from '../../tools/Built-in/BiVariables.tools';
-import { hoverWindowsClassIdentifiers } from '../../tools/Built-in/CLSID/WindowsClassIdentifiers.tools';
-import { getHoverCommand2 } from '../../tools/Built-in/Command.tools';
-import { getBuiltInFuncMD } from '../../tools/Built-in/func.tools';
-import { getHoverOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools';
-import { getHoverOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tools';
-import { getHoverStatement } from '../../tools/Built-in/statement.tools';
-import { hover2winMsgMd } from '../../tools/Built-in/Windows_Messages/Windows_Messages.tools';
-import { hoverWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
+import { hoverWindowsClassIdentifiers } from '../../tools/Built-in/100_other/CLSID/WindowsClassIdentifiers.tools';
+import { hover2winMsgMd } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.tools';
+import { hoverWinTitleParam } from '../../tools/Built-in/100_other/WinTitle/WinTitleParameter.tools';
+import { hoverAVar } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
+import { hoverBiVar } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
+import { getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
+import { getHoverStatement } from '../../tools/Built-in/3_foc/foc.tools';
+import { getHoverOperator } from '../../tools/Built-in/4_operator/operator.tools';
+import { getHoverDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
+import { getHoverCommand2 } from '../../tools/Built-in/6_command/Command.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
@@ -145,8 +145,8 @@ function HoverProviderCore(
     for (
         const fn of [
             getHoverCommand2,
-            getHoverOtherKeyWord1,
-            getHoverOtherKeyWord2,
+            getHoverDeclaration,
+            getHoverOperator,
             getHoverStatement,
             hoverAVar,
             hoverWinTitleParam,

@@ -1,7 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
-import { DirectivesMDMap } from '../../../tools/Built-in/Directives.tool';
+import { DirectivesMDMap } from '../../../tools/Built-in/0_directive/Directives.tool';
 
 export function hoverDirectives(
     position: vscode.Position,

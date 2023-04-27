@@ -18,7 +18,8 @@
         { "include": "#string_multi_line" },
         { "include": "#command" },
         { "include": "#builtin_variable" },
-        { "include": "#other_keyword" },
+        { "include": "#declaration" },
+        { "include": "#operator" },
         { "include": "#flow_of_control" },
         { "include": "#number" },
         { "include": "#string" },
@@ -621,21 +622,13 @@
                 }
             ]
         },
-        "other_keyword": {
-            "patterns": [
-                {
-                    "match": "^[ \\t{]*(?i:Static|Global|Local)(?=$|[ \\t])",
-                    "name": "keyword.other.operator.hasdoc.ahk"
-                },
-                {
-                    "match": "(?:^|[ \\t])(?i:and|Between|in|is|new|not|or)(?:$|[ \\t])",
-                    "name": "keyword.other.operator.hasdoc.ahk"
-                },
-                {
-                    "match": "\\b(?i:ByRef)\\b(?:[ \\t])",
-                    "name": "keyword.other.operator.hasdoc.ahk"
-                }
-            ]
+        "declaration": {
+            "match": "^[ \\t{]*(?i:Static|Global|Local)(?=$|[ \\t])",
+            "name": "keyword.other.operator.hasdoc.ahk"
+        },
+        "operator": {
+            "match": "(?:^|[ \\t])(?i:and|Between|in|is|new|not|or|ByRef)(?:$|[ \\t])",
+            "name": "keyword.other.operator.hasdoc.ahk"
         },
         "string": {
             "begin": "(\")",

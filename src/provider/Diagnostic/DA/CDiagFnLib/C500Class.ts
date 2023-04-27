@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 import type { TValMapOut, TValMetaOut } from '../../../../AhkSymbol/CAhkFunc';
 import { EPseudoArray } from '../../../../AhkSymbol/CAhkFunc';
 import { EDiagCodeDA } from '../../../../diag';
-import { AVariablesMDMap } from '../../../../tools/Built-in/A_Variables.tools';
-import { Bi_VarMDMap } from '../../../../tools/Built-in/BiVariables.tools';
+import { AVariablesMDMap } from '../../../../tools/Built-in/1_built_in_var/A_Variables.tools';
+import { Bi_VarMDMap } from '../../../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { ToUpCase } from '../../../../tools/str/ToUpCase';
 import { CDiagFn } from '../../tools/CDiagFn';
 

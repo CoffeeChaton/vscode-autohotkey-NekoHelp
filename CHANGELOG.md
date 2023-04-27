@@ -20,12 +20,17 @@
 
 ## Next v0.0.38(2023-04-XX)
 
+- refactor: like <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - feat: format-all-file `'select command first optional comma style'` only show if `"AhkNekoHelp.format.removeFirstCommaCommand" > 0`.
 - feat: add [WinSet](https://www.autohotkey.com/docs/v1/lib/WinSet.htm) SubCommand
   1. syntax-highlight
   2. completion (default: `false`)
   3. hover
 - feat: add [WinGet](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#SubCommands) SubCommand
+  1. syntax-highlight
+  2. completion (default: `false`)
+  3. hover
+- TODO feat: add [Control](https://www.autohotkey.com/docs/v1/lib/Control.htm) SubCommand
   1. syntax-highlight
   2. completion (default: `false`)
   3. hover

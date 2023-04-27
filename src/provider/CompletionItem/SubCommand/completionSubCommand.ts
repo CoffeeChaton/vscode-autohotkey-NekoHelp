@@ -3,12 +3,12 @@ import { getCommandOptions } from '../../../configUI';
 import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
-import { snippetGui } from '../../../tools/Built-in/Gui/gui.tools';
-import { snippetGuiControl } from '../../../tools/Built-in/GuiControl/GuiControl.tools';
-import { snippetMenu } from '../../../tools/Built-in/Menu/Menu.tools';
-import { snippetSysGet } from '../../../tools/Built-in/SysGet/SysGet.tools';
-import { snippetWinGet } from '../../../tools/Built-in/WinGet/WinGet.tools';
-import { snippetWinSet } from '../../../tools/Built-in/WinSet/WinSet.tools';
+import { snippetGui } from '../../../tools/Built-in/7_sub_command/Gui/Gui.tools';
+import { snippetGuiControl } from '../../../tools/Built-in/7_sub_command/GuiControl/GuiControl.tools';
+import { snippetMenu } from '../../../tools/Built-in/7_sub_command/Menu/Menu.tools';
+import { snippetSysGet } from '../../../tools/Built-in/7_sub_command/SysGet/SysGet.tools';
+import { snippetWinGet } from '../../../tools/Built-in/7_sub_command/WinGet/WinGet.tools';
+import { snippetWinSet } from '../../../tools/Built-in/7_sub_command/WinSet/WinSet.tools';
 import { enumLog } from '../../../tools/enumErr';
 
 function getSubStr2(subStr: string, fistWordUp: string, detail: readonly EDetail[]): string {

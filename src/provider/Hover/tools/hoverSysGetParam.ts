@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { SysGetMDMap } from '../../../tools/Built-in/SysGet/SysGet.tools';
+import { SysGetMDMap } from '../../../tools/Built-in/7_sub_command/SysGet/SysGet.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 

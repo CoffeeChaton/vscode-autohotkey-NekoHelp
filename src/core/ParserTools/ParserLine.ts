@@ -3,7 +3,7 @@ import { CAhkInclude } from '../../AhkSymbol/CAhkInclude';
 import type { CAhkComment, TLineClass } from '../../AhkSymbol/CAhkLine';
 import { CAhkDirectives } from '../../AhkSymbol/CAhkLine';
 import { EDetail } from '../../globalEnum';
-import { DirectivesMDMap } from '../../tools/Built-in/Directives.tool';
+import { DirectivesMDMap } from '../../tools/Built-in/0_directive/Directives.tool';
 import { getRangeOfLine } from '../../tools/range/getRangeOfLine';
 import type { TFuncInput } from '../getChildren';
 import { getComment } from './getComment';

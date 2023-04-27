@@ -1,7 +1,7 @@
 import * as path from 'node:path';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TTokenStream } from '../../globalEnum';
-import { getBuiltInFuncMD } from '../../tools/Built-in/func.tools';
+import { getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
 import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 
 type TMsg = {

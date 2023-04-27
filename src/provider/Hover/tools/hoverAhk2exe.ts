@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
-import { Ahk2exeMdMap } from '../../../tools/Built-in/Ahk2exe.tools';
+import { Ahk2exeMdMap } from '../../../tools/Built-in/99_Ahk2Exe_compiler/Ahk2exe.tools';
 
 export function hoverAhk2exe(AhkTokenLine: TAhkTokenLine, position: vscode.Position): vscode.Hover | null {
     if (!AhkTokenLine.detail.includes(EDetail.inComment)) return null;

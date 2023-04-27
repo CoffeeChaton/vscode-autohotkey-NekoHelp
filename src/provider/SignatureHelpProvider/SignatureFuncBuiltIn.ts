@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { TBiFuncMsg } from '../../tools/Built-in/func.tools';
+import type { TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { CMemo } from '../../tools/CMemo';
 import type { TFnSignData } from './TFnSignData';
 

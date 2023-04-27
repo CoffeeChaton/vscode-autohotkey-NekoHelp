@@ -4,24 +4,24 @@ import type { TTopSymbol } from '../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
-import { getSnippetStartWihA } from '../../tools/Built-in/A_Variables.tools';
-import { getSnipBiVar } from '../../tools/Built-in/BiVariables.tools';
-import { getSnippetCLSID } from '../../tools/Built-in/CLSID/WindowsClassIdentifiers.tools';
-import { getSnippetCommand } from '../../tools/Built-in/Command.tools.completion';
-import { snipDirectives } from '../../tools/Built-in/Directives.tool';
-import { BuiltInFunc2Completion } from '../../tools/Built-in/func.tools';
-import { getSnipJustSnip } from '../../tools/Built-in/Keys_and_other/ahkSnippets.tools';
-import { getSnipStartJoy } from '../../tools/Built-in/Keys_and_other/Joystick';
-import { getSnipStartF } from '../../tools/Built-in/Keys_and_other/keyF12';
-import { getSnipMouseKeyboard } from '../../tools/Built-in/Keys_and_other/MouseKeyboard';
-import { getSnipStartNum } from '../../tools/Built-in/Keys_and_other/NumpadSnippets';
-import { getSnippetOtherKeyWord1 } from '../../tools/Built-in/otherKeyword1.tools';
-import { getSnippetOtherKeyWord2 } from '../../tools/Built-in/otherKeyword2.tools';
-import { ahkSend } from '../../tools/Built-in/Send_tools';
-import { getSnippetStatement } from '../../tools/Built-in/statement.tools';
-import { getSnipStatement2 } from '../../tools/Built-in/statement2.tools';
-import { getSnippetWinMsg } from '../../tools/Built-in/Windows_Messages/Windows_Messages.tools';
-import { getSnippetWinTitleParam } from '../../tools/Built-in/WinTitle/WinTitleParameter.tools';
+import { snipDirectives } from '../../tools/Built-in/0_directive/Directives.tool';
+import { getSnippetCLSID } from '../../tools/Built-in/100_other/CLSID/WindowsClassIdentifiers.tools';
+import { getSnipJustSnip } from '../../tools/Built-in/100_other/Keys_and_other/ahkSnippets.tools';
+import { getSnipStartJoy } from '../../tools/Built-in/100_other/Keys_and_other/Joystick';
+import { getSnipStartF } from '../../tools/Built-in/100_other/Keys_and_other/keyF12';
+import { getSnipMouseKeyboard } from '../../tools/Built-in/100_other/Keys_and_other/MouseKeyboard';
+import { getSnipStartNum } from '../../tools/Built-in/100_other/Keys_and_other/NumpadSnippets';
+import { ahkSend } from '../../tools/Built-in/100_other/Send_tools';
+import { getSnippetWinMsg } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.tools';
+import { getSnippetWinTitleParam } from '../../tools/Built-in/100_other/WinTitle/WinTitleParameter.tools';
+import { getSnippetStartWihA } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
+import { getSnipBiVar } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
+import { BuiltInFunc2Completion } from '../../tools/Built-in/2_built_in_function/func.tools';
+import { getSnippetStatement } from '../../tools/Built-in/3_foc/foc.tools';
+import { getSnipStatement2 } from '../../tools/Built-in/3_foc/foc2.tools';
+import { getSnippetOperator } from '../../tools/Built-in/4_operator/operator.tools';
+import { getSnippetDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
+import { getSnippetCommand } from '../../tools/Built-in/6_command/Command.tools.completion';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
 import { wrapClass } from './classThis/wrapClass';
@@ -74,7 +74,7 @@ function CompletionItemCore(
         ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
         ...ahkSend(AhkFileData, position), // '{'
         ...snipDirectives(subStr),
-        ...getSnippetOtherKeyWord1(lStr, AhkTokenLine),
+        ...getSnippetDeclaration(lStr, AhkTokenLine),
         ...getSnippetCommand(subStr, AhkTokenLine),
         ...completionSubCommand(subStr, AhkTokenLine),
         ...globalValCompletion(DocStrMap, position),
@@ -107,7 +107,7 @@ function CompletionItemCore(
                 ...getSnipStartJoy(PartStr),
                 ...getSnipStartNum(PartStr),
                 ...getSnipStartF(PartStr),
-                ...getSnippetOtherKeyWord2(PartStr),
+                ...getSnippetOperator(PartStr),
             );
         }
     }

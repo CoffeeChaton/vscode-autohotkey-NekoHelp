@@ -13,12 +13,12 @@ import type { TGlobalVal, TGValMap } from '../../core/ParserTools/ahkGlobalDef';
 import { EGlobalDefBy } from '../../core/ParserTools/ahkGlobalDef';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
-import { AVariablesMDMap } from '../Built-in/A_Variables.tools';
-import { Bi_VarMDMap } from '../Built-in/BiVariables.tools';
-import { CommandMDMap } from '../Built-in/Command.tools';
-import { otherKeyword2MD } from '../Built-in/otherKeyword2.tools';
-import { StatementMDMap } from '../Built-in/statement.tools';
-import { WinTitleMDMap } from '../Built-in/WinTitle/WinTitleParameter.tools';
+import { WinTitleMDMap } from '../Built-in/100_other/WinTitle/WinTitleParameter.tools';
+import { AVariablesMDMap } from '../Built-in/1_built_in_var/A_Variables.tools';
+import { Bi_VarMDMap } from '../Built-in/1_built_in_var/BiVariables.tools';
+import { StatementMDMap } from '../Built-in/3_foc/foc.tools';
+import { operatorMD } from '../Built-in/4_operator/operator.tools';
+import { CommandMDMap } from '../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../str/ToUpCase';
 import { pushDef } from './pushDef';
 import { pushRef } from './pushRef';
@@ -175,7 +175,7 @@ export function getUnknownTextMap(
                     || AVariablesMDMap.has(wordUp) || StatementMDMap.has(wordUp)
                     || Bi_VarMDMap.has(wordUp)
                     // || (/^_+$/u).test(wordUp) // str
-                    || otherKeyword2MD.has(wordUp)
+                    || operatorMD.has(wordUp)
                     || WinTitleMDMap.has(wordUp)
                     /*
                      * let decLiteral: number = 6;

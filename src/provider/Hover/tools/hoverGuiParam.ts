@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { GuiMDMap } from '../../../tools/Built-in/Gui/gui.tools';
+import { GuiMDMap } from '../../../tools/Built-in/7_sub_command/Gui/Gui.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 

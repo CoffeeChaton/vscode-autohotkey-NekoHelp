@@ -1,8 +1,8 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-template-curly-in-string */
 import * as vscode from 'vscode';
-import { snippetAhk2exeKeep, snippetAhk2exeLine } from '../../../tools/Built-in/Ahk2exe.tools';
-import { nekoExCommentData } from '../../../tools/Built-in/nekoEx/nekoExComment.data';
+import { nekoExCommentData } from '../../../tools/Built-in/100_other/nekoEx/nekoExComment.data';
+import { snippetAhk2exeKeep, snippetAhk2exeLine } from '../../../tools/Built-in/99_Ahk2Exe_compiler/Ahk2exe.tools';
 
 const nekoExComment: readonly vscode.CompletionItem[] = ((): readonly vscode.CompletionItem[] => {
     const arr: vscode.CompletionItem[] = [];

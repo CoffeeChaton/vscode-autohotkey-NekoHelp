@@ -1,4 +1,4 @@
-import { OutputCommandPlusMap } from '../../../Built-in/Command.tools';
+import { OutputCommandPlusMap } from '../../../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';

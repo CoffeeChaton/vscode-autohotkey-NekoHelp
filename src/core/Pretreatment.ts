@@ -7,7 +7,7 @@ import type { TAhkTokenLine, TMultilineFlag, TTokenStream } from '../globalEnum'
 import { EDetail, EMultiline } from '../globalEnum';
 import { getIgnore } from '../provider/Diagnostic/getIgnore';
 import { log } from '../provider/vscWindows/log';
-import { DirectivesMDMap } from '../tools/Built-in/Directives.tool';
+import { DirectivesMDMap } from '../tools/Built-in/0_directive/Directives.tool';
 import { getLStrHotStr } from '../tools/str/getLStrHotStr';
 import { getMultiline } from '../tools/str/getMultiline';
 import { getMultilineLStr } from '../tools/str/getMultilineLStr';

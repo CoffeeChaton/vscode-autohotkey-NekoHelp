@@ -1,6 +1,6 @@
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail, EMultiline } from '../../globalEnum';
-import { CommandMDMap } from '../../tools/Built-in/Command.tools';
+import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
 
 function textReplace(textElement: string): string {
     return textElement.replaceAll(/ *, */gu, ', ')
