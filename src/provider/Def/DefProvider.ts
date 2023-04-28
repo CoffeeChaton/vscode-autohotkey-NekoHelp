@@ -38,7 +38,7 @@ function DefProviderCore(
     const switchDef: vscode.Location[] | null = getDefSwitch(AhkFileData, document.uri, position, wordUp);
     if (switchDef !== null) return switchDef;
 
-    const LabelDef: vscode.Location[] | null = getDefWithLabelWrap(AhkFileData, document.uri, position, wordUp);
+    const LabelDef: vscode.Location[] | null = getDefWithLabelWrap(AhkFileData, position, wordUp);
     if (LabelDef !== null) return LabelDef;
 
     const userDefFuncLink: vscode.Location[] | null = getFuncDef(AhkFileData, position, wordUp, listAllUsing);

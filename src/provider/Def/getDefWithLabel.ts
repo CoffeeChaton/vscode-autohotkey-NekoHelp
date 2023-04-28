@@ -4,6 +4,7 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
+import { CMemo } from '../../tools/CMemo';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
 import { getHotkeyWrap } from '../../tools/Command/HotkeyTools';
 import { getMenuFunc } from '../../tools/Command/MenuTools';
@@ -12,56 +13,67 @@ import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandA
 import { findLabelAll } from '../../tools/labelsAll';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 
-function LabelRefHotkey(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range | null {
+type TLabelRefMsg = {
+    keyRawName: string,
+    range: vscode.Range,
+};
+
+function LabelRefHotkey(AhkTokenLine: TAhkTokenLine): TLabelRefMsg | null {
     const HotkeyData: TScanData | null = getHotkeyWrap(AhkTokenLine);
     if (HotkeyData === null) return null;
 
     const { RawNameNew, lPos } = HotkeyData;
-    if (ToUpCase(RawNameNew) !== wordUp) return null;
-
     const { line } = AhkTokenLine;
-    return new vscode.Range(
-        new vscode.Position(line, lPos),
-        new vscode.Position(line, lPos + RawNameNew.length),
-    );
+
+    return {
+        keyRawName: RawNameNew,
+        range: new vscode.Range(
+            new vscode.Position(line, lPos),
+            new vscode.Position(line, lPos + RawNameNew.length),
+        ),
+    };
 }
 
-function LabelRefMenu(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range | null {
-    const MenuData: TScanData | null = getMenuFunc(AhkTokenLine);
-    if (MenuData === null) return null;
+function LabelRefMenu(AhkTokenLine: TAhkTokenLine): TLabelRefMsg | null {
+    const Data: TScanData | null = getMenuFunc(AhkTokenLine);
+    if (Data === null) return null;
 
-    const { RawNameNew, lPos } = MenuData;
-    if (ToUpCase(RawNameNew) !== wordUp) return null;
-
+    const { RawNameNew, lPos } = Data;
     const { line } = AhkTokenLine;
-    return new vscode.Range(
-        new vscode.Position(line, lPos),
-        new vscode.Position(line, lPos + RawNameNew.length),
-    );
+
+    return {
+        keyRawName: RawNameNew,
+        range: new vscode.Range(
+            new vscode.Position(line, lPos),
+            new vscode.Position(line, lPos + RawNameNew.length),
+        ),
+    };
 }
 
-function LabelRefGui(AhkTokenLine: TAhkTokenLine, wordUp: string): vscode.Range | null {
+function LabelRefGui(AhkTokenLine: TAhkTokenLine): TLabelRefMsg[] {
+    const { line } = AhkTokenLine;
+
+    const list: TLabelRefMsg[] = [];
     const GuiDataList: readonly TScanData[] | null = getGuiFunc(AhkTokenLine, 0);
     if (GuiDataList !== null) {
         for (const { RawNameNew, lPos } of GuiDataList) {
-            if (ToUpCase(RawNameNew) === wordUp) {
-                const { line } = AhkTokenLine;
-                return new vscode.Range(
+            list.push({
+                keyRawName: RawNameNew,
+                range: new vscode.Range(
                     new vscode.Position(line, lPos),
                     new vscode.Position(line, lPos + RawNameNew.length),
-                );
-            }
+                ),
+            });
         }
     }
-    return null;
+    return list;
 }
 
 function LabelRefKeyWord(
     col: number,
-    wordUp: string,
     AhkTokenLine: TAhkTokenLine,
-    uri: vscode.Uri,
-): never[] | [vscode.Location] {
+    map: Map<string, TLabelRefMsg[]>,
+): void {
     //
     const { lStr, line } = AhkTokenLine;
 
@@ -72,29 +84,27 @@ function LabelRefKeyWord(
         .padStart(lStr.length);
 
     const ma: RegExpMatchArray | null = strF.match(/^\s*([#$@\w\u{A1}-\u{FFFF}]+)/u);
-    if (ma === null) return [];
+    if (ma === null) return;
+    const i: number | undefined = ma.index;
+    if (i === undefined) return;
 
-    const wordUp2: string = ToUpCase(ma[1]);
-    if (wordUp2 !== wordUp) return [];
-
-    const col2: number = strF.search(/\S/u);
-
-    return [
-        new vscode.Location(
-            uri,
-            new vscode.Range(
-                new vscode.Position(line, col2),
-                new vscode.Position(line, col2 + wordUp2.length),
-            ),
+    const keyRawName: string = ma[1];
+    const upName: string = ToUpCase(keyRawName);
+    const arr: TLabelRefMsg[] = map.get(upName) ?? [];
+    arr.push({
+        keyRawName,
+        range: new vscode.Range(
+            new vscode.Position(line, i),
+            new vscode.Position(line, i + keyRawName.length),
         ),
-    ];
+    });
+    map.set(upName, arr);
 }
 
 function LabelRefKeyWordWrap(
-    wordUp: string,
     AhkTokenLine: TAhkTokenLine,
-    uri: vscode.Uri,
-): never[] | [vscode.Location] {
+    map: Map<string, TLabelRefMsg[]>,
+): void {
     const {
         fistWordUp,
         fistWordUpCol,
@@ -104,72 +114,74 @@ function LabelRefKeyWordWrap(
 
     const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER'];
     if (list.includes(fistWordUp)) {
-        return LabelRefKeyWord(fistWordUpCol + fistWordUp.length, wordUp, AhkTokenLine, uri);
+        LabelRefKeyWord(fistWordUpCol + fistWordUp.length, AhkTokenLine, map);
+    } else if (list.includes(SecondWordUp)) {
+        LabelRefKeyWord(SecondWordUpCol + SecondWordUp.length, AhkTokenLine, map);
     }
-    if (list.includes(SecondWordUp)) {
-        return LabelRefKeyWord(SecondWordUpCol + SecondWordUp.length, wordUp, AhkTokenLine, uri);
-    }
-    return [];
 }
 
-type TFileRefMap = Map<string, readonly vscode.Location[]>;
-const fileLabelRefMap = new WeakMap<TAhkFileData, TFileRefMap>();
-
-// TODO remove wordUp param
-function getLabelRefCore(AhkFileData: TAhkFileData, wordUp: string): readonly vscode.Location[] {
-    const fileList: vscode.Location[] = [];
-    const { DocStrMap, uri } = AhkFileData;
+type TFileLabelRefMap = ReadonlyMap<string, readonly TLabelRefMsg[]>;
+const getLabelRefCoreMemo = new CMemo<TAhkFileData, TFileLabelRefMap>((AhkFileData: TAhkFileData): TFileLabelRefMap => {
+    const map = new Map<string, TLabelRefMsg[]>();
+    const { DocStrMap } = AhkFileData;
     for (const AhkTokenLine of DocStrMap) {
         const { detail, lStr, line } = AhkTokenLine;
-        if (detail.includes(EDetail.isLabelLine) && ToUpCase(lStr.trim()) === (`${wordUp}:`)) {
-            fileList.push(
-                new vscode.Location(
-                    uri,
-                    new vscode.Range(
-                        new vscode.Position(line, lStr.search(/\S/u)),
-                        new vscode.Position(line, lStr.indexOf(':')),
-                    ),
+        if (detail.includes(EDetail.isLabelLine)) {
+            const keyRawName: string = lStr.trim().replace(':', '');
+            const upName: string = ToUpCase(keyRawName);
+            const arr: TLabelRefMsg[] = map.get(upName) ?? [];
+            const col: number = lStr.indexOf(':');
+            arr.push({
+                keyRawName,
+                range: new vscode.Range(
+                    new vscode.Position(line, col - keyRawName.length),
+                    new vscode.Position(line, col),
                 ),
-            );
+            });
+            map.set(upName, arr);
             continue;
         }
-        const range: vscode.Range | null = LabelRefHotkey(AhkTokenLine, wordUp);
-        if (range !== null) {
-            fileList.push(new vscode.Location(uri, range));
-            continue;
-        }
-
-        const menuRange: vscode.Range | null = LabelRefMenu(AhkTokenLine, wordUp);
-        if (menuRange !== null) {
-            fileList.push(new vscode.Location(uri, menuRange));
-            continue;
-        }
-
-        const range2: vscode.Range | null = LabelRefGui(AhkTokenLine, wordUp);
-        if (range2 !== null) {
-            fileList.push(new vscode.Location(uri, range2));
+        const msg1: TLabelRefMsg | null = LabelRefHotkey(AhkTokenLine) ?? LabelRefMenu(AhkTokenLine);
+        if (msg1 !== null) {
+            const { keyRawName, range } = msg1;
+            const upName: string = ToUpCase(keyRawName);
+            const arr: TLabelRefMsg[] = map.get(upName) ?? [];
+            arr.push({
+                keyRawName,
+                range,
+            });
+            map.set(upName, arr);
             continue;
         }
 
-        fileList.push(...LabelRefKeyWordWrap(wordUp, AhkTokenLine, uri));
+        const msgList: TLabelRefMsg[] = LabelRefGui(AhkTokenLine);
+        for (const msg of msgList) {
+            const { keyRawName, range } = msg;
+            const upName: string = ToUpCase(keyRawName);
+            const arr: TLabelRefMsg[] = map.get(upName) ?? [];
+            arr.push({
+                keyRawName,
+                range,
+            });
+            map.set(upName, arr);
+        }
+
+        LabelRefKeyWordWrap(AhkTokenLine, map);
     }
 
-    return fileList;
-}
+    return map;
+});
 
 function getLabelRef(wordUp: string): vscode.Location[] {
     const List: vscode.Location[] = [];
     for (const AhkFileData of pm.getDocMapValue()) {
-        const map: TFileRefMap = fileLabelRefMap.get(AhkFileData) ?? new Map<string, readonly vscode.Location[]>();
-        const cache: readonly vscode.Location[] | undefined = map.get(wordUp);
-        if (cache !== undefined) {
-            List.push(...cache);
-            continue;
+        const msgList: readonly TLabelRefMsg[] | undefined = getLabelRefCoreMemo.up(AhkFileData).get(wordUp);
+        if (msgList === undefined) continue;
+
+        const { uri } = AhkFileData;
+        for (const { range, keyRawName } of msgList) {
+            List.push(new vscode.Location(uri, range));
         }
-        const fileList: readonly vscode.Location[] = getLabelRefCore(AhkFileData, wordUp);
-        map.set(wordUp, fileList);
-        fileLabelRefMap.set(AhkFileData, map);
-        List.push(...fileList);
     }
 
     return List;
@@ -180,12 +192,10 @@ export function posAtLabelDef(
     position: vscode.Position,
     wordUp: string,
 ): vscode.Location[] | null {
-    const { lStr, detail } = AhkFileData.DocStrMap[position.line];
-
-    if (detail.includes(EDetail.isLabelLine) && (/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
-        return getLabelRef(wordUp);
-    }
-    return null;
+    const { detail } = AhkFileData.DocStrMap[position.line];
+    return detail.includes(EDetail.isLabelLine)
+        ? getLabelRef(wordUp)
+        : null;
 }
 
 /**
@@ -253,7 +263,6 @@ export function getDefWithLabel(
 
 export function getDefWithLabelWrap(
     AhkFileData: TAhkFileData,
-    uri: vscode.Uri,
     position: vscode.Position,
     wordUpCase: string,
 ): vscode.Location[] | null {

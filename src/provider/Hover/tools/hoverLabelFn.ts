@@ -1,10 +1,11 @@
-import type * as vscode from 'vscode';
+/* eslint-disable max-depth */
+import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { CAhkLabel } from '../../../AhkSymbol/CAhkLine';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { getFuncWithName } from '../../../tools/DeepAnalysis/getFuncWithName';
-import { findLabel } from '../../../tools/labels';
+import { findLabelAll } from '../../../tools/labelsAll';
 import type { TFuncRef } from '../../Def/getFnRef';
 import { fileFuncRef, mayBeIsLabel } from '../../Def/getFnRef';
 import { getFucDefWordUpFix } from '../../Def/getFucDefWordUpFix';
@@ -33,8 +34,17 @@ export function hoverLabelOrFunc(
             && (col <= character && (col + wordUpFix.length) >= character)
         ) {
             if (mayBeIsLabel(by)) {
-                const label: CAhkLabel | null = findLabel(wordUpFix);
-                if (label !== null) return label.md;
+                const labelList: CAhkLabel[] = findLabelAll(wordUpFix);
+                if (labelList.length > 0) {
+                    const allMd = new vscode.MarkdownString('');
+                    for (const label of labelList) {
+                        allMd
+                            .appendMarkdown(label.md.value)
+                            .appendMarkdown('\n***\n');
+                    }
+
+                    return allMd;
+                }
             }
 
             const fn: CAhkFunc | null = getFuncWithName(wordUpFix);
