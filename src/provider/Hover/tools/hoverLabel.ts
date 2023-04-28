@@ -1,9 +1,7 @@
-import type * as vscode from 'vscode';
+import * as vscode from 'vscode';
 import type { CAhkLabel } from '../../../AhkSymbol/CAhkLine';
 import type { TAhkFileData } from '../../../core/ProjectManager';
-import type { TAhkTokenLine } from '../../../globalEnum';
-import { EDetail } from '../../../globalEnum';
-import { findLabel } from '../../../tools/labels';
+import { getDefWithLabel } from '../../Def/getDefWithLabel';
 
 /** */
 export function hoverLabel(
@@ -11,28 +9,19 @@ export function hoverLabel(
     position: vscode.Position,
     wordUp: string,
 ): vscode.MarkdownString | null {
-    const { DocStrMap } = AhkFileData;
+    const list: CAhkLabel[] | null = getDefWithLabel(
+        AhkFileData,
+        position,
+        wordUp,
+    );
+    if (list === null) return null;
 
-    const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
-    const { lStr, detail } = AhkTokenLine;
-    const lStrFix: string = lStr.slice(0, Math.max(0, position.character));
-
-    if (detail.includes(EDetail.isLabelLine)) {
-        // OnExit , Label
-        const label: CAhkLabel | null = findLabel(wordUp);
-        if (label !== null) return label.md;
+    const allMd = new vscode.MarkdownString('');
+    for (const label of list) {
+        allMd
+            .appendMarkdown(label.md.value)
+            .appendMarkdown('\n***\n');
     }
 
-    if ((/[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStrFix)) {
-        const s2: string = lStrFix.replace(/[#$@\w\u{A1}-\u{FFFF}]*$/iu, '')
-            .replace(/,?[ \t]*$/u, '')
-            .trim();
-        if ((/\b(?:goto|goSub|Break|Continue|OnExit)$/iu).test(s2)) {
-            const label: CAhkLabel | null = findLabel(wordUp);
-            if (label !== null) return label.md;
-        }
-        // OnExit , Label
-    }
-
-    return null;
+    return allMd;
 }

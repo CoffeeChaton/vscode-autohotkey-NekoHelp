@@ -4,7 +4,7 @@ import { pm } from '../../core/ProjectManager';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getClassDef } from './getClassDef';
 import { getDefSwitch } from './getDefSwitch';
-import { getDefWithLabel } from './getDefWithLabel';
+import { getDefWithLabelWrap } from './getDefWithLabel';
 import { getFuncDef } from './getFuncDef';
 import { getMethodDef } from './getMethodDef';
 import { getValDefInFunc } from './getValDefInFunc';
@@ -38,7 +38,7 @@ function DefProviderCore(
     const switchDef: vscode.Location[] | null = getDefSwitch(AhkFileData, document.uri, position, wordUp);
     if (switchDef !== null) return switchDef;
 
-    const LabelDef: vscode.Location[] | null = getDefWithLabel(AhkFileData, document.uri, position, wordUp);
+    const LabelDef: vscode.Location[] | null = getDefWithLabelWrap(AhkFileData, document.uri, position, wordUp);
     if (LabelDef !== null) return LabelDef;
 
     const userDefFuncLink: vscode.Location[] | null = getFuncDef(AhkFileData, position, wordUp, listAllUsing);

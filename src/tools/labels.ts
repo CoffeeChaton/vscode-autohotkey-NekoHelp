@@ -4,6 +4,7 @@ import { pm } from '../core/ProjectManager';
 import { CMemo } from './CMemo';
 
 type TLabelMapRW = Map<string, CAhkLabel>;
+type TLabelMap = ReadonlyMap<string, CAhkLabel>;
 
 function findAllLabelMapCore(ch: readonly TAhkSymbol[], map: TLabelMapRW): void {
     for (const AhkSymbol of ch) {
@@ -15,7 +16,7 @@ function findAllLabelMapCore(ch: readonly TAhkSymbol[], map: TLabelMapRW): void 
     }
 }
 
-export const findAllLabelMap = new CMemo<TAstRoot, TLabelMapRW>((AST: TAstRoot) => {
+export const findAllLabelMap = new CMemo<TAstRoot, TLabelMap>((AST: TAstRoot): TLabelMap => {
     const LabelMap: TLabelMapRW = new Map();
     findAllLabelMapCore(AST, LabelMap);
     return LabelMap;
