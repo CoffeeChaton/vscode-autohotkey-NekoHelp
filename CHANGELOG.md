@@ -20,6 +20,8 @@
 
 ## Next v0.0.38(2023-04-XX)
 
+- fix: `gVal` findAllRef with unicode case
+- perf: `gVal` findAllRef
 - perf: `label:` hover/gotoDef/findAllRef
 - refactor: like <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - feat: format-all-file `'select command first optional comma style'` only show if `"AhkNekoHelp.format.removeFirstCommaCommand" > 0`.

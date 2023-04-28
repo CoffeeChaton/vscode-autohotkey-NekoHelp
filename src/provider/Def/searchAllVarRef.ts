@@ -1,45 +1,82 @@
 import * as vscode from 'vscode';
-import type { TValMetaOut } from '../../AhkSymbol/CAhkFunc';
+import type { TTextMetaOut, TValMetaOut } from '../../AhkSymbol/CAhkFunc';
+import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
-import { EDetail } from '../../globalEnum';
+import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
+
+type TFileGVarRefMap = Map<string, readonly vscode.Location[]>;
+const fileGVarRefMap = new WeakMap<TAhkFileData, TFileGVarRefMap>();
+
+function LocListPush(
+    uri: vscode.Uri,
+    fileList: vscode.Location[],
+    rangeList1: readonly vscode.Range[],
+    rangeList2: readonly vscode.Range[],
+): void {
+    for (const range of rangeList1) {
+        fileList.push(
+            new vscode.Location(
+                uri,
+                range,
+            ),
+        );
+    }
+    for (const range of rangeList2) {
+        fileList.push(
+            new vscode.Location(
+                uri,
+                range,
+            ),
+        );
+    }
+}
+
+function searchAllGlobalVarRefCore(AhkFileData: TAhkFileData, wordUp: string): readonly vscode.Location[] {
+    const fileList: vscode.Location[] = [];
+
+    const {
+        AST,
+        ModuleVar,
+        uri,
+    } = AhkFileData;
+    const v: TValMetaOut | undefined = ModuleVar.ModuleValMap.get(wordUp);
+    if (v === undefined) {
+        const text: TTextMetaOut | undefined = ModuleVar.ModuleTextMap.get(wordUp);
+        if (text !== undefined) {
+            LocListPush(uri, fileList, [], text.refRangeList);
+        }
+    } else {
+        LocListPush(uri, fileList, v.defRangeList, v.refRangeList);
+    }
+
+    for (const DA of getDAListTop(AST)) {
+        const v2: TValMetaOut | undefined = DA.valMap.get(wordUp);
+        if (v2 === undefined) {
+            const text: TTextMetaOut | undefined = DA.textMap.get(wordUp);
+            if (text !== undefined) {
+                LocListPush(uri, fileList, [], text.refRangeList);
+            }
+        } else {
+            LocListPush(uri, fileList, v2.defRangeList, v2.refRangeList);
+        }
+    }
+
+    return fileList;
+}
 
 export function searchAllGlobalVarRef(wordUp: string): vscode.Location[] {
-    // eslint-disable-next-line security/detect-non-literal-regexp
-    const reg = new RegExp(`\\b(${wordUp})\\b(?!\\(|\\s*:[^=])`, 'giu');
-
     const List: vscode.Location[] = [];
-    for (const { DocStrMap, uri, ModuleVar } of pm.getDocMapValue()) {
-        const v: TValMetaOut | undefined = ModuleVar.ModuleValMap.get(wordUp);
-        if (v !== undefined) {
-            for (const range of [...v.defRangeList, ...v.refRangeList]) {
-                List.push(
-                    new vscode.Location(
-                        uri,
-                        range,
-                    ),
-                );
-            }
+    for (const AhkFileData of pm.getDocMapValue()) {
+        const map: TFileGVarRefMap = fileGVarRefMap.get(AhkFileData) ?? new Map<string, readonly vscode.Location[]>();
+        const cache: readonly vscode.Location[] | undefined = map.get(wordUp);
+        if (cache !== undefined) {
+            List.push(...cache);
+            continue;
         }
-
-        //
-        for (const { line, lStr, detail } of DocStrMap) {
-            if (detail.includes(EDetail.isLabelLine)) continue; // avoid Label-name same as global-variable-name
-
-            for (const ma of lStr.matchAll(reg)) {
-                const col: number | undefined = ma.index;
-                if (col === undefined) continue;
-
-                List.push(
-                    new vscode.Location(
-                        uri,
-                        new vscode.Range(
-                            new vscode.Position(line, col),
-                            new vscode.Position(line, col + wordUp.length),
-                        ),
-                    ),
-                );
-            }
-        }
+        const fileList: readonly vscode.Location[] = searchAllGlobalVarRefCore(AhkFileData, wordUp);
+        map.set(wordUp, fileList);
+        fileGVarRefMap.set(AhkFileData, map);
+        List.push(...fileList);
     }
 
     return List; // ssd -> 9~11ms (if not gc)
