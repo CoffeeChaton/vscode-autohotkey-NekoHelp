@@ -1,0 +1,350 @@
+>
+>; Check
+#^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Check ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#              ^ source.ahk meta.command.line.control.ahk
+#               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                 ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                         ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                          ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                   ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                    ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                            ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                             ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                          ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                           ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Uncheck
+#^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Uncheck ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk
+#                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                   ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                            ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                     ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                      ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                               ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                            ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                             ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Enable
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Enable ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#               ^ source.ahk meta.command.line.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                  ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                          ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                           ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                    ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                     ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                             ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                              ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                            ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Disable
+#^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Disable ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk
+#                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                   ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                            ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                     ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                      ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                               ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                            ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                             ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Show
+#^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Show ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#             ^ source.ahk meta.command.line.control.ahk
+#              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                        ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                         ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                   ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                            ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                         ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                          ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Hide
+#^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Hide ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#             ^ source.ahk meta.command.line.control.ahk
+#              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                        ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                         ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                   ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                            ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                         ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                          ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Style
+#^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Style , N , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#              ^ source.ahk meta.command.line.control.ahk
+#               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                ^^^ source.ahk meta.command.line.control.ahk
+#                   ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                    ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                            ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                             ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                      ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                       ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                             ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                              ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; ExStyle
+#^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, ExStyle , N , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk
+#                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                  ^^^ source.ahk meta.command.line.control.ahk
+#                     ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                      ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                               ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                        ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                         ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                  ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; ShowDropDown
+#^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, ShowDropDown ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                     ^ source.ahk meta.command.line.control.ahk
+#                      ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                       ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                        ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                 ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                          ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                           ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                   ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; HideDropDown
+#^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, HideDropDown ,, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                     ^ source.ahk meta.command.line.control.ahk
+#                      ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                       ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                        ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                 ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                          ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                           ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                   ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                  ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; TabLeft
+#^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, TabLeft , Count, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk
+#                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                  ^^^^^^ source.ahk meta.command.line.control.ahk
+#                        ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                         ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                 ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                  ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                            ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                    ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                     ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                   ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; TabRight
+#^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, TabRight , Count, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                 ^ source.ahk meta.command.line.control.ahk
+#                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                   ^^^^^^ source.ahk meta.command.line.control.ahk
+#                         ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                          ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                   ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                            ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                             ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                     ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                      ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                   ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                    ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Add
+#^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Add , String , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#            ^ source.ahk meta.command.line.control.ahk
+#             ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#              ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                      ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                       ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                         ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                          ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                   ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                 ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Delete
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Delete , N , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#               ^ source.ahk meta.command.line.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                 ^^^ source.ahk meta.command.line.control.ahk
+#                    ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                     ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                             ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                              ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                       ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                        ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                 ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                               ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; Choose
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, Choose , N , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#               ^ source.ahk meta.command.line.control.ahk
+#                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                 ^^^ source.ahk meta.command.line.control.ahk
+#                    ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                     ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                             ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                              ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                       ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                        ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                 ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                              ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                               ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; ChooseString
+#^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, ChooseString , String , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                     ^ source.ahk meta.command.line.control.ahk
+#                      ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                       ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                        ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                         ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                  ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                   ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                           ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                            ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                         ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                          ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>
+>; EditPaste
+#^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Control, EditPaste , String , Control, WinTitle, WinText, ExcludeTitle, ExcludeText
+#^^^^^^^ source.ahk meta.command.line.control.ahk support.function.command.control.ahk
+#       ^^ source.ahk meta.command.line.control.ahk
+#         ^^^^^^^^^ source.ahk meta.command.line.control.ahk keyword.command.option.param.control.ahk
+#                  ^ source.ahk meta.command.line.control.ahk
+#                   ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                    ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                            ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                             ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                     ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                      ^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                               ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                ^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                        ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                         ^^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+#                                                                      ^ source.ahk meta.command.line.control.ahk punctuation.ahk
+#                                                                       ^^^^^^^^^^^^ source.ahk meta.command.line.control.ahk
+>
+>

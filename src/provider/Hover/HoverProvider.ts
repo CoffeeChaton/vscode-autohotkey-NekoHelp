@@ -22,6 +22,7 @@ import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { DeepAnalysisHover } from './tools/DeepAnalysisHover';
 import { hoverAhk2exe } from './tools/hoverAhk2exe';
 import { hoverClassName } from './tools/hoverClassName';
+import { hoverControlParam } from './tools/hoverControlParam';
 import { hoverDirectives } from './tools/hoverDirectives';
 import { hoverGlobalVar } from './tools/hoverGlobalVar';
 import { hoverGuiControlParam } from './tools/hoverGuiControlParam';
@@ -120,6 +121,7 @@ function HoverProviderCore(
         hoverSysGetParam,
         hoverWinSetParam,
         hoverWinGetParam,
+        hoverControlParam,
     ];
     for (const fn of fnList) {
         const param: vscode.MarkdownString | null = fn(AhkTokenLine, position);

@@ -3,6 +3,7 @@ import { getCommandOptions } from '../../../configUI';
 import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
+import { snippetControl } from '../../../tools/Built-in/7_sub_command/Control/Control.tools';
 import { snippetGui } from '../../../tools/Built-in/7_sub_command/Gui/Gui.tools';
 import { snippetGuiControl } from '../../../tools/Built-in/7_sub_command/GuiControl/GuiControl.tools';
 import { snippetMenu } from '../../../tools/Built-in/7_sub_command/Menu/Menu.tools';
@@ -49,6 +50,9 @@ export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine
             if (subCmdPlus.SysGet && 'SysGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetSysGet);
             if (subCmdPlus.WinSet === true && 'WinSet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinSet);
             if (subCmdPlus.WinGet === true && 'WinGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinGet);
+            if (subCmdPlus.Control === true && 'Control'.toLowerCase().startsWith(subStr2)) {
+                list.push(...snippetControl);
+            }
 
             // todo something
             return list;

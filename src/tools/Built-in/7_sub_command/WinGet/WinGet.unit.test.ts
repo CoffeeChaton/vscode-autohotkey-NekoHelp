@@ -1,6 +1,5 @@
 /* eslint-disable jest/no-commented-out-tests */
 /* eslint-disable no-template-curly-in-string */
-// import type { TWinGetCmdElement } from './WinGet.data';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { repository } from '../../../../../syntaxes/ahk.tmLanguage.json';

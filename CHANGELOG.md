@@ -34,7 +34,7 @@
   1. syntax-highlight
   2. completion (default: `false`)
   3. hover
-- TODO feat: add [Control](https://www.autohotkey.com/docs/v1/lib/Control.htm) SubCommand
+- feat: add [Control](https://www.autohotkey.com/docs/v1/lib/Control.htm) SubCommand
   1. syntax-highlight
   2. completion (default: `false`)
   3. hover
