@@ -1,7 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { AnalyzeFuncMain } from '../../command/AnalyzeFunc/AnalyzeThisFunc';
-import type { CmdFindClassRef } from '../../command/CmdFindClassRef';
 import type { CmdFindFuncRef } from '../../command/CmdFindFuncRef';
 import type { CmdFindMethodRef } from '../../command/CmdFindMethodRef';
 import { ECommand } from '../../command/ECommand';
@@ -10,15 +9,12 @@ import { getCodeLenConfig, getMethodConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
-import { getFileAllClass } from '../../tools/visitor/getFileAllClassList';
 import { getFuncRef } from '../Def/getFnRef';
 import { getMethodRef } from '../Def/getMethodRef';
-import { searchAllClassRef } from '../Def/searchAllClassRef';
+import { addClassReference } from './addClassReference';
+import { addLabelReference } from './addLabelReference';
+import { ECodeLensStr } from './ECodeLensStr';
 import type { showUnknownAnalyze } from './showUnknownAnalyze';
-
-const enum ECodeLensStr {
-    tooltip = 'by neko-help dev tools',
-}
 
 function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
     const { fsPath } = document.uri;
@@ -30,6 +26,7 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
         showDevTool,
         showFileReport,
         showFuncReference,
+        showLabelReference,
     } = getCodeLenConfig();
 
     const { CodeLens } = getMethodConfig();
@@ -104,23 +101,8 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
         }
     }
 
-    if (showClassReference) {
-        for (const ahkClass of getFileAllClass(AST)) {
-            const refList: readonly vscode.Location[] = searchAllClassRef(ahkClass);
-            const cmdClass: vscode.Command = {
-                title: `Reference ${refList.length - 1}`,
-                command: ECommand.CmdFindClassRef,
-                tooltip: ECodeLensStr.tooltip,
-                arguments: [
-                    uri,
-                    ahkClass.range.start,
-                    ahkClass,
-                    refList,
-                ] satisfies Parameters<typeof CmdFindClassRef>,
-            };
-            need.push(new vscode.CodeLens(ahkClass.range, cmdClass));
-        }
-    }
+    if (showClassReference) addClassReference(need, AST);
+    if (showLabelReference) addLabelReference(need, AST);
 
     return need;
 }

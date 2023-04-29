@@ -20,6 +20,7 @@
 
 ## Next v0.0.38(2023-04-XX)
 
+- feat: add `label:` CodeLens (via: `"AhkNekoHelp.CodeLens.showLabelReference"`)
 - fix: `gVal` findAllRef with unicode case
 - perf: `gVal` findAllRef
 - perf: `label:` hover/gotoDef/findAllRef

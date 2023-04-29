@@ -83,6 +83,11 @@
                         "default": false,
                         "markdownDescription": "show Reference at function def line"
                     },
+                    "AhkNekoHelp.CodeLens.showLabelReference": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "show Reference at `label:` def line (just support file top label)"
+                    },
                     "AhkNekoHelp.CodeLens.showDevTool": {
                         "type": "boolean",
                         "default": false,

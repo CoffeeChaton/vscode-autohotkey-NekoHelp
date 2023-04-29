@@ -39,6 +39,7 @@ type TempConfigs = {
     CodeLens: {
         showClassReference: boolean,
         showFuncReference: boolean,
+        showLabelReference: boolean,
         showDevTool: boolean,
         showFileReport: boolean,
     },

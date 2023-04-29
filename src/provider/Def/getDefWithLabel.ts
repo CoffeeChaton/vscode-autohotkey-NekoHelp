@@ -172,14 +172,14 @@ const getLabelRefCoreMemo = new CMemo<TAhkFileData, TFileLabelRefMap>((AhkFileDa
     return map;
 });
 
-function getLabelRef(wordUp: string): vscode.Location[] {
+export function getLabelRef(wordUp: string): vscode.Location[] {
     const List: vscode.Location[] = [];
     for (const AhkFileData of pm.getDocMapValue()) {
         const msgList: readonly TLabelRefMsg[] | undefined = getLabelRefCoreMemo.up(AhkFileData).get(wordUp);
         if (msgList === undefined) continue;
 
         const { uri } = AhkFileData;
-        for (const { range, keyRawName } of msgList) {
+        for (const { range } of msgList) {
             List.push(new vscode.Location(uri, range));
         }
     }

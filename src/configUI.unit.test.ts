@@ -62,6 +62,7 @@ describe('check package ruler', () => {
                 // [0]
                 ['AhkNekoHelp.CodeLens.showClassReference', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showFuncReference', 'boolean'],
+                ['AhkNekoHelp.CodeLens.showLabelReference', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showDevTool', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showFileReport', 'boolean'],
                 // [1]
