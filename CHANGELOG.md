@@ -42,9 +42,10 @@
 - test: add test from ahk-doc <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - fix: `hotkey, if` and `hotkey, key` syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-hotkey.png)
-- fix: `Gui` `Range` option syntax-highlight
+- fix: `Gui` option `Range` syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-gui-opt-range.png)
-
+- fix: `GuiName` of `Gui, GuiName:New , Options, Title` with +-Options syntax-highlight
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-gui-gui-name.png)
 - [issues #12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757) style
   - part-8
 

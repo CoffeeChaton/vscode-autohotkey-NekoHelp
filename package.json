@@ -515,7 +515,7 @@
         "@swc/jest": "^0.2.26",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.5.1",
-        "@types/node": "^18.16.2",
+        "@types/node": "^18.16.3",
         "@types/vscode": "^1.77.0",
         "@typescript-eslint/eslint-plugin": "^5.59.1",
         "@typescript-eslint/parser": "^5.59.1",

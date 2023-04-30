@@ -8,7 +8,6 @@
 *.heapprofile
 *.heapsnapshot
 *.vsix
-coverage/
 dist/
 esbuildTarget.json
 node_modules/

@@ -39,23 +39,6 @@ const indexDataMap6 = new Map<string, TIndexData>();
 const arr7: TIndexData[] = [];
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const subCmdL: [CMD: string, SubCMD: string][] = [
-    ['Control', 'Add'],
-    ['Control', 'Check'],
-    ['Control', 'Choose'],
-    ['Control', 'ChooseString'],
-    ['Control', 'Delete'],
-    ['Control', 'Disable'],
-    ['Control', 'EditPaste'],
-    ['Control', 'Enable'],
-    ['Control', 'ExStyle'],
-    ['Control', 'Hide'],
-    ['Control', 'HideDropDown'],
-    ['Control', 'Show'],
-    ['Control', 'ShowDropDown'],
-    ['Control', 'Style'],
-    ['Control', 'TabLeft'],
-    ['Control', 'TabRight'],
-    ['Control', 'Uncheck'],
     ['ControlGet', 'Checked'],
     ['ControlGet', 'Choice'],
     ['ControlGet', 'CurrentCol'],
@@ -129,6 +112,7 @@ for (const Data of indexData) {
                 || Data[0].includes('(SysGet)')
                 || Data[0].includes('(WinSet)')
                 || Data[0].includes('(WinGet)')
+                || Data[0].includes('(Control)')
             ) {
                 continue;
             }

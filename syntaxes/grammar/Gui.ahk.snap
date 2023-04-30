@@ -72,3 +72,65 @@
 #^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >; https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#UpDown_Options
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>Gui, 2: + Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#        ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, 2: - Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#        ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, 2: -Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#        ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#         ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, 2: -Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#        ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#         ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, 2: Add
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#        ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+>;    2: color should be variable.other.constant.gui.name.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>Gui, guiName: + Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^^^^^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#              ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#               ^ source.ahk meta.command.line.gui.ahk
+#                ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, guiName: - Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^^^^^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#              ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#               ^ source.ahk meta.command.line.gui.ahk
+#                ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, guiName: -Minimize
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^^^^^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#              ^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#               ^^^^^^^^ source.ahk meta.command.line.gui.ahk keyword.string.gui.show.ahk
+>Gui, guiName: Add
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^^^^^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.gui.name.ahk
+#              ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+>;    guiName: color should be variable.other.constant.gui.name.ahk
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk

@@ -128,7 +128,7 @@
         },
         "command_gui": {
             "name": "meta.command.line.gui.ahk",
-            "begin": "(?:^|[ \\t:])\\b(?i:(Gui)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?\\b(New|Add|Show|Submit|Cancel|Hide|Destroy|Font|Color|Margin|Options|Menu|Minimize|Maximize|Restore|Flash|Default)\\b)",
+            "begin": "(?:^|[ \\t:])\\b(?i:(Gui)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?(New|Add|Show|Submit|Cancel|Hide|Destroy|Font|Color|Margin|Options|Menu|Minimize|Maximize|Restore|Flash|Default|-|\\+)(\\b|\\s))",
             "end": "(\\n)",
             "beginCaptures": {
                 "1": { "name": "support.function.gui.command.ahk" },
