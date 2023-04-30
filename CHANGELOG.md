@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.38(2023-04-XX)](#next-v00382023-04-xx)
+  - [v0.0.38(2023-04-30)](#v00382023-04-30)
   - [v0.0.37(2023-04-23)](#v00372023-04-23)
   - [v0.0.36(2023-04-23)](#v00362023-04-23)
   - [v0.0.35(2023-04-16)](#v00352023-04-16)
@@ -18,13 +18,13 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.38(2023-04-XX)
+## v0.0.38(2023-04-30)
 
+- fix: `global Val` findAllRef with unicode case
+- perf: `global Val` findAllRef
 - feat: add `label:` CodeLens (via: `"AhkNekoHelp.CodeLens.showLabelReference"`)
-- fix: `gVal` findAllRef with unicode case
-- perf: `gVal` findAllRef
 - perf: `label:` hover/gotoDef/findAllRef
-- refactor: like <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
+- refactor: like <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js> and <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/content.js#L1792>
 - feat: format-all-file `'select command first optional comma style'` only show if `"AhkNekoHelp.format.removeFirstCommaCommand" > 0`.
 - feat: add [WinSet](https://www.autohotkey.com/docs/v1/lib/WinSet.htm) SubCommand
   1. syntax-highlight
@@ -39,7 +39,6 @@
   2. completion (default: `false`)
   3. hover
 - feat: sub-cmd completion `[` -> `,[$0`
-- test: add test from ahk-doc <https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js>
 - fix: `hotkey, if` and `hotkey, key` syntax-highlight
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-38-hotkey.png)
 - fix: `Gui` option `Range` syntax-highlight
@@ -53,15 +52,15 @@
     "AhkNekoHelp.method": {
        "gotoDef": "precision_mode", // v0.0.36(2023-04-23)
        "hover": "precision_mode", // v0.0.36(2023-04-23)
-       "findAllRef": "precision_mode",
-       "CodeLens": "none"
+       "findAllRef": "precision_mode", // v0.0.38
+       "CodeLens": "none" // v0.0.38
      }
     ```
 
-- feat: support `method` findAllRef / CodeLens support `__New()`
+- feat: support the `__New()` of `magic_method` - findAllRef / CodeLens support
 
   ```js
-  let a = [
+  let magic_method = [
       // support method
       '__New meta-function', // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_NewDelete
 
