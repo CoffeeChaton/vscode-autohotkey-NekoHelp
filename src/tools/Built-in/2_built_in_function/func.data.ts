@@ -48,17 +48,23 @@ export const funcDataList: TBuiltInFuncElement[] = [
         group: 'Math',
         keyRawName: 'Abs',
         link: 'https://www.autohotkey.com/docs/v1/lib/Math.htm#Abs',
-        msg: [' Returns the absolute value of _Number_.'],
+        msg: [
+            'Returns the absolute value of _Number_.',
+            'The return value is the same type as _Number_ (integer or floating point).',
+        ],
         insert: 'Abs($1)',
         exp: ['MsgBox, % Abs(-1.2) ; Returns 1.2'],
-        sign: 'Abs(Number)',
+        sign: 'int_or_float := Abs(Number)',
     },
     {
         upName: 'ACOS',
         group: '△Math',
         keyRawName: 'ACos',
         link: 'https://www.autohotkey.com/docs/v1/lib/Math.htm#ACos',
-        msg: [' Returns the arcsine/arccosine/arctangent in radians.'],
+        msg: [
+            'Returns the arcsine/arccosine/arctangent in radians.',
+            'If _Number_ is less than -1 or greater than 1, the function yields a blank result (empty string).',
+        ],
         insert: 'ACos(${1:Number})',
         exp: [
             'number := -1.1',
@@ -75,7 +81,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % pi            ; 3.141593',
             'OutputDebug % ACos(pi / 6)  ; 1.019727',
         ],
-        sign: 'ACos(Number)',
+        sign: 'number_or_space := ACos(Number)',
     },
     {
         upName: 'ARRAY',
@@ -88,7 +94,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Array1 := [Item1, Item2, ..., ItemN]',
             'Array2 := Array(Item1, Item2, ..., ItemN)',
         ],
-        sign: 'Array(Item*)',
+        sign: 'Array := Array(Item*)',
     },
     {
         upName: 'ASC',
@@ -106,7 +112,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox, % Asc("t") ',
             'MsgBox, % Asc("test")',
         ],
-        sign: 'Asc(String)',
+        sign: '0_to_0xFFFF := Asc(String)',
     },
     {
         upName: 'ASIN',
@@ -133,7 +139,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % pi            ; 3.141593',
             'OutputDebug % ASin(pi / 6)  ; 0.551070',
         ],
-        sign: 'ASin(Number)',
+        sign: 'number_or_space := ASin(Number)',
     },
     {
         upName: 'ATAN',
@@ -146,7 +152,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'pi := 4 * ATan(1)',
             'OutputDebug % pi ; 3.141593',
         ],
-        sign: 'ATan(Number)',
+        sign: 'float := ATan(Number)',
     },
     {
         upName: 'CEIL',
@@ -159,7 +165,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox, % Ceil(1.2)  ; Returns 2',
             'MsgBox, % Ceil(-1.2) ; Returns -1',
         ],
-        sign: 'Ceil(Number)',
+        sign: 'int := Ceil(Number)',
     },
     {
         upName: 'CHR',
@@ -174,7 +180,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'String := Chr(Number)',
             'MsgBox % Chr(116) ; Reports "t".',
         ],
-        sign: 'Chr(Number)',
+        sign: 'String := Chr(Number)',
     },
     {
         upName: 'COMOBJACTIVE',
@@ -184,7 +190,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: ['Retrieves a running object that has been registered with OLE.'],
         insert: 'ComObjActive(${1:CLSID})',
         exp: ['ComObject := ComObjActive(CLSID)'],
-        sign: 'ComObjActive(CLSID)',
+        sign: 'ComObject := ComObjActive(CLSID)',
     },
     {
         upName: 'COMOBJARRAY',
@@ -203,7 +209,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '    t .= arr[A_Index-1]',
             'MsgBox % t',
         ],
-        sign: 'ComObjArray(VarType, Count1 [, Count2, Count3, Count4, Count5, Count6, Count7, Count8])',
+        sign: 'ArrayObj := ComObjArray(VarType, Count1 [, Count2, Count3, Count4, Count5, Count6, Count7, Count8])',
     },
     {
         upName: 'COMOBJCONNECT',
@@ -231,7 +237,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'ie.Visible := true  ; This is known to work incorrectly on IE7.',
             'ie.Navigate("https://www.autohotkey.com/")',
         ],
-        sign: 'ComObjCreate(CLSID [, IID])',
+        sign: 'ComObject := ComObjCreate(CLSID [, IID])',
     },
     {
         upName: 'COMOBJECT',
@@ -243,7 +249,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'ParamObj := ComObject(VarType, Value , Flags)',
         ],
-        sign: 'ComObject(VarType, Value [, Flags])',
+        sign: 'ParamObj := ComObject(VarType, Value [, Flags])',
     },
     {
         upName: 'COMOBJERROR',
@@ -253,7 +259,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: [' Enables or disables notification of COM errors.'],
         insert: 'ComObjError($1)',
         exp: ['Enabled := ComObjError(true)'],
-        sign: 'ComObjError([Enable])',
+        sign: 'Enabled := ComObjError([Enable])',
     },
     {
         upName: 'COMOBJFLAGS',
@@ -263,7 +269,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: ['Retrieves or changes flags which control a COM wrapper object\'s behaviour.'],
         insert: 'ComObjFlags(${1:ComObject})',
         exp: ['Flags := ComObjFlags(ComObject , NewFlags, Mask)'],
-        sign: 'ComObjFlags(ComObject [, NewFlags, Mask])',
+        sign: 'Flags := ComObjFlags(ComObject [, NewFlags, Mask])',
     },
     {
         upName: 'COMOBJGET',
@@ -277,7 +283,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '; Get WMI service object.',
             'wmi := ComObjGet("winmgmts:")',
         ],
-        sign: 'ComObjGet(Name)',
+        sign: 'ComObject := ComObjGet(Name)',
     },
     {
         upName: 'COMOBJQUERY',
@@ -287,7 +293,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: [' Queries a COM object for an interface or service.'],
         insert: 'ComObjQuery(${1:ComObject})',
         exp: ['InterfacePointer := ComObjQuery(ComObject, SID, IID)'],
-        sign: 'ComObjQuery(ComObject, [SID, IID])',
+        sign: 'InterfacePointer := ComObjQuery(ComObject, [SID, IID])',
     },
     {
         upName: 'COMOBJTYPE',
@@ -304,7 +310,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'CName   := ComObjType(d, "Class")',
             'CLSID   := ComObjType(d, "CLSID")',
         ],
-        sign: 'ComObjType(ComObject [,string])',
+        sign: 'VarType := ComObjType(ComObject [,string])',
         // https://www.autohotkey.com/docs/v1/lib/ComObjType.htm#vt
     },
     {
@@ -315,7 +321,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: ['Retrieves the value or pointer stored in a COM wrapper object.'],
         insert: 'ComObjValue(${1:ComObject})',
         exp: ['Value := ComObjValue(ComObject)'],
-        sign: 'ComObjValue(ComObject)',
+        sign: 'Value := ComObjValue(ComObject)',
     },
     {
         upName: 'COS',
@@ -331,7 +337,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'pi := 4 * ATan(1)',
             'MsgBox, % Cos(90*pi) ; Returns 1',
         ],
-        sign: 'Cos(Number)',
+        sign: 'float := Cos(Number)',
     },
     {
         upName: 'DLLCALL',
@@ -346,7 +352,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'SysColor := 15',
             'bc := DllCall("GetSysColor", "Int", SysColor, "UInt")',
         ],
-        sign: 'DllCall(DllFile_Function [, Type1, Arg1, Type2, Arg2, ReturnType])',
+        sign: 'Result := DllCall(DllFile_Function [, Type1, Arg1, Type2, Arg2, ReturnType])',
     },
     {
         upName: 'EXCEPTION',
@@ -367,7 +373,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '',
             '  throw Exception("Fail", -1)',
         ],
-        sign: 'Exception(Message [, What, Extra])',
+        sign: 'ErrorObj := Exception(Message [, What, Extra])',
     },
     {
         upName: 'EXP',
@@ -377,20 +383,37 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: [' Returns _e_ (which is approximately 2.71828182845905) raised to the _N_th power.'],
         insert: 'Exp($1)',
         exp: ['MsgBox, % Exp(1.2) ; Returns 3.320117'],
-        sign: 'Exp(N)',
+        sign: 'float := Exp(N)',
     },
     {
         upName: 'FILEEXIST',
         group: 'File',
         keyRawName: 'FileExist',
         link: 'https://www.autohotkey.com/docs/v1/lib/FileExist.htm',
-        msg: ['Checks for the existence of a file or folder and returns its attributes.'],
+        msg: [
+            'Checks for the existence of a file or folder and returns its attributes.',
+            '',
+            '### Return Value',
+            'This function returns the attribute string (a subset of "RASHNDOCT") of the first matching file or folder:',
+            '',
+            '- R = READONLY',
+            '- A = ARCHIVE',
+            '- S = SYSTEM',
+            '- H = HIDDEN',
+            '- N = NORMAL',
+            '- D = DIRECTORY',
+            '- O = OFFLINE',
+            '- C = COMPRESSED',
+            '- T = TEMPORARY',
+            '',
+            'If the file has no attributes (rare), "X" is returned. If no file is found, an empty string is returned.',
+        ],
         insert: 'FileExist("${1:C:\\My_File.txt}")',
         exp: [
             'if FileExist("D:\\")',
             '    MsgBox, % "The drive exists."',
         ],
-        sign: 'FileExist(FilePattern)',
+        sign: 'AttributeString := FileExist(FilePattern)',
     },
     {
         upName: 'FILEOPEN',
@@ -402,7 +425,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'file := FileOpen(FileName, "r")',
         ],
-        sign: 'FileOpen(Filename, Flags [, Encoding])',
+        sign: 'file := FileOpen(Filename, Flags [, Encoding])',
     },
     {
         upName: 'FLOOR',
@@ -415,7 +438,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox, % Floor(1.2)  ; Returns 1',
             'MsgBox, % Floor(-1.2) ; Returns -2',
         ],
-        sign: 'Floor(Number)',
+        sign: 'int := Floor(Number)',
     },
     {
         upName: 'FORMAT',
@@ -430,7 +453,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'arr := [13, 240]',
             'MsgBox % Format("{2:x}{1:02x}", arr*)',
         ],
-        sign: 'Format(FormatStr [, Values*])',
+        sign: 'String := Format(FormatStr [, Values*])',
     },
     {
         upName: 'FUNC',
@@ -454,7 +477,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '    MsgBox % A_ThisFunc " : " (param1 + param2)',
             '}',
         ],
-        sign: 'Func(FunctionName)',
+        sign: 'func_object := Func(FunctionName)',
     },
     {
         upName: 'GETKEYNAME',
@@ -472,7 +495,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % vk ; 91',
             'OutputDebug % sc ; 347',
         ],
-        sign: 'GetKeyName(key)',
+        sign: 'String := GetKeyName(key)',
     },
     {
         upName: 'GETKEYSC',
@@ -490,7 +513,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % vk ; 91',
             'OutputDebug % sc ; 347',
         ],
-        sign: 'GetKeySC(key)',
+        sign: 'Number := GetKeySC(key)',
     },
     {
         upName: 'GETKEYSTATE',
@@ -503,7 +526,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'KeyIsDown := GetKeyState(KeyName , Mode)',
             'state := GetKeyState("RButton")  ; Right mouse button.',
         ],
-        sign: 'GetKeyState(KeyName [, Mode])',
+        sign: 'KeyIsDown := GetKeyState(KeyName [, Mode])',
     },
     {
         upName: 'GETKEYVK',
@@ -521,7 +544,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % vk ; 91',
             'OutputDebug % sc ; 347',
         ],
-        sign: 'GetKeyVK(key)',
+        sign: 'Number := GetKeyVK(key)',
     },
     {
         upName: 'HOTSTRING',
@@ -536,7 +559,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'catch',
             '    MsgBox % "The hotstring does not exist or it has no variant for the current IfWin criteria."',
         ],
-        sign: 'Hotstring(String, [Replacement, OnOffToggle])',
+        sign: 'OldValue := Hotstring(String, [Replacement, OnOffToggle])',
     },
     {
         upName: 'IL_ADD',
@@ -592,7 +615,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'InputHook := InputHook(Options, EndKeys, MatchList)',
         ],
-        sign: 'InputHook([Options, EndKeys, MatchList])',
+        sign: 'InputHook := InputHook([Options, EndKeys, MatchList])',
     },
     {
         upName: 'INSTR',
@@ -606,7 +629,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             ';',
             'MsgBox % InStr("123abc789", "abc") ; Returns 4',
         ],
-        sign: 'InStr(Haystack, Needle [, CaseSensitive := false, StartingPos := 1, Occurrence := 1])',
+        sign: 'FoundPos := InStr(Haystack, Needle [, CaseSensitive := false, StartingPos := 1, Occurrence := 1])',
     },
     {
         upName: 'ISBYREF',
@@ -631,7 +654,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '}',
             '',
         ],
-        sign: 'IsByRef(ParameterVar)',
+        sign: 'TrueOrFalse := IsByRef(ParameterVar)',
     },
     {
         upName: 'ISFUNC',
@@ -647,7 +670,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'else ; count is 0',
             '    MsgBox, % "This function does not exist."',
         ],
-        sign: 'IsFunc(FunctionName)',
+        sign: 'MinParamsPlus1 := IsFunc(FunctionName)',
     },
     {
         upName: 'ISLABEL',
@@ -666,7 +689,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'LabelA:',
             'return',
         ],
-        sign: 'IsLabel(LabelName)',
+        sign: 'TrueOrFalse := IsLabel(LabelName)',
     },
     {
         upName: 'ISOBJECT',
@@ -684,7 +707,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'else',
             '    MsgBox % "This is not an object."',
         ],
-        sign: 'IsObject(Value)',
+        sign: 'TrueOrFalse := IsObject(Value)',
     },
     {
         upName: 'ISSET',
@@ -703,7 +726,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '        MyVar := A_Index  ; Initialize on first "use".',
             'MsgBox % "MyVar is " (IsSet(MyVar) ? "set and has value """ MyVar """" : "unset")',
         ],
-        sign: 'IsSet(Var)',
+        sign: 'TrueOrFalse := IsSet(Var)',
     },
     {
         upName: 'LN',
@@ -713,7 +736,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: [' Returns the natural logarithm (base e) of _Number_.'],
         insert: 'Ln($1)',
         exp: ['MsgBox, % Ln(1.2) ; Returns 0.182322'],
-        sign: 'Ln(Number)',
+        sign: 'float_or_space := Ln(Number)',
     },
     {
         upName: 'LOADPICTURE',
@@ -725,7 +748,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'Handle := LoadPicture(Filename , Options, ByRef ImageType)',
         ],
-        sign: 'LoadPicture(Filename [, Options, ByRef ImageType])',
+        sign: 'Handle := LoadPicture(Filename [, Options, ByRef ImageType])',
     },
     {
         upName: 'LOG',
@@ -735,7 +758,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: [' Returns the logarithm (base 10) of _Number_.'],
         insert: 'Log($1)',
         exp: ['MsgBox, % Log(1.2) ; Returns 0.079181'],
-        sign: 'Log(Number)',
+        sign: 'float_or_space := Log(Number)',
     },
     {
         upName: 'LTRIM',
@@ -749,7 +772,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Result := LTrim(String, OmitChars := " `t")',
             'Result := RTrim(String, OmitChars := " `t")',
         ],
-        sign: 'LTrim(String, OmitChars := " `t")',
+        sign: 'String := LTrim(String, OmitChars := " `t")',
     },
     {
         upName: 'LV_ADD',
@@ -773,7 +796,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Delete(RowNumber)',
         ],
-        sign: 'LV_Delete([RowNumber])',
+        sign: 'TrueOrFalse := LV_Delete([RowNumber])',
     },
     {
         upName: 'LV_DELETECOL',
@@ -785,7 +808,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_DeleteCol(ColumnNumber)',
         ],
-        sign: 'LV_DeleteCol(ColumnNumber)',
+        sign: 'TrueOrFalse := LV_DeleteCol(ColumnNumber)',
     },
     {
         upName: 'LV_GETCOUNT',
@@ -801,7 +824,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '   ;',
             '}',
         ],
-        sign: 'LV_GetCount([Mode])',
+        sign: 'int := LV_GetCount([Mode])',
     },
     {
         upName: 'LV_GETNEXT',
@@ -813,7 +836,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_GetNext(StartingRowNumber, RowType)',
         ],
-        sign: 'LV_GetNext([StartingRowNumber, RowType])',
+        sign: 'int := LV_GetNext([StartingRowNumber, RowType])',
     },
     {
         upName: 'LV_GETTEXT',
@@ -861,7 +884,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Modify(RowNumber , Options, NewCol1, NewCol2, ...)',
         ],
-        sign: 'LV_Modify(RowNumber [, Options, NewCol*])',
+        sign: 'TrueOrFalse := LV_Modify(RowNumber [, Options, NewCol*])',
     },
     {
         upName: 'LV_MODIFYCOL',
@@ -873,7 +896,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_ModifyCol(ColumnNumber, Options, ColumnTitle)',
         ],
-        sign: 'LV_ModifyCol([ColumnNumber, Options, ColumnTitle])',
+        sign: 'TrueOrFalse := LV_ModifyCol([ColumnNumber, Options, ColumnTitle])',
     },
     {
         upName: 'LV_SETIMAGELIST',
@@ -887,7 +910,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_SetImageList(ImageListID , IconType)',
         ],
-        sign: 'LV_SetImageList(ImageListID [, IconType])',
+        sign: 'ImageListID_or_0 := LV_SetImageList(ImageListID [, IconType])',
     },
     {
         upName: 'MAX',
@@ -902,7 +925,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'array := [1, 2, 3, 4]',
             'MsgBox, % Max(array*) ; Returns 4',
         ],
-        sign: 'Max(Number1 [, Number*])',
+        sign: 'number := Max(Number1 [, Number*])',
     },
     {
         upName: 'MENUGETHANDLE',
@@ -914,7 +937,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         ],
         insert: 'MenuGetHandle(${1:MenuName})',
         exp: ['Handle := MenuGetHandle(MenuName)'],
-        sign: 'MenuGetHandle(MenuName)',
+        sign: 'Handle := MenuGetHandle(MenuName)',
     },
     {
         upName: 'MENUGETNAME',
@@ -926,7 +949,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         ],
         insert: 'MenuGetName(${1:Handle})',
         exp: ['MenuName := MenuGetName(Handle)'],
-        sign: 'MenuGetName(Handle)',
+        sign: 'MenuName := MenuGetName(Handle)',
     },
     {
         upName: 'MIN',
@@ -941,7 +964,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'array := [1, 2, 3, 4]',
             'MsgBox, % Max(array*) ; Returns 1',
         ],
-        sign: 'Min(Number1 [, Number*])',
+        sign: 'number := Min(Number1 [, Number*])',
     },
     {
         upName: 'MOD',
@@ -954,7 +977,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Value := Mod(Dividend, Divisor)',
             'MsgBox, % Mod(7.5, 2) ; Returns 1.5 (2 x 3 + 1.5)',
         ],
-        sign: 'Mod(Dividend, Divisor)',
+        sign: 'number_or_space := Mod(Dividend, Divisor)',
     },
     {
         upName: 'NUMGET',
@@ -966,7 +989,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'Width := NumGet(rc, 8, "int")',
         ],
-        sign: 'NumGet(VarOrAddress [, Offset := 0, Type := "UPtr"])',
+        sign: 'number_or_space := NumGet(VarOrAddress [, Offset := 0, Type := "UPtr"])',
     },
     {
         upName: 'NUMPUT',
@@ -978,7 +1001,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'NumPut(x, RectF, 0, "float"), NumPut(y, RectF, 4, "float")',
         ],
-        sign: 'NumPut(Number, VarOrAddress [, Offset := 0, Type := "UPtr"])',
+        sign: 'number_or_space := NumPut(Number, VarOrAddress [, Offset := 0, Type := "UPtr"])',
     },
     {
         upName: 'OBJADDREF',
@@ -990,7 +1013,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         ],
         insert: 'ObjAddRef(${1:Ptr})',
         exp: ['ObjAddRef(Ptr)'],
-        sign: 'ObjAddRef(Ptr)',
+        sign: 'number_of_debug := ObjAddRef(Ptr)',
     },
     {
         upName: 'OBJBINDMETHOD',
@@ -1002,7 +1025,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         ],
         insert: 'ObjBindMethod(${1:Obj}, ${2:Method})',
         exp: ['BoundFunc := ObjBindMethod(Obj, Method, Params)'],
-        sign: 'ObjBindMethod(Obj, Method, Params)',
+        sign: 'BoundFunc := ObjBindMethod(Obj, Method, Params)',
     },
     {
         upName: 'OBJGETBASE',
@@ -1012,7 +1035,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         msg: ['Retrieves an object\'s [base object](https://www.autohotkey.com/docs/v1/Objects.htm#Custom_Objects).'],
         insert: 'ObjGetBase(${1:Obj})',
         exp: ['BaseObject := ObjGetBase(Object)'],
-        sign: 'ObjGetBase(Object)',
+        sign: 'BaseObject_or_space := ObjGetBase(Object)',
     },
     {
         upName: 'OBJRAWGET',
@@ -1024,7 +1047,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         ],
         insert: 'ObjRawGet(${1:Obj})',
         exp: ['Value := ObjRawGet(Object, Key)'],
-        sign: 'ObjRawGet(Object, Key)',
+        sign: 'Value_or_space := ObjRawGet(Object, Key)',
     },
     {
         upName: 'OBJRAWSET',
@@ -1051,7 +1074,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         ],
         insert: 'ObjRelease(${1:Ptr})',
         exp: ['ObjRelease(Ptr)'],
-        sign: 'ObjRelease(Ptr)',
+        sign: 'number_of_debug := ObjRelease(Ptr)',
     },
     {
         upName: 'OBJSETBASE',
@@ -1102,7 +1125,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '    FileAppend % "Error on line " exception.Line ": " exception.Message "`n", errorlog.txt',
             '}',
         ],
-        sign: 'OnError(Func [, AddRemove])',
+        sign: 'int := OnError(Func [, AddRemove])',
     },
     {
         upName: 'ONEXIT',
@@ -1128,7 +1151,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '    ; Do not call ExitApp -- that would prevent other OnExit functions from being called.',
             '}',
         ],
-        sign: 'OnExit(Func [, AddRemove])',
+        sign: 'int := OnExit(Func [, AddRemove])',
     },
     {
         upName: 'ONMESSAGE',
@@ -1147,7 +1170,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '    MsgBox % "Hello, world!"',
             '}',
         ],
-        sign: 'OnMessage(MsgNumber [, Function, MaxThreads])',
+        sign: 'name := OnMessage(MsgNumber [, Function, MaxThreads])',
     },
     {
         upName: 'ORD',
@@ -1163,7 +1186,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox, % Ord("t") ',
             'MsgBox, % Ord("test")',
         ],
-        sign: 'Ord(String)',
+        sign: '0x10000_to_0x10FFFF_or_zero := Ord(String)',
     },
     {
         upName: 'REGEXMATCH',
@@ -1189,7 +1212,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'FoundPos := RegExMatch(Haystack, NeedleRegEx , OutputVar, StartingPos := 1)',
             'MsgBox % RegExMatch("abc123123", "123$")',
         ],
-        sign: 'RegExMatch(Haystack, NeedleRegEx [, OutputVar, StartingPos := 1])',
+        sign: 'FoundPos := RegExMatch(Haystack, NeedleRegEx [, OutputVar, StartingPos := 1])',
     },
     {
         upName: 'REGEXREPLACE',
@@ -1203,7 +1226,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox % RegExReplace("abc123123", "123$", "xyz")',
         ],
         sign:
-            'RegExReplace(Haystack, NeedleRegEx [, Replacement := "", OutputVarCount := "", Limit := -1, StartingPos := 1])',
+            'NewStr := RegExReplace(Haystack, NeedleRegEx [, Replacement := "", OutputVarCount := "", Limit := -1, StartingPos := 1])',
     },
     {
         upName: 'REGISTERCALLBACK',
@@ -1225,7 +1248,8 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '        MsgBox % NumGet(params+0, "float") ", " NumGet(params+A_PtrSize, "int64")',
             '}',
         ],
-        sign: 'RegisterCallback(FunctionName [, Options := "", ParamCount := FormalCount, EventInfo := Address])',
+        sign:
+            'Address_or_space := RegisterCallback(FunctionName [, Options := "", ParamCount := FormalCount, EventInfo := Address])',
     },
     {
         upName: 'ROUND',
@@ -1241,7 +1265,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox, % Round(345, -1) ; Returns 350',
             'MsgBox, % Round(345, -2) ; Returns 300',
         ],
-        sign: 'Round(Number [, N])',
+        sign: 'number := Round(Number [, N])',
     },
     {
         upName: 'RTRIM',
@@ -1255,7 +1279,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Result := LTrim(String, OmitChars := " `t")',
             'Result := RTrim(String, OmitChars := " `t")',
         ],
-        sign: 'RTrim(String, OmitChars := " `t")',
+        sign: 'str := RTrim(String, OmitChars := " `t")',
     },
     {
         upName: 'SB_SETICON',
@@ -1267,7 +1291,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'SB_SetIcon(Filename , IconNumber, PartNumber)',
         ],
-        sign: 'SB_SetIcon(Filename [, IconNumber, PartNumber])',
+        sign: 'HICON_or_0 := SB_SetIcon(Filename [, IconNumber, PartNumber])',
     },
     {
         upName: 'SB_SETTEXT',
@@ -1279,7 +1303,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'SB_SetText(NewText , PartNumber, Style)',
         ],
-        sign: 'SB_SetText(NewText [, PartNumber, Style])',
+        sign: '0_to_256 := SB_SetText(NewText [, PartNumber, Style])',
     },
     {
         upName: 'SB_SETPARTS',
@@ -1291,7 +1315,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'SB_SetParts(Width1, Width2, ... Width255)',
         ],
-        sign: 'SB_SetParts([Width*])',
+        sign: 'HWND_or_0 := SB_SetParts([Width*])',
     },
     {
         upName: 'SIN',
@@ -1309,7 +1333,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'pi := 4 * ATan(1)',
             'MsgBox, % Sin(90*pi) ; Returns -0.0',
         ],
-        sign: 'Sin(Number)',
+        sign: 'float := Sin(Number)',
     },
     {
         upName: 'SQRT',
@@ -1322,7 +1346,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Value := Sqrt(Number)',
             'MsgBox, % Sqrt(16) ; Returns 4',
         ],
-        sign: 'Sqrt(Number)',
+        sign: 'float_or_space := Sqrt(Number)',
     },
     {
         upName: 'STRGET',
@@ -1336,7 +1360,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'str := StrGet(address, n, 0)   ; Maximum n chars, code page 0',
             'str := StrGet(address, 0)      ; Maximum 0 chars (always blank)',
         ],
-        sign: 'StrGet(Source [, Length] [, Encoding := None])',
+        sign: 'str := StrGet(Source [, Length] [, Encoding := None])',
     },
     {
         upName: 'STRLEN',
@@ -1348,7 +1372,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'MsgBox % StrLen("0123456789") ; 10',
         ],
-        sign: 'StrLen(String)',
+        sign: 'int := StrLen(String)',
     },
     {
         upName: 'STRPUT',
@@ -1362,7 +1386,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'StrPut(str, address, n, 0)  ; Maximum n chars, code page 0',
             'StrPut(str, address, 0)     ; Unsupported (maximum 0 chars)',
         ],
-        sign: 'StrPut(String, Target [, Length ] [, Encoding := None])',
+        sign: 'int := StrPut(String, Target [, Length ] [, Encoding := None])',
     },
     {
         upName: 'STRREPLACE',
@@ -1375,7 +1399,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'ReplacedStr := StrReplace(Haystack, Needle , ReplaceText, OutputVarCount, Limit)',
             'MsgBox % StrReplace("aor,ayz, y=a*3", "a", "x")',
         ],
-        sign: 'StrReplace(Haystack, Needle [, ReplaceText, OutputVarCount, Limit])',
+        sign: 'newStr := StrReplace(Haystack, Needle [, ReplaceText, OutputVarCount, Limit])',
     },
     {
         upName: 'STRSPLIT',
@@ -1388,7 +1412,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Array := StrSplit(String , Delimiters, OmitChars, MaxParts)',
             'StrSplit("a,b,c", ",")',
         ],
-        sign: 'StrSplit(String [, Delimiters, OmitChars, MaxParts])',
+        sign: 'Array := StrSplit(String [, Delimiters, OmitChars, MaxParts])',
     },
     {
         upName: 'SUBSTR',
@@ -1401,7 +1425,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'NewStr := SubStr(String, StartingPos , Length)',
             'MsgBox % SubStr("123abc789", 4, 3) ; Returns abc',
         ],
-        sign: 'SubStr(String, StartingPos [, Length])',
+        sign: 'NewStr := SubStr(String, StartingPos [, Length])',
     },
     {
         upName: 'TAN',
@@ -1417,7 +1441,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'pi := 4 * ATan(1)',
             'MsgBox, % Tan(45*pi) ; Returns -0.0',
         ],
-        sign: 'Tan(Number)',
+        sign: 'float := Tan(Number)',
     },
     {
         upName: 'TRIM',
@@ -1431,7 +1455,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Result := LTrim(String, OmitChars := " `t")',
             'Result := RTrim(String, OmitChars := " `t")',
         ],
-        sign: 'Trim(String, OmitChars := " `t")',
+        sign: 'newStr := Trim(String, OmitChars := " `t")',
     },
     {
         upName: 'TV_ADD',
@@ -1443,7 +1467,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_Add(Name, ParentItemID, Options)',
         ],
-        sign: 'TV_Add(Name, [ParentItemID, Options])',
+        sign: 'ID_number_or_0 := TV_Add(Name, [ParentItemID, Options])',
     },
     {
         upName: 'TV_DELETE',
@@ -1455,7 +1479,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_Delete(ItemID)',
         ],
-        sign: 'TV_Delete([ItemID])',
+        sign: 'TrueOrFalse := TV_Delete([ItemID])',
     },
     {
         upName: 'TV_GET',
@@ -1467,7 +1491,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_Get(ItemID, Attribute)',
         ],
-        sign: 'TV_Get(ItemID, Attribute)',
+        sign: 'ItemID_or_0 := TV_Get(ItemID, Attribute)',
     },
     {
         upName: 'TV_GETCHILD',
@@ -1479,7 +1503,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetChild(ParentItemID)',
         ],
-        sign: 'TV_GetChild(ParentItemID)',
+        sign: 'ItemID_or_0 := TV_GetChild(ParentItemID)',
     },
     {
         upName: 'TV_GETCOUNT',
@@ -1491,7 +1515,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetCount()',
         ],
-        sign: 'TV_GetCount()',
+        sign: 'int := TV_GetCount()',
     },
     {
         upName: 'TV_GETNEXT',
@@ -1503,7 +1527,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetNext(ItemID, ItemType)',
         ],
-        sign: 'TV_GetNext([ItemID, ItemType])',
+        sign: 'ItemID_or_0 := TV_GetNext([ItemID, ItemType])',
     },
     {
         upName: 'TV_GETPARENT',
@@ -1515,7 +1539,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetParent(ItemID)',
         ],
-        sign: 'TV_GetParent(ItemID)',
+        sign: 'ItemID_or_0 := TV_GetParent(ItemID)',
     },
     {
         upName: 'TV_GETPREV',
@@ -1527,7 +1551,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetPrev(ItemID)',
         ],
-        sign: 'TV_GetPrev(ItemID)',
+        sign: 'ItemID_or_0 := TV_GetPrev(ItemID)',
     },
     {
         upName: 'TV_GETSELECTION',
@@ -1539,7 +1563,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetSelection()',
         ],
-        sign: 'TV_GetSelection()',
+        sign: 'ItemID := TV_GetSelection()',
     },
     {
         upName: 'TV_GETTEXT',
@@ -1551,7 +1575,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_GetText(OutputVar, ItemID)',
         ],
-        sign: 'TV_GetText(OutputVar, ItemID)',
+        sign: 'ItemID_or_0 := TV_GetText(OutputVar, ItemID)',
     },
     {
         upName: 'TV_MODIFY',
@@ -1563,7 +1587,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_Modify(ItemID , Options, NewName)',
         ],
-        sign: 'TV_Modify(ItemID [, Options, NewName])',
+        sign: 'ItemID_or_0 := TV_Modify(ItemID [, Options, NewName])',
     },
     {
         upName: 'TV_SETIMAGELIST',
@@ -1577,7 +1601,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'TV_SetImageList(ImageListID , IconType)',
         ],
-        sign: 'TV_SetImageList(ImageListID [, IconType])',
+        sign: 'number := TV_SetImageList(ImageListID [, IconType])',
     },
     {
         upName: 'VARSETCAPACITY',
@@ -1589,7 +1613,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'VarSetCapacity(MyVar, 10240000)  ; ~10 MB',
         ],
-        sign: 'VarSetCapacity(TargetVar [, RequestedCapacity, FillByte])',
+        sign: 'int := VarSetCapacity(TargetVar [, RequestedCapacity, FillByte])',
     },
     {
         upName: 'VERCOMPARE',
@@ -1602,7 +1626,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             ';Demonstrates a range check.',
             'MsgBox % VerCompare("2.0.1", ">=2.0") && VerCompare("2.0.1", "<2.1")  ; Returns 1',
         ],
-        sign: 'VerCompare(VersionA, VersionB)',
+        sign: 'int := VerCompare(VersionA, VersionB)',
     },
     {
         upName: 'WINACTIVE',
@@ -1614,7 +1638,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'UniqueID := WinActive(WinTitle, WinText, ExcludeTitle, ExcludeText)',
         ],
-        sign: 'WinActive([WinTitle, WinText, ExcludeTitle, ExcludeText])',
+        sign: 'UniqueID := WinActive([WinTitle, WinText, ExcludeTitle, ExcludeText])',
     },
     {
         upName: 'WINEXIST',
@@ -1645,6 +1669,6 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '}',
             '',
         ],
-        sign: 'WinExist([WinTitle, WinText, ExcludeTitle, ExcludeText])',
+        sign: 'UniqueID := WinExist([WinTitle, WinText, ExcludeTitle, ExcludeText])',
     },
 ];

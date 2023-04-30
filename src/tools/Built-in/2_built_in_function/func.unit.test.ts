@@ -63,12 +63,14 @@ describe('check BuiltInFunctionObj ruler', () => {
         for (const v of funcDataList) {
             const { keyRawName, sign } = v;
 
-            if (!sign.startsWith(`${keyRawName}(`) || !sign.endsWith(')')) {
+            const signFix: string = sign.replace(/^\w+\s:=\s/u, '');
+
+            if (!signFix.startsWith(`${keyRawName}(`) || !signFix.endsWith(')')) {
                 errList.push(`${keyRawName}  startsWith endWith`);
                 continue;
             }
 
-            const param: string = sign
+            const param: string = signFix
                 .replace(`${keyRawName}(`, '')
                 .replace(/\)$/u, '');
 

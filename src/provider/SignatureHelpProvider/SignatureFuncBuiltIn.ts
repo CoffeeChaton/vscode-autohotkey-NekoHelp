@@ -8,6 +8,7 @@ const BiFuncSign = new CMemo<TBiFuncMsg, TFnSignData>(
         const { sign } = md;
 
         const paramList: readonly string[] = sign
+            .replace(/^\w+\s:=\s/u, '')
             .replace(/^\w+\(/u, '')
             .replace(/\)$/u, '')
             .replaceAll('[', '')
