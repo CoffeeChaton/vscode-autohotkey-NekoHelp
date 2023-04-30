@@ -83,7 +83,7 @@ function LabelRefKeyWord(
         .replace(/,[ \t]*/u, '')
         .padStart(lStr.length);
 
-    const ma: RegExpMatchArray | null = strF.match(/^\s*([#$@\w\u{A1}-\u{FFFF}]+)/u);
+    const ma: RegExpMatchArray | null = strF.match(/([#$@\w\u{A1}-\u{FFFF}]+)/u);
     if (ma === null) return;
     const i: number | undefined = ma.index;
     if (i === undefined) return;

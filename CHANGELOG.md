@@ -23,6 +23,7 @@
 
 - TODO : `Array := StrSplit()`
 - feat: add return value of `BiFunc`
+- fix: `label:` findAllRef
 
 ## v0.0.38(2023-04-30)
 
