@@ -28,6 +28,7 @@
         "compile": "node esbuild.config.js",
         "compile_dev": "node esbuild.config.js --isDev",
         "fmt": "dprint fmt && pnpm run sort_pack",
+        "jest": "jest --onlyChanged",
         "lint": "eslint src",
         "package": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/",
         "pnpm clean cache": "pnpm store prune",

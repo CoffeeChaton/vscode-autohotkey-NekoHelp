@@ -56,11 +56,19 @@
     "workbench.localHistory.enabled": false,
     "markdownlint.config": {
         "no-inline-html": {
-            "allowed_elements": ["details", "summary", "b"]
+            "allowed_elements": [
+                "details",
+                "summary",
+                "b"
+            ]
         },
         "ul-indent": {
             "indent": 2
         }
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "README.md": "tsconfig.json, .*, cspell.json, dprint.json, esbuild.config.js, jest.config.js, icon.png, icon.svg, LICENSE"
     }
     // "markdown.extension.list.indentationSize": "inherit"
 }

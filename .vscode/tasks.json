@@ -16,13 +16,18 @@
         },
         {
             "type": "npm",
-            "script": "watch",
-            "problemMatcher": "$tsc-watch",
-            "isBackground": true,
-            "presentation": {
-                "reveal": "never"
-            },
-            "group": "test"
+            "script": "jest",
+            "isBackground": false,
+            "group": {
+                "kind": "test",
+                "isDefault": true
+                // f4
+                // keybindings.json
+                // {
+                //     "key": "f4",
+                //     "command": "workbench.action.tasks.test"
+                // }
+            }
         }
     ]
 }
