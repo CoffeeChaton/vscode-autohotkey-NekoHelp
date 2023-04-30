@@ -59,9 +59,15 @@ describe('check BuiltInFunctionObj ruler', () => {
     it('check : sign', () => {
         expect.hasAssertions();
 
+        const voidFn: string[] = [];
         const errList: string[] = [];
         for (const v of funcDataList) {
             const { keyRawName, sign } = v;
+
+            if (!(/^\w+\s:=\s/u).test(sign)) {
+                //
+                voidFn.push(`${keyRawName}()`);
+            }
 
             const signFix: string = sign.replace(/^\w+\s:=\s/u, '');
 
@@ -112,6 +118,12 @@ describe('check BuiltInFunctionObj ruler', () => {
         }
 
         expect(errList).toStrictEqual([]);
+        expect(voidFn).toStrictEqual([
+            'ComObjConnect()',
+            'ObjRawSet()',
+            'ObjSetBase()',
+            'OnClipboardChange()',
+        ]);
     });
 
     it('check : uri', () => {

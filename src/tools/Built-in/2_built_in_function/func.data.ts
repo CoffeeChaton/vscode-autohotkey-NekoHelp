@@ -180,7 +180,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'String := Chr(Number)',
             'MsgBox % Chr(116) ; Reports "t".',
         ],
-        sign: 'String := Chr(Number)',
+        sign: 'str := Chr(Number)',
     },
     {
         upName: 'COMOBJACTIVE',
@@ -453,7 +453,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'arr := [13, 240]',
             'MsgBox % Format("{2:x}{1:02x}", arr*)',
         ],
-        sign: 'String := Format(FormatStr [, Values*])',
+        sign: 'str := Format(FormatStr [, Values*])',
     },
     {
         upName: 'FUNC',
@@ -495,7 +495,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % vk ; 91',
             'OutputDebug % sc ; 347',
         ],
-        sign: 'String := GetKeyName(key)',
+        sign: 'str := GetKeyName(key)',
     },
     {
         upName: 'GETKEYSC',
@@ -513,7 +513,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % vk ; 91',
             'OutputDebug % sc ; 347',
         ],
-        sign: 'Number := GetKeySC(key)',
+        sign: 'number := GetKeySC(key)',
     },
     {
         upName: 'GETKEYSTATE',
@@ -544,7 +544,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'OutputDebug % vk ; 91',
             'OutputDebug % sc ; 347',
         ],
-        sign: 'Number := GetKeyVK(key)',
+        sign: 'number := GetKeyVK(key)',
     },
     {
         upName: 'HOTSTRING',
@@ -575,7 +575,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '; https://www.autohotkey.com/docs/v1/lib/ListView.htm#BuiltIn',
             'IL_Add(ImageListID, Filename , IconNumber, ResizeNonIcon)',
         ],
-        sign: 'IL_Add(ImageListID, Filename [, IconNumber, ResizeNonIcon])',
+        sign: 'int := IL_Add(ImageListID, Filename [, IconNumber, ResizeNonIcon])',
     },
     {
         upName: 'IL_CREATE',
@@ -590,7 +590,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '; https://www.autohotkey.com/docs/v1/lib/ListView.htm#BuiltIn',
             'IL_Create(InitialCount, GrowCount, LargeIcons)',
         ],
-        sign: 'IL_Create([InitialCount, GrowCount, LargeIcons])',
+        sign: 'ID_or_0 := IL_Create([InitialCount, GrowCount, LargeIcons])',
     },
     {
         upName: 'IL_DESTROY',
@@ -603,7 +603,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             '; https://www.autohotkey.com/docs/v1/lib/ListView.htm#BuiltIn',
             'IL_Destroy(ImageListID)',
         ],
-        sign: 'IL_Destroy(ImageListID)',
+        sign: 'TrueOrFalse := IL_Destroy(ImageListID)',
     },
     {
         upName: 'INPUTHOOK',
@@ -772,7 +772,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'Result := LTrim(String, OmitChars := " `t")',
             'Result := RTrim(String, OmitChars := " `t")',
         ],
-        sign: 'String := LTrim(String, OmitChars := " `t")',
+        sign: 'str := LTrim(String, OmitChars := " `t")',
     },
     {
         upName: 'LV_ADD',
@@ -784,7 +784,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Add(Options, Field1, Field2, ...)',
         ],
-        sign: 'LV_Add([Options, Field*])',
+        sign: 'int := LV_Add([Options, Field*])',
     },
     {
         upName: 'LV_DELETE',
@@ -848,7 +848,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_GetText(OutputVar, RowNumber , ColumnNumber)',
         ],
-        sign: 'LV_GetText(OutputVar, RowNumber [, ColumnNumber])',
+        sign: 'TrueOrFalse := LV_GetText(OutputVar, RowNumber [, ColumnNumber])',
     },
     {
         upName: 'LV_INSERT',
@@ -860,7 +860,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_Insert(RowNumber , Options, Col1, Col2, ...)',
         ],
-        sign: 'LV_Insert(RowNumber [, Options, Col*])',
+        sign: 'int := LV_Insert(RowNumber [, Options, Col*])',
     },
     {
         upName: 'LV_INSERTCOL',
@@ -872,7 +872,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
         exp: [
             'LV_InsertCol(ColumnNumber , Options, ColumnTitle)',
         ],
-        sign: 'LV_InsertCol(ColumnNumber [, Options, ColumnTitle])',
+        sign: 'int := LV_InsertCol(ColumnNumber [, Options, ColumnTitle])',
     },
     {
         upName: 'LV_MODIFY',
@@ -1226,7 +1226,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'MsgBox % RegExReplace("abc123123", "123$", "xyz")',
         ],
         sign:
-            'NewStr := RegExReplace(Haystack, NeedleRegEx [, Replacement := "", OutputVarCount := "", Limit := -1, StartingPos := 1])',
+            'newStr := RegExReplace(Haystack, NeedleRegEx [, Replacement := "", OutputVarCount := "", Limit := -1, StartingPos := 1])',
     },
     {
         upName: 'REGISTERCALLBACK',
@@ -1425,7 +1425,7 @@ export const funcDataList: TBuiltInFuncElement[] = [
             'NewStr := SubStr(String, StartingPos , Length)',
             'MsgBox % SubStr("123abc789", 4, 3) ; Returns abc',
         ],
-        sign: 'NewStr := SubStr(String, StartingPos [, Length])',
+        sign: 'newStr := SubStr(String, StartingPos [, Length])',
     },
     {
         upName: 'TAN',
