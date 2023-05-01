@@ -191,7 +191,7 @@ const ItemOfAhkObj: readonly vscode.CompletionItem[] = ((): vscode.CompletionIte
     return itemS;
 })();
 
-const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
+const ItemOfAhkFile: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     // File := FileOpen()
     const itemS: vscode.CompletionItem[] = [];
     const ahkFileOpenMethod: readonly TDescription[] = [
@@ -200,7 +200,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
             documentation: [
                 'Reads a string of characters from the file and advances the file pointer.',
                 '*Characters*:The maximum number of characters to read. If omitted, the rest of the file is read and returned as one string. If the File object was created from a handle to a non-seeking device such as a console buffer or pipe, omitting this parameter may cause the method to fail or return only what data is currently available.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Read',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Read',
             ],
         },
         {
@@ -209,7 +209,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 'Writes a string of characters to the file and advances the file pointer.',
                 '*String*: A string to write.',
                 '*Returns* the number of bytes (not characters) that were written.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Write',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Write',
             ],
         },
         {
@@ -218,7 +218,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 'Reads a line of text from the file and advances the file pointer.',
                 '*Returns a line of text.* This may include `n, `r`n or `r depending on the file and EOL flags used to open the file.',
                 'Lines up to 65,534 characters long can be read. If the length of a line exceeds this, the remainder of the line is returned by subsequent calls to this method.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#ReadLine',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#ReadLine',
             ],
         },
         {
@@ -227,7 +227,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 'Writes a string of characters followed by `n or `r`n depending on the flags used to open the file. Advances the file pointer.',
                 '*String*: An optional string to write.',
                 '*Returns* the number of bytes (not characters) that were written.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#WriteLine',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#WriteLine',
             ],
         },
         {
@@ -237,7 +237,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 '*Bytes*:The maximum number of bytes to read.',
                 '*Returns* the number of bytes that were read.',
                 'If a Try statement is active and Bytes is non-zero but no bytes were read, an exception is thrown. AtEOF can be used to avoid this, if needed.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#RawRead',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#RawRead',
             ],
         },
         {
@@ -246,7 +246,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 '*VarOrAddress*: A variable containing the data or the address of the data in memory. Usage is similar to ```NumPut().```',
                 '*Bytes*: The number of bytes to write.',
                 '*Returns* the number of bytes that were written.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#RawWrite',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#RawWrite',
             ],
         },
         {
@@ -260,14 +260,14 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 '> * 2 (SEEK_END): End of the file. Distance should usually be negative.',
                 '> If omitted, Origin defaults to SEEK_END when Distance is negative and SEEK_SET otherwise.',
                 '*Returns* a non-zero value if successful, otherwise zero.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Seek',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Seek',
             ],
         },
         {
             label: 'Tell()',
             documentation: [
                 'Returns the current position of the file pointer, where 0 is the beginning of the file.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Tell',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Tell',
             ],
         },
         {
@@ -275,7 +275,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
             documentation: [
                 'Closes the file, flushes any data in the cache to disk and releases the share locks.',
                 'Although the file is closed automatically when the object is freed, it is recommended to close the file as soon as possible.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Close',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Close',
             ],
         },
     ];
@@ -294,14 +294,14 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
             label: 'Position ',
             documentation: [
                 'Retrieves or sets the position of the file pointer. Equivalent to ```Pos := File.Tell()``` or ```File.Seek(Distance)```.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Members',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Members',
             ],
         },
         {
             label: 'Pos ',
             documentation: [
                 'Retrieves or sets the position of the file pointer. Equivalent to ```Pos := File.Tell()``` or ```File.Seek(Distance)```.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Members',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Members',
             ],
         },
         {
@@ -312,7 +312,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 '> File.Length := NewSize',
                 '*FileSize* and *NewSize* is the size of the file, in bytes.',
                 'This property should be used only with an actual file. If the File object was created from a handle to a pipe, it may return the amount of data currently available in the pipe\'s internal buffer, but this behaviour is not guaranteed.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Length',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Length',
             ],
         },
         {
@@ -321,7 +321,7 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 'Retrieves a non-zero value if the file pointer has reached the end of the file, otherwise zero.',
                 '> IsAtEOF := File.AtEOF',
                 'This property should be used only with an actual file. If the File object was created from a handle to a non-seeking device such as a console buffer or pipe, the returned value may not be meaningful, as such devices do not logically have an "end of file".',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#AtEOF',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#AtEOF',
             ],
         },
         {
@@ -336,13 +336,13 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
                 '* CPnnn: a code page with numeric identifier nnn.',
                 'RetrievedEncoding is never a value with the ```-RAW``` suffix, regardless of how the file was opened or whether it contains a byte order mark (BOM). Setting NewEncoding never causes a BOM to be added or removed, as the BOM is normally written to the file when it is first created.',
                 '*[v1.1.15.04+]*: Setting NewEncoding to UTF-8-RAW or UTF-16-RAW is valid, but the -RAW suffix is ignored. In earlier versions, UTF-8-RAW and UTF-16-RAW behaved like an invalid 8-bit encoding, causing all non-ASCII characters to be discarded. This only applies to File.Encoding, not ```FileOpen()```.',
-                'https://www.autohotkey.com/docs/v1/objects/File.htm#Encoding',
+                'https://www.autohotkey.com/docs/v1/lib/File.htm#Encoding',
             ],
         },
         {
             label: 'Handle ',
             documentation: [
-                'Alias of [__Handle](https://www.autohotkey.com/docs/v1/objects/File.htm#__Handle).',
+                'Alias of [__Handle](https://www.autohotkey.com/docs/v1/lib/File.htm#__Handle).',
                 '*Returns* a system file ```handle```, intended for use with ```DllCall()```. See [CreateFile](https://docs.microsoft.com/zh-tw/windows/win32/api/fileapi/nf-fileapi-createfilea?redirectedfrom=MSDN).',
                 '> File.__Handle',
                 'File objects internally buffer reads or writes. If data has been written into the object\'s internal buffer, it is committed to disk before the handle is returned. If the buffer contains data read from file, it is discarded and the actual file pointer is reset to the logical position indicated by ```File.Pos```.',
@@ -367,108 +367,218 @@ const ItemOfFileOpen: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
         itemS.push(item);
     }
 
-    for (
-        const v of [
-            'ReadUInt()',
-            'ReadInt()',
-            'ReadInt64()',
-            'ReadShort()',
-            'ReadUShort()',
-            'ReadChar()',
-            'ReadUChar()',
-            'ReadDouble()',
-            'ReadFloat()',
-        ]
-    ) {
-        const documentation: string[] = [
+    // for (
+    //     const v of [
+    //         'ReadUInt()',
+    //         'ReadInt()',
+    //         'ReadInt64()',
+    //         'ReadShort()',
+    //         'ReadUShort()',
+    //         'ReadChar()',
+    //         'ReadUChar()',
+    //         'ReadDouble()',
+    //         'ReadFloat()',
+    //     ]
+    // ) {
+
+    const itemReadNumType = new vscode.CompletionItem({
+        label: 'ReadNumType(Num)',
+        description: 'File := FileOpen()',
+    }, vscode.CompletionItemKind.Method);
+    itemReadNumType.detail = 'neko help : FileOpen() -> ReadNumType';
+    itemReadNumType.documentation = new vscode.MarkdownString(
+        [
             'Reads a number from the file and advances the file pointer.',
             '```NumType``` is either UInt, Int, Int64, Short, UShort, Char, UChar, Double, or Float. These type names have the same meanings as with ```DllCall()```.',
             '*Returns* a number if successful, otherwise an empty string.',
             'If a Try statement is active and no bytes were read, an exception is thrown. However, no exception is thrown if at least one byte was read, even if the size of the given NumType is greater than the number of bytes read. Instead, the missing bytes are assumed to be zero.',
-            'https://www.autohotkey.com/docs/v1/objects/File.htm#ReadNum',
-        ];
-        const item = new vscode.CompletionItem({
-            label: v,
-            description: 'File := FileOpen()',
-        }, vscode.CompletionItemKind.Method);
-        item.detail = 'neko help : FileOpen() -> ReadNumType';
-        item.documentation = new vscode.MarkdownString(documentation.join('\n\n'), true);
-        itemS.push(item);
-    }
+            'https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum',
+        ].join('\n\n'),
+        true,
+    );
+    itemReadNumType.insertText = new vscode.SnippetString(
+        // eslint-disable-next-line no-template-curly-in-string
+        'Read${1|UInt,Int,Int64,Short,UShort,Char,UChar,Double,Float|}($0)',
+    );
 
-    for (
-        const v of [
-            'WriteUInt(Num)',
-            'WriteInt(Num)',
-            'WriteInt64(Num)',
-            'WriteShort(Num)',
-            'WriteUShort(Num)',
-            'WriteChar(Num)',
-            'WriteUChar(Num)',
-            'WriteDouble(Num)',
-            'WriteFloat(Num)',
-        ]
-    ) {
-        const documentation: string[] = [
+    itemS.push(itemReadNumType);
+    //
+
+    // for (
+    //     const v of [
+    //         'WriteUInt(Num)',
+    //         'WriteInt(Num)',
+    //         'WriteInt64(Num)',
+    //         'WriteShort(Num)',
+    //         'WriteUShort(Num)',
+    //         'WriteChar(Num)',
+    //         'WriteUChar(Num)',
+    //         'WriteDouble(Num)',
+    //         'WriteFloat(Num)',
+    //     ]
+    // ) {}
+
+    const itemWriteNumType = new vscode.CompletionItem({
+        label: 'WriteNumType(Num)',
+        description: 'File := FileOpen()',
+    }, vscode.CompletionItemKind.Method);
+    itemWriteNumType.detail = 'neko help : FileOpen() -> WriteNumType';
+    itemWriteNumType.documentation = new vscode.MarkdownString(
+        [
             'Writes a number to the file and advances the file pointer.',
             '```Num```:A number to write.',
             '```NumType``` is either UInt, Int, Int64, Short, UShort, Char, UChar, Double, or Float. These type names have the same meanings as with ```DllCall()```.',
             '*Returns* the number of bytes that were written. For instance, WriteUInt returns 4 if successful.',
-            'https://www.autohotkey.com/docs/v1/objects/File.htm#WriteNum',
-        ];
-        const item = new vscode.CompletionItem({
-            label: v,
-            description: 'File := FileOpen()',
-        }, vscode.CompletionItemKind.Method);
-        item.detail = 'neko help : FileOpen() -> WriteNumType';
-        item.documentation = new vscode.MarkdownString(documentation.join('\n\n'), true);
-        itemS.push(item);
-    }
+            'https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum',
+        ].join('\n\n'),
+        true,
+    );
+
+    itemWriteNumType.insertText = new vscode.SnippetString(
+        // eslint-disable-next-line no-template-curly-in-string
+        'Write${1|UInt,Int,Int64,Short,UShort,Char,UChar,Double,Float|}($0)',
+    );
+
+    itemS.push(itemWriteNumType);
     return itemS;
 })();
 
-const ItemOfFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
+const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     // FIXME add doc of https://www.autohotkey.com/docs/v1/lib/FuncObj.htm
     const itemS: vscode.CompletionItem[] = [];
-    for (
-        const v of [
-            'Name',
-            'IsBuiltIn',
-            'IsVariadic',
-            'MinParams',
-            'MaxParams',
-            '__Handle',
-        ]
-    ) {
+
+    type TFuncCompletion = {
+        keyRawName: string,
+        uri: `https://www.autohotkey.com/docs/v1/lib/Func.htm#${string}`,
+        doc: string,
+        exp: readonly string[],
+    };
+
+    const funcProperty: readonly TFuncCompletion[] = [
+        {
+            keyRawName: 'Name',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#Name',
+            doc: 'Returns the functions name.',
+            exp: ['FunctionName := Func.Name'],
+        },
+        {
+            keyRawName: 'IsBuiltIn',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#IsBuiltIn',
+            doc: 'Returns _true_ if the function is [built-in](https://www.autohotkey.com/docs/v1/Functions.htm#BuiltIn) and _false_ otherwise.',
+            exp: [
+                'Boolean := Func.IsBuiltIn',
+                '',
+                'fn := Func("StrLen")',
+                'MsgBox % fn.Name "() is " (fn.IsBuiltIn ? "built-in." : "user-defined.")',
+            ],
+        },
+        {
+            keyRawName: 'IsVariadic',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#IsVariadic',
+            doc: 'Returns _true_ if the function is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic) and _false_ otherwise.',
+            exp: [
+                'Boolean := Func.IsVariadic',
+            ],
+        },
+        {
+            keyRawName: 'MinParams',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#MinParams',
+            doc: 'Returns the number of required parameters.',
+            exp: [
+                'intParamCount := Func.MinParams',
+            ],
+        },
+        {
+            keyRawName: 'MaxParams',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#MaxParams',
+            doc: 'Returns the number of formally-declared parameters for a user-defined function or maximum parameters for a built-in function.\n\nIf the function is [variadic](https://www.autohotkey.com/docs/v1/Functions.htm#Variadic), _ParamCount_ indicates the maximum number of parameters which can be accepted by the function without overflowing into the "variadic\\*" parameter.',
+            exp: [
+                'intParamCount := Func.MaxParams',
+            ],
+        },
+    ];
+    for (const v of funcProperty) {
+        const {
+            keyRawName,
+            exp,
+            doc,
+            uri,
+        } = v;
         const item = new vscode.CompletionItem({
-            label: v,
+            label: keyRawName,
             description: 'fn := Func()',
         }, vscode.CompletionItemKind.Property);
         item.detail = 'neko help : Func() Property';
+        const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
+            .appendMarkdown('(Func) property')
+            .appendMarkdown(doc)
+            .appendMarkdown('\n')
+            .appendMarkdown(`[(Read Doc)](${uri})`)
+            .appendMarkdown('\n\n***')
+            .appendMarkdown('\n\n*exp:*')
+            .appendCodeblock(exp.join('\n'));
+
+        md.supportHtml = true;
+        item.documentation = md;
         itemS.push(item);
     }
-    for (
-        const v of [
-            'Call(',
-            'Bind(',
-            'IsByRef(',
-            'IsOptional(',
-        ]
-    ) {
+
+    const funcMethod: readonly TFuncCompletion[] = [
+        {
+            keyRawName: 'Bind',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#Bind',
+            doc: 'Binds parameters to the function and returns a [BoundFunc object](https://www.autohotkey.com/docs/v1/misc/Functor.htm#BoundFunc).',
+            exp: ['BoundFunc := Func.Bind(Param1, Param2, ...)'],
+        },
+        {
+            keyRawName: 'Call',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#Call',
+            doc: 'Calls the function.',
+            exp: ['Func.Call(Param1, Param2, ...)  ; Requires [v1.1.19+]'],
+        },
+        {
+            keyRawName: 'IsByRef',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#IsByRef',
+            doc: 'Determines whether a parameter is ByRef.',
+            exp: ['Boolean_or_space := Func.IsByRef([ParamIndex]) ;one-based index of a parameter.'],
+        },
+        {
+            keyRawName: 'IsOptional',
+            uri: 'https://www.autohotkey.com/docs/v1/lib/Func.htm#IsOptional',
+            doc: 'Determines whether a parameter is optional.',
+            exp: ['Boolean_or_space := Func.IsOptional([ParamIndex]) ;one-based index of a parameter.'],
+        },
+    ];
+    for (const v of funcMethod) {
+        const {
+            keyRawName,
+            exp,
+            doc,
+            uri,
+        } = v;
         const item = new vscode.CompletionItem({
-            label: `${v})`,
+            label: `${keyRawName}()`,
             description: 'fn := Func()',
         }, vscode.CompletionItemKind.Method);
         item.detail = 'neko help : Func() Methods';
-        item.insertText = new vscode.SnippetString(v)
-            .appendTabstop()
-            .appendText(')'); // SnippetString;
+        item.insertText = new vscode.SnippetString(`${keyRawName}($0)`);
+        const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
+            .appendMarkdown('(Func) Methods')
+            .appendMarkdown(doc)
+            .appendMarkdown('\n')
+            .appendMarkdown(`[(Read Doc)](${uri})`)
+            .appendMarkdown('\n\n***')
+            .appendMarkdown('\n\n*exp:*')
+            .appendCodeblock(exp.join('\n'));
+
+        md.supportHtml = true;
+        item.documentation = md;
         itemS.push(item);
     }
     return itemS;
 })();
 
-const ItemOfAhkCatch: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
+const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     // IObject *Line::CreateRuntimeException(LPCTSTR aErrorText, LPCTSTR aWhat, LPCTSTR aExtraInfo)
     // ResultType Line::ThrowRuntimeException(LPCTSTR aErrorText, LPCTSTR aWhat, LPCTSTR aExtraInfo)
 
@@ -536,9 +646,9 @@ const ItemOfAhkCatch: readonly vscode.CompletionItem[] = ((): vscode.CompletionI
 export function ahkBaseWrap(Obj: TAhkBaseObj): vscode.CompletionItem[] {
     const itemS: vscode.CompletionItem[] = [];
     // if (Obj.ahkArray) itemS.push(...ItemOfAhkArray);
-    if (Obj.ahkFileOpen) itemS.push(...ItemOfFileOpen);
-    if (Obj.ahkFuncObject) itemS.push(...ItemOfFunc);
+    if (Obj.ahkFileOpen) itemS.push(...ItemOfAhkFile);
+    if (Obj.ahkFuncObject) itemS.push(...ItemOfAhkFunc);
     if (Obj.ahkBase) itemS.push(...ItemOfAhkObj);
-    if (Obj.ahkCatch) itemS.push(...ItemOfAhkCatch);
+    if (Obj.ahkCatch) itemS.push(...ItemOfAhkException);
     return itemS;
 }

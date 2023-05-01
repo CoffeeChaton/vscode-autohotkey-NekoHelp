@@ -22,7 +22,13 @@
 
 ## Next v0.0.40(2023-05-XX)
 
-- feat : `Array := StrSplit()` completion
+- feat : add `Array := StrSplit()` completion
+- `Func Object`
+  - fix: remove `__Handle`
+  - feat : add dco and exp
+- `File Object`
+  - fix: uri <https://www.autohotkey.com/docs/v1/objects/File.htm> -> <https://www.autohotkey.com/docs/v1/lib/File.htm>
+  - feat : `WriteNumType` and `ReadNumType` streamline
 
 ## v0.0.39(2023-05-01)
 
