@@ -28,7 +28,7 @@ export function ahkBaseUp(strPart: string, Obj: TAhkBaseObj): TAhkBaseObj {
     // https://www.autohotkey.com/docs/v1/lib/Array.htm
     // Array := [Item1, Item2, ..., ItemN]
     //          ^ ; this `[`
-    if (!Obj.ahkArray && (strPart.startsWith('[') || (/^Array\(/iu).test(strPart))) {
+    if (!Obj.ahkArray && (strPart.startsWith('[') || (/^(?:Array|StrSplit)\(/iu).test(strPart))) {
         Obj.ahkArray = true;
         Obj.ahkBase = true;
         return Obj;
