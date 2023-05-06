@@ -93,6 +93,26 @@ export type TTextMapIn = Map<TUpName, TTextMetaIn>; // k = valNameUP
 
 export type TTextMapOut = ReadonlyMap<TUpName, TTextMetaOut>; // k = valNameUP
 
+export type TFnParamMeta = {
+    ATypeDef: string,
+    BParamName: string,
+    CInfo: string[],
+};
+
+export type TFnReturnMeta = {
+    typeDef: string,
+    info: string[],
+};
+
+export type TFnMeta = DeepReadonly<{
+    ahkDocMeta: {
+        paramMeta: TFnParamMeta[],
+        returnMeta: TFnReturnMeta,
+    } | null,
+
+    returnList: string[],
+}>;
+
 type TCAhkFuncParam = {
     name: string,
     detail: string,
@@ -110,6 +130,8 @@ type TCAhkFuncParam = {
     ch: (CAhkSwitch | TLineClass)[],
     nameRange: vscode.Range,
     fnMode: EFnMode,
+
+    meta: TFnMeta,
 };
 
 // AhkSymbol instanceof CAhkFunc
@@ -130,6 +152,8 @@ export class CAhkFunc extends vscode.DocumentSymbol {
     declare public readonly kind: vscode.SymbolKind.Function | vscode.SymbolKind.Method;
     declare public readonly children: (CAhkSwitch | TLineClass)[];
 
+    #meta: TFnMeta;
+
     public constructor(
         {
             name,
@@ -146,6 +170,7 @@ export class CAhkFunc extends vscode.DocumentSymbol {
             ch,
             nameRange,
             fnMode,
+            meta,
         }: TCAhkFuncParam,
     ) {
         const kind = defStack.length === 0
@@ -164,5 +189,10 @@ export class CAhkFunc extends vscode.DocumentSymbol {
 
         this.nameRange = nameRange;
         this.fnMode = fnMode;
+        this.#meta = meta;
+    }
+
+    public getMeta(): TFnMeta {
+        return this.#meta;
     }
 }

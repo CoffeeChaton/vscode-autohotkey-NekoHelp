@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import type { TFnMeta, TFnParamMeta, TFnReturnMeta } from '../../AhkSymbol/CAhkFunc';
 import { getCustomize } from '../../configUI';
 import { EMode } from '../../Enum/EMode';
 import type { TTokenStream } from '../../globalEnum';
@@ -43,21 +44,85 @@ function getReturnText(lStr: string, textRaw: string, col: number): string {
     return `    Return ${name.trim()}`;
 }
 
+function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
+    // @param {type}? param_name information
+    // @return {type} information
+    const paramType: TFnParamMeta[] = [];
+    const returnType: TFnReturnMeta = {
+        typeDef: '',
+        info: [],
+    };
+
+    const docList: string[] = ahkDoc.split(/\r?\n/u);
+    const { length } = docList;
+    for (let i = 0; i < length; i++) {
+        const str: string = docList[i];
+
+        if ((/^\s*@return\s/iu).test(str)) {
+            const st1: string = str.replace(/^\s*@return\s+/iu, '');
+
+            const typeDef: string = st1.startsWith('{')
+                ? st1.slice(1, st1.indexOf('}'))
+                : '';
+            const st2: string = st1.startsWith('{')
+                ? st1.slice(st1.indexOf('}') + 1).trimStart()
+                : st1.trimStart();
+
+            returnType.typeDef = typeDef;
+            returnType.info.push(st2);
+
+            for (let j = i + 1; j < length; j++) {
+                const str2: string = docList[j];
+                if ((/^\s*@/u).test(str2)) {
+                    i = j - 1;
+                    break;
+                }
+                returnType.info.push(str2.slice(1));
+            }
+            continue;
+        }
+
+        if ((/^\s*@param\s/iu).test(str)) {
+            const st1: string = str.replace(/^\s*@param\s+/iu, '');
+
+            const typeDef: string = st1.startsWith('{')
+                ? st1.slice(1, st1.indexOf('}'))
+                : '';
+            const st2: string = st1.startsWith('{')
+                ? st1.slice(st1.indexOf('}') + 1).trimStart()
+                : st1.trimStart();
+            // eslint-disable-next-line unicorn/no-hex-escape, regexp/no-invalid-regexp
+            const paramName: string = st2.slice(0, st2.search(/\s|$/u));
+
+            const str3: string = st2.slice(paramName.length).trimStart();
+            const info: string[] = [str3];
+            paramType.push({
+                ATypeDef: typeDef,
+                BParamName: paramName,
+                CInfo: info,
+            });
+            for (let j = i + 1; j < length; j++) {
+                const str2: string = docList[j];
+                if ((/^\s*@/u).test(str2)) {
+                    i = j - 1;
+                    break;
+                }
+                info.push(str2.slice(1));
+            }
+            // continue;
+        }
+    }
+
+    return {
+        paramMeta: paramType, // TFnParamMeta[]
+        returnMeta: returnType, // string
+    };
+}
+
 export function getFuncDocCore(
-    {
-        fileName,
-        AhkTokenList,
-        ahkDoc,
-        selectionRangeText,
-        classStack,
-    }: {
-        fileName: string,
-        AhkTokenList: TTokenStream,
-        ahkDoc: string,
-        selectionRangeText: string,
-        classStack: string[],
-    },
-): vscode.MarkdownString {
+    AhkTokenList: TTokenStream,
+    ahkDoc: string,
+): TFnMeta {
     const returnList: string[] = [];
 
     for (const AhkTokenLine of AhkTokenList) {
@@ -88,15 +153,35 @@ export function getFuncDocCore(
         }
     }
 
-    //
-    const kindStr: string = classStack.length === 0
+    return ahkDoc === ''
+        ? { // happy path
+            ahkDocMeta: null,
+            returnList,
+        }
+        : {
+            ahkDocMeta: parseAhkDoc(ahkDoc),
+            returnList,
+        };
+}
+
+export function getFuncDocMake(
+    {
+        meta,
+        defStack,
+        fileName,
+        selectionRangeText,
+        ahkDoc,
+    }: { meta: TFnMeta, defStack: readonly string[], fileName: string, selectionRangeText: string, ahkDoc: string },
+): vscode.MarkdownString {
+    const kindStr: string = defStack.length === 0
         ? EMode.ahkFunc
         : EMode.ahkMethod;
 
-    const classStackStr: string = classStack.length === 0
+    const classStackStr: string = defStack.length === 0
         ? ''
-        : `class ${classStack.join('.')}\n\n`;
+        : `class ${defStack.join('.')}\n\n`;
 
+    const { returnList } = meta;
     const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
         .appendMarkdown(`(${kindStr})     of     ${fileName}\n`)
         .appendMarkdown(classStackStr)

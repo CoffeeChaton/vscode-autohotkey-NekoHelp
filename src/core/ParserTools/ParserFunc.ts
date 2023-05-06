@@ -1,6 +1,6 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
-import type { TParamMapIn, TTextMapIn } from '../../AhkSymbol/CAhkFunc';
+import type { TFnMeta, TParamMapIn, TTextMapIn } from '../../AhkSymbol/CAhkFunc';
 import { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TLineClass } from '../../AhkSymbol/CAhkLine';
 import type { CAhkSwitch } from '../../AhkSymbol/CAhkSwitch';
@@ -13,7 +13,7 @@ import type { TFuncDefData } from '../../tools/Func/getFuncDef';
 import { getFuncDef } from '../../tools/Func/getFuncDef';
 import { getDocStrMapMask } from '../../tools/getDocStrMapMask';
 import { getTextInRange } from '../../tools/getTextInRange';
-import { getFuncDocCore } from '../../tools/MD/getFuncDocMD';
+import { getFuncDocCore, getFuncDocMake } from '../../tools/MD/getFuncDocMD';
 import { getRange } from '../../tools/range/getRange';
 import type { TFuncInput } from '../getChildren';
 import { getChildren } from '../getChildren';
@@ -92,18 +92,21 @@ export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
     const selectionRangeText: string = getTextInRange(selectionRange, DocStrMap);
     const fileName: string = path.basename(uri.fsPath);
 
+    const ahkDoc: string = DocStrMap.at(range.start.line - 1)?.ahkDoc ?? '';
+    const meta: TFnMeta = getFuncDocCore(AhkTokenList, ahkDoc);
+
     return new CAhkFunc({
         name,
         detail: getFuncDetail(line, DocStrMap),
         range,
         selectionRange,
         selectionRangeText,
-        md: getFuncDocCore({
+        md: getFuncDocMake({
+            meta,
+            defStack,
             fileName,
-            AhkTokenList,
-            ahkDoc: DocStrMap.at(range.start.line - 1)?.ahkDoc ?? '',
             selectionRangeText,
-            classStack: defStack,
+            ahkDoc,
         }),
         uri,
         defStack,
@@ -119,5 +122,6 @@ export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
             ),
         ),
         fnMode,
+        meta,
     });
 }
