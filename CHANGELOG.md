@@ -34,6 +34,8 @@
   1. Typo from `@parma` -> `@param`
   2. only provide ahkDoc not has `@param` tags. (looks gif)
   > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/snippet_completions_for_@param_doc_tags.gif)
+- feat: func yellow light bulb `add ahkDoc`
+  > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc.gif)
 
 ## v0.0.39(2023-05-01)
 

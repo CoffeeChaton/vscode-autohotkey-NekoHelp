@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { AnalyzeFuncMain } from '../../command/AnalyzeFunc/AnalyzeThisFunc';
 import type { CmdFindFuncRef } from '../../command/CmdFindFuncRef';
+import type { CmdFnAddAhkDoc } from '../../command/CmdFnAddAhkDoc';
 import type { CmdGotoFuncDef } from '../../command/CmdGotoFuncDef';
 import { ECommand } from '../../command/ECommand';
 import { getCustomize } from '../../configUI';
@@ -23,6 +24,19 @@ function atFnHead(
 ): vscode.CodeAction[] {
     const { DocStrMap, uri } = AhkFileData;
     const need: vscode.CodeAction[] = [];
+
+    if (!ahkFn.getMeta().ahkDocMeta.hasAhkDoc) {
+        const CA0 = new vscode.CodeAction('add ahkDoc');
+        CA0.command = {
+            title: 'add ahkDoc',
+            command: ECommand.CmdFnAddAhkDoc,
+            tooltip: 'by neko-help dev tools',
+            arguments: [
+                ahkFn,
+            ] satisfies Parameters<typeof CmdFnAddAhkDoc>,
+        };
+        need.push(CA0);
+    }
 
     const CA1 = new vscode.CodeAction('Analyze this Function');
     CA1.command = {

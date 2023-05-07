@@ -116,9 +116,8 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
         otherMeta.push(str);
     }
 
-    console.log('🚀 ~ paramMeta:', paramMeta);
-
     return {
+        hasAhkDoc: true,
         paramMeta,
         returnMeta,
         otherMeta,
@@ -162,6 +161,7 @@ export function getFuncMeta(
     return ahkDoc === ''
         ? { // happy path
             ahkDocMeta: {
+                hasAhkDoc: false,
                 paramMeta: [],
                 returnMeta: {
                     typeDef: '',

@@ -4,6 +4,7 @@ import { CmdFindClassRef } from './command/CmdFindClassRef';
 import { CmdFindFuncRef } from './command/CmdFindFuncRef';
 import { CmdFindLabelRef } from './command/CmdFindLabelRef';
 import { CmdFindMethodRef } from './command/CmdFindMethodRef';
+import { CmdFnAddAhkDoc } from './command/CmdFnAddAhkDoc';
 import { CmdGotoFuncDef } from './command/CmdGotoFuncDef';
 import { statusBarClick } from './command/Command';
 import { displayLogMessageFn } from './command/displayLogMessageFn';
@@ -93,6 +94,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand(ECommand.CmdFindMethodRef, CmdFindMethodRef),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
         vscode.commands.registerCommand(ECommand.CmdFindLabelRef, CmdFindLabelRef),
+        vscode.commands.registerCommand(ECommand.CmdFnAddAhkDoc, CmdFnAddAhkDoc),
         vscode.commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
         vscode.commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),
         vscode.commands.registerCommand(ECommand.ListAllInclude, ListAllInclude),

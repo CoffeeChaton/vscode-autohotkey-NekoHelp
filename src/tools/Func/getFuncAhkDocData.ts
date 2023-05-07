@@ -29,7 +29,7 @@ const wmParamSignMap = new CMemo<CAhkFunc, TParamSignMap>((ahkFunc: CAhkFunc): T
     return paramJsDocMap;
 });
 
-const wmReturnSign = new CMemo<CAhkFunc, string>((ahkFunc: CAhkFunc): string => {
+export const wmReturnSign = new CMemo<CAhkFunc, string>((ahkFunc: CAhkFunc): string => {
     const { returnList, ahkDocMeta } = ahkFunc.getMeta();
 
     // @return {string} info   -> return string
