@@ -24,6 +24,7 @@ AutoHotKey v1 edit-support for VS Code
     - [2. Completion of function variables](#2-completion-of-function-variables)
     - [3. Completion of `#Include`](#3-completion-of-include)
     - [4. Completion of `class`](#4-completion-of-class)
+    - [5. Snippet Completions for `@param` Doc Tags](#5-snippet-completions-for-param-doc-tags)
   - [ListAllFunctions](#listallfunctions)
   - [Better highlight](#better-highlight)
     - [of Legacy assignment](#of-legacy-assignment)
@@ -324,6 +325,10 @@ support to find like
 ### 4. Completion of `class`
 
 ![Completion of class](image/Completion_class.gif)
+
+### 5. Snippet Completions for `@param` Doc Tags
+
+![Completion of @param](image/snippet_completions_for_@param_doc_tags.gif)
 
 ## ListAllFunctions
 

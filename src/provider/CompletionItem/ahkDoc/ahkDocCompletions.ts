@@ -4,6 +4,7 @@ import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
 import { getDAListTop } from '../../../tools/DeepAnalysis/getDAList';
+import { ToUpCase } from '../../../tools/str/ToUpCase';
 
 function getNextFuncLine(
     AhkFileData: TAhkFileData,
@@ -53,14 +54,20 @@ export function ahkDocCompletions(
 
     const list: vscode.CompletionItem[] = [];
 
-    for (const v of DA.paramMap.values()) {
+    const { paramMeta } = DA.getMeta().ahkDocMeta;
+
+    const set = new Set<string>(paramMeta.map(({ BParamName }): string => ToUpCase(BParamName)));
+
+    for (const [k, v] of DA.paramMap) {
+        if (set.has(k)) continue;
+
         const { keyRawName } = v;
         const item: vscode.CompletionItem = new vscode.CompletionItem({
-            label: `@parma ${keyRawName}`,
+            label: `@param ${keyRawName}`,
             description: DA.name,
         });
         item.kind = vscode.CompletionItemKind.Keyword;
-        item.insertText = new vscode.SnippetString(`parma {\${1:*}} ${keyRawName} \${2:information}`);
+        item.insertText = new vscode.SnippetString(`param {\${1:*}} ${keyRawName} \${2:information}`);
         item.detail = 'by-neko-help';
 
         list.push(item);

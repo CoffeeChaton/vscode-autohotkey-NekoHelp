@@ -83,7 +83,6 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
             }
             continue;
         }
-
         if ((/^\s*@param\s/iu).test(str)) {
             const st1: string = str.replace(/^\s*@param\s+/iu, '');
 
@@ -116,6 +115,8 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
 
         otherMeta.push(str);
     }
+
+    console.log('🚀 ~ paramMeta:', paramMeta);
 
     return {
         paramMeta,
