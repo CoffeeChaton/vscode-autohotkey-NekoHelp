@@ -29,10 +29,9 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
         const {
             paramMap,
             selectionRangeText,
-            md,
             name,
         } = fnSymbol;
-        const { returnList } = fnSymbol.getMeta();
+        const { returnList, ahkDocMeta } = fnSymbol.getMeta();
 
         const { paramSignMap, returnSign } = getFuncAhkDocData(fnSymbol);
 
@@ -76,24 +75,11 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
                 'ahk',
             );
 
-            // TODO
-            const mdValue: string = md.value;
-            const colE: number = mdValue.indexOf('\n```\n');
-            if (style === 3 && colE !== -1) {
-                let flag = true;
-                for (const ss10 of mdValue.slice(colE + '\n```\n'.length).split('\n')) {
-                    if ((/^\s*@param\b/iu).test(ss10)) {
-                        flag = false;
-                    } else if (!flag) {
-                        const mma: RegExpMatchArray | null = ss10.match(/^\s*(@\w+)/iu);
-                        if (mma !== null && mma[1].toUpperCase() !== '@param') {
-                            flag = true;
-                        }
-                    }
-                    if (flag) {
-                        doc.appendMarkdown(`${ss10}\n`);
-                    }
-                }
+            const { otherMeta } = ahkDocMeta;
+            if (style === 3 && otherMeta.length > 0) {
+                doc
+                    .appendMarkdown('\n***\n')
+                    .appendMarkdown(otherMeta.join('\n'));
             }
         }
 

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { TFnMeta, TFnParamMeta, TFnReturnMeta } from '../../AhkSymbol/CAhkFunc';
 import { getCustomize } from '../../configUI';
@@ -19,7 +20,6 @@ function getReturnText(lStr: string, textRaw: string, col: number): string {
         : '';
 
     // func
-
     const Func: RegExpMatchArray | null = name.match(/^([#$@\w\u{A1}-\u{FFFF}]+)\(/u);
     if (Func !== null) {
         return `    Return ${Func[1]}(...) ${comment}`;
@@ -45,10 +45,12 @@ function getReturnText(lStr: string, textRaw: string, col: number): string {
 }
 
 function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
+    // parse
     // @param {type}? param_name information
     // @return {type} information
-    const paramType: TFnParamMeta[] = [];
-    const returnType: TFnReturnMeta = {
+    const paramMeta: TFnParamMeta[] = [];
+    const otherMeta: string[] = [];
+    const returnMeta: TFnReturnMeta = {
         typeDef: '',
         info: [],
     };
@@ -68,8 +70,8 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
                 ? st1.slice(st1.indexOf('}') + 1).trimStart()
                 : st1.trimStart();
 
-            returnType.typeDef = typeDef;
-            returnType.info.push(st2);
+            returnMeta.typeDef = typeDef;
+            returnMeta.info.push(st2);
 
             for (let j = i + 1; j < length; j++) {
                 const str2: string = docList[j];
@@ -77,7 +79,7 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
                     i = j - 1;
                     break;
                 }
-                returnType.info.push(str2.slice(1));
+                returnMeta.info.push(str2.slice(1));
             }
             continue;
         }
@@ -96,7 +98,7 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
 
             const str3: string = st2.slice(BParamName.length).trimStart();
             const CInfo: string[] = [str3];
-            paramType.push({
+            paramMeta.push({
                 ATypeDef,
                 BParamName,
                 CInfo,
@@ -109,13 +111,16 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
                 }
                 CInfo.push(str2.slice(1));
             }
-            // continue;
+            continue;
         }
+
+        otherMeta.push(str);
     }
 
     return {
-        paramMeta: paramType, // TFnParamMeta[]
-        returnMeta: returnType, // string
+        paramMeta,
+        returnMeta,
+        otherMeta,
     };
 }
 
@@ -161,6 +166,7 @@ export function getFuncMeta(
                     typeDef: '',
                     info: [],
                 },
+                otherMeta: [],
             },
             returnList,
         }
