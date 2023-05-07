@@ -142,11 +142,6 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
             status: `occ-- case--141--at deep < lockDeep -- ln ${line}`,
         };
     }
-    // if (thisLineDeep > lockDeep) {
-    //     not need to do anything // console.log(`> case ln ${line}`);
-    // } else if (thisLineDeep !== lockDeep) {
-    //     not need to do anything // console.log(`!== case ln ${line}`);
-    // }
 
     let newOcc: number = occ - 1;
     if (newOcc < lockOcc) {
@@ -262,7 +257,6 @@ export function getDeepKeywords({
     if (status === EFmtMagicStr.caseA) {
         return addLock({ lnStatus, AhkTokenLine });
     } // FIXME: if this line is `{ if` case
-    // console.log(line, lnStatus);
     if (focSet.has(fistWordUp)) {
         if (lStrTrim.endsWith('{')) return addLock({ lnStatus, AhkTokenLine }); // managed by curly braces
         const nextLine: TAhkTokenLine | undefined = DocStrMap.at(line + 1);

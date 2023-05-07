@@ -64,4 +64,3 @@ const ascii: readonly [number, string, string][] = [
 //         arr.push([i, `0x${i.toString(16)}`, s]);
 //     }
 // }
-// console.log('🚀 ~ arr:', arr);

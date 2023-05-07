@@ -8,30 +8,24 @@ describe('check Windows_Messages', () => {
     it('check Windows_Messages name ruler', () => {
         expect.hasAssertions();
 
-        let errState = 0;
+        const errState: string[] = [];
         for (const [wm, [base10, base16]] of winMsg.entries()) {
             if (!wm.startsWith('WM_')) {
-                console.error('!wm.startsWith("WM_")', wm);
-                errState++;
+                errState.push(`${wm} startsWith error`);
                 break;
             }
             if (wm.toUpperCase() !== wm) {
-                console.error('wm.toUpperCase() !== wm', wm);
-                errState++;
+                errState.push(`${wm} toUpperCase error`);
                 break;
             }
             if (base16toNumber(base16) !== base10) {
-                console.error('base16toNumber(base16) !== base10', {
-                    wm,
-                    base16toNumber: base16toNumber(base16),
-                    base10,
-                });
-                errState++;
+                errState.push(`${wm} base16 error`);
+
                 break;
             }
         }
 
-        expect(errState === 0).toBeTruthy();
+        expect(errState).toStrictEqual([]);
 
         // https://www.autohotkey.com/docs/v1/misc/SendMessageList.htm at 2022/7/23
 
