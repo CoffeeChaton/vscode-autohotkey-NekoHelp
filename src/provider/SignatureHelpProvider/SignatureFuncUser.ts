@@ -32,6 +32,7 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
             md,
             name,
         } = fnSymbol;
+        const { returnList } = fnSymbol.getMeta();
 
         const { paramSignMap, returnSign } = getFuncAhkDocData(fnSymbol);
 
@@ -63,21 +64,21 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
         const doc: vscode.MarkdownString = new vscode.MarkdownString('', true);
 
         if (style >= 2) {
+            doc.appendCodeblock(
+                `${name}(...)${
+                    getCustomize().HoverFunctionDocStyle === 1
+                        ? ''
+                        : '\n'
+                }{\n${
+                    returnList
+                        .join('\n')
+                }\n}`,
+                'ahk',
+            );
+
+            // TODO
             const mdValue: string = md.value;
-            const colS: number = mdValue.search(/\n\s*Return\b/u);
-            const colS2: number = colS === -1
-                ? mdValue.indexOf('{') + 1
-                : colS;
             const colE: number = mdValue.indexOf('\n```\n');
-            const colE2: number = colE === -1
-                ? mdValue.length
-                : colE + '\n```\n'.length;
-
-            const split: '{' | '\n{' = getCustomize().HoverFunctionDocStyle === 1
-                ? '{'
-                : '\n{';
-            doc.appendCodeblock(`${name}(...)${split}${mdValue.slice(colS2, colE2)}`);
-
             if (style === 3 && colE !== -1) {
                 let flag = true;
                 for (const ss10 of mdValue.slice(colE + '\n```\n'.length).split('\n')) {

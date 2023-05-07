@@ -62,7 +62,7 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
             const st1: string = str.replace(/^\s*@return\s+/iu, '');
 
             const typeDef: string = st1.startsWith('{')
-                ? st1.slice(1, st1.indexOf('}'))
+                ? st1.slice(1, st1.indexOf('}')).trim()
                 : '';
             const st2: string = st1.startsWith('{')
                 ? st1.slice(st1.indexOf('}') + 1).trimStart()
@@ -85,21 +85,21 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
         if ((/^\s*@param\s/iu).test(str)) {
             const st1: string = str.replace(/^\s*@param\s+/iu, '');
 
-            const typeDef: string = st1.startsWith('{')
-                ? st1.slice(1, st1.indexOf('}'))
+            const ATypeDef: string = st1.startsWith('{')
+                ? st1.slice(1, st1.indexOf('}')).trim()
                 : '';
             const st2: string = st1.startsWith('{')
                 ? st1.slice(st1.indexOf('}') + 1).trimStart()
                 : st1.trimStart();
             // eslint-disable-next-line unicorn/no-hex-escape, regexp/no-invalid-regexp
-            const paramName: string = st2.slice(0, st2.search(/\s|$/u));
+            const BParamName: string = st2.slice(0, st2.search(/\s|$/u)).trim();
 
-            const str3: string = st2.slice(paramName.length).trimStart();
-            const info: string[] = [str3];
+            const str3: string = st2.slice(BParamName.length).trimStart();
+            const CInfo: string[] = [str3];
             paramType.push({
-                ATypeDef: typeDef,
-                BParamName: paramName,
-                CInfo: info,
+                ATypeDef,
+                BParamName,
+                CInfo,
             });
             for (let j = i + 1; j < length; j++) {
                 const str2: string = docList[j];
@@ -107,7 +107,7 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
                     i = j - 1;
                     break;
                 }
-                info.push(str2.slice(1));
+                CInfo.push(str2.slice(1));
             }
             // continue;
         }
@@ -119,7 +119,7 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
     };
 }
 
-export function getFuncDocCore(
+export function getFuncMeta(
     AhkTokenList: TTokenStream,
     ahkDoc: string,
 ): TFnMeta {
@@ -155,7 +155,13 @@ export function getFuncDocCore(
 
     return ahkDoc === ''
         ? { // happy path
-            ahkDocMeta: null,
+            ahkDocMeta: {
+                paramMeta: [],
+                returnMeta: {
+                    typeDef: '',
+                    info: [],
+                },
+            },
             returnList,
         }
         : {
@@ -192,7 +198,6 @@ export function getFuncDocMake(
                     : '\n'
             }{\n${
                 returnList
-                    .filter((s: string): boolean => s !== '')
                     .join('\n')
             }\n}`,
             'ahk',

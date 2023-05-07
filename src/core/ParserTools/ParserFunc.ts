@@ -13,7 +13,7 @@ import type { TFuncDefData } from '../../tools/Func/getFuncDef';
 import { getFuncDef } from '../../tools/Func/getFuncDef';
 import { getDocStrMapMask } from '../../tools/getDocStrMapMask';
 import { getTextInRange } from '../../tools/getTextInRange';
-import { getFuncDocCore, getFuncDocMake } from '../../tools/MD/getFuncDocMD';
+import { getFuncDocMake, getFuncMeta } from '../../tools/MD/getFuncDocMD';
 import { getRange } from '../../tools/range/getRange';
 import type { TFuncInput } from '../getChildren';
 import { getChildren } from '../getChildren';
@@ -93,7 +93,7 @@ export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
     const fileName: string = path.basename(uri.fsPath);
 
     const ahkDoc: string = DocStrMap.at(range.start.line - 1)?.ahkDoc ?? '';
-    const meta: TFnMeta = getFuncDocCore(AhkTokenList, ahkDoc);
+    const meta: TFnMeta = getFuncMeta(AhkTokenList, ahkDoc);
 
     return new CAhkFunc({
         name,

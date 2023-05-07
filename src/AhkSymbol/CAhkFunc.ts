@@ -108,7 +108,7 @@ export type TFnMeta = DeepReadonly<{
     ahkDocMeta: {
         paramMeta: TFnParamMeta[],
         returnMeta: TFnReturnMeta,
-    } | null,
+    },
 
     returnList: string[],
 }>;
