@@ -31,7 +31,7 @@
   - feat : `WriteNumType` and `ReadNumType` streamline
 - feat: try serialization fn.ahkDoc Data
 - fix: [_Snippet Completions for @param JSDoc Tags_](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#5-snippet-completions-for-param-doc-tags)
-  1. Typo from `@param` -> `@parma`
+  1. Typo from `@parma` -> `@param`
   2. only provide ahkDoc not has `@param` tags. (looks gif)
   > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/snippet_completions_for_@param_doc_tags.gif)
 
