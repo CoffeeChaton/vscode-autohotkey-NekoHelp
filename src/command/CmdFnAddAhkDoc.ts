@@ -1,7 +1,21 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../AhkSymbol/CAhkFunc';
-import { wmReturnSign } from '../tools/Func/getFuncAhkDocData';
 
+function getReturnSelect(ahkFn: CAhkFunc, i: number): string {
+    const arr1: string[] = [];
+    for (const s of ahkFn.getMeta().returnList) {
+        const s1: string = s
+            .replace(/^\s*return\s*/iu, '')
+            .replace(/[ \t]*;.*/u, '')
+            .trim();
+
+        if (s1 !== '') arr1.push(s1);
+    }
+
+    return arr1.length === 0
+        ? ''
+        : `* @Return {\${${i}:unknown_type}} \${${i + 1}|${arr1.join(',')}|} \${${i + 2}:information}`;
+}
 // --------
 
 export async function CmdFnAddAhkDoc(ahkFn: CAhkFunc): Promise<void> {
@@ -14,16 +28,11 @@ export async function CmdFnAddAhkDoc(ahkFn: CAhkFunc): Promise<void> {
         i += 2;
     }
 
-    const returnVar: string = wmReturnSign.up(ahkFn).trim();
-    const returnTag: string = returnVar === ''
-        ? ''
-        : `* @Return {\${${i}:unknown_type}} ${returnVar} \${${i + 1}:information}`;
-
     const newText: string = [
         '/**',
         ...paramTagList,
         // @param {unknown_type} param_name information
-        returnTag,
+        getReturnSelect(ahkFn, i),
         '*/',
         '',
     ].join('\n');
