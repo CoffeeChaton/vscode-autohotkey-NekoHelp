@@ -1,4 +1,4 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,7,8,9,10,11,12,13,14] }] */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,7,8,9,10,11,12,13,14,991] }] */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
@@ -57,6 +57,7 @@ export const enum EFnRefBy {
     Gui = 14,
     //
 
+    ComObjConnect = 991,
     /**
      * Do not use compare
      * need ts5.0
@@ -242,7 +243,7 @@ const CmdRefFuncList = [
 ] as const satisfies readonly TFnRefWithCmd[];
 
 export const fileFuncRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TFuncRef[]>>(
-    (AhkFileData: TAhkFileData): Map<string, TFuncRef[]> => {
+    (AhkFileData: TAhkFileData): ReadonlyMap<string, readonly TFuncRef[]> => {
         const { DocStrMap, AST } = AhkFileData;
         const filterLineList: number[] = getDAListTop(AST)
             .filter((DA: CAhkFunc): boolean => DA.kind === vscode.SymbolKind.Method)
@@ -312,6 +313,66 @@ export type TFnRefLike = {
     by: EFnRefBy,
 };
 
+const fixComObjConnect = new CMemo<TAhkFileData, readonly TLineFnCall[]>(
+    (AhkFileData: TAhkFileData): readonly TLineFnCall[] => {
+        const oldList: readonly TFuncRef[] | undefined = fileFuncRef.up(AhkFileData).get('ComObjConnect'.toUpperCase());
+        if (oldList === undefined) return [];
+
+        //
+        const arr: TLineFnCall[] = [];
+        for (const { line, col } of oldList) {
+            // ComObjConnect(ie, "IE_")
+            //                    ^^^
+            const ahkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[line];
+            const { textRaw } = ahkTokenLine;
+            const t2: string = textRaw.slice(col).padStart(textRaw.length);
+            const ma: RegExpMatchArray | null = t2.match(/ComObjConnect\([^,]+,\s*"(\w+)"\s*\)/iu);
+            if (ma === null) continue;
+            const ma0: string = ma[0];
+            const ma1: string = ma[1];
+            const colFix: number = (ma.index ?? 0) + ma0
+                .replace(/ComObjConnect\([^,]+,\s*"/iu, '')
+                .padStart(ma0.length)
+                .indexOf(ma1);
+
+            arr.push({
+                upName: ToUpCase(ma1),
+                line,
+                col: colFix,
+                by: EFnRefBy.ComObjConnect,
+            });
+        }
+        return arr;
+    },
+);
+
+function visitComObjConnect(AhkFileData: TAhkFileData, funcSymbol: CAhkFunc): TFnRefLike[] {
+    const arr: readonly TLineFnCall[] = fixComObjConnect.up(AhkFileData);
+    if (arr.length === 0) return [];
+    //
+    const up: string = funcSymbol.upName;
+    const { uri } = AhkFileData;
+    const arr2: TFnRefLike[] = [];
+    for (
+        const {
+            by,
+            col,
+            line,
+            upName,
+        } of arr
+    ) {
+        if (up.startsWith(upName)) {
+            arr2.push({
+                uri,
+                line,
+                col,
+                by,
+            });
+        }
+    }
+    return arr2;
+}
+
 type TMap = Map<string, readonly TFnRefLike[]>;
 const wm = new WeakMap<TAhkFileData, TMap>();
 
@@ -330,13 +391,14 @@ export function getFuncRef(funcSymbol: CAhkFunc): readonly TFnRefLike[] {
 
         // set fileMap
         const { uri } = AhkFileData;
-        const list: readonly TFnRefLike[] = (fileFuncRef.up(AhkFileData).get(upName) ?? [])
+        const list: TFnRefLike[] = (fileFuncRef.up(AhkFileData).get(upName) ?? [])
             .map(({ line, col, by }: TFuncRef): TFnRefLike => ({
                 uri,
                 line,
                 col,
                 by,
             }));
+        list.push(...visitComObjConnect(AhkFileData, funcSymbol)); // ...
 
         allList.push(...list);
 

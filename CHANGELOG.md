@@ -37,6 +37,23 @@
 - feat: func yellow light bulb `add ahkDoc`
   > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc.gif)
 - feat: auto add `*` in `ahkDoc Range` (like `typescript` onEnterRules)
+- [#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14)
+  > <https://www.autohotkey.com/docs/v1/lib/ComObjConnect.htm#Usage>
+
+  ```ahk
+  ComObjConnect(ie, "IE_")
+
+  IE_DocumentComplete(ieEventParam, url, ieFinalParam) {
+  ;^^ -----------------> Prefix
+  ;  ^^^^^^^^^^^^^^^^ -> EventName
+  }
+  ; oh my god ... thanks for ahk = =
+  ```
+
+  - [ ] gotoDef
+  - [x] findAllRef (`IE_DocumentComplete` -> `"IE_"`)
+  - [ ] hover ...? `PrefixEventName`
+  - [ ] diag : [warn] should be in the same file ?
 
 ## v0.0.39(2023-05-01)
 
