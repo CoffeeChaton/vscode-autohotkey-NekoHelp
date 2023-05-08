@@ -89,6 +89,11 @@
                         "default": true,
                         "markdownDescription": "show Reference at `label:` def line (just support file top label)"
                     },
+                    "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "show Reference at `ComObjConnect(..., \"str\")` Register line ([#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14))"
+                    },
                     "AhkNekoHelp.CodeLens.showDevTool": {
                         "type": "boolean",
                         "default": false,

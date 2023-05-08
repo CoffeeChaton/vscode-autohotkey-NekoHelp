@@ -35,6 +35,10 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             showClassReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showClassReference'),
             showFuncReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFuncReference'),
             showLabelReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showLabelReference'),
+            showComObjConnectRegisterStrReference: getConfigs<boolean>(
+                Configs,
+                'AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference',
+            ),
             showDevTool: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showDevTool'),
             showFileReport: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFileReport'),
         },

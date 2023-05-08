@@ -12,6 +12,7 @@ import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
 import { getFuncRef } from '../Def/getFnRef';
 import { getMethodRef } from '../Def/getMethodRef';
 import { addClassReference } from './addClassReference';
+import { addComObjConnectRegisterStrReference } from './addComObjConnectRegisterStrReference';
 import { addLabelReference } from './addLabelReference';
 import { ECodeLensStr } from './ECodeLensStr';
 import type { showUnknownAnalyze } from './showUnknownAnalyze';
@@ -27,6 +28,7 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
         showFileReport,
         showFuncReference,
         showLabelReference,
+        showComObjConnectRegisterStrReference,
     } = getCodeLenConfig();
 
     const { CodeLens } = getMethodConfig();
@@ -103,6 +105,7 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
 
     if (showClassReference) addClassReference(need, AST);
     if (showLabelReference) addLabelReference(need, AST);
+    if (showComObjConnectRegisterStrReference) addComObjConnectRegisterStrReference(need, AhkFileData);
 
     return need;
 }

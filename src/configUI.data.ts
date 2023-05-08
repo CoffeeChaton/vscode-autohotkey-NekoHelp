@@ -40,6 +40,7 @@ type TempConfigs = {
         showClassReference: boolean,
         showFuncReference: boolean,
         showLabelReference: boolean,
+        showComObjConnectRegisterStrReference: boolean,
         showDevTool: boolean,
         showFileReport: boolean,
     },
