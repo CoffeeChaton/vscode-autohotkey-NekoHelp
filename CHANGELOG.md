@@ -50,7 +50,7 @@
   ; oh my god ... thanks for ahk = =
   ```
 
-  - [ ] gotoDef
+  - [x] gotoDef (`"IE_"` -> `IE_DocumentComplete`)
   - [x] findAllRef (`IE_DocumentComplete` -> `"IE_"`)
   - [ ] hover ...? `PrefixEventName`
   - [ ] diag : [warn] should be in the same file ?

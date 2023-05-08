@@ -313,7 +313,7 @@ export type TFnRefLike = {
     by: EFnRefBy,
 };
 
-const fixComObjConnect = new CMemo<TAhkFileData, readonly TLineFnCall[]>(
+export const fixComObjConnect = new CMemo<TAhkFileData, readonly TLineFnCall[]>(
     (AhkFileData: TAhkFileData): readonly TLineFnCall[] => {
         const oldList: readonly TFuncRef[] | undefined = fileFuncRef.up(AhkFileData).get('ComObjConnect'.toUpperCase());
         if (oldList === undefined) return [];
