@@ -53,7 +53,7 @@
   - [x] gotoDef (`"IE_"` -> `IE_DocumentComplete`)
   - [x] findAllRef (`IE_DocumentComplete` -> `"IE_"`)
   - [x] CodeLens of `"IE_"` (via `"AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference"`, default: `true`)
-  - [ ] rename warn?
+  - [x] rename warn, just a quick warning, as it is very rare to consider the case.
   - [ ] hover ...? `PrefixEventName`
   - [ ] diag : [warn] should be in the same file ?
 

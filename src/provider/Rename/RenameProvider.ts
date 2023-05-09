@@ -46,10 +46,20 @@ function RenameProviderCore(
             col,
             by,
         } = v;
+        if (by === EFnRefBy.ComObjConnect) {
+            log.warn(
+                'rename event warn of "ComObjConnect" (https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14)',
+                // eslint-disable-next-line no-magic-numbers
+                JSON.stringify(v, null, 4),
+            );
+            log.show();
+            continue;
+        }
         if (by === EFnRefBy.wordWrap) {
             strList.push(DocStrMap[line].textRaw.trim());
             if (!replaceBy2) continue;
         }
+
         const range: vscode.Range = new vscode.Range(
             new vscode.Position(line, col),
             new vscode.Position(line, col + fnNameLen),
