@@ -1,7 +1,7 @@
 {
     "name": "vscode-autohotkey-neko-help",
     "displayName": "AutoHotkey NekoHelp",
-    "version": "0.0.39",
+    "version": "0.0.40",
     "description": "AutoHotkey-1.1 IntelliSense, format, linters, and language support for VS Code",
     "categories": [
         "Programming Languages",
@@ -552,7 +552,7 @@
         "vscode-tmgrammar-test": "^0.1.1"
     },
     "engines": {
-        "vscode": "^1.77.0"
+        "vscode": "^1.78.0"
     },
     "icon": "icon.png",
     "galleryBanner": {

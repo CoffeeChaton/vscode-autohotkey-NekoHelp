@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.40(2023-05-XX)](#next-v00402023-05-xx)
+  - [v0.0.40(2023-05-09)](#v00402023-05-09)
   - [v0.0.39(2023-05-01)](#v00392023-05-01)
   - [v0.0.38(2023-04-30)](#v00382023-04-30)
   - [v0.0.37(2023-04-23)](#v00372023-04-23)
@@ -20,7 +20,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.40(2023-05-XX)
+## v0.0.40(2023-05-09)
 
 - feat : add `Array := StrSplit()` completion
 - `Func Object`
@@ -50,12 +50,10 @@
   ; oh my god ... thanks for ahk = =
   ```
 
-  - [x] gotoDef (`"IE_"` -> `IE_DocumentComplete`)
-  - [x] findAllRef (`IE_DocumentComplete` -> `"IE_"`)
-  - [x] CodeLens of `"IE_"` (via `"AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference"`, default: `true`)
-  - [x] rename warn, just a quick warning, as it is very rare to consider the case.
-  - [ ] hover ...? `PrefixEventName`
-  - [ ] diag : [warn] should be in the same file ?
+  - gotoDef (`"IE_"` -> `IE_DocumentComplete`)
+  - findAllRef (`IE_DocumentComplete` -> `"IE_"`)
+  - CodeLens of `"IE_"` (via `"AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference"`, default: `true`)
+  - rename warn, just a quick warning, as it is very rare to consider the case.
 
 ## v0.0.39(2023-05-01)
 

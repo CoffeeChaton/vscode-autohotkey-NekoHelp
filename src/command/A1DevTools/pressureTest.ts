@@ -120,11 +120,11 @@ export async function pressureTest(): Promise<null> {
 // stdDev is 5.775206172000611
 // [128, 95, 89, 85, 85, 85, 86, 84, 83, 83, 83, 82, 82, 84, ...]
 // ---Min avg of 5 ---
-// subAvg is 80.8
-// subAvgArr len is [80, 80, 81, 82, 81]
+// subAvg is 85.6
+// subAvgArr len is [85, 85, 88, 85, 85]
 // ---Min std of 5 ---
-// subStd is 0
-// subStdArr len is [82, 82, 82, 82, 82]
+// subStd is 1.0954451150103321
+// subStdArr len is [86, 85, 88, 86, 86]
 // ---------------------------------------------
 
 // other perf
