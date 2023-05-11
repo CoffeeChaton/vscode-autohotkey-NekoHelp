@@ -1,4 +1,8 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
+/* eslint-disable max-depth */
 import * as vscode from 'vscode';
+import { getTryParserInclude, getTryParserIncludeLog } from '../configUI';
+import type { TTryParserIncludeLog } from '../configUI.data';
 import { rmAllDiag } from '../core/diagColl';
 import { BaseScanMemo } from '../core/ParserTools/getFileAST';
 import type { TAhkFileData } from '../core/ProjectManager';
@@ -18,6 +22,9 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
     const uriList: vscode.Uri[] = getUriList();
     if (uriList.length === 0) return [];
 
+    const TryParserInclude: boolean = getTryParserInclude();
+    const logOpt: TTryParserIncludeLog = getTryParserIncludeLog();
+
     const FileListData: TAhkFileData[] = [];
     for (const uri of uriList) {
         // In the same PC, IO is relatively fast, but this decision is made for the workload of GC each time
@@ -28,6 +35,12 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
             const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
             if (AhkFileData !== null) {
                 FileListData.push(AhkFileData);
+                // if auto open #include
+
+                if (TryParserInclude) {
+                    // eslint-disable-next-line no-await-in-loop
+                    FileListData.push(...await pm.UpdateCacheAsyncCh(AhkFileData.AST, logOpt, uri.fsPath));
+                }
             }
             //
         } catch (error: unknown) {

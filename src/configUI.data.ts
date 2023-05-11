@@ -35,6 +35,13 @@ export type TMethod = {
     CodeLens: 'loose_mode' | 'none' | 'precision_mode',
 };
 
+export type TTryParserIncludeLog = DeepReadonly<{
+    'file_not_exists': boolean,
+    'parser_OK': boolean,
+    'parser_err': boolean,
+    'not_support_this_style': boolean,
+}>;
+
 type TempConfigs = {
     CodeLens: {
         showClassReference: boolean,
@@ -97,6 +104,8 @@ type TempConfigs = {
         useSquareBracketsIndent: boolean,
     },
     files_exclude: readonly string[],
+    files_tryParserInclude: boolean,
+    files_tryParserIncludeLog: TTryParserIncludeLog,
     snippets: {
         blockFilesList: readonly string[],
         CommandOption: ECommandOption,

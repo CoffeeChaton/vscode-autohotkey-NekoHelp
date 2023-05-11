@@ -7,6 +7,7 @@ import type {
     TConfigKey,
     TConfigs,
     TMethod,
+    TTryParserIncludeLog,
 } from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
@@ -28,6 +29,7 @@ function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigK
 
 let oldCustomizeHoverFunctionDocStyle: 1 | 2 | null = null;
 let oldSignatureHelpInformation: 0 | 1 | 2 | 3 | null = null;
+let oldFilesTryParserInclude: boolean | null = null;
 
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
@@ -75,6 +77,8 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             useSquareBracketsIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useSquareBracketsIndent'),
         },
         files_exclude: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.files.exclude'),
+        files_tryParserInclude: getConfigs<boolean>(Configs, 'AhkNekoHelp.files.tryParserInclude'),
+        files_tryParserIncludeLog: getConfigs<TTryParserIncludeLog>(Configs, 'AhkNekoHelp.files.tryParserIncludeLog'),
         snippets: {
             blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.exclude'),
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
@@ -116,6 +120,15 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         );
     }
 
+    if (oldFilesTryParserInclude === null) {
+        oldFilesTryParserInclude = ed.files_tryParserInclude;
+    } else if (ed.files_tryParserInclude && !oldFilesTryParserInclude) {
+        oldFilesTryParserInclude = ed.files_tryParserInclude;
+        void vscode.window.showWarningMessage(
+            '[Privacy Statement 3](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement) is break!\n\n ("AhkNekoHelp.files.tryParserInclude")',
+        );
+    }
+
     return ed;
 }
 
@@ -151,6 +164,14 @@ export function getSymbolProviderConfig(): TConfigs['SymbolProvider'] {
 
 export function getIgnoredList(): readonly RegExp[] {
     return str2RegexListCheck(config.files_exclude);
+}
+
+export function getTryParserInclude(): boolean {
+    return config.files_tryParserInclude;
+}
+
+export function getTryParserIncludeLog(): TTryParserIncludeLog {
+    return config.files_tryParserIncludeLog;
 }
 
 export function getSnippetBlockFilesList(): readonly RegExp[] {

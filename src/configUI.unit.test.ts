@@ -102,6 +102,8 @@ describe('check package ruler', () => {
                 // misc
                 ['AhkNekoHelp.method', 'object'],
                 ['AhkNekoHelp.files.exclude', 'array'],
+                ['AhkNekoHelp.files.tryParserInclude', 'boolean'],
+                ['AhkNekoHelp.files.tryParserIncludeLog', 'object'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
 

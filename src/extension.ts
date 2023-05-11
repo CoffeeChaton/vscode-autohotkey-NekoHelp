@@ -49,6 +49,7 @@ export function activate(context: vscode.ExtensionContext): void {
         '#',
         '$',
         ':',
+        '%',
     ];
     const metadata: vscode.SignatureHelpProviderMetadata = {
         triggerCharacters: ['(', ','],
