@@ -104,6 +104,7 @@ export const pm = {
         const { uri, languageId } = document;
         const { fsPath, scheme } = uri;
 
+        // log.info(`updateDocDef, "${from}", "${fsPath}"`);
         if (
             scheme === 'file'
             && languageId === 'ahk'
@@ -135,10 +136,13 @@ export const pm = {
      */
     changeDoc(e: vscode.TextDocumentChangeEvent): void {
         const { document } = e;
-        const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
-        if (AhkFileData !== null && getTryParserInclude()) {
-            // eslint-disable-next-line no-await-in-loop
-            //    void UpdateCacheAsyncCh(AhkFileData.AST))
+        const { languageId } = document;
+        if (languageId === 'ahk') {
+            const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
+            if (AhkFileData !== null && getTryParserInclude()) {
+                // eslint-disable-next-line no-await-in-loop
+                //    void UpdateCacheAsyncCh(AhkFileData.AST))
+            }
         }
     },
 
