@@ -144,8 +144,9 @@ export const pm = {
 
     async UpdateCacheAsyncCh(
         AST: TAstRoot,
-        logOpt: TTryParserIncludeLog,
         fatherPath: string,
+        byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[],
+        parsedMap: Map<CAhkInclude, string>,
     ): Promise<readonly TAhkFileData[]> {
         const FileListData: TAhkFileData[] = [];
         const ahkIncludeList: readonly CAhkInclude[] = collectInclude(AST);
@@ -154,31 +155,51 @@ export const pm = {
             const tryPath: string = EInclude.isUnknown === type
                 ? path.join(path.dirname(fatherPath), mayPath)
                 : mayPath;
+            const oldPath: string | undefined = parsedMap.get(ahkInclude);
+            if (oldPath === tryPath) {
+                byRefLogList.push({
+                    type: 'parser_duplicate',
+                    msg: `"${ahkInclude.name}", ahkIncludeFrom : "${ahkInclude.uri.fsPath}"`,
+                });
+                continue;
+            }
             if ([EInclude.Absolute, EInclude.A_LineFile, EInclude.Relative, EInclude.isUnknown].includes(type)) {
                 try {
                     const uri: vscode.Uri = vscode.Uri.file(tryPath);
                     // eslint-disable-next-line security/detect-non-literal-fs-filename
                     if (!fs.existsSync(uri.fsPath)) {
-                        // eslint-disable-next-line max-depth
-                        if (logOpt.file_not_exists) log.warn(`file_not_exists, "${tryPath}", "${ahkInclude.name}"`);
+                        byRefLogList.push({
+                            type: 'file_not_exists',
+                            msg: `"${tryPath}", "${ahkInclude.name}"`,
+                        });
                         continue;
                     }
                     // eslint-disable-next-line no-await-in-loop
                     const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri);
                     const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
+                    byRefLogList.push({
+                        type: 'parser_OK',
+                        msg: `"${ahkInclude.name}"`,
+                    });
+                    parsedMap.set(ahkInclude, tryPath);
                     if (AhkFileData !== null) {
                         FileListData.push(
                             AhkFileData,
                             // eslint-disable-next-line no-await-in-loop
-                            ...await pm.UpdateCacheAsyncCh(AhkFileData.AST, logOpt, fatherPath),
+                            ...await pm.UpdateCacheAsyncCh(AhkFileData.AST, fatherPath, byRefLogList, parsedMap),
                         );
                     }
-                    if (logOpt.parser_OK) log.info(`parser_OK, "${ahkInclude.name}"`);
                 } catch {
-                    if (logOpt.parser_err) log.error(`parser_err, "${ahkInclude.name}"`);
+                    byRefLogList.push({
+                        type: 'parser_err',
+                        msg: `"${ahkInclude.name}"`,
+                    });
                 }
-            } else if (logOpt.not_support_this_style) {
-                log.warn(`not_support_this_style, "${ahkInclude.name}"`);
+            } else {
+                byRefLogList.push({
+                    type: 'not_support_this_style',
+                    msg: `"${ahkInclude.name}"`,
+                });
             }
         }
         return FileListData;

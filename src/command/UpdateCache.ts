@@ -1,6 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
+import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
 import { getTryParserInclude, getTryParserIncludeLog } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
 import { rmAllDiag } from '../core/diagColl';
@@ -8,9 +9,27 @@ import { BaseScanMemo } from '../core/ParserTools/getFileAST';
 import type { TAhkFileData } from '../core/ProjectManager';
 import { pm } from '../core/ProjectManager';
 import { log } from '../provider/vscWindows/log';
+import { enumLog } from '../tools/enumErr';
 import { getUriList } from '../tools/fsTools/getUriList';
 import type { TShowFileParam } from '../tools/fsTools/showFileList';
 import { showFileList } from '../tools/fsTools/showFileList';
+
+async function tryUpdateDocDef(uri: vscode.Uri): Promise<TAhkFileData | null> {
+    try {
+        const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri);
+        return pm.updateDocDef(doc);
+        //
+    } catch (error: unknown) {
+        // if vscode.workspace.openTextDocument
+        // may say "The file is not displayed in the editor because it is either binary or uses an unsupported text encoding.""
+        if (error instanceof Error) {
+            log.error(error, `scan to "${uri.fsPath}" has err`);
+        } else {
+            log.error('Unknown Error', `scan to "${uri.fsPath}" has err`);
+        }
+    }
+    return null;
+}
 
 export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TAhkFileData[]> {
     rmAllDiag();
@@ -22,34 +41,50 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
     const uriList: vscode.Uri[] = getUriList();
     if (uriList.length === 0) return [];
 
-    const TryParserInclude: boolean = getTryParserInclude();
-    const logOpt: TTryParserIncludeLog = getTryParserIncludeLog();
-
     const FileListData: TAhkFileData[] = [];
     for (const uri of uriList) {
-        // In the same PC, IO is relatively fast, but this decision is made for the workload of GC each time
-        // and await in loop can run faster
-        try {
-            // eslint-disable-next-line no-await-in-loop
-            const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri);
-            const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
-            if (AhkFileData !== null) {
-                FileListData.push(AhkFileData);
-                // if auto open #include
+        // eslint-disable-next-line no-await-in-loop
+        const data: TAhkFileData | null = await tryUpdateDocDef(uri);
+        if (data !== null) FileListData.push(data);
+    }
 
-                if (TryParserInclude) {
-                    // eslint-disable-next-line no-await-in-loop
-                    FileListData.push(...await pm.UpdateCacheAsyncCh(AhkFileData.AST, logOpt, uri.fsPath));
-                }
-            }
-            //
-        } catch (error: unknown) {
-            // if vscode.workspace.openTextDocument
-            // may say "The file is not displayed in the editor because it is either binary or uses an unsupported text encoding.""
-            if (error instanceof Error) {
-                log.error(error, `scan to "${uri.fsPath}" has err`);
-            } else {
-                log.error('Unknown Error', `scan to "${uri.fsPath}" has err`);
+    const TryParserInclude: boolean = getTryParserInclude();
+
+    if (TryParserInclude) {
+        const byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[] = [];
+        const parsedMap = new Map<CAhkInclude, string>();
+
+        const logOpt: TTryParserIncludeLog = getTryParserIncludeLog();
+        const cloneList: readonly TAhkFileData[] = [...FileListData];
+        for (const { AST, uri } of cloneList) {
+            // eslint-disable-next-line no-await-in-loop
+            FileListData.push(...await pm.UpdateCacheAsyncCh(AST, uri.fsPath, byRefLogList, parsedMap));
+        }
+        for (const { type, msg } of byRefLogList) {
+            const msgF = `tryParserInclude, ${type} , ${msg}`;
+            switch (type) {
+                case 'file_not_exists':
+                    if (logOpt.file_not_exists === true) log.warn(msgF);
+                    break;
+
+                case 'parser_OK':
+                    if (logOpt.parser_OK === true) log.info(msgF);
+                    break;
+
+                case 'parser_err':
+                    if (logOpt.parser_err === true) log.warn(msgF);
+                    break;
+
+                case 'parser_duplicate':
+                    if (logOpt.parser_duplicate === true) log.warn(msgF);
+                    break;
+
+                case 'not_support_this_style':
+                    if (logOpt.parser_err === true) log.warn(msgF);
+                    break;
+
+                default:
+                    enumLog(type, 'tryParserInclude, UpdateCacheAsync');
             }
         }
     }

@@ -36,10 +36,11 @@ export type TMethod = {
 };
 
 export type TTryParserIncludeLog = DeepReadonly<{
-    'file_not_exists': boolean,
-    'parser_OK': boolean,
-    'parser_err': boolean,
-    'not_support_this_style': boolean,
+    'file_not_exists'?: boolean,
+    'parser_OK'?: boolean,
+    'parser_err'?: boolean,
+    'parser_duplicate'?: boolean,
+    'not_support_this_style'?: boolean,
 }>;
 
 type TempConfigs = {
