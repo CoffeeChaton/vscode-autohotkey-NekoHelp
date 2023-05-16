@@ -376,7 +376,77 @@
             },
             {
                 "type": "object",
-                "title": "6. misc",
+                "title": "6. files",
+                "properties": {
+                    "AhkNekoHelp.files.exclude": {
+                        "type": "array",
+                        "default": [
+                            "/\\.",
+                            "/node_modules$",
+                            "/node_modules/",
+                            "/neko_Exp_Gdip\\.ahk$",
+                            "/build(/|$)",
+                            "/dist(/|$)",
+                            "/temp(/|$)",
+                            "/ahk2(/|$)",
+                            "\\.2\\.ahk$",
+                            "/backup(/|$)",
+                            "/history(/|$)"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.exclude.md)) # Files.exclude \n\nWhen building the dataset, we exclude certain folders and files using a list of regular expressions. This list includes patterns for excluding folders like 'temp' and 'history', as well as files like '.ahk2' and '.ahk2'.\n\n- Note that I have standardized the two types of paths that can be used in Windows (common `\\` and compatible `/`) to a single Linux-style path `/` that doesn't require JavaScript to escape, and the default regular expression flags are `u` and `i`, [u-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode), [i-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase).\n\n| regex            | Description                      |\n| :--------------- | :------------------------------- |\n| `/\\.`           | a file/fold name startWith `.`   |\n| `/node_modules/` | the path includes `node_modules` |\n| `/build/`        | A built-fold in pattern          |\n| `/temp/`         | A temp-fold in pattern           |\n| `/ahk2/`         | A ahk2-fold in pattern           |\n| `\\.ah2$`         | file-name end with ah2           |\n| `/backup/`       | A backup-fold in pattern         |\n| `/history/`      | A history-fold in pattern        |"
+                    },
+                    "AhkNekoHelp.files.tryParserInclude": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "try Parser `#Include` to add `.ahk` data.\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/file.tryParserInclude.md))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`"
+                    },
+                    "AhkNekoHelp.files.tryParserIncludeLog": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "file_not_exists": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "parser_OK": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "parser_err": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "parser_duplicate": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "not_support_include_directory": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "not_support_this_style": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        "default": {
+                            "file_not_exists": false,
+                            "parser_OK": false,
+                            "parser_err": false,
+                            "parser_duplicate": false,
+                            "not_support_include_directory": false,
+                            "not_support_this_style": false
+                        },
+                        "markdownDescription": "`while `\"AhkNekoHelp.files.tryParserInclude\"` open, select to record log."
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "7. misc",
                 "properties": {
                     "AhkNekoHelp.method": {
                         "type": "object",
@@ -425,65 +495,6 @@
                             "CodeLens": "none"
                         },
                         "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))"
-                    },
-                    "AhkNekoHelp.files.exclude": {
-                        "type": "array",
-                        "default": [
-                            "/\\.",
-                            "/node_modules$",
-                            "/node_modules/",
-                            "/neko_Exp_Gdip\\.ahk$",
-                            "/build(/|$)",
-                            "/dist(/|$)",
-                            "/temp(/|$)",
-                            "/ahk2(/|$)",
-                            "\\.2\\.ahk$",
-                            "/backup(/|$)",
-                            "/history(/|$)"
-                        ],
-                        "items": {
-                            "type": "string"
-                        },
-                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.exclude.md)) # Files.exclude \n\nWhen building the dataset, we exclude certain folders and files using a list of regular expressions. This list includes patterns for excluding folders like 'temp' and 'history', as well as files like '.ahk2' and '.ahk2'.\n\n- Note that I have standardized the two types of paths that can be used in Windows (common `\\` and compatible `/`) to a single Linux-style path `/` that doesn't require JavaScript to escape, and the default regular expression flags are `u` and `i`, [u-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode), [i-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase).\n\n| regex            | Description                      |\n| :--------------- | :------------------------------- |\n| `/\\.`           | a file/fold name startWith `.`   |\n| `/node_modules/` | the path includes `node_modules` |\n| `/build/`        | A built-fold in pattern          |\n| `/temp/`         | A temp-fold in pattern           |\n| `/ahk2/`         | A ahk2-fold in pattern           |\n| `\\.ah2$`         | file-name end with ah2           |\n| `/backup/`       | A backup-fold in pattern         |\n| `/history/`      | A history-fold in pattern        |"
-                    },
-                    "AhkNekoHelp.files.tryParserInclude": {
-                        "type": "boolean",
-                        "default": false,
-                        "markdownDescription": "try Parser `#Include` to add `.ahk` data.\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/file.tryParserInclude.md))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`"
-                    },
-                    "AhkNekoHelp.files.tryParserIncludeLog": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "file_not_exists": {
-                                "type": "boolean",
-                                "default": false
-                            },
-                            "parser_OK": {
-                                "type": "boolean",
-                                "default": false
-                            },
-                            "parser_err": {
-                                "type": "boolean",
-                                "default": false
-                            },
-                            "parser_duplicate": {
-                                "type": "boolean",
-                                "default": false
-                            },
-                            "not_support_this_style": {
-                                "type": "boolean",
-                                "default": false
-                            }
-                        },
-                        "default": {
-                            "file_not_exists": false,
-                            "parser_OK": false,
-                            "parser_err": false,
-                            "parser_duplicate": false,
-                            "not_support_this_style": false
-                        },
-                        "markdownDescription": "`while `\"AhkNekoHelp.files.tryParserInclude\"` open, select to record log."
                     },
                     "AhkNekoHelp.useSymbolProvider": {
                         "type": "boolean",
@@ -560,7 +571,7 @@
         "@swc/jest": "^0.2.26",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.5.1",
-        "@types/node": "^20.1.5",
+        "@types/node": "^20.1.7",
         "@types/vscode": "^1.78.0",
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",

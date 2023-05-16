@@ -1,4 +1,4 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4,5] }] */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4,5,6] }] */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -37,6 +37,11 @@ describe('check package ruler', () => {
         }
 
         for (const [k, v] of Object.entries(contributes.configuration[5].properties)) {
+            if (!k.startsWith('AhkNekoHelp.files.')) errList0.push(k);
+            msg.push([k, v.type as unknown as string]);
+        }
+
+        for (const [k, v] of Object.entries(contributes.configuration[6].properties)) {
             if (!k.startsWith('AhkNekoHelp.')) errList0.push(k);
             msg.push([k, v.type as unknown as string]);
         }
@@ -99,14 +104,15 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
                 ['AhkNekoHelp.customize.displayLogMessage', 'string'],
 
-                // misc
-                ['AhkNekoHelp.method', 'object'],
+                // [5]
                 ['AhkNekoHelp.files.exclude', 'array'],
                 ['AhkNekoHelp.files.tryParserInclude', 'boolean'],
                 ['AhkNekoHelp.files.tryParserIncludeLog', 'object'],
+
+                // [6] misc
+                ['AhkNekoHelp.method', 'object'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
-
                 ['AhkNekoHelp.Rename.functionInStr', 'boolean'],
                 ['AhkNekoHelp.event.FileRenameEvent', 'number'],
             ],

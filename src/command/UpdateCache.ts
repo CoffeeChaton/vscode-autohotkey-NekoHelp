@@ -1,15 +1,13 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
-import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
-import { getTryParserInclude, getTryParserIncludeLog } from '../configUI';
+import { getTryParserInclude, LogParserInclude } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
 import { rmAllDiag } from '../core/diagColl';
 import { BaseScanMemo } from '../core/ParserTools/getFileAST';
 import type { TAhkFileData } from '../core/ProjectManager';
-import { pm } from '../core/ProjectManager';
+import { IncludePm, pm } from '../core/ProjectManager';
 import { log } from '../provider/vscWindows/log';
-import { enumLog } from '../tools/enumErr';
 import { getUriList } from '../tools/fsTools/getUriList';
 import type { TShowFileParam } from '../tools/fsTools/showFileList';
 import { showFileList } from '../tools/fsTools/showFileList';
@@ -35,6 +33,7 @@ async function tryUpdateDocDef(uri: vscode.Uri): Promise<TAhkFileData | null> {
 export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TAhkFileData[]> {
     rmAllDiag();
     pm.DocMap.clear();
+    IncludePm.clear();
     if (clearCache) {
         BaseScanMemo.memo.clear();
     }
@@ -53,43 +52,16 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
 
     if (TryParserInclude) {
         const byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[] = [];
-        const parsedMap = new Map<CAhkInclude, string>();
 
-        const logOpt: TTryParserIncludeLog = getTryParserIncludeLog();
         const cloneList: readonly TAhkFileData[] = [...FileListData];
         for (const { AST, uri } of cloneList) {
             FileListData.push(
                 // eslint-disable-next-line no-await-in-loop
-                ...await pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, byRefLogList, parsedMap),
+                ...await pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, byRefLogList),
             );
         }
-        for (const { type, msg } of byRefLogList) {
-            const msgF = `${type} , ${msg}`;
-            switch (type) {
-                case 'file_not_exists':
-                    if (logOpt.file_not_exists === true) log.warn(msgF);
-                    break;
 
-                case 'parser_OK':
-                    if (logOpt.parser_OK === true) log.info(msgF);
-                    break;
-
-                case 'parser_err':
-                    if (logOpt.parser_err === true) log.warn(msgF);
-                    break;
-
-                case 'parser_duplicate':
-                    if (logOpt.parser_duplicate === true) log.warn(msgF);
-                    break;
-
-                case 'not_support_this_style':
-                    if (logOpt.parser_err === true) log.warn(msgF);
-                    break;
-
-                default:
-                    enumLog(type, 'tryParserInclude, UpdateCacheAsync');
-            }
-        }
+        LogParserInclude(byRefLogList);
     }
 
     return FileListData;

@@ -10,8 +10,10 @@ import type {
     TTryParserIncludeLog,
 } from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
+import { log } from './provider/vscWindows/log';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
 import { CConfigError } from './tools/DevClass/CConfigError';
+import { enumLog } from './tools/enumErr';
 import { str2RegexListCheck } from './tools/str2RegexListCheck';
 
 /*
@@ -170,8 +172,39 @@ export function getTryParserInclude(): boolean {
     return config.files_tryParserInclude;
 }
 
-export function getTryParserIncludeLog(): TTryParserIncludeLog {
-    return config.files_tryParserIncludeLog;
+export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[]): void {
+    const logOpt: TTryParserIncludeLog = config.files_tryParserIncludeLog;
+    for (const { type, msg } of byRefLogList) {
+        const msgF = `${type} , ${msg}`;
+        switch (type) {
+            case 'file_not_exists':
+                if (logOpt.file_not_exists === true) log.warn(msgF);
+                break;
+
+            case 'parser_OK':
+                if (logOpt.parser_OK === true) log.info(msgF);
+                break;
+
+            case 'parser_err':
+                if (logOpt.parser_err === true) log.error(msgF);
+                break;
+
+            case 'parser_duplicate':
+                if (logOpt.parser_duplicate === true) log.warn(msgF);
+                break;
+
+            case 'not_support_include_directory':
+                if (logOpt.not_support_include_directory === true) log.warn(msgF);
+                break;
+
+            case 'not_support_this_style':
+                if (logOpt.not_support_this_style === true) log.warn(msgF);
+                break;
+
+            default:
+                enumLog(type, 'tryParserInclude, UpdateCacheAsync');
+        }
+    }
 }
 
 export function getSnippetBlockFilesList(): readonly RegExp[] {
