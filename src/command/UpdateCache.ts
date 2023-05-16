@@ -13,6 +13,7 @@ import { enumLog } from '../tools/enumErr';
 import { getUriList } from '../tools/fsTools/getUriList';
 import type { TShowFileParam } from '../tools/fsTools/showFileList';
 import { showFileList } from '../tools/fsTools/showFileList';
+import { collectInclude } from './tools/collectInclude';
 
 async function tryUpdateDocDef(uri: vscode.Uri): Promise<TAhkFileData | null> {
     try {
@@ -57,11 +58,13 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
         const logOpt: TTryParserIncludeLog = getTryParserIncludeLog();
         const cloneList: readonly TAhkFileData[] = [...FileListData];
         for (const { AST, uri } of cloneList) {
-            // eslint-disable-next-line no-await-in-loop
-            FileListData.push(...await pm.UpdateCacheAsyncCh(AST, uri.fsPath, byRefLogList, parsedMap));
+            FileListData.push(
+                // eslint-disable-next-line no-await-in-loop
+                ...await pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, byRefLogList, parsedMap),
+            );
         }
         for (const { type, msg } of byRefLogList) {
-            const msgF = `tryParserInclude, ${type} , ${msg}`;
+            const msgF = `${type} , ${msg}`;
             switch (type) {
                 case 'file_not_exists':
                     if (logOpt.file_not_exists === true) log.warn(msgF);

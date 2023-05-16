@@ -1,14 +1,23 @@
 import { CAhkInclude } from '../../AhkSymbol/CAhkInclude';
-import type { TAhkSymbolList } from '../../AhkSymbol/TAhkSymbolIn';
+import type { TAhkSymbolList, TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
+import { CMemo } from '../../tools/CMemo';
 
-export function collectInclude(AST: Readonly<TAhkSymbolList>): readonly CAhkInclude[] {
+function collectIncludeCore(AST: Readonly<TAhkSymbolList>): readonly CAhkInclude[] {
     const List: CAhkInclude[] = [];
     for (const ahkInclude of AST) {
         if (ahkInclude instanceof CAhkInclude) {
             List.push(ahkInclude);
         } else {
-            List.push(...collectInclude(ahkInclude.children));
+            List.push(...collectIncludeCore(ahkInclude.children));
         }
     }
     return List;
+}
+
+const collectIncludeTop = new CMemo<TAstRoot, readonly CAhkInclude[]>(
+    (AST: TAstRoot): readonly CAhkInclude[] => collectIncludeCore(AST),
+);
+
+export function collectInclude(AST: TAstRoot): readonly CAhkInclude[] {
+    return collectIncludeTop.up(AST);
 }

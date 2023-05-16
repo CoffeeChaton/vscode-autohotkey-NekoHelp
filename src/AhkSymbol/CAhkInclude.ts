@@ -5,6 +5,7 @@ import {
     resolve,
 } from 'node:path';
 import * as vscode from 'vscode';
+import { ToUpCase } from '../tools/str/ToUpCase';
 import type { TBaseLineParam } from './CAhkLine';
 
 export const enum EInclude {
@@ -22,35 +23,36 @@ export type TRawData = {
     readonly mayPath: string,
     readonly warnMsg: string,
 };
+const setWarnMsgList = [
+    // 'A_LineFile',
+    'A_WinDir',
+    'A_UserName',
+    'A_Temp',
+    'A_StartupCommon',
+    'A_Startup',
+    'A_StartMenuCommon',
+    'A_StartMenu', // keep sort line reverse
+    'A_ScriptName',
+    'A_ScriptFullPath',
+    'A_ScriptDir', // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+    'A_ProgramsCommon',
+    'A_Programs', // keep sort line reverse
+    'A_ProgramFiles',
+    'A_MyDocuments',
+    'A_IsCompiled',
+    'A_DesktopCommon',
+    'A_Desktop', // keep sort line reverse
+    'A_ComSpec',
+    'A_ComputerName',
+    'A_AppDataCommon',
+    'A_AppData',
+    'A_AhkPath',
+] as const;
 
 function setWarnMsg(path1: string): string {
-    const pathLow: string = path1.toLowerCase();
-    const list = [
-        // 'A_LineFile',
-        'A_WinDir',
-        'A_UserName',
-        'A_Temp',
-        'A_StartupCommon',
-        'A_Startup',
-        'A_StartMenuCommon',
-        'A_StartMenu', // keep sort line reverse
-        'A_ScriptName',
-        'A_ScriptFullPath',
-        'A_ScriptDir', // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
-        'A_ProgramsCommon',
-        'A_Programs', // keep sort line reverse
-        'A_ProgramFiles',
-        'A_MyDocuments',
-        'A_IsCompiled',
-        'A_DesktopCommon',
-        'A_Desktop', // keep sort line reverse
-        'A_ComSpec',
-        'A_ComputerName',
-        'A_AppDataCommon',
-        'A_AppData',
-        'A_AhkPath',
-    ] as const;
-    const find: string | undefined = list.find((v: string): boolean => pathLow.includes(v.toLowerCase()));
+    const pathUp: string = ToUpCase(path1);
+
+    const find: string | undefined = setWarnMsgList.find((v: string): boolean => pathUp.includes(v.toUpperCase()));
     return find === undefined
         ? ''
         : `not yet support of "${find}"`;
@@ -113,12 +115,11 @@ export class CAhkInclude extends vscode.DocumentSymbol {
     public readonly IgnoreErrors: boolean;
     public readonly uri: vscode.Uri;
     public readonly path1: string;
+    public readonly rawData: TRawData;
 
     declare public readonly kind: vscode.SymbolKind.Module;
     declare public readonly detail: '';
     declare public readonly children: never[];
-
-    private _rawData: TRawData | null = null;
 
     public constructor(
         {
@@ -134,22 +135,12 @@ export class CAhkInclude extends vscode.DocumentSymbol {
 
         const path0: string = name.replace(/^\s*#include(?:Again)?\s/iu, '').trim();
         this.IgnoreErrors = (/^\*i\s/iu).test(path0); //  For example: #Include *i SpecialOptions.ahk
-        this.path1 = textRaw
-            .replace(/^\s*#include(?:Again)?\s/iu, '')
-            .trim()
-            .replace(/^\*i\s/iu, '')
+        const path1: string = textRaw
+            .replace(/^\s*#include(?:Again)?\s+/iu, '')
+            .replace(/^\*i\s+/iu, '')
             .trim();
-    }
-
-    public get rawData(): TRawData {
-        if (this._rawData !== null) {
-            return this._rawData;
-        }
-
-        const { path1, uri } = this;
+        this.path1 = path1;
         const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '').trim();
-        const _rawData: TRawData = getRawData(tryRemoveComment, uri.fsPath);
-        this._rawData = _rawData;
-        return _rawData;
+        this.rawData = getRawData(tryRemoveComment, uri.fsPath);
     }
 }

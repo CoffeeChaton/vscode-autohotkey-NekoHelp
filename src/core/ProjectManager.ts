@@ -3,7 +3,6 @@ import path from 'node:path';
 import * as vscode from 'vscode';
 import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
 import { EInclude } from '../AhkSymbol/CAhkInclude';
-import type { TAstRoot } from '../AhkSymbol/TAhkSymbolIn';
 import { collectInclude } from '../command/tools/collectInclude';
 import { getEventConfig, getIgnoredList, getTryParserInclude } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
@@ -147,65 +146,72 @@ export const pm = {
     },
 
     async UpdateCacheAsyncCh(
-        AST: TAstRoot,
-        fatherPath: string,
+        ahkIncludeList: readonly CAhkInclude[],
+        rootPath: string,
         byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[],
         parsedMap: Map<CAhkInclude, string>,
     ): Promise<readonly TAhkFileData[]> {
         const FileListData: TAhkFileData[] = [];
-        const ahkIncludeList: readonly CAhkInclude[] = collectInclude(AST);
         for (const ahkInclude of ahkIncludeList) {
             const { type, mayPath } = ahkInclude.rawData;
             const tryPath: string = EInclude.isUnknown === type
-                ? path.join(path.dirname(fatherPath), mayPath)
+                ? path.join(path.dirname(rootPath), mayPath)
                 : mayPath;
             const oldPath: string | undefined = parsedMap.get(ahkInclude);
             if (oldPath === tryPath) {
                 byRefLogList.push({
                     type: 'parser_duplicate',
-                    msg: `"${ahkInclude.name}", ahkIncludeFrom : "${ahkInclude.uri.fsPath}"`,
+                    msg: `"${ahkInclude.name}", to : "${tryPath}", rootPath: "${rootPath}"`,
                 });
                 continue;
             }
-            if ([EInclude.Absolute, EInclude.A_LineFile, EInclude.Relative, EInclude.isUnknown].includes(type)) {
-                try {
-                    const uri: vscode.Uri = vscode.Uri.file(tryPath);
-                    // eslint-disable-next-line security/detect-non-literal-fs-filename
-                    if (!fs.existsSync(uri.fsPath)) {
-                        byRefLogList.push({
-                            type: 'file_not_exists',
-                            msg: `"${tryPath}", "${ahkInclude.name}"`,
-                        });
-                        continue;
-                    }
-                    // eslint-disable-next-line no-await-in-loop
-                    const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri);
-                    const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
-                    byRefLogList.push({
-                        type: 'parser_OK',
-                        msg: `"${ahkInclude.name}"`,
-                    });
-                    parsedMap.set(ahkInclude, tryPath);
-                    if (AhkFileData !== null) {
-                        FileListData.push(
-                            AhkFileData,
-                            // eslint-disable-next-line no-await-in-loop
-                            ...await pm.UpdateCacheAsyncCh(AhkFileData.AST, fatherPath, byRefLogList, parsedMap),
-                        );
-                    }
-                } catch {
-                    byRefLogList.push({
-                        type: 'parser_err',
-                        msg: `"${ahkInclude.name}"`,
-                    });
-                }
-            } else {
+            if (![EInclude.Absolute, EInclude.A_LineFile, EInclude.Relative, EInclude.isUnknown].includes(type)) {
                 byRefLogList.push({
                     type: 'not_support_this_style',
                     msg: `"${ahkInclude.name}"`,
                 });
+                continue;
+            }
+
+            try {
+                const uri: vscode.Uri = vscode.Uri.file(tryPath);
+                // eslint-disable-next-line security/detect-non-literal-fs-filename
+                if (!fs.existsSync(uri.fsPath)) {
+                    byRefLogList.push({
+                        type: 'file_not_exists',
+                        msg: `"${tryPath}", "${ahkInclude.name}"`,
+                    });
+                    continue;
+                }
+                // eslint-disable-next-line no-await-in-loop
+                const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri);
+                const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
+                parsedMap.set(ahkInclude, tryPath);
+                if (AhkFileData === null) continue;
+
+                byRefLogList.push({
+                    type: 'parser_OK',
+                    msg: `"${ahkInclude.name}", to : "${tryPath}", rootPath: "${rootPath}"`,
+                });
+
+                FileListData.push(
+                    AhkFileData,
+                    // eslint-disable-next-line no-await-in-loop
+                    ...await pm.UpdateCacheAsyncCh(
+                        collectInclude(AhkFileData.AST),
+                        rootPath,
+                        byRefLogList,
+                        parsedMap,
+                    ),
+                );
+            } catch {
+                byRefLogList.push({
+                    type: 'parser_err',
+                    msg: `"${ahkInclude.name}", file: "${tryPath}"`,
+                });
             }
         }
+
         return FileListData;
     },
 } as const;
