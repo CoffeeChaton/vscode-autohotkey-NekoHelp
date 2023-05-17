@@ -57,28 +57,29 @@ function searchAllClassRefCore(wordUp: string, AhkFileData: TAhkFileData): reado
     return fileRefList;
 }
 
-const wmClassRef = new WeakMap<TAhkFileData, TClassFileRefMapRW>();
+export const wmClassRef = new WeakMap<TAhkFileData, TClassFileRefMapRW>();
+
+export function classRefOnePage(classDef: CAhkClass, AhkFileData: TAhkFileData): readonly vscode.Location[] {
+    const wordUp: string = classDef.upName;
+    const catchMap: TClassFileRefMapRW = wmClassRef.get(AhkFileData) ?? new Map<string, vscode.Location[]>();
+    const refList: readonly vscode.Location[] | undefined = catchMap.get(wordUp);
+    if (refList !== undefined) return refList;
+
+    const fileRefList: readonly vscode.Location[] = searchAllClassRefCore(wordUp, AhkFileData);
+
+    catchMap.set(wordUp, fileRefList);
+    wmClassRef.set(AhkFileData, catchMap);
+
+    return fileRefList;
+}
 
 export function searchAllClassRef(classDef: CAhkClass): readonly vscode.Location[] {
-    const wordUp: string = classDef.upName;
     const allList: vscode.Location[] = [];
     for (const AhkFileData of pm.getDocMapValue()) {
-        const catchMap: TClassFileRefMapRW = wmClassRef.get(AhkFileData) ?? new Map<string, vscode.Location[]>();
-
-        const refList: readonly vscode.Location[] | undefined = catchMap.get(wordUp);
-        if (refList !== undefined) {
-            allList.push(...refList);
-            continue; // of this file !
-        }
-
-        const fileRefList: readonly vscode.Location[] = searchAllClassRefCore(wordUp, AhkFileData);
-        catchMap.set(wordUp, fileRefList);
-        wmClassRef.set(AhkFileData, catchMap);
-        allList.push(...fileRefList);
+        allList.push(...classRefOnePage(classDef, AhkFileData));
     }
 
     // 110-file with out cache need 10ms
     // but has cache just need 0~1ms
-
     return allList;
 }

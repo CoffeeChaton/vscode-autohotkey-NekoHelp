@@ -70,13 +70,3 @@ export type TSemanticTokensLeaf = {
      */
     tokenModifiers: (typeof TokenModifiers[number])[] | [],
 };
-
-export function pushToken(token: TSemanticTokensLeaf[], tokensBuilder: vscode.SemanticTokensBuilder): void {
-    for (const { range, tokenType, tokenModifiers } of token) {
-        tokensBuilder.push(
-            range,
-            tokenType,
-            tokenModifiers,
-        );
-    }
-}
