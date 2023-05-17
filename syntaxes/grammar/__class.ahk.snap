@@ -1,6 +1,39 @@
 >﻿Class ±µ·¼，ӿ9 {
 #^^^^^^^^^^^^^^^ source.ahk
 #               ^ source.ahk punctuation.bracket.ahk
->    
+>
 >}
 #^ source.ahk punctuation.bracket.ahk
+>
+>Class ±µ·¼，ӿ8 {
+#^^^^^ source.ahk meta.block.class.ahk storage.type.class.ahk
+#     ^ source.ahk meta.block.class.ahk
+#      ^^^^^^^ source.ahk meta.block.class.ahk entity.name.type.class.ahk
+#             ^^ source.ahk meta.block.class.ahk
+>    __new() {
+#^^^^ source.ahk
+#    ^^^^^ source.ahk entity.name.function.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+#           ^ source.ahk
+#            ^ source.ahk punctuation.bracket.ahk
+>
+>    }
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>obj8 := new ±µ·¼，ӿ8()
+#^^^^^ source.ahk
+#     ^^ source.ahk keyword.operator.assignment.ahk
+#       ^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#            ^^^^^^^ source.ahk entity.name.type.class.ahk
+#                   ^ source.ahk punctuation.bracket.ahk
+#                    ^ source.ahk punctuation.bracket.ahk
+>obj9 := new ±µ·¼，ӿ9
+#^^^^^ source.ahk
+#     ^^ source.ahk keyword.operator.assignment.ahk
+#       ^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#            ^^^^^^^ source.ahk entity.name.type.class.ahk
+>
