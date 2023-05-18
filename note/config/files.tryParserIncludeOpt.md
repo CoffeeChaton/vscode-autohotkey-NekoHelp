@@ -1,4 +1,4 @@
-# file.tryParserInclude
+# file.tryParserIncludeOpt
 
 try Parser `#Include` to add `.ahk` data.
 

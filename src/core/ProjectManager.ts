@@ -153,7 +153,14 @@ export const pm = {
         const { languageId } = document;
         if (languageId === 'ahk') {
             const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
-            if (AhkFileData !== null && getTryParserInclude()) {
+            if (AhkFileData === null) return;
+
+            const TryParserInclude: 'auto' | 'close' | 'open' = getTryParserInclude();
+
+            if (
+                TryParserInclude === 'open'
+                || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders !== undefined)
+            ) {
                 const { AST, uri } = AhkFileData;
                 void pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, []); // if log is too much
             }

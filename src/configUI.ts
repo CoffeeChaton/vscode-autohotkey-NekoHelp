@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 /* eslint-disable no-magic-numbers */
 import * as vscode from 'vscode';
 import type {
@@ -31,7 +32,7 @@ function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigK
 
 let oldCustomizeHoverFunctionDocStyle: 1 | 2 | null = null;
 let oldSignatureHelpInformation: 0 | 1 | 2 | 3 | null = null;
-let oldFilesTryParserInclude: boolean | null = null;
+let oldFilesTryParserIncludeOpt: 'auto' | 'close' | 'open' | null = null;
 
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
@@ -78,9 +79,17 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             useParenthesesIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useParenthesesIndent'),
             useSquareBracketsIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useSquareBracketsIndent'),
         },
-        files_exclude: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.files.exclude'),
-        files_tryParserInclude: getConfigs<boolean>(Configs, 'AhkNekoHelp.files.tryParserInclude'),
-        files_tryParserIncludeLog: getConfigs<TTryParserIncludeLog>(Configs, 'AhkNekoHelp.files.tryParserIncludeLog'),
+        files: {
+            exclude: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.files.exclude'),
+            tryParserIncludeOpt: getConfigs<'auto' | 'close' | 'open'>(
+                Configs,
+                'AhkNekoHelp.files.tryParserIncludeOpt',
+            ),
+            tryParserIncludeLog: getConfigs<TTryParserIncludeLog>(
+                Configs,
+                'AhkNekoHelp.files.tryParserIncludeLog',
+            ),
+        },
         snippets: {
             blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.exclude'),
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
@@ -101,7 +110,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     } as const;
 
     statusBarItem.color = ed.customize.statusBarDisplayColor;
-    void str2RegexListCheck(ed.files_exclude);
+    void str2RegexListCheck(ed.files.exclude);
     void str2RegexListCheck(ed.snippets.blockFilesList);
 
     if (oldCustomizeHoverFunctionDocStyle === null) {
@@ -122,13 +131,15 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         );
     }
 
-    if (oldFilesTryParserInclude === null) {
-        oldFilesTryParserInclude = ed.files_tryParserInclude;
-    } else if (ed.files_tryParserInclude && !oldFilesTryParserInclude) {
-        oldFilesTryParserInclude = ed.files_tryParserInclude;
+    if (oldFilesTryParserIncludeOpt === null) {
+        oldFilesTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
+    } else if (ed.files.tryParserIncludeOpt !== 'close' && oldFilesTryParserIncludeOpt === 'close') {
+        oldFilesTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
         void vscode.window.showWarningMessage(
             '[Privacy Statement 3](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement) is break!\n\n ("AhkNekoHelp.files.tryParserInclude")',
         );
+    } else {
+        oldFilesTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
     }
 
     return ed;
@@ -165,15 +176,15 @@ export function getSymbolProviderConfig(): TConfigs['SymbolProvider'] {
 }
 
 export function getIgnoredList(): readonly RegExp[] {
-    return str2RegexListCheck(config.files_exclude);
+    return str2RegexListCheck(config.files.exclude);
 }
 
-export function getTryParserInclude(): boolean {
-    return config.files_tryParserInclude;
+export function getTryParserInclude(): 'auto' | 'close' | 'open' {
+    return config.files.tryParserIncludeOpt;
 }
 
 export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[]): void {
-    const logOpt: TTryParserIncludeLog = config.files_tryParserIncludeLog;
+    const logOpt: TTryParserIncludeLog = config.files.tryParserIncludeLog;
     for (const { type, msg } of byRefLogList) {
         const msgF = `${type} , ${msg}`;
         switch (type) {

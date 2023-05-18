@@ -27,7 +27,8 @@
 - fix: syntax-highlight of `new class_name` and `new class_name()`
 - fix: `vscode.workspace.onDidChangeTextDocument` listener `log` or `other lang` event...
 - feat: [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12) part-7 , try Parser `#include` Data.
-  1. Avoid infinite loop parsing
+  1. via `"AhkNekoHelp.files.tryParserIncludeOpt"`
+  2. Avoid infinite loop parsing
 
 ## v0.0.40(2023-05-09)
 

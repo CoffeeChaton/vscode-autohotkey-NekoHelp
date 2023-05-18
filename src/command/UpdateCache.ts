@@ -48,9 +48,12 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
         if (data !== null) FileListData.push(data);
     }
 
-    const TryParserInclude: boolean = getTryParserInclude();
+    const TryParserInclude: 'auto' | 'close' | 'open' = getTryParserInclude();
 
-    if (TryParserInclude) {
+    if (
+        TryParserInclude === 'open'
+        || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders !== undefined)
+    ) {
         const byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[] = [];
 
         const cloneList: readonly TAhkFileData[] = [...FileListData];

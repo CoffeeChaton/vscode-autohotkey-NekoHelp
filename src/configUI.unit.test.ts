@@ -106,7 +106,7 @@ describe('check package ruler', () => {
 
                 // [5]
                 ['AhkNekoHelp.files.exclude', 'array'],
-                ['AhkNekoHelp.files.tryParserInclude', 'boolean'],
+                ['AhkNekoHelp.files.tryParserIncludeOpt', 'string'],
                 ['AhkNekoHelp.files.tryParserIncludeLog', 'object'],
 
                 // [6] misc

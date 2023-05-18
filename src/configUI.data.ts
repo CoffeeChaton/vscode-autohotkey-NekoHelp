@@ -105,9 +105,12 @@ type TempConfigs = {
          */
         useSquareBracketsIndent: boolean,
     },
-    files_exclude: readonly string[],
-    files_tryParserInclude: boolean,
-    files_tryParserIncludeLog: TTryParserIncludeLog,
+    files: {
+        exclude: readonly string[],
+        tryParserIncludeOpt: 'auto' | 'close' | 'open',
+        tryParserIncludeLog: TTryParserIncludeLog,
+    },
+
     snippets: {
         blockFilesList: readonly string[],
         CommandOption: ECommandOption,
