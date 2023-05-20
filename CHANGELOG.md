@@ -23,7 +23,8 @@
 
 ## Next v0.0.41(2023-05-XX)
 
-- feat: add triggerCharacters `\` and `/` to call Completion. [#12 ex](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1555474420)
+- feat: add triggerCharacters `\` and `.` to call Completion. [#12 ex](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1555474420)
+- fix: complete `#include path` auto del `.` or `\`
 - feat: add option `"AhkNekoHelp.snippets.fromOtherFile"` to limit completion other files func/class.
 - feat: add semantic-highlight of `class` reference
 - fix: syntax-highlight of `new class_name` and `new class_name()`

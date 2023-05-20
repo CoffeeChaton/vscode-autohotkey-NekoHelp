@@ -4,6 +4,7 @@ import type { TTopSymbol } from '../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
+import { EDetail } from '../../globalEnum';
 import { snipDirectives } from '../../tools/Built-in/0_directive/Directives.tool';
 import { getSnippetCLSID } from '../../tools/Built-in/100_other/CLSID/WindowsClassIdentifiers.tools';
 import { getSnipJustSnip } from '../../tools/Built-in/100_other/Keys_and_other/ahkSnippets.tools';
@@ -54,11 +55,17 @@ function CompletionItemCore(
     const { AST, DocStrMap, ModuleVar } = AhkFileData;
 
     const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
-    const { lStr, textRaw, fistWordUp } = AhkTokenLine;
-
+    const {
+        lStr,
+        textRaw,
+        fistWordUp,
+        detail,
+    } = AhkTokenLine;
     const subStr: string = lStr.slice(0, position.character).trim();
 
-    if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) return IncludeFsPath(document.uri.fsPath);
+    if (detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s/iu).test(lStr)) {
+        return IncludeFsPath(document.uri.fsPath, position);
+    }
 
     if ((/\bnew[ \t]+[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStr.slice(0, position.character))) {
         return CompletionUserDefFuncClass(subStr, AhkFileData)

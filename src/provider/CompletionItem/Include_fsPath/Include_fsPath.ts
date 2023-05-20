@@ -2,7 +2,7 @@ import path from 'node:path';
 import * as vscode from 'vscode';
 import { pm } from '../../../core/ProjectManager';
 
-export function IncludeFsPath(fromPath: string): vscode.CompletionItem[] {
+export function IncludeFsPath(fromPath: string, position: vscode.Position): vscode.CompletionItem[] {
     const need: vscode.CompletionItem[] = [];
     for (const fsPath of pm.DocMap.keys()) {
         const item: vscode.CompletionItem = new vscode.CompletionItem(
@@ -28,6 +28,7 @@ export function IncludeFsPath(fromPath: string): vscode.CompletionItem[] {
         }
 
         item.insertText = new vscode.SnippetString().appendChoice(list);
+        item.range = new vscode.Range(new vscode.Position(position.line, position.character - 1), position);
         need.push(item);
     }
 
