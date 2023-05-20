@@ -41,6 +41,8 @@ import { WorkspaceSymbolProvider } from './provider/WorkspaceSymbolProvider/Work
 export function activate(context: vscode.ExtensionContext): void {
     const selector: vscode.DocumentSelector = { language: 'ahk' }; // scheme: 'file'
     const triggerCharacters: readonly string[] = [
+        '/',
+        '\\',
         '_',
         '.',
         '',
