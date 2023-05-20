@@ -95,6 +95,7 @@ describe('check package ruler', () => {
                 // [3]
                 ['AhkNekoHelp.snippets.CommandOption', 'number'],
                 ['AhkNekoHelp.snippets.exclude', 'array'],
+                ['AhkNekoHelp.snippets.fromOtherFile', 'number'],
                 ['AhkNekoHelp.snippets.subCmdPlus', 'object'],
 
                 // [4]

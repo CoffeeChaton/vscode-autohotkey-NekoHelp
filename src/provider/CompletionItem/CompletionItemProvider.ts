@@ -26,10 +26,10 @@ import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
 import { wrapClass } from './classThis/wrapClass';
 import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
+import { CompletionUserDefFuncClass } from './CompletionUserDef/CompletionUserDefFuncClass';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
 import { globalValCompletion } from './global/globalValCompletion';
 import { IncludeFsPath } from './Include_fsPath/Include_fsPath';
-import { listAllFuncClass } from './listAllFuncClass/listAllFuncClass';
 import { ModuleVar2Completion } from './ModuleVar/ModuleVar2Completion';
 import { completionSubCommand } from './SubCommand/completionSubCommand';
 
@@ -61,7 +61,7 @@ function CompletionItemCore(
     if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) return IncludeFsPath(document.uri.fsPath);
 
     if ((/\bnew[ \t]+[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStr.slice(0, position.character))) {
-        return listAllFuncClass(subStr)
+        return CompletionUserDefFuncClass(subStr, AhkFileData)
             .filter((v: vscode.CompletionItem): boolean => v.kind === vscode.CompletionItemKind.Class);
     }
 
@@ -88,7 +88,7 @@ function CompletionItemCore(
     if (PartStr !== null) {
         completions.push(
             ...ModuleVar2Completion(ModuleVar, DA, PartStr, document.uri.fsPath),
-            ...listAllFuncClass(subStr),
+            ...CompletionUserDefFuncClass(subStr, AhkFileData),
         );
 
         if (DA !== null) {

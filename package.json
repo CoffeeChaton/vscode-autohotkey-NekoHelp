@@ -277,6 +277,21 @@
                         },
                         "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.exclude.md)) Disable IntelliSense when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-default-style** ```\"\\\"```"
                     },
+                    "AhkNekoHelp.snippets.fromOtherFile": {
+                        "type": "number",
+                        "default": 1,
+                        "enum": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "markdownEnumDescriptions": [
+                            "never completion from other files",
+                            "completion from other files",
+                            "completion from other files, but the `function_name` `class_name` should startWith filename"
+                        ],
+                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.fromOtherFile.md))"
+                    },
                     "AhkNekoHelp.snippets.subCmdPlus": {
                         "type": "object",
                         "additionalProperties": false,
@@ -376,7 +391,7 @@
             },
             {
                 "type": "object",
-                "title": "6. files",
+                "title": "6. files and `#include`",
                 "properties": {
                     "AhkNekoHelp.files.exclude": {
                         "type": "array",

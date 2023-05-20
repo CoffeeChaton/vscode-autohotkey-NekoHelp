@@ -93,6 +93,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         snippets: {
             blockFilesList: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.snippets.exclude'),
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
+            fromOtherFile: getConfigs<0 | 1 | 2>(Configs, 'AhkNekoHelp.snippets.fromOtherFile'),
             subCmdPlus: getConfigs<TConfigs['snippets']['subCmdPlus']>(Configs, 'AhkNekoHelp.snippets.subCmdPlus'),
         },
         SymbolProvider: {

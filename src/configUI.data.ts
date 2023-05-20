@@ -114,6 +114,7 @@ type TempConfigs = {
     snippets: {
         blockFilesList: readonly string[],
         CommandOption: ECommandOption,
+        fromOtherFile: 0 | 1 | 2,
         subCmdPlus: {
             Menu: boolean,
             Gui: boolean,

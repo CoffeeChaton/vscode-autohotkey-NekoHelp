@@ -23,6 +23,7 @@
 
 ## Next v0.0.41(2023-05-XX)
 
+- feat: add option `"AhkNekoHelp.snippets.fromOtherFile"` to limit completion other files func/class.
 - feat: add semantic-highlight of `class` reference
 - fix: syntax-highlight of `new class_name` and `new class_name()`
 - fix: `vscode.workspace.onDidChangeTextDocument` listener `log` or `other lang` event...
