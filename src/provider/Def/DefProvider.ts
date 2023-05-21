@@ -13,11 +13,11 @@ import { gotoIncludeDef } from './gotoIncludeDef';
 function DefProviderCore(
     document: vscode.TextDocument,
     position: vscode.Position,
-): vscode.Location[] | null {
+): vscode.Location[] | vscode.LocationLink[] | null {
     const AhkFileData: TAhkFileData | null = pm.getDocMap(document.uri.fsPath) ?? pm.updateDocDef(document);
     if (AhkFileData === null) return null;
 
-    const IncludeFile: vscode.Location | null = gotoIncludeDef(AhkFileData, position);
+    const IncludeFile: vscode.LocationLink | null = gotoIncludeDef(AhkFileData, position);
     if (IncludeFile !== null) return [IncludeFile];
 
     const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);

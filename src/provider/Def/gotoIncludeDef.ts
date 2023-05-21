@@ -4,7 +4,7 @@ import { collectInclude } from '../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { EDetail } from '../../globalEnum';
 
-export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Position): vscode.Location | null {
+export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Position): vscode.LocationLink | null {
     //
     const { DocStrMap, AST } = AhkFileData;
     const { line } = position;
@@ -17,11 +17,31 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
                 const { rawData } = ahkInclude;
                 const { type, mayPath } = rawData;
                 if ([EInclude.Absolute, EInclude.A_LineFile].includes(type)) {
-                    return new vscode.Location(vscode.Uri.file(mayPath), new vscode.Position(0, 0));
+                    const col0: number = lStr.length - lStr
+                        .replace(/^\s*#Include(?:Again)?\s+/iu, '')
+                        .replace(/\*i\s+/iu, '')
+                        .length;
+                    const originSelectionRange: vscode.Range = new vscode.Range(
+                        new vscode.Position(line, col0),
+                        new vscode.Position(line, lStr.length),
+                    );
+                    return {
+                        originSelectionRange,
+                        targetUri: vscode.Uri.file(mayPath),
+                        targetRange: new vscode.Range(
+                            new vscode.Position(0, 0),
+                            new vscode.Position(0, 0),
+                        ),
+                        /**
+                         * The span of this link.
+                         */
+                        // targetSelectionRange?: Range,
+                    };
                 }
                 void vscode.window.showInformationMessage(
                     '`#include` goto def just support `Absolute path` or `A_LineFile style`',
                 );
+                break;
             }
         }
     }

@@ -23,6 +23,7 @@
 
 ## Next v0.0.41(2023-05-XX)
 
+- fix: goto def of `#include` underlined span for mouse definition hover. [#12 ex12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1555929041)
 - feat: add triggerCharacters `\` and `.` to call Completion. [#12 ex](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1555474420)
 - fix: complete `#include path` auto del `.` or `\`
 - feat: add option `"AhkNekoHelp.snippets.fromOtherFile"` to limit completion other files func/class.
