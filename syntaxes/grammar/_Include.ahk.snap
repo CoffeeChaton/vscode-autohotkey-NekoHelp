@@ -9,7 +9,9 @@
 >#Include %A_ScriptDir% ;Comment
 #^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk keyword.control.import.ahk
 #        ^ source.ahk string.entity.name.namespace.import.ahk
-#         ^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+#         ^ source.ahk string.entity.name.namespace.import.ahk
+#          ^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
+#                     ^ source.ahk string.entity.name.namespace.import.ahk
 #                      ^ source.ahk string.entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk
 #                       ^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#Include C:\My Scripts ;Comment
@@ -51,17 +53,25 @@
 >#IncludeAgain %A_ScriptDir%
 #^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk keyword.control.import.ahk
 #             ^ source.ahk string.entity.name.namespace.import.ahk
-#              ^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+#              ^ source.ahk string.entity.name.namespace.import.ahk
+#               ^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
+#                          ^ source.ahk string.entity.name.namespace.import.ahk
 >#IncludeAgain %A_AppData%
 #^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk keyword.control.import.ahk
 #             ^ source.ahk string.entity.name.namespace.import.ahk
-#              ^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+#              ^ source.ahk string.entity.name.namespace.import.ahk
+#               ^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
+#                        ^ source.ahk string.entity.name.namespace.import.ahk
 >#IncludeAgain %A_AppDataCommon%
 #^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk keyword.control.import.ahk
 #             ^ source.ahk string.entity.name.namespace.import.ahk
-#              ^^^^^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+#              ^ source.ahk string.entity.name.namespace.import.ahk
+#               ^^^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
+#                              ^ source.ahk string.entity.name.namespace.import.ahk
 >#IncludeAgain %A_LineFile%
 #^^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk keyword.control.import.ahk
 #             ^ source.ahk string.entity.name.namespace.import.ahk
-#              ^^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+#              ^ source.ahk string.entity.name.namespace.import.ahk
+#               ^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
+#                         ^ source.ahk string.entity.name.namespace.import.ahk
 >

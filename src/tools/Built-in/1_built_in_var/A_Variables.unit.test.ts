@@ -247,12 +247,18 @@ describe('check A_Variables ruler', () => {
     it('check : tmLanguage', () => {
         expect.hasAssertions();
 
-        const st1 = (repository.builtin_variable.patterns[0].match)
+        const arr1Str: string = arr1.join('|');
+        const st1: string = (repository.builtin_variable.patterns[0].match)
             .replace('(?<![.#])\\b(?i:A_(?:', '')
             .replace('))\\b', '');
 
+        const st2: string = (repository.include_builtin_var.match)
+            .replace('(?<=%)(?i:A_(?:', '')
+            .replace('))(?=%)', '');
+
         expect(arr1).toHaveLength(max);
-        expect(st1).toBe(arr1.join('|'));
+        expect(st1).toBe(arr1Str);
+        expect(st2).toBe(arr1Str);
     });
 
     it('check uri', () => {

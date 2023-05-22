@@ -380,6 +380,10 @@
                 }
             ]
         },
+        "include_builtin_var": {
+            "match": "(?<=%)(?i:A_(?:AhkPath|AhkVersion|AppData|AppDataCommon|Args|AutoTrim|BatchLines|NumBatchLines|CaretX|CaretY|Clipboard|ComSpec|ComputerName|ControlDelay|CoordModeCaret|CoordModeMenu|CoordModeMouse|CoordModePixel|CoordModeToolTip|Cursor|DD|MDay|DDD|DDDD|DefaultGui|DefaultListView|DefaultMouseSpeed|DefaultTreeView|Desktop|DesktopCommon|DetectHiddenText|DetectHiddenWindows|EndChar|EventInfo|ExitReason|FileEncoding|FormatFloat|FormatInteger|Gui|GuiControl|GuiControlEvent|GuiEvent|GuiHeight|GuiWidth|GuiX|GuiY|Hour|IPAddress1|IPAddress2|IPAddress3|IPAddress4|IconFile|IconHidden|IconNumber|IconTip|Index|Is64bitOS|IsAdmin|IsCompiled|IsCritical|IsPaused|IsSuspended|IsUnicode|KeyDelay|KeyDelayPlay|KeyDuration|KeyDurationPlay|Language|LastError|LineFile|LineNumber|ListLines|LoopField|LoopFileAttrib|LoopFileDir|LoopFileExt|LoopFileFullPath|LoopFileLongPath|LoopFileName|LoopFilePath|LoopFileShortName|LoopFileShortPath|LoopFileSize|LoopFileSizeKB|LoopFileSizeMB|LoopFileTimeAccessed|LoopFileTimeCreated|LoopFileTimeModified|LoopReadLine|LoopRegKey|LoopRegName|LoopRegSubKey|LoopRegTimeModified|LoopRegType|MM|Mon|MMM|MMMM|MSec|Min|MouseDelay|MouseDelayPlay|MyDocuments|Now|NowUTC|OSType|OSVersion|PriorHotkey|PriorKey|ProgramFiles|Programs|ProgramsCommon|PtrSize|RegView|ScreenDPI|ScreenHeight|ScreenWidth|ScriptDir|ScriptFullPath|ScriptHwnd|ScriptName|Sec|SendLevel|SendMode|Space|StartMenu|StartMenuCommon|Startup|StartupCommon|StoreCapsLockMode|StringCaseSense|Tab|Temp|ThisFunc|ThisHotkey|ThisLabel|ThisMenu|ThisMenuItem|ThisMenuItemPos|TickCount|TimeIdle|TimeIdleKeyboard|TimeIdleMouse|TimeIdlePhysical|TimeSincePriorHotkey|TimeSinceThisHotkey|TitleMatchMode|TitleMatchModeSpeed|UserName|WDay|WinDelay|WinDir|WorkingDir|InitialWorkingDir|YDay|YWeek|YYYY|Year))(?=%)",
+            "name": "variable.other.constant.builtin.include.ahk"
+        },
         "directives": {
             "patterns": [
                 {
@@ -390,7 +394,10 @@
                         "2": { "name": "keyword.operator.arithmetic.ahk" }
                     },
                     "end": "\\n",
-                    "patterns": [ { "include": "#comment" } ]
+                    "patterns": [
+                        { "include": "#include_builtin_var" },
+                        { "include": "#comment" }
+                    ]
                 },
                 {
                     "captures": { "1": { "name": "keyword.control.directives._if.ahk" } },

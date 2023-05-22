@@ -23,6 +23,8 @@
 
 ## Next v0.0.41(2023-05-XX)
 
+- feat: syntax-highlight of `#include` all start with `A_` built-in variables like `A_AhkPath` etc...
+  > ([doc-FileOrDirName](https://www.autohotkey.com/docs/v1/lib/_Include.htm#Parameters)) Percent signs which are not part of a valid variable reference are interpreted literally. All built-in variables are valid, except for ErrorLevel, A_Args and the numbered variables
 - fix: goto def of `#include` underlined span for mouse definition hover. [#12 ex12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1555929041)
 - feat: add triggerCharacters `\` and `.` to call Completion. [#12 ex](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1555474420)
 - fix: complete `#include path` auto del `.` or `\`
