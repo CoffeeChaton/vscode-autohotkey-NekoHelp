@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.41(2023-05-XX)](#next-v00412023-05-xx)
+  - [v0.0.41(2023-05-22)](#v00412023-05-22)
   - [v0.0.40(2023-05-09)](#v00402023-05-09)
   - [v0.0.39(2023-05-01)](#v00392023-05-01)
   - [v0.0.38(2023-04-30)](#v00382023-04-30)
@@ -21,7 +21,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.41(2023-05-XX)
+## v0.0.41(2023-05-22)
 
 - feat: syntax-highlight of `#include` all start with `A_` built-in variables like `A_AhkPath` etc...
   > ([doc-FileOrDirName](https://www.autohotkey.com/docs/v1/lib/_Include.htm#Parameters)) Percent signs which are not part of a valid variable reference are interpreted literally. All built-in variables are valid, except for ErrorLevel, A_Args and the numbered variables
@@ -31,7 +31,7 @@
 - feat: add option `"AhkNekoHelp.snippets.fromOtherFile"` to limit completion other files func/class.
 - feat: add semantic-highlight of `class` reference
 - fix: syntax-highlight of `new class_name` and `new class_name()`
-- fix: `vscode.workspace.onDidChangeTextDocument` listener `log` or `other lang` event...
+- fix: avoid `vscode.workspace.onDidChangeTextDocument` listener `log` or `other lang` event...
 - feat: [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12) part-7 , try Parser `#include` Data.
   1. via `"AhkNekoHelp.files.tryParserIncludeOpt"`
   2. Avoid infinite loop parsing
