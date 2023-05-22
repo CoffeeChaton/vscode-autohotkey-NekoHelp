@@ -54,6 +54,7 @@ type TLockObj = {
 };
 
 export type TLnStatus = {
+    isHotFix22: boolean,
     lockList: readonly TLockObj[],
     occ: number,
     status: string,
@@ -68,6 +69,7 @@ function addLock({ lnStatus, AhkTokenLine }: {
     const lockDeep: number = AhkTokenLine.deep2.at(-1) ?? 0;
 
     return {
+        isHotFix22: false,
         lockList: [...lockList, { lockOcc, lockDeep }],
         occ,
         status: 'add lock',
@@ -83,8 +85,9 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
 
     if (occ === 0) { // happy path
         return {
-            occ: 0,
+            isHotFix22: false,
             lockList: [],
+            occ: 0,
             status: 'old occ is 0',
         };
     }
@@ -106,6 +109,7 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
                 newOcc = lockOcc;
                 tempLockList.push(lastLock);
                 return {
+                    isHotFix22: false,
                     lockList: tempLockList,
                     occ: lockOcc,
                     status: `occ-- case--110- ln ${line} (trigger lock protection)`,
@@ -122,8 +126,9 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
             }
 
             return {
-                occ: bgb,
+                isHotFix22: false,
                 lockList: tempLockList,
+                occ: bgb,
                 status: `occ-- case--126-- ln ${line}`,
             };
         }
@@ -137,8 +142,9 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
             : 0;
 
         return {
-            occ: newOcc,
+            isHotFix22: false,
             lockList: [...tempLockList],
+            occ: newOcc,
             status: `occ-- case--141--at deep < lockDeep -- ln ${line}`,
         };
     }
@@ -148,6 +154,7 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
         newOcc = lockOcc;
         tempLockList.push(lastLock);
         return {
+            isHotFix22: false,
             lockList: tempLockList,
             occ: lockOcc,
             status: `occ-- case--157-- ln ${line} (trigger lock protection)`,
@@ -159,8 +166,9 @@ function focOccDiff({ lnStatus, AhkTokenLine }: {
     }
 
     return {
-        occ: lockOcc,
+        isHotFix22: false,
         lockList: tempLockList,
+        occ: lockOcc,
         status: `occ-- case--168-- ln ${line}`,
     };
 }
@@ -181,8 +189,9 @@ function forIfCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
     const ifBlockClose: boolean = matrixBrackets[line][2] === 0;
     if (!ifBlockClose) {
         return {
-            occ,
+            isHotFix22: false,
             lockList: [...lockList],
+            occ,
             status: `if ( ,not close at ln ${line}`,
         };
     }
@@ -195,8 +204,9 @@ function forIfCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
      * oldIf case
      */
     return {
-        occ: occ + 1,
+        isHotFix22: false,
         lockList: [...lockList],
+        occ: occ + 1,
         status: 'if () case',
     };
 }
@@ -229,14 +239,11 @@ function focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
      */
     const { occ, lockList } = lnStatus;
     return {
-        occ: occ + 1,
+        isHotFix22: false,
         lockList: [...lockList],
+        occ: occ + 1,
         status: 'else end with spec',
     };
-}
-
-export const enum EFmtMagicStr {
-    caseA = 'HotFix#22',
 }
 
 export function getDeepKeywords({
@@ -252,40 +259,47 @@ export function getDeepKeywords({
     matrixBrackets: readonly TBrackets[],
     DocStrMap: TTokenStream,
 }): TLnStatus {
-    const { occ, lockList, status } = lnStatus;
+    const {
+        occ,
+        lockList,
+        isHotFix22,
+    } = lnStatus;
     const { fistWordUp, line } = AhkTokenLine;
-    if (status === EFmtMagicStr.caseA) {
+    if (isHotFix22) {
         return addLock({ lnStatus, AhkTokenLine });
     } // FIXME: if this line is `{ if` case
+
     if (focSet.has(fistWordUp)) {
         if (lStrTrim.endsWith('{')) return addLock({ lnStatus, AhkTokenLine }); // managed by curly braces
         const nextLine: TAhkTokenLine | undefined = DocStrMap.at(line + 1);
         if (nextLine === undefined) {
             return {
-                occ: 0,
+                isHotFix22: false,
                 lockList: [],
+                occ: 0,
                 status: 'end of file',
             };
         }
         if (nextLine.lStr.trim().startsWith('{')) {
             return {
-                occ,
+                isHotFix22: true, // <---------only this is true
                 lockList,
-                status: EFmtMagicStr.caseA,
+                occ,
+                status: ' EFmtMagicStr.caseA',
             };
         } // managed by curly braces
 
         if (fistWordUp === 'IF') return forIfCase({ AhkTokenLine, matrixBrackets, lnStatus });
 
-        //
-        if (fistWordUp === 'ELSE') return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
-        if (fistWordUp === 'TRY') return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
-        if (fistWordUp === 'FINALLY') return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
+        if (fistWordUp === 'ELSE' || fistWordUp === 'TRY' || fistWordUp === 'FINALLY') {
+            return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
+        }
 
         // other key word
         return {
-            occ: occ + 1,
+            isHotFix22: false,
             lockList: [...lockList],
+            occ: occ + 1,
             status: `other key word+ "${fistWordUp}"`,
         };
     }
@@ -293,13 +307,19 @@ export function getDeepKeywords({
     const nextLine: TAhkTokenLine | undefined = DocStrMap.at(line + 1);
     if (nextLine === undefined) {
         return {
-            occ: 0,
+            isHotFix22: false,
             lockList: [],
+            occ: 0,
             status: 'end of file part2',
         };
     }
     if (nextLine.multilineFlag !== null) {
-        return { occ, lockList: [...lockList], status: 'managed by multiline' }; // managed by multiline
+        return {
+            isHotFix22: false,
+            lockList: [...lockList],
+            occ,
+            status: 'managed by multiline',
+        }; // managed by multiline
     }
 
     const { cll } = AhkTokenLine;
@@ -308,7 +328,12 @@ export function getDeepKeywords({
         if (multiline === EMultiline.end) {
             return focOccDiff({ AhkTokenLine, matrixBrackets, lnStatus });
         }
-        return { occ, lockList: [...lockList], status: 'managed by cll' };
+        return {
+            isHotFix22: false,
+            lockList: [...lockList],
+            occ,
+            status: 'managed by cll',
+        };
     }
 
     return focOccDiff({ AhkTokenLine, matrixBrackets, lnStatus });

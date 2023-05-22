@@ -1,7 +1,8 @@
 /* eslint-disable max-lines-per-function */
 /* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,-999] }] */
 import type * as vscode from 'vscode';
-import type { ErmFirstCommaCommand, TConfigs } from '../../configUI.data';
+import type { TConfigs } from '../../configUI.data';
+import { ErmFirstCommaCommand } from '../../configUI.data';
 import type { DeepReadonly, TAhkTokenLine, TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
@@ -64,7 +65,7 @@ function fmtPlus(
         }
     }
 
-    if (cmdTo1_or_2 > 0) {
+    if (cmdTo1_or_2 === ErmFirstCommaCommand.to1 || cmdTo1_or_2 === ErmFirstCommaCommand.to2) {
         const { DocStrMap } = args;
         const {
             fistWordUp,

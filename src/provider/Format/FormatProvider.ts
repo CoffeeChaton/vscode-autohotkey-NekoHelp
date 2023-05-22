@@ -16,7 +16,7 @@ import { getMatrixMultLine } from './tools/getMatrixMultLine';
 import { getMatrixTopLabe } from './tools/getMatrixTopLabe';
 import { fn_Warn_thisLineText_WARN } from './TWarnUse';
 import type { TLnStatus } from './wantRefactor/getDeepKeywords';
-import { EFmtMagicStr, getDeepKeywords } from './wantRefactor/getDeepKeywords';
+import { getDeepKeywords } from './wantRefactor/getDeepKeywords';
 import { getSwitchRange, inSwitchBlock } from './wantRefactor/SwitchCase';
 
 type TFmtCoreArgs = {
@@ -99,6 +99,7 @@ export function FormatCore(
     const { mainList, betaList } = getFormatFlag(DocStrMap);
 
     let lnStatus: TLnStatus = {
+        isHotFix22: false,
         lockList: [],
         occ: 0,
         status: 'file start',
@@ -112,8 +113,8 @@ export function FormatCore(
         const lStrTrim: string = lStr.trim();
 
         if (line >= fmtStart && line <= fmtEnd && mainList[line] && !matrixAhk2exeKeep[line]) {
-            const { occ, status } = lnStatus;
-            const occHotFix: number = status === EFmtMagicStr.caseA
+            const { occ, isHotFix22 } = lnStatus;
+            const occHotFix: number = isHotFix22
                 ? occ + 1
                 : occ;
 
