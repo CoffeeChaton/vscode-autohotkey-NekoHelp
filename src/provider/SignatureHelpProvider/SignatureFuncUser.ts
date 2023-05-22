@@ -30,8 +30,9 @@ const UserFuncSign = new CMemo<CAhkFunc, TFnSignData>(
             paramMap,
             selectionRangeText,
             name,
+            meta,
         } = fnSymbol;
-        const { returnList, ahkDocMeta } = fnSymbol.getMeta();
+        const { returnList, ahkDocMeta } = meta;
 
         const { paramSignMap, returnSign } = getFuncAhkDocData(fnSymbol);
 

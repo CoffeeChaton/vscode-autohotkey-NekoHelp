@@ -7,8 +7,8 @@ import { ToUpCase } from '../str/ToUpCase';
 type TParamSignMap = ReadonlyMap<string, vscode.MarkdownString>;
 
 const wmParamSignMap = new CMemo<CAhkFunc, TParamSignMap>((ahkFunc: CAhkFunc): TParamSignMap => {
-    const { uri } = ahkFunc;
-    const { paramMeta } = ahkFunc.getMeta().ahkDocMeta;
+    const { uri, meta } = ahkFunc;
+    const { paramMeta } = meta.ahkDocMeta;
 
     const paramJsDocMap = new Map<string, vscode.MarkdownString>();
 
@@ -30,7 +30,7 @@ const wmParamSignMap = new CMemo<CAhkFunc, TParamSignMap>((ahkFunc: CAhkFunc): T
 });
 
 const wmReturnSign = new CMemo<CAhkFunc, string>((ahkFunc: CAhkFunc): string => {
-    const { returnList, ahkDocMeta } = ahkFunc.getMeta();
+    const { returnList, ahkDocMeta } = ahkFunc.meta;
 
     // @return {string} info   -> return string
     // @return info       -> return info

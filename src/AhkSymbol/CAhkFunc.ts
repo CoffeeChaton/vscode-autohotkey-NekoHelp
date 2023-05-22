@@ -150,11 +150,11 @@ export class CAhkFunc extends vscode.DocumentSymbol {
     public readonly valMap: TValMapOut;
     public readonly textMap: TTextMapOut;
     public readonly defStack: string[];
+    public readonly meta: TFnMeta;
+
     //
     declare public readonly kind: vscode.SymbolKind.Function | vscode.SymbolKind.Method;
     declare public readonly children: (CAhkSwitch | TLineClass)[];
-
-    #meta: TFnMeta;
 
     public constructor(
         {
@@ -191,10 +191,6 @@ export class CAhkFunc extends vscode.DocumentSymbol {
 
         this.nameRange = nameRange;
         this.fnMode = fnMode;
-        this.#meta = meta;
-    }
-
-    public getMeta(): TFnMeta {
-        return this.#meta;
+        this.meta = meta;
     }
 }

@@ -3,7 +3,7 @@ import type { CAhkFunc } from '../AhkSymbol/CAhkFunc';
 
 function getReturnSelect(ahkFn: CAhkFunc, i: number): string {
     const arr1: string[] = [];
-    for (const s of ahkFn.getMeta().returnList) {
+    for (const s of ahkFn.meta.returnList) {
         const s1: string = s
             .replace(/^\s*return\s*/iu, '')
             .replace(/[ \t]*;.*/u, '')

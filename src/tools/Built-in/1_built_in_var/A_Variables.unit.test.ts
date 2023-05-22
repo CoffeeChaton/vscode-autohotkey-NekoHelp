@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
 import type { TAElement } from './A_Variables.data';
 import { AVariablesList } from './A_Variables.data';

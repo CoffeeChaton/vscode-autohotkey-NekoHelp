@@ -25,7 +25,7 @@ function atFnHead(
     const { DocStrMap, uri } = AhkFileData;
     const need: vscode.CodeAction[] = [];
 
-    if (!ahkFn.getMeta().ahkDocMeta.hasAhkDoc) {
+    if (!ahkFn.meta.ahkDocMeta.hasAhkDoc) {
         const CA0 = new vscode.CodeAction('add ahkDoc');
         CA0.command = {
             title: 'add ahkDoc',

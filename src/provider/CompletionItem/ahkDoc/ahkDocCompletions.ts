@@ -54,7 +54,7 @@ export function ahkDocCompletions(
 
     const list: vscode.CompletionItem[] = [];
 
-    const { paramMeta } = DA.getMeta().ahkDocMeta;
+    const { paramMeta } = DA.meta.ahkDocMeta;
 
     const set = new Set<string>(paramMeta.map(({ BParamName }): string => ToUpCase(BParamName)));
 
