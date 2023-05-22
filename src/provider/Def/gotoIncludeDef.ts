@@ -4,6 +4,21 @@ import { collectInclude } from '../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { EDetail } from '../../globalEnum';
 
+let ignoreGotoIncludeDef = false;
+function gotoIncludeDefShowInfo(): void {
+    if (!ignoreGotoIncludeDef) {
+        void vscode.window.showInformationMessage<'Do not remind again'>(
+            '`#include` goto def just support `Absolute path` or `A_LineFile style`',
+            'Do not remind again',
+        ).then((v): 0 => {
+            if (v !== undefined) {
+                ignoreGotoIncludeDef = true;
+            }
+            return 0;
+        });
+    }
+}
+
 export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Position): vscode.LocationLink | null {
     //
     const { DocStrMap, AST } = AhkFileData;
@@ -38,9 +53,7 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
                         // targetSelectionRange?: Range,
                     };
                 }
-                void vscode.window.showInformationMessage(
-                    '`#include` goto def just support `Absolute path` or `A_LineFile style`',
-                );
+                gotoIncludeDefShowInfo();
                 break;
             }
         }
