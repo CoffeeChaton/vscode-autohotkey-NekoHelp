@@ -54,7 +54,7 @@ type TLockObj = {
 };
 
 export type TLnStatus = {
-    isHotFix22: boolean,
+    isHotFix22: boolean, // https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/22
     lockList: readonly TLockObj[],
     occ: number,
     status: string,
@@ -184,15 +184,24 @@ function forIfCase({ AhkTokenLine, matrixBrackets, lnStatus }: {
     /**
      * if (a ; <---------not close
      *  + b
-     *  + c
+     *  + c)
+     *
+     * or
+     *
+     * if fnCall(a ; <---------not close
+     *    ,b
+     *    ,c)
      */
-    const ifBlockClose: boolean = matrixBrackets[line][2] === 0;
-    if (!ifBlockClose) {
+    if (matrixBrackets[line + 1][2] > 0) {
         return {
             isHotFix22: false,
             lockList: [...lockList],
             occ,
             status: `if ( ,not close at ln ${line}`,
+            // TODO
+            // if (a
+            // + b > 0)
+            //     MsgBox , with out `{`
         };
     }
 

@@ -33,6 +33,23 @@
 - feat: [#12](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12) part-7 , try Parser `#include` Data.
   1. via `"AhkNekoHelp.files.tryParserIncludeOpt"`
   2. Avoid infinite loop parsing
+- fix: format
+
+  ```ahk
+  ;old code
+  if (a = 4
+          and b = 5) {
+          MsgBox
+      MsgBox
+  }
+
+  ;new code
+  if (a = 4
+      and b = 5) {
+      MsgBox
+      MsgBox
+  }
+  ```
 
 ## v0.0.40(2023-05-09)
 
