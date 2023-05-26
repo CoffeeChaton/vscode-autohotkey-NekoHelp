@@ -582,7 +582,8 @@
 >    if not GetKeyState("Control") ; Neither the left nor right Control key is down.
 #^^^^ source.ahk
 #    ^^ source.ahk keyword.control.flow.ahk
-#      ^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#      ^ source.ahk
+#       ^^^^ source.ahk keyword.other.operator.hasdoc.ahk
 #           ^^^^^^^^^^^ source.ahk support.function.ahk
 #                      ^ source.ahk punctuation.bracket.ahk
 #                       ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk

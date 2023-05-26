@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [v0.0.42(2023-05-XX)](#v00422023-05-xx)
   - [v0.0.41(2023-05-22)](#v00412023-05-22)
   - [v0.0.40(2023-05-09)](#v00402023-05-09)
   - [v0.0.39(2023-05-01)](#v00392023-05-01)
@@ -20,6 +21,14 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## v0.0.42(2023-05-XX)
+
+- api-change
+  1. like jsdoc style , `@Return` -> `@returns`
+  2. del `"AhkNekoHelp.customize.signatureHelp"` options `0`
+- feat: add `"AhkNekoHelp.customize.signatureHelpInsertType"`
+- fix: syntax-highlight of `,ByRef` or `)or`
 
 ## v0.0.41(2023-05-22)
 

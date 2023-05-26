@@ -102,6 +102,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.customize.statusBarDisplayColor', 'string'],
                 ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
                 ['AhkNekoHelp.customize.signatureHelp', 'number'],
+                ['AhkNekoHelp.customize.signatureHelpInsertType', 'boolean'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
                 ['AhkNekoHelp.customize.displayLogMessage', 'string'],
 

@@ -5,7 +5,7 @@
 > [youtube 4k 2min](https://www.youtube.com/watch?v=clvD7z7YjHM)
 
 1. `@param {type} param_name information`
-2. `@return {type} information`
+2. `@returns {type} information`
 
 Currently there are only these `2 tags`, which are enhanced.
 
@@ -63,7 +63,6 @@ fn_img_m(LT_bgColor_N ;;    "1_r_N"
 
 ## option
 
-- `0` - concise mode
 - `1` - focus mode
 - `2` - focus mode + return type
 - `3` - full Information mode

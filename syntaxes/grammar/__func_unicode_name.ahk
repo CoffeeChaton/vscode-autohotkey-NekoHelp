@@ -35,3 +35,7 @@ g#fn() {
 #fn() {
     #fn()
 }
+
+fn(a,ByRef b, ByRef c){
+
+}

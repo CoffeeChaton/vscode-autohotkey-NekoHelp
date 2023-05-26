@@ -47,7 +47,7 @@ function getReturnText(lStr: string, textRaw: string, col: number): string {
 function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
     // parse
     // @param {type}? param_name information
-    // @return {type} information
+    // @returns {type} information
     const paramMeta: TFnParamMeta[] = [];
     const otherMeta: string[] = [];
     const returnMeta: TFnReturnMeta = {
@@ -60,8 +60,8 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
     for (let i = 0; i < length; i++) {
         const str: string = docList[i];
 
-        if ((/^\s*@return\s/iu).test(str)) {
-            const st1: string = str.replace(/^\s*@return\s+/iu, '');
+        if ((/^\s*@returns\s/iu).test(str)) {
+            const st1: string = str.replace(/^\s*@returns\s+/iu, '');
 
             const typeDef: string = st1.startsWith('{')
                 ? st1.slice(1, st1.indexOf('}')).trim()

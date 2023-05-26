@@ -14,7 +14,7 @@ function getReturnSelect(ahkFn: CAhkFunc, i: number): string {
 
     return arr1.length === 0
         ? ''
-        : `* @Return {\${${i}:unknown_type}} \${${i + 1}|${arr1.join(',')}|} \${${i + 2}:information}`;
+        : `* @returns {\${${i}:unknown_type}} \${${i + 1}|${arr1.join(',')}|} \${${i + 2}:information}`;
 }
 // --------
 

@@ -149,3 +149,20 @@
 #        ^ source.ahk punctuation.bracket.ahk
 >}
 #^ source.ahk punctuation.bracket.ahk
+>
+>fn(a,ByRef b, ByRef c){
+#^^ source.ahk entity.name.function.ahk
+#  ^ source.ahk punctuation.bracket.ahk
+#   ^ source.ahk
+#    ^ source.ahk punctuation.ahk
+#     ^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#           ^ source.ahk
+#            ^ source.ahk punctuation.ahk
+#             ^ source.ahk
+#              ^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#                    ^ source.ahk
+#                     ^ source.ahk punctuation.bracket.ahk
+#                      ^ source.ahk punctuation.bracket.ahk
+>
+>}
+#^ source.ahk punctuation.bracket.ahk

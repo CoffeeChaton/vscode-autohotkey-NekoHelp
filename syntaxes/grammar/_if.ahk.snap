@@ -17,7 +17,8 @@
 #               ^^^^^^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
 #                                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 #                                 ^ source.ahk punctuation.bracket.ahk
-#                                  ^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#                                  ^ source.ahk
+#                                   ^^^ source.ahk keyword.other.operator.hasdoc.ahk
 #                                      ^^^^^^^^^ source.ahk support.function.ahk
 #                                               ^ source.ahk punctuation.bracket.ahk
 #                                                ^^^^^^^^^^^^^ source.ahk

@@ -93,11 +93,11 @@ export type TTextMapIn = Map<TUpName, TTextMetaIn>; // k = valNameUP
 
 export type TTextMapOut = ReadonlyMap<TUpName, TTextMetaOut>; // k = valNameUP
 
-export type TFnParamMeta = {
+export type TFnParamMeta = DeepReadonly<{
     ATypeDef: string,
     BParamName: string,
     CInfo: string[],
-};
+}>;
 
 export type TFnReturnMeta = {
     typeDef: string,

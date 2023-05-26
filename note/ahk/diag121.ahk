@@ -33,12 +33,12 @@ fn_exp() {
     MsgBox % fn_join("ABCDEFGHIJKLMNOPQRSTUVWXYZ", result_ok)
 }
 
+/**
+* @param {string} separator
+* @param {string[]} array
+* @returns {string}
+*/
 fn_join(separator, array) {
-    /**
-    * @param separator as string
-    * @param array as string array
-    * @return string
-    */
     str := "" ;
     for _key, value in array
         str .= separator . value

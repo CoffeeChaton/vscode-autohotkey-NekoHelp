@@ -1,4 +1,8 @@
 {
+    "third_party_code": [
+        "the 'inline_tags', 'brackets', 'jsdoctype', 'docblock' code is from https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87",
+        ""
+    ],
     "fileTypes": [ "ahk" ],
     "name": "AutoHotkey",
     "patterns": [
@@ -306,6 +310,283 @@
                 }
             ]
         },
+        "inline_tags": {
+            "patterns": [
+                {
+                    "name": "constant.other.description.ahk",
+                    "match": "(\\[)[^\\]]+(\\])(?={@(?:link|linkcode|linkplain|tutorial))",
+                    "captures": {
+                        "1": { "name": "punctuation.definition.bracket.square.begin.ahk" },
+                        "2": { "name": "punctuation.definition.bracket.square.end.ahk" }
+                    }
+                },
+                {
+                    "name": "entity.name.type.instance.ahk",
+                    "begin": "({)((@)(?:link(?:code|plain)?|tutorial))\\s*",
+                    "beginCaptures": {
+                        "1": { "name": "punctuation.definition.bracket.curly.begin.ahk" },
+                        "2": { "name": "storage.type.class.ahk" },
+                        "3": { "name": "punctuation.definition.inline.tag.ahk" }
+                    },
+                    "end": "}|(?=\\*/)",
+                    "endCaptures": { "0": { "name": "punctuation.definition.bracket.curly.end.ahk" } },
+                    "patterns": [
+                        {
+                            "match": "\\G((?=https?://)(?:[^|}\\s*]|\\*[/])+)(\\|)?",
+                            "captures": {
+                                "1": { "name": "variable.other.link.underline.ahk" },
+                                "2": { "name": "punctuation.separator.pipe.ahk" }
+                            }
+                        },
+                        {
+                            "match": "\\G((?:[^{}@\\s|*]|\\*[^/])+)(\\|)?",
+                            "captures": {
+                                "1": { "name": "variable.other.description.ahk" },
+                                "2": { "name": "punctuation.separator.pipe.ahk" }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "brackets": {
+            "patterns": [
+                {
+                    "begin": "{",
+                    "end": "}|(?=\\*/)",
+                    "patterns": [ { "include": "#brackets" } ]
+                },
+                {
+                    "begin": "\\[",
+                    "end": "\\]|(?=\\*/)",
+                    "patterns": [ { "include": "#brackets" } ]
+                }
+            ]
+        },
+        "jsdoctype": {
+            "patterns": [
+                {
+                    "contentName": "entity.name.type.instance.ahk",
+                    "begin": "\\G({)",
+                    "beginCaptures": {
+                        "0": { "name": "entity.name.type.instance.ahk" },
+                        "1": { "name": "punctuation.definition.bracket.curly.begin.ahk" }
+                    },
+                    "end": "((}))\\s*|(?=\\*/)",
+                    "endCaptures": {
+                        "1": { "name": "entity.name.type.instance.ahk" },
+                        "2": { "name": "punctuation.definition.bracket.curly.end.ahk" }
+                    },
+                    "patterns": [ { "include": "#brackets" } ]
+                }
+            ]
+        },
+        "docblock": {
+            "patterns": [
+                {
+                    "match": "(?x)\n((@)(?:access|api))\n\\s+\n(private|protected|public)\n\\b",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "constant.language.access_type.ahk" }
+                    }
+                },
+                {
+                    "match": "(?x)\n((@)author)\n\\s+\n(\n  [^@\\s<>*/]\n  (?:[^@<>*/]|\\*[^/])*\n)\n(?:\n  \\s*\n  (<)\n  ([^>\\s]+)\n  (>)\n)?",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "entity.name.type.instance.ahk" },
+                        "4": { "name": "punctuation.definition.bracket.angle.begin.ahk" },
+                        "5": { "name": "constant.other.email.link.underline.ahk" },
+                        "6": { "name": "punctuation.definition.bracket.angle.end.ahk" }
+                    }
+                },
+                {
+                    "match": "(?x)\n((@)borrows) \\s+\n((?:[^@\\s*/]|\\*[^/])+)    # <that namepath>\n\\s+ (as) \\s+              # as\n((?:[^@\\s*/]|\\*[^/])+)    # <this namepath>",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "entity.name.type.instance.ahk" },
+                        "4": { "name": "keyword.operator.control.ahk" },
+                        "5": { "name": "entity.name.type.instance.ahk" }
+                    }
+                },
+                {
+                    "name": "meta.example.ahk",
+                    "begin": "((@)example)\\s+",
+                    "end": "(?=@|\\*/)",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" }
+                    },
+                    "patterns": [
+                        { "match": "^\\s\\*\\s+" },
+                        {
+                            "contentName": "constant.other.description.ahk",
+                            "begin": "\\G(<)caption(>)",
+                            "beginCaptures": {
+                                "0": { "name": "entity.name.tag.inline.ahk" },
+                                "1": { "name": "punctuation.definition.bracket.angle.begin.ahk" },
+                                "2": { "name": "punctuation.definition.bracket.angle.end.ahk" }
+                            },
+                            "end": "(</)caption(>)|(?=\\*/)",
+                            "endCaptures": {
+                                "0": { "name": "entity.name.tag.inline.ahk" },
+                                "1": { "name": "punctuation.definition.bracket.angle.begin.ahk" },
+                                "2": { "name": "punctuation.definition.bracket.angle.end.ahk" }
+                            }
+                        },
+                        {
+                            "match": "[^\\s@*](?:[^*]|\\*[^/])*",
+                            "captures": { "0": { "name": "source.embedded.ahk" } }
+                        }
+                    ]
+                },
+                {
+                    "match": "(?x) ((@)kind) \\s+ (class|constant|event|external|file|function|member|mixin|module|namespace|typedef) \\b",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "constant.language.symbol_type.ahk" }
+                    }
+                },
+                {
+                    "match": "(?x)\n((@)see)\n\\s+\n(?:\n  # URL\n  (\n    (?=https?://)\n    (?:[^\\s*]|\\*[^/])+\n  )\n  |\n  # JSDoc namepath\n  (\n    (?!\n      # Avoid matching bare URIs (also acceptable as links)\n      https?://\n      |\n      # Avoid matching {@inline tags}; we match those below\n      (?:\\[[^\\[\\]]*\\])? # Possible description [preceding]{@tag}\n      {@(?:link|linkcode|linkplain|tutorial)\\b\n    )\n    # Matched namepath\n    (?:[^@\\s*/]|\\*[^/])+\n  )\n)",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "variable.other.link.underline.ahk" },
+                        "4": { "name": "entity.name.type.instance.ahk" }
+                    }
+                },
+                {
+                    "match": "(?x)\n((@)template)\n\\s+\n# One or more valid identifiers\n(\n  [A-Za-z_$]         # First character: non-numeric word character\n  [\\w$.\\[\\]]*        # Rest of identifier\n  (?:                # Possible list of additional identifiers\n    \\s* , \\s*\n    [A-Za-z_$]\n    [\\w$.\\[\\]]*\n  )*\n)",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "variable.other.ahk" }
+                    }
+                },
+                {
+                    "begin": "(?x)((@)template)\\s+(?={)",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" }
+                    },
+                    "end": "(?=\\s|\\*/|[^{}\\[\\]A-Za-z_$])",
+                    "patterns": [
+                        { "include": "#jsdoctype" },
+                        {
+                            "name": "variable.other.ahk",
+                            "match": "([A-Za-z_$][\\w$.\\[\\]]*)"
+                        }
+                    ]
+                },
+                {
+                    "match": "(?x)\n(\n  (@)\n  (?:arg|argument|const|constant|member|namespace|param|var)\n)\n\\s+\n(\n  [A-Za-z_$]\n  [\\w$.\\[\\]]*\n)",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "variable.other.ahk" }
+                    }
+                },
+                {
+                    "begin": "((@)typedef)\\s+(?={)",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" }
+                    },
+                    "end": "(?=\\s|\\*/|[^{}\\[\\]A-Za-z_$])",
+                    "patterns": [
+                        { "include": "#jsdoctype" },
+                        {
+                            "name": "entity.name.type.instance.ahk",
+                            "match": "(?:[^@\\s*/]|\\*[^/])+"
+                        }
+                    ]
+                },
+                {
+                    "begin": "((@)(?:arg|argument|const|constant|member|namespace|param|prop|property|var))\\s+(?={)",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" }
+                    },
+                    "end": "(?=\\s|\\*/|[^{}\\[\\]A-Za-z_$])",
+                    "patterns": [
+                        { "include": "#jsdoctype" },
+                        {
+                            "name": "variable.other.ahk",
+                            "match": "([A-Za-z_$][\\w$.\\[\\]]*)"
+                        },
+                        {
+                            "name": "variable.other.ahk",
+                            "match": "(?x)\n(\\[)\\s*\n[\\w$]+\n(?:\n  (?:\\[\\])?                                        # Foo[ ].bar properties within an array\n  \\.                                                # Foo.Bar namespaced parameter\n  [\\w$]+\n)*\n(?:\n  \\s*\n  (=)                                                # [foo=bar] Default parameter value\n  \\s*\n  (\n    # The inner regexes are to stop the match early at */ and to not stop at escaped quotes\n    (?>\n      \"(?:(?:\\*(?!/))|(?:\\\\(?!\"))|[^*\\\\])*?\" |                      # [foo=\"bar\"] Double-quoted\n      '(?:(?:\\*(?!/))|(?:\\\\(?!'))|[^*\\\\])*?' |                      # [foo='bar'] Single-quoted\n      \\[ (?:(?:\\*(?!/))|[^*])*? \\] |                                # [foo=[1,2]] Array literal\n      (?:(?:\\*(?!/))|\\s(?!\\s*\\])|\\[.*?(?:\\]|(?=\\*/))|[^*\\s\\[\\]])*   # Everything else\n    )*\n  )\n)?\n\\s*(?:(\\])((?:[^*\\s]|\\*[^\\s/])+)?|(?=\\*/))",
+                            "captures": {
+                                "1": { "name": "punctuation.definition.optional_value.begin.bracket.square.ahk" },
+                                "2": { "name": "keyword.operator.assignment.ahk" },
+                                "3": { "name": "source.embedded.ahk" },
+                                "4": { "name": "punctuation.definition.optional_value.end.bracket.square.ahk" },
+                                "5": { "name": "invalid.illegal.syntax.ahk" }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "begin": "(?x)\n(\n  (@)\n  (?:define|enum|exception|export|extends|lends|implements|modifies\n  |namespace|private|protected|returns?|satisfies|suppress|this|throws|type\n  |yields?)\n)\n\\s+(?={)",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" }
+                    },
+                    "end": "(?=\\s|\\*/|[^{}\\[\\]A-Za-z_$])",
+                    "patterns": [ { "include": "#jsdoctype" } ]
+                },
+                {
+                    "match": "(?x)\n(\n  (@)\n  (?:alias|augments|callback|constructs|emits|event|fires|exports?\n  |extends|external|function|func|host|lends|listens|interface|memberof!?\n  |method|module|mixes|mixin|name|requires|see|this|typedef|uses)\n)\n\\s+\n(\n  (?:\n    [^{}@\\s*] | \\*[^/]\n  )+\n)",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "entity.name.type.instance.ahk" }
+                    }
+                },
+                {
+                    "contentName": "variable.other.ahk",
+                    "begin": "((@)(?:default(?:value)?|license|version))\\s+(([''\"]))",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "variable.other.ahk" },
+                        "4": { "name": "punctuation.definition.string.begin.ahk" }
+                    },
+                    "end": "(\\3)|(?=$|\\*/)",
+                    "endCaptures": {
+                        "0": { "name": "variable.other.ahk" },
+                        "1": { "name": "punctuation.definition.string.end.ahk" }
+                    }
+                },
+                {
+                    "match": "((@)(?:default(?:value)?|license|tutorial|variation|version))\\s+([^\\s*]+)",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" },
+                        "3": { "name": "variable.other.ahk" }
+                    }
+                },
+                {
+                    "name": "storage.type.class.ahk",
+                    "match": "(?x) (@) (?:abstract|access|alias|api|arg|argument|async|attribute|augments|author|beta|borrows|bubbles |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func |function|generator|global|hideconstructor|host|ignore|implements|implicitCast|inherit[Dd]oc |inner|instance|interface|internal|kind|lends|license|listens|main|member|memberof!?|method |mixes|mixins?|modifies|module|name|namespace|noalias|nocollapse|nocompile|nosideeffects |override|overview|package|param|polymer(?:Behavior)?|preserve|private|prop|property|protected |public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary |suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation |version|virtual|writeOnce|yields?) \\b",
+                    "captures": { "1": { "name": "punctuation.definition.block.tag.ahk" } }
+                },
+                { "include": "#inline_tags" },
+                {
+                    "match": "((@)(?:[_$[:alpha:]][_$[:alnum:]]*))(?=\\s+)",
+                    "captures": {
+                        "1": { "name": "storage.type.class.ahk" },
+                        "2": { "name": "punctuation.definition.block.tag.ahk" }
+                    }
+                }
+            ]
+        },
         "comment": {
             "patterns": [
                 { "include": "#comment_neko_help_ignore" },
@@ -328,20 +609,7 @@
                     "end": "^[ \\t]*\\*/",
                     "name": "comment.block.documentation.ahk",
                     "patterns": [
-                        {
-                            "captures": {
-                                "1": { "name": "storage.comment.block.documentation.ahk" },
-                                "2": { "name": "entity.name.type.instance.documentation.ahk" },
-                                "3": { "name": "variable.other.documentation.ahk" }
-                            },
-                            "match": "^[ \\t]*[;*][ \\t]+(@\\w+)([ \\t]+\\{[^}]+\\})?([ \\t]+\\w+)?",
-                            "name": "comment.block.documentation.ahk"
-                        },
-                        {
-                            "captures": { "1": { "name": "storage.comment.block.documentation.ahk" } },
-                            "match": "^[ \\t]*[;*][ \\t]+(@\\w+)",
-                            "name": "comment.block.documentation.ahk"
-                        },
+                        { "include": "#docblock" },
                         { "include": "#comment_neko_help_ignore" },
                         { "include": "#comment_ahk2exe" }
                     ]
@@ -653,7 +921,7 @@
             "name": "keyword.other.operator.hasdoc.ahk"
         },
         "operator": {
-            "match": "(?:^|[ \\t])(?i:and|Between|in|is|new|not|or|ByRef)(?:$|[ \\t])",
+            "match": "(?<=[#$@%!\"/&'()*+,\\-:;<=>?[\\^\\\\]{|}~ \\t])(?i:and|Between|in|is|new|not|or|ByRef)(?:$|[ \\t])",
             "name": "keyword.other.operator.hasdoc.ahk"
         },
         "string": {
