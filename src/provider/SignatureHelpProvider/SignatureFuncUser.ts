@@ -75,10 +75,14 @@ function getLabelWithType(
             const documentationFix: string | undefined = paramType === undefined
                 ? undefined
                 : paramType.CInfo.join('\n');
+
+            const mdParam: vscode.MarkdownString = new vscode.MarkdownString(documentationFix, true);
+            mdParam.supportHtml = true;
+
             parameters.push(
                 new vscode.ParameterInformation(
                     paramLabel,
-                    documentationFix,
+                    mdParam,
                 ),
             );
         }
@@ -98,10 +102,13 @@ function getLabelWithType(
             ? paramMetaMap.get(k)?.CInfo.join('\n')
             : undefined;
 
+        const mdParam: vscode.MarkdownString = new vscode.MarkdownString(documentation, true);
+        mdParam.supportHtml = true;
+
         parameters.push(
             new vscode.ParameterInformation(
                 paramLabel,
-                documentation,
+                mdParam,
             ),
         );
     }

@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../AhkSymbol/CAhkFunc';
+import { EParamDefaultType } from '../AhkSymbol/CAhkFunc';
 
 function getReturnSelect(ahkFn: CAhkFunc, i: number): string {
     const arr1: string[] = [];
@@ -18,13 +19,29 @@ function getReturnSelect(ahkFn: CAhkFunc, i: number): string {
 }
 // --------
 
+function tryCalcType(defaultType: EParamDefaultType): 'boolean' | 'number' | 'string' | 'unknown_type' {
+    // number
+    // string
+    // boolean
+    if (defaultType === EParamDefaultType.string) return 'string';
+    if (defaultType === EParamDefaultType.boolean) return 'boolean';
+    if (defaultType === EParamDefaultType.number) return 'number';
+    return 'unknown_type';
+}
+
 export async function CmdFnAddAhkDoc(ahkFn: CAhkFunc): Promise<void> {
     const { uri, paramMap, range } = ahkFn;
 
     let i = 1;
     const paramTagList: string[] = [];
-    for (const { keyRawName } of paramMap.values()) {
-        paramTagList.push(`* @param {\${${i}:unknown_type}} ${keyRawName} \${${i + 1}:information}`);
+    for (const { keyRawName, defaultValue, defaultType } of paramMap.values()) {
+        if (defaultType === EParamDefaultType.nothing) {
+            paramTagList.push(`* @param {\${${i}:unknown_type}} ${keyRawName} \${${i + 1}:information}`);
+        } else {
+            const mayBeType = tryCalcType(defaultType);
+            paramTagList.push(`* @param {\${${i}:${mayBeType}}?} ${keyRawName} \${${i + 1}::= ${defaultValue}}`);
+        }
+
         i += 2;
     }
 

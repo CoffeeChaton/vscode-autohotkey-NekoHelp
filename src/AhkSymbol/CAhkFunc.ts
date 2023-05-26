@@ -17,6 +17,17 @@ type TUpName = string;
  */
 export type TC502New = string | 0;
 
+export const enum EParamDefaultType {
+    nothing = 0,
+
+    string = 1,
+    number = 2,
+    boolean = 3,
+
+    unknown = 10,
+    notArray = 11,
+    notObject = 12,
+}
 export type TParamMetaIn = {
     keyRawName: string,
     defRangeList: vscode.Range[],
@@ -25,6 +36,8 @@ export type TParamMetaIn = {
     parsedErrRange: vscode.Range | null,
     isByRef: boolean,
     isVariadic: boolean, // https://www.autohotkey.com/docs/v1/Functions.htm#Variadic
+    defaultValue: string,
+    defaultType: EParamDefaultType,
     commentList: string[],
 };
 export type TParamMetaOut = DeepReadonly<TParamMetaIn>;

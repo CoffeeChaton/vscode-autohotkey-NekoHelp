@@ -24,11 +24,19 @@
 
 ## v0.0.42(2023-05-XX)
 
+- feat: `func` yellow light bulb `add ahkDoc`
+  >
+  > 1. api-change `@Return` -> `@returns`
+  > 2. `@param` can generate type from default
+     > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc2.gif)
+
 - api-change
   1. like jsdoc style , `@Return` -> `@returns`
   2. del `"AhkNekoHelp.customize.signatureHelp"` options `0`
 - feat: add `"AhkNekoHelp.customize.signatureHelpInsertType"`
+  > [4k 36 sec](https://youtu.be/HxjzRf7stpA)
 - fix: syntax-highlight of `,ByRef` or `)or`
+- TODO feat: if ahk `func` not has `label:` then support Go-to-Definition on return Keywords
 
 ## v0.0.41(2023-05-22)
 
