@@ -454,7 +454,7 @@ default via `ctrl+alt+l`
 - [AutoHotkey_L-Docs](https://github.com/Lexikos/AutoHotkey_L-Docs) : Embed documents of completion/hover etc.
 - [AutoHotkey_L](https://github.com/Lexikos/AutoHotkey_L) : Refer to the implementation of the c++ function
 - [helsmy/AutoHotKey Simple Support](https://github.com/helsmy/vscode-autohotkey) : [hotkey/hotstring regexp](https://github.com/helsmy/vscode-autohotkey/issues/17)
-- [microsoft/TypeScript-TmLanguage](https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87) : jsdoc syntax-highlight like the 'inline-tags', 'brackets', 'jsdoctype', 'docblock' code.
+- [microsoft/TypeScript-TmLanguage](https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87) : `jsdoc` syntax-highlight like the 'inline-tags', 'brackets', 'jsdoctype', 'docblock' code.
 
 ## otherSuggest
 
