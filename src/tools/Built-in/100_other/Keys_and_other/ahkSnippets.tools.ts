@@ -26,7 +26,7 @@ const ahkSnippetsList: readonly vscode.CompletionItem[] = ((): readonly vscode.C
     return list;
 })();
 
-export function getSnipJustSnip(subStr: string): readonly vscode.CompletionItem[] {
+export function getSnipOtherKeyWord(subStr: string): readonly vscode.CompletionItem[] {
     return (/(?<![.`#])\b\w+$/iu).test(subStr)
         ? ahkSnippetsList
         : [];

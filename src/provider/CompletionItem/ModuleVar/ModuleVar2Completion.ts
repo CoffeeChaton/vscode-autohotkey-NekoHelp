@@ -6,7 +6,7 @@ import type { TSnippetRecMap } from '../DA/ESnippetRecBecause';
 import { ESnippetRecBecause } from '../DA/ESnippetRecBecause';
 import { setModuleVarCompletion } from './setModuleVarCompletion';
 
-export function ModuleVar2Completion(
+export function getSnipModuleVar(
     ModuleVar: TModuleVar,
     DA: CAhkFunc | null,
     inputStr: string,

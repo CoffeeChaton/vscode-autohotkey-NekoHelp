@@ -58,7 +58,7 @@ const NumSnippets: readonly vscode.CompletionItem[] = ((): readonly vscode.Compl
 })();
 
 export function getSnipStartNum(PartStr: string): readonly vscode.CompletionItem[] {
-    return PartStr.startsWith('Nu') // Num
+    return PartStr.startsWith('N') // Num
         ? NumSnippets
         : [];
 }

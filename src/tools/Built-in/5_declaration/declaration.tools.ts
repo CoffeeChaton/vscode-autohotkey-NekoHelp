@@ -1,6 +1,4 @@
 import * as vscode from 'vscode';
-import type { TAhkTokenLine } from '../../../globalEnum';
-import { EDetail } from '../../../globalEnum';
 import { CSnippetCommand } from '../6_command/CSnippetCommand';
 import { declarationDataList } from './declaration.data';
 
@@ -43,9 +41,7 @@ export function getHoverDeclaration(wordUp: string): vscode.MarkdownString | und
     return declarationMDMap.get(wordUp);
 }
 
-export function getSnippetDeclaration(lStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
-    if (AhkTokenLine.detail.includes(EDetail.inComment)) return [];
-
+export function getSnipDeclaration(lStr: string): readonly CSnippetCommand[] {
     return (/^[ \t{]*\w*$/iu).test(lStr)
         ? snippetDeclaration
         : [];

@@ -10,10 +10,8 @@ function getNextFuncLine(
     AhkFileData: TAhkFileData,
     thisAhkTokenLine: TAhkTokenLine,
     position: vscode.Position,
-    context: vscode.CompletionContext,
 ): number {
     // quick filter
-    if (context.triggerCharacter !== '@') return -1;
     const { lStr, textRaw } = thisAhkTokenLine;
     if (lStr.trim() !== '') return -1;
 
@@ -43,7 +41,9 @@ export function ahkDocCompletions(
     position: vscode.Position,
     context: vscode.CompletionContext,
 ): vscode.CompletionItem[] {
-    const NextFuncLine: number = getNextFuncLine(AhkFileData, thisAhkTokenLine, position, context);
+    if (context.triggerCharacter !== '@') return [];
+
+    const NextFuncLine: number = getNextFuncLine(AhkFileData, thisAhkTokenLine, position);
     if (NextFuncLine === -1) return [];
 
     const { AST } = AhkFileData;

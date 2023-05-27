@@ -66,7 +66,7 @@ const { snippetCLSID, CLSIDMap } = (() => {
     };
 })();
 
-export function getSnippetCLSID(
+export function getSnipCLSID(
     AhkTokenLine: TAhkTokenLine,
     _position: vscode.Position,
     context: vscode.CompletionContext,

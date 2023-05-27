@@ -47,6 +47,7 @@
 - feat: add `"AhkNekoHelp.customize.signatureHelpInsertType"`, [4k 36 sec](https://youtu.be/HxjzRf7stpA)
 - fix: syntax-highlight of `,ByRef` or `)or`
 - feat: add `Return` -> `func` def, if `func` not has `label:` then support Go-to-func-Definition on `return` Keywords
+- feat: completions in `/**` JsDocTag like `"@readonly"` `"@alias"` ...etc
 - feat: syntax-highlight copy `jsdoc` from [microsoft/TypeScript-TmLanguage](https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87)
   > like 'inline-tags', 'brackets', 'jsdoctype', 'docblock' code
   > [copy part](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/commit/927fc95e9276fbecb7278b819a387858b82e249f#diff-4533e36eb3828b3869b9e7fd72557f24697f5916158b6d8e7529ba674fc8d7cd)

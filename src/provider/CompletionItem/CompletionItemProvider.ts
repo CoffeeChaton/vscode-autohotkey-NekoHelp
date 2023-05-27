@@ -5,34 +5,35 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
-import { snipDirectives } from '../../tools/Built-in/0_directive/Directives.tool';
-import { getSnippetCLSID } from '../../tools/Built-in/100_other/CLSID/WindowsClassIdentifiers.tools';
-import { getSnipJustSnip } from '../../tools/Built-in/100_other/Keys_and_other/ahkSnippets.tools';
+import { getSnipDirectives } from '../../tools/Built-in/0_directive/Directives.tool';
+import { getSnipCLSID } from '../../tools/Built-in/100_other/CLSID/WindowsClassIdentifiers.tools';
+import { getSnipOtherKeyWord } from '../../tools/Built-in/100_other/Keys_and_other/ahkSnippets.tools';
 import { getSnipStartJoy } from '../../tools/Built-in/100_other/Keys_and_other/Joystick';
 import { getSnipStartF } from '../../tools/Built-in/100_other/Keys_and_other/keyF12';
 import { getSnipMouseKeyboard } from '../../tools/Built-in/100_other/Keys_and_other/MouseKeyboard';
 import { getSnipStartNum } from '../../tools/Built-in/100_other/Keys_and_other/NumpadSnippets';
-import { ahkSend } from '../../tools/Built-in/100_other/Send_tools';
+import { getSnipAhkSend } from '../../tools/Built-in/100_other/Send_tools';
 import { getSnippetWinMsg } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.tools';
 import { getSnippetWinTitleParam } from '../../tools/Built-in/100_other/WinTitle/WinTitleParameter.tools';
 import { getSnippetStartWihA } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
 import { getSnipBiVar } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { BuiltInFunc2Completion } from '../../tools/Built-in/2_built_in_function/func.tools';
-import { getSnippetStatement } from '../../tools/Built-in/3_foc/foc.tools';
-import { getSnipStatement2 } from '../../tools/Built-in/3_foc/foc2.tools';
+import { getSnippetStatement as getSnippetFoc } from '../../tools/Built-in/3_foc/foc.tools';
+import { getSnipFoc2 } from '../../tools/Built-in/3_foc/foc2.tools';
 import { getSnippetOperator } from '../../tools/Built-in/4_operator/operator.tools';
-import { getSnippetDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
-import { getSnippetCommand } from '../../tools/Built-in/6_command/Command.tools.completion';
+import { getSnipDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
+import { getSnipCmd } from '../../tools/Built-in/6_command/Command.tools.completion';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
+import { completionsJsDocTag } from './ahkDoc/jsDocTagNames';
 import { wrapClass } from './classThis/wrapClass';
 import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
 import { CompletionUserDefFuncClass } from './CompletionUserDef/CompletionUserDefFuncClass';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
-import { globalValCompletion } from './global/globalValCompletion';
+import { getSnipGlobalVal } from './global/globalValCompletion';
 import { IncludeFsPath } from './Include_fsPath/Include_fsPath';
-import { ModuleVar2Completion } from './ModuleVar/ModuleVar2Completion';
-import { completionSubCommand } from './SubCommand/completionSubCommand';
+import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
+import { getSnipSubCmd } from './SubCommand/getSnipSubCmd';
 
 function getPartStr(lStr: string, position: vscode.Position): string | null {
     const match: RegExpMatchArray | null = lStr
@@ -77,45 +78,57 @@ function CompletionItemCore(
     const DA: CAhkFunc | null = getDAWithPos(AST, position);
     const PartStr: string | null = getPartStr(lStr, position);
 
-    const completions: vscode.CompletionItem[] = [
-        ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
-        ...ahkSend(AhkFileData, position), // '{'
-        ...snipDirectives(subStr),
-        ...getSnippetDeclaration(lStr, AhkTokenLine),
-        ...getSnippetCommand(subStr, AhkTokenLine),
-        ...completionSubCommand(subStr, AhkTokenLine),
-        ...globalValCompletion(DocStrMap, position),
-        ...getSnipStatement2(subStr, AhkTokenLine),
-        ...getSnipJustSnip(subStr),
-        ...getSnipMouseKeyboard(subStr),
-        ...getSnippetCLSID(AhkTokenLine, position, context),
-        ...ahkDocCompletions(AhkFileData, AhkTokenLine, position, context),
-    ];
+    const completions: vscode.CompletionItem[] = [];
 
-    if (PartStr !== null) {
+    if (detail.includes(EDetail.inCommentAhkDoc)) {
         completions.push(
-            ...ModuleVar2Completion(ModuleVar, DA, PartStr, document.uri.fsPath),
-            ...CompletionUserDefFuncClass(subStr, AhkFileData),
+            ...ahkDocCompletions(AhkFileData, AhkTokenLine, position, context),
+            ...completionsJsDocTag(context),
         );
 
-        if (DA !== null) {
-            completions.push(...DeepAnalysisToCompletionItem(DA, PartStr));
-        }
+        return completions; //
+    }
 
-        if ((/^\w+$/u).test(PartStr)) {
-            // built in just has ascii
+    if (!detail.includes(EDetail.inComment)) {
+        completions.push(
+            ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
+            ...getSnipAhkSend(AhkFileData, position), // '{'
+            ...getSnipDirectives(subStr), // #warn
+            ...getSnipDeclaration(lStr), // local
+            ...getSnipCmd(subStr, AhkTokenLine), // MsgBox
+            ...getSnipSubCmd(subStr, AhkTokenLine), // Gui..
+            ...getSnipGlobalVal(AhkTokenLine, position),
+            ...getSnipFoc2(subStr),
+            ...getSnipOtherKeyWord(subStr),
+            ...getSnipMouseKeyboard(subStr),
+            ...getSnipCLSID(AhkTokenLine, position, context),
+        );
+
+        if (PartStr !== null) {
             completions.push(
-                ...getSnippetStartWihA(PartStr),
-                ...getSnippetWinTitleParam(PartStr),
-                ...getSnippetStatement(PartStr, fistWordUp, AhkTokenLine),
-                ...getSnippetWinMsg(PartStr),
-                ...getSnipBiVar(PartStr),
-                ...BuiltInFunc2Completion(PartStr),
-                ...getSnipStartJoy(PartStr),
-                ...getSnipStartNum(PartStr),
-                ...getSnipStartF(PartStr),
-                ...getSnippetOperator(PartStr),
+                ...getSnipModuleVar(ModuleVar, DA, PartStr, document.uri.fsPath),
+                ...CompletionUserDefFuncClass(subStr, AhkFileData),
             );
+
+            if (DA !== null) {
+                completions.push(...DeepAnalysisToCompletionItem(DA, PartStr));
+            }
+
+            if ((/^\w+$/u).test(PartStr)) {
+                // built in just has ascii
+                completions.push(
+                    ...getSnippetStartWihA(PartStr),
+                    ...getSnippetWinTitleParam(PartStr),
+                    ...getSnippetFoc(PartStr, fistWordUp, AhkTokenLine),
+                    ...getSnippetWinMsg(PartStr),
+                    ...getSnipBiVar(PartStr),
+                    ...BuiltInFunc2Completion(PartStr),
+                    ...getSnipStartJoy(PartStr),
+                    ...getSnipStartNum(PartStr), // Numpad6
+                    ...getSnipStartF(PartStr), // F1 - F24
+                    ...getSnippetOperator(PartStr), // AND or
+                );
+            }
         }
     }
 

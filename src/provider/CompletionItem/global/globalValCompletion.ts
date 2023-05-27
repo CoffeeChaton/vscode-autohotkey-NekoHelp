@@ -2,7 +2,7 @@ import path from 'node:path';
 import * as vscode from 'vscode';
 import type { TGlobalVarUpNameMap } from '../../../core/ParserTools/ahkGlobalVarTool';
 import { getGlobalUpNameMap } from '../../../core/ParserTools/ahkGlobalVarTool';
-import type { TTokenStream } from '../../../globalEnum';
+import type { TAhkTokenLine } from '../../../globalEnum';
 
 function globalValCompletionCore(): vscode.CompletionItem[] {
     const map: TGlobalVarUpNameMap = getGlobalUpNameMap();
@@ -36,8 +36,8 @@ function globalValCompletionCore(): vscode.CompletionItem[] {
     return need;
 }
 
-export function globalValCompletion(DocStrMap: TTokenStream, position: vscode.Position): vscode.CompletionItem[] {
-    const { lStr, fistWordUp } = DocStrMap[position.line];
+export function getSnipGlobalVal(AhkTokenLine: TAhkTokenLine, position: vscode.Position): vscode.CompletionItem[] {
+    const { lStr, fistWordUp } = AhkTokenLine;
     if (fistWordUp !== 'GLOBAL') return [];
 
     const lStrSlice: string = lStr.slice(0, position.character);

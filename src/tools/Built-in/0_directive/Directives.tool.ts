@@ -61,7 +61,7 @@ export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDi
     return [List1, map]; // [Array(29),Map(35)]
 })();
 
-export function snipDirectives(subStr: string): readonly vscode.CompletionItem[] {
+export function getSnipDirectives(subStr: string): readonly vscode.CompletionItem[] {
     return (/^#\w*$/iu).test(subStr)
         ? SnippetDirectives
         : [];

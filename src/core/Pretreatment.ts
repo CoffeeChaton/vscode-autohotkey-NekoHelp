@@ -125,6 +125,7 @@ export function Pretreatment(
         const displayErr = line > ignoreLine;
         const displayFnErr = line > ignoreLineP;
 
+        let thisLineInAhkDoc = false;
         flag = docCommentBlock(textTrimStart, flag);
         if (
             flag === EDocBlock.inDocCommentBlockMid
@@ -136,6 +137,7 @@ export function Pretreatment(
                 fnDocList.push(''); // add \n to-> fnDocList.join('\n');
             }
             fnDocList.push(mdLineText); // **** MD ****** sensitive of \s && \n
+            thisLineInAhkDoc = true;
         }
 
         if (flag === EDocBlock.inDocCommentBlockEnd) {
@@ -150,7 +152,9 @@ export function Pretreatment(
                     ahkDoc,
                     cll: 1,
                     deep2: [deep],
-                    detail: [EDetail.inComment],
+                    detail: thisLineInAhkDoc
+                        ? [EDetail.inComment, EDetail.inCommentAhkDoc]
+                        : [EDetail.inComment],
                     displayErr,
                     displayFnErr,
                     fistWordUp: '',
