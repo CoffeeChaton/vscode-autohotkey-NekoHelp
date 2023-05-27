@@ -30,7 +30,12 @@ function SignatureFuncSnipText2Sign(selectionRangeText: string): string {
 
 type TParamMetaMap = ReadonlyMap<string, TFnParamMeta>;
 function fixParamWithTypeStr(k: string, ParamMetaOut: TParamMetaOut, paramMetaMap: TParamMetaMap): string {
-    const { keyRawName, isByRef, isVariadic } = ParamMetaOut;
+    const {
+        keyRawName,
+        isByRef,
+        isVariadic,
+        defaultValue,
+    } = ParamMetaOut;
 
     const p1: string = isVariadic
         ? `${keyRawName}*`
@@ -41,7 +46,13 @@ function fixParamWithTypeStr(k: string, ParamMetaOut: TParamMetaOut, paramMetaMa
         : p1;
 
     const paramType: TFnParamMeta | undefined = paramMetaMap.get(k);
-    return paramType === undefined || paramType.ATypeDef === ''
+    if (paramType === undefined || paramType.ATypeDef === '') {
+        return defaultValue === ''
+            ? p2
+            : `${p2} := ${defaultValue}`;
+    }
+
+    return paramType.ATypeDef === ''
         ? p2
         : `${p2}: ${paramType.ATypeDef}`;
 }
