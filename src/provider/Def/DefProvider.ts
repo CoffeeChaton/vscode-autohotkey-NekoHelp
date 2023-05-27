@@ -3,6 +3,7 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getClassDef } from './getClassDef';
+import { getDefReturn2Func } from './getDefReturn2Func';
 import { getDefSwitch } from './getDefSwitch';
 import { getDefWithLabelWrap } from './getDefWithLabel';
 import { getFuncDef } from './getFuncDef';
@@ -34,6 +35,9 @@ function DefProviderCore(
     if ((/^0x[A-F\d]+$/iu).test(wordUp) || (/^\d+$/u).test(wordUp)) return null;
 
     const listAllUsing = false;
+
+    const Return2FuncLoc: [vscode.LocationLink] | null = getDefReturn2Func(AhkFileData, position, wordUp);
+    if (Return2FuncLoc !== null) return Return2FuncLoc;
 
     const switchDef: vscode.Location[] | null = getDefSwitch(AhkFileData, document.uri, position, wordUp);
     if (switchDef !== null) return switchDef;
