@@ -1,4 +1,3 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4,5,6] }] */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -11,39 +10,23 @@ describe('check package ruler', () => {
         const errList0: string[] = [];
         const msg: [string, string][] = [];
 
-        for (const [k, v] of Object.entries(contributes.configuration[0].properties)) {
-            if (!k.startsWith('AhkNekoHelp.CodeLens.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
-        }
+        const arr = [
+            'AhkNekoHelp.CodeLens.',
+            'AhkNekoHelp.Diag.',
+            'AhkNekoHelp.format.',
+            'AhkNekoHelp.snippets.',
+            'AhkNekoHelp.customize.',
+            'AhkNekoHelp.files.',
+            'AhkNekoHelp.signatureHelp.',
 
-        for (const [k, v] of Object.entries(contributes.configuration[1].properties)) {
-            if (!k.startsWith('AhkNekoHelp.Diag.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
-        }
+            'AhkNekoHelp.',
+        ];
 
-        for (const [k, v] of Object.entries(contributes.configuration[2].properties)) {
-            if (!k.startsWith('AhkNekoHelp.format.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
-        }
-
-        for (const [k, v] of Object.entries(contributes.configuration[3].properties)) {
-            if (!k.startsWith('AhkNekoHelp.snippets.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
-        }
-
-        for (const [k, v] of Object.entries(contributes.configuration[4].properties)) {
-            if (!k.startsWith('AhkNekoHelp.customize.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
-        }
-
-        for (const [k, v] of Object.entries(contributes.configuration[5].properties)) {
-            if (!k.startsWith('AhkNekoHelp.files.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
-        }
-
-        for (const [k, v] of Object.entries(contributes.configuration[6].properties)) {
-            if (!k.startsWith('AhkNekoHelp.')) errList0.push(k);
-            msg.push([k, v.type as unknown as string]);
+        for (const [i, starts] of arr.entries()) {
+            for (const [k, v] of Object.entries(contributes.configuration[i].properties)) {
+                if (!k.startsWith(starts)) errList0.push(k);
+                msg.push([k, v.type as unknown as string]);
+            }
         }
 
         const absolutePath = path.join(__dirname, '../note/config');
@@ -101,8 +84,6 @@ describe('check package ruler', () => {
                 // [4]
                 ['AhkNekoHelp.customize.statusBarDisplayColor', 'string'],
                 ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
-                ['AhkNekoHelp.customize.signatureHelp', 'number'],
-                ['AhkNekoHelp.customize.signatureHelpInsertType', 'boolean'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
                 ['AhkNekoHelp.customize.displayLogMessage', 'string'],
 
@@ -111,7 +92,13 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.files.tryParserIncludeOpt', 'string'],
                 ['AhkNekoHelp.files.tryParserIncludeLog', 'object'],
 
-                // [6] misc
+                // [6]
+                ['AhkNekoHelp.signatureHelp.insertType', 'boolean'],
+                ['AhkNekoHelp.signatureHelp.showParamInfo', 'boolean'],
+                ['AhkNekoHelp.signatureHelp.showOtherDoc', 'boolean'],
+                ['AhkNekoHelp.signatureHelp.showReturnBlock', 'string'],
+
+                // [7] misc
                 ['AhkNekoHelp.method', 'object'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],

@@ -8,6 +8,7 @@ import type {
     TConfigKey,
     TConfigs,
     TMethod,
+    TShowReturnBlock,
     TTryParserIncludeLog,
 } from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
@@ -31,8 +32,7 @@ function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigK
 }
 
 let oldCustomizeHoverFunctionDocStyle: 1 | 2 | null = null;
-let oldSignatureHelpInformation: 1 | 2 | 3 | null = null;
-let oldSignatureHelpInsertTypeInformation: boolean | null = null;
+let oldSignInsertType: boolean | null = null;
 let oldFilesTryParserIncludeOpt: 'auto' | 'close' | 'open' | null = null;
 
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
@@ -105,9 +105,13 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             statusBarDisplayColor: getConfigs<string>(Configs, 'AhkNekoHelp.customize.statusBarDisplayColor'),
             CodeAction2GotoDefRef: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.CodeAction2GotoDefRef'),
             HoverFunctionDocStyle: getConfigs<1 | 2>(Configs, 'AhkNekoHelp.customize.HoverFunctionDocStyle'),
-            signatureHelp: getConfigs<1 | 2 | 3>(Configs, 'AhkNekoHelp.customize.signatureHelp'),
-            signatureHelpInsertType: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.signatureHelpInsertType'),
             displayLogMessage: getConfigs<string>(Configs, 'AhkNekoHelp.customize.displayLogMessage'),
+        },
+        signatureHelp: {
+            insertType: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.insertType'),
+            showParamInfo: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.showParamInfo'),
+            showOtherDoc: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.showOtherDoc'),
+            showReturnBlock: getConfigs<TShowReturnBlock>(Configs, 'AhkNekoHelp.signatureHelp.showReturnBlock'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
     } as const;
@@ -125,21 +129,12 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         );
     }
 
-    if (oldSignatureHelpInformation === null) {
-        oldSignatureHelpInformation = ed.customize.signatureHelp;
-    } else if (oldSignatureHelpInformation !== ed.customize.signatureHelp) {
-        oldSignatureHelpInformation = ed.customize.signatureHelp;
+    if (oldSignInsertType === null) {
+        oldSignInsertType = ed.signatureHelp.insertType;
+    } else if (oldSignInsertType !== ed.signatureHelp.insertType) {
+        oldSignInsertType = ed.signatureHelp.insertType;
         void vscode.window.showWarningMessage(
-            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.customize.signatureHelp")',
-        );
-    }
-
-    if (oldSignatureHelpInsertTypeInformation === null) {
-        oldSignatureHelpInsertTypeInformation = ed.customize.signatureHelpInsertType;
-    } else if (oldSignatureHelpInsertTypeInformation !== ed.customize.signatureHelpInsertType) {
-        oldSignatureHelpInsertTypeInformation = ed.customize.signatureHelpInsertType;
-        void vscode.window.showWarningMessage(
-            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.customize.signatureHelpInsertType")',
+            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.signatureHelp.insertType")',
         );
     }
 
@@ -244,6 +239,10 @@ export function getDiagConfig(): TConfigs['Diag'] {
 
 export function getCustomize(): TConfigs['customize'] {
     return config.customize;
+}
+
+export function getSignatureHelp(): TConfigs['signatureHelp'] {
+    return config.signatureHelp;
 }
 
 export function geRenameConfig(): TConfigs['RenameFunctionInStr'] {

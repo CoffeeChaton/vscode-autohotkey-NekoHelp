@@ -5,9 +5,10 @@ import type {
     TFnParamMeta,
     TParamMetaOut,
 } from '../../AhkSymbol/CAhkFunc';
-import { getCustomize } from '../../configUI';
+import { getCustomize, getSignatureHelp } from '../../configUI';
 import type { DeepReadonly } from '../../globalEnum';
 import { CMemo } from '../../tools/CMemo';
+import { enumLog } from '../../tools/enumErr';
 import { getLStr } from '../../tools/str/removeSpecialChar';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TFnSignData } from './TFnSignData';
@@ -45,9 +46,7 @@ function fixParamWithTypeStr(k: string, ParamMetaOut: TParamMetaOut, paramMetaMa
         : `${p2}: ${paramType.ATypeDef}`;
 }
 
-function getLabelWithType(
-    InsertType: boolean,
-    style: 0 | 1 | 2 | 3,
+function getSignDataZero(
     fnSymbol: CAhkFunc,
 ): { parameters: vscode.ParameterInformation[], label: string } {
     const {
@@ -57,18 +56,20 @@ function getLabelWithType(
         meta,
     } = fnSymbol;
 
+    const { insertType, showParamInfo } = getSignatureHelp();
+
     const { ahkDocMeta, returnList } = meta;
     const { paramMeta, returnMeta } = ahkDocMeta;
 
     const paramMetaMap: TParamMetaMap = new Map(paramMeta
         .map((v: TFnParamMeta): [string, DeepReadonly<TFnParamMeta>] => [ToUpCase(v.BParamName), v]));
 
-    if (!InsertType) {
+    if (!insertType) {
         const parameters: vscode.ParameterInformation[] = [];
         for (const [k, { keyRawName }] of paramMap) {
             const paramLabel: string = keyRawName;
 
-            const paramType: TFnParamMeta | undefined = style > 0
+            const paramType: TFnParamMeta | undefined = showParamInfo
                 ? paramMetaMap.get(k)
                 : undefined;
 
@@ -98,7 +99,7 @@ function getLabelWithType(
         const paramLabel: string = fixParamWithTypeStr(k, ParamMetaOut, paramMetaMap);
         paramList.push(paramLabel);
 
-        const documentation: string | undefined = style > 0
+        const documentation: string | undefined = showParamInfo
             ? paramMetaMap.get(k)?.CInfo.join('\n')
             : undefined;
 
@@ -127,75 +128,92 @@ function getLabelWithType(
     };
 }
 
+function addSignReturnBlock(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): void {
+    const { name, meta } = fnSymbol;
+
+    const { returnList, ahkDocMeta } = meta;
+    const { info, typeDef } = ahkDocMeta.returnMeta;
+
+    const { insertType, showReturnBlock } = getSignatureHelp();
+
+    let needAddBlock = true;
+
+    if (info.length > 0 && typeDef !== '') {
+        doc.appendMarkdown(
+            insertType
+                ? `_@returns_ - ${info.join('\n')}`
+                : `_@returns_ {${typeDef}} - ${info.join('\n')}`,
+        );
+        needAddBlock = false;
+    }
+
+    switch (showReturnBlock) {
+        case 'auto':
+            break;
+
+        case 'allowShow':
+            needAddBlock = true;
+            break;
+
+        case 'never':
+            needAddBlock = false;
+            break;
+
+        default:
+            enumLog(showReturnBlock, 'pushReturnMsg');
+            break;
+    }
+
+    if (needAddBlock) {
+        doc.appendCodeblock(
+            `\n;return block\n${name}(...)${
+                getCustomize().HoverFunctionDocStyle === 1
+                    ? ''
+                    : '\n'
+            }{\n${
+                returnList
+                    .join('\n')
+            }\n}`,
+            'ahk',
+        );
+    }
+}
+
+function addSignOtherDoc(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): void {
+    if (getSignatureHelp().showOtherDoc) {
+        doc.appendMarkdown(
+            fnSymbol.meta.ahkDocMeta.otherMeta
+                .map((v: string): string => {
+                    if ((/^[ \t]*@\w+[ \t]/u).test(v)) {
+                        return v.replace(
+                            /^[ \t]*@\w+[ \t]/u,
+                            (match: string): string => `_${match.trim()}_ — `,
+                        );
+                    }
+                    return v;
+                }).join('\n'),
+        );
+    }
+}
+
 function UserFuncSignCore(fnSymbol: CAhkFunc): TFnSignData {
-    const {
-        paramMap,
-        name,
-        meta,
-    } = fnSymbol;
-
-    const style: 0 | 1 | 2 | 3 = getCustomize().signatureHelp;
-    const InsertType: boolean = getCustomize().signatureHelpInsertType;
-
-    const paramList: TParamMetaOut[] = [...paramMap.values()];
-
-    const { length } = paramList;
-    const lastIsVariadic: boolean = paramList.at(-1)?.isVariadic ?? false;
-
-    const { parameters, label } = getLabelWithType(InsertType, style, fnSymbol);
+    const { parameters, label } = getSignDataZero(fnSymbol);
 
     const doc: vscode.MarkdownString = new vscode.MarkdownString('', true);
     doc.supportHtml = true;
 
-    if (style >= 2) {
-        const { returnList, ahkDocMeta } = meta;
-
-        const { info, typeDef } = ahkDocMeta.returnMeta;
-        if (info.length > 0 || typeDef !== '') {
-            if (info.length > 0 && typeDef !== '') {
-                doc.appendMarkdown(
-                    InsertType
-                        ? `_@returns_ - ${info.join('\n')}`
-                        : `_@returns_ {${typeDef}} - ${info.join('\n')}`,
-                );
-            }
-        } else {
-            doc.appendCodeblock(
-                `${name}(...)${
-                    getCustomize().HoverFunctionDocStyle === 1
-                        ? ''
-                        : '\n'
-                }{\n${
-                    returnList
-                        .join('\n')
-                }\n}`,
-                'ahk',
-            );
-        }
-
-        const { otherMeta } = ahkDocMeta;
-        if (style === 3) {
-            doc.appendMarkdown(
-                otherMeta
-                    .map((v: string): string => {
-                        if ((/^[ \t]*@\w+[ \t]/u).test(v)) {
-                            return v.replace(
-                                /^[ \t]*@\w+[ \t]/u,
-                                (match: string): string => `_${match.trim()}_ — `,
-                            );
-                        }
-                        return v;
-                    }).join('\n'),
-            );
-        }
-    }
+    addSignOtherDoc(doc, fnSymbol);
+    addSignReturnBlock(doc, fnSymbol);
 
     const SignInfo = new vscode.SignatureInformation(label, doc);
     SignInfo.parameters = parameters;
 
+    const paramList: TParamMetaOut[] = [...fnSymbol.paramMap.values()];
+    const lastIsVariadic: boolean = paramList.at(-1)?.isVariadic ?? false;
+
     return {
         SignInfo,
-        paramLength: length,
+        paramLength: paramList.length,
         lastIsVariadic,
     };
 }
