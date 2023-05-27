@@ -1,12 +1,14 @@
 import type * as vscode from 'vscode';
 import type {
     CAhkFunc,
+    TFnParamMeta,
     TParamMetaOut,
     TTextMetaOut,
     TValMetaOut,
 } from '../../../AhkSymbol/CAhkFunc';
 import { EPrefix, setMD } from '../../../tools/MD/setMD';
 import { setPreFix } from '../../../tools/str/setPreFix';
+import { ToUpCase } from '../../../tools/str/ToUpCase';
 
 function PosInRange(arr: readonly vscode.Range[], position: vscode.Position): boolean {
     return arr.some((range: vscode.Range): boolean => range.contains(position));
@@ -22,6 +24,7 @@ export function DeepAnalysisHover(
         paramMap,
         valMap,
         textMap,
+        meta,
     } = DA;
 
     const argMeta: TParamMetaOut | undefined = paramMap.get(wordUp);
@@ -36,7 +39,14 @@ export function DeepAnalysisHover(
 
         if (!PosInRange([...refRangeList, ...defRangeList], position)) return null;
 
-        const prefix = setPreFix(isByRef, isVariadic);
+        const prefix: EPrefix = setPreFix(isByRef, isVariadic);
+        const paramMeta: TFnParamMeta | undefined = meta.ahkDocMeta.paramMeta
+            .find((v): boolean => ToUpCase(v.BParamName) === wordUp);
+
+        const jsDocStyle: string = paramMeta === undefined || paramMeta.CInfo.length === 0
+            ? ''
+            : `\`{${paramMeta.ATypeDef}}\` ${paramMeta.CInfo.join('\n')}`;
+
         return setMD({
             prefix,
             refRangeList,
@@ -44,7 +54,7 @@ export function DeepAnalysisHover(
             funcName: name,
             recStr: '',
             commentList,
-            jsDocStyle: '',
+            jsDocStyle,
         });
     }
 

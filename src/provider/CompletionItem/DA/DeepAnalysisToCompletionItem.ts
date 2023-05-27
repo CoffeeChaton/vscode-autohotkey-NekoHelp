@@ -21,7 +21,7 @@ export function DeepAnalysisToCompletionItem(
     const recMap: TSnippetRecMap = getRecMap(DA, inputStr);
 
     return [
-        ...getParamCompletion(paramMap, name, recMap, kind),
+        ...getParamCompletion(paramMap, name, recMap, kind, DA),
         ...getValCompletion(valMap, name, recMap, kind),
         ...getUnknownTextCompletion(textMap, name, kind),
     ];
