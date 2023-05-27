@@ -96,6 +96,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.signatureHelp.insertType', 'boolean'],
                 ['AhkNekoHelp.signatureHelp.showParamInfo', 'boolean'],
                 ['AhkNekoHelp.signatureHelp.showOtherDoc', 'boolean'],
+                ['AhkNekoHelp.signatureHelp.showReturnInfo', 'boolean'],
                 ['AhkNekoHelp.signatureHelp.showReturnBlock', 'string'],
 
                 // [7] misc

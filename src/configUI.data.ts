@@ -27,7 +27,7 @@ export const enum ErmFirstCommaCommand {
     to2 = 2,
 }
 
-export type TShowReturnBlock = 'allowShow' | 'auto' | 'never';
+export type TShowReturnBlock = 'always' | 'auto' | 'never';
 
 export type TMethodModeOpt = 'loose_mode' | 'precision_mode' | 'precision_or_loose_mode';
 export type TMethod = {
@@ -141,6 +141,7 @@ type TempConfigs = {
         insertType: boolean,
         showParamInfo: boolean,
         showOtherDoc: boolean,
+        showReturnInfo: boolean,
         showReturnBlock: TShowReturnBlock,
     },
     RenameFunctionInStr: boolean,

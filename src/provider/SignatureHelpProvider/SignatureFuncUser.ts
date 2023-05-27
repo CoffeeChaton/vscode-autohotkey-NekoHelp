@@ -134,15 +134,16 @@ function addSignReturnBlock(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): voi
     const { returnList, ahkDocMeta } = meta;
     const { info, typeDef } = ahkDocMeta.returnMeta;
 
-    const { insertType, showReturnBlock } = getSignatureHelp();
+    const { insertType, showReturnInfo, showReturnBlock } = getSignatureHelp();
 
     let needAddBlock = true;
 
-    if (info.length > 0 && typeDef !== '') {
+    if (showReturnInfo && info.length > 0 && typeDef !== '') {
         doc.appendMarkdown(
             insertType
                 ? `_@returns_ - ${info.join('\n')}`
                 : `_@returns_ {${typeDef}} - ${info.join('\n')}`,
+            // FIXME:                          ^^^^^ info
         );
         needAddBlock = false;
     }
@@ -151,7 +152,7 @@ function addSignReturnBlock(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): voi
         case 'auto':
             break;
 
-        case 'allowShow':
+        case 'always':
             needAddBlock = true;
             break;
 

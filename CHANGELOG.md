@@ -30,17 +30,18 @@
 
   ```jsonc
   {
-      "AhkNekoHelp.signatureHelp.InsertType": true, // false
+      "AhkNekoHelp.signatureHelp.insertType": true, // false
       "AhkNekoHelp.signatureHelp.showParamInfo": true, // false
       "AhkNekoHelp.signatureHelp.showOtherDoc": true, // false
-      "AhkNekoHelp.signatureHelp.ReturnStyle": "auto" // or "allowShow" or "never"
+      "AhkNekoHelp.signatureHelp.showReturnInfo": true, // false
+      "AhkNekoHelp.signatureHelp.ReturnStyle": "auto" // or "always" or "never"
   }
   ```
 
 - feat: `func` generate `ahkDoc`
   >
   > 1. api-change `@Return` -> `@returns`
-  > 2. `@param` can generate type from default
+  > 2. `@param` can generate type from default value
      > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc2.gif)
 
 - feat: add `"AhkNekoHelp.customize.signatureHelpInsertType"`, [4k 36 sec](https://youtu.be/HxjzRf7stpA)

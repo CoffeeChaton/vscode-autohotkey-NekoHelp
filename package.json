@@ -454,32 +454,37 @@
                     "AhkNekoHelp.signatureHelp.insertType": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17))"
+                        "markdownDescription": "([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17)) and ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.insertType.md))"
                     },
                     "AhkNekoHelp.signatureHelp.showParamInfo": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": ""
+                        "markdownDescription": "if has `@param` in ahkDoc, then show or not.([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.showParamInfo.md))"
                     },
                     "AhkNekoHelp.signatureHelp.showOtherDoc": {
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": ""
                     },
+                    "AhkNekoHelp.signatureHelp.showReturnInfo": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "if has `@returns` in ahkDoc, then show or not"
+                    },
                     "AhkNekoHelp.signatureHelp.showReturnBlock": {
                         "type": "string",
-                        "default": "auto",
+                        "default": "always",
                         "enum": [
                             "auto",
-                            "allowShow",
+                            "always",
                             "never"
                         ],
                         "markdownEnumDescriptions": [
                             "if has `@returns` label, then not show ReturnBlock",
-                            "allow show ReturnBlock",
+                            "always show ReturnBlock",
                             "never show ReturnBlock"
                         ],
-                        "markdownDescription": ""
+                        "markdownDescription": "if has `@returns` in ahkDoc, then show it or not.\n```ahk\n;return block\nfn(){\n    return something\n}\n```\n"
                     }
                 }
             },

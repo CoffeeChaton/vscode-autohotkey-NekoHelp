@@ -111,6 +111,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             insertType: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.insertType'),
             showParamInfo: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.showParamInfo'),
             showOtherDoc: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.showOtherDoc'),
+            showReturnInfo: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.showReturnInfo'),
             showReturnBlock: getConfigs<TShowReturnBlock>(Configs, 'AhkNekoHelp.signatureHelp.showReturnBlock'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
