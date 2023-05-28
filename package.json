@@ -464,7 +464,7 @@
                     "AhkNekoHelp.signatureHelp.showOtherDoc": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": ""
+                        "markdownDescription": "show `@param` `@returns` else information in ahkDoc"
                     },
                     "AhkNekoHelp.signatureHelp.showReturnInfo": {
                         "type": "boolean",

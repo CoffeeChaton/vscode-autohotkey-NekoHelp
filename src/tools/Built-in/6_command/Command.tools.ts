@@ -2,9 +2,15 @@
 
 import * as vscode from 'vscode';
 import { Diags } from '../../../diag';
-import type { TAllowDiagCode } from './Command.data';
+import type { TAllowDiagCode, TCommandParams } from './Command.data';
 import { LineCommand } from './Command.data';
 import { CSnippetCommand } from './CSnippetCommand';
+
+export type TCmdMsg = {
+    readonly md: vscode.MarkdownString,
+    readonly keyRawName: string,
+    readonly _param: TCommandParams[] | undefined,
+};
 
 export const {
     snippetCommand,
@@ -14,7 +20,7 @@ export const {
     OutputCommandPlusMap,
     inPutVarMap,
 } = (() => {
-    const CommandMDMapTemp = new Map<string, vscode.MarkdownString>();
+    const CommandMDMapTemp = new Map<string, TCmdMsg>();
     const snippetCommandTemp: CSnippetCommand[] = [];
     const CommandErrMapTemp = new Map<string, TAllowDiagCode>();
 
@@ -41,6 +47,8 @@ export const {
             exp, // string[] | undefined
             diag,
             upName,
+            keyRawName,
+            _param,
             _paramType,
         } = v;
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
@@ -59,7 +67,7 @@ export const {
                 .appendMarkdown(`[(Read Warn ${diag})](${path})`);
         }
         md.supportHtml = true;
-        CommandMDMapTemp.set(upName, md);
+        CommandMDMapTemp.set(upName, { md, _param, keyRawName });
 
         snippetCommandTemp.push(new CSnippetCommand(v, md));
 
@@ -91,7 +99,8 @@ export const {
     // ---
     return {
         snippetCommand: snippetCommandTemp as readonly CSnippetCommand[],
-        CommandMDMap: CommandMDMapTemp as ReadonlyMap<string, vscode.MarkdownString>,
+        // dprint-ignore
+        CommandMDMap: CommandMDMapTemp as ReadonlyMap< string, TCmdMsg >,
         CommandErrMap: CommandErrMapTemp as ReadonlyMap<string, TAllowDiagCode>,
         //
         OutputCommandBaseMap: outBaseMapRW as ReadonlyMap<string, number>,
@@ -101,5 +110,5 @@ export const {
 })();
 
 export function getHoverCommand2(wordUp: string): vscode.MarkdownString | undefined {
-    return CommandMDMap.get(wordUp);
+    return CommandMDMap.get(wordUp)?.md;
 }

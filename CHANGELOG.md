@@ -24,6 +24,8 @@
 
 ## Next v0.0.42(2023-05-XX)
 
+<!-- TODO  syntax-highlight `ControlGet, OutputVar, List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd` -->
+
 - api-change
   1. del `"AhkNekoHelp.customize.signatureHelp"`
   2. add
@@ -38,6 +40,7 @@
   }
   ```
 
+- feat: add some sign of cmd, cover `25%` now
 - feat: `func` generate `ahkDoc`
   >
   > 1. api-change `@Return` -> `@returns`
