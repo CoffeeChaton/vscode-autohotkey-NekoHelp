@@ -452,26 +452,31 @@
                 "title": "7. signatureHelp",
                 "properties": {
                     "AhkNekoHelp.signatureHelp.insertType": {
+                        "order": 0,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17)) and ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.insertType.md))"
                     },
                     "AhkNekoHelp.signatureHelp.showParamInfo": {
+                        "order": 1,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "if has `@param` in ahkDoc, then show or not.([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.showParamInfo.md))"
                     },
                     "AhkNekoHelp.signatureHelp.showOtherDoc": {
+                        "order": 2,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "show `@param` `@returns` else information in ahkDoc"
                     },
                     "AhkNekoHelp.signatureHelp.showReturnInfo": {
+                        "order": 3,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "if has `@returns` in ahkDoc, then show or not"
                     },
                     "AhkNekoHelp.signatureHelp.showReturnBlock": {
+                        "order": 4,
                         "type": "string",
                         "default": "always",
                         "enum": [
@@ -485,6 +490,12 @@
                             "never show ReturnBlock"
                         ],
                         "markdownDescription": "if has `@returns` in ahkDoc, then show it or not.\n```ahk\n;return block\nfn(){\n    return something\n}\n```\n"
+                    },
+                    "AhkNekoHelp.signatureHelp.CmdShowParamInfo": {
+                        "order": 5,
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "exp: \n```ahk\nMsgBox , Options, Title, Text, Timeout_Sec\n;show info of Options, Title, Text, Timeout_Sec\n```\n"
                     }
                 }
             },

@@ -143,6 +143,8 @@ type TempConfigs = {
         showOtherDoc: boolean,
         showReturnInfo: boolean,
         showReturnBlock: TShowReturnBlock,
+
+        CmdShowParamInfo: boolean,
     },
     RenameFunctionInStr: boolean,
 };

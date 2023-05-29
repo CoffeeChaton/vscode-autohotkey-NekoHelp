@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { getSignatureHelp } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
@@ -24,6 +25,7 @@ const CmdSignMemo = new CMemo<TCmdMsg, vscode.SignatureInformation | null>(
         const parameters: vscode.ParameterInformation[] = [new vscode.ParameterInformation(keyRawName, md)];
         let label: string = keyRawName;
         let isFirstOption = 0;
+        const { CmdShowParamInfo } = getSignatureHelp();
         for (const commandParams of _param) {
             const {
                 name,
@@ -38,8 +40,11 @@ const CmdSignMemo = new CMemo<TCmdMsg, vscode.SignatureInformation | null>(
                 ? ` [, ${name}`
                 : `, ${name}`;
 
-            const paramDocMd: vscode.MarkdownString = new vscode.MarkdownString(signToText(sign), true)
-                .appendMarkdown(`\n${paramDoc.join('\n')}`);
+            const paramDocMd: vscode.MarkdownString = new vscode.MarkdownString(signToText(sign), true);
+
+            if (CmdShowParamInfo) {
+                paramDocMd.appendMarkdown(`\n${paramDoc.join('\n')}`);
+            }
 
             parameters.push(new vscode.ParameterInformation(name, paramDocMd));
         }

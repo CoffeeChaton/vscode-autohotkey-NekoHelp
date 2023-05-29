@@ -98,6 +98,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.signatureHelp.showOtherDoc', 'boolean'],
                 ['AhkNekoHelp.signatureHelp.showReturnInfo', 'boolean'],
                 ['AhkNekoHelp.signatureHelp.showReturnBlock', 'string'],
+                ['AhkNekoHelp.signatureHelp.CmdShowParamInfo', 'boolean'],
 
                 // [7] misc
                 ['AhkNekoHelp.method', 'object'],

@@ -36,7 +36,8 @@
       "AhkNekoHelp.signatureHelp.showParamInfo": true, // false
       "AhkNekoHelp.signatureHelp.showOtherDoc": true, // false
       "AhkNekoHelp.signatureHelp.showReturnInfo": true, // false
-      "AhkNekoHelp.signatureHelp.ReturnStyle": "auto" // or "always" or "never"
+      "AhkNekoHelp.signatureHelp.ReturnStyle": "auto", // or "always" or "never"
+      "AhkNekoHelp.signatureHelp.CmdShowParamInfo": true // false
   }
   ```
 
