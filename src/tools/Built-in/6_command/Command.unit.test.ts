@@ -284,6 +284,7 @@ describe('check LineCommand ruler', () => {
         expect.hasAssertions();
 
         let iOK = 0;
+        let iAll = 0;
         const errList: string[] = [];
 
         for (const v of LineCommand) {
@@ -294,6 +295,7 @@ describe('check LineCommand ruler', () => {
                 _param,
             } = v;
 
+            iAll++;
             if (_param === undefined) continue;
 
             const optCol: number = body.replaceAll(/\$\{\d+[|:][^}]+\}/gu, replacerSpace).indexOf('[');
@@ -317,12 +319,19 @@ describe('check LineCommand ruler', () => {
                     errList.push(`${keyRawName} , ${i} , param_name .EQ. cmd_name`);
                     break;
                 }
+
+                if (!(/^[\w|]+$/u).test(name)) {
+                    errList.push(`${keyRawName} , ${name} , param_name ruler not allow`);
+                    break;
+                }
             }
             iOK++;
         }
 
-        console.log('🚀 cmd sign OK ->', `${iOK} of ${max}`);
+        console.log('🚀 cmd sign OK ->', `${iOK} of ${iAll}`);
 
-        expect(errList).toStrictEqual([]);
+        expect(errList).toStrictEqual([
+            'FileSelectFile , RootDir\\Filename , param_name ruler not allow',
+        ]);
     });
 });

@@ -2146,7 +2146,7 @@ export const LineCommand: TCommandElement[] = [
         ],
         _param: [
             {
-                name: 'ANSI|UTF-8|UTF-8-RAW|UTF-16|UTF-16-RAW|CPnnn',
+                name: 'Encoding',
                 sign: 'S',
                 isOpt: true,
                 paramDoc: [
@@ -2286,7 +2286,7 @@ export const LineCommand: TCommandElement[] = [
                 ],
             },
             {
-                name: '1|3|7',
+                name: 'OutRunState',
                 sign: 'O',
                 isOpt: true,
                 paramDoc: [
@@ -2631,6 +2631,38 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output [variable](https://www.autohotkey.com/docs/v1/Variables.htm) in which to store the retrieved data. _OutputVar_ will be made blank if a problem occurs such as the file being "in use" or not existing (in which case [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to 1). It will also be made blank if _Filename_ is an empty file (in which case ErrorLevel is set to 0).',
+                ],
+            },
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the file to read, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                    '',
+                    '**Options**: Zero or more of the following strings may be also be present immediately before the name of the file. Separate each option from the next with a single space or tab. For example: `*t *m5000 C:\\Log Files\\200601.txt`.',
+                    '',
+                    '**\\*c**: Load a [ClipboardAll](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm#ClipboardAll) file or other binary data. All other options are ignored when **\\*c** is present.',
+                    '',
+                    '**\\*m1024**: If this option is omitted, the entire file is loaded unless there is insufficient memory, in which case an error message is shown and the thread exits (but [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) can be used to avoid this). Otherwise, replace 1024 with a decimal or hexadecimal number of bytes. If the file is larger than this, only its leading part is loaded.',
+                    '',
+                    '**Note**: This might result in the last line ending in a naked carriage return (\\`r) rather than \\`r\\`n.',
+                    '',
+                    '**\\*t**: Replaces any/all occurrences of carriage return & linefeed (\\`r\\`n) with linefeed (\\`n). However, this translation reduces performance and is usually not necessary. For example, text containing \\`r\\`n is already in the right format to be added to a [Gui Edit control](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Edit). Similarly, [FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm) detects the presence of \\`r\\`n when it opens a new file; it knows to write each \\`r\\`n as-is rather than translating it to \\`r\\`r\\`n. Finally, the following [parsing loop](https://www.autohotkey.com/docs/v1/lib/LoopParse.htm) will work correctly regardless of whether each line ends in \\`r\\`n or just \\`n: ``[Loop, parse](https://www.autohotkey.com/docs/v1/lib/LoopParse.htm), MyFileContents, `n, `r``.',
+                    '',
+                    '**\\*Pnnn**: [\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 "Applies to:',
+                    'AutoHotkey_L Revision 42 and later',
+                    'AutoHotkey v1.0.90.00 and later") Overrides the default encoding set by [FileEncoding](https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm), where _nnn_ must be a numeric [code page identifier](https://learn.microsoft.com/windows/win32/intl/code-page-identifiers).',
+                ],
+            },
+        ],
     },
     {
         upName: 'FILEREADLINE',
@@ -2650,6 +2682,34 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output [variable](https://www.autohotkey.com/docs/v1/Variables.htm) in which to store the retrieved text.',
+                ],
+            },
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the file to access, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. Windows and Unix formats are supported; that is, the file\'s lines may end in either carriage return and linefeed (\\`r\\`n) or just linefeed (\\`n).',
+                ],
+            },
+            {
+                name: 'LineNum',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'Which line to read (1 is the first, 2 the second, and so on). This can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                    '',
+                    'If the specified line number is greater than the number of lines in the file, [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to 1 and _OutputVar_ is not changed. This also happens when the specified line number is the last line in the file but that line is blank and does not end in a newline/CRLF.',
+                ],
+            },
+        ],
     },
     {
         upName: 'FILERECYCLE',
@@ -2665,6 +2725,18 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+        ],
+        _param: [
+            {
+                name: 'FilePattern',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of a single file or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                    '',
+                    'To recycle an entire directory, provide its name without a trailing backslash.',
+                ],
+            },
         ],
     },
     {
@@ -2682,11 +2754,27 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'DriveLetter',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted, the recycle bin for all drives is emptied. Otherwise, specify a drive letter such as C:\\',
+                    '',
+                    '```ahk',
+                    'FileRecycleEmpty, C:\\',
+                    ';                 ^^^^',
+                    '; Empties the recycle bin of the C drive.',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'FILEREMOVEDIR',
         keyRawName: 'FileRemoveDir',
-        body: 'FileRemoveDir, % "${1:Path}", ${2|true,false|}',
+        body: 'FileRemoveDir, % "${1:DirName}" [, ${2|true,false|}]',
         doc: 'Deletes a folder.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileRemoveDir.htm',
@@ -2699,11 +2787,35 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'DirName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Name of the directory to delete, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                ],
+            },
+            {
+                name: 'Recurse',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'This parameter specifies whether to recurse into subdirectories. If omitted, it defaults to 0 (no recursion). Otherwise, specify one of the following numbers:',
+                    '',
+                    '**0**: Do not remove files and sub-directories contained in _DirName_. In this case, if _DirName_ is not empty, no action will be taken and ErrorLevel will be set to 1.',
+                    '',
+                    '**1**: Remove all files and subdirectories (like the Windows command "rmdir /S").',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions), even one that evaluates to 1, 0 or an empty string.',
+                ],
+            },
+        ],
     },
     {
         upName: 'FILESELECTFILE',
         keyRawName: 'FileSelectFile',
-        body: 'FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir_or_Filename}, ${4:Title}, ${5:Filter}]',
+        body: 'FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir\\\\Filename}, ${4:Title}, ${5:Filter}]',
         doc: 'Displays a standard dialog that allows the user to open or save file(s).',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileSelectFile.htm',
@@ -2722,6 +2834,73 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the filename(s) selected by the user. This will be made blank if the user cancels the dialog (i.e. does not wish to select a file).',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted, it will default to zero, which is the same as having none of the options below.',
+                    '',
+                    '**M**: Multi-select. Specify the letter M to allow the user to select more than one file via shift-click, control-click, or other means. M may optionally be followed by a number as described below (for example, both `M` and `M1` are valid). To extract the individual files, see the example at the bottom of this page.',
+                    '',
+                    '**S**: Save dialog. Specify the letter S to cause the dialog to always contain a Save button instead of an Open button. S may optionally be followed by a number (or sum of numbers) as described below (for example, both `S` and `S16` are valid).',
+                    '',
+                    'Even if M and S are absent, the following numbers can be used. To put more than one of them into effect, add them up. For example, to use 1 and 2, specify the number 3.',
+                    '',
+                    '**1**: File Must Exist  ',
+                    '**2**: Path Must Exist  ',
+                    '**8**: Prompt to Create New File  ',
+                    '**16**: Prompt to Overwrite File  ',
+                    '**32** [\\[v1.0.43.09+\\]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.09 and later") Shortcuts (.lnk files) are selected as-is rather than being resolved to their targets. This option also prevents navigation into a folder via a folder shortcut.',
+                    '',
+                    'As the "Prompt to Overwrite" option is supported only by the Save dialog, specifying that option without the "Prompt to Create" option also puts the S option into effect. Similarly, the "Prompt to Create" option has no effect when the S option is present. Specifying the number 24 enables whichever type of prompt is supported by the dialog.',
+                ],
+            },
+            {
+                name: 'RootDir\\Filename',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter contains one or both of the following:',
+                    '',
+                    '**RootDir**: The root (starting) directory, which is assumed to be a subfolder in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path is not specified. If omitted or blank, the starting directory will be a default that might depend on the OS version (it will likely be the directory most recently selected by the user during a prior use of FileSelectFile). [\\[v1.0.43.10+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.10 and later"): On Windows XP/2003 and earlier, a [CLSID](https://www.autohotkey.com/docs/v1/misc/CLSID-List.htm) such as `::{20d04fe0-3aea-1069-a2d8-08002b30309d}` (i.e. My Computer) may also be specified, in which case any subdirectory present after the CLSID should end in a backslash (otherwise, the string after the last backslash will be interpreted as the default filename, below).',
+                    '',
+                    '**Filename**: The default filename to initially show in the dialog\'s edit field. Only the naked filename (with no path) will be shown. To ensure that the dialog is properly shown, ensure that no illegal characters are present (such as `/<|:"`).',
+                ],
+            },
+            {
+                name: 'Prompt',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The title of the file-selection window. If omitted or blank, it will default to "Select File - %A\\_ScriptName%" (i.e. the name of the current script).',
+                ],
+            },
+            {
+                name: 'Filter',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'Indicates which types of files are shown by the dialog.',
+                    '',
+                    'Example: Documents (\\*.txt)  ',
+                    'Example: Audio (\\*.wav; \\*.mp2; \\*.mp3)',
+                    '',
+                    'If omitted, the filter defaults to All Files (\\*.\\*). An option for Text Documents (\\*.txt) will also be available in the dialog\'s "files of type" menu.',
+                    '',
+                    'Otherwise, the filter uses the indicated string but also provides an option for All Files (\\*.\\*) in the dialog\'s "files of type" drop-down list. To include more than one file extension in the filter, separate them with semicolons as illustrated in the example above.',
+                ],
+            },
         ],
     },
     {
@@ -2746,6 +2925,64 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the user\'s selected folder. This will be made blank if the user cancels the dialog (i.e. does not wish to select a folder). If the user selects a root directory (such as C:\\\\), _OutputVar_ will contain a trailing backslash. If this is undesirable, remove it as follows:',
+                    '```',
+                    '```ahk',
+                    'FileSelectFolder, Folder',
+                    'Folder := RegExReplace(Folder, "\\$")',
+                    '; Removes the trailing backslash, if present.',
+                    '```',
+                ],
+            },
+            {
+                name: 'StartingFolder',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the dialog\'s initial selection will be the user\'s My Documents folder (or possibly My Computer). A [CLSID folder](https://www.autohotkey.com/docs/v1/misc/CLSID-List.htm) such as `::{20d04fe0-3aea-1069-a2d8-08002b30309d}` (i.e. My Computer) may be specified start navigation at a specific special folder.',
+                    '',
+                    'Otherwise, the most common usage of this parameter is an asterisk followed immediately by the absolute path of the drive or folder to be initially selected. For example, `*C:\\` would initially select the C drive. Similarly, `*C:\\My Folder` would initially select that particular folder.',
+                    '',
+                    'The asterisk indicates that the user is permitted to navigate upward (closer to the root) from the starting folder. Without the asterisk, the user would be forced to select a folder inside _StartingFolder_ (or _StartingFolder_ itself). One benefit of omitting the asterisk is that _StartingFolder_ is initially shown in a tree-expanded state, which may save the user from having to click the first plus sign.',
+                    '',
+                    'If the asterisk is present, upward navigation may optionally be restricted to a folder other than Desktop. This is done by preceding the asterisk with the absolute path of the uppermost folder followed by exactly one space or tab. For example, `C:\\My Folder *C:\\My Folder\\Projects` would not allow the user to navigate any higher than C:\\\\My Folder (but the initial selection would be C:\\\\My Folder\\\\Projects).',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'One of the following numbers:',
+                    '',
+                    '**0**: The options below are all disabled (except on Windows 2000, where the "make new folder" button might appear anyway).',
+                    '',
+                    '**1** (default): A button is provided that allows the user to create new folders.',
+                    '',
+                    '**Add 2** to the above number to provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a "make new folder" button.',
+                    '',
+                    '**Add 4** to the above number to omit the BIF\\_NEWDIALOGSTYLE property. Adding 4 ensures that FileSelectFolder will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a "make new folder" button, at least on Windows XP. \\["4" requires v1.0.48+\\]',
+                    '',
+                    'If the user types an invalid folder name in the edit field, _OutputVar_ will be set to the folder selected in the navigation tree rather than what the user entered, at least on Windows XP.',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Prompt',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'Text displayed in the window to instruct the user what to do. If omitted or blank, it will default to "Select Folder - %A\\_ScriptName%" (i.e. the name of the current script).',
+                ],
+            },
+        ],
     },
     {
         upName: 'FILESETATTRIB',
@@ -2765,6 +3002,67 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'Attributes',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The attributes to change. For example, `+HA-R`.',
+                    '',
+                    'To easily turn on, turn off or toggle attributes, prefix one or more of the following attribute letters with a plus sign (+), minus sign (-) or caret (^), respectively:',
+                    '',
+                    '- R = READONLY',
+                    '- A = ARCHIVE',
+                    '- S = SYSTEM',
+                    '- H = HIDDEN',
+                    '- N = NORMAL (this is valid only when used without any other attributes)',
+                    '- O = OFFLINE',
+                    '- T = TEMPORARY',
+                    '',
+                    '**Note**: Currently, the compression state of files cannot be changed with this command.',
+                ],
+            },
+            {
+                name: 'FilePattern',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of a single file or folder, or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                    '',
+                    'If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.',
+                ],
+            },
+            {
+                name: 'OperateOnFolders',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 0 (only files are operated upon). Otherwise, specify one of the following digits:',
+                    '',
+                    '- 0 = Folders are not operated upon (only files).',
+                    '- 1 = All files and folders that match the wildcard pattern are operated upon.',
+                    '- 2 = Only folders are operated upon (no files).',
+                    '',
+                    '**Note**: If _FilePattern_ is a single folder rather than a wildcard pattern, it will always be operated upon regardless of this setting.',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Recurse',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 0 (subfolders are not recursed into). Otherwise, specify one of the following digits:',
+                    '',
+                    '- 0 = Subfolders are not recursed into.',
+                    '- 1 = Subfolders are recursed into so that files and folders contained therein are operated upon if they match _FilePattern_. All subfolders will be recursed into, not just those whose names match _FilePattern_. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation.',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
         ],
     },
     {
@@ -2788,6 +3086,69 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'YYYYMMDDHH24MISS',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to the current time. Otherwise, specify the time to use for the operation (see Remarks for the format). Years prior to 1601 are not supported.',
+                    '',
+                    'This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Consequently, if multiple variables need to be concatenated to form a single timestamp, the [dot operator](https://www.autohotkey.com/docs/v1/Variables.htm#concat) should be used instead of percent signs. For example: `[FileSetTime](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm), Year **.** Month **.** Day, C:\\My File.txt`.',
+                ],
+            },
+            {
+                name: 'FilePattern',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of a single file or folder, or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                    '',
+                    'If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.',
+                ],
+            },
+            {
+                name: 'WhichTime',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to M (modification time). Otherwise, specify one of the following letters to set which timestamp should be changed:',
+                    '',
+                    '- M = Modification time',
+                    '- C = Creation time',
+                    '- A = Last access time',
+                ],
+            },
+            {
+                name: 'OperateOnFolders',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 0 (only files are operated upon). Otherwise, specify one of the following digits:',
+                    '',
+                    '- 0 = Folders are not operated upon (only files).',
+                    '- 1 = All files and folders that match the wildcard pattern are operated upon.',
+                    '- 2 = Only folders are operated upon (no files).',
+                    '',
+                    '**Note**: If _FilePattern_ is a single folder rather than a wildcard pattern, it will always be operated upon regardless of this setting.',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Recurse',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 0 (subfolders are not recursed into). Otherwise, specify one of the following digits:',
+                    '',
+                    '- 0 = Subfolders are not recursed into.',
+                    '- 1 = Subfolders are recursed into so that files and folders contained therein are operated upon if they match _FilePattern_. All subfolders will be recursed into, not just those whose names match _FilePattern_. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation.',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
         ],
     },
     {
@@ -2836,11 +3197,37 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the result.'],
+            },
+            {
+                name: 'YYYYMMDDHH24MISS',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'Leave this parameter blank to use the current local date and time. Otherwise, specify all or the leading part of a timestamp in the [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format. If the date and/or time portion of the timestamp is invalid -- such as February 29th of a non-leap year -- the date and/or time will be omitted from _OutputVar_. Although only years between 1601 and 9999 are supported, a formatted time can still be produced for earlier years as long as the time portion is valid.',
+                ],
+            },
+            {
+                name: 'Format',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted, it defaults to the time followed by the long date, both of which will be formatted according to the current user\'s locale. For example: 4:55 PM Saturday, November 27, 2004',
+                    '',
+                    'Otherwise, specify one or more of the date-time formats below, along with any literal spaces and punctuation in between (commas do not need to be escaped; they can be used normally). In the following example, note that M must be capitalized: M/d/yyyy h:mm tt',
+                ],
+            },
+        ],
     },
     {
         upName: 'GETKEYSTATE',
         keyRawName: 'GetKeyState',
-        body: 'GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3:Mode}]',
+        body: 'GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3|P,T|}]',
         doc: '**Deprecated:** This command is not recommended for use in new scripts. Use the [GetKeyState](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#function) function instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#command',
@@ -2854,6 +3241,44 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the retrieved key state, which is either D for down or U for up. The variable will be empty (blank) if the state of the key could not be determined. For the controller\'s special keys such as axes and POV switch, [other values are retrieved](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#controller).',
+                ],
+            },
+            {
+                name: 'KeyName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'This can be just about any single character from the keyboard or one of the key names from the [key list](https://www.autohotkey.com/docs/v1/KeyList.htm), such as a mouse/controller button. Examples: B, 5, LWin, RControl, Alt, Enter, Escape, LButton, MButton, Joy1.',
+                    '',
+                    'Alternatively, an explicit virtual key code such as vkFF may be specified. This is useful in the rare case where a key has no name. The virtual key code of such a key can be determined by following the steps at the bottom of the [key list page](https://www.autohotkey.com/docs/v1/KeyList.htm#SpecialKeys).',
+                    '',
+                    '**Known limitation:** This command cannot differentiate between two keys which share the same virtual key code, such as Left and NumpadLeft.',
+                ],
+            },
+            {
+                name: 'P|T',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'This parameter is ignored when retrieving controller status.',
+                    '',
+                    'If omitted, the mode will default to that which retrieves the logical state of the key. This is the state that the OS and the active window believe the key to be in, but is not necessarily the same as the physical state.',
+                    '',
+                    'Alternatively, one of these letters may be specified:',
+                    '',
+                    '**P**: Retrieve the physical state (i.e. whether the user is physically holding it down). The physical state of a key or mouse button will usually be the same as the logical state unless the keyboard and/or mouse hooks are installed, in which case it will accurately reflect whether or not the user is physically holding down the key or button (as long as it was pressed down while the script was running). You can determine if your script is using the hooks via the [KeyHistory](https://www.autohotkey.com/docs/v1/lib/KeyHistory.htm) command or menu item. You can force the hooks to be installed by adding the [#InstallKeybdHook](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) and/or [#InstallMouseHook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) directives to the script.',
+                    '',
+                    '**T**: Retrieve the toggle state. A retrieved value of D means the key is "on", while U means it\'s "off". For keys other than <kbd>CapsLock</kbd>, <kbd>NumLock</kbd> and <kbd>ScrollLock</kbd>, the toggle state is generally U when the script starts and is not synchronized between processes.',
+                ],
+            },
         ],
     },
     {
@@ -2872,6 +3297,26 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'GroupName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the group to activate, as originally defined by [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm).',
+                ],
+            },
+            {
+                name: 'Mode',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the command activates the oldest window in the series. Otherwise, specify the following letter:',
+                    '',
+                    '**R:** The newest window (the one most recently active) is activated, but only if no members of the group are active when the command is given. "R" is useful in cases where you temporarily switch to working on an unrelated task. When you return to the group via GroupActivate, [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm), or [GroupClose](https://www.autohotkey.com/docs/v1/lib/GroupClose.htm), the window you were most recently working with is activated rather than the oldest window.',
+                ],
+            },
         ],
     },
     {
@@ -2988,7 +3433,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'HOTKEY',
         keyRawName: 'Hotkey',
-        body: 'Hotkey, ${1:KeyName} , ${2:Label_or_funcName}, ${3:Options}',
+        body: 'Hotkey, ${1:KeyName} [, ${2:Label_or_funcName}, ${3:Options}]',
         doc: 'Creates, modifies, enables, or disables a hotkey while the script is running.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Hotkey.htm',
@@ -3002,6 +3447,55 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'KeyName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Name of the hotkey\'s activation key, including any [modifier symbols](https://www.autohotkey.com/docs/v1/Hotkeys.htm#Symbols)',
+                    '',
+                    '```ahk',
+                    'Hotkey, ^!z, myFn',
+                    'return',
+                    '',
+                    'myFn(){',
+                    '    MsgBox You pressed %A_ThisHotkey%.',
+                    '}',
+                    '```',
+                ],
+            },
+            {
+                name: 'Label|fn|fnObj',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If not a valid label name, this parameter can be the name of a function, or a single variable reference containing a [function object](https://www.autohotkey.com/docs/v1/misc/Functor.htm).',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A string of zero or more of the following options with optional spaces in between. For example: `UseErrorLevel B0`.',
+                    '',
+                    '**UseErrorLevel**: If the command encounters a problem, this option skips the warning dialog, sets [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to one of the codes from the table [below](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm#ErrorLevel), then allows the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) to continue.',
+                    '',
+                    '**On**: Enables the hotkey if it is currently disabled.',
+                    '',
+                    '**Off**: Disables the hotkey if it is currently enabled. This is typically used to create a hotkey in an initially-disabled state.',
+                    '',
+                    '**B** or **B0**: Specify the letter B to buffer the hotkey as described in [#MaxThreadsBuffer](https://www.autohotkey.com/docs/v1/lib/_MaxThreadsBuffer.htm). Specify `B0` (B with the number 0) to disable this type of buffering.',
+                    '',
+                    '**P**_n_: Specify the letter P followed by the hotkey\'s [thread priority](https://www.autohotkey.com/docs/v1/misc/Threads.htm). If the P option is omitted when creating a hotkey, 0 will be used.',
+                    '',
+                    '**T**_n_: Specify the letter T followed by a the number of threads to allow for this hotkey as described in [#MaxThreadsPerHotkey](https://www.autohotkey.com/docs/v1/lib/_MaxThreadsPerHotkey.htm). For example: `T5`.',
+                    '',
+                    '**I**_n_ (InputLevel) [\\[v1.1.23+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later"): Specify the letter I (or i) followed by the hotkey\'s [input level](https://www.autohotkey.com/docs/v1/lib/_InputLevel.htm). For example: `I1`.',
+                ],
+            },
         ],
     },
     {
@@ -3108,7 +3602,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'INPUTBOX',
         keyRawName: 'InputBox',
         body:
-            'InputBox, ${1:OutputVar} [,% "${2:Title}", % "${3:Prompt}", ${4:HIDE}, ${5:Width}, ${6:Height}, ${7:X}, ${8:Y}, ${9:Locale}, ${10:Timeout}, % "${11:Default_Str}"]',
+            'InputBox, ${1:OutputVar} [,% "${2:Title}", % "${3:Prompt}", ${4:HIDE}, ${5:Width}, ${6:Height}, ${7:X}, ${8:Y}, ${9:Locale}, ${10:Timeout_Sec}, % "${11:Default_Str}"]',
         doc: 'Displays an input box to ask the user to enter a string.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/InputBox.htm',
@@ -3137,6 +3631,98 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the text entered by the user.',
+                ],
+            },
+            {
+                name: 'Title',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to the name of the script (without path). Otherwise, specify the title of the input box.',
+                ],
+            },
+            {
+                name: 'Prompt',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to no text. Otherwise, specify the text, which is usually a message to the user indicating what kind of input is expected. If _Prompt_ is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
+            {
+                name: 'Hide',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the user\'s input will be visible. Otherwise, specify the word Hide to mask the user\'s input, which is useful for passwords.',
+                ],
+            },
+            {
+                name: 'Width',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 375. Otherwise, specify the width of the input box. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Height',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 189. Otherwise, specify the height of the input box. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'X',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the input box will be centered horizontally and vertically. Otherwise, specify the X and Y coordinates of the window (use `0, 0` to move it to the upper left corner of the desktop), which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If either coordinate is blank or omitted, the dialog will be centered in that dimension. Either coordinate can be negative to position the window partially or entirely off the desktop.',
+                ],
+            },
+            {
+                name: 'Y',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the input box will be centered horizontally and vertically. Otherwise, specify the X and Y coordinates of the window (use `0, 0` to move it to the upper left corner of the desktop), which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If either coordinate is blank or omitted, the dialog will be centered in that dimension. Either coordinate can be negative to position the window partially or entirely off the desktop.',
+                ],
+            },
+            {
+                name: 'Locale',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the button names are in English (OK and Cancel). Otherwise, specify the word Locale to use names according to the current user\'s locale (for example, Abbrechen instead of Cancel on a German OS). In addition, to display these names correctly, the buttons are made wider and the minimum width of the input box is increased. This becomes the default behavior in [AutoHotkey v2](https://www.autohotkey.com/v2/)',
+                ],
+            },
+            {
+                name: 'Timeout_Sec',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    '`seconds` `sec`',
+                    '',
+                    'If blank or omitted, the input box will not be automatically closed. Otherwise, specify the timeout in seconds, which can contain a decimal point or be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If this value exceeds 2147483 (24.8 days), it will be set to 2147483. After the timeout has elapsed, the input box will be automatically closed and [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) will be set to 2. _OutputVar_ will still be set to what the user entered.',
+                ],
+            },
+            {
+                name: 'DefaultString',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to no string. Otherwise, specify a string that will appear in the input box\'s edit field when the dialog first appears. The user can change it by backspacing or other means.',
+                ],
+            },
         ],
     },
     {
@@ -3380,6 +3966,20 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'Text',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'If all the parameters are omitted, the message box will display the text "Press OK to continue.". Otherwise, this parameter is the text displayed inside the message box to instruct the user what to do, or to present information.',
+                    '',
+                    '[Escape sequences](https://www.autohotkey.com/docs/v1/misc/EscapeChar.htm) can be used to denote special characters. For example, \\`n indicates a linefeed character, which ends the current line and begins a new one. Thus, using ``text1`n`ntext2`` would create a blank line between text1 and text2.',
+                    '',
+                    'If _Text_ is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
+        ],
     },
     {
         upName: 'ONEXIT',
@@ -3413,6 +4013,16 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+        ],
+        _param: [
+            {
+                name: 'Text',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The text to send to the debugger for display. This text may include linefeed characters (\\`n) to start new lines. In addition, a single long line can be broken up into several shorter ones by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation).',
+                ],
+            },
         ],
     },
     {
@@ -3620,6 +4230,58 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'O',
         ],
+        _param: [
+            {
+                name: 'Target',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'A document, URL, executable file (.exe, .com, .bat, etc.), shortcut (.lnk), or [system verb](https://www.autohotkey.com/docs/v1/lib/Run.htm#verbs) to launch (see remarks). If _Target_ is a local file and no path was specified with it, [A\\_WorkingDir](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) will be searched first. If no matching file is found there, the system will search for and launch the file if it is integrated ("known"), e.g. by being contained in one of the PATH folders.',
+                    '',
+                    'To pass parameters, add them immediately after the program or document name.',
+                    '',
+                    'If the program/document name or a parameter contains spaces, it is safest to enclose it in double quotes (even though it may work without them in some cases).',
+                ],
+            },
+            {
+                name: 'WorkingDir',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The working directory for the launched item. Do not enclose the name in double quotes even if it contains spaces. If omitted, the script\'s own working directory ([A\\_WorkingDir](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir)) will be used.',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the command launches _Target_ normally and shows a warning dialog whenever _Target_ could not be launched. Otherwise, specify one or more of the following options:',
+                    '',
+                    '**Max**: launch maximized',
+                    '',
+                    '**Min**: launch minimized',
+                    '',
+                    '**Hide**: launch hidden (cannot be used in combination with either of the above)',
+                    '',
+                    '**Note**: Some applications (e.g. Calc.exe) do not obey the requested startup state and thus Max/Min/Hide will have no effect.',
+                    '',
+                    '**UseErrorLevel**: UseErrorLevel can be specified alone or in addition to one of the above words (by separating it from the other word with a space). If the launch fails, this option skips the warning dialog, sets [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to the word ERROR, and allows the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) to continue. If the launch succeeds, RunWait sets [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to the program\'s exit code, and Run sets it to 0.',
+                    '',
+                    'When UseErrorLevel is specified, the variable **A\\_LastError** is set to the result of the operating system\'s GetLastError() function. A\\_LastError is a number between 0 and 4294967295 (always formatted as decimal, not hexadecimal). Zero (0) means success, but any other number means the launch failed. Each number corresponds to a specific error condition (to get a list, search [www.microsoft.com](https://www.microsoft.com/) for "system error codes"). Like [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm), A\\_LastError is a per-thread setting; that is, interruptions by other [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm) cannot change it. However, A\\_LastError is also set by [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#LastError).',
+                ],
+            },
+            {
+                name: 'OutputVarPID',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the output variable in which to store the newly launched program\'s unique [Process ID (PID)](https://www.autohotkey.com/docs/v1/lib/Process.htm). The variable will be made blank if the PID could not be determined, which usually happens if a system verb, document, or shortcut is launched rather than a direct executable file. RunWait also supports this parameter, though its _OutputVarPID_ must be checked in [another thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) (otherwise, the PID will be invalid because the process will have terminated by the time the line following RunWait executes).',
+                    '',
+                    'After the Run command retrieves a PID, any windows to be created by the process might not exist yet. To wait for at least one window to be created, use `[WinWait](https://www.autohotkey.com/docs/v1/lib/WinWait.htm) ahk_pid %OutputVarPID%`.',
+                ],
+            },
+        ],
     },
     {
         upName: 'RUNAS',
@@ -3667,6 +4329,58 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'O',
+        ],
+        _param: [
+            {
+                name: 'Target',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'A document, URL, executable file (.exe, .com, .bat, etc.), shortcut (.lnk), or [system verb](https://www.autohotkey.com/docs/v1/lib/Run.htm#verbs) to launch (see remarks). If _Target_ is a local file and no path was specified with it, [A\\_WorkingDir](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) will be searched first. If no matching file is found there, the system will search for and launch the file if it is integrated ("known"), e.g. by being contained in one of the PATH folders.',
+                    '',
+                    'To pass parameters, add them immediately after the program or document name.',
+                    '',
+                    'If the program/document name or a parameter contains spaces, it is safest to enclose it in double quotes (even though it may work without them in some cases).',
+                ],
+            },
+            {
+                name: 'WorkingDir',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The working directory for the launched item. Do not enclose the name in double quotes even if it contains spaces. If omitted, the script\'s own working directory ([A\\_WorkingDir](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir)) will be used.',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the command launches _Target_ normally and shows a warning dialog whenever _Target_ could not be launched. Otherwise, specify one or more of the following options:',
+                    '',
+                    '**Max**: launch maximized',
+                    '',
+                    '**Min**: launch minimized',
+                    '',
+                    '**Hide**: launch hidden (cannot be used in combination with either of the above)',
+                    '',
+                    '**Note**: Some applications (e.g. Calc.exe) do not obey the requested startup state and thus Max/Min/Hide will have no effect.',
+                    '',
+                    '**UseErrorLevel**: UseErrorLevel can be specified alone or in addition to one of the above words (by separating it from the other word with a space). If the launch fails, this option skips the warning dialog, sets [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to the word ERROR, and allows the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) to continue. If the launch succeeds, RunWait sets [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to the program\'s exit code, and Run sets it to 0.',
+                    '',
+                    'When UseErrorLevel is specified, the variable **A\\_LastError** is set to the result of the operating system\'s GetLastError() function. A\\_LastError is a number between 0 and 4294967295 (always formatted as decimal, not hexadecimal). Zero (0) means success, but any other number means the launch failed. Each number corresponds to a specific error condition (to get a list, search [www.microsoft.com](https://www.microsoft.com/) for "system error codes"). Like [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm), A\\_LastError is a per-thread setting; that is, interruptions by other [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm) cannot change it. However, A\\_LastError is also set by [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#LastError).',
+                ],
+            },
+            {
+                name: 'OutputVarPID',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the output variable in which to store the newly launched program\'s unique [Process ID (PID)](https://www.autohotkey.com/docs/v1/lib/Process.htm). The variable will be made blank if the PID could not be determined, which usually happens if a system verb, document, or shortcut is launched rather than a direct executable file. RunWait also supports this parameter, though its _OutputVarPID_ must be checked in [another thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) (otherwise, the PID will be invalid because the process will have terminated by the time the line following RunWait executes).',
+                    '',
+                    'After the Run command retrieves a PID, any windows to be created by the process might not exist yet. To wait for at least one window to be created, use `[WinWait](https://www.autohotkey.com/docs/v1/lib/WinWait.htm) ahk_pid %OutputVarPID%`.',
+                ],
+            },
         ],
     },
     {

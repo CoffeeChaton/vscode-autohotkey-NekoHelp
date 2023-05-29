@@ -40,7 +40,25 @@
   }
   ```
 
-- feat: add some sign of cmd, cover `25%` now
+- feat: add some sign of cmd
+  - cover `34%` now.
+  - overload sign
+
+    ```ahk
+    ; OK
+    MsgBox
+    Random
+    Hotkey
+
+    ; TODO
+    IniRead
+    IniWrite
+    SplashImage
+    Progress
+    WinMove
+    WinSetTitle
+    ```
+
 - feat: `func` generate `ahkDoc`
   >
   > 1. api-change `@Return` -> `@returns`

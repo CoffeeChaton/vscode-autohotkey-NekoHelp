@@ -4,12 +4,17 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
 import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
 import { CMemo } from '../../tools/CMemo';
+import { ToUpCase } from '../../tools/str/ToUpCase';
+import { SignatureCmdOverloadArr } from './SignatureCmdOverload';
 
-function signToText(sign: 'E' | 'I' | 'O' | 'S'): 'InputVar' | 'Number' | 'OutputVar' | 'Text' {
-    if (sign === 'S') return 'Text';
-    if (sign === 'E') return 'Number';
-    if (sign === 'O') return 'OutputVar';
-    return 'InputVar';
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function signToText(sign: 'E' | 'I' | 'O' | 'S') {
+    if (sign === 'S') return '[**Text**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+    if (sign === 'E') return '[**Number**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+    if (sign === 'O') {
+        return '[**OutputVar**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+    }
+    return '[**InputVar**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
 }
 
 const CmdSignMemo = new CMemo<TCmdMsg, vscode.SignatureInformation | null>(
@@ -33,7 +38,7 @@ const CmdSignMemo = new CMemo<TCmdMsg, vscode.SignatureInformation | null>(
                 ? ` [, ${name}`
                 : `, ${name}`;
 
-            const paramDocMd: vscode.MarkdownString = new vscode.MarkdownString(`${signToText(sign)}\n`, true)
+            const paramDocMd: vscode.MarkdownString = new vscode.MarkdownString(signToText(sign), true)
                 .appendMarkdown(`\n${paramDoc.join('\n')}`);
 
             parameters.push(new vscode.ParameterInformation(name, paramDocMd));
@@ -107,9 +112,20 @@ export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Positio
         }
     }
 
-    const Signature = new vscode.SignatureHelp();
+    const Signature: vscode.SignatureHelp = new vscode.SignatureHelp();
     Signature.signatures = [SignInfo];
     Signature.activeSignature = 0;
     Signature.activeParameter = comma;
+
+    for (
+        const cmdDataOverload of SignatureCmdOverloadArr
+            .filter((v): boolean => ToUpCase(v.keyRawName) === fistWordUp)
+    ) {
+        const SignInfoOverload: vscode.SignatureInformation | null = CmdSignMemo.up(cmdDataOverload);
+        if (SignInfoOverload !== null) {
+            Signature.signatures.push(SignInfoOverload);
+        }
+    }
+
     return Signature;
 }
