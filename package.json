@@ -360,26 +360,6 @@
                         ],
                         "markdownDescription": "`1` K&R style\n```ahk\nfoo(){\n\n}\n```\n`2` Allman-style\n```ahk\nfoo()\n{\n\n}\n```\njust of hover/completion style, not affect format"
                     },
-                    "AhkNekoHelp.customize.signatureHelp": {
-                        "type": "number",
-                        "default": 2,
-                        "enum": [
-                            1,
-                            2,
-                            3
-                        ],
-                        "markdownEnumDescriptions": [
-                            "focus mode",
-                            "focus mode + return type",
-                            "full Information mode"
-                        ],
-                        "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/customize.signatureHelp.md))"
-                    },
-                    "AhkNekoHelp.customize.signatureHelpInsertType": {
-                        "type": "boolean",
-                        "default": true,
-                        "markdownDescription": "([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17))"
-                    },
                     "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
                         "type": "boolean",
                         "default": false,
@@ -469,7 +449,48 @@
             },
             {
                 "type": "object",
-                "title": "7. misc",
+                "title": "7. signatureHelp",
+                "properties": {
+                    "AhkNekoHelp.signatureHelp.insertType": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17)) and ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.insertType.md))"
+                    },
+                    "AhkNekoHelp.signatureHelp.showParamInfo": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "if has `@param` in ahkDoc, then show or not.([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.showParamInfo.md))"
+                    },
+                    "AhkNekoHelp.signatureHelp.showOtherDoc": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "show `@param` `@returns` else information in ahkDoc"
+                    },
+                    "AhkNekoHelp.signatureHelp.showReturnInfo": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "if has `@returns` in ahkDoc, then show or not"
+                    },
+                    "AhkNekoHelp.signatureHelp.showReturnBlock": {
+                        "type": "string",
+                        "default": "always",
+                        "enum": [
+                            "auto",
+                            "always",
+                            "never"
+                        ],
+                        "markdownEnumDescriptions": [
+                            "if has `@returns` label, then not show ReturnBlock",
+                            "always show ReturnBlock",
+                            "never show ReturnBlock"
+                        ],
+                        "markdownDescription": "if has `@returns` in ahkDoc, then show it or not.\n```ahk\n;return block\nfn(){\n    return something\n}\n```\n"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "8. misc",
                 "properties": {
                     "AhkNekoHelp.method": {
                         "type": "object",
@@ -594,7 +615,7 @@
         "@swc/jest": "^0.2.26",
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.5.1",
-        "@types/node": "^20.2.4",
+        "@types/node": "^20.2.5",
         "@types/vscode": "^1.78.1",
         "@typescript-eslint/eslint-plugin": "^5.59.7",
         "@typescript-eslint/parser": "^5.59.7",

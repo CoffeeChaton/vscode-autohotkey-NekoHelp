@@ -1,6 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import { SignatureCmd } from './SignatureCmd';
 import { SignatureFunc } from './SignatureFunc';
 
 function SignatureHelpProviderCore(
@@ -13,7 +14,8 @@ function SignatureHelpProviderCore(
     const funSign: vscode.SignatureHelp | null = SignatureFunc(AhkFileData, position);
     if (funSign !== null) return funSign;
 
-    // TODO cmdSign, classSign
+    const cmdSign: vscode.SignatureHelp | null = SignatureCmd(AhkFileData, position);
+    if (cmdSign !== null) return cmdSign;
 
     return null;
 }

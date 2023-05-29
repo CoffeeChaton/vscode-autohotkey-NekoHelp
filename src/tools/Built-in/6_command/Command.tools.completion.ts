@@ -9,7 +9,7 @@ import type { CSnippetCommand } from './CSnippetCommand';
 
 const snippetCommandFilter: readonly CSnippetCommand[] = snippetCommand.filter((v: CSnippetCommand) => v.recommended);
 
-export function getSnippetCommand(subStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
+export function getSnipCmd(subStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
     const { fistWordUp } = AhkTokenLine;
     // ^ ~~ $  need close
     const isOK: boolean = (/^\w+$/u).test(subStr)

@@ -22,6 +22,7 @@ export type ReplaceAll<Str extends string, Sub extends string, NSub extends stri
 
 export const enum EDetail {
     inComment = 3,
+    inCommentAhkDoc = 33,
     inSkipSign2 = 4, // old varName = v
     deepAdd = 5,
     deepSubtract = 6,

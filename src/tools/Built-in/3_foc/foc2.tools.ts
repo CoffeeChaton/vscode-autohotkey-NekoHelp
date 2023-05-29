@@ -1,6 +1,4 @@
 import * as vscode from 'vscode';
-import type { TAhkTokenLine } from '../../../globalEnum';
-import { EDetail } from '../../../globalEnum';
 import { statement2Data } from './foc2.data';
 
 const statement2snip: readonly vscode.CompletionItem[] = ((): readonly vscode.CompletionItem[] => {
@@ -35,9 +33,7 @@ const statement2snip: readonly vscode.CompletionItem[] = ((): readonly vscode.Co
     return List2;
 })();
 
-export function getSnipStatement2(subStr: string, AhkTokenLine: TAhkTokenLine): readonly vscode.CompletionItem[] {
-    if (AhkTokenLine.detail.includes(EDetail.inComment)) return [];
-
+export function getSnipFoc2(subStr: string): readonly vscode.CompletionItem[] {
     return (/^\s*\w*$/iu).test(subStr)
         ? statement2snip
         : [];

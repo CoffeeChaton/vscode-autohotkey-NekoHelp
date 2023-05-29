@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.42(2023-05-XX)](#v00422023-05-xx)
+  - [Next v0.0.42(2023-05-XX)](#next-v00422023-05-xx)
   - [v0.0.41(2023-05-22)](#v00412023-05-22)
   - [v0.0.40(2023-05-09)](#v00402023-05-09)
   - [v0.0.39(2023-05-01)](#v00392023-05-01)
@@ -22,22 +22,57 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## v0.0.42(2023-05-XX)
+## Next v0.0.42(2023-05-XX)
 
-- feat: `func` yellow light bulb `add ahkDoc`
-  >
-  > 1. api-change `@Return` -> `@returns`
-  > 2. `@param` can generate type from default
-     > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc2.gif)
+<!-- TODO  syntax-highlight `ControlGet, OutputVar, List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd` -->
 
 - api-change
-  1. del `"AhkNekoHelp.customize.signatureHelp"` options `0`
+  1. del `"AhkNekoHelp.customize.signatureHelp"`
+  2. add
+
+  ```jsonc
+  {
+      "AhkNekoHelp.signatureHelp.insertType": true, // false
+      "AhkNekoHelp.signatureHelp.showParamInfo": true, // false
+      "AhkNekoHelp.signatureHelp.showOtherDoc": true, // false
+      "AhkNekoHelp.signatureHelp.showReturnInfo": true, // false
+      "AhkNekoHelp.signatureHelp.ReturnStyle": "auto" // or "always" or "never"
+  }
+  ```
+
+- feat: add some sign of cmd
+  - cover `34%` now.
+  - overload sign
+
+    ```ahk
+    ; OK
+    MsgBox
+    Random
+    Hotkey
+
+    ; TODO
+    IniRead
+    IniWrite
+    SplashImage
+    Progress
+    WinMove
+    WinSetTitle
+    ```
+
+- feat: `func` generate `ahkDoc`
+  >
+  > 1. api-change `@Return` -> `@returns`
+  > 2. `@param` can generate type from default value
+     > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc2.gif)
+
+- feat: hover and snip, read ahkDoc `@param` data
 - feat: add `"AhkNekoHelp.customize.signatureHelpInsertType"`, [4k 36 sec](https://youtu.be/HxjzRf7stpA)
-- fix: syntax-highlight of `,ByRef` or `)or`
 - feat: add `Return` -> `func` def, if `func` not has `label:` then support Go-to-func-Definition on `return` Keywords
+- feat: completions in `/**` JsDocTag like `"@readonly"` `"@alias"` ...etc
 - feat: syntax-highlight copy `jsdoc` from [microsoft/TypeScript-TmLanguage](https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87)
   > like 'inline-tags', 'brackets', 'jsdoctype', 'docblock' code
   > [copy part](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/commit/927fc95e9276fbecb7278b819a387858b82e249f#diff-4533e36eb3828b3869b9e7fd72557f24697f5916158b6d8e7529ba674fc8d7cd)
+- fix: syntax-highlight of `,ByRef` or `)or`
 
 ## v0.0.41(2023-05-22)
 

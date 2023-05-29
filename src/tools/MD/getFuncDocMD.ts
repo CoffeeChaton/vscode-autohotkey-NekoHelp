@@ -75,10 +75,9 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
 
             for (let j = i + 1; j < length; j++) {
                 const str2: string = docList[j];
-                if ((/^\s*@/u).test(str2)) {
-                    i = j - 1;
-                    break;
-                }
+                if ((/^\s*@/u).test(str2)) break;
+                i = j - 1;
+
                 returnMeta.info.push(str2.slice(1));
             }
             continue;
@@ -104,10 +103,9 @@ function parseAhkDoc(ahkDoc: string): TFnMeta['ahkDocMeta'] {
             });
             for (let j = i + 1; j < length; j++) {
                 const str2: string = docList[j];
-                if ((/^\s*@/u).test(str2)) {
-                    i = j - 1;
-                    break;
-                }
+                if ((/^\s*@/u).test(str2)) break;
+                i = j - 1;
+
                 CInfo.push(str2.slice(1));
             }
             continue;

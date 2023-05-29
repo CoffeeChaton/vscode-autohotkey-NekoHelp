@@ -26,12 +26,11 @@ function getSubStr2(subStr: string, fistWordUp: string, detail: readonly EDetail
     return subStr;
 }
 
-export function completionSubCommand(subStr: string, AhkTokenLine: TAhkTokenLine): readonly vscode.CompletionItem[] {
+export function getSnipSubCmd(subStr: string, AhkTokenLine: TAhkTokenLine): readonly vscode.CompletionItem[] {
     const { CommandOption, subCmdPlus } = getCommandOptions();
     if (CommandOption === ECommandOption.notProvided) return [];
 
     const { fistWordUp, detail } = AhkTokenLine;
-    if (detail.includes(EDetail.inComment)) return [];
 
     switch (CommandOption) {
         case ECommandOption.All:

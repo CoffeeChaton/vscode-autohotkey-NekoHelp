@@ -33,10 +33,9 @@ const sendBigBlock: readonly vscode.CompletionItem[] = ((): readonly vscode.Comp
     return list;
 })();
 
-export function ahkSend(AhkFileData: TAhkFileData, position: vscode.Position): readonly vscode.CompletionItem[] {
+export function getSnipAhkSend(AhkFileData: TAhkFileData, position: vscode.Position): readonly vscode.CompletionItem[] {
     const { DocStrMap } = AhkFileData;
     const { textRaw, lStr, detail } = DocStrMap[position.line];
-    if (detail.includes(EDetail.inComment)) return [];
 
     if (
         (/\b(?:Control)?Send(?:Input|Play|Event)?\b/iu).test(lStr)

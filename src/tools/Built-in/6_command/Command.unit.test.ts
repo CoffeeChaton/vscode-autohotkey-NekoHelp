@@ -1,5 +1,6 @@
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
 import { EDiagCode } from '../../../diag';
+import { replacerSpace } from '../../str/removeSpecialChar';
 import type { TCommandElement } from './Command.data';
 import { LineCommand } from './Command.data';
 
@@ -35,7 +36,17 @@ describe('check LineCommand ruler', () => {
             const v3 = !body.toUpperCase().includes(keyRawName.toUpperCase());
             const v4 = !exp.join('\n').includes(keyRawName);
             const v5 = diag !== undefined && recommended;
-            if (v1 || v2 || v3 || v4 || v5) {
+            const v6 = !(
+                exp[0].startsWith(`${keyRawName}, `)
+                || exp[0].startsWith(`${keyRawName} [, `)
+                || exp[0] === keyRawName
+            );
+            const v7 = !(
+                body.startsWith(`${keyRawName}, `)
+                || body.startsWith(`${keyRawName} [, `)
+                || body === keyRawName
+            );
+            if (v1 || v2 || v3 || v4 || v5 || v6 || v7) {
                 errList.push({
                     msg: '--86--32--51--78--64',
                     value: {
@@ -45,7 +56,7 @@ describe('check LineCommand ruler', () => {
                         v4,
                         v5,
                         upName,
-                        v,
+                        // v,
                     },
                 });
             }
@@ -169,7 +180,6 @@ describe('check LineCommand ruler', () => {
         expect(errList2).toStrictEqual([]);
         expect(errList3).toStrictEqual([]);
         expect(errList4).toStrictEqual([
-            'ListLines => On,Off, |',
             'SoundGet => MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|',
         ]);
         expect(errList5).toStrictEqual([
@@ -268,5 +278,60 @@ describe('check LineCommand ruler', () => {
         }
 
         expect(errList).toHaveLength(0);
+    });
+
+    it('check: cmd sign _param !== _paramType', () => {
+        expect.hasAssertions();
+
+        let iOK = 0;
+        let iAll = 0;
+        const errList: string[] = [];
+
+        for (const v of LineCommand) {
+            const {
+                keyRawName,
+                body,
+                _paramType,
+                _param,
+            } = v;
+
+            iAll++;
+            if (_param === undefined) continue;
+
+            const optCol: number = body.replaceAll(/\$\{\d+[|:][^}]+\}/gu, replacerSpace).indexOf('[');
+            const maList: RegExpMatchArray[] = [...body.matchAll(/\$\{\d+[|:][^}]+\}/gu)];
+
+            for (const [i, { sign, isOpt, name }] of _param.entries()) {
+                if (sign !== _paramType[i]) {
+                    errList.push(`${keyRawName}, _param "${sign}" !== "${_paramType[i]}"`);
+                    break;
+                }
+                const ma0: RegExpMatchArray = maList[i];
+                const index: number = ma0.index ?? 0;
+                const opt: boolean = optCol > 0 && index > optCol;
+
+                if (opt !== isOpt) {
+                    errList.push(`${keyRawName} , ${i} , isOpt`);
+                    break;
+                }
+
+                if (keyRawName === name) {
+                    errList.push(`${keyRawName} , ${i} , param_name .EQ. cmd_name`);
+                    break;
+                }
+
+                if (!(/^[\w|]+$/u).test(name)) {
+                    errList.push(`${keyRawName} , ${name} , param_name ruler not allow`);
+                    break;
+                }
+            }
+            iOK++;
+        }
+
+        console.log('🚀 cmd sign OK ->', `${iOK} of ${iAll}`);
+
+        expect(errList).toStrictEqual([
+            'FileSelectFile , RootDir\\Filename , param_name ruler not allow',
+        ]);
     });
 });

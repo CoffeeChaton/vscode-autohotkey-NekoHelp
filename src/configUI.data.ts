@@ -27,6 +27,8 @@ export const enum ErmFirstCommaCommand {
     to2 = 2,
 }
 
+export type TShowReturnBlock = 'always' | 'auto' | 'never';
+
 export type TMethodModeOpt = 'loose_mode' | 'precision_mode' | 'precision_or_loose_mode';
 export type TMethod = {
     gotoDef: TMethodModeOpt,
@@ -133,9 +135,14 @@ type TempConfigs = {
         statusBarDisplayColor: string,
         CodeAction2GotoDefRef: boolean,
         HoverFunctionDocStyle: 1 | 2,
-        signatureHelp: 1 | 2 | 3,
-        signatureHelpInsertType: boolean,
         displayLogMessage: string,
+    },
+    signatureHelp: {
+        insertType: boolean,
+        showParamInfo: boolean,
+        showOtherDoc: boolean,
+        showReturnInfo: boolean,
+        showReturnBlock: TShowReturnBlock,
     },
     RenameFunctionInStr: boolean,
 };
