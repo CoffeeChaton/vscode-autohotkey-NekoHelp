@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.42(2023-05-XX)](#next-v00422023-05-xx)
+  - [v0.0.42(2023-05-29)](#v00422023-05-29)
   - [v0.0.41(2023-05-22)](#v00412023-05-22)
   - [v0.0.40(2023-05-09)](#v00402023-05-09)
   - [v0.0.39(2023-05-01)](#v00392023-05-01)
@@ -22,9 +22,9 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.42(2023-05-XX)
-
 <!-- TODO  syntax-highlight `ControlGet, OutputVar, List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd` -->
+
+## v0.0.42(2023-05-29)
 
 - api-change
   1. del `"AhkNekoHelp.customize.signatureHelp"`
