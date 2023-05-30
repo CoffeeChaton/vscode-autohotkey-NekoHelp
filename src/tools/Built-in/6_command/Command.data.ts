@@ -54,7 +54,7 @@ export type TCommandElement = Readonly<{
      * - FO -> funcObject
      * - G -> Gui-label
      */
-    _paramType: string[],
+    _paramType: ('E' | 'I' | 'O' | 'S')[],
 }>;
 
 /**
@@ -3338,6 +3338,52 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'GroupName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the group to which to add this window specification. If the group doesn\'t exist, it will be created. Group names are not case sensitive.',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON at the time that [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm), and [GroupClose](https://www.autohotkey.com/docs/v1/lib/GroupClose.htm) are used.',
+                ],
+            },
+            {
+                name: 'Label',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The label of a subroutine to run if no windows matching this group (or this _window specification_ prior to AHK\\_L 54) exist when the [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) command is used. The label is jumped to as though a [Gosub](https://www.autohotkey.com/docs/v1/lib/Gosub.htm) had been used. Omit or leave blank for none.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'GROUPCLOSE',
@@ -3352,6 +3398,28 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'GroupName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the group as originally defined by [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm).',
+                ],
+            },
+            {
+                name: 'A|R',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the command closes the active window and activates the oldest window in the series. Otherwise, specify one of the following letters:',
+                    '',
+                    '**R:** The newest window (the one most recently active) is activated, but only if no members of the group are active when the command is given. "R" is useful in cases where you temporarily switch to working on an unrelated task. When you return to the group via [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm), or GroupClose, the window you were most recently working with is activated rather than the oldest window.',
+                    '',
+                    '**A:** All members of the group will be closed. This is the same effect as `[WinClose](https://www.autohotkey.com/docs/v1/lib/WinClose.htm) ahk_group GroupName`.',
+                ],
+            },
         ],
     },
     {
@@ -3368,12 +3436,32 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'GroupName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the target group, as originally defined by [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm).',
+                ],
+            },
+            {
+                name: 'R',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the command activates the oldest non-member window. Otherwise, specify the following letter:',
+                    '',
+                    '**R:** The newest non-member window (the one most recently active) is activated, but only if a member of the group is active when the command is given. "R" is useful in cases where you temporarily switch to working on an unrelated task. When you return to the group via [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), GroupDeactivate, or [GroupClose](https://www.autohotkey.com/docs/v1/lib/GroupClose.htm), the window you were most recently working with is activated rather than the oldest window.',
+                ],
+            },
+        ],
     },
     {
         upName: 'GUI',
         keyRawName: 'Gui',
         body:
-            'Gui, ${1:GuiName}:${2|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${3:Value1}, ${4:Value2}, ${5:Value3}]',
+            'Gui, ${1|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${2:Value1}, ${3:Value2}, ${4:Value3}]',
         doc: 'Creates and manages windows and controls. Such windows can be used as data entry forms or custom user interfaces.\n1. `Sub-commands` -\n\n- [New](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New) [[v1.1.04+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 "Applies to AutoHotkey v1.1.04 and later"): Creates a new window.\n- [Add](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Add): Creates a control such as text, button, or checkbox.\n- [Show](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Show): Displays the window. It can also minimize, maximize, or move the window.\n- [Submit](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Submit): Saves the user\'s input and optionally hides the window.\n- [Cancel](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Cancel) / [Hide](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Hide): Hides the window.\n- [Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy): Deletes the window.\n- [Font](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Font): Sets the typeface, size, style, and text color for subsequently created controls.\n- [Color](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Color): Sets the background color for the window and/or its controls.\n- [Margin](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Margin): Sets the margin/spacing used whenever no explicit position has been specified for a control.\n- [Options and styles for a window](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Options): Sets various options for the appearance and behavior of the window.\n- [Menu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Menu): Adds or removes a menu bar.\n- [Minimize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Minimize) / [Maximize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Maximize) / [Restore](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Restore): Performs the indicated operation on the window.\n- [Flash](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Flash): Blinks the window and its taskbar button.\n- [Default](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default): Changes the current thread\'s default GUI window name.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Gui.htm',
@@ -3388,11 +3476,55 @@ export const LineCommand: TCommandElement[] = [
             '_____________^SubCommand',
         ],
         _paramType: [
-            'G',
             'S',
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    '| SubCmd   | Description                                                                                  |',
+                    '| :------- | :------------------------------------------------------------------------------------------- |',
+                    '| New      | Creates a new window.                                                                        |',
+                    '| Add      | Creates a control such as text, button, or checkbox.                                         |',
+                    '| Show     | Displays the window. It can also minimize, maximize, or move the window.                     |',
+                    '| Submit   | Saves the user\'s input and optionally hides the window.                                      |',
+                    '| Cancel   | Hides the window.                                                                            |',
+                    '| Hide     | Hides the window.                                                                            |',
+                    '| Destroy  | Deletes the window.                                                                          |',
+                    '| Font     | Sets the typeface, size, style, and text color for subsequently created controls.            |',
+                    '| Color    | Sets the background color for the window and/or its controls.                                |',
+                    '| Margin   | Sets the margin/spacing used whenever no explicit position has been specified for a control. |',
+                    '| Menu     | Adds or removes a menu bar.                                                                  |',
+                    '| Minimize | Performs the indicated operation on the window.                                              |',
+                    '| Maximize | Performs the indicated operation on the window.                                              |',
+                    '| Restore  | Performs the indicated operation on the window.                                              |',
+                    '| Flash    | Blinks the window and its taskbar button.                                                    |',
+                    '| Default  | Changes the current thread\'s default GUI window name.                                        |',
+                ],
+            },
+            {
+                name: 'Value1',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value2',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value3',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
         ],
     },
     {
@@ -3411,6 +3543,53 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'For _SubCommand_, specify one of the following:',
+                    '',
+                    '- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank): Puts new contents into the control.',
+                    '- [Text](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text): Changes the text/caption of the control.',
+                    '- [Move](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move): Moves and/or resizes the control.',
+                    '- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw): Moves and/or resizes the control and repaints the region occupied by it.',
+                    '- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus): Sets keyboard focus to the control.',
+                    '- [Disable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable): Disables (grays out) the control.',
+                    '- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable): Enables the control.',
+                    '- [Hide](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide): Hides the control.',
+                    '- [Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show): Shows the control.',
+                    '- [Delete](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete): Not yet implemented.',
+                    '- [Choose](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose): Selects the specified item number in a multi-item control.',
+                    '- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString): Selects a item in a multi-item control whose leading part matches a string.',
+                    '- [Font](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font): Changes the control\'s font typeface, size, color, and style.',
+                    '- [Options](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options): Add or remove various control-specific or general options and styles.',
+                ],
+            },
+            {
+                name: 'ControlID',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'If the target control has an associated variable, specify the variable\'s name as the _ControlID_ (this method takes precedence over the ones described next). For this reason, it is usually best to assign a variable to any control that will later be accessed via GuiControl or GuiControlGet, even if that control is not input-capable (such as GroupBox or Text).',
+                    '',
+                    'Otherwise, _ControlID_ can be either ClassNN (the classname and instance number of the control) or the control\'s text, both of which can be determined via Window Spy. When using text, the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
+                    '',
+                    '**Note**: A picture control\'s file name (as it was specified at the time the control was created) may be used as its _ControlID_.',
+                    '',
+                    '[\\[v1.1.04+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 "Applies to AutoHotkey v1.1.04 and later") _ControlID_ can be the [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of a control.',
+                    '',
+                    'If the control is not on the default GUI, **the name or HWND of the GUI must also be specified** -- except on [\\[v1.1.20+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 "Applies to AutoHotkey v1.1.20 and later") when _ControlID_ is a HWND, since each HWND is unique. See [Remarks](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Remarks) for details.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+        ],
     },
     {
         upName: 'GUICONTROLGET',
@@ -3428,6 +3607,55 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the result of _SubCommand_.'],
+            },
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'For _SubCommand_, specify one of the following:',
+                    '',
+                    '- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Blank): Retrieves the contents of the control.',
+                    '- [Pos](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Pos): Retrieves the position and size of the control.',
+                    '- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Focus): Retrieves the control identifier (ClassNN) for the control that currently has keyboard focus.',
+                    '- [FocusV](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#FocusV) [\\[v1.0.43.06+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the name of the focused control\'s associated variable.',
+                    '- [Enabled](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Enabled): Retrieves 1 if the control is enabled or 0 if it is disabled.',
+                    '- [Visible](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Visible): Retrieves 1 if the control is visible or 0 if it is hidden.',
+                    '- [Hwnd](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Hwnd) [\\[v1.0.46.16+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.46.16 "Applies to AutoHotkey v1.0.46.16 and later"): Retrieves the window handle (HWND) of the control.',
+                    '- [Name](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Name) [\\[v1.1.03+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.03.00 "Applies to AutoHotkey v1.1.03 and later"): Retrieves the name of the control\'s associated variable.',
+                ],
+            },
+            {
+                name: 'ControlID',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it behaves as though the name of the output variable was specified. For example, `[GuiControlGet](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm), MyEdit` is the same as `[GuiControlGet](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm), MyEdit,, MyEdit`.',
+                    '',
+                    'If the target control has an associated variable, specify the variable\'s name as the _ControlID_ (this method takes precedence over the ones described next). For this reason, it is usually best to assign a variable to any control that will later be accessed via GuiControl or GuiControlGet, even if that control is not input-capable (such as GroupBox or Text).',
+                    '',
+                    'Otherwise, _ControlID_ can be either ClassNN (the classname and instance number of the control) or the control\'s text, both of which can be determined via Window Spy. When using text, the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
+                    '',
+                    '**Note**: A picture control\'s file name (as it was specified at the time the control was created) may be used as its _ControlID_.',
+                    '',
+                    '[\\[v1.1.04+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 "Applies to AutoHotkey v1.1.04 and later") _ControlID_ can be the [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of a control.',
+                    '',
+                    'If the control is not on the default GUI, **the name or HWND of the GUI must also be specified** -- except on [\\[v1.1.20+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 "Applies to AutoHotkey v1.1.20 and later") when _ControlID_ is a HWND, since each HWND is unique. See [Remarks](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Remarks) for details.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
         ],
     },
     {
@@ -3520,6 +3748,80 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVarX',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the upper-left pixel of where the image was found on the screen (if no match is found, the variables are made blank). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                    '',
+                    'Either or both of these parameters may be left blank, in which case ErrorLevel (see below) can be used to determine whether a match was found.',
+                ],
+            },
+            {
+                name: 'OutputVarY',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the upper-left pixel of where the image was found on the screen (if no match is found, the variables are made blank). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                    '',
+                    'Either or both of these parameters may be left blank, in which case ErrorLevel (see below) can be used to determine whether a match was found.',
+                ],
+            },
+            {
+                name: 'X1',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the upper left corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y1',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the upper left corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'X2',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the lower right corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y2',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the lower right corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'ImageFile',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The file name of an image, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. All operating systems support GIF, JPG, BMP, ICO, CUR, and ANI images (BMP images must be 16-bit or higher). Other sources of icons include the following types of files: EXE, DLL, CPL, SCR, and other types that contain icon resources. On Windows XP or later, additional image formats such as PNG, TIF, Exif, WMF, and EMF are supported. Operating systems older than XP can be given support by copying Microsoft\'s free GDI+ DLL into the AutoHotkey.exe folder (but in the case of a [compiled script](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe), copy the DLL into the script\'s folder). To download the DLL, search for the following phrase at [www.microsoft.com](https://www.microsoft.com/): gdi redistributable',
+                    '',
+                    '**Options**: Zero or more of the following options may be also be present immediately before the name of the file. Separate each option from the next with a single space or tab. For example: `*2 *w100 *h-1 C:\\Main Logo.bmp`.',
+                    '',
+                    '**\\*Icon**_N_: To use an icon group other than the first one in the file, specify `*Icon` followed immediately by the number of the group. For example, `*Icon2` would load the default icon from the second icon group.',
+                    '',
+                    '**\\*_n_** (variation): Specify for _n_ a number between 0 and 255 (inclusive) to indicate the allowed number of shades of variation in either direction for the intensity of the red, green, and blue components of each pixel\'s color. For example, if `*2` is specified and the color of a pixel is 0x444444, any color from 0x424242 to 0x464646 will be considered a match. This parameter is helpful if the coloring of the image varies slightly or if _ImageFile_ uses a format such as GIF or JPG that does not accurately represent an image on the screen. If you specify 255 shades of variation, all colors will match. The default is 0 shades.',
+                    '',
+                    '**\\*Trans**_N_: This option makes it easier to find a match by specifying one color within the image that will match any color on the screen. It is most commonly used to find PNG, GIF, and TIF files that have some transparent areas (however, icons do not need this option because their transparency is automatically supported). For GIF files, `*TransWhite` might be most likely to work. For PNG and TIF files, `*TransBlack` might be best. Otherwise, specify for _N_ some other color name or RGB value (see the [color chart](https://www.autohotkey.com/docs/v1/lib/Progress.htm#colors) for guidance, or use [PixelGetColor](https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm) in its RGB mode). Examples: `*TransBlack`, `*TransFFFFAA`, `*Trans0xFFFFAA`.',
+                    '',
+                    '**\\*w**_n_ and **\\*h**_n_: Width and height to which to scale the image (this width and height also determines which icon to load from a multi-icon .ICO file). If both these options are omitted, icons loaded from ICO, DLL, or EXE files are scaled to the system\'s default small-icon size, which is usually 16 by 16 (you can force the actual/internal size to be used by specifying `*w0 *h0`). Images that are not icons are loaded at their actual size. To shrink or enlarge the image while preserving its aspect ratio, specify -1 for one of the dimensions and a positive number for the other. For example, specifying `*w200 *h-1` would make the image 200 pixels wide and cause its height to be set automatically.',
+                    '',
+                    '[\\[v1.1.23+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") A [bitmap or icon handle](https://www.autohotkey.com/docs/v1/misc/ImageHandles.htm) can be used instead of a filename. For example, `HBITMAP:*%handle%`.',
+                ],
+            },
+        ],
     },
     {
         upName: 'INIDELETE',
@@ -3536,6 +3838,30 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the .ini file, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                ],
+            },
+            {
+                name: 'Section',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The section name in the .ini file, which is the heading phrase that appears in square brackets (do not include the brackets in this parameter).',
+                ],
+            },
+            {
+                name: 'Key',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['The key name in the .ini file. If omitted, the entire _Section_ will be deleted.'],
+            },
         ],
     },
     {
@@ -3739,6 +4065,7 @@ export const LineCommand: TCommandElement[] = [
             '~F10:: KeyHistory',
         ],
         _paramType: [],
+        _param: [],
     },
     {
         upName: 'KEYWAIT',
@@ -3754,6 +4081,36 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'KeyName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'This can be just about any single character from the keyboard or one of the key names from the [key list](https://www.autohotkey.com/docs/v1/KeyList.htm), such as a mouse/controller button. Controller attributes other than buttons are not supported.',
+                    '',
+                    'An explicit virtual key code such as `vkFF` may also be specified. This is useful in the rare case where a key has no name and produces no visible character when pressed. Its virtual key code can be determined by following the steps at the bottom of the [key list page](https://www.autohotkey.com/docs/v1/KeyList.htm#SpecialKeys).',
+                ],
+            },
+            {
+                name: 'D|L|Tn',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is blank, the command will wait indefinitely for the specified key or mouse/controller button to be physically released by the user. However, if the [keyboard hook](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) is not installed and _KeyName_ is a keyboard key released artificially by means such as the [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) command, the key will be seen as having been physically released. The same is true for mouse buttons when the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is not installed.',
+                    '',
+                    'Options: A string of one or more of the following options (in any order, with optional spaces in between):',
+                    '',
+                    '**D**: Wait for the key to be pushed down.',
+                    '',
+                    '**L**: Check the logical state of the key, which is the state that the OS and the active window believe the key to be in (not necessarily the same as the physical state). This option is ignored for controller buttons.',
+                    '',
+                    '**T**: Timeout (e.g. `T3`). The number of seconds to wait before timing out and setting [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to 1. If the key or button achieves the specified state, the command will not wait for the timeout to expire. Instead, it will immediately set [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to 0 and the script will continue executing.',
+                    '',
+                    'The timeout value can be a floating point number such as 2.5, but it should not be a hexadecimal value such as 0x03.',
+                ],
+            },
+        ],
     },
     {
         upName: 'LISTHOTKEYS',
@@ -3766,6 +4123,7 @@ export const LineCommand: TCommandElement[] = [
             'ListHotkeys',
         ],
         _paramType: [],
+        _param: [],
     },
     {
         upName: 'LISTLINES',
@@ -3784,6 +4142,22 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'On|Off',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the history of lines most recently executed is shown. Otherwise, specify one of the following words, which affects only the behavior of the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) as follows:',
+                    '',
+                    '**On**: Include subsequently-executed lines in the history. This is the starting default for all scripts.',
+                    '',
+                    '**Off**: Omit subsequently-executed lines from the history.',
+                    '',
+                    '[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1 and 0 may be used in place of On and Off, respectively.',
+                ],
+            },
+        ],
     },
     {
         upName: 'LISTVARS',
@@ -3796,6 +4170,7 @@ export const LineCommand: TCommandElement[] = [
             'ListVars',
         ],
         _paramType: [],
+        _param: [],
     },
     {
         upName: 'MENU',
@@ -3810,11 +4185,76 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+            'S', // SubCommand
             'S',
             'S',
             'S',
             'S',
-            'S',
+        ],
+        _param: [
+            {
+                name: 'MenuName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The _MenuName_ parameter can be `Tray` or the name of any custom menu. A custom menu is automatically created the first time its name is used with the [Add](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Add) sub-command.',
+                ],
+            },
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Add: Adds a menu item, updates one with a new submenu or label, or converts one from a normal item into a submenu (or vice versa).',
+                    'Insert [v1.1.23+]: Inserts a new item before the specified menu item.',
+                    'Delete: Deletes the specified menu item from the menu.',
+                    'DeleteAll: Deletes all custom menu items from the menu.',
+                    'Rename: Renames the specified menu item.',
+                    'Check: Adds a visible checkmark in the menu next to the specified menu item.',
+                    'Uncheck: Removes the checkmark from the specified menu item.',
+                    'ToggleCheck: Adds a checkmark to the specified menu item; otherwise, removes it.',
+                    'Enable: Enables the specified menu item if was previously disabled.',
+                    'Disable: Disables the specified menu item.',
+                    'ToggleEnable: Disables the specified menu item; otherwise, enables it.',
+                    'Default: Changes the menu\'s default item to be the specified menu item and makes its font bold.',
+                    'NoDefault: Reverses setting a user-defined default menu item.',
+                    'Standard: Inserts the standard menu items at the bottom of the menu.',
+                    'NoStandard: Removes all standard menu items from the menu.',
+                    'Icon: Changes the script\'s tray icon or [in v1.0.90+] sets a icon for the specified menu item.',
+                    'NoIcon: Removes the tray icon or [in v1.0.90+] removes the icon from the specified menu item.',
+                    'Tip: Changes the tray icon\'s tooltip.',
+                    'Show: Displays the specified menu.',
+                    'Color: Changes the background color of the menu.',
+                    'Click: Sets how many times the tray icon must be clicked to select its default menu item.',
+                    'MainWindow: Allows the main window of a script to be opened via the tray icon.',
+                    'NoMainWindow: Prevents the main window from being opened via the tray icon.',
+                    'UseErrorLevel: Skips any warning dialogs and thread terminations whenever the Menu command generates an error.',
+                ],
+            },
+            {
+                name: 'Value1',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value2',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value3',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value4',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
         ],
     },
     {
@@ -4134,7 +4574,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'RANDOM',
         keyRawName: 'Random',
-        body: 'Random, ${1:OutputVar}, ${2:Min}, ${3:Max}',
+        body: 'Random, ${1:OutputVar} [, ${2:Min}, ${3:Max}]',
         doc: 'Generates a pseudo-random number.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Random.htm',
@@ -4149,6 +4589,32 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the result. The format of stored floating point numbers is determined by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead.") if its [slow mode](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm#Fast) is used; otherwise SetFormat only affects formatting when the number is converted to a string.',
+                ],
+            },
+            {
+                name: 'Min',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The smallest number that can be generated, which can be negative, floating point, or an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If omitted, the smallest number will be 0. The lowest allowed value is -2147483648 for integers, but floating point numbers have no restrictions.',
+                ],
+            },
+            {
+                name: 'Max',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The largest number that can be generated, which can be negative, floating point, or an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If omitted, the largest number will be 2147483647 (which is also the largest allowed integer value -- but floating point numbers have no restrictions).',
+                ],
+            },
         ],
     },
     {
@@ -5030,6 +5496,7 @@ export const LineCommand: TCommandElement[] = [
             'SplashTextOff',
         ],
         _paramType: [],
+        _param: [],
     },
     {
         upName: 'SPLASHTEXTON',
@@ -5780,6 +6247,7 @@ export const LineCommand: TCommandElement[] = [
             'WinMinimizeAllUndo ; re win + d',
         ],
         _paramType: [],
+        _param: [],
     },
     {
         upName: 'WINMINIMIZEALLUNDO',
@@ -5798,6 +6266,7 @@ export const LineCommand: TCommandElement[] = [
             'WinMinimizeAllUndo ; re win + d',
         ],
         _paramType: [],
+        _param: [],
     },
     {
         upName: 'WINMOVE',

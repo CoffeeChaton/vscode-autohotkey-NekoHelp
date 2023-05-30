@@ -273,7 +273,6 @@ describe('check cmd sign ruler', () => {
         // expect(LineCommand).toHaveLength(cmdMap.size);
         expect(errList0).toStrictEqual([]);
         expect(errListMain).toStrictEqual([
-            'Gui',
             'MsgBox', // multi-signature
             'OnExit', // OnExit() doc-error?
             'Progress', // multi-signature ruler ?

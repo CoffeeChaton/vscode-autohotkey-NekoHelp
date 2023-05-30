@@ -33,7 +33,6 @@ function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigK
 
 let oldCustomizeHoverFunctionDocStyle: 1 | 2 | null = null;
 let oldSignInsertType: boolean | null = null;
-let oldSignCmdShowParamInfo: boolean | null = null;
 let oldFilesTryParserIncludeOpt: 'auto' | 'close' | 'open' | null = null;
 
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
@@ -139,15 +138,6 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         oldSignInsertType = ed.signatureHelp.insertType;
         void vscode.window.showWarningMessage(
             'Configs change: please restart vscode!\n\n ("AhkNekoHelp.signatureHelp.insertType")',
-        );
-    }
-
-    if (oldSignCmdShowParamInfo === null) {
-        oldSignCmdShowParamInfo = ed.signatureHelp.CmdShowParamInfo;
-    } else if (oldSignCmdShowParamInfo !== ed.signatureHelp.CmdShowParamInfo) {
-        oldSignCmdShowParamInfo = ed.signatureHelp.CmdShowParamInfo;
-        void vscode.window.showWarningMessage(
-            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.signatureHelp.CmdShowParamInfo")',
         );
     }
 

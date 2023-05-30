@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.43(2023-06-XX)](#next-v00432023-06-xx)
   - [v0.0.42(2023-05-29)](#v00422023-05-29)
   - [v0.0.41(2023-05-22)](#v00412023-05-22)
   - [v0.0.40(2023-05-09)](#v00402023-05-09)
@@ -23,6 +24,29 @@
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
 <!-- TODO  syntax-highlight `ControlGet, OutputVar, List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd` -->
+
+## Next v0.0.43(2023-06-XX)
+
+- feat: add some sign of cmd
+  - `"AhkNekoHelp.signatureHelp.CmdShowParamInfo"` not need to restart vscode now.
+  - cover `44%` now.
+  - if param > main sign , try auto switch of cmd sign. exp: `MsgBox , Options, Title, Text, Timeout`
+  - overload sign
+
+    ```ahk
+    ; OK
+    MsgBox
+    Random
+    Hotkey
+
+    ; TODO
+    IniRead
+    IniWrite
+    SplashImage
+    Progress
+    WinMove
+    WinSetTitle
+    ```
 
 ## v0.0.42(2023-05-29)
 
@@ -708,10 +732,10 @@
 
   - if all files changed
 
-  | ms       | 0.0.23    | 0.0.24    | x  |
-  | -------- | --------- | --------- | -- |
-  | 88-files | 1600~1800 | 1600~1800 | 1X |
-  | 29-files | 700~800   | 700~800   | 1X |
+  | ms       | 0.0.23    | 0.0.24    | x   |
+  | -------- | --------- | --------- | --- |
+  | 88-files | 1600~1800 | 1600~1800 | 1X  |
+  | 29-files | 700~800   | 700~800   | 1X  |
 
   > use command `format All File`
 
