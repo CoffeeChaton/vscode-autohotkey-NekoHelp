@@ -29,17 +29,15 @@
 
 - feat: add some sign of cmd
   - `"AhkNekoHelp.signatureHelp.CmdShowParamInfo"` not need to restart vscode now.
-  - cover `44%` now.
+  - cover `52%` now.
   - if param > main sign , try auto switch of cmd sign. exp: `MsgBox , Options, Title, Text, Timeout`
-  - overload sign
+  - overload sign, cover `100%`
 
     ```ahk
     ; OK
     MsgBox
     Random
     Hotkey
-
-    ; TODO
     IniRead
     IniWrite
     SplashImage
@@ -732,10 +730,10 @@
 
   - if all files changed
 
-  | ms       | 0.0.23    | 0.0.24    | x   |
-  | -------- | --------- | --------- | --- |
-  | 88-files | 1600~1800 | 1600~1800 | 1X  |
-  | 29-files | 700~800   | 700~800   | 1X  |
+  | ms       | 0.0.23    | 0.0.24    | x  |
+  | -------- | --------- | --------- | -- |
+  | 88-files | 1600~1800 | 1600~1800 | 1X |
+  | 29-files | 700~800   | 700~800   | 1X |
 
   > use command `format All File`
 

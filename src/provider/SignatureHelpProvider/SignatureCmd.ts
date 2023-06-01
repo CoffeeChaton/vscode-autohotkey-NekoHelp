@@ -5,8 +5,7 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
 import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
 import { CMemo } from '../../tools/CMemo';
-import { ToUpCase } from '../../tools/str/ToUpCase';
-import { SignatureCmdOverloadArr } from './SignatureCmdOverload';
+import { SignatureCmdOverloadMap } from './SignatureCmdOverload';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function signToText(sign: 'E' | 'I' | 'O' | 'S') {
@@ -143,9 +142,7 @@ export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Positio
     Signature.activeParameter = comma;
 
     let j = 0;
-    for (const v of SignatureCmdOverloadArr) {
-        if (ToUpCase(v.keyRawName) !== fistWordUp) continue;
-
+    for (const v of SignatureCmdOverloadMap.get(fistWordUp) ?? []) {
         const CmdSignOverload: TCmdSign | null = CmdSignMemo.up(v);
         if (CmdSignOverload !== null) {
             Signature.signatures.push(getSignInfo(CmdSignOverload));

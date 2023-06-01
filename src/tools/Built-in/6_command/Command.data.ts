@@ -128,10 +128,10 @@ export const LineCommand: TCommandElement[] = [
                     '| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |',
                     '| On           | The user is prevented from interacting with the computer (mouse and keyboard input has no effect).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | , |',
                     '| Off          | Input is re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |',
-                    '| Send         | The user\'s keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `[BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm) On`).                                                                                                                                                                                                                                                                                                                                                                                                           | , |',
-                    '| Mouse        | The user\'s keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `[BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm) On`).                                                                                                                                                                                                                            | , |',
+                    '| Send         | The user\'s keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                                                                                                                                           | , |',
+                    '| Mouse        | The user\'s keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                            | , |',
                     '| SendAndMouse | A combination of the above two modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | , |',
-                    '| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `[BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm) On` is currently in effect, using `[BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm) Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |',
+                    '| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `BlockInput On` is currently in effect, using `BlockInput Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |',
                     '| MouseMove    | The mouse cursor will not move in response to the user\'s physical movement of the mouse (DirectInput applications are a possible exception). When a script first uses this command, the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed (if it is not already). In addition, the script becomes [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm), meaning that [ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm) rather than [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) should be used to terminate it. The mouse hook will stay installed until the next use of the [Suspend](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) or [Hotkey](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) command, at which time it is removed if not required by any hotkeys or hotstrings (see [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)). | , |',
                     '| MouseMoveOff | Allows the user to move the mouse cursor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | , |',
                 ],
@@ -386,7 +386,7 @@ export const LineCommand: TCommandElement[] = [
                     '',
                     '**Mode 2** (ClassNN or Text): Specify either ClassNN (the classname and instance number of the control) or the name/text of the control, both of which can be determined via Window Spy. When using name/text, the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
                     '',
-                    'By default, mode 2 takes precedence over mode 1. For example, in the unlikely event that there is a control whose text or ClassNN has the format "Xnnn Ynnn", it would be acted upon by mode 2. To override this and use mode 1 unconditionally, specify the word Pos in _Options_ as in the following example: `[ControlClick](https://www.autohotkey.com/docs/v1/lib/ControlClick.htm), x255 y152, WinTitle,,,, Pos`.',
+                    'By default, mode 2 takes precedence over mode 1. For example, in the unlikely event that there is a control whose text or ClassNN has the format "Xnnn Ynnn", it would be acted upon by mode 2. To override this and use mode 1 unconditionally, specify the word Pos in _Options_ as in the following example: `ControlClick, x255 y152, WinTitle,,,, Pos`.',
                     '',
                     'To operate upon a control\'s HWND (window handle), leave this parameter blank and specify `ahk_id %ControlHwnd%` for the _WinTitle_ parameter (this also works on hidden controls even when [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm) is Off). The HWND of a control is typically retrieved via [ControlGet Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd), [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), or [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm).',
                 ],
@@ -3095,7 +3095,11 @@ export const LineCommand: TCommandElement[] = [
                 paramDoc: [
                     'If blank or omitted, it defaults to the current time. Otherwise, specify the time to use for the operation (see Remarks for the format). Years prior to 1601 are not supported.',
                     '',
-                    'This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Consequently, if multiple variables need to be concatenated to form a single timestamp, the [dot operator](https://www.autohotkey.com/docs/v1/Variables.htm#concat) should be used instead of percent signs. For example: `[FileSetTime](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm), Year **.** Month **.** Day, C:\\My File.txt`.',
+                    'This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Consequently, if multiple variables need to be concatenated to form a single timestamp, the [dot operator](https://www.autohotkey.com/docs/v1/Variables.htm#concat) should be used instead of percent signs. For example:',
+                    '',
+                    '```ahk',
+                    'FileSetTime, Year **.** Month **.** Day, C:\\My File.txt',
+                    '```',
                 ],
             },
             {
@@ -3417,7 +3421,7 @@ export const LineCommand: TCommandElement[] = [
                     '',
                     '**R:** The newest window (the one most recently active) is activated, but only if no members of the group are active when the command is given. "R" is useful in cases where you temporarily switch to working on an unrelated task. When you return to the group via [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm), or GroupClose, the window you were most recently working with is activated rather than the oldest window.',
                     '',
-                    '**A:** All members of the group will be closed. This is the same effect as `[WinClose](https://www.autohotkey.com/docs/v1/lib/WinClose.htm) ahk_group GroupName`.',
+                    '**A:** All members of the group will be closed. This is the same effect as `WinClose ahk_group GroupName`.',
                 ],
             },
         ],
@@ -3637,7 +3641,7 @@ export const LineCommand: TCommandElement[] = [
                 sign: 'S',
                 isOpt: true,
                 paramDoc: [
-                    'If blank or omitted, it behaves as though the name of the output variable was specified. For example, `[GuiControlGet](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm), MyEdit` is the same as `[GuiControlGet](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm), MyEdit,, MyEdit`.',
+                    'If blank or omitted, it behaves as though the name of the output variable was specified. For example, `GuiControlGet, MyEdit` is the same as `GuiControlGet, MyEdit,, MyEdit`.',
                     '',
                     'If the target control has an associated variable, specify the variable\'s name as the _ControlID_ (this method takes precedence over the ones described next). For this reason, it is usually best to assign a variable to any control that will later be accessed via GuiControl or GuiControlGet, even if that control is not input-capable (such as GroupBox or Text).',
                     '',
@@ -3885,6 +3889,72 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the retrieved value. If the value cannot be retrieved, the variable is set to the value indicated by the _Default_ parameter (described below).',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the .ini file, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+            {
+                name: 'Section',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The section name in the .ini file, which is the heading phrase that appears in square brackets (do not include the brackets in this parameter).',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+            {
+                name: 'Key',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The key name in the .ini file.',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+            {
+                name: 'Default',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The value to store in _OutputVar_ if the requested key is not found. If omitted, it defaults to the word ERROR. To store a blank value (empty string), specify [%A\\_Space%](https://www.autohotkey.com/docs/v1/Variables.htm#Space).',
+                    '',
+                    '[\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L57 "Applies to:',
+                    'AutoHotkey_L Revision 57 and later',
+                    'AutoHotkey v1.0.90.00 and later") This parameter is not used if _Key_ is omitted.',
+                ],
+            },
+        ],
     },
     {
         upName: 'INIWRITE',
@@ -3906,6 +3976,57 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The string or number that will be written to the right of _Key_\'s equal sign (=).',
+                    '',
+                    'If the text is long, it can be broken up into several shorter lines by means of a[continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the .ini file, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                ],
+            },
+            {
+                name: 'Section',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The section name in the .ini file, which is the heading phrase that appears in square brackets (do not include the brackets in this parameter).',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+            {
+                name: 'Key',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The key name in the .ini file.',
+                    '',
+                    '```ini',
+                    '[SectionName]',
+                    'Key=Value',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'INPUT',
@@ -3922,6 +4043,86 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the output variable in which to store the text entered by the user (by default, artificial input is also captured).',
+                    '',
+                    'If this and the other parameters are omitted, any Input in progress in another [thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) is terminated and its [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to the word NewInput. By contrast, the [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) of the current command will be set to 0 if it terminated a prior Input, or 1 if there was no prior Input to terminate.',
+                    '',
+                    '_OutputVar_ does not store keystrokes per se. Instead, it stores characters produced by keystrokes according to the active window\'s keyboard layout/language. Consequently, keystrokes that do not produce characters (such as <kbd>PgUp</kbd> and <kbd>Home</kbd>) are not stored (though they can be recognized via the _EndKeys_ parameter below).',
+                    '',
+                    '**Note:** <kbd>Esc</kbd> is translated to the ASCII ESC character, [Chr](https://www.autohotkey.com/docs/v1/lib/Chr.htm)(27). This can be avoided by including `{Esc}` in _EndKeys_, in which case pressing <kbd>Esc</kbd> will terminate Input.',
+                    '',
+                    'Whitespace characters such as <kbd>Tab</kbd> (\\`t) are stored literally. <kbd>Enter</kbd> is stored as linefeed (\\`n).',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A string of zero or more of the following options (in any order, with optional spaces in between):',
+                    '',
+                    '**B**: <kbd>Backspace</kbd> is ignored. Normally, pressing <kbd>Backspace</kbd> during an Input will remove the most recently pressed character from the end of the string. Note: If the input text is visible (such as in an editor) and the arrow keys or other means are used to navigate within it, <kbd>Backspace</kbd> will still remove the last character rather than the one behind the caret (insertion point).',
+                    '',
+                    '**C**: Case sensitive. Normally, _MatchList_ is not case sensitive (in versions prior to 1.0.43.03, only the letters A-Z are recognized as having varying case, not letters like ü/Ü).',
+                    '',
+                    '**I**: Ignore input generated by the [SendEvent](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendEvent) method if it has a [send level](https://www.autohotkey.com/docs/v1/lib/SendLevel.htm) of 0. However, the [SendInput](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendInput) and [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlay) methods are always ignored, regardless of this setting. [\\[v1.1.31+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.31.00 "Applies to AutoHotkey v1.1.31 and later") The option letter can be followed by a number to set the minimum send level. `I` and `I1` are equivalent, and `I0` is the same as not specifying the option.',
+                    '',
+                    '**L**: Length limit (e.g. `L5`). The maximum allowed length of the input. When the text reaches this length, the Input will be terminated and [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) will be set to the word Max unless the text matches one of the _MatchList_ phrases, in which case [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to the word Match. If unspecified, the length limit is 16383, which is also the absolute maximum in versions prior to [\\[v1.1.31\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.31.00).',
+                    '',
+                    '**M**: Modified keystrokes such as <kbd>Ctrl</kbd>+<kbd>A</kbd> through <kbd>Ctrl</kbd>+<kbd>Z</kbd> are recognized and transcribed if they correspond to real ASCII characters. Consider this example, which recognizes <kbd>Ctrl</kbd>+<kbd>C</kbd>:',
+                    '',
+                    'CtrlC := [Chr](https://www.autohotkey.com/docs/v1/lib/Chr.htm)(3) _; Store the character for Ctrl-C in the CtrlC var._',
+                    '[Input](https://www.autohotkey.com/docs/v1/lib/Input.htm), OutputVar, L1 M',
+                    '[if](https://www.autohotkey.com/docs/v1/lib/IfExpression.htm) (OutputVar = CtrlC)',
+                    '    [MsgBox](https://www.autohotkey.com/docs/v1/lib/MsgBox.htm), You pressed Control-C.',
+                    '[ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm)',
+                    '',
+                    '**Note**: The characters <kbd>Ctrl</kbd>+<kbd>A</kbd> through <kbd>Ctrl</kbd>+<kbd>Z</kbd> correspond to [Chr(1)](https://www.autohotkey.com/docs/v1/lib/Chr.htm) through [Chr(26)](https://www.autohotkey.com/docs/v1/lib/Chr.htm). Also, the M option might cause some keyboard shortcuts such as <kbd>Ctrl</kbd>+<kbd>←</kbd> to misbehave while an Input is in progress.',
+                    '',
+                    '**T**: Timeout (e.g. `T3`). The number of seconds to wait before terminating the Input and setting [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to the word Timeout. If the Input times out, _OutputVar_ will be set to whatever text the user had time to enter. This option can be a floating point number such as `T2.5`.',
+                    '',
+                    '**V**: Visible. Normally, the user\'s input is blocked (hidden from the system). Use this option to have the user\'s keystrokes sent to the active window.',
+                    '',
+                    '**\\***: Wildcard (find anywhere). Normally, what the user types must exactly match one of the _MatchList_ phrases for a match to occur. Use this option to find a match more often by searching the entire length of the input text.',
+                    '',
+                    '**E** [\\[v1.1.20+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 "Applies to AutoHotkey v1.1.20 and later"): Handle single-character end keys by character code instead of by keycode. This provides more consistent results if the active window\'s keyboard layout is different to the script\'s keyboard layout. It also prevents key combinations which don\'t actually produce the given end characters from ending input; for example, if @ is an end key, on the US layout <kbd>Shift</kbd>+<kbd>2</kbd> will trigger it but <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>2</kbd> will not (if the E option is used). If the C option is also used, the end character is case-sensitive.',
+                ],
+            },
+            {
+                name: 'EndKeys',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A list of zero or more keys, any one of which terminates the Input when pressed (the end key itself is not written to _OutputVar_). When an Input is terminated this way, [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to the word EndKey followed by a colon and the name of the end key. Examples: `EndKey:.`, `EndKey:Escape`.',
+                    '',
+                    '_EndKeys_ uses a format similar to the [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) command. For example, specifying `{Enter}.{Esc}` would cause either <kbd>Enter</kbd>, <kbd>.</kbd>, or <kbd>Esc</kbd> to terminate the Input. To use the braces themselves as end keys, specify `{{}` and/or `{}}`.',
+                    '',
+                    'To use <kbd>Ctrl</kbd>, <kbd>Alt</kbd>, or <kbd>Shift</kbd> as end keys, specify the left and/or right version of the key, not the neutral version. For example, specify `{LControl}{RControl}` rather than `{Control}`.',
+                    '',
+                    '[\\[v1.0.14+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.14 and later"): Although modified keys such as <kbd>Alt</kbd>+<kbd>C</kbd> (!c) are not supported, certain characters that require <kbd>Shift</kbd> or <kbd>AltGr</kbd> to be held down -- namely punctuation marks such as `?!:@&{}` -- are supported. [\\[v1.1.20+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 "Applies to AutoHotkey v1.1.20 and later"): Other characters are supported with the E option described above. When the E and M options are both used, <kbd>Ctrl</kbd>+<kbd>A</kbd> through <kbd>Ctrl</kbd>+<kbd>Z</kbd> are supported by including the corresponding ASCII control characters in _EndKeys_.',
+                    '',
+                    'An explicit virtual key code such as `{vkFF}` may also be specified. This is useful in the rare case where a key has no name and produces no visible character when pressed. Its virtual key code can be determined by following the steps at the bottom of the [key list page](https://www.autohotkey.com/docs/v1/KeyList.htm#SpecialKeys).',
+                ],
+            },
+            {
+                name: 'MatchList',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A comma-separated list of key phrases, any of which will cause the Input to be terminated (in which case [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) will be set to the word Match). The entirety of what the user types must exactly match one of the phrases for a match to occur (unless the [\\* option](https://www.autohotkey.com/docs/v1/lib/Input.htm#asterisk) is present). In addition, **any spaces or tabs around the delimiting commas are significant**, meaning that they are part of the match string. For example, if _MatchList_ is `ABC , XYZ`, the user must type a space after ABC or before XYZ to cause a match.',
+                    '',
+                    'Two consecutive commas results in a single literal comma. For example, the following would produce a single literal comma at the end of string: `string1,,,string2`. Similarly, the following list contains only a single item with a literal comma inside it: `single,,item`.',
+                    '',
+                    'Because the items in _MatchList_ are not treated as individual parameters, the list can be contained entirely within a variable. In fact, all or part of it must be contained in a variable if its length exceeds 16383 since that is the maximum length of any script line. For example, _MatchList_ might consist of `%List1%,%List2%,%List3%` -- where each of the variables contains a large sub-list of match phrases.',
+                ],
+            },
         ],
     },
     {
@@ -4277,6 +4478,82 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WhichButton',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'Left,Right,Middle,WheelUp,WheelDown,WheelLeft,WheelRight',
+                    '',
+                    'If blank or omitted, it defaults to Left (the left mouse button). Otherwise, specify the button to click or the rotate/push direction of the mouse wheel.',
+                    '',
+                    '**Button:** Left, Right, Middle (or just the first letter of each of these); or X1 (fourth button) or X2 (fifth button). For example: `MouseClick, X1`.',
+                    '',
+                    '**Mouse wheel:** Specify WheelUp or WU to turn the wheel upward (away from you); specify WheelDown or WD to turn the wheel downward (toward you). [\\[v1.0.48+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.48.00 "Applies to AutoHotkey v1.0.48 and later"): Specify WheelLeft (or WL) or WheelRight (or WR) to push the wheel left or right, respectively (but these have no effect on operating systems older than Windows Vista). _ClickCount_ is the number of notches to turn the wheel.',
+                    '',
+                    'To compensate automatically for cases where the user has swapped the left and right mouse buttons via the system\'s control panel, use the [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm) command instead.',
+                ],
+            },
+            {
+                name: 'X',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the cursor\'s current position is used. Otherwise, specify the X and Y coordinates to which the mouse cursor is moved prior to clicking, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that',
+                ],
+            },
+            {
+                name: 'Y',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the cursor\'s current position is used. Otherwise, specify the X and Y coordinates to which the mouse cursor is moved prior to clicking, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that',
+                ],
+            },
+            {
+                name: 'ClickCount',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, it defaults to 1. Otherwise, specify the number of times to click the mouse button or turn the mouse wheel, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Speed',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the default speed (as set by [SetDefaultMouseSpeed](https://www.autohotkey.com/docs/v1/lib/SetDefaultMouseSpeed.htm) or 2 otherwise) will be used. Otherwise, specify the speed to move the mouse in the range 0 (fastest) to 100 (slowest), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                    '',
+                    '**Note:** A speed of 0 will move the mouse instantly.',
+                    '',
+                    '_Speed_ is ignored for [SendInput/Play modes](https://www.autohotkey.com/docs/v1/lib/SendMode.htm); they move the mouse instantaneously (though [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) has a mode that applies to SendPlay). To visually move the mouse more slowly -- such as a script that performs a demonstration for an audience -- use `[SendEvent](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendEvent) {Click 100 200}` or `[SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) Event` (optionally in conjuction with [BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm)).',
+                ],
+            },
+            {
+                name: 'Down_or_Up',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, each click consists of a down-event followed by an up-event. Otherwise, specify one of the following letters:',
+                    '',
+                    '**D:** Press the mouse button down but do not release it (i.e. generate a down-event).',
+                    '',
+                    '**U:** Release the mouse button (i.e. generate an up-event).',
+                ],
+            },
+            {
+                name: 'Relative',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the X and Y coordinates will be treated as absolute values. Otherwise, specify the following letter:',
+                    '',
+                    '**R:** The X and Y coordinates will be treated as offsets from the current mouse position. In other words, the cursor will be moved from its current position by X pixels to the right (left if negative) and Y pixels down (up if negative).',
+                ],
+            },
+        ],
     },
     {
         upName: 'MOUSECLICKDRAG',
@@ -4297,6 +4574,78 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'E',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WhichButton',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The button to click: Left, Right, Middle (or just the first letter of each of these); or X1 (fourth button) or X2 (fifth button).',
+                    '',
+                    '```ahk',
+                    'MouseClickDrag, X1, 0, 0, 10, 10',
+                    '```',
+                    '',
+                    'To compensate automatically for cases where the user has swapped the left and right mouse buttons via the system\'s control panel, use the [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm) command instead.',
+                ],
+            },
+            {
+                name: 'X1',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'If blank, the mouse cursor\'s current position is used. Otherwise, specify the X and Y coordinates of the drag\'s starting position, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) (the mouse will be moved to these coordinates right before the drag is started). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y1',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'If blank, the mouse cursor\'s current position is used. Otherwise, specify the X and Y coordinates of the drag\'s starting position, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) (the mouse will be moved to these coordinates right before the drag is started). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'X2',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates to drag the mouse to (that is, while the button is held down), which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y2',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates to drag the mouse to (that is, while the button is held down), which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Speed(0-100)',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'specify the speed to move the mouse in the range 0 (fastest) to 100 (slowest), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                    '',
+                    '**Note:** A speed of 0 will move the mouse instantly.',
+                ],
+            },
+            {
+                name: 'Relative',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the X and Y coordinates will be treated as absolute values. Otherwise, specify the following letter:',
+                    '',
+                    '**R:** The X1 and Y1 coordinates will be treated as offsets from the current mouse position. In other words, the cursor will be moved from its current position by X1 pixels to the right (left if negative) and Y1 pixels down (up if negative). Similarly, the X2 and Y2 coordinates will be treated as offsets from the X1 and Y1 coordinates. For example, the following would first move the cursor down and to the right by 5 pixels from its starting position, and then drag it from that position down and to the right by 10 pixels:',
+                    '',
+                    '```ahk',
+                    'MouseClickDrag, Left, 5, 5, 10, 10, , R',
+                    '```',
+                ],
+            },
         ],
     },
     {
@@ -4330,6 +4679,58 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'E',
         ],
+        _param: [
+            {
+                name: 'OutputVarX',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates. The retrieved coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change to screen coordinates.',
+                ],
+            },
+            {
+                name: 'OutputVarY',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates. The retrieved coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change to screen coordinates.',
+                ],
+            },
+            {
+                name: 'OutputVarWin',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the output variable in which to store the [unique ID number](https://www.autohotkey.com/docs/v1/lib/WinGet.htm) of the window under the mouse cursor. If the window cannot be determined, this variable will be made blank.',
+                    '',
+                    'The window does not have to be active to be detected. Hidden windows cannot be detected.',
+                ],
+            },
+            {
+                name: 'OutputVarControl',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the output variable in which to store the name (ClassNN) of the control under the mouse cursor. If the control cannot be determined, this variable will be made blank.',
+                    '',
+                    'The names of controls should always match those shown by the version of Window Spy distributed with [\\[v1.0.14+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.14 and later") (but not necessarily older versions of Window Spy). The window under the mouse cursor does not have to be active for a control to be detected.',
+                ],
+            },
+            {
+                name: 'Flag(0|1|2|3)',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If blank, omitted or 0, the command uses the default method to determine _OutputVarControl_ and stores the control\'s ClassNN. Otherwise, specify a combination (sum) of the following numbers:',
+                    '',
+                    '**1:** Uses a simpler method to determine _OutputVarControl_. This method correctly retrieves the active/topmost child window of an Multiple Document Interface (MDI) application such as SysEdit or TextPad. However, it is less accurate for other purposes such as detecting controls inside a GroupBox control.',
+                    '',
+                    '**2** [\\[v1.0.43.06+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Stores the [control\'s HWND](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) in _OutputVarControl_ rather than the control\'s ClassNN.',
+                    '',
+                    'For example, to put both options into effect, the _Flag_ parameter must be set to 3.',
+                ],
+            },
+        ],
     },
     {
         upName: 'MOUSEMOVE',
@@ -4348,6 +4749,48 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'E',
             'S',
+        ],
+        _param: [
+            {
+                name: 'X',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates to move the mouse to, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates to move the mouse to, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Speed(0-100)',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'specify the speed to move the mouse in the range 0 (fastest) to 100 (slowest), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                    '',
+                    '**Note:** A speed of 0 will move the mouse instantly.',
+                ],
+            },
+            {
+                name: 'Relative',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the X and Y coordinates will be treated as absolute values. Otherwise, specify the following letter:',
+                    '',
+                    '**R:** The X1 and Y1 coordinates will be treated as offsets from the current mouse position. In other words, the cursor will be moved from its current position by X1 pixels to the right (left if negative) and Y1 pixels down (up if negative). Similarly, the X2 and Y2 coordinates will be treated as offsets from the X1 and Y1 coordinates. For example, the following would first move the cursor down and to the right by 5 pixels from its starting position, and then drag it from that position down and to the right by 10 pixels:',
+                    '',
+                    '```ahk',
+                    'MouseClickDrag, Left, 5, 5, 10, 10, , R',
+                    '```',
+                ],
+            },
         ],
     },
     {
@@ -4462,7 +4905,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'PIXELGETCOLOR',
         keyRawName: 'PixelGetColor',
-        body: 'PixelGetColor, ${1:OutputVar}, ${2:X}, ${3:Y} [, ${4|Alt,Slow,RGB|}]',
+        body: 'PixelGetColor, ${1:OutputVar}, ${2:X}, ${3:Y} [, ${4:Alt Slow RGB}]',
         doc: 'Retrieves the color of the pixel at the specified x,y coordinates.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm',
@@ -4480,6 +4923,46 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'E',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the color ID in hexadecimal blue-green-red (BGR) format. For example, the color purple is defined 0x800080 because it has an intensity of 80 for its blue and red components but an intensity of 00 for its green component.',
+                ],
+            },
+            {
+                name: 'X',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the pixel, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the pixel, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Mode(Alt Slow RGB)',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'This parameter may contain zero or more of the following words. If more than one word is present, separate each from the next with a space (e.g. `Alt RGB`).',
+                    '',
+                    '**Alt** [\\[v1.0.43.10+\\]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.10 and later") Uses an alternate method to retrieve the color, which should be used when the normal method produces invalid or inaccurate colors for a particular type of window. This method is about 10% slower than the normal method.',
+                    '',
+                    '**Slow** [\\[v1.0.43.10+\\]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.10 and later") Uses a more elaborate method to retrieve the color, which may work in certain full-screen applications when the other methods fail. This method is about three times slower than the normal method. Note: _Slow_ takes precedence over _Alt_, so there is no need to specify _Alt_ in this case.',
+                    '',
+                    '**RGB**: Retrieves the color in RGB vs. BGR format. In other words, the red and the blue components are swapped. This is useful for retrieving colors compatible with [WinSet](https://www.autohotkey.com/docs/v1/lib/WinSet.htm), [Gui](https://www.autohotkey.com/docs/v1/lib/Gui.htm), [Progress](https://www.autohotkey.com/docs/v1/lib/Progress.htm "Deprecated. New scripts should use Gui instead."), and [SplashImage](https://www.autohotkey.com/docs/v1/lib/Progress.htm "Deprecated. New scripts should use Gui instead.").',
+                ],
+            },
         ],
     },
     {
@@ -4503,6 +4986,95 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'E',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVarX',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the first pixel that matches _ColorID_ (if no match is found, the variables are made blank). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                    '',
+                    'Either or both of these parameters may be left blank, in which case ErrorLevel (see below) can be used to determine whether a match was found.',
+                ],
+            },
+            {
+                name: 'OutputVarY',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the first pixel that matches _ColorID_ (if no match is found, the variables are made blank). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                    '',
+                    'Either or both of these parameters may be left blank, in which case ErrorLevel (see below) can be used to determine whether a match was found.',
+                ],
+            },
+            {
+                name: 'X1',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the starting corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y1',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the starting corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'X2',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the ending corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'Y2',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates of the ending corner of the rectangle to search, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change that.',
+                ],
+            },
+            {
+                name: 'ColorID(0x0000)',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The decimal or hexadecimal color ID to search for, in Blue-Green-Red (BGR) format, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Color IDs can be determined using Window Spy (accessible from the tray menu) or via [PixelGetColor](https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm).',
+                    '',
+                    '```ahk',
+                    '; like',
+                    '0x9d6346',
+                    '```',
+                ],
+            },
+            {
+                name: 'Variation(0-255)',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'A number between 0 and 255 (inclusive) to indicate the allowed number of shades of variation in either direction for the intensity of the red, green, and blue components of the color (can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)). For example, if 2 is specified and ColorID is 0x444444, any color from 0x424242 to 0x464646 will be considered a match. This parameter is helpful if the color sought is not always exactly the same shade. If you specify 255 shades of variation, all colors will match. The default is 0 shades.',
+                ],
+            },
+            {
+                name: 'Mode(Fast RGB)',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'This parameter may contain the word Fast, RGB, or both (if both are present, separate them with a space; that is, _Fast RGB_).',
+                    '',
+                    '**Fast**: Uses a faster searching method that in most cases dramatically reduces the amount of CPU time used by the search. Although color depths as low as 8-bit (256-color) are supported, the fast mode performs much better in 24-bit or 32-bit color. If the screen\'s color depth is 16-bit or lower, the _Variation_ parameter might behave slightly differently in fast mode than it does in slow mode. Finally, the fast mode searches the screen row by row instead of column by column. Therefore, it might find a different pixel than that of the slow mode if there is more than one matching pixel.',
+                    '',
+                    '**Note:** The default _Slow_ mode is unusable on most modern systems due to an incompatibility with desktop composition, which causes it to be orders of magnitude slower.',
+                    '',
+                    '**RGB**: Causes _ColorID_ to be interpreted as an RGB value instead of BGR. In other words, the red and blue components are swapped.',
+                ],
+            },
         ],
     },
     {
@@ -4569,6 +5141,58 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'ProgressParam1',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'If the progress window already exists: If _Param1_ is the word OFF, the window is destroyed. If _Param1_ is the word SHOW, the window is shown if it is currently hidden.',
+                    '',
+                    'Otherwise, if _Param1_ is an pure number, its bar\'s position is changed to that value. If _Param1_ is blank, its bar position will be unchanged but its text will be updated to reflect any new strings provided in _SubText_, _MainText_, and _WinTitle_. In both of these modes, if the window doesn\'t yet exist, it will be created with the defaults for all options.',
+                    '',
+                    'If the progress window does not exist: A new progress window is created (replacing any old one), and _Param1_ is a string of zero or more options from the list below.',
+                ],
+            },
+            {
+                name: 'SubText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The text to display below the image or bar indicator. Although word-wrapping will occur, to begin a new line explicitly, use linefeed (\\`n). To set an existing window\'s text to be blank, specify [%A\\_Space%](https://www.autohotkey.com/docs/v1/Variables.htm#Space). For the purpose of auto-calculating the window\'s height, blank lines can be reserved in a way similar to _MainText_ below.',
+                ],
+            },
+            {
+                name: 'MainText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The text to display above the image or bar indicator (its font is semi-bold). Although word-wrapping will occur, to begin a new line explicitly, use linefeed (\\`n).',
+                    '',
+                    'If blank or omitted, no space will be reserved in the window for _MainText_. To reserve space for single line to be added later, or to set an existing window\'s text to be blank, specify [%A\\_Space%](https://www.autohotkey.com/docs/v1/Variables.htm#Space). To reserve extra lines beyond the first, append one or more linefeeds (\\`n).',
+                    '',
+                    'Once the height of _MainText_\'s control area has been set, it cannot be changed without recreating the window.',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The title of the window. If omitted and the window is being newly created, the title defaults to the name of the script (without path). If the **B** (borderless) option has been specified, there will be no visible title bar but the window can still be referred to by this title in commands such as [WinMove](https://www.autohotkey.com/docs/v1/lib/WinMove.htm).',
+                ],
+            },
+            {
+                name: 'FontName',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the font to use for both _MainText_ and _SubText_. The [font table](https://www.autohotkey.com/docs/v1/misc/FontsStandard.htm) lists the fonts included with the various versions of Windows. If unspecified or if the font cannot be found, the system\'s default GUI font will be used.',
+                    '',
+                    'See the options section below for how to change the size, weight, and color of the font.',
+                ],
+            },
         ],
     },
     {
@@ -4738,7 +5362,11 @@ export const LineCommand: TCommandElement[] = [
                 paramDoc: [
                     'The name of the output variable in which to store the newly launched program\'s unique [Process ID (PID)](https://www.autohotkey.com/docs/v1/lib/Process.htm). The variable will be made blank if the PID could not be determined, which usually happens if a system verb, document, or shortcut is launched rather than a direct executable file. RunWait also supports this parameter, though its _OutputVarPID_ must be checked in [another thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) (otherwise, the PID will be invalid because the process will have terminated by the time the line following RunWait executes).',
                     '',
-                    'After the Run command retrieves a PID, any windows to be created by the process might not exist yet. To wait for at least one window to be created, use `[WinWait](https://www.autohotkey.com/docs/v1/lib/WinWait.htm) ahk_pid %OutputVarPID%`.',
+                    'After the Run command retrieves a PID, any windows to be created by the process might not exist yet. To wait for at least one window to be created, use',
+                    '',
+                    '```ahk',
+                    'WinWait ahk_pid %OutputVarPID%',
+                    '```',
                 ],
             },
         ],
@@ -4838,7 +5466,11 @@ export const LineCommand: TCommandElement[] = [
                 paramDoc: [
                     'The name of the output variable in which to store the newly launched program\'s unique [Process ID (PID)](https://www.autohotkey.com/docs/v1/lib/Process.htm). The variable will be made blank if the PID could not be determined, which usually happens if a system verb, document, or shortcut is launched rather than a direct executable file. RunWait also supports this parameter, though its _OutputVarPID_ must be checked in [another thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) (otherwise, the PID will be invalid because the process will have terminated by the time the line following RunWait executes).',
                     '',
-                    'After the Run command retrieves a PID, any windows to be created by the process might not exist yet. To wait for at least one window to be created, use `[WinWait](https://www.autohotkey.com/docs/v1/lib/WinWait.htm) ahk_pid %OutputVarPID%`.',
+                    'After the Run command retrieves a PID, any windows to be created by the process might not exist yet. To wait for at least one window to be created, use',
+                    '',
+                    '```ahk',
+                    'WinWait ahk_pid %OutputVarPID%',
+                    '```',
                 ],
             },
         ],
@@ -5467,6 +6099,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'SplashImage',
         body:
             'SplashImage, [, ${1:ImageFile}, ${2:Options}, ${3:SubText}, ${4:MainText}, ${5:WinTitle}, ${6:FontName}]',
+        // SplashImage , ImageFile, Options, SubText, MainText, WinTitle, FontName
         doc: 'Creates or updates a window containing a progress bar or an image.',
         recommended: false,
         diag: EDiagCode.code813,
@@ -5482,6 +6115,72 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'ImageFile',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this is the word OFF, the window is destroyed. If this is the word SHOW, the window is shown if it is currently hidden.',
+                    '',
+                    'Otherwise, this is the file name of the BMP, GIF, or JPG image to display (to display other file formats such as PNG, TIF, and ICO, consider using the [Gui](https://www.autohotkey.com/docs/v1/lib/Gui.htm) command to create a window containing a picture control).',
+                    '',
+                    '[\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L59 "Applies to:',
+                    'AutoHotkey_L Revision 59 and later',
+                    'AutoHotkey v1.0.90.00 and later") Any image format supported by Gui may be used with SplashImage.',
+                    '',
+                    '_ImageFile_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. If _ImageFile_ and _Options_ are blank and the window already exists, its image will be unchanged but its text will be updated to reflect any new strings provided in _SubText_, _MainText_, and _WinTitle_.',
+                    '',
+                    'For newly created windows, if _ImageFile_ is blank or there is a problem loading the image, the window will be displayed without the picture.',
+                    '',
+                    '[\\[v1.1.23+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") A [bitmap or icon handle](https://www.autohotkey.com/docs/v1/misc/ImageHandles.htm) can be used instead of a filename. For example,',
+                ],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['A string of zero or more options from the list further below.'],
+            },
+            {
+                name: 'SubText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The text to display below the image or bar indicator. Although word-wrapping will occur, to begin a new line explicitly, use linefeed (\\`n). To set an existing window\'s text to be blank, specify [%A\\_Space%](https://www.autohotkey.com/docs/v1/Variables.htm#Space). For the purpose of auto-calculating the window\'s height, blank lines can be reserved in a way similar to _MainText_ below.',
+                ],
+            },
+            {
+                name: 'MainText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The text to display above the image or bar indicator (its font is semi-bold). Although word-wrapping will occur, to begin a new line explicitly, use linefeed (\\`n).',
+                    '',
+                    'If blank or omitted, no space will be reserved in the window for _MainText_. To reserve space for single line to be added later, or to set an existing window\'s text to be blank, specify [%A\\_Space%](https://www.autohotkey.com/docs/v1/Variables.htm#Space). To reserve extra lines beyond the first, append one or more linefeeds (\\`n).',
+                    '',
+                    'Once the height of _MainText_\'s control area has been set, it cannot be changed without recreating the window.',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The title of the window. If omitted and the window is being newly created, the title defaults to the name of the script (without path). If the **B** (borderless) option has been specified, there will be no visible title bar but the window can still be referred to by this title in commands such as [WinMove](https://www.autohotkey.com/docs/v1/lib/WinMove.htm).',
+                ],
+            },
+            {
+                name: 'FontName',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the font to use for both _MainText_ and _SubText_. The [font table](https://www.autohotkey.com/docs/v1/misc/FontsStandard.htm) lists the fonts included with the various versions of Windows. If unspecified or if the font cannot be found, the system\'s default GUI font will be used.',
+                    '',
+                    'See the options section below for how to change the size, weight, and color of the font.',
+                ],
+            },
         ],
     },
     {
@@ -6295,6 +6994,76 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm). See also the [known limitation](https://www.autohotkey.com/docs/v1/lib/WinMove.htm#limitation) below.',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON. See also the [known limitation](https://www.autohotkey.com/docs/v1/lib/WinMove.htm#limitation) below.',
+                ],
+            },
+            {
+                name: 'X',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates (in pixels) of the upper left corner of the target window\'s new location, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). The upper-left pixel of the screen is at 0, 0.',
+                    '',
+                    'If these are the only parameters given with the command, the [Last Found Window](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm#LastFoundWindow) will be used as the target window.',
+                    '',
+                    'Otherwise, X and/or Y can be omitted, in which case the current position is used.',
+                ],
+            },
+            {
+                name: 'Y',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The X and Y coordinates (in pixels) of the upper left corner of the target window\'s new location, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). The upper-left pixel of the screen is at 0, 0.',
+                    '',
+                    'If these are the only parameters given with the command, the [Last Found Window](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm#LastFoundWindow) will be used as the target window.',
+                    '',
+                    'Otherwise, X and/or Y can be omitted, in which case the current position is used.',
+                ],
+            },
+            {
+                name: 'Width',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The new width and height of the window (in pixels), which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If either is omitted, blank, or the word DEFAULT, the size in that dimension will not be changed.',
+                ],
+            },
+            {
+                name: 'Height',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The new width and height of the window (in pixels), which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If either is omitted, blank, or the word DEFAULT, the size in that dimension will not be changed.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINRESTORE',
@@ -6358,6 +7127,44 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'NewTitle',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The new title for the window. If this is the only parameter given, the [Last Found Window](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm#LastFoundWindow) will be used.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {

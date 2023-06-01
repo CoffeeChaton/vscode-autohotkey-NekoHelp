@@ -304,7 +304,6 @@ describe('check LineCommand ruler', () => {
             for (const [i, { sign, isOpt, name }] of _param.entries()) {
                 if (sign !== _paramType[i]) {
                     errList.push(`${keyRawName}, _param "${sign}" !== "${_paramType[i]}"`);
-                    break;
                 }
                 const ma0: RegExpMatchArray = maList[i];
                 const index: number = ma0.index ?? 0;
@@ -312,26 +311,31 @@ describe('check LineCommand ruler', () => {
 
                 if (opt !== isOpt) {
                     errList.push(`${keyRawName} , ${i} , isOpt`);
-                    break;
                 }
 
                 if (keyRawName === name) {
                     errList.push(`${keyRawName} , ${i} , param_name .EQ. cmd_name`);
-                    break;
                 }
 
                 if (!(/^[\w|]+$/u).test(name)) {
                     errList.push(`${keyRawName} , ${name} , param_name ruler not allow`);
-                    break;
                 }
             }
             iOK++;
         }
 
-        console.log('🚀 cmd sign OK ->', `${iOK} of ${iAll}`);
+        // eslint-disable-next-line no-magic-numbers
+        console.log('🚀 cmd sign OK ->', `${iOK} of ${iAll}, ${iOK * 100 / iAll}%`);
 
         expect(errList).toStrictEqual([
             'FileSelectFile , RootDir\\Filename , param_name ruler not allow',
+            'MouseClickDrag , Speed(0-100) , param_name ruler not allow',
+            'MouseGetPos , Flag(0|1|2|3) , param_name ruler not allow',
+            'MouseMove , Speed(0-100) , param_name ruler not allow',
+            'PixelGetColor , Mode(Alt Slow RGB) , param_name ruler not allow',
+            'PixelSearch , ColorID(0x0000) , param_name ruler not allow',
+            'PixelSearch , Variation(0-255) , param_name ruler not allow',
+            'PixelSearch , Mode(Fast RGB) , param_name ruler not allow',
         ]);
     });
 });
