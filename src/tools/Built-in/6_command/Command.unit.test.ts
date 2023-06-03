@@ -283,8 +283,6 @@ describe('check LineCommand ruler', () => {
     it('check: cmd sign _param !== _paramType', () => {
         expect.hasAssertions();
 
-        let iOK = 0;
-        let iAll = 0;
         const errList: string[] = [];
 
         for (const v of LineCommand) {
@@ -295,13 +293,16 @@ describe('check LineCommand ruler', () => {
                 _param,
             } = v;
 
-            iAll++;
-            if (_param === undefined) continue;
-
             const optCol: number = body.replaceAll(/\$\{\d+[|:][^}]+\}/gu, replacerSpace).indexOf('[');
             const maList: RegExpMatchArray[] = [...body.matchAll(/\$\{\d+[|:][^}]+\}/gu)];
 
-            for (const [i, { sign, isOpt, name }] of _param.entries()) {
+            for (const [i, vv] of _param.entries()) {
+                const {
+                    isOpt,
+                    name,
+                    paramDoc,
+                    sign,
+                } = vv;
                 if (sign !== _paramType[i]) {
                     errList.push(`${keyRawName}, _param "${sign}" !== "${_paramType[i]}"`);
                 }
@@ -320,12 +321,13 @@ describe('check LineCommand ruler', () => {
                 if (!(/^[\w|]+$/u).test(name)) {
                     errList.push(`${keyRawName} , ${name} , param_name ruler not allow`);
                 }
+                for (const s of paramDoc) {
+                    if (s.includes('`[')) {
+                        errList.push(`${keyRawName} , ${name} , doc not allow \`[`);
+                    }
+                }
             }
-            iOK++;
         }
-
-        // eslint-disable-next-line no-magic-numbers
-        console.log('🚀 cmd sign OK ->', `${iOK} of ${iAll}, ${iOK * 100 / iAll}%`);
 
         expect(errList).toStrictEqual([
             'FileSelectFile , RootDir\\Filename , param_name ruler not allow',
@@ -336,6 +338,21 @@ describe('check LineCommand ruler', () => {
             'PixelSearch , ColorID(0x0000) , param_name ruler not allow',
             'PixelSearch , Variation(0-255) , param_name ruler not allow',
             'PixelSearch , Mode(Fast RGB) , param_name ruler not allow',
+            'RegDelete , HKLM|HKU|HKCU|HKCR|HKCC\\SubKey , param_name ruler not allow',
+            'RegRead , HKLM|HKU|HKCU|HKCR|HKCC\\SubKey , param_name ruler not allow',
+            'RegWrite , HKLM|HKU|HKCU|HKCR|HKCC\\SubKey , param_name ruler not allow',
+            'SendLevel , Level(0-100) , param_name ruler not allow',
+            'SetBatchLines , -1|20ms|LineCount , param_name ruler not allow',
+            'SetDefaultMouseSpeed , Speed(0-100) , param_name ruler not allow',
+            'SetFormat , Format(H|HEX|D) , param_name ruler not allow',
+            'SoundBeep , Frequency(37-32767) , param_name ruler not allow',
+            'StringGetPos , Occurrence(Ln|Rn) , param_name ruler not allow',
+            'ToolTip , WhichToolTip(1-20) , param_name ruler not allow',
+            // part 2 is ...
+            'WinGetTitle , 1 , isOpt',
+            'WinGetTitle , 2 , isOpt',
+            'WinGetTitle , 3 , isOpt',
+            'WinGetTitle , 4 , isOpt',
         ]);
     });
 });

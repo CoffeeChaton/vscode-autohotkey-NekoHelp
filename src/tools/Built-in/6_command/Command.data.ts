@@ -34,7 +34,7 @@ export type TCommandElement = Readonly<{
     //
     diag?: TAllowDiagCode,
     _DevNote?: readonly string[],
-    _param?: TCommandParams[],
+    _param: readonly TCommandParams[],
 
     /**
      * # part 1 of doc
@@ -2655,7 +2655,7 @@ export const LineCommand: TCommandElement[] = [
                     '',
                     '**Note**: This might result in the last line ending in a naked carriage return (\\`r) rather than \\`r\\`n.',
                     '',
-                    '**\\*t**: Replaces any/all occurrences of carriage return & linefeed (\\`r\\`n) with linefeed (\\`n). However, this translation reduces performance and is usually not necessary. For example, text containing \\`r\\`n is already in the right format to be added to a [Gui Edit control](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Edit). Similarly, [FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm) detects the presence of \\`r\\`n when it opens a new file; it knows to write each \\`r\\`n as-is rather than translating it to \\`r\\`r\\`n. Finally, the following [parsing loop](https://www.autohotkey.com/docs/v1/lib/LoopParse.htm) will work correctly regardless of whether each line ends in \\`r\\`n or just \\`n: ``[Loop, parse](https://www.autohotkey.com/docs/v1/lib/LoopParse.htm), MyFileContents, `n, `r``.',
+                    '**\\*t**: Replaces any/all occurrences of carriage return & linefeed (\\`r\\`n) with linefeed (\\`n). However, this translation reduces performance and is usually not necessary. For example, text containing \\`r\\`n is already in the right format to be added to a [Gui Edit control](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Edit). Similarly, [FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm) detects the presence of \\`r\\`n when it opens a new file; it knows to write each \\`r\\`n as-is rather than translating it to \\`r\\`r\\`n. Finally, the following [parsing loop](https://www.autohotkey.com/docs/v1/lib/LoopParse.htm) will work correctly regardless of whether each line ends in \\`r\\`n or just \\`n: `Loop, parse, MyFileContents, `n, `r``.',
                     '',
                     '**\\*Pnnn**: [\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 "Applies to:',
                     'AutoHotkey_L Revision 42 and later',
@@ -4528,7 +4528,7 @@ export const LineCommand: TCommandElement[] = [
                     '',
                     '**Note:** A speed of 0 will move the mouse instantly.',
                     '',
-                    '_Speed_ is ignored for [SendInput/Play modes](https://www.autohotkey.com/docs/v1/lib/SendMode.htm); they move the mouse instantaneously (though [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) has a mode that applies to SendPlay). To visually move the mouse more slowly -- such as a script that performs a demonstration for an audience -- use `[SendEvent](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendEvent) {Click 100 200}` or `[SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) Event` (optionally in conjuction with [BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm)).',
+                    '_Speed_ is ignored for [SendInput/Play modes](https://www.autohotkey.com/docs/v1/lib/SendMode.htm); they move the mouse instantaneously (though [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) has a mode that applies to SendPlay). To visually move the mouse more slowly -- such as a script that performs a demonstration for an audience -- use `SendEvent, {Click 100 200}` or `SendMode Event` (optionally in conjuction with [BlockInput](https://www.autohotkey.com/docs/v1/lib/BlockInput.htm)).',
                 ],
             },
             {
@@ -4875,6 +4875,16 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'label',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, any previously registered subroutine is unregistered. Otherwise, specify the [label](https://www.autohotkey.com/docs/v1/misc/Labels.htm) of the subroutine whose contents will be executed (as a new [thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm)) when the script exits by any means.',
+                ],
+            },
+        ],
     },
     {
         upName: 'OUTPUTDEBUG',
@@ -5101,6 +5111,70 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'Msg',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The message number to send, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). See the [message list](https://www.autohotkey.com/docs/v1/misc/SendMessageList.htm) to determine the number.',
+                ],
+            },
+            {
+                name: 'wParam',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The first component of the message, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If blank or omitted, 0 will be sent.',
+                ],
+            },
+            {
+                name: 'lParam',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The second component of the message, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If blank or omitted, 0 will be sent.',
+                ],
+            },
+            {
+                name: 'Control',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is blank or omitted, the message will be sent directly to the target window rather than one of its controls. Otherwise, this parameter can be either ClassNN (the classname and instance number of the control) or the control\'s text, both of which can be determined via Window Spy. When using text, the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
+                    '',
+                    'To operate upon a control\'s HWND (window handle), leave the _Control_ parameter blank and specify `ahk_id %ControlHwnd%` for the _WinTitle_ parameter (this also works on hidden controls even when [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm) is Off). The HWND of a control is typically retrieved via [ControlGet Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd), [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), or [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm).',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'PROCESS',
@@ -5121,6 +5195,41 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'Exist|Close|List|Priority|Wait|WaitClose',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'For _SubCommand_, specify one of the following:',
+                    '',
+                    '- [Exist](https://www.autohotkey.com/docs/v1/lib/Process.htm#Exist): Checks whether the specified process is present.',
+                    '- [Close](https://www.autohotkey.com/docs/v1/lib/Process.htm#Close): Forces the first matching process to close.',
+                    '- [List](https://www.autohotkey.com/docs/v1/lib/Process.htm#List): Not yet implemented.',
+                    '- [Priority](https://www.autohotkey.com/docs/v1/lib/Process.htm#Priority): Changes the priority level of the first matching process.',
+                    '- [Wait](https://www.autohotkey.com/docs/v1/lib/Process.htm#Wait): Waits for the specified process to exist.',
+                    '- [WaitClose](https://www.autohotkey.com/docs/v1/lib/Process.htm#WaitClose): Waits for all matching processes to close.',
+                ],
+            },
+            {
+                name: 'PID_or_Name',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'This parameter can be either a number (the PID) or a process name as described below. It can also be left blank to change the priority of the script itself.',
+                    '',
+                    '**PID:** The Process ID, which is a number that uniquely identifies one specific process (this number is valid only during the lifetime of that process). The PID of a newly launched process can be determined via the [Run](https://www.autohotkey.com/docs/v1/lib/Run.htm) command. Similarly, the PID of a window can be determined with [WinGet](https://www.autohotkey.com/docs/v1/lib/WinGet.htm). The Process command itself can also be used to discover a PID.',
+                    '',
+                    '**Name:** The name of a process is usually the same as its executable (without path), e.g. notepad.exe or winword.exe. Since a name might match multiple running processes, only the first process will be operated upon. The name is not case sensitive.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
         ],
     },
     {
@@ -5255,6 +5364,26 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'HKLM|HKU|HKCU|HKCR|HKCC\\SubKey',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The full name of the registry key.',
+                    '',
+                    'This must start with HKEY\\_LOCAL\\_MACHINE, HKEY\\_USERS, HKEY\\_CURRENT\\_USER, HKEY\\_CLASSES\\_ROOT, or HKEY\\_CURRENT\\_CONFIG (or the abbreviations for each of these, such as HKLM). To access a [remote registry](https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#remote), prepend the computer name and a colon (or [\\[in v1.1.21+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.21.00 "Applies to AutoHotkey v1.1.21 and later") a slash), as in this example:',
+                ],
+            },
+            {
+                name: 'ValueName',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the value to delete. **If omitted, the entire _KeyName_ will be deleted**. To delete _KeyName_\\s default value -- which is the value displayed as "(Default)" by RegEdit -- use the phrase `AHK_DEFAULT` for this parameter.',
+                ],
+            },
+        ],
     },
     {
         upName: 'REGREAD',
@@ -5270,6 +5399,34 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the retrieved value. If the value cannot be retrieved, the variable is made blank and [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to 1.',
+                ],
+            },
+            {
+                name: 'HKLM|HKU|HKCU|HKCR|HKCC\\SubKey',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The full name of the registry key.',
+                    '',
+                    'This must start with HKEY\\_LOCAL\\_MACHINE, HKEY\\_USERS, HKEY\\_CURRENT\\_USER, HKEY\\_CLASSES\\_ROOT, or HKEY\\_CURRENT\\_CONFIG (or the abbreviations for each of these, such as HKLM). To access a [remote registry](https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#remote), prepend the computer name and a colon (or [\\[in v1.1.21+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.21.00 "Applies to AutoHotkey v1.1.21 and later") a slash), as in this example: `\\\\workstation01:HKEY_LOCAL_MACHINE`',
+                ],
+            },
+            {
+                name: 'ValueName',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the value to retrieve. If omitted, _KeyName_\'s default value will be retrieved, which is the value displayed as "(Default)" by RegEdit. If there is no default value (that is, if RegEdit displays "value not set"), _OutputVar_ is made blank and ErrorLevel is set to 1.',
+                ],
+            },
         ],
     },
     {
@@ -5288,6 +5445,42 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'REG_SZ|REG_EXPAND_SZ|REG_MULTI_SZ|REG_DWORD|REG_BINARY',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Must be either REG\\_SZ, REG\\_EXPAND\\_SZ, REG\\_MULTI\\_SZ, REG\\_DWORD, or REG\\_BINARY.',
+                ],
+            },
+            {
+                name: 'HKLM|HKU|HKCU|HKCR|HKCC\\SubKey',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The full name of the registry key.',
+                    '',
+                    'This must start with HKEY\\_LOCAL\\_MACHINE, HKEY\\_USERS, HKEY\\_CURRENT\\_USER, HKEY\\_CLASSES\\_ROOT, or HKEY\\_CURRENT\\_CONFIG (or the abbreviations for each of these, such as HKLM). To access a [remote registry](https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#remote), prepend the computer name and a colon (or [\\[in v1.1.21+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.21.00 "Applies to AutoHotkey v1.1.21 and later") a slash), as in this example: `\\\\workstation01:HKEY_LOCAL_MACHINE`',
+                ],
+            },
+            {
+                name: 'ValueName',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the value that will be written to. If blank or omitted, _KeyName_\'s default value will be used, which is the value displayed as "(Default)" by RegEdit.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The value to be written. If omitted, it will default to an empty (blank) string, or 0, depending on _ValueType_. If the text is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
         ],
     },
     {
@@ -5393,6 +5586,30 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'User',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this and the other parameters are all omitted, the RunAs feature will be turned off, which restores [Run](https://www.autohotkey.com/docs/v1/lib/Run.htm) and [RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm) to their default behavior. Otherwise, this is the username under which new processes will be created.',
+                ],
+            },
+            {
+                name: 'Password',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['_User_\'s password.'],
+            },
+            {
+                name: 'Domain',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    '_User_\'s domain. To use a local account, leave this blank. If that fails to work, try using @YourComputerName.',
+                ],
+            },
+        ],
     },
     {
         upName: 'RUNWAIT',
@@ -5492,6 +5709,33 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'Keys',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The sequence of keys to send. As with other commands, the comma in front of the first parameter is optional.',
+                    '',
+                    '| Symbol | Key       | Press          | Release      |',
+                    '| :----- | :-------- | -------------- | ------------ |',
+                    '| ^      | `{Ctrl`}  | `{Ctrl down`}  | `{Ctrl up`}  |',
+                    '| +      | `{Shift`} | `{Shift down`} | `{Shift up`} |',
+                    '| !      | `{Alt`}   | `{Alt down`}   | `{Alt up`}   |',
+                    '| #      | `{LWin`}  | `{LWin down`}  | `{LWin up`}  |',
+                    '| #      | `{RWin`}  | `{RWin down`}  | `{RWin up`}  |',
+                    '',
+                    '```ahk',
+                    ';exp',
+                    'Send, {b down}{b up}',
+                    'Send, {TAB down}{TAB up}',
+                    'Send, {Up down} ; Press down the up-arrow key.',
+                    'Sleep, 1000 ;     Keep it down for one second.',
+                    'Send, {Up up} ;   Release the up-arrow key.',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'SENDEVENT',
@@ -5511,6 +5755,33 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+        ],
+        _param: [
+            {
+                name: 'Keys',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The sequence of keys to send. As with other commands, the comma in front of the first parameter is optional.',
+                    '',
+                    '| Symbol | Key       | Press          | Release      |',
+                    '| :----- | :-------- | -------------- | ------------ |',
+                    '| ^      | `{Ctrl`}  | `{Ctrl down`}  | `{Ctrl up`}  |',
+                    '| +      | `{Shift`} | `{Shift down`} | `{Shift up`} |',
+                    '| !      | `{Alt`}   | `{Alt down`}   | `{Alt up`}   |',
+                    '| #      | `{LWin`}  | `{LWin down`}  | `{LWin up`}  |',
+                    '| #      | `{RWin`}  | `{RWin down`}  | `{RWin up`}  |',
+                    '',
+                    '```ahk',
+                    ';exp',
+                    'Send, {b down}{b up}',
+                    'Send, {TAB down}{TAB up}',
+                    'Send, {Up down} ; Press down the up-arrow key.',
+                    'Sleep, 1000 ;     Keep it down for one second.',
+                    'Send, {Up up} ;   Release the up-arrow key.',
+                    '```',
+                ],
+            },
         ],
     },
     {
@@ -5532,6 +5803,33 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'Keys',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The sequence of keys to send. As with other commands, the comma in front of the first parameter is optional.',
+                    '',
+                    '| Symbol | Key       | Press          | Release      |',
+                    '| :----- | :-------- | -------------- | ------------ |',
+                    '| ^      | `{Ctrl`}  | `{Ctrl down`}  | `{Ctrl up`}  |',
+                    '| +      | `{Shift`} | `{Shift down`} | `{Shift up`} |',
+                    '| !      | `{Alt`}   | `{Alt down`}   | `{Alt up`}   |',
+                    '| #      | `{LWin`}  | `{LWin down`}  | `{LWin up`}  |',
+                    '| #      | `{RWin`}  | `{RWin down`}  | `{RWin up`}  |',
+                    '',
+                    '```ahk',
+                    ';exp',
+                    'Send, {b down}{b up}',
+                    'Send, {TAB down}{TAB up}',
+                    'Send, {Up down} ; Press down the up-arrow key.',
+                    'Sleep, 1000 ;     Keep it down for one second.',
+                    'Send, {Up up} ;   Release the up-arrow key.',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'SENDLEVEL',
@@ -5545,6 +5843,16 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'E',
+        ],
+        _param: [
+            {
+                name: 'Level(0-100)',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'An integer between 0 and 100, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
         ],
     },
     {
@@ -5569,6 +5877,80 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'Msg',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The message number to send, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). See the [message list](https://www.autohotkey.com/docs/v1/misc/SendMessageList.htm) to determine the number.',
+                ],
+            },
+            {
+                name: 'wParam',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The first component of the message, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If blank or omitted, 0 will be sent.',
+                ],
+            },
+            {
+                name: 'lParam',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The second component of the message, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If blank or omitted, 0 will be sent.',
+                ],
+            },
+            {
+                name: 'Control',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is blank or omitted, the message will be sent directly to the target window rather than one of its controls. Otherwise, this parameter can be either ClassNN (the classname and instance number of the control) or the control\'s text, both of which can be determined via Window Spy. When using text, the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
+                    '',
+                    'To operate upon a control\'s HWND (window handle), leave the _Control_ parameter blank and specify `ahk_id %ControlHwnd%` for the _WinTitle_ parameter (this also works on hidden controls even when [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm) is Off). The HWND of a control is typically retrieved via [ControlGet Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd), [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), or [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm).',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+            {
+                name: 'Timeout',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    '[\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 "Applies to:',
+                    'AutoHotkey_L Revision 42 and later',
+                    'AutoHotkey v1.0.90.00 and later") The maximum number of milliseconds to wait for the target window to process the message. If omitted, it defaults to 5000 (milliseconds), which is also the default behaviour in older versions of AutoHotkey which did not support this parameter. If the message is not processed within this time, the command finishes and sets ErrorLevel to the word FAIL. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+        ],
     },
     {
         upName: 'SENDMODE',
@@ -5582,6 +5964,34 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+        ],
+        _param: [
+            {
+                name: 'Event|Input|Play|InputThenPlay|Play',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Mode',
+                    '',
+                    'Specify one of the following words:',
+                    '',
+                    '**Event**: This is the starting default used by all scripts. It uses the [SendEvent](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendEvent) method for [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm), [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).',
+                    '',
+                    '**Input**: Switches to the [SendInput](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendInput) method for [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm), [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm). Known limitations:',
+                    '',
+                    '- Windows Explorer ignores SendInput\'s simulation of certain navigational hotkeys such as <kbd>Alt</kbd>+<kbd>←</kbd>. To work around this, use either `SendEvent, !{Left}` or `SendInput, {Backspace}`.',
+                    '',
+                    '**InputThenPlay** [\\[v1.0.43.02+\\]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.02 and later") Same as above except that rather than falling back to Event mode when SendInput is [unavailable](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendInputUnavail), it reverts to Play mode (below). This also causes the [SendInput command](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendInput) itself to revert to Play mode when SendInput is unavailable.',
+                    '',
+                    '**Play**: Switches to the [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlay) method for [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm), [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm). Known limitations:',
+                    '',
+                    '- Characters that do not exist in the current keyboard layout (such as Ô in English) cannot be sent. To work around this, use [SendEvent](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendEvent).',
+                    '- Simulated mouse dragging might have no effect in RichEdit controls (and possibly others) such as those of WordPad and Metapad. To use an alternate mode for a particular drag, follow this example: `SendEvent, {Click 6 52 Down}{Click 45 52 Up}`.',
+                    '- Simulated mouse wheel rotation produces movement in only one direction (usually downward, but upward in some applications). Also, wheel rotation might have no effect in applications such as MS Word and Notepad. To use an alternate mode for a particular rotation, follow this example: `SendEvent, {WheelDown 5}`.',
+                    '- When using SendMode, Play` in the auto-execute section (top part of the script), all remapped keys are affected and might lose some of their functionality. See [SendPlay remapping limitations](https://www.autohotkey.com/docs/v1/misc/Remap.htm#SendPlay) for details.',
+                    '- SendPlay does not trigger AutoHotkey\'s hotkeys or hotstrings, or global hotkeys registered by other programs or the OS.',
+                ],
+            },
         ],
     },
     {
@@ -5603,6 +6013,33 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'Keys',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The sequence of keys to send. As with other commands, the comma in front of the first parameter is optional.',
+                    '',
+                    '| Symbol | Key       | Press          | Release      |',
+                    '| :----- | :-------- | -------------- | ------------ |',
+                    '| ^      | `{Ctrl`}  | `{Ctrl down`}  | `{Ctrl up`}  |',
+                    '| +      | `{Shift`} | `{Shift down`} | `{Shift up`} |',
+                    '| !      | `{Alt`}   | `{Alt down`}   | `{Alt up`}   |',
+                    '| #      | `{LWin`}  | `{LWin down`}  | `{LWin up`}  |',
+                    '| #      | `{RWin`}  | `{RWin down`}  | `{RWin up`}  |',
+                    '',
+                    '```ahk',
+                    ';exp',
+                    'Send, {b down}{b up}',
+                    'Send, {TAB down}{TAB up}',
+                    'Send, {Up down} ; Press down the up-arrow key.',
+                    'Sleep, 1000 ;     Keep it down for one second.',
+                    'Send, {Up up} ;   Release the up-arrow key.',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'SENDRAW',
@@ -5623,6 +6060,33 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'Keys',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The sequence of keys to send. As with other commands, the comma in front of the first parameter is optional.',
+                    '',
+                    '| Symbol | Key       | Press          | Release      |',
+                    '| :----- | :-------- | -------------- | ------------ |',
+                    '| ^      | `{Ctrl`}  | `{Ctrl down`}  | `{Ctrl up`}  |',
+                    '| +      | `{Shift`} | `{Shift down`} | `{Shift up`} |',
+                    '| !      | `{Alt`}   | `{Alt down`}   | `{Alt up`}   |',
+                    '| #      | `{LWin`}  | `{LWin down`}  | `{LWin up`}  |',
+                    '| #      | `{RWin`}  | `{RWin down`}  | `{RWin up`}  |',
+                    '',
+                    '```ahk',
+                    ';exp',
+                    'Send, {b down}{b up}',
+                    'Send, {TAB down}{TAB up}',
+                    'Send, {Up down} ; Press down the up-arrow key.',
+                    'Sleep, 1000 ;     Keep it down for one second.',
+                    'Send, {Up up} ;   Release the up-arrow key.',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETBATCHLINES',
@@ -5639,11 +6103,27 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: '-1|20ms|LineCount',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    '20ms',
+                    '',
+                    '(The 20ms is just an example.) If the value ends in ms, it indicates how often the script should sleep (each sleep is 10 ms long). In the following example, the script will sleep for 10ms every time it has run for 20ms: `SetBatchLines, 20ms`.',
+                    '',
+                    'LineCount',
+                    '',
+                    'The number of script lines to execute prior to sleeping for 10ms. The value can be as high as 9223372036854775807. Also, this mode is mutually exclusive of the 20ms mode in the previous paragraph; that is, only one of them can be in effect at a time.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETCAPSLOCKSTATE',
         keyRawName: 'SetCapsLockState',
-        body: 'SetCapsLockState, ${1|On,Off,AlwaysOn,AlwaysOff|}',
+        body: 'SetCapsLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
         doc: 'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetNumScrollCapsLockState.htm',
@@ -5655,11 +6135,31 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'On|Off|AlwaysOn|AlwaysOff',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is omitted, the AlwaysOn/Off attribute of the key is removed (if present). Otherwise, specify one of the following words:',
+                    '',
+                    '**On**: Turns on the key and removes the AlwaysOn/Off attribute of the key (if present).',
+                    '',
+                    '**Off**: Turns off the key and removes the AlwaysOn/Off attribute of the key (if present).',
+                    '',
+                    '**AlwaysOn**: Forces the key to stay on permanently.',
+                    '',
+                    '**AlwaysOff**: Forces the key to stay off permanently.',
+                    '',
+                    '[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1 and 0 may be used in place of On and Off, respectively.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETCONTROLDELAY',
         keyRawName: 'SetControlDelay',
-        body: 'SetControlDelay, ${1:Delay}',
+        body: 'SetControlDelay, ${1:Delay_ms}',
         doc: 'Sets the delay that will occur after each control-modifying command.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetControlDelay.htm',
@@ -5671,6 +6171,16 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'E',
+        ],
+        _param: [
+            {
+                name: 'Delay_ms',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'Time in milliseconds, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Use -1 for no delay at all and 0 for the smallest possible delay. If unset, the default delay is 20.',
+                ],
+            },
         ],
     },
     {
@@ -5685,6 +6195,18 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'E',
+        ],
+        _param: [
+            {
+                name: 'Speed(0-100)',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The speed to move the mouse in the range 0 (fastest) to 100 (slowest). This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                    '',
+                    '**Note**: A speed of 0 will move the mouse instantly.',
+                ],
+            },
         ],
     },
     {
@@ -5703,6 +6225,24 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'O',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the [variable](https://www.autohotkey.com/docs/v1/Variables.htm) in which to store _Value_.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The string or number to store. If the string is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
         ],
     },
     {
@@ -5734,11 +6274,41 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'IntegerFast|FloatFast|Integer|Float',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'NumberType',
+                    '',
+                    'Must be either IntegerFast, FloatFast, Integer, or Float (the two fast modes require [\\[v1.0.48+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.48.00 "Applies to AutoHotkey v1.0.48 and later"); see [remarks](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm#Fast)).',
+                ],
+            },
+            {
+                name: 'Format(H|HEX|D)',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'For _NumberType_ Integer or IntegerFast, specify H or HEX for hexadecimal, or D for decimal. Hexadecimal numbers all start with the prefix 0x (e.g. 0xFF). [\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 "Applies to:',
+                    'AutoHotkey_L Revision 42 and later',
+                    'AutoHotkey v1.0.90.00 and later") Hexadecimal integers are formatted with digits A-F in lowercase when this parameter is `h` and uppercase when it is `H`.',
+                    '',
+                    'For _NumberType_ Float or FloatFast, specify `TotalWidth**.**DecimalPlaces` (e.g. `0.6`). [\\[v1.0.46.11+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.46.11 "Applies to AutoHotkey v1.0.46.11 and later"): The letter "e" may be appended to produce scientific notation; e.g. `0.6e` or `0.6E` (using uppercase produces an uppercase E in each number instead of lowercase). Note: In AutoHotkey 1.x, scientific notation must include a decimal point; e.g. `1.0e1` is valid but not `1e1`.',
+                    '',
+                    '_TotalWidth_ is typically 0 to indicate that number should not have any blank or zero padding. If a higher value is used, numbers will be padded with spaces or zeroes (see [remarks](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm#Float)) to make them that wide.',
+                    '',
+                    '_DecimalPlaces_ is the number of decimal places to display (rounding will occur). If blank or zero, neither a decimal portion nor a decimal point will be displayed, that is, floating point results are displayed as integers rather than a floating point number. The starting default is 6.',
+                    '',
+                    'Padding: If _TotalWidth_ is high enough to cause padding, spaces will be added on the left side; that is, each number will be right-justified. To use left-justification instead, precede _TotalWidth_ with a minus sign. To pad with zeroes instead of spaces, precede _TotalWidth_ with a zero (e.g. `06.2`).',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETKEYDELAY',
         keyRawName: 'SetKeyDelay',
-        body: 'SetKeyDelay, ${1:Delay} [, ${2:PressDuration}, ${3:Play}]',
+        body: 'SetKeyDelay [, ${1:Delay_ms} , ${2:PressDuration}, ${3:Play}]',
         doc: 'Sets the delay that will occur after each keystroke sent by [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [ControlSend](https://www.autohotkey.com/docs/v1/lib/ControlSend.htm).',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm',
@@ -5750,6 +6320,40 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'E',
             'S',
+        ],
+        _param: [
+            {
+                name: 'Delay_ms',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'Time in milliseconds, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Use -1 for no delay at all and 0 for the smallest possible delay (however, if the _Play_ parameter is present, both 0 and -1 produce no delay). Leave this parameter blank to retain the current _Delay_.',
+                    '',
+                    'If SetKeyDelay is never used by a script, the default _Delay_ for the tradional SendEvent mode is 10. For [SendPlay mode](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail), the default _Delay_ is -1. The default _PressDuration_ (below) is -1 for both modes.',
+                ],
+            },
+            {
+                name: 'PressDuration',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'Certain games and other specialized applications may require a delay inside each keystroke; that is, after the press of the key but before its release.',
+                    '',
+                    'Use -1 for no delay at all (default) and 0 for the smallest possible delay (however, if the _Play_ parameter is present, both 0 and -1 produce no delay). Omit this parameter to leave the current _PressDuration_ unchanged.',
+                    '',
+                    '**Note**: _PressDuration_ also produces a delay after any change to the modifier key state (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Shift</kbd>, and <kbd>Win</kbd>) needed to support the keys being sent.',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Play',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The word _Play_ applies the above settings to the [SendPlay mode](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail) rather than the traditional SendEvent mode. If a script never uses this parameter, the delay is always -1/-1 for SendPlay.',
+                ],
+            },
         ],
     },
     {
@@ -5766,11 +6370,29 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'S',
         ],
+        _param: [
+            {
+                name: 'Delay_ms',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'Time in milliseconds, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Use -1 for no delay at all and 0 for the smallest possible delay (however, if the _Play_ parameter is present, both 0 and -1 produce no delay). If unset, the default delay is 10 for the traditional SendEvent mode and -1 for [SendPlay mode](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail).',
+                ],
+            },
+            {
+                name: 'Play',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The word _Play_ applies the delay to the [SendPlay mode](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail) rather than the traditional Send/SendEvent mode. If a script never uses this parameter, the delay is always -1 for SendPlay.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETNUMLOCKSTATE',
         keyRawName: 'SetNumLockState',
-        body: 'SetNumLockState, ${1|On,Off,AlwaysOn,AlwaysOff|}',
+        body: 'SetNumLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
         doc: 'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetNumScrollCapsLockState.htm',
@@ -5783,6 +6405,26 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+        ],
+        _param: [
+            {
+                name: 'On|Off|AlwaysOn|AlwaysOff',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is omitted, the AlwaysOn/Off attribute of the key is removed (if present). Otherwise, specify one of the following words:',
+                    '',
+                    '**On**: Turns on the key and removes the AlwaysOn/Off attribute of the key (if present).',
+                    '',
+                    '**Off**: Turns off the key and removes the AlwaysOn/Off attribute of the key (if present).',
+                    '',
+                    '**AlwaysOn**: Forces the key to stay on permanently.',
+                    '',
+                    '**AlwaysOff**: Forces the key to stay off permanently.',
+                    '',
+                    '[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1 and 0 may be used in place of On and Off, respectively.',
+                ],
+            },
         ],
     },
     {
@@ -5801,11 +6443,23 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: '32|64|Default',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Specify **32** to view the registry as a 32-bit application would, or **64** to view the registry as a 64-bit application would.',
+                    '',
+                    'Specify the word **Default** to restore normal behaviour.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETSCROLLLOCKSTATE',
         keyRawName: 'SetScrollLockState',
-        body: 'SetScrollLockState, ${1|On,Off,AlwaysOn,AlwaysOff|}',
+        body: 'SetScrollLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
         doc: 'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetNumScrollCapsLockState.htm',
@@ -5818,6 +6472,26 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'S',
+        ],
+        _param: [
+            {
+                name: 'On|Off|AlwaysOn|AlwaysOff',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is omitted, the AlwaysOn/Off attribute of the key is removed (if present). Otherwise, specify one of the following words:',
+                    '',
+                    '**On**: Turns on the key and removes the AlwaysOn/Off attribute of the key (if present).',
+                    '',
+                    '**Off**: Turns off the key and removes the AlwaysOn/Off attribute of the key (if present).',
+                    '',
+                    '**AlwaysOn**: Forces the key to stay on permanently.',
+                    '',
+                    '**AlwaysOff**: Forces the key to stay off permanently.',
+                    '',
+                    '[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1 and 0 may be used in place of On and Off, respectively.',
+                ],
+            },
         ],
     },
     {
@@ -5835,11 +6509,27 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'On|Off',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'One of the following values:',
+                    '',
+                    '**On**: This is the initial setting for all scripts: <kbd>CapsLock</kbd> will be restored to its former value if [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) needed to change it temporarily for its operation.',
+                    '',
+                    '**Off**: The state of <kbd>CapsLock</kbd> is not changed at all. As a result, [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) will invert the case of the characters if <kbd>CapsLock</kbd> happens to be ON during the operation.',
+                    '',
+                    '[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1 and 0 may be used in place of On and Off, respectively.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETTIMER',
         keyRawName: 'SetTimer',
-        body: 'SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off|}, ${3:Priority_int}]',
+        body: 'SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off,Delete,Default|}, ${3:Priority_int}]',
         doc: 'Causes a subroutine to be launched automatically and repeatedly at a specified time interval.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetTimer.htm',
@@ -5870,6 +6560,60 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'Label_or_fnName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the [label](https://www.autohotkey.com/docs/v1/misc/Labels.htm) or [hotkey label](https://www.autohotkey.com/docs/v1/Hotkeys.htm) to which to jump, which causes the commands beneath _Label_ to be executed until a [Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) or [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) is encountered. As with the parameters of almost all other commands, _Label_ can be a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) reference such as %MyLabel%, in which case the name stored in the variable is used as the target.',
+                    '',
+                    '[\\[v1.1.01+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later") If _Label_ is omitted, [A\\_ThisLabel](https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel) will be used. For example, `SetTimer,, Off` can be used inside a timer subroutine to turn off the timer, while `SetTimer](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm),, 1000` would either update the current timer\'s _Period_ or set a new timer using the label which is currently running. [\\[v1.1.24+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.24.00 "Applies to AutoHotkey v1.1.24 and later") If A\\_ThisLabel is empty but the current thread was launched by a timer, that timer is used. This is useful for timers which launch functions or function objects.',
+                    '',
+                    '[\\[v1.1.20+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 "Applies to AutoHotkey v1.1.20 and later") If not a valid label name, this parameter can be the name of a function whose parameter list has no mandatory parameters (see the [function example](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#ExFunction)), or a single variable reference containing a [function object](https://www.autohotkey.com/docs/v1/misc/Functor.htm). For example, `SetTimer, %FuncObj%, 1000` or `SetTimer, % FuncObj, 1000`. Other expressions which return objects are currently unsupported. See the [class example](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#ExampleClass) for more details.',
+                    '',
+                    '**Note:** [\\[v1.1.24+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.24.00 "Applies to AutoHotkey v1.1.24 and later") Passing an empty variable or an expression which results in an empty value is considered an error. This parameter must be either given a non-empty value or completely omitted.',
+                ],
+            },
+            {
+                name: 'Period|On|Off|Delete|Default',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'PeriodOnOffDelete',
+                    '',
+                    '**On**: Re-enables a previously disabled timer at its former _period_. If the timer doesn\'t exist, it is created (with a default period of 250). The timer is also [reset](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#reset). If the timer exists but was previously set to [run-only-once mode](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#once), it will again run only once.',
+                    '',
+                    '**Off**: Disables an existing timer.',
+                    '',
+                    '**Delete** [\\[v1.1.20+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 "Applies to AutoHotkey v1.1.20 and later"): Disables and deletes an existing timer. If the timer is associated with a [function object](https://www.autohotkey.com/docs/v1/misc/Functor.htm), the object is released. Turning off a timer does not release the object.',
+                    '',
+                    '**Period**: Creates or updates a timer using the absolute value of this parameter as the [approximate](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#Precision) number of milliseconds that must pass before the timer is executed. The timer will be automatically enabled and [reset](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#reset). It can be set to repeat automatically or run only once:',
+                    '',
+                    '- If _Period_ is positive, the timer will automatically repeat until it is explicitly disabled by the script.',
+                    '- [\\[v1.0.46.16+\\]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.46.16 "Applies to AutoHotkey v1.0.46.16 and later") If _Period_ is negative, the timer will run only once. For example, specifying -100 would run the timer 100 ms from now then disable the timer as though `SetTimer, Label, Off` had been used.',
+                    '    ',
+                    '    [\\[v1.1.24+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.24.00 "Applies to AutoHotkey v1.1.24 and later") If _Label_ is an object created by the script (not an actual function or label), the timer is automatically deleted after the timer function returns, unless the timer was re-enabled. This allows the object to be freed if the script is no longer referencing it, but it also means the timer\'s _Period_ and _Priority_ are not retained.',
+                    '    ',
+                    '',
+                    '_Period_ must be an integer, unless a variable or expression is used, in which case any fractional part is ignored. Its absolute value must be no larger than 4294967295 ms (49.7 days).',
+                    '',
+                    '**Default**: If this parameter is blank and:  ',
+                    '1) the timer does not exist: it will be created with a period of 250.  ',
+                    '2) the timer already exists: it will be enabled and [reset](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm#reset) at its former _period_ unless a _Priority_ is specified.',
+                ],
+            },
+            {
+                name: 'Priority_int',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'This optional parameter is an integer between -2147483648 and 2147483647 (or an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)) to indicate this timer\'s thread priority. If omitted, 0 will be used. See [Threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm) for details.',
+                    '',
+                    'To change the priority of an existing timer without affecting it in any other way, leave the parameter before this one blank.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETTITLEMATCHMODE',
@@ -5893,6 +6637,30 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'Fast|Slow|RegEx|1|2|3',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Specify one of the following digits or the word RegEx:',
+                    '',
+                    '- 1 = A window\'s title must start with the specified _WinTitle_ to be a match.',
+                    '- 2 = A window\'s title can contain _WinTitle_ anywhere inside it to be a match.',
+                    '- 3 = A window\'s title must exactly match _WinTitle_ to be a match.',
+                    '- RegEx [\\[v1.0.45+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.45.00 "Applies to AutoHotkey v1.0.45 and later") = Changes _WinTitle_, _WinText_, _ExcludeTitle_, and _ExcludeText_ to accept [regular expressions](https://www.autohotkey.com/docs/v1/misc/RegEx-QuickRef.htm). Do not enclose such expressions in quotes when using them with commands. For example: `WinActivate, Untitled.*Notepad`.',
+                    '    ',
+                    '    RegEx also applies to [ahk\\_class](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm#ahk_class) and [ahk\\_exe](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm#ahk_exe); for example, `ahk_class IEFrame` searches for any window whose class name contains _IEFrame_ anywhere (this is because by default, regular expressions find a match _anywhere_ in the target string).',
+                    '    ',
+                    '    For _WinTitle_, each component is separate. For example, in `i)^untitled ahk_class i)^notepad$ ahk_pid %mypid%`, `i)^untitled` and `i)^notepad$` are separate regex patterns and `%mypid%` is always compared numerically (it is not a regex pattern).',
+                    '    ',
+                    '    For _WinText_, each text element (i.e. each control\'s text) is matched against the RegEx separately. Therefore, it is not possible to have a match span more than one text element.',
+                    '    ',
+                    '',
+                    'The modes above also affect _ExcludeTitle_ in the same way as _WinTitle_. For example, mode 3 requires that a window\'s title exactly match _ExcludeTitle_ for that window to be excluded.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SETWINDELAY',
@@ -5907,6 +6675,16 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'E',
+        ],
+        _param: [
+            {
+                name: 'Delay_ms',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'Time in milliseconds, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Use -1 for no delay at all and 0 for the smallest possible delay. If unset, the default delay is 100.',
+                ],
+            },
         ],
     },
     {
@@ -5924,6 +6702,16 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'DirName',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the new working directory, which is assumed to be a subfolder of the current [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SHUTDOWN',
@@ -5939,6 +6727,28 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'E',
+        ],
+        _param: [
+            {
+                name: 'Flag',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'A combination (sum) of the following numbers:',
+                    '',
+                    '- 0 = Logoff',
+                    '- 1 = Shutdown',
+                    '- 2 = Reboot',
+                    '- 4 = Force',
+                    '- 8 = Power down',
+                    '',
+                    'Add the required values together. For example, to shutdown and power down the flag would be 9 (shutdown + power down = 1 + 8 = 9). Alternatively, an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) such as 1+8 can be specified.',
+                    '',
+                    'The "Force" value (4) forces all open applications to close. It should only be used in an emergency because it may cause any open applications to lose data.',
+                    '',
+                    'The "Power down" value (8) shuts down the system and turns off the power.',
+                ],
+            },
         ],
     },
     {
@@ -5958,6 +6768,16 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'E',
+        ],
+        _param: [
+            {
+                name: 'Delay_ms',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The amount of time to pause (in milliseconds) between 0 and 2147483647 (24 days), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
         ],
     },
     {
@@ -5980,6 +6800,20 @@ export const LineCommand: TCommandElement[] = [
             'I',
             'S',
         ],
+        _param: [
+            {
+                name: 'InputVarName',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: ['The name of the variable whose contents will be sorted. This cannot be an expression.'],
+            },
+            {
+                name: 'Options',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['<https://www.autohotkey.com/docs/v1/lib/Sort.htm#Options>'],
+            },
+        ],
     },
     {
         upName: 'SOUNDBEEP',
@@ -5997,6 +6831,24 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'Frequency(37-32767)',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The frequency of the sound, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). It should be a number between 37 and 32767. If omitted, the frequency will be 523.',
+                ],
+            },
+            {
+                name: 'Duration_ms',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The duration of the sound, in milliseconds (can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)). If omitted, the duration will be 150.',
+                ],
+            },
         ],
     },
     {
@@ -6019,6 +6871,46 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the retrieved setting, which is either a floating point number between 0 and 100 (inclusive) or the word ON or OFF (used only for _ControlTypes_ ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, and BASSBOOST). The variable will be made blank if there was a problem retrieving the setting. The format of the floating point number, such as its decimal places, is determined by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead.").',
+                ],
+            },
+            {
+                name: 'ComponentType',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted or blank, it defaults to the word MASTER. Otherwise, it can be one of the following words: MASTER (synonymous with SPEAKERS), DIGITAL, LINE, MICROPHONE, SYNTH, CD, TELEPHONE, PCSPEAKER, WAVE, AUX, ANALOG, HEADPHONES, or N/A. If the sound device lacks the specified _ComponentType_, ErrorLevel will indicate the problem.',
+                    '',
+                    'The component labeled Auxiliary in some mixers might be accessible as ANALOG rather than AUX.',
+                    '',
+                    'If a device has more than one instance of _ComponentType_ (two of type LINE, for example), usually the first contains the playback settings and the second contains the recording settings. To access an instance other than the first, append a colon and a number to this parameter. For example: `Analog:2` is the second instance of the analog component.',
+                ],
+            },
+            {
+                name: 'ControlType',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted or blank, it defaults to VOLUME. Otherwise, it can be one of the following words: VOLUME (or VOL), ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, BASSBOOST, PAN, QSOUNDPAN, BASS, TREBLE, EQUALIZER, or the number of a valid control type (see [soundcard analysis script](https://www.autohotkey.com/docs/v1/lib/SoundSet.htm#Ex)). If the specified _ComponentType_ lacks the specified _ControlType_, ErrorLevel will indicate the problem.',
+                    '',
+                    '**Note:** Sound devices usually support only VOLUME (or VOL) and MUTE, although others may be available depending on Windows and the sound device.',
+                ],
+            },
+            {
+                name: 'DeviceNumber',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'A number between 1 and the total number of supported devices. If this parameter is omitted, it defaults to 1 (the first sound device), or on Windows Vista or above, the system\'s default device for playback. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). The [soundcard analysis script](https://www.autohotkey.com/docs/v1/lib/SoundSet.htm#Ex) may help determine which number to use.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SOUNDGETWAVEVOLUME',
@@ -6037,6 +6929,24 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'E',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the retrieved volume level, which is a floating point number between 0 and 100 inclusive. The variable will be made blank if there was a problem retrieving the volume. The format of the floating point number, such as its decimal places, is determined by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead.").',
+                ],
+            },
+            {
+                name: 'DeviceNumber',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is omitted, it defaults to 1 (the first sound device), which is usually the system\'s default device for recording and playback. Specify a number higher than 1 to operate upon a different sound device.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SOUNDPLAY',
@@ -6051,6 +6961,36 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the file to be played, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+                    '',
+                    'To produce standard system sounds, specify an asterisk followed by a number as shown below (note that the _Wait_ parameter has no effect in this mode):',
+                    '',
+                    '- \\*-1 = Simple beep. If the sound card is not available, the sound is generated using the speaker.',
+                    '- \\*16 = Hand (stop/error)',
+                    '- \\*32 = Question',
+                    '- \\*48 = Exclamation',
+                    '- \\*64 = Asterisk (info)',
+                    '',
+                    'Known limitation: Due to a quirk in Windows, WAV files with a path longer than 127 characters will not be played. To work around this, use other file types such as MP3 (with a path length of up to 255 characters) or use 8.3 short paths (see [A\\_LoopFileShortPath](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileShortPath) how to retrieve such paths).',
+                ],
+            },
+            {
+                name: 'Wait',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted, the script\'s [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) will move on to the next command(s) while the file is playing. To avoid this, specify 1 or the word WAIT, which causes the current thread to wait until the file is finished playing before continuing. Even while waiting, new [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm) can be launched via [hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm), [custom menu item](https://www.autohotkey.com/docs/v1/lib/Menu.htm), or [timer](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm).',
+                    '',
+                    'Known limitation: If the WAIT parameter is omitted, the OS might consider the playing file to be "in use" until the script closes or until another file is played (even a nonexistent file).',
+                ],
+            },
         ],
     },
     {
@@ -6074,6 +7014,56 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'NewSetting',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'Percentage number between -100 and 100 inclusive (it can be a floating point number or [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)). If the number begins with a plus or minus sign, the **current setting** will be adjusted up or down by the indicated amount. Otherwise, the setting will be set explicitly to the level indicated by _NewSetting_.',
+                    '',
+                    'For _ControlTypes_ with only two possible settings -- namely ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, and BASSBOOST -- any positive number will turn on the setting and a zero will turn it off. However, if the number begins with a plus or minus sign, the setting will be toggled (set to the opposite of its current state).',
+                    '',
+                    '```ahk',
+                    'SoundSet, 50 ;Sets the master volume to 50%.',
+                    'SoundSet, 10 ;Sets the master volume to 10%.',
+                    'SoundSet, +10 ;Increases the master volume by 10%.',
+                    'SoundSet -10;Decreases the master volume by 10%.',
+                    '```',
+                    '',
+                ],
+            },
+            {
+                name: 'ComponentType',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted or blank, it defaults to the word MASTER. Otherwise, it can be one of the following words: MASTER (synonymous with SPEAKERS), DIGITAL, LINE, MICROPHONE, SYNTH, CD, TELEPHONE, PCSPEAKER, WAVE, AUX, ANALOG, HEADPHONES, or N/A. If the sound device lacks the specified _ComponentType_, ErrorLevel will indicate the problem.',
+                    '',
+                    'The component labeled Auxiliary in some mixers might be accessible as ANALOG rather than AUX.',
+                    '',
+                    'If a device has more than one instance of _ComponentType_ (two of type LINE, for example), usually the first contains the playback settings and the second contains the recording settings. To access an instance other than the first, append a colon and a number to this parameter. For example: `Analog:2` is the second instance of the analog component.',
+                ],
+            },
+            {
+                name: 'ControlType',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted or blank, it defaults to VOLUME. Otherwise, it can be one of the following words: VOLUME (or VOL), ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, BASSBOOST, PAN, QSOUNDPAN, BASS, TREBLE, EQUALIZER, or the number of a valid control type (see [soundcard analysis script](https://www.autohotkey.com/docs/v1/lib/SoundSet.htm#Ex)). If the specified _ComponentType_ lacks the specified _ControlType_, ErrorLevel will indicate the problem.',
+                    '',
+                    '**Note:** Sound devices usually support only VOLUME (or VOL) and MUTE, although others may be available depending on Windows and the sound device.',
+                ],
+            },
+            {
+                name: 'DeviceNumber',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'A number between 1 and the total number of supported devices. If this parameter is omitted, it defaults to 1 (the first sound device), or on Windows Vista or above, the system\'s default device for playback. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). The [soundcard analysis script](https://www.autohotkey.com/docs/v1/lib/SoundSet.htm#Ex) may help determine which number to use.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SOUNDSETWAVEVOLUME',
@@ -6092,6 +7082,30 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'Percent',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'Percentage number between -100 and 100 inclusive (it can be a floating point number or an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)). If the number begins with a plus or minus sign, the **current volume level** will be adjusted up or down by the indicated amount. Otherwise, the volume will be set explicitly to the level indicated by _Percent_.',
+                    '',
+                    '```ahk',
+                    'SoundSetWaveVolume,  50 ;-> to 50%',
+                    'SoundSetWaveVolume, -10 ; -10%, exp: 50% -> 40%',
+                    'SoundSetWaveVolume, +20 ; +20%, exp: 50% -> 70%',
+                    '```',
+                ],
+            },
+            {
+                name: 'DeviceNumber',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is omitted, it defaults to 1 (the first sound device), which is usually the system\'s default device for recording and playback. Specify a number higher than 1 to operate upon a different sound device.',
+                ],
+            },
         ],
     },
     {
@@ -6214,6 +7228,38 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'Width',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The width in pixels of the Window. Default 200. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Height',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The height in pixels of the window (not including its title bar). Default 0 (i.e. just the title bar will be shown). This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Title',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['The title of the window. Default empty (blank).'],
+            },
+            {
+                name: 'Text',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The text of the window. Default empty (blank). If _Text_ is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SPLITPATH',
@@ -6254,6 +7300,60 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'O',
         ],
+        _param: [
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'Name of the input variable containing the file name or URL to be analyzed.',
+                    '',
+                    'Note that this command expects filename paths to contain backslashes (\\\\) only and URLs to contain forward slashes (/) only.',
+                    '',
+                    '[\\[v1.1.21+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.21.00 "Applies to AutoHotkey v1.1.21 and later") This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions), but the [percent-space prefix](https://www.autohotkey.com/docs/v1/Language.htm#-expression) must be used, e.g. `% "red,green,blue"`.',
+                ],
+            },
+            {
+                name: 'OutFileName',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'Name of the output variable in which to store the file name without its path. The file\'s extension is included.',
+                ],
+            },
+            {
+                name: 'OutDir',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'Name of the output variable in which to store the directory of the file, including drive letter or share name (if present). The final backslash is not included even if the file is located in a drive\'s root directory.',
+                ],
+            },
+            {
+                name: 'OutExtension',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'Name of the output variable in which to store the file\'s extension (e.g. TXT, DOC, or EXE). The dot is not included.',
+                ],
+            },
+            {
+                name: 'OutNameNoExt',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'Name of the output variable in which to store the file name without its path, dot and extension.',
+                ],
+            },
+            {
+                name: 'OutDrive',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'Name of the output variable in which to store the drive letter or server name of the file. If the file is on a local or mapped drive, the variable will be set to the drive letter followed by a colon (no backslash). If the file is on a network path (UNC), the variable will be set to the share name, e.g. \\\\\\\\Workstation01',
+                ],
+            },
+        ],
     },
     {
         upName: 'STATUSBARGETTEXT',
@@ -6279,6 +7379,50 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the retrieved text.'],
+            },
+            {
+                name: 'Part',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'Which part number of the bar to retrieve, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Default 1, which is usually the part that contains the text of interest.',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'STATUSBARWAIT',
@@ -6302,6 +7446,70 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'BarText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The text or partial text for the which the command will wait to appear. Default is blank (empty), which means to wait for the status bar to become blank. The text is case sensitive and the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm), similar to _WinTitle_ below.',
+                    '',
+                    'To instead wait for the bar\'s text to _change_, either use [StatusBarGetText](https://www.autohotkey.com/docs/v1/lib/StatusBarGetText.htm) in a loop, or use the RegEx example at the bottom of this page.',
+                ],
+            },
+            {
+                name: 'Timeout_sec',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The number of seconds (can contain a decimal point or be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)) to wait before timing out, in which case [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) will be set to 1. Default is blank, which means the command will wait indefinitely. Specifying 0 is the same as specifying 0.5.',
+                ],
+            },
+            {
+                name: 'Part',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'Which part number of the bar to retrieve, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Default 1, which is usually the part that contains the text of interest.',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'Interval',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'How often the status bar should be checked while the command is waiting (in milliseconds), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Default is 50.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'STRINGCASESENSE',
@@ -6318,11 +7526,29 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'On|Off|Locale',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'Specify one of the following words:',
+                    '',
+                    '**On**: String comparisons are case sensitive. This setting also makes the [expression equal sign operator (=)](https://www.autohotkey.com/docs/v1/Variables.htm#equal) and the case-insensitive mode of [InStr()](https://www.autohotkey.com/docs/v1/lib/InStr.htm) use the _locale_ method described below.',
+                    '',
+                    '**Off** (starting default): The letters A-Z are considered identical to their lowercase counterparts. This is the starting default for all scripts due to backward compatibility and performance (_Locale_ is 1 to 8 times slower than _Off_ depending on the nature of the strings being compared).',
+                    '',
+                    '**Locale** [\\[v1.0.43.03+\\]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.03 and later") String comparisons are case **in**sensitive according to the rules of the current user\'s locale. For example, most English and Western European locales treat not only the letters A-Z as identical to their lowercase counterparts, but also ANSI letters like Ä and Ü as identical to theirs.',
+                    '',
+                    '[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1 and 0 may be used in place of On and Off, respectively.',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGGETPOS',
         keyRawName: 'StringGetPos',
-        body: 'StringGetPos, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} , ${4:Occurrence}, ${5:Offset}',
+        body: 'StringGetPos, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:Occurrence}, ${5:Offset}]',
         doc: 'Retrieves the position of the specified substring within a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [InStr](https://www.autohotkey.com/docs/v1/lib/InStr.htm) function instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringGetPos.htm',
@@ -6337,6 +7563,59 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the retrieved position relative to the first character of _InputVar_. Position 0 is the first character for StringGetPos and position 1 is the first character for [InStr()](https://www.autohotkey.com/docs/v1/lib/InStr.htm).',
+                ],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable, whose contents will be searched. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'SearchText',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The string to search for. Matching is not case sensitive unless [StringCaseSense](https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm) has been turned on.',
+                ],
+            },
+            {
+                name: 'Occurrence(Ln|Rn)',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'This affects which occurrence will be found if _SearchText_ occurs more than once within _InputVar_. If blank or omitted, it defaults to L1 (_InputVar_ will be searched starting from the left for the first match). Otherwise, specify one of the following options:',
+                    '',
+                    '**L_n_:** The search will start looking at the left side of _InputVar_ and will continue rightward until the _n_th match is found.',
+                    '',
+                    '**R_n_:** The search will start looking at the right side of _InputVar_ and will continue leftward until the _n_th match is found. If _n_ is omitted (or if _Occurrence_ is 1), it defaults to R1.',
+                    '',
+                    'For example, to find the fourth occurrence from the right, specify R4. Note: If _n_ is less than or equal to zero, no match will be found.',
+                ],
+            },
+            {
+                name: 'Offset',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The number of characters on the leftmost or rightmost side (depending on the parameter above) to skip over. If omitted, the default is 0. For example, the following would start searching at the tenth character from the left:',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                    '',
+                    '```ahk',
+                    'StringGetPos, OutputVar, InputVar, abc, , 9',
+                    '```',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGLEFT',
@@ -6347,12 +7626,39 @@ export const LineCommand: TCommandElement[] = [
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLeft.htm',
         exp: [
             'StringLeft, OutputVar, InputVar, Count',
+            'StringRight, OutputVar, InputVar, Count',
         ],
         diag: EDiagCode.code899,
         _paramType: [
             'O',
             'I',
             'E',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the substring extracted from _InputVar_.',
+                ],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be extracted from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'Count',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The number of characters to extract, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If _Count_ is less than or equal to zero, _OutputVar_ will be made empty (blank). If _Count_ exceeds the length of _InputVar_, _OutputVar_ will be set equal to the entirety of _InputVar_.',
+                ],
+            },
         ],
     },
     {
@@ -6370,6 +7676,22 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'I',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the length.'],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be measured. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGLOWER',
@@ -6380,11 +7702,36 @@ export const LineCommand: TCommandElement[] = [
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLower.htm',
         exp: [
             'StringLower, OutputVar, InputVar , T',
+            'StringUpper, OutputVar, InputVar , T',
         ],
         _paramType: [
             'O',
             'I',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store newly converted string.'],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be read from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'T',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is the letter T, the string will be converted to title case. For example, "GONE with the WIND" would become "Gone With The Wind".',
+                ],
+            },
         ],
     },
     {
@@ -6405,11 +7752,55 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the substring extracted from _InputVar_.',
+                ],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable from whose contents the substring will be extracted. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'StartChar',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The position of the first character to be extracted, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). Unlike [StringGetPos](https://www.autohotkey.com/docs/v1/lib/StringGetPos.htm "Deprecated. New scripts should use InStr() instead."), 1 is the first character. If _StartChar_ is less than 1, it will be assumed to be 1. If _StartChar_ is beyond the end of the string, _OutputVar_ is made empty (blank).',
+                ],
+            },
+            {
+                name: 'Count',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    '[\\[v1.0.43.10+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.10 and later"): This parameter may be omitted or left blank, which is the same as specifying an integer large enough to retrieve all characters from the string.',
+                    '',
+                    'Otherwise, specify the number of characters to extract, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If _Count_ is less than or equal to zero, _OutputVar_ will be made empty (blank). If _Count_ exceeds the length of _InputVar_ measured from _StartChar_, _OutputVar_ will be set equal to the entirety of _InputVar_ starting at _StartChar_.',
+                ],
+            },
+            {
+                name: 'L',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The letter L can be used to extract characters that lie to the left of _StartChar_ rather than to the right.',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGREPLACE',
         keyRawName: 'StringReplace',
-        body: 'StringReplace, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} , ${4:ReplaceText}, ${5:ReplaceAll}',
+        body: 'StringReplace, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:ReplaceText}, ${5:ReplaceAll}]',
         doc: 'Replaces the specified substring with a new string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [StrReplace](https://www.autohotkey.com/docs/v1/lib/StrReplace.htm) function instead.',
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringReplace.htm',
@@ -6424,6 +7815,48 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the result of the replacement process.'],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be read from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'SearchText',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The string to search for. Matching is not case sensitive unless [StringCaseSense](https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm) has been turned on.',
+                ],
+            },
+            {
+                name: 'ReplaceText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    '_SearchText_ will be replaced with this text. If omitted or blank, _SearchText_ will be replaced with blank (empty). In other words, it will be omitted from _OutputVar_.',
+                ],
+            },
+            {
+                name: 'All',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted, only the first occurrence of _SearchText_ will be replaced. But if this parameter is 1, A, or All, all occurrences will be replaced.',
+                    '',
+                    'Specify the word **UseErrorLevel** to store in ErrorLevel the number of occurrences replaced (0 if none). UseErrorLevel implies "All".',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGRIGHT',
@@ -6434,12 +7867,39 @@ export const LineCommand: TCommandElement[] = [
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLeft.htm',
         exp: [
             'StringRight, OutputVar, InputVar, Count',
+            'StringLeft, OutputVar, InputVar, Count',
         ],
         diag: EDiagCode.code899,
         _paramType: [
             'O',
             'I',
             'E',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the output variable in which to store the substring extracted from _InputVar_.',
+                ],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be extracted from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'Count',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The number of characters to extract, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If _Count_ is less than or equal to zero, _OutputVar_ will be made empty (blank). If _Count_ exceeds the length of _InputVar_, _OutputVar_ will be set equal to the entirety of _InputVar_.',
+                ],
+            },
         ],
     },
     {
@@ -6461,6 +7921,48 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputArray',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the [pseudo-array](https://www.autohotkey.com/docs/v1/misc/Arrays.htm#pseudo) in which to store each substring extracted from _InputVar_. For example, if MyArray is specified, the command will put the number of substrings produced (0 if none) into MyArray0, the first substring into MyArray1, the second into MyArray2, and so on.',
+                    '',
+                    'Within a [function](https://www.autohotkey.com/docs/v1/Functions.htm), to create a pseudo-array that is global instead of local, [declare](https://www.autohotkey.com/docs/v1/Functions.htm#Global) MyArray0 as a global variable inside the function (the converse is true for [assume-global](https://www.autohotkey.com/docs/v1/Functions.htm#AssumeGlobal) functions). However, it is often also necessary to declare each element, due to a [common source of confusion](https://www.autohotkey.com/docs/v1/Functions.htm#ArrayConfusion). For more details, see [Functions](https://www.autohotkey.com/docs/v1/Functions.htm#PseudoArrays).',
+                ],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be analyzed. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                    '',
+                    '**Note**: _InputVar_ must not be one of the variables in _OutputArray_.',
+                ],
+            },
+            {
+                name: 'Delimiters',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is blank or omitted, each character of _InputVar_ will be treated as a separate substring.',
+                ],
+            },
+            {
+                name: 'OmitChars',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'An optional list of characters (case sensitive) to exclude from the beginning and end of each array element. For example, if _OmitChars_ is `%A_Space% %A_Tab%`, spaces and tabs will be removed from the beginning and end (but not the middle) of every element.',
+                    '',
+                    'If _Delimiters_ is blank, _OmitChars_ indicates which characters should be excluded from the array.',
+                    '',
+                    'Unlike the last parameter of most other commands, commas in _OmitChars_ must be escaped (`` `,``).',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGTRIMLEFT',
@@ -6477,6 +7979,30 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'I',
             'E',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the shortened version of _InputVar_.'],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be read from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'Count',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The number of characters to remove, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If _Count_ is less than or equal to zero, _OutputVar_ will be set equal to the entirety of _InputVar_. If _Count_ exceeds the length of _InputVar_, _OutputVar_ will be made empty (blank).',
+                ],
+            },
         ],
     },
     {
@@ -6495,6 +8021,30 @@ export const LineCommand: TCommandElement[] = [
             'I',
             'E',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the shortened version of _InputVar_.'],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be read from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'Count',
+                sign: 'E',
+                isOpt: false,
+                paramDoc: [
+                    'The number of characters to remove, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). If _Count_ is less than or equal to zero, _OutputVar_ will be set equal to the entirety of _InputVar_. If _Count_ exceeds the length of _InputVar_, _OutputVar_ will be made empty (blank).',
+                ],
+            },
+        ],
     },
     {
         upName: 'STRINGUPPER',
@@ -6510,6 +8060,30 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'I',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store newly converted string.'],
+            },
+            {
+                name: 'InputVar',
+                sign: 'I',
+                isOpt: false,
+                paramDoc: [
+                    'The name of the input variable whose contents will be read from. Do not enclose the name in percent signs unless you want the _contents_ of the variable to be used as the name.',
+                ],
+            },
+            {
+                name: 'T',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If this parameter is the letter T, the string will be converted to title case. For example, "GONE with the WIND" would become "Gone With The Wind".',
+                ],
+            },
         ],
     },
     {
@@ -6530,6 +8104,26 @@ export const LineCommand: TCommandElement[] = [
         _paramType: [
             'S',
         ],
+        _param: [
+            {
+                name: 'On|Off|Toggle|Permit',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'Mode',
+                    '',
+                    '**On**: Suspends all [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm) and [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm) except those explained the Remarks section.',
+                    '',
+                    '**Off**: Re - enables the hotkeys and hotstrings that were disable above.',
+                    '',
+                    '**Toggle** (default ): Changes to the opposite of its previous state(On or Off).',
+                    '',
+                    '**Permit**: Does nothing except mark the current subroutine as being exempt from suspension.',
+                    '',
+                    '[\\[v1.1.30 +\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 "Applies to AutoHotkey v1.1.30 and later") The decimal values 1, 0 and -1 may be used in place of On, Off and Toggle, respectively.',
+                ],
+            },
+        ],
     },
     {
         upName: 'SYSGET',
@@ -6547,11 +8141,38 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [''],
+            },
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    '- [MonitorCount](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorCount): Retrieves the total number of monitors.',
+                    '- [MonitorPrimary](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorPrimary): Retrieves the number of the primary monitor.',
+                    '- [Monitor](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#Monitor): Retrieves the bounding coordinates of the specified monitor.',
+                    '- [MonitorWorkArea](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorWorkArea): Retrieves the working area\'s bounding coordinates of the specified monitor.',
+                    '- [MonitorName](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorName): Retrieves the name of the specified monitor.',
+                    '- [(Numeric)](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#Numeric): Retrieve the corresponding value from the tables below.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+        ],
     },
     {
         upName: 'THREAD',
         keyRawName: 'Thread',
-        body: 'Thread, ${1|NoTimers,Priority,Interrupt|}, ${2:Value1}, ${3:Value2}',
+        body: 'Thread, ${1|NoTimers,Priority,Interrupt|} [, ${2:Value1}, ${3:Value2}]',
         doc: 'Sets the priority or interruptibility of [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm). It can also temporarily disable all [timers](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm).\n- [NoTimers](https://www.autohotkey.com/docs/v1/lib/Thread.htm#NoTimers): Prevents interruptions from any timers.\n- [Priority](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Priority): Changes the priority level of the current thread.\n- [Interrupt](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Interrupt): Changes the duration of interruptibility for newly launched threads.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Thread.htm',
@@ -6562,6 +8183,32 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'For _SubCommand_, specify one of the following:',
+                    '',
+                    '- [NoTimers](https://www.autohotkey.com/docs/v1/lib/Thread.htm#NoTimers): Prevents interruptions from any timers.',
+                    '- [Priority](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Priority): Changes the priority level of the current thread.',
+                    '- [Interrupt](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Interrupt): Changes the duration of interruptibility for newly launched threads.',
+                ],
+            },
+            {
+                name: 'Value1',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value2',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [''],
+            },
         ],
     },
     {
@@ -6587,6 +8234,42 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'E',
         ],
+        _param: [
+            {
+                name: 'Text',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If blank or omitted, the existing tooltip (if any) will be hidden. Otherwise, this parameter is the text to display in the tooltip. To create a multi-line tooltip, use the linefeed character (\\`n) in between each line, e.g. ``Line1`nLine2``.',
+                    '',
+                    'If _Text_ is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
+            {
+                name: 'X',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The X and Y position of the tooltip relative to the active window (use [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) to change to screen coordinates). If the coordinates are omitted, the tooltip will be shown near the mouse cursor. X and Y can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'Y',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'The X and Y position of the tooltip relative to the active window (use [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) to change to screen coordinates). If the coordinates are omitted, the tooltip will be shown near the mouse cursor. X and Y can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'WhichToolTip(1-20)',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'Omit this parameter if you don\'t need multiple tooltips to appear simultaneously. Otherwise, this is a number between 1 and 20 to indicate which tooltip window to operate upon. If unspecified, that number is 1 (the first). This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+        ],
     },
     {
         upName: 'TRANSFORM',
@@ -6606,6 +8289,60 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [''],
+            },
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    '- [Unicode](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Unicode) (for ANSI builds only): Retrieves or stores Unicode text on the clipboard.',
+                    '- [Deref](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Deref): Expands variable references and escape sequences contained inside other variables.',
+                    '- [HTML](https://www.autohotkey.com/docs/v1/lib/Transform.htm#HTML): Converts the specified string into its HTML equivalent.',
+                    '- [Asc](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Asc): Retrieves the character code for the first character in the specified string.',
+                    '- [Chr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Chr): Retrieves the single character corresponding to the character code.',
+                    '- [Mod](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Mod): Retrieves the remainder of a division.',
+                    '- [Exp](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Exp): Retrieves e raised to the _N_th power.',
+                    '- [Sqrt](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Sqrt): Retrieves the square root of a number.',
+                    '- [Log](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Log): Retrieves the logarithm (base 10) of a number.',
+                    '- [Ln](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Ln): Retrieves the natural logarithm (base e) of a number.',
+                    '- [Round](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Round): Retrieves a number rounded to _N_ decimal places.',
+                    '- [Ceil](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Ceil): Retrieves a number rounded up to the nearest integer.',
+                    '- [Floor](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Floor): Retrieves a number rounded down to the nearest integer.',
+                    '- [Abs](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Abs): Retrieves the absolute value of a number.',
+                    '- [Sin](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Sin): Retrieves the trigonometric sine of a number.',
+                    '- [Cos](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Cos): Retrieves the trigonometric cosine of a number.',
+                    '- [Tan](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Tan): Retrieves the trigonometric tangent of a number.',
+                    '- [ASin](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ASin): Retrieves the arcsine of a number in radians.',
+                    '- [ACos](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ACos): Retrieves the arccosine of a number in radians.',
+                    '- [ATan](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ATan): Retrieves the arctangent of a number in radians.',
+                    '- [Pow](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Pow): Retrieves a base raised to the power of an exponent.',
+                    '- [BitNot](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitNot): Retrieves the bit-inverted version of a number.',
+                    '- [BitAnd](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitAnd): Retrieves the result of the bitwise-AND of the specified numbers.',
+                    '- [BitOr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitOr): Retrieves the result of the bitwise-OR of the specified numbers.',
+                    '- [BitXOr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitXOr): Retrieves the result of the bitwise-EXCLUSIVE-OR of the specified numbers.',
+                    '- [BitShiftLeft](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitShiftLeft): Retrieves the result of shifting a number to the left by _N_ bit positions.',
+                    '- [BitShiftRight](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitShiftRight): Retrieves the result of shifting a number to the right by _N_ bit positions.',
+                ],
+            },
+            {
+                name: 'Value1',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [''],
+            },
+            {
+                name: 'Value2',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [''],
+            },
+        ],
     },
     {
         upName: 'TRAYTIP',
@@ -6622,6 +8359,60 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'E',
             'E',
+        ],
+        _param: [
+            {
+                name: 'Title',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The title of the window. Only the first 73 characters will be displayed.',
+                    '',
+                    'If _Title_ is blank, the title line will be entirely omitted from the window, making it vertically shorter.',
+                    '',
+                    '**Warning:** The window will not be shown if the _Text_ parameter is omitted, even if a _Title_ is specified.',
+                ],
+            },
+            {
+                name: 'Text',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The message to display. Only the first 265 characters will be displayed.',
+                    '',
+                    'If this parameter is omitted or blank, any TrayTip balloon window currently displayed will be removed. However, to hide a Windows 10 toast notification it may be necessary to [temporarily remove the tray icon](https://www.autohotkey.com/docs/v1/lib/TrayTip.htm#Windows10).',
+                    '',
+                    'Carriage return (\\`r) or linefeed (\\`n) may be used to create multiple lines of text. For example: ``Line1`nLine2``.',
+                    '',
+                    'If _Text_ is long, it can be broken up into several shorter lines by means of a [continuation section](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation), which might improve readability and maintainability.',
+                ],
+            },
+            {
+                name: 'Seconds',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: ['**Note:** This parameter has no effect on Windows Vista and later.'],
+            },
+            {
+                name: 'Options',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'A combination (sum) of zero or more of the following options:',
+                    '',
+                    '| Function                                                    | Decimal Value | Hex Value |',
+                    '| ----------------------------------------------------------- | ------------- | --------- |',
+                    '| Info icon                                                   | 1             | 0x1       |',
+                    '| Warning icon                                                | 2             | 0x2       |',
+                    '| Error icon                                                  | 3             | 0x3       |',
+                    '| Windows XP and later: Do not play the notification sound.   | 16            | 0x10      |',
+                    '| Windows Vista and later: Use the large version of the icon. | 32            | 0x20      |',
+                    '',
+                    'If omitted, it defaults to 0, which is no icon. The icon is also not shown by the balloon window if it lacks a _Title_ (this does not apply to Windows 10 toast notifications).',
+                    '',
+                    'This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
         ],
     },
     {
@@ -6640,6 +8431,26 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'URL_https',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'URL of the file to download. For example, https://someorg.org might retrieve the welcome page for that organization.',
+                ],
+            },
+            {
+                name: 'Filename',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    '**Download to a file**: Specify the name of the file to be created locally, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. Any existing file will be **overwritten** by the new file.',
+                    '',
+                    '**Download to a variable**: See the [example](https://www.autohotkey.com/docs/v1/lib/URLDownloadToFile.htm#WHR) below.',
+                ],
+            },
+        ],
     },
     {
         upName: 'WINACTIVATE',
@@ -6657,6 +8468,36 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINACTIVATEBOTTOM',
@@ -6673,6 +8514,36 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -6692,12 +8563,50 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'SecondsToWait',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted or blank, the command will not wait at all. If 0, it will wait 500ms. Otherwise, it will wait the indicated number of seconds (can contain a decimal point or be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)) for the window to close. If the window does not close within that period, the script will continue. ErrorLevel is **not** set by this command, so use [WinExist()](https://www.autohotkey.com/docs/v1/lib/WinExist.htm), [IfWinExist](https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm "Deprecated. New scripts should use WinExist() instead.") or [WinWaitClose](https://www.autohotkey.com/docs/v1/lib/WinWaitClose.htm) if you need to determine for certain that a window is closed. While the command is in a waiting state, new [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm) can be launched via [hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm), [custom menu item](https://www.autohotkey.com/docs/v1/lib/Menu.htm), or [timer](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm).',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINGET',
         keyRawName: 'WinGet',
         body:
-            'WinGet, [ ${1:OutputVar}, ${2|ID,IDLast,PID,ProcessName,ProcessPath,Count,List,MinMax,ControlList,ControlListHwnd,Transparent,TransColor,Style,ExStyle|}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText} ]',
+            'WinGet, ${1:OutputVar} [, ${2|ID,IDLast,PID,ProcessName,ProcessPath,Count,List,MinMax,ControlList,ControlListHwnd,Transparent,TransColor,Style,ExStyle|}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText} ]',
         doc: 'Retrieves the specified window\'s unique ID, process ID, process name, or a list of its controls. It can also retrieve a list of all windows matching the specified criteria.\n- [ID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ID): Retrieves the unique ID number of a window.\n- [IDLast](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#IDLast): Retrieves the unique ID number of the last/bottommost window if there is more than one match.\n- [PID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#PID): Retrieves the Process ID number of a window.\n- [ProcessName](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessName): Retrieves the name of the process that owns a window.\n- [ProcessPath](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessPath) [[v1.1.01+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later"): Retrieves the full path and name of the process that owns a window.\n- [Count](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Count): Retrieves the number of existing windows that match the title/text parameters.\n- [List](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#List): Retrieves the unique ID numbers of all existing windows that match the title/text parameters.\n- [MinMax](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#MinMax): Retrieves the minimized/maximized state for a window.\n- [ControlList](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlList): Retrieves the control name for each control in a window.\n- [ControlListHwnd](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlListHwnd) [[v1.0.43.06+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the unique ID number for each control in a window.\n- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Transparent): Retrieves the degree of transparency of a window.\n- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#TransColor): Retrieves the color that is marked transparent in a window.\n- [Style](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Style): Retrieves an 8-digit hexadecimal number representing the style of a window.\n- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ExStyle): Retrieves an 8-digit hexadecimal number representing the extended style of a window.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGet.htm',
@@ -6711,6 +8620,67 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the result of _SubCommand_.'],
+            },
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'For _SubCommand_, specify one of the following:',
+                    '',
+                    '- [ID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ID): Retrieves the unique ID number of a window.',
+                    '- [IDLast](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#IDLast): Retrieves the unique ID number of the last/bottommost window if there is more than one match.',
+                    '- [PID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#PID): Retrieves the Process ID number of a window.',
+                    '- [ProcessName](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessName): Retrieves the name of the process that owns a window.',
+                    '- [ProcessPath](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessPath) [\\[v1.1.01+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later"): Retrieves the full path and name of the process that owns a window.',
+                    '- [Count](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Count): Retrieves the number of existing windows that match the title/text parameters.',
+                    '- [List](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#List): Retrieves the unique ID numbers of all existing windows that match the title/text parameters.',
+                    '- [MinMax](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#MinMax): Retrieves the minimized/maximized state for a window.',
+                    '- [ControlList](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlList): Retrieves the control name for each control in a window.',
+                    '- [ControlListHwnd](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlListHwnd) [\\[v1.0.43.06+\\]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the unique ID number for each control in a window.',
+                    '- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Transparent): Retrieves the degree of transparency of a window.',
+                    '- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#TransColor): Retrieves the color that is marked transparent in a window.',
+                    '- [Style](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Style): Retrieves an 8-digit hexadecimal number representing the style of a window.',
+                    '- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ExStyle): Retrieves an 8-digit hexadecimal number representing the extended style of a window',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -6742,6 +8712,46 @@ export const LineCommand: TCommandElement[] = [
             'O',
             'O',
         ],
+        _param: [
+            {
+                name: 'OutTitle',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the title of the active window.'],
+            },
+            {
+                name: 'OutWidth',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the width and height of the active window.',
+                ],
+            },
+            {
+                name: 'OutHeight',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the width and height of the active window.',
+                ],
+            },
+            {
+                name: 'OutX',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the active window\'s upper left corner.',
+                ],
+            },
+            {
+                name: 'OutY',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the active window\'s upper left corner.',
+                ],
+            },
+        ],
     },
     {
         upName: 'WINGETACTIVETITLE',
@@ -6756,6 +8766,14 @@ export const LineCommand: TCommandElement[] = [
         ],
         _paramType: [
             'O',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the title of the active window.'],
+            },
         ],
     },
     {
@@ -6774,6 +8792,42 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the retrieved class name.'],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -6798,6 +8852,68 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutX',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the target window\'s upper left corner. If either parameter is blank or omitted, the corresponding value will not be stored.',
+                ],
+            },
+            {
+                name: 'OutY',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The names of the output variables in which to store the X and Y coordinates of the target window\'s upper left corner. If either parameter is blank or omitted, the corresponding value will not be stored.',
+                ],
+            },
+            {
+                name: 'OutWidth',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The names of the output variables in which to store the width and height of the target window. If either parameter is blank or omitted, the corresponding value will not be stored.',
+                ],
+            },
+            {
+                name: 'OutHeight',
+                sign: 'O',
+                isOpt: true,
+                paramDoc: [
+                    'The names of the output variables in which to store the width and height of the target window. If either parameter is blank or omitted, the corresponding value will not be stored.',
+                ],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINGETTEXT',
@@ -6815,6 +8931,42 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the retrieved text.'],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -6834,6 +8986,42 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'OutputVar',
+                sign: 'O',
+                isOpt: false,
+                paramDoc: ['The name of the output variable in which to store the retrieved title.'],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINHIDE',
@@ -6850,6 +9038,36 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -6869,6 +9087,44 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'SecondsToWait',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'If omitted or blank, the command will not wait at all. If 0, it will wait 500ms. Otherwise, it will wait the indicated number of seconds (can contain a decimal point or be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)) for the window to close. If the window does not close within that period, the script will continue. ErrorLevel is **not** set by this command, so use [WinExist()](https://www.autohotkey.com/docs/v1/lib/WinExist.htm), [IfWinExist](https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm "Deprecated. New scripts should use WinExist() instead.") or [WinWaitClose](https://www.autohotkey.com/docs/v1/lib/WinWaitClose.htm) if you need to determine for certain that a window is closed.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINMAXIMIZE',
@@ -6885,6 +9141,36 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -6911,6 +9197,92 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'Menu',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'The name (or a prefix of the name) of the top-level menu item, e.g. File, Edit, View. It can also be the position of the desired menu item by using `1&` to represent the first menu, `2&` the second, and so on.',
+                    '',
+                    'The search is case-insensitive according to the rules of the current user\'s locale, and stops at the first matching item. The use of ampersand (&) to indicate the underlined letter in a menu item is _usually_ not necessary (i.e. &File is the same as File).',
+                    '',
+                    '**Known limitation:** If the parameter contains an ampersand, it must match the item name exactly, including all non-literal ampersands (which are hidden or displayed as an underline). If the parameter does not contain an ampersand, all ampersands are ignored, including literal ones. For example, an item displayed as "a & b" may match a parameter value of `a && b` or `a b`.',
+                    '',
+                    '[\\[v1.1.28+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.28.00 "Applies to AutoHotkey v1.1.28 and later") Specify `0&` to use the window\'s [system menu](https://www.autohotkey.com/docs/v1/lib/WinMenuSelectItem.htm#sys).',
+                ],
+            },
+            {
+                name: 'SubMenu1',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'The name of the menu item to select or its position (see above).',
+                    '',
+                    'This can be omitted if the top-level item does not contain a menu (rare).',
+                ],
+            },
+            {
+                name: 'SubMenu2',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If _SubMenu1_ itself contains a menu, this is the name of the menu item inside, or its position.',
+                ],
+            },
+            {
+                name: 'SubMenu3',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Same as above.'],
+            },
+            {
+                name: 'SubMenu4',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Same as above.'],
+            },
+            {
+                name: 'SubMenu5',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Same as above.'],
+            },
+            {
+                name: 'SubMenu6',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Same as above.'],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINMINIMIZE',
@@ -6927,6 +9299,36 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -7084,12 +9486,42 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINSET',
         keyRawName: 'WinSet',
         body:
-            'WinSet, ${1|AlwaysOnTop,Bottom,Top,Disable,Enable,Redraw,Style,ExStyle,Region,Transparent,TransColor|} [, ${2:Value}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
+            'WinSet, ${1|AlwaysOnTop,Bottom,Top,Disable,Enable,Redraw,Style,ExStyle,Region,Transparent,TransColor|}, ${2:Value} [, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
         doc: 'Makes a variety of changes to the specified window, such as "always on top" and transparency.\n- [AlwaysOnTop](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#AlwaysOnTop): Makes a window stay on top of all other windows.\n- [Bottom](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Bottom): Sends a window to the bottom of stack; that is, beneath all other windows.\n- [Top](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Top): Brings a window to the top of the stack without explicitly activating it.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Disable): Disables a window.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Enable): Enables a window.\n- [Redraw](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Redraw): Redraws a window.\n- [Style](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Style): Changes the style of a window.\n- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#ExStyle): Changes the extended style of a window.\n- [Region](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Region): Changes the shape of a window to be the specified rectangle, ellipse, or polygon.\n- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Transparent): Makes a window semi-transparent.\n- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#TransColor): Makes all pixels of the chosen color invisible inside the target window.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinSet.htm',
@@ -7103,6 +9535,62 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'SubCommand',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [
+                    'For _SubCommand_, specify one of the following:',
+                    '',
+                    '- [AlwaysOnTop](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#AlwaysOnTop): Makes a window stay on top of all other windows.',
+                    '- [Bottom](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Bottom): Sends a window to the bottom of stack; that is, beneath all other windows.',
+                    '- [Top](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Top): Brings a window to the top of the stack without explicitly activating it.',
+                    '- [Disable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Disable): Disables a window.',
+                    '- [Enable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Enable): Enables a window.',
+                    '- [Redraw](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Redraw): Redraws a window.',
+                    '- [Style](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Style): Changes the style of a window.',
+                    '- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#ExStyle): Changes the extended style of a window.',
+                    '- [Region](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Region): Changes the shape of a window to be the specified rectangle, ellipse, or polygon.',
+                    '- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Transparent): Makes a window semi-transparent.',
+                    '- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#TransColor): Makes all pixels of the chosen color invisible inside the target window.',
+                ],
+            },
+            {
+                name: 'Value',
+                sign: 'S',
+                isOpt: false,
+                paramDoc: [''],
+            },
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
     {
@@ -7183,11 +9671,41 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINWAIT',
         keyRawName: 'WinWait',
-        body: 'WinWait [, ${1:WinTitle}, ${2:WinText}, ${3:Seconds}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
+        body: 'WinWait [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: 'Waits until the specified window exists.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWait.htm',
@@ -7201,11 +9719,51 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                    '',
+                    '_WinTitle_ may be blank only when _WinText_, _ExcludeTitle_, or _ExcludeText_ is present.',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'Timeout_Sec',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'How many seconds to wait before timing out and setting [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to 1. Leave blank to allow the command to wait indefinitely. Specifying 0 is the same as specifying 0.5. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINWAITACTIVE',
         keyRawName: 'WinWaitActive',
-        body: 'WinWaitActive [, ${1:WinTitle}, ${2:WinText}, ${3:Seconds}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
+        body: 'WinWaitActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: 'Waits until the specified window is active.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWaitActive.htm',
@@ -7220,11 +9778,49 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'Timeout_sec',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'How many seconds to wait before timing out and setting [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to 1. Leave blank to allow the command to wait indefinitely. Specifying 0 is the same as specifying 0.5. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINWAITCLOSE',
         keyRawName: 'WinWaitClose',
-        body: 'WinWaitClose [, ${1:WinTitle}, ${2:WinText}, ${3:Seconds}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
+        body: 'WinWaitClose [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: 'Waits until the specified window does not exist.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWaitClose.htm',
@@ -7238,11 +9834,49 @@ export const LineCommand: TCommandElement[] = [
             'S',
             'S',
         ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'Timeout_Sec',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'How many seconds to wait before timing out and setting [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to 1. Leave blank to allow the command to wait indefinitely. Specifying 0 is the same as specifying 0.5. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
+        ],
     },
     {
         upName: 'WINWAITNOTACTIVE',
         keyRawName: 'WinWaitNotActive',
-        body: 'WinWaitNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:Seconds}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
+        body: 'WinWaitNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: 'Waits until the specified window is not active.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWaitActive.htm',
@@ -7258,6 +9892,44 @@ export const LineCommand: TCommandElement[] = [
             'E',
             'S',
             'S',
+        ],
+        _param: [
+            {
+                name: 'WinTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'A window title or other criteria identifying the target window. See [WinTitle](https://www.autohotkey.com/docs/v1/misc/WinTitle.htm).',
+                ],
+            },
+            {
+                name: 'WinText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: [
+                    'If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm) is ON.',
+                ],
+            },
+            {
+                name: 'Timeout_sec',
+                sign: 'E',
+                isOpt: true,
+                paramDoc: [
+                    'How many seconds to wait before timing out and setting [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) to 1. Leave blank to allow the command to wait indefinitely. Specifying 0 is the same as specifying 0.5. This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+                ],
+            },
+            {
+                name: 'ExcludeTitle',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose titles include this value will not be considered.'],
+            },
+            {
+                name: 'ExcludeText',
+                sign: 'S',
+                isOpt: true,
+                paramDoc: ['Windows whose text include this value will not be considered.'],
+            },
         ],
     },
 ];

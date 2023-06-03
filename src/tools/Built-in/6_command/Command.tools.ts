@@ -9,7 +9,7 @@ import { CSnippetCommand } from './CSnippetCommand';
 export type TCmdMsg = {
     readonly md: vscode.MarkdownString,
     readonly keyRawName: string,
-    readonly _param: TCommandParams[] | undefined,
+    readonly _param: readonly TCommandParams[],
 };
 
 export const {

@@ -29,7 +29,7 @@
 
 - feat: add some sign of cmd
   - `"AhkNekoHelp.signatureHelp.CmdShowParamInfo"` not need to restart vscode now.
-  - cover `52%` now.
+  - cover `100%` now.
   - if param > main sign , try auto switch of cmd sign. exp: `MsgBox , Options, Title, Text, Timeout`
   - overload sign, cover `100%`
 
@@ -44,6 +44,14 @@
     Progress
     WinMove
     WinSetTitle
+    ```
+
+  - Old Syntax not plan to support it?
+
+    ```ahk
+    RegDelete, RootKey, SubKey , ValueName
+    RegRead, OutputVar, RootKey, SubKey , ValueName
+    RegWrite, ValueType, RootKey, SubKey , ValueName, Value
     ```
 
 ## v0.0.42(2023-05-29)

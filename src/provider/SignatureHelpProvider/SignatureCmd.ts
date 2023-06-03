@@ -25,8 +25,6 @@ type TCmdSign = Readonly<{
 
 const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign | null>(
     ({ md, _param, keyRawName }: TCmdMsg): TCmdSign | null => {
-        if (_param === undefined) return null;
-
         const head: vscode.ParameterInformation = new vscode.ParameterInformation(keyRawName, md);
         const paramAList: vscode.ParameterInformation[] = [head];
         const paramBList: vscode.ParameterInformation[] = [head];

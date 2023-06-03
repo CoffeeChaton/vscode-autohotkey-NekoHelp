@@ -8,7 +8,6 @@ import { getHoverCommand2 } from '../../tools/Built-in/6_command/Command.tools';
  * MsgBox
  * Random
  * Hotkey
- * ; TODO
  * IniRead
  * IniWrite
  * SplashImage
