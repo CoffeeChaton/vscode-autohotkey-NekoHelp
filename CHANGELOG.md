@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.43(2023-06-XX)](#next-v00432023-06-xx)
+  - [v0.0.43(2023-06-04)](#v00432023-06-04)
   - [v0.0.42(2023-05-29)](#v00422023-05-29)
   - [v0.0.41(2023-05-22)](#v00412023-05-22)
   - [v0.0.40(2023-05-09)](#v00402023-05-09)
@@ -23,12 +23,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.43(2023-06-XX)
-
-<!--
-1. Signature.activeSignature of `overload sign` auto switch
-2. sign of SecondWordUp
--->
+## v0.0.43(2023-06-04)
 
 - feat: add some sign of cmd
   - `"AhkNekoHelp.signatureHelp.CmdShowParamInfo"` not need to restart vscode now.
@@ -53,11 +48,8 @@
     Progress, Off
     WinMove, X, Y
     WinSetTitle, NewTitle
-    ```
 
-  - TODO Old Syntax not plan to support it?
-
-    ```ahk
+    ; Old Syntax not plan to support
     RegDelete, RootKey, SubKey , ValueName
     RegRead, OutputVar, RootKey, SubKey , ValueName
     RegWrite, ValueType, RootKey, SubKey , ValueName, Value
