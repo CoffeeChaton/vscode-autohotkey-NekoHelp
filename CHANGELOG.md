@@ -56,6 +56,10 @@
   1. completion not enter `[]` , use signatureHelp replace it now.
   2. hover-doc and completion-doc, show signature like ahk-doc, not like snippet now.
      ![img](./image/Changelog/v0-0-43-CMD-doc.png)
+- feat: add [ControlGet](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm) SubCommand
+  1. syntax-highlight ![img](./image/Changelog/v0-0-43-ControlGet.png)
+  2. completion (default: `false`)
+  3. hover
 
 ## v0.0.42(2023-05-29)
 

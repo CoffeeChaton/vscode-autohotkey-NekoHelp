@@ -89,6 +89,7 @@
                 { "include": "#command_winset" },
                 { "include": "#command_winget" },
                 { "include": "#command_control" },
+                { "include": "#command_controlget" },
                 { "include": "#command_gui_control" },
                 { "include": "#command_hotkey" },
                 {
@@ -230,9 +231,19 @@
             },
             "patterns": [ { "include": "#expression" } ]
         },
+        "command_controlget": {
+            "name": "meta.command.line.controlget.ahk",
+            "begin": "(?:^|[ \\t:])\\b(?i:(ControlGet)\\b[ \\t]*,?[ \\t]*(?:[#$@\\w\\x{A1}-\\x{FFFF}]+)[ \\t]*,[ \\t]*(List|Checked|Enabled|Visible|Tab|FindString|Choice|LineCount|CurrentLine|CurrentCol|Line|Selected|Style|ExStyle|Hwnd)\\b)",
+            "end": "(\\n)",
+            "beginCaptures": {
+                "1": { "name": "support.function.command.controlget.ahk" },
+                "2": { "name": "keyword.command.option.param.controlget.ahk" }
+            },
+            "patterns": [ { "include": "#expression" } ]
+        },
         "command_gui_control": {
             "name": "meta.command.line.gui_control.ahk",
-            "begin": "(?:^|[ \\t:])\\b(?i:(GuiControl)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?(\\b(?:Text|Move|MoveDraw|Focus|Disable|Enable|Hide|Show|Choose|ChooseString|Font)\\b)?[ \\t]*),",
+            "begin": "(?:^|[ \\t:])\\b(?i:(GuiControl)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?((?:Text|Move|MoveDraw|Focus|Disable|Enable|Hide|Show|Choose|ChooseString|Font)\\b)?[ \\t]*),",
             "end": "(\\n)",
             "beginCaptures": {
                 "1": { "name": "support.function.gui_control.command.ahk" },

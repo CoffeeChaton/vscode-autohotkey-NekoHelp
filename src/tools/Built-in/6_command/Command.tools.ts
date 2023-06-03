@@ -2,9 +2,9 @@
 
 import * as vscode from 'vscode';
 import { Diags } from '../../../diag';
-import { CSnippetCommand } from './CSnippetCommand';
 import type { TAllowDiagCode, TCommandParams } from './Command.data';
 import { LineCommand } from './Command.data';
+import { CSnippetCommand } from './CSnippetCommand';
 
 export type TCmdMsg = {
     readonly md: vscode.MarkdownString,

@@ -4,6 +4,7 @@ import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
 import { snippetControl } from '../../../tools/Built-in/7_sub_command/Control/Control.tools';
+import { snippetControlGet } from '../../../tools/Built-in/7_sub_command/ControlGet/ControlGet.tools';
 import { snippetGui } from '../../../tools/Built-in/7_sub_command/Gui/Gui.tools';
 import { snippetGuiControl } from '../../../tools/Built-in/7_sub_command/GuiControl/GuiControl.tools';
 import { snippetMenu } from '../../../tools/Built-in/7_sub_command/Menu/Menu.tools';
@@ -35,8 +36,9 @@ export function getSnipSubCmd(subStr: string, AhkTokenLine: TAhkTokenLine): read
     switch (CommandOption) {
         case ECommandOption.All:
         case ECommandOption.Recommended:
-        case ECommandOption.noSameFunc: // did i check this?
-        {
+        case ECommandOption.noSameFunc: {
+            // did i check this?
+
             const subStr2: string = getSubStr2(subStr, fistWordUp, detail).toLowerCase();
 
             const list: vscode.CompletionItem[] = [];
@@ -51,6 +53,9 @@ export function getSnipSubCmd(subStr: string, AhkTokenLine: TAhkTokenLine): read
             if (subCmdPlus.WinGet === true && 'WinGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinGet);
             if (subCmdPlus.Control === true && 'Control'.toLowerCase().startsWith(subStr2)) {
                 list.push(...snippetControl);
+            }
+            if (subCmdPlus.ControlGet === true && 'ControlGet'.toLowerCase().startsWith(subStr2)) {
+                list.push(...snippetControlGet);
             }
 
             // todo something

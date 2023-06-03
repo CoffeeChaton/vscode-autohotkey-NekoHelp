@@ -1,0 +1,60 @@
+>ControlGet, OutputVar, List
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Checked
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Enabled
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Visible
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Tab
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, FindString
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Choice
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, LineCount
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, CurrentLine
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, CurrentCol
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Line
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Selected
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Style
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, ExStyle
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk
+>ControlGet, OutputVar, Hwnd
+#^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk support.function.command.controlget.ahk
+#          ^^^^^^^^^^^^^ source.ahk meta.command.line.controlget.ahk
+#                       ^^^^ source.ahk meta.command.line.controlget.ahk keyword.command.option.param.controlget.ahk

@@ -125,6 +125,7 @@ type TempConfigs = {
             WinSet?: boolean, // api-change
             WinGet?: boolean, // api-change
             Control?: boolean, // api-change
+            ControlGet?: boolean, // api-change
         },
     },
     SymbolProvider: {

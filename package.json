@@ -323,6 +323,10 @@
                             "Control": {
                                 "type": "boolean",
                                 "default": false
+                            },
+                            "ControlGet": {
+                                "type": "boolean",
+                                "default": false
                             }
                         },
                         "default": {
@@ -332,7 +336,8 @@
                             "SysGet": true,
                             "WinSet": false,
                             "WinGet": false,
-                            "Control": false
+                            "Control": false,
+                            "ControlGet": false
                         },
                         "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` / `SysGet` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.subCmdPlus.md))"
                     }
