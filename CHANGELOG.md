@@ -25,26 +25,35 @@
 
 ## Next v0.0.43(2023-06-XX)
 
+<!--
+1. Signature.activeSignature of `overload sign` auto switch
+2. sign of SecondWordUp
+-->
+
 - feat: add some sign of cmd
   - `"AhkNekoHelp.signatureHelp.CmdShowParamInfo"` not need to restart vscode now.
   - cover `100%` now.
-  - if param > main sign , try auto switch of cmd sign. exp: `MsgBox , Options, Title, Text, Timeout`
+  - fix: sign first optional comma, pin position.
+  - if param > first sign , try auto switch of cmd sign. exp: `MsgBox , Options, Title, Text, Timeout`
   - overload sign, cover `100%`
 
     ```ahk
     ; OK
-    MsgBox
-    Random
-    Hotkey
-    IniRead
-    IniWrite
-    SplashImage
-    Progress
-    WinMove
-    WinSetTitle
+    MsgBox [, Options, Title, Text, Timeout_Sec]
+    Random, (blank), NewSeed
+    Hotkey, IfWinActive|IfWinExist|IfWinNotActive|IfWinNotExist [, WinTitle, WinText]
+    Hotkey, If [, Expression]
+    Hotkey, If, % FunctionObject
+    IniRead, OutputVarSection, Filename, Section
+    IniRead, OutputVarSectionNames, Filename
+    IniWrite, Pairs, Filename, Section
+    SplashImage, Off
+    Progress, Off
+    WinMove, X, Y
+    WinSetTitle, NewTitle
     ```
 
-  - Old Syntax not plan to support it?
+  - TODO Old Syntax not plan to support it?
 
     ```ahk
     RegDelete, RootKey, SubKey , ValueName
@@ -55,9 +64,10 @@
 - feat: `command`
   1. completion not enter `[]` , use signatureHelp replace it now.
   2. hover-doc and completion-doc, show signature like ahk-doc, not like snippet now.
-     ![img](./image/Changelog/v0-0-43-CMD-doc.png)
+     ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-43-CMD-doc.png)
+
 - feat: add [ControlGet](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm) SubCommand
-  1. syntax-highlight ![img](./image/Changelog/v0-0-43-ControlGet.png)
+  1. syntax-highlight ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-43-ControlGet.png)
   2. completion (default: `false`)
   3. hover
 

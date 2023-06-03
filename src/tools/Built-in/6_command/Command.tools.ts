@@ -10,6 +10,7 @@ export type TCmdMsg = {
     readonly md: vscode.MarkdownString,
     readonly keyRawName: string,
     readonly _param: readonly TCommandParams[],
+    readonly cmdSignLabel: string,
 };
 
 export const {
@@ -50,24 +51,24 @@ export const {
             _param,
             _paramType,
         } = v;
-        let label: string = keyRawName;
+        let cmdSignLabel: string = keyRawName;
         let isFirstOption = 0;
         for (const commandParams of _param) {
             const { name, isOpt } = commandParams;
             if (isOpt) {
                 isFirstOption++;
             }
-            label += isFirstOption === 1
+            cmdSignLabel += isFirstOption === 1
                 ? ` [, ${name}`
                 : `, ${name}`;
         }
         if (isFirstOption > 0) {
-            label += ']';
+            cmdSignLabel += ']';
         }
 
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown('Command')
-            .appendCodeblock(label, 'ahk')
+            .appendCodeblock(cmdSignLabel, 'ahk')
             .appendMarkdown(`[(Read Doc)](${link})\n\n`)
             .appendMarkdown(doc)
             .appendMarkdown('\n\n***')
@@ -81,7 +82,12 @@ export const {
                 .appendMarkdown(`[(Read Warn ${diag})](${path})`);
         }
         md.supportHtml = true;
-        CommandMDMapTemp.set(upName, { md, _param, keyRawName });
+        CommandMDMapTemp.set(upName, {
+            _param,
+            cmdSignLabel,
+            keyRawName,
+            md,
+        });
 
         snippetCommandTemp.push(new CSnippetCommand(v, md));
 

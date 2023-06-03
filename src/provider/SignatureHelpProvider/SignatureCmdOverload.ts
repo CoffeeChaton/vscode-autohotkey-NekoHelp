@@ -20,9 +20,10 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
     (): ReadonlyMap<string, readonly TCmdMsg[]> => {
         const arrAll: readonly TCmdMsg[] = [
             // https://www.autohotkey.com/docs/v1/lib/MsgBox.htm
-            // MsgBox [, Options, Title, Text, Timeout]
+            // MsgBox [, Options, Title, Text, Timeout_Sec]
             {
                 md: getHoverCommand2('MsgBox'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'MsgBox [, Options, Title, Text, Timeout_Sec]',
                 keyRawName: 'MsgBox',
                 _param: [
                     // https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js#L876
@@ -124,9 +125,10 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
                 ],
             },
             // https://www.autohotkey.com/docs/v1/lib/Random.htm
-            // Random, , NewSeed
+            // Random, (blank), NewSeed
             {
                 md: getHoverCommand2('Random'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'Random, (blank), NewSeed',
                 keyRawName: 'Random',
                 _param: [
                     {
@@ -164,6 +166,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             {
                 md: getHoverCommand2('Hotkey'.toUpperCase()) ?? new vscode.MarkdownString(),
                 keyRawName: 'Hotkey',
+                cmdSignLabel: 'Hotkey, IfWinActive|IfWinExist|IfWinNotActive|IfWinNotExist [, WinTitle, WinText]',
                 _param: [
                     {
                         name: 'IfWinActive|IfWinExist|IfWinNotActive|IfWinNotExist',
@@ -193,6 +196,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             },
             {
                 md: getHoverCommand2('Hotkey'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'Hotkey, If [, Expression]',
                 keyRawName: 'Hotkey',
                 _param: [
                     {
@@ -215,6 +219,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             },
             {
                 md: getHoverCommand2('Hotkey'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'Hotkey, If, % FunctionObject',
                 keyRawName: 'Hotkey',
                 _param: [
                     {
@@ -272,9 +277,9 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             // IniRead, OutputVarSectionNames, Filename
             {
                 md: getHoverCommand2('IniRead'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'IniRead, OutputVarSection, Filename, Section',
                 keyRawName: 'IniRead',
                 _param: [
-                    // IniRead, OutputVarSection, Filename, Section
                     {
                         name: 'OutputVarSection',
                         sign: 'O',
@@ -320,6 +325,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             },
             {
                 md: getHoverCommand2('IniRead'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'IniRead, OutputVarSectionNames, Filename',
                 keyRawName: 'IniRead',
                 _param: [
                     {
@@ -356,6 +362,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             // IniWrite, Pairs, Filename, Section
             {
                 md: getHoverCommand2('IniWrite'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'IniWrite, Pairs, Filename, Section',
                 keyRawName: 'IniWrite',
                 _param: [
                     {
@@ -398,6 +405,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             // SplashImage, Off
             {
                 md: getHoverCommand2('SplashImage'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'SplashImage, Off',
                 keyRawName: 'SplashImage',
                 _param: [
                     {
@@ -414,6 +422,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             // Progress, Off
             {
                 md: getHoverCommand2('Progress'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'Progress, Off',
                 keyRawName: 'Progress',
                 _param: [
                     {
@@ -430,6 +439,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             // WinMove, X, Y
             {
                 md: getHoverCommand2('WinMove'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'WinMove, X, Y',
                 keyRawName: 'WinMove',
                 _param: [
                     {
@@ -462,6 +472,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
             // WinSetTitle, NewTitle
             {
                 md: getHoverCommand2('WinSetTitle'.toUpperCase()) ?? new vscode.MarkdownString(),
+                cmdSignLabel: 'WinSetTitle, NewTitle',
                 keyRawName: 'WinSetTitle',
                 _param: [
                     {

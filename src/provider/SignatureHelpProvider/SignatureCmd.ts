@@ -18,32 +18,24 @@ function signToText(sign: 'E' | 'I' | 'O' | 'S') {
 }
 
 type TCmdSign = Readonly<{
-    label: string,
+    cmdSignLabel: string,
     paramAList: vscode.ParameterInformation[],
     paramBList: vscode.ParameterInformation[],
 }>;
 
 const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign | null>(
-    ({ md, _param, keyRawName }: TCmdMsg): TCmdSign | null => {
+    ({
+        _param,
+        cmdSignLabel,
+        keyRawName,
+        md,
+    }: TCmdMsg): TCmdSign | null => {
         const head: vscode.ParameterInformation = new vscode.ParameterInformation(keyRawName, md);
         const paramAList: vscode.ParameterInformation[] = [head];
         const paramBList: vscode.ParameterInformation[] = [head];
 
-        let label: string = keyRawName;
-        let isFirstOption = 0;
         for (const commandParams of _param) {
-            const {
-                name,
-                sign,
-                isOpt,
-                paramDoc,
-            } = commandParams;
-            if (isOpt) {
-                isFirstOption++;
-            }
-            label += isFirstOption === 1
-                ? ` [, ${name}`
-                : `, ${name}`;
+            const { name, paramDoc, sign } = commandParams;
 
             const signText = signToText(sign);
             //
@@ -55,12 +47,8 @@ const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign | null>(
             paramBList.push(new vscode.ParameterInformation(name, B));
         }
 
-        if (isFirstOption > 0) {
-            label += ']';
-        }
-
         return {
-            label,
+            cmdSignLabel,
             paramAList,
             paramBList,
         };
@@ -68,13 +56,31 @@ const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign | null>(
 );
 
 function getSignInfo(CmdSign: TCmdSign): vscode.SignatureInformation {
-    const { label, paramAList, paramBList } = CmdSign;
-    const SignInfo = new vscode.SignatureInformation(label);
+    const { cmdSignLabel, paramAList, paramBList } = CmdSign;
+    const SignInfo = new vscode.SignatureInformation(cmdSignLabel);
     SignInfo.parameters = getSignatureHelp().CmdShowParamInfo
         ? paramBList
         : paramAList;
 
     return SignInfo;
+}
+
+function getSingCmdStrF(lStr: string, col: number): string {
+    // const strF: string = lStr
+    // .slice(fistWordUpCol + fistWordUp.length)
+    // .replace(/^\s*,?\s*/u, `${cmdData.keyRawName},`)
+    // .padStart(lStr.length, ' ');
+
+    const str0: string = lStr.slice(col);
+
+    if (str0.trimStart().startsWith(',')) {
+        // happy path
+        return str0.padStart(lStr.length, ' ');
+    }
+
+    // not happy
+    return (`,${str0.trimStart()}`)
+        .padStart(lStr.length, ' ');
 }
 
 export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Position): vscode.SignatureHelp | null {
@@ -89,11 +95,7 @@ export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Positio
 
     const CmdSign: TCmdSign | null = CmdSignMemo.up(cmdData);
     if (CmdSign === null) return null;
-
-    const strF: string = lStr
-        .slice(fistWordUpCol + fistWordUp.length)
-        .replace(/^\s*,?\s*/u, `${cmdData.keyRawName},`)
-        .padStart(lStr.length, ' ');
+    const strF: string = getSingCmdStrF(lStr, fistWordUpCol + fistWordUp.length);
 
     let comma = 0;
     let brackets1 = 0; // ()
