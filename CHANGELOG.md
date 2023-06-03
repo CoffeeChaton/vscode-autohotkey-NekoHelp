@@ -23,8 +23,6 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-<!-- TODO  syntax-highlight `ControlGet, OutputVar, List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd` -->
-
 ## Next v0.0.43(2023-06-XX)
 
 - feat: add some sign of cmd
@@ -53,6 +51,11 @@
     RegRead, OutputVar, RootKey, SubKey , ValueName
     RegWrite, ValueType, RootKey, SubKey , ValueName, Value
     ```
+
+- feat: `command`
+  1. completion not enter `[]` , use signatureHelp replace it now.
+  2. hover-doc and completion-doc, show signature like ahk-doc, not like snippet now.
+     ![img](./image/Changelog/v0-0-43-CMD-doc.png)
 
 ## v0.0.42(2023-05-29)
 

@@ -36,7 +36,8 @@ export const { snippetGui, GuiMDMap } = (() => {
             ? body
                 .replaceAll(/\s*,\s*\[/gu, '[')
                 .replaceAll(/\[\s*,\s*/gu, '[')
-                .replaceAll(/\s*\[\s*/gu, ',[$0 ')
+                .replaceAll(/\s*\[\s*/gu, ',$0 ')
+                .replaceAll(/\s*\]\s*/gu, '')
             : body;
         item.insertText = new vscode.SnippetString(body2);
         item.detail = 'Gui';

@@ -2,9 +2,9 @@
 
 import * as vscode from 'vscode';
 import { Diags } from '../../../diag';
+import { CSnippetCommand } from './CSnippetCommand';
 import type { TAllowDiagCode, TCommandParams } from './Command.data';
 import { LineCommand } from './Command.data';
-import { CSnippetCommand } from './CSnippetCommand';
 
 export type TCmdMsg = {
     readonly md: vscode.MarkdownString,
@@ -41,7 +41,6 @@ export const {
 
     for (const v of LineCommand) {
         const {
-            body,
             doc,
             link, // string | undefined
             exp, // string[] | undefined
@@ -51,9 +50,24 @@ export const {
             _param,
             _paramType,
         } = v;
+        let label: string = keyRawName;
+        let isFirstOption = 0;
+        for (const commandParams of _param) {
+            const { name, isOpt } = commandParams;
+            if (isOpt) {
+                isFirstOption++;
+            }
+            label += isFirstOption === 1
+                ? ` [, ${name}`
+                : `, ${name}`;
+        }
+        if (isFirstOption > 0) {
+            label += ']';
+        }
+
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown('Command')
-            .appendCodeblock(body, 'ahk')
+            .appendCodeblock(label, 'ahk')
             .appendMarkdown(`[(Read Doc)](${link})\n\n`)
             .appendMarkdown(doc)
             .appendMarkdown('\n\n***')
@@ -100,7 +114,7 @@ export const {
     return {
         snippetCommand: snippetCommandTemp as readonly CSnippetCommand[],
         // dprint-ignore
-        CommandMDMap: CommandMDMapTemp as ReadonlyMap< string, TCmdMsg >,
+        CommandMDMap: CommandMDMapTemp as ReadonlyMap<string, TCmdMsg>,
         CommandErrMap: CommandErrMapTemp as ReadonlyMap<string, TAllowDiagCode>,
         //
         OutputCommandBaseMap: outBaseMapRW as ReadonlyMap<string, number>,
