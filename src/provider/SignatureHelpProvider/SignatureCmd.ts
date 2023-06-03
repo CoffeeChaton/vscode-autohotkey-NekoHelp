@@ -23,13 +23,13 @@ type TCmdSign = Readonly<{
     paramBList: vscode.ParameterInformation[],
 }>;
 
-const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign | null>(
+const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign>(
     ({
         _param,
         cmdSignLabel,
         keyRawName,
         md,
-    }: TCmdMsg): TCmdSign | null => {
+    }: TCmdMsg): TCmdSign => {
         const head: vscode.ParameterInformation = new vscode.ParameterInformation(keyRawName, md);
         const paramAList: vscode.ParameterInformation[] = [head];
         const paramBList: vscode.ParameterInformation[] = [head];
@@ -83,26 +83,62 @@ function getSingCmdStrF(lStr: string, col: number): string {
         .padStart(lStr.length, ' ');
 }
 
-export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Position): vscode.SignatureHelp | null {
-    const { line, character } = position;
-    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[line];
-    const { fistWordUp, fistWordUpCol, lStr } = AhkTokenLine;
+type TCmdData = { keyUp: string, keyCol: number, CmdSign: TCmdSign };
+
+function getCmdData(AhkTokenLine: TAhkTokenLine): TCmdData | null {
+    const {
+        fistWordUp,
+        fistWordUpCol,
+        SecondWordUp,
+        SecondWordUpCol,
+    } = AhkTokenLine;
 
     if (fistWordUp === '') return null;
 
     const cmdData: TCmdMsg | undefined = CommandMDMap.get(fistWordUp);
-    if (cmdData === undefined) return null;
+    if (cmdData === undefined) {
+        if (SecondWordUp === '') return null;
+        const cmdData2: TCmdMsg | undefined = CommandMDMap.get(SecondWordUp);
+        if (cmdData2 === undefined) return null;
 
-    const CmdSign: TCmdSign | null = CmdSignMemo.up(cmdData);
-    if (CmdSign === null) return null;
-    const strF: string = getSingCmdStrF(lStr, fistWordUpCol + fistWordUp.length);
+        const CmdSign2: TCmdSign | null = CmdSignMemo.up(cmdData2);
+
+        return {
+            keyUp: SecondWordUp,
+            keyCol: SecondWordUpCol,
+            CmdSign: CmdSign2,
+        };
+    }
+
+    const CmdSign1: TCmdSign | null = CmdSignMemo.up(cmdData);
+    return {
+        keyUp: fistWordUp,
+        keyCol: fistWordUpCol,
+        CmdSign: CmdSign1,
+    };
+}
+
+export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Position): vscode.SignatureHelp | null {
+    const { line, character } = position;
+    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[line];
+
+    const cmdData: TCmdData | null = getCmdData(AhkTokenLine);
+    if (cmdData === null) return null;
+    const {
+        keyUp,
+        keyCol,
+        CmdSign,
+    } = cmdData;
+    const { lStr } = AhkTokenLine;
+
+    const strF: string = getSingCmdStrF(lStr, keyCol + keyUp.length);
 
     let comma = 0;
     let brackets1 = 0; // ()
     let brackets2 = 0; // []
     let brackets3 = 0; // {}
 
-    for (let i = fistWordUpCol; i < character; i++) {
+    for (let i = keyCol; i < character; i++) {
         const s: string = strF[i];
         switch (s) {
             case '(':
@@ -142,12 +178,9 @@ export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Positio
     Signature.activeParameter = comma;
 
     let j = 0;
-    for (const v of SignatureCmdOverloadMap.get(fistWordUp) ?? []) {
-        const CmdSignOverload: TCmdSign | null = CmdSignMemo.up(v);
-        if (CmdSignOverload !== null) {
-            Signature.signatures.push(getSignInfo(CmdSignOverload));
-            j++;
-        }
+    for (const v of SignatureCmdOverloadMap.get(keyUp) ?? []) {
+        Signature.signatures.push(getSignInfo(CmdSignMemo.up(v)));
+        j++;
     }
 
     if (j > 0) {

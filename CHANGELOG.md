@@ -32,7 +32,9 @@
 
 - feat: add some sign of cmd
   - `"AhkNekoHelp.signatureHelp.CmdShowParamInfo"` not need to restart vscode now.
-  - cover `100%` now.
+  - cover `100%` cmd sign now.
+  - feat: support sing-start-with-out-cmd
+    ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-43-sing-start-with-out-cmd.png)
   - fix: sign first optional comma, pin position.
   - if param > first sign , try auto switch of cmd sign. exp: `MsgBox , Options, Title, Text, Timeout`
   - overload sign, cover `100%`
