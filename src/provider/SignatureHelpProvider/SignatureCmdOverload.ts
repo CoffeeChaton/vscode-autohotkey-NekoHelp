@@ -29,7 +29,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
                     // https://github.com/AutoHotkey/AutoHotkeyDocs/blob/v1/docs/static/source/data_index.js#L876
                     {
                         name: 'Options',
-                        sign: 'S',
+                        sign: 'O',
                         isOpt: true,
                         paramDoc: [
                             '[Group #1: Buttons](https://www.autohotkey.com/docs/v1/lib/MsgBox.htm#Group_1_Buttons)',
@@ -112,7 +112,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
                     },
                     {
                         name: 'Timeout_Sec',
-                        sign: 'S',
+                        sign: 'E',
                         isOpt: true,
                         paramDoc: [
                             'If blank or omitted, the message box will not be automatically closed. Otherwise, specify the timeout in seconds, which can contain a decimal point but is not an expression by default. [\\[v1.1.06+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00 "Applies to AutoHotkey v1.1.06 and later"): This can be a forced expression such as `% mins*60`.',
@@ -143,7 +143,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
                     },
                     {
                         name: 'NewSeed',
-                        sign: 'S',
+                        sign: 'E',
                         isOpt: false,
                         paramDoc: [
                             '```ahk',
@@ -444,7 +444,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
                 _param: [
                     {
                         name: 'X',
-                        sign: 'S',
+                        sign: 'E',
                         isOpt: false,
                         paramDoc: [
                             'The X and Y coordinates (in pixels) of the upper left corner of the target window\'s new location, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). The upper-left pixel of the screen is at 0, 0.',
@@ -456,7 +456,7 @@ export const SignatureCmdOverloadMap: ReadonlyMap<string, readonly TCmdMsg[]> = 
                     },
                     {
                         name: 'Y',
-                        sign: 'S',
+                        sign: 'E',
                         isOpt: false,
                         paramDoc: [
                             'The X and Y coordinates (in pixels) of the upper left corner of the target window\'s new location, which can be [expressions](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions). The upper-left pixel of the screen is at 0, 0.',

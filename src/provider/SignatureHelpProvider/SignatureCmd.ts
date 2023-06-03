@@ -39,12 +39,20 @@ const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign>(
 
             const signText = signToText(sign);
             //
-            const A: vscode.MarkdownString = new vscode.MarkdownString(signText, true);
-            paramAList.push(new vscode.ParameterInformation(name, A));
+            paramAList.push(
+                new vscode.ParameterInformation(
+                    name,
+                    new vscode.MarkdownString(signText, true),
+                ),
+            );
 
-            const B: vscode.MarkdownString = new vscode.MarkdownString(signText, true)
-                .appendMarkdown(`\n${paramDoc.join('\n')}`);
-            paramBList.push(new vscode.ParameterInformation(name, B));
+            paramBList.push(
+                new vscode.ParameterInformation(
+                    name,
+                    new vscode.MarkdownString(signText, true)
+                        .appendMarkdown(`\n${paramDoc.join('\n')}`),
+                ),
+            );
         }
 
         return {
@@ -66,11 +74,6 @@ function getSignInfo(CmdSign: TCmdSign): vscode.SignatureInformation {
 }
 
 function getSingCmdStrF(lStr: string, col: number): string {
-    // const strF: string = lStr
-    // .slice(fistWordUpCol + fistWordUp.length)
-    // .replace(/^\s*,?\s*/u, `${cmdData.keyRawName},`)
-    // .padStart(lStr.length, ' ');
-
     const str0: string = lStr.slice(col);
 
     if (str0.trimStart().startsWith(',')) {
@@ -79,7 +82,7 @@ function getSingCmdStrF(lStr: string, col: number): string {
     }
 
     // not happy
-    return (`,${str0.trimStart()}`)
+    return (`,${str0.replace(/^[ \\t]/u, '')}`)
         .padStart(lStr.length, ' ');
 }
 
@@ -129,8 +132,10 @@ export function SignatureCmd(AhkFileData: TAhkFileData, position: vscode.Positio
         keyCol,
         CmdSign,
     } = cmdData;
-    const { lStr } = AhkTokenLine;
 
+    if (character < keyCol) return null;
+
+    const { lStr } = AhkTokenLine;
     const strF: string = getSingCmdStrF(lStr, keyCol + keyUp.length);
 
     let comma = 0;
