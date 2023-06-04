@@ -1,0 +1,74 @@
+>#Requires AutoHotkey v1.1.33+
+#^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#         ^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>#Warn All, MsgBox
+#^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#     ^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>
+>autoRun()
+#^^^^^^^ source.ahk entity.name.function.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+>
+>autoRun() {
+#^^^^^^^ source.ahk entity.name.function.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+#         ^ source.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+>    i := 0
+#^^^^^^ source.ahk
+#      ^^ source.ahk keyword.operator.assignment.ahk
+#        ^ source.ahk
+#         ^ source.ahk constant.numeric.decimal.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>
+>neverRun() {
+#^^^^^^^^ source.ahk entity.name.function.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+#          ^ source.ahk
+#           ^ source.ahk punctuation.bracket.ahk
+>    a := 0
+#^^^^^^ source.ahk
+#      ^^ source.ahk keyword.operator.assignment.ahk
+#        ^ source.ahk
+#         ^ source.ahk constant.numeric.decimal.ahk
+>    if (a > 0) {
+#^^^^ source.ahk
+#    ^^ source.ahk keyword.control.flow.ahk
+#      ^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^^ source.ahk
+#          ^ source.ahk keyword.operator.comparison.ahk
+#           ^ source.ahk
+#            ^ source.ahk constant.numeric.decimal.ahk
+#             ^ source.ahk punctuation.bracket.ahk
+#              ^ source.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+>        sText := "; ;"
+#^^^^^^^^^^^^^^ source.ahk
+#              ^^ source.ahk keyword.operator.assignment.ahk
+#                ^ source.ahk
+#                 ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                  ^ source.ahk string.quoted.double.ahk
+#                   ^ source.ahk string.quoted.double.ahk
+#                    ^^ source.ahk meta.comment.line.semicolon.issues20.ahk comment.line.semicolon.issues20.ahk
+>        ;          ^^^ this comment, not string =_=, thank you ahk.
+#^^^^^^^ source.ahk
+#       ^ source.ahk meta.comment.line.semicolon.ahk
+#        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>        sText := "; `;"
+#^^^^^^^^^^^^^^ source.ahk
+#              ^^ source.ahk keyword.operator.assignment.ahk
+#                ^ source.ahk
+#                 ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                  ^^ source.ahk string.quoted.double.ahk
+#                    ^^ source.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                      ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>    }
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk

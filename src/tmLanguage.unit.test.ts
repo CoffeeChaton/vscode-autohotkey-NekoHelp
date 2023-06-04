@@ -35,7 +35,7 @@ describe('check tmLanguage ruler', () => {
                 errList0.push({ msg: 'name not match a-z_0-9', value });
             }
 
-            if (!(/[a-z]\d?\.ahk$/u).test(value)) {
+            if (!value.endsWith('.ahk')) {
                 errList0.push({ msg: 'name not end with .ahk', value });
             }
 

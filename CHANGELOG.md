@@ -35,8 +35,8 @@
   ;   ^^ fix it now
   ```
 
-- TODO fix: core , Even `;` is wrapped by `""`, it is still parsed as a comment.
-  > <https://www.autohotkey.com/boards/viewtopic.php?f=76&t=118156>
+- fix: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20) task-1 syntax-highlight
+  > Even `;` is wrapped by `""`, it is still parsed as a comment.
 
   ```ahk
   #Requires AutoHotkey v1.1.33+

@@ -616,6 +616,11 @@
                     "name": "meta.comment.line.semicolon.ahk"
                 },
                 {
+                    "captures": { "1": { "name": "comment.line.semicolon.issues20.ahk" } },
+                    "match": "(?<=[ \\t])(;.*)",
+                    "name": "meta.comment.line.semicolon.issues20.ahk"
+                },
+                {
                     "begin": "^[ \\t]*/\\*\\*",
                     "end": "^[ \\t]*\\*/",
                     "name": "comment.block.documentation.ahk",
@@ -938,7 +943,7 @@
         "string": {
             "begin": "(\")",
             "beginCaptures": { "1": { "name": "punctuation.definition.string.begin.ahk" } },
-            "end": "(?:(\")(?!\"))|$",
+            "end": "(?:(\")(?!\"))|$|(?:[ \\t](?=;))",
             "endCaptures": { "1": { "name": "punctuation.definition.string.end.ahk" } },
             "name": "string.quoted.double.ahk",
             "patterns": [
