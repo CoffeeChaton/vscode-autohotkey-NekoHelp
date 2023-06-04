@@ -369,8 +369,8 @@
 #                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >
 >#If MouseIsOver("ahk_class Shell_TrayWnd") ; For MouseIsOver, see #If example 1.
-#^^^ source.ahk meta._if.keyword.control.directives.ahk keyword.control.directives._if.ahk
-#   ^ source.ahk meta._if.keyword.control.directives.ahk
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
+#   ^ source.ahk
 #    ^^^^^^^^^^^ source.ahk entity.name.function.ahk
 #               ^ source.ahk punctuation.bracket.ahk
 #                ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
@@ -699,7 +699,7 @@
 #                                ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
 #                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#If
-#^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
 >
 >*F1::Send, {Alt down}{tab} ; Asterisk is required in this case.
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
@@ -748,7 +748,7 @@
 >;*Esc::Send {Esc}{Alt up}  ; Without tilde (~), Escape would need to be sent.
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >#If
-#^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
 >
 >^+o::
 #^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk

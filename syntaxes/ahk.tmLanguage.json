@@ -681,8 +681,8 @@
                 {
                     "captures": { "1": { "name": "keyword.control.directives._if.ahk" } },
                     "patterns": [ { "include": "#expression" } ],
-                    "match": "^[ \\t]*(?i:(#if))[ \\t]+",
-                    "name": "meta._if.keyword.control.directives.ahk"
+                    "match": "^[ \\t]*(?i:(#if))(?=[ \\t]|$)",
+                    "name": "meta._if.keyword.control.directives._if.ahk"
                 },
                 {
                     "name": "string.parameter.directives.ahk",

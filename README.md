@@ -303,7 +303,7 @@ support to find like
 
 - [x] `Signature` of `user-def-function` [youtube 4k 90-sec](https://www.youtube.com/watch?v=WcMzNcVWcYA)
 - [x] `Signature` of `built-in function`
-- [ ] `command` coming soon.
+- [x] `command` coming soon.
 
 - calc `[]` and `{}` , at function arguments.
   ![img](image/sign.gif)

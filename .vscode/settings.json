@@ -69,6 +69,8 @@
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "README.md": "tsconfig.json, .*, cspell.json, dprint.json, esbuild.config.js, jest.config.js, icon.png, icon.svg, LICENSE"
-    }
+    },
+    "AhkNekoHelp.format.removeFirstCommaCommand": 0,
+    "AhkNekoHelp.format.removeFirstCommaDirective": false
     // "markdown.extension.list.indentationSize": "inherit"
 }

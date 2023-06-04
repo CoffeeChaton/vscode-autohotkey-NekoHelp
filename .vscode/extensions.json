@@ -1,7 +1,7 @@
 {
     // See https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recommended-extensions
     // for the documentation about the extensions.json format
-
+    // "bierner.markdown-preview-github-styles",
     // "christian-kohler.path-intellisense",
     // "donjayamanne.githistory",
     // "eamodio.gitlens",
@@ -12,17 +12,17 @@
     // "tabnine.tabnine-vscode",
     // "usernamehw.errorlens",
     // "visualstudioexptteam.vscodeintellicode",
-
     "recommendations": [
         "alefragnani.project-manager",
-        "bierner.markdown-preview-github-styles",
         "chakrounanas.turbo-console-log",
         "davidanson.vscode-markdownlint",
         "dbaeumer.vscode-eslint",
-        "gruntfuggly.todo-tree",
+        "dprint.dprint",
         "ms-vscode.vscode-js-profile-flame",
+        "pokey.parse-tree",
         "redcmd.tmlanguage-syntax-highlighter",
         "sburg.vscode-javascript-booster",
+        "streetsidesoftware.code-spell-checker",
         "yzhang.markdown-all-in-one"
     ]
 }

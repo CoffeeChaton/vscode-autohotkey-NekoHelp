@@ -7006,7 +7006,7 @@ export const LineCommand: TCommandElement[] = [
             'SoundSet, 50 ;Sets the master volume to 50%.',
             'SoundSet, 10 ;Sets the master volume to 10%.',
             'SoundSet, +10 ;Increases the master volume by 10%.',
-            'SoundSet -10;Decreases the master volume by 10%.',
+            'SoundSet -10 ;Decreases the master volume by 10%.',
         ],
         _paramType: [
             'E',
@@ -7028,7 +7028,7 @@ export const LineCommand: TCommandElement[] = [
                     'SoundSet, 50 ;Sets the master volume to 50%.',
                     'SoundSet, 10 ;Sets the master volume to 10%.',
                     'SoundSet, +10 ;Increases the master volume by 10%.',
-                    'SoundSet -10;Decreases the master volume by 10%.',
+                    'SoundSet -10 ;Decreases the master volume by 10%.',
                     '```',
                     '',
                 ],

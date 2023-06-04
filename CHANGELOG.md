@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.44(2023-06-XX)](#next-v00442023-06-xx)
   - [v0.0.43(2023-06-04)](#v00432023-06-04)
   - [v0.0.42(2023-05-29)](#v00422023-05-29)
   - [v0.0.41(2023-05-22)](#v00412023-05-22)
@@ -22,6 +23,28 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## Next v0.0.44(2023-06-XX)
+
+- fix : syntax-highlight
+
+  ```ahk
+  #if foo() ;;===========
+  WheelUp:: bar()
+  #if ;;======
+  ;   ^^ fix it now
+  ```
+
+- TODO fix: core , Even `;` is wrapped by `""`, it is still parsed as a comment.
+  > <https://www.autohotkey.com/boards/viewtopic.php?f=76&t=118156>
+
+  ```ahk
+  #Requires AutoHotkey v1.1.33+
+  #Warn All, MsgBox
+  sText := "; ;"
+  ;          ^^^ this comment, not string =_=, thank you ahk.
+  sText := "; `;"
+  ```
 
 ## v0.0.43(2023-06-04)
 
@@ -92,7 +115,7 @@
     Random
     Hotkey
 
-    ; TODO
+    ; support at v0.0.43(2023-06-04)
     IniRead
     IniWrite
     SplashImage
@@ -296,7 +319,7 @@
    1. part-1 of #12
       - [youtube 4k 2min](https://www.youtube.com/watch?v=clvD7z7YjHM)
       - [x] user-defined-functions style, via: `"AhkNekoHelp.customize.signatureHelp"` [Read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/customize.signatureHelp.md)
-      - [ ] build-in-functions , (0/111)
+      - [x] build-in-functions , (0/111)
    2. part-2 of #12 , via: `"AhkNekoHelp.customize.HoverFunctionDocStyle"`
    3. part-3 of #12 , via: `"AhkNekoHelp.SymbolProvider.showInclude"`
    4. part-4 of #12 , change to string color
@@ -305,7 +328,7 @@
    7. _skip
    8. part-8
       1. [x] class : find all references && CodeLens via (`"AhkNekoHelp.CodeLens.showClassReference"`)
-      2. [ ] method : not support it now
+      2. [x] method : not support it now
 
 4. [issues #13](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/13) object key syntax-highlight
 
@@ -583,7 +606,7 @@
   - [x] ~~part 3-1, need some time to fix unit-test, Help users tab to `$0`~~, `$0` is need to use at part 4-2
   - [x] part 3-2, add select CodeAction(_yellow light bulb_) to format it
   - [x] part 4-1, fix `ListLines` now
-  - [ ] part 4-2, let `[` -> `,[$0` , this helps users to tab to delete this, and using unit-test.
+  - [x] part 4-2, let `[` -> `,[$0` , this helps users to tab to delete this, and using unit-test.
   - [x] part 5, fix `WinGetTitle`
   - [x] part 6-1, fix `ControlFocus` , and add unit_test
   - [x] part 6-2, fix `SetTimer`, `FileAppend`, `SetKeyDelay`

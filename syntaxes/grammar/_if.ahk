@@ -4,3 +4,9 @@ MyWindowTitle := "My Window"
 #If WinActive("ahk_class Notepad") or WinActive(MyWindowTitle) ;comment
 #Space::MsgBox % "You pressed Win+Spacebar in Notepad or " MyWindowTitle ;comment
 ~F1::MsgBox % "You pressed Win+Spacebar in Notepad or " MyWindowTitle ;comment
+#if ; comment
+
+
+#if  WinActive("ahk_class ced")
+~f2:: foo()
+#if

@@ -1,23 +1,17 @@
 import { CAhkClass } from '../../AhkSymbol/CAhkClass';
 import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
+import { CMemo } from '../CMemo';
 
-// FIXME:
-const wmClass = new WeakMap<TAstRoot, readonly CAhkClass[]>();
-
-export function getFileAllClass(AstRoot: TAstRoot): readonly CAhkClass[] {
-    const cache: readonly CAhkClass[] | undefined = wmClass.get(AstRoot);
-    if (cache !== undefined) {
-        return cache;
-    }
-
+const fileAllClassMemo = new CMemo<TAstRoot, readonly CAhkClass[]>((AstRoot: TAstRoot): readonly CAhkClass[] => {
     const result: CAhkClass[] = [];
     for (const DA of AstRoot) {
         if (DA instanceof CAhkClass) {
             result.push(DA);
         }
     }
-
-    wmClass.set(AstRoot, result);
-
     return result;
+});
+
+export function getFileAllClass(AstRoot: TAstRoot): readonly CAhkClass[] {
+    return fileAllClassMemo.up(AstRoot);
 }

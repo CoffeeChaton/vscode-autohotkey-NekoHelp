@@ -9,8 +9,8 @@
 #                  ^^^^^^^^^ source.ahk string.quoted.double.ahk
 #                           ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
 >#If WinActive("ahk_class Notepad") or WinActive(MyWindowTitle) ;comment
-#^^^ source.ahk meta._if.keyword.control.directives.ahk keyword.control.directives._if.ahk
-#   ^ source.ahk meta._if.keyword.control.directives.ahk
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
+#   ^ source.ahk
 #    ^^^^^^^^^ source.ahk support.function.ahk
 #             ^ source.ahk punctuation.bracket.ahk
 #              ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
@@ -53,4 +53,29 @@
 #                                                       ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 #                                                                     ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
 #                                                                      ^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>#if ; comment
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
+#   ^ source.ahk meta.comment.line.semicolon.ahk
+#    ^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>
+>#if  WinActive("ahk_class ced")
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
+#   ^^ source.ahk
+#     ^^^^^^^^^ source.ahk support.function.ahk
+#              ^ source.ahk punctuation.bracket.ahk
+#               ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                ^^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
+#                             ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                              ^ source.ahk punctuation.bracket.ahk
+>~f2:: foo()
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#   ^^ source.ahk meta.hotkey.line.ahk
+#     ^ source.ahk
+#      ^^^ source.ahk entity.name.function.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+>#if
+#^^^ source.ahk meta._if.keyword.control.directives._if.ahk keyword.control.directives._if.ahk
 >
