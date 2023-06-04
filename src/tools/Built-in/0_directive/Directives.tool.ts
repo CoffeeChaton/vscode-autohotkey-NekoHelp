@@ -5,6 +5,9 @@ type TDirectivesMDMap = ReadonlyMap<string, {
     md: vscode.MarkdownString,
     keyRawName: `#${string}`,
 }>;
+/**
+ * replace('#', '')
+ */
 type TSnippetDirective = readonly vscode.CompletionItem[];
 
 export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDirectivesMDMap] => {

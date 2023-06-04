@@ -35,7 +35,7 @@
   ;   ^^ fix it now
   ```
 
-- fix: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20) task-1 syntax-highlight
+- fix: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20)
   > Even `;` is wrapped by `""`, it is still parsed as a comment.
 
   ```ahk

@@ -381,27 +381,34 @@ export function Pretreatment(
 
         if ((/^#\w+(?:[ \t,]|$)/u).test(lStrTrim)) {
             const maDirectives: RegExpMatchArray | null = lStrTrim.match(/^#(\w+)/u);
-            if (maDirectives !== null && DirectivesMDMap.has(maDirectives[1].toUpperCase())) {
-                // of label-line
-                result.push({
-                    ahkDoc,
-                    cll: 0,
-                    deep2: [deep],
-                    detail: [...detail, EDetail.isDirectivesLine],
-                    displayErr,
-                    displayFnErr,
-                    fistWordUp: '',
-                    fistWordUpCol: -1,
-                    line,
-                    lineComment,
-                    lStr,
-                    multiline,
-                    multilineFlag: null,
-                    SecondWordUp: '',
-                    SecondWordUpCol: -1,
-                    textRaw,
-                });
-                continue;
+            if (maDirectives !== null) {
+                const key: string = maDirectives[1].toUpperCase();
+                if (DirectivesMDMap.has(key)) {
+                    // of label-line
+                    result.push({
+                        ahkDoc,
+                        cll: 0,
+                        deep2: [deep],
+                        detail: [...detail, EDetail.isDirectivesLine],
+                        displayErr,
+                        displayFnErr,
+                        fistWordUp: '',
+                        fistWordUpCol: -1,
+                        line,
+                        lineComment,
+                        // #if vs #Hotstring EndChars -()[]{}':;\"/\\,.?!`n `t ;Comment
+                        lStr: key === 'IF'
+                            ? lStr
+                            : textRaw.replaceAll(/`[,%`;nrbtvaf]/gu, '`^')
+                                .replace(/[ \t];.*/u, ''),
+                        multiline,
+                        multilineFlag: null,
+                        SecondWordUp: '',
+                        SecondWordUpCol: -1,
+                        textRaw,
+                    });
+                    continue;
+                }
             }
         }
 
