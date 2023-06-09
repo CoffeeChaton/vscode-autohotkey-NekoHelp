@@ -143,12 +143,9 @@
 #                       ^ source.ahk meta.command.line.winget.ahk punctuation.ahk
 #                        ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.winget.ahk
 >Loop, %id_list%
-#^^^^ source.ahk keyword.control.flow.ahk
-#    ^ source.ahk punctuation.ahk
-#     ^ source.ahk
-#      ^ source.ahk punctuation.definition.variable.percent.ahk
-#       ^^^^^^^ source.ahk
-#              ^ source.ahk punctuation.definition.variable.percent.ahk
+#^^^^ source.ahk meta.loop.old.ahk keyword.loop.control.flow.loop.old.ahk
+#    ^^ source.ahk meta.loop.old.ahk
+#      ^^^^^^^^^ source.ahk meta.loop.old.ahk
 >{
 #^ source.ahk punctuation.bracket.ahk
 >    i := A_Index
@@ -277,11 +274,7 @@
 #^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
 #    ^^ source.ahk meta.loop.ahk
 #      ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
-#           ^ source.ahk punctuation.ahk
-#            ^^^^^^^^^^^^^^^^^^ source.ahk
-#                              ^ source.ahk punctuation.ahk
-#                               ^ source.ahk
-#                                ^^ source.ahk constant.character.escape.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk
 >{
 #^ source.ahk punctuation.bracket.ahk
 >    MsgBox, 4,, % "Control #" A_Index " is [" A_LoopField "]`nContinue?"

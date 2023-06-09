@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { EDiagCode } from '../../../../diag';
 import type { TAhkTokenLine } from '../../../../globalEnum';
-import { RegRootList } from '../../../../tools/Built-in/100_other/RegRootKey';
+import { RegRootList } from '../../../../tools/Built-in/100_other/RegRootKey.data';
 import { CommandErrMap } from '../../../../tools/Built-in/6_command/Command.tools';
 import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';

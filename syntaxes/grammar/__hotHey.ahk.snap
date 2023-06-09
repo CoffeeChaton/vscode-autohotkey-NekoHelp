@@ -458,11 +458,9 @@
 #                              ^^ source.ahk meta.command.line.ahk
 >    Loop 2 ; <-- Increase this value to scroll faster.
 #^^^^ source.ahk
-#    ^^^^ source.ahk keyword.control.flow.ahk
-#        ^ source.ahk
-#         ^ source.ahk constant.numeric.decimal.ahk
-#          ^ source.ahk meta.comment.line.semicolon.ahk
-#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+#    ^^^^ source.ahk meta.loop.old.ahk keyword.loop.control.flow.loop.old.ahk
+#        ^ source.ahk meta.loop.old.ahk
+#         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.old.ahk
 >        SendMessage, 0x0114, 0, 0, %fcontrol%, A  ; 0x0114 is WM_HSCROLL and the 0 after it is SB_LINELEFT.
 #^^^^^^^^ source.ahk
 #        ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -506,11 +504,9 @@
 #                              ^^ source.ahk meta.command.line.ahk
 >    Loop 2 ; <-- Increase this value to scroll faster.
 #^^^^ source.ahk
-#    ^^^^ source.ahk keyword.control.flow.ahk
-#        ^ source.ahk
-#         ^ source.ahk constant.numeric.decimal.ahk
-#          ^ source.ahk meta.comment.line.semicolon.ahk
-#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+#    ^^^^ source.ahk meta.loop.old.ahk keyword.loop.control.flow.loop.old.ahk
+#        ^ source.ahk meta.loop.old.ahk
+#         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.old.ahk
 >        SendMessage, 0x0114, 1, 0, %fcontrol%, A  ; 0x0114 is WM_HSCROLL and the 1 after it is SB_LINERIGHT.
 #^^^^^^^^ source.ahk
 #        ^^^^^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk

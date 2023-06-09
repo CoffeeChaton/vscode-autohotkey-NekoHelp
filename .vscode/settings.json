@@ -71,6 +71,10 @@
         "README.md": "tsconfig.json, .*, cspell.json, dprint.json, esbuild.config.js, jest.config.js, icon.png, icon.svg, LICENSE"
     },
     "AhkNekoHelp.format.removeFirstCommaCommand": 0,
-    "AhkNekoHelp.format.removeFirstCommaDirective": false
+    "AhkNekoHelp.format.removeFirstCommaDirective": false,
+    "files.readonlyInclude": {
+        "node_modules/**": true,
+        "dist/**": true
+    }
     // "markdown.extension.list.indentationSize": "inherit"
 }

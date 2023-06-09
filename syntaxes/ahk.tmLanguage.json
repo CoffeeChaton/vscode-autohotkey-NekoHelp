@@ -733,6 +733,8 @@
                     }
                 },
                 { "include": "#flow_of_control_loop_plus" },
+                { "include": "#flow_of_control_loop_Reg" },
+                { "include": "#flow_of_control_loop_old" },
                 {
                     "match": "\\b(?!MsgBox)(?<![.#])(?i:Break|Case|Catch|Critical|Default|Else|Exit|ExitApp|Finally|For|GoSub|Goto|If|IfEqual|IfExist|IfGreater|IfGreaterOrEqual|IfInString|IfLess|IfLessOrEqual|IfMsgBox|IfNotEqual|IfNotExist|IfNotInString|IfWinActive|IfWinExist|IfWinNotActive|IfWinNotExist|Loop|Pause|Reload|Return|Switch|Throw|Try|Until|While)\\b(?!\\()",
                     "name": "keyword.control.flow.ahk"
@@ -740,12 +742,42 @@
             ]
         },
         "flow_of_control_loop_plus": {
-            "match": "\\b(?!MsgBox)(?<![.#])(?i:\\b(loop)\\b[ \\t]*?,?[ \\t]*(Files|Parse|Read|Reg))",
             "name": "meta.loop.ahk",
-            "captures": {
+            "begin": "\\b(?!MsgBox)(?<![.#])(?i:\\b(loop)\\b[ \\t]*?,?[ \\t]*(Files|Parse|Read))",
+            "end": "\\n",
+            "beginCaptures": {
                 "1": { "name": "keyword.loop.control.flow.ahk" },
                 "2": { "name": "keyword.loop.param.control.flow.ahk" }
             }
+        },
+        "flow_of_control_loop_reg": {
+            "name": "meta.loop.ahk",
+            "begin": "\\b(?!MsgBox)(?<![.#])(?i:\\b(loop)\\b[ \\t]*?,?[ \\t]*(Reg))",
+            "end": "\\n",
+            "beginCaptures": {
+                "1": { "name": "keyword.loop.control.flow.loop.reg.ahk" },
+                "2": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" }
+            },
+            "patterns": [
+                {
+                    "match": "(?<=[, \\t:])(?i:(HKLM|HKEY_LOCAL_MACHINE|HKCR|HKEY_CLASSES_ROOT|HKCC|HKEY_CURRENT_CONFIG|HKCU|HKEY_CURRENT_USER|HKU|HKEY_USERS))(?=[, \\t\\\\])",
+                    "name": "meta.goto.loop.reg.ahk",
+                    "captures": { "1": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" } }
+                }
+            ]
+        },
+        "flow_of_control_loop_old": {
+            "name": "meta.loop.old.ahk",
+            "begin": "\\b(?!MsgBox)(?<![.#])(?i:\\b(loop)\\b[ \\t]*?,?[ \\t]*)",
+            "end": "\\n",
+            "beginCaptures": { "1": { "name": "keyword.loop.control.flow.loop.old.ahk" } },
+            "patterns": [
+                {
+                    "match": "(?<=[, \\t:])(?i:(HKLM|HKEY_LOCAL_MACHINE|HKCR|HKEY_CLASSES_ROOT|HKCC|HKEY_CURRENT_CONFIG|HKCU|HKEY_CURRENT_USER|HKU|HKEY_USERS))(?=[, \\t\\\\])",
+                    "name": "meta.goto.loop.reg.ahk",
+                    "captures": { "1": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" } }
+                }
+            ]
         },
         "func_call": {
             "patterns": [

@@ -27,7 +27,7 @@ Loop, Read, C:\Log File.txt
 
 
 Loop, Reg, HKEY_CURRENT_USER\Software\Microsoft\Windows, KVR
-{ ; TODO   ^ HKEY_LOCAL_MACHINE syntax-highlight]
+{
     if (A_LoopRegType = "key")
         value := ""
     else
@@ -41,3 +41,4 @@ Loop, Reg, HKEY_CURRENT_USER\Software\Microsoft\Windows, KVR
         break
 }
 
+Loop, HKEY_CURRENT_USER, Software

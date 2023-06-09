@@ -35,7 +35,7 @@
   ;   ^^ fix it now
   ```
 
-- fix: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20)
+- fix: core comment parsing order [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20)
   > Even `;` is wrapped by `""`, it is still parsed as a comment.
 
   ```ahk
@@ -44,6 +44,21 @@
   sText := "; ;"
   ;          ^^^ this comment, not string =_=, thank you ahk.
   sText := "; `;"
+  ```
+
+- fix: syntax-highlight of `HKEY_LOCAL_MACHINE`
+
+  ```ahk
+  Loop, Reg, HKEY_CURRENT_USER\Software\Microsoft\Windows, KVR
+  { ;        ^ HKEY_LOCAL_MACHINE syntax-highlight
+    /*
+    'HKEY_LOCAL_MACHINE',
+    'HKEY_USERS',
+    'HKEY_CURRENT_USER',
+    'HKEY_CLASSES_ROOT',
+    'HKEY_CURRENT_CONFIG',
+    */
+  }
   ```
 
 ## v0.0.43(2023-06-04)
