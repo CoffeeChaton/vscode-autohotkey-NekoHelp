@@ -8,6 +8,9 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    "[json-tmLanguage]": {
+        "editor.defaultFormatter": "RedCMD.tmlanguage-syntax-highlighter"
+    },
     "[markdown]": {
         "editor.defaultFormatter": "dprint.dprint"
     },

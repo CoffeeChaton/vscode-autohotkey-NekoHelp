@@ -26,15 +26,6 @@
 
 ## Next v0.0.44(2023-06-XX)
 
-- fix : syntax-highlight
-
-  ```ahk
-  #if foo() ;;===========
-  WheelUp:: bar()
-  #if ;;======
-  ;   ^^ fix it now
-  ```
-
 - fix: core comment parsing order [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20)
   > Even `;` is wrapped by `""`, it is still parsed as a comment.
 
@@ -45,6 +36,21 @@
   ;          ^^^ this comment, not string =_=, thank you ahk.
   sText := "; `;"
   ```
+
+- feat: add hover of focEx
+
+  ```ahk
+  if var between 1 and 5
+  if var contains 1,3
+  if var in exe,bat,com
+  if var is float
+  Loop, Files ; hover at Files
+  Loop, Parse
+  Loop, Read
+  Loop, Reg
+  ```
+
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-44-hover-foc-ex-param.png)
 
 - fix: syntax-highlight of `HKEY_LOCAL_MACHINE`
 
@@ -59,6 +65,15 @@
     'HKEY_CURRENT_CONFIG',
     */
   }
+  ```
+
+- fix : syntax-highlight of `#if ;`
+
+  ```ahk
+  #if foo() ;;===========
+  WheelUp:: bar()
+  #if ;;======
+  ;   ^^ fix it now
   ```
 
 ## v0.0.43(2023-06-04)

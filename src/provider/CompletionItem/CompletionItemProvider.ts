@@ -19,7 +19,7 @@ import { getSnippetStartWihA } from '../../tools/Built-in/1_built_in_var/A_Varia
 import { getSnipBiVar } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { BuiltInFunc2Completion } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { getSnippetStatement as getSnippetFoc } from '../../tools/Built-in/3_foc/foc.tools';
-import { getSnipFoc2 } from '../../tools/Built-in/3_foc/foc2.tools';
+import { getSnipFocEx } from '../../tools/Built-in/3_foc/focEx.tools';
 import { getSnippetOperator } from '../../tools/Built-in/4_operator/operator.tools';
 import { getSnipDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
 import { getSnipCmd } from '../../tools/Built-in/6_command/Command.tools.completion';
@@ -98,7 +98,7 @@ function CompletionItemCore(
             ...getSnipCmd(subStr, AhkTokenLine), // MsgBox
             ...getSnipSubCmd(subStr, AhkTokenLine), // Gui..
             ...getSnipGlobalVal(AhkTokenLine, position),
-            ...getSnipFoc2(subStr),
+            ...getSnipFocEx(subStr),
             ...getSnipOtherKeyWord(subStr),
             ...getSnipMouseKeyboard(subStr),
             ...getSnipCLSID(AhkTokenLine, position, context),

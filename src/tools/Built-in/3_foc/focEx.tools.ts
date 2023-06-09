@@ -1,10 +1,27 @@
 import * as vscode from 'vscode';
-import { statement2Data } from './foc2.data';
+import { focExDataList } from './focEx.data';
 
-const statement2snip: readonly vscode.CompletionItem[] = ((): readonly vscode.CompletionItem[] => {
+type TSnipList = readonly vscode.CompletionItem[];
+
+/**
+ * ```ahk
+ *  if between
+ *  if contains
+ *  if in
+ *  if is
+ *  Loop, Files
+ *  Loop, Parse
+ *  Loop, Read
+ *  Loop, Reg
+ *  ```
+ */
+export type TFocExMsgMap = ReadonlyMap<string, vscode.MarkdownString>;
+
+const { focExSnip, focExMap } = ((): { focExSnip: TSnipList, focExMap: TFocExMsgMap } => {
+    const focExMapRw = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
 
-    for (const v of statement2Data) {
+    for (const v of focExDataList) {
         const {
             doc,
             body,
@@ -22,19 +39,25 @@ const statement2snip: readonly vscode.CompletionItem[] = ((): readonly vscode.Co
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendCodeblock(keyRawName, 'ahk')
             .appendMarkdown(doc)
-            .appendMarkdown(`\n'[(Read Doc)](${link})`)
+            .appendMarkdown(`\n[(Read Doc)](${link})`)
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'), 'ahk');
         item.documentation = md;
 
         List2.push(item);
+        focExMapRw.set(keyRawName.toUpperCase(), md);
     }
-    return List2;
+    return {
+        focExSnip: List2,
+        focExMap: focExMapRw,
+    };
 })();
 
-export function getSnipFoc2(subStr: string): readonly vscode.CompletionItem[] {
+export function getSnipFocEx(subStr: string): TSnipList {
     return (/^\s*\w*$/iu).test(subStr)
-        ? statement2snip
+        ? focExSnip
         : [];
 }
+
+export const focExMapOut: TFocExMsgMap = focExMap;

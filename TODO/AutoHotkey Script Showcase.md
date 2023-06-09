@@ -32,3 +32,5 @@
 - [Toralf's Scripts](https://www.autohotkey.com/docs/v1/scripts/index.htm#Toralf_s_Scripts)
 - [Sean's Scripts](https://www.autohotkey.com/docs/v1/scripts/index.htm#Sean_s_Scripts)
 - [Archived Scripts and Functions Forum](https://www.autohotkey.com/docs/v1/scripts/index.htm#Scripts_and_Functions_Forum)
+
+- [gdip all 21/04/2023](https://github.com/marius-sucan/AHK-GDIp-Library-Compilation/blob/v1.95/ahk-v1-1/Gdip_All.ahk)

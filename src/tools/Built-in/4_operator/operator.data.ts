@@ -47,6 +47,21 @@ export const operatorDataList: TOperator[] = [
         ],
     },
     {
+        upName: 'CONTAINS',
+        keyRawName: 'contains',
+        body: 'contains',
+        doc: 'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents match one of the items in a list.',
+        recommended: true,
+        link: 'https://www.autohotkey.com/docs/v1/lib/IfIn.htm',
+        exp: [
+            'if Var in MatchList',
+            'if Var not in MatchList',
+            '',
+            'if Var contains MatchList',
+            'if Var not contains MatchList',
+        ],
+    },
+    {
         upName: 'IN',
         keyRawName: 'in',
         body: 'in',

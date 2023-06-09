@@ -733,7 +733,7 @@
                     }
                 },
                 { "include": "#flow_of_control_loop_plus" },
-                { "include": "#flow_of_control_loop_Reg" },
+                { "include": "#flow_of_control_loop_reg" },
                 { "include": "#flow_of_control_loop_old" },
                 {
                     "match": "\\b(?!MsgBox)(?<![.#])(?i:Break|Case|Catch|Critical|Default|Else|Exit|ExitApp|Finally|For|GoSub|Goto|If|IfEqual|IfExist|IfGreater|IfGreaterOrEqual|IfInString|IfLess|IfLessOrEqual|IfMsgBox|IfNotEqual|IfNotExist|IfNotInString|IfWinActive|IfWinExist|IfWinNotActive|IfWinNotExist|Loop|Pause|Reload|Return|Switch|Throw|Try|Until|While)\\b(?!\\()",
@@ -748,7 +748,8 @@
             "beginCaptures": {
                 "1": { "name": "keyword.loop.control.flow.ahk" },
                 "2": { "name": "keyword.loop.param.control.flow.ahk" }
-            }
+            },
+            "patterns": [ { "include": "#expression" } ]
         },
         "flow_of_control_loop_reg": {
             "name": "meta.loop.ahk",
@@ -759,11 +760,8 @@
                 "2": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" }
             },
             "patterns": [
-                {
-                    "match": "(?<=[, \\t:])(?i:(HKLM|HKEY_LOCAL_MACHINE|HKCR|HKEY_CLASSES_ROOT|HKCC|HKEY_CURRENT_CONFIG|HKCU|HKEY_CURRENT_USER|HKU|HKEY_USERS))(?=[, \\t\\\\])",
-                    "name": "meta.goto.loop.reg.ahk",
-                    "captures": { "1": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" } }
-                }
+                { "include": "#const_var_reg" },
+                { "include": "#expression" }
             ]
         },
         "flow_of_control_loop_old": {
@@ -772,12 +770,14 @@
             "end": "\\n",
             "beginCaptures": { "1": { "name": "keyword.loop.control.flow.loop.old.ahk" } },
             "patterns": [
-                {
-                    "match": "(?<=[, \\t:])(?i:(HKLM|HKEY_LOCAL_MACHINE|HKCR|HKEY_CLASSES_ROOT|HKCC|HKEY_CURRENT_CONFIG|HKCU|HKEY_CURRENT_USER|HKU|HKEY_USERS))(?=[, \\t\\\\])",
-                    "name": "meta.goto.loop.reg.ahk",
-                    "captures": { "1": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" } }
-                }
+                { "include": "#const_var_reg" },
+                { "include": "#expression" }
             ]
+        },
+        "const_var_reg": {
+            "match": "(?<=[, \\t:])(?i:(HKLM|HKEY_LOCAL_MACHINE|HKCR|HKEY_CLASSES_ROOT|HKCC|HKEY_CURRENT_CONFIG|HKCU|HKEY_CURRENT_USER|HKU|HKEY_USERS))(?=[, \\t\\\\])",
+            "name": "meta.goto.loop.reg.ahk",
+            "captures": { "1": { "name": "keyword.loop.param.control.flow.loop.reg.ahk" } }
         },
         "func_call": {
             "patterns": [
@@ -969,7 +969,7 @@
             "name": "keyword.other.operator.hasdoc.ahk"
         },
         "operator": {
-            "match": "(?<=[#$@%!\"/&'()*+,\\-:;<=>?[\\^\\\\]{|}~ \\t])(?i:and|Between|in|is|new|not|or|ByRef)(?:$|[ \\t])",
+            "match": "(?<=[#$@%!\"/&'()*+,\\-:;<=>?[\\^\\\\]{|}~ \\t])(?i:and|Between|contains|in|is|new|not|or|ByRef)(?:$|[ \\t])",
             "name": "keyword.other.operator.hasdoc.ahk"
         },
         "string": {

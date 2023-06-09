@@ -19,12 +19,13 @@ import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
-import { DeepAnalysisHover } from './tools/DeepAnalysisHover';
 import { hoverAhk2exe } from './tools/hoverAhk2exe';
 import { hoverClassName } from './tools/hoverClassName';
 import { hoverControlGetParam } from './tools/hoverControlGetParam';
 import { hoverControlParam } from './tools/hoverControlParam';
+import { DeepAnalysisHover } from './tools/HoverDeepAnalysis';
 import { hoverDirectives } from './tools/hoverDirectives';
+import { hoverFocEx } from './tools/hoverFocEx';
 import { hoverGlobalVar } from './tools/hoverGlobalVar';
 import { hoverGuiControlParam } from './tools/hoverGuiControlParam';
 import { hoverGuiParam } from './tools/hoverGuiParam';
@@ -116,6 +117,7 @@ function HoverProviderCore(
 
     type TF0 = (AhkTokenLine: TAhkTokenLine, position: vscode.Position) => vscode.MarkdownString | null;
     const fnList: TF0[] = [
+        hoverFocEx,
         hoverGuiParam,
         hoverGuiControlParam,
         hoverMenuParam,

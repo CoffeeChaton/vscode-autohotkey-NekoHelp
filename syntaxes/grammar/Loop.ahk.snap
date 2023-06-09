@@ -1,7 +1,9 @@
 >Loop, 10 {
 #^^^^ source.ahk meta.loop.old.ahk keyword.loop.control.flow.loop.old.ahk
 #    ^^ source.ahk meta.loop.old.ahk
-#      ^^^^ source.ahk meta.loop.old.ahk
+#      ^^ source.ahk meta.loop.old.ahk constant.numeric.decimal.ahk
+#        ^ source.ahk meta.loop.old.ahk
+#         ^ source.ahk meta.loop.old.ahk punctuation.bracket.ahk
 >
 >}
 #^ source.ahk punctuation.bracket.ahk
@@ -10,7 +12,19 @@
 #^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
 #    ^ source.ahk meta.loop.ahk
 #     ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
-#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk
+#          ^ source.ahk meta.loop.ahk punctuation.ahk
+#           ^ source.ahk meta.loop.ahk
+#            ^ source.ahk meta.loop.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.loop.ahk
+#              ^^^^^^^^^^^^^^ source.ahk meta.loop.ahk variable.other.constant.builtin.ahk
+#                            ^ source.ahk meta.loop.ahk
+#                             ^ source.ahk meta.loop.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                              ^^^^^^ source.ahk meta.loop.ahk string.quoted.double.ahk
+#                                    ^ source.ahk meta.loop.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                     ^ source.ahk meta.loop.ahk punctuation.ahk
+#                                      ^^^ source.ahk meta.loop.ahk
+#                                         ^ source.ahk meta.loop.ahk meta.comment.line.semicolon.ahk
+#                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >{
 #^ source.ahk punctuation.bracket.ahk
 >    MsgBox, 4, , Filename = %A_LoopFileFullPath%`n`nContinue?
@@ -54,7 +68,11 @@
 #^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
 #    ^^ source.ahk meta.loop.ahk
 #      ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
-#           ^^^^^^^^^^^^ source.ahk meta.loop.ahk
+#           ^ source.ahk meta.loop.ahk punctuation.ahk
+#            ^^^^^^^ source.ahk meta.loop.ahk
+#                   ^ source.ahk meta.loop.ahk punctuation.ahk
+#                    ^ source.ahk meta.loop.ahk
+#                     ^^ source.ahk meta.loop.ahk constant.character.escape.ahk
 >    MsgBox, % "Color number " A_Index " is " A_LoopField "."
 #^^^^ source.ahk
 #    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -82,7 +100,15 @@
 #^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
 #    ^^ source.ahk meta.loop.ahk
 #      ^^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
-#           ^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk
+#           ^ source.ahk meta.loop.ahk punctuation.ahk
+#            ^ source.ahk meta.loop.ahk
+#             ^^^^^^^^^ source.ahk meta.loop.ahk variable.other.constant.builtin.ahk
+#                      ^ source.ahk meta.loop.ahk punctuation.ahk
+#                       ^ source.ahk meta.loop.ahk
+#                        ^^ source.ahk meta.loop.ahk constant.character.escape.ahk
+#                          ^ source.ahk meta.loop.ahk punctuation.ahk
+#                           ^ source.ahk meta.loop.ahk
+#                            ^^ source.ahk meta.loop.ahk constant.character.escape.ahk
 >{
 #^ source.ahk punctuation.bracket.ahk
 >    MsgBox, 4, ,% "File number " A_Index " is " A_LoopField ".`n`nContinue?"
@@ -129,7 +155,10 @@
 #^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.ahk
 #    ^^ source.ahk meta.loop.ahk
 #      ^^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.ahk
-#          ^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk
+#          ^ source.ahk meta.loop.ahk punctuation.ahk
+#           ^^ source.ahk meta.loop.ahk
+#             ^ source.ahk meta.loop.ahk keyword.operator.ternary.ahk
+#              ^^^^^^^^^^^^^ source.ahk meta.loop.ahk
 >{
 #^ source.ahk punctuation.bracket.ahk
 >    last_line := A_LoopReadLine  ; When lo
@@ -145,11 +174,15 @@
 >
 >
 >Loop, Reg, HKEY_CURRENT_USER\Software\Microsoft\Windows, KVR
-#^^^^ source.ahk meta.loop.old.ahk keyword.loop.control.flow.loop.old.ahk
-#    ^^ source.ahk meta.loop.old.ahk
-#      ^^^^^ source.ahk meta.loop.old.ahk
-#           ^^^^^^^^^^^^^^^^^ source.ahk meta.loop.old.ahk meta.goto.loop.reg.ahk keyword.loop.param.control.flow.loop.reg.ahk
-#                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.old.ahk
+#^^^^ source.ahk meta.loop.ahk keyword.loop.control.flow.loop.reg.ahk
+#    ^^ source.ahk meta.loop.ahk
+#      ^^^ source.ahk meta.loop.ahk keyword.loop.param.control.flow.loop.reg.ahk
+#         ^ source.ahk meta.loop.ahk punctuation.ahk
+#          ^ source.ahk meta.loop.ahk
+#           ^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk meta.goto.loop.reg.ahk keyword.loop.param.control.flow.loop.reg.ahk
+#                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.loop.ahk
+#                                                       ^ source.ahk meta.loop.ahk punctuation.ahk
+#                                                        ^^^^ source.ahk meta.loop.ahk
 >{
 #^ source.ahk punctuation.bracket.ahk
 >    if (A_LoopRegType = "key")
@@ -241,4 +274,5 @@
 #^^^^ source.ahk meta.loop.old.ahk keyword.loop.control.flow.loop.old.ahk
 #    ^^ source.ahk meta.loop.old.ahk
 #      ^^^^^^^^^^^^^^^^^ source.ahk meta.loop.old.ahk meta.goto.loop.reg.ahk keyword.loop.param.control.flow.loop.reg.ahk
-#                       ^^^^^^^^^^ source.ahk meta.loop.old.ahk
+#                       ^ source.ahk meta.loop.old.ahk punctuation.ahk
+#                        ^^^^^^^^^ source.ahk meta.loop.old.ahk

@@ -24,11 +24,11 @@ function getLoopErrData(lStr: string, wordUpCol: number): TLoopData | null {
     if (a1 === undefined) return null;
 
     const { lPos, RawNameNew } = a1;
-    const sectionFix: string = arr.at(2) === undefined
+    const section: string = arr.at(2) === undefined
         ? RawNameNew.replace(/\s*\{$/u, '')
         : RawNameNew;
 
-    return { lPos, section: sectionFix };
+    return { lPos, section };
 }
 function getLoopErr(lStr: string, line: number, wordUpCol: number): CDiagBase | null {
     const data: TLoopData | null = getLoopErrData(lStr, wordUpCol);

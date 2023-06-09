@@ -7,15 +7,10 @@ describe('check RegRoot ruler', () => {
 
         const tsStr: string = RegRootList.join('|');
 
-        const st1: string = (repository.flow_of_control_loop_reg.patterns[0].match)
-            .replace('(?<=[, \\t:])(?i:(', '')
-            .replace('))(?=[, \\t\\\\])', '');
-
-        const st2: string = (repository.flow_of_control_loop_old.patterns[0].match)
+        const st1: string = (repository.const_var_reg.match)
             .replace('(?<=[, \\t:])(?i:(', '')
             .replace('))(?=[, \\t\\\\])', '');
 
         expect(st1).toBe(tsStr);
-        expect(st2).toBe(tsStr);
     });
 });

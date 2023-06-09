@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable no-template-curly-in-string */
 
-type TStatement2Element = Readonly<{
+type TFocExElement = Readonly<{
     keyRawName: string,
     body: string,
     doc: string,
@@ -16,7 +16,7 @@ type TStatement2Element = Readonly<{
  * FlowOfControl
  * FOC
  */
-export const statement2Data: TStatement2Element[] = [
+export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'IfBetween',
         body: 'If ${1:Var} ${2|not, |} between ${3:Low} and ${4:High}',
