@@ -96,10 +96,10 @@ export function fnRefLStr(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
         const upName: string = ToUpCase(ma[1]);
 
         arr.push({
-            upName,
-            line,
-            col,
             by: EFnRefBy.justCall,
+            col,
+            line,
+            upName,
         });
     }
     // don't search of
@@ -128,10 +128,10 @@ export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[
         const upName: string = ToUpCase(ma[1]);
 
         arr.push({
-            upName,
-            line,
-            col,
             by: EFnRefBy.wordWrap,
+            col,
+            line,
+            upName,
         });
     }
     // don't search of
@@ -336,10 +336,10 @@ export const fixComObjConnect = new CMemo<TAhkFileData, readonly TLineFnCall[]>(
                 .indexOf(ma1);
 
             arr.push({
-                upName: ToUpCase(ma1),
-                line,
-                col: colFix,
                 by: EFnRefBy.ComObjConnect,
+                col: colFix,
+                line,
+                upName: ToUpCase(ma1),
             });
         }
         return arr;
@@ -363,10 +363,10 @@ function visitComObjConnect(AhkFileData: TAhkFileData, funcSymbol: CAhkFunc): TF
     ) {
         if (up.startsWith(upName)) {
             arr2.push({
-                uri,
-                line,
-                col,
                 by,
+                col,
+                line,
+                uri,
             });
         }
     }
@@ -393,10 +393,10 @@ export function getFuncRef(funcSymbol: CAhkFunc): readonly TFnRefLike[] {
         const { uri } = AhkFileData;
         const list: TFnRefLike[] = (fileFuncRef.up(AhkFileData).get(upName) ?? [])
             .map(({ line, col, by }: TFuncRef): TFnRefLike => ({
-                uri,
-                line,
-                col,
                 by,
+                col,
+                line,
+                uri,
             }));
         list.push(...visitComObjConnect(AhkFileData, funcSymbol)); // ...
 

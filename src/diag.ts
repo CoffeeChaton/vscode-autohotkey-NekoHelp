@@ -4,6 +4,7 @@ import type { DeepReadonly } from './globalEnum';
 type TLink =
     | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag${number}.ahk`
     | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code${number}.md`
+    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/${number}`
     | `https://www.autohotkey.com/docs/v1/${string}`;
 
 // ScriptError(_T("Global variables must not be declared in this function."), aLineText);
@@ -23,6 +24,7 @@ export const enum EDiagCodeDA {
     code511 = 511, // ban var/param name same function-name.
     code512 = 512, // ban global-var name same function-name.
     code513 = 513, // ban label-var name same function-name.
+    code514 = 514, // `ComObjConnect` #14 https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14
     // TODO ban name with cache
     // code521 = 521, // ban name look like `new not and or`
 }
@@ -74,6 +76,10 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
     513: {
         msg: 'label-var name same func-Name',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag513.ahk',
+    },
+    514: {
+        msg: '`PrefixEventName()` and `ComObjConnect()` should be in the same file.',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14',
     },
 };
 

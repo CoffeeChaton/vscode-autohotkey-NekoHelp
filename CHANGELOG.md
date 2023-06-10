@@ -37,6 +37,19 @@
   sText := "; `;"
   ```
 
+- feat: diag `c514` of [#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14)
+  1. diag : [warn] PrefixEventName() and ComObjConnect should be in the same file.
+
+  ```ahk
+  ComObjConnect(ie, "IE_")
+
+  IE_DocumentComplete(ieEventParam, url, ieFinalParam) {
+  ;^ IE_ ---------------> Prefix
+  ;  ^DocumentComplete -> EventName
+
+  }
+  ```
+
 - feat: add hover of focEx
 
   ```ahk
