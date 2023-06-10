@@ -75,3 +75,14 @@
 #               ^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
 #                         ^ source.ahk string.entity.name.namespace.import.ahk
 >
+>#Include %A_LineFile%\..\..\..\`;lint.ahk
+#^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk keyword.control.import.ahk
+#        ^ source.ahk string.entity.name.namespace.import.ahk
+#         ^ source.ahk string.entity.name.namespace.import.ahk
+#          ^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk variable.other.constant.builtin.include.ahk
+#                    ^^^^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+#                               ^^ source.ahk string.entity.name.namespace.import.ahk constant.character.escape.namespace.import.ahk
+#                                 ^^^^^^^^ source.ahk string.entity.name.namespace.import.ahk
+>; Escape sequences other than semicolon (`;) must not be used, nor are they needed because characters such as percent signs are treated literally.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>

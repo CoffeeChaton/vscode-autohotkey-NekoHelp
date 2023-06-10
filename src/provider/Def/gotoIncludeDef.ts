@@ -8,7 +8,7 @@ let ignoreGotoIncludeDef = false;
 function gotoIncludeDefShowInfo(): void {
     if (!ignoreGotoIncludeDef) {
         void vscode.window.showInformationMessage<'Do not remind again'>(
-            '`#include` goto def just support `Absolute path` or `A_LineFile style`',
+            '`#include` goto def just support `Absolute path` or `A_LineFile style` or `A_Desktop`',
             'Do not remind again',
         ).then((v): 0 => {
             if (v !== undefined) {
@@ -31,7 +31,7 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
             if (ahkInclude.range.contains(position)) {
                 const { rawData } = ahkInclude;
                 const { type, mayPath } = rawData;
-                if ([EInclude.Absolute, EInclude.A_LineFile].includes(type)) {
+                if ([EInclude.Absolute, EInclude.A_LineFile, EInclude.A_Desktop].includes(type)) {
                     const col0: number = lStr.length - lStr
                         .replace(/^\s*#Include(?:Again)?\s+/iu, '')
                         .replace(/\*i\s+/iu, '')

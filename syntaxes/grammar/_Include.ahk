@@ -15,3 +15,6 @@
 #IncludeAgain %A_AppData%
 #IncludeAgain %A_AppDataCommon%
 #IncludeAgain %A_LineFile%
+
+#Include %A_LineFile%\..\..\..\`;lint.ahk
+; Escape sequences other than semicolon (`;) must not be used, nor are they needed because characters such as percent signs are treated literally.

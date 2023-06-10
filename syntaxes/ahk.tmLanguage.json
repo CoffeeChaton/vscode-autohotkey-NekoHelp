@@ -680,7 +680,11 @@
                     "end": "\\n",
                     "patterns": [
                         { "include": "#include_builtin_var" },
-                        { "include": "#comment" }
+                        { "include": "#comment" },
+                        {
+                            "match": "`;",
+                            "name": "constant.character.escape.namespace.import.ahk"
+                        }
                     ]
                 },
                 {

@@ -1,3 +1,5 @@
+/* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,3,4,5] }] */
+import * as os from 'node:os';
 import {
     isAbsolute,
     join,
@@ -11,11 +13,13 @@ import type { TBaseLineParam } from './CAhkLine';
 export const enum EInclude {
     A_LineFile = 0, // happy
     Absolute = 1, // happy
-    Relative = 2, // bad
-    // eslint-disable-next-line no-magic-numbers
-    isUnknown = 3, // bad
-    // eslint-disable-next-line no-magic-numbers
-    Lib = 4, // bad
+
+    // bad
+    Relative = 2,
+    isUnknown = 3,
+    Lib = 4,
+
+    A_Desktop = 5,
 }
 
 export type TRawData = {
@@ -41,7 +45,7 @@ const setWarnMsgList = [
     'A_MyDocuments',
     'A_IsCompiled',
     'A_DesktopCommon',
-    'A_Desktop', // keep sort line reverse
+    //    'A_Desktop', // keep sort line reverse
     'A_ComSpec',
     'A_ComputerName',
     'A_AppDataCommon',
@@ -66,6 +70,15 @@ function getRawData(path1: string, fsPath: string): TRawData {
         return {
             type: EInclude.A_LineFile,
             mayPath: join(fsPath, `../${normalize(path1.replace(/^%A_LineFile%/iu, ''))}`),
+            warnMsg,
+        };
+    }
+
+    if ((/^%A_Desktop%/iu).test(path1)) {
+        return {
+            type: EInclude.A_Desktop,
+            mayPath: normalize(path1
+                .replace(/^%A_Desktop%/iu, `${os.homedir()}/Desktop`)),
             warnMsg,
         };
     }
@@ -140,7 +153,10 @@ export class CAhkInclude extends vscode.DocumentSymbol {
             .replace(/^\*i\s+/iu, '')
             .trim();
         this.path1 = path1;
-        const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '').trim();
+        const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '')
+            .trim()
+            .replaceAll(/%A_Tab%/giu, '\t')
+            .replaceAll(/%A_Space%/giu, ' ');
         this.rawData = getRawData(tryRemoveComment, uri.fsPath);
     }
 }

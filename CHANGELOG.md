@@ -38,7 +38,7 @@
   ```
 
 - feat: diag `c514` of [#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14)
-  1. diag : [warn] PrefixEventName() and ComObjConnect should be in the same file.
+  > diag : [warn] PrefixEventName() and ComObjConnect should be in the same file.
 
   ```ahk
   ComObjConnect(ie, "IE_")
@@ -88,6 +88,11 @@
   #if ;;======
   ;   ^^ fix it now
   ```
+
+- feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
+  1. support syntax-highlight of (**\`;**).
+  2. support `%A_Tab%` `%A_Space%` of gotoDef/ Completion.
+  3. support `%A_Desktop%` of gotoDef/ Completion.
 
 ## v0.0.43(2023-06-04)
 

@@ -38,7 +38,15 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
             description: keyRawName,
         });
         item.kind = vscode.CompletionItemKind.Keyword; // icon of https://code.visualstudio.com/docs/editor/intellisense#_types-of-completions
-        item.insertText = new vscode.SnippetString(body);
+        const body2: string = body.includes('[')
+            ? body
+                .replaceAll(/\s*,\s*\[/gu, '[')
+                .replaceAll(/\[\s*,\s*/gu, '[')
+                .replaceAll(/\s*\[\s*/gu, ',$0 ')
+                .replaceAll(/\s*\]\s*/gu, '')
+            : body;
+
+        item.insertText = new vscode.SnippetString(body2);
         item.detail = 'Flow of Control (neko-help)';
         item.documentation = md;
 
