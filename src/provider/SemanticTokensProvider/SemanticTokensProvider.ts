@@ -5,6 +5,7 @@ import { CMemo } from '../../tools/CMemo';
 import { ClassHighlight } from './ClassHighlight';
 import { DAList2SemanticHighlight } from './DAList2SemanticHighlight';
 import { funcHighlight } from './funcHighlight';
+import { HotKeysRemapSemanticHighlight } from './HotKeysRemapSemanticHighlight';
 import { legacyAssignmentHighlight } from './legacyAssignmentHighlight';
 import { ModuleVarSemantic } from './ModuleVarSemantic';
 import { MultilineHighlight } from './MultilineHighlight';
@@ -27,6 +28,7 @@ const Semantic = new CMemo<TAhkFileData, readonly TSemanticTokensLeaf[]>(
             ...funcHighlight(DocStrMap),
             ...MultilineHighlight(DocStrMap),
             ...legacyAssignmentHighlight(DocStrMap),
+            ...HotKeysRemapSemanticHighlight(AhkFileData),
         ];
     },
 );

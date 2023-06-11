@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/require-array-sort-compare */
 import { repository } from '../../../../../syntaxes/ahk.tmLanguage.json';
-import { keyList } from './keyList.data';
+import { keyList, keyListAltTab } from './keyList.data';
 
 describe('check keyList ruler', (): void => {
     it('check : tmLanguage keyList', () => {
@@ -39,5 +39,17 @@ describe('check keyList ruler', (): void => {
         ].sort();
 
         expect(st1).toStrictEqual(keyList.map((key: string): string => key.toLowerCase()).sort());
+    });
+
+    it('check : tmLanguage keyword_mouse_keyboard AltTab', () => {
+        expect.hasAssertions();
+
+        const st1: string[] = (repository.keyword_mouse_keyboard.patterns[2].match)
+            .replace('(?<![.#])\\b(?i:', '')
+            .replace(')\\b(?!\\()', '')
+            .split('|')
+            .sort();
+
+        expect(st1).toStrictEqual([...keyListAltTab].sort());
     });
 });

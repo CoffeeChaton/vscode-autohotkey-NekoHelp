@@ -180,3 +180,18 @@ export const keyList: readonly string[] = [
 ];
 
 export const keyListUpSet: ReadonlySet<string> = new Set(keyList.map((k: string): string => k.toUpperCase()));
+
+/**
+ * https://www.autohotkey.com/docs/v1/Hotkeys.htm#alttab
+ */
+export const keyListAltTab: readonly string[] = [
+    'AltTab',
+    'ShiftAltTab',
+    'AltTabMenu',
+    'AltTabAndMenu',
+    'AltTabMenuDismiss',
+];
+
+export const keyAltTabListUpSet: ReadonlySet<string> = new Set(
+    keyListAltTab.map((k: string): string => k.toUpperCase()),
+);

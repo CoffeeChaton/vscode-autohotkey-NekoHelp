@@ -26,6 +26,22 @@
 
 ## Next v0.0.44(2023-06-XX)
 
+- feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
+  1. support syntax-highlight of (**\`;**).
+  2. support `%A_Tab%` `%A_Space%` of gotoDef/ Completion.
+  3. support `%A_Desktop%` of gotoDef/ Completion.
+
+- feat: Directory whiteList Settings [#21](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/21)
+
+  ```jsonc
+  { // settings.json
+      "AhkNekoHelp.files.alwaysIncludeFolder": [
+          "D:\\Q2", // folder path
+          "D:/Q3" // use Linux-style separator Char is OK
+      ] // string[] as path[]
+  }
+  ```
+
 - fix: core comment parsing order [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20)
   > Even `;` is wrapped by `""`, it is still parsed as a comment.
 
@@ -33,7 +49,7 @@
   #Requires AutoHotkey v1.1.33+
   #Warn All, MsgBox
   sText := "; ;"
-  ;          ^^^ this comment, not string =_=, thank you ahk.
+  ;          ^^^ this comment, not string
   sText := "; `;"
   ```
 
@@ -49,6 +65,11 @@
 
   }
   ```
+
+- feat: support [Hotkey remap](https://www.autohotkey.com/docs/v1/HotkeyFeatures.htm#easy-to-reach) && [Remapping Keys](https://www.autohotkey.com/docs/v1/misc/Remap.htm)
+  1. semantic-highlight
+  2. `ctrl+t` support
+  3. Outline
 
 - feat: add hover of focEx `between contains in is` or `Files Parse Read Reg`
 
@@ -89,25 +110,15 @@
   ;   ^^ fix it now
   ```
 
-- feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
-  1. support syntax-highlight of (**\`;**).
-  2. support `%A_Tab%` `%A_Space%` of gotoDef/ Completion.
-  3. support `%A_Desktop%` of gotoDef/ Completion.
-
-- feat: Directory whiteList Settings [#21](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/21)
-
-```jsonc
-{ // settings.json
-    "AhkNekoHelp.files.alwaysIncludeFolder": [
-        "D:\\Q2", // folder path
-        "D:/Q3" // use Linux-style separator Char is OK
-    ] // string[] as path[]
-}
-```
+- fix: key like `shift` syntax-highlight, not highlight at `MsgBox` and `expression` line
 
 - fix: `2joy1` ~ `16joy1` syntax-highlight and parser
   > ([read doc](https://www.autohotkey.com/docs/v1/KeyList.htm#Controller))
   > **Multiple controllers**: If the computer has more than one controller and you want to use one beyond the first, include the controller number (max 16) in front of the control name. For example, 2joy1 is the second controller's first button.
+
+- dev: generate snapshot order change
+  1. `"esbuild": "^0.17.19"` -> `"esbuild": "^0.18.0"`
+  2. esbuild `useDefineForClassFields` behavior has changed
 
 ## v0.0.43(2023-06-04)
 

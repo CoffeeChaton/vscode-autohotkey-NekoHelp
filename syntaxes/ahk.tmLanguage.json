@@ -116,6 +116,7 @@
                     "beginCaptures": { "0": { "name": "support.function.ahk" } },
                     "patterns": [
                         { "include": "#command_options" },
+                        { "include": "#keyword_mouse_keyboard" },
                         { "include": "#expression" }
                     ]
                 }
@@ -125,7 +126,7 @@
             "patterns": [
                 {
                     "name": "keyword.command.option.ahk",
-                    "match": "\\b(?!MsgBox)(?<![.#])(?i:abort|insert|exist|abovenormal|add|ahk_class|ahk_exe|ahk_group|ahk_id|ahk_pid|all|alnum|alpha|altsubmit|alttab|alttabandmenu|alttabmenu|alttabmenudismiss|alwaysoff|alwayson|alwaysontop|autosize|background|backgroundtrans|belownormal|blind|bold|border|bottom|button|buttons|byref|cancel|capacity|caption|center|check|check3|checkbox|checked|checkedgray|choose|choosestring|click|close|color|combobox|contains|controllist|count|date|datetime|days|ddl|delete|deleteall|delimiter|destroy|digit|disable|disabled|dpiscale|dropdownlist|eject|enable|enabled|error|expand|exstyle|filesystem|first|flash|float|floatfast|focus|font|grid|group|groupbox|hdr|hidden|hide|high|hkcc|hkcr|hkcu|hkey_classes_root|hkey_current_config|hkey_current_user|hkey_local_machine|hkey_users|hklm|hku|hours|hscroll|icon|iconsmall|id|idlast|ignore|imagelist|integer|integerfast|interrupt|italic|label|lastfound|lastfoundexist|limit|lines|list|listbox|listview|lock|logoff|low|lower|lowercase|mainwindow|margin|maximize|maximizebox|maxsize|minimize|minimizebox|minmax|minsize|minutes|monthcal|mouse|move|multi|na|no|noactivate|nodefault|nohide|noicon|nomainwindow|norm|normal|nosort|nosorthdr|nostandard|notab|notimers|number|off|ok|on|owndialogs|owner|parent|parse|password|pic|picture|pixel|pos|priority|processname|radio|range|raw|read|readonly|realtime|redraw|reg_binary|reg_dword|reg_dword_big_endian|reg_expand_sz|reg_full_resource_descriptor|reg_link|reg_multi_sz|reg_qword|reg_resource_list|reg_resource_requirements_list|reg_sz|region|relative|rename|report|resize|restore|retry|rgb|screen|seconds|section|serial|setlabel|shiftalttab|show|single|slider|sortdesc|standard|status|statusbar|statuscd|strike|style|submit|sysmenu|tab|tab2|tabstop|text|theme|tile|time|tip|togglecheck|toggleenable|toolwindow|top|topmost|transcolor|transparent|tray|treeview|tryagain|type|uncheck|underline|unlock|updown|upper|uppercase|useerrorlevel|vis|visfirst|visible|vscroll|waitclose|wantctrla|wantf2|wantreturn|wrap|xdigit|xm|xp|xs|yes|ym|yp|ys)(?![(.\\[])\\b"
+                    "match": "\\b(?!MsgBox)(?<![.#])(?i:abort|insert|exist|abovenormal|add|ahk_class|ahk_exe|ahk_group|ahk_id|ahk_pid|all|alnum|alpha|altsubmit|alwaysoff|alwayson|alwaysontop|autosize|background|backgroundtrans|belownormal|blind|bold|border|bottom|button|buttons|byref|cancel|capacity|caption|center|check|check3|checkbox|checked|checkedgray|choose|choosestring|click|close|color|combobox|contains|controllist|count|date|datetime|days|ddl|delete|deleteall|delimiter|destroy|digit|disable|disabled|dpiscale|dropdownlist|eject|enable|enabled|error|expand|exstyle|filesystem|first|flash|float|floatfast|focus|font|grid|group|groupbox|hdr|hidden|hide|high|hkcc|hkcr|hkcu|hkey_classes_root|hkey_current_config|hkey_current_user|hkey_local_machine|hkey_users|hklm|hku|hours|hscroll|icon|iconsmall|id|idlast|ignore|imagelist|integer|integerfast|interrupt|italic|label|lastfound|lastfoundexist|limit|lines|list|listbox|listview|lock|logoff|low|lower|lowercase|mainwindow|margin|maximize|maximizebox|maxsize|minimize|minimizebox|minmax|minsize|minutes|monthcal|mouse|move|multi|na|no|noactivate|nodefault|nohide|noicon|nomainwindow|norm|normal|nosort|nosorthdr|nostandard|notab|notimers|number|off|ok|on|owndialogs|owner|parent|parse|password|pic|picture|pixel|pos|priority|processname|radio|range|raw|read|readonly|realtime|redraw|reg_binary|reg_dword|reg_dword_big_endian|reg_expand_sz|reg_full_resource_descriptor|reg_link|reg_multi_sz|reg_qword|reg_resource_list|reg_resource_requirements_list|reg_sz|region|relative|rename|report|resize|restore|retry|rgb|screen|seconds|section|serial|setlabel|show|single|slider|sortdesc|standard|status|statusbar|statuscd|strike|style|submit|sysmenu|tab|tab2|tabstop|text|theme|tile|time|tip|togglecheck|toggleenable|toolwindow|top|topmost|transcolor|transparent|tray|treeview|tryagain|type|uncheck|underline|unlock|updown|upper|uppercase|useerrorlevel|vis|visfirst|visible|vscroll|waitclose|wantctrla|wantf2|wantreturn|wrap|xdigit|xm|xp|xs|yes|ym|yp|ys)(?![(.\\[])\\b"
                 },
                 {
                     "match": "::\\{(?:d20ea4e1\\-3957\\-11d2\\-a40b\\-0c5020524153|85bbd920\\-42a0\\-1069\\-a2e4\\-08002b30309d|21ec2020\\-3aea\\-1069\\-a2dd\\-08002b30309d|d20ea4e1\\-3957\\-11d2\\-a40b\\-0c5020524152|ff393560\\-c2a7\\-11cf\\-bff4\\-444553540000|00020d75\\-0000\\-0000\\-c000\\-000000000046|00028b00\\-0000\\-0000\\-c000\\-000000000046|20d04fe0\\-3aea\\-1069\\-a2d8\\-08002b30309d|450d8fba\\-ad25\\-11d0\\-98a8\\-0800361b1103|208d2c60\\-3aea\\-1069\\-a2d7\\-08002b30309d|1f4de370\\-d627\\-11d1\\-ba4f\\-00a0c91eedba|7007acc7\\-3202\\-11d1\\-aad2\\-00805fc1270e|2227a280\\-3aea\\-1069\\-a2de\\-08002b30309d|7be9d83c\\-a729\\-4d97\\-b5a7\\-1b7313c39e0a|645ff040\\-5081\\-101b\\-9f08\\-00aa002f954e|e211b736\\-43fd\\-11d1\\-9efb\\-0000f8757fcd|d6277990\\-4c6a\\-11cf\\-8d87\\-00aa0060f5bf|48e7caab\\-b918\\-4e58\\-a94d\\-505519c795dc|7bd29e00\\-76c1\\-11cf\\-9dd0\\-00a0c9034933|bdeadf00\\-c265\\-11d0\\-bced\\-00a0c90ab50f)\\}",
@@ -134,8 +135,7 @@
                 {
                     "name": "string.command.option.ahk",
                     "match": "(?<=\\{)[{}](?=\\})"
-                },
-                { "include": "#keyword_mouse_keyboard" }
+                }
             ]
         },
         "command_gui": {
@@ -195,6 +195,7 @@
                     "captures": { "1": { "name": "constant.numeric.gui.ahk" } }
                 },
                 { "include": "#command_options" },
+                { "include": "#keyword_mouse_keyboard" },
                 { "include": "#expression" }
             ]
         },
@@ -259,6 +260,7 @@
             },
             "patterns": [
                 { "include": "#command_options" },
+                { "include": "#keyword_mouse_keyboard" },
                 { "include": "#expression" }
             ]
         },
@@ -824,7 +826,7 @@
         },
         "hotkey": {
             "name": "meta.hotkey.line.ahk",
-            "begin": "^([#!^+&<>*~$]+|(?:<\\^[<>]!))?([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+)([ \\t]&[ \\t]([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+))?([ \\t]+(?i:UP))?(?=::)",
+            "begin": "^[ \t]*([#!^+&<>*~$]+|(?:<\\^[<>]!))?([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+)([ \\t]&[ \\t]([!-/]|[:-@]|[\\[-`]|[\\{-~]|[a-zA-Z0-9]+))?([ \\t]+(?i:UP))?(?=::)",
             "beginCaptures": {
                 "1": { "name": "storage.modifier.hotkey.ahk" },
                 "2": {
@@ -905,6 +907,10 @@
                 },
                 {
                     "match": "(?<![.#])\\b(1[0-6]|[1-9])?(?i:joy1|joy2|joy3|joy4|joy5|joy6|joy7|joy8|joy9|joy10|joy11|joy12|joy13|joy14|joy15|joy16|joy17|joy18|joy19|joy20|joy21|joy22|joy23|joy24|joy25|joy26|joy27|joy28|joy29|joy30|joy31|joy32|joyx|joyy|joyz|joyr|joyu|joyv|joypov|joyname|joybuttons|joyaxes|joyinfo)\\b(?!\\()",
+                    "name": "keyword.keys.joy.ahk"
+                },
+                {
+                    "match": "(?<![.#])\\b(?i:AltTab|ShiftAltTab|AltTabMenu|AltTabAndMenu|AltTabMenuDismiss)\\b(?!\\()",
                     "name": "keyword.keys.joy.ahk"
                 }
             ]

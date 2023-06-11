@@ -7,7 +7,7 @@ import { keyListUpSet } from '../../tools/Built-in/100_other/Keys_and_other/keyL
 
 // /^([#!^+&<>*~$]+|(?:<\^[<>]!))?([!-/]|[:-@]|[\[-`]|[\{-~]|[a-zA-Z0-9]+)([ \t]&[ \t]([!-/]|[:-@]|[\[-`]|[\{-~]|[a-zA-Z0-9]+))?([ \t]+(?i:UP))?(?=::)/ui
 
-function checkHotKeyMa2(ma2: string): boolean {
+export function checkHotKeyMa2(ma2: string): boolean {
     if ((/^[a-z\d]$/iu).test(ma2)) {
         return true;
     }

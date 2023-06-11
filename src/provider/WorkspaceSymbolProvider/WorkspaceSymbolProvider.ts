@@ -28,6 +28,9 @@ const DocSymbol2SymbolInfo = new CMemo<TAstRoot, vscode.SymbolInformation[]>( //
             case vscode.SymbolKind.Event:
                 // eslint-disable-next-line sonarjs/no-nested-switch
                 switch (detail) {
+                    case 'Remap':
+                        nameFix = `Remap ${name}`;
+                        break;
                     case 'HotKeys':
                         nameFix = `HK ${name}`;
                         break;

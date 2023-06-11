@@ -57,7 +57,7 @@ export class CAhkHotKeys extends vscode.DocumentSymbol {
     public readonly AfterString: string;
 
     declare public readonly kind: vscode.SymbolKind.Event;
-    declare public readonly detail: 'HotKeys';
+    declare public readonly detail: 'HotKeys' | 'Remap';
     declare public readonly children: never[];
 
     public constructor(
@@ -68,10 +68,15 @@ export class CAhkHotKeys extends vscode.DocumentSymbol {
             uri,
         }: TBaseLineParam,
         AfterString: string,
+        isRemap: boolean,
     ) {
-        super(name, 'HotKeys', vscode.SymbolKind.Event, range, selectionRange);
+        const detail: 'HotKeys' | 'Remap' = isRemap
+            ? 'Remap'
+            : 'HotKeys';
+        super(name, detail, vscode.SymbolKind.Event, range, selectionRange);
         this.uri = uri;
         this.AfterString = AfterString;
+        this.detail = detail;
     }
 }
 

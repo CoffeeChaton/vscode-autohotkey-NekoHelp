@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../../../core/ProjectManager';
 import { EDiagCode } from '../../../../diag';
+import { keyListAltTab } from '../../../../tools/Built-in/100_other/Keys_and_other/keyList.data';
 import { CMemo } from '../../../../tools/CMemo';
 import type { TFnMap } from '../../../../tools/visitor/getFileAllFuncMap';
 import { getFileAllFuncMap } from '../../../../tools/visitor/getFileAllFuncMap';
@@ -13,13 +14,10 @@ const code601ErrList: readonly string[] = [
     'On',
     'Off',
     'Toggle',
-    'AltTab',
+
     // AltTab (and others): These are special Alt-Tab hotkey actions that are described here.
     // -> https://www.autohotkey.com/docs/v1/Hotkeys.htm#alttab
-    'ShiftAltTab',
-    'AltTabMenu',
-    'AltTabAndMenu',
-    'AltTabMenuDismiss',
+    ...keyListAltTab,
 ].map((v: string): string => v.toUpperCase());
 
 const code601Err = new CMemo<TAhkFileData, readonly CDiagBase[]>((AhkFileData: TAhkFileData): readonly CDiagBase[] => {

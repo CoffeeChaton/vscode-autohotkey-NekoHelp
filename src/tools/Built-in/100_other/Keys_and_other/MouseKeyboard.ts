@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/indent */
 import * as vscode from 'vscode';
+import { keyListAltTab } from './keyList.data';
 
 const MouseKeyboardSnip: readonly vscode.CompletionItem[] = ((): readonly vscode.CompletionItem[] => {
     type TListKeys = {
         group: string,
-        uri: `https://www.autohotkey.com/docs/v1/KeyList.htm#${string}`,
+        uri:
+            | 'https://www.autohotkey.com/docs/v1/Hotkeys.htm#alttab'
+            | `https://www.autohotkey.com/docs/v1/KeyList.htm#${string}`,
         list: readonly string[],
     };
 
@@ -110,6 +114,12 @@ const MouseKeyboardSnip: readonly vscode.CompletionItem[] = ((): readonly vscode
         ],
     };
 
+    const AltTab: TListKeys = {
+        group: 'Alt-Tab Hotkeys',
+        uri: 'https://www.autohotkey.com/docs/v1/Hotkeys.htm#alttab',
+        list: keyListAltTab,
+    };
+
     const OtherKeys: TListKeys = {
         group: 'Other Keys',
         uri: 'https://www.autohotkey.com/docs/v1/KeyList.htm#other',
@@ -150,7 +160,13 @@ const MouseKeyboardSnip: readonly vscode.CompletionItem[] = ((): readonly vscode
         return List;
     }
 
-    return [...makeSnip(Mouse), ...makeSnip(keyboard), ...makeSnip(MultimediaKeys), ...makeSnip(OtherKeys)];
+    return [
+        ...makeSnip(Mouse),
+        ...makeSnip(keyboard),
+        ...makeSnip(MultimediaKeys),
+        ...makeSnip(OtherKeys),
+        ...makeSnip(AltTab),
+    ];
 })();
 
 export function getSnipMouseKeyboard(subStr: string): readonly vscode.CompletionItem[] {

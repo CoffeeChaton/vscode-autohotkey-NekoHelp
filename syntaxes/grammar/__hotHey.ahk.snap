@@ -834,3 +834,33 @@
 >    }
 #^^^^ source.ahk
 #    ^ source.ahk punctuation.bracket.ahk
+>
+>;@ahk-neko-format-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+>; hotkey has sapce
+#^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    MButton::AltTabMenu
+#^^^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#           ^^ source.ahk meta.hotkey.line.ahk
+#             ^^^^^^^^^^^ source.ahk
+>    WheelDown::AltTab
+#^^^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#             ^^ source.ahk meta.hotkey.line.ahk
+#               ^^^^^^^ source.ahk
+>    WheelUp::ShiftAltTab
+#^^^^ source.ahk meta.hotkey.line.ahk
+#    ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#           ^^ source.ahk meta.hotkey.line.ahk
+#             ^^^^^^^^^^^^ source.ahk
+>;@ahk-neko-format-ignore-end
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk

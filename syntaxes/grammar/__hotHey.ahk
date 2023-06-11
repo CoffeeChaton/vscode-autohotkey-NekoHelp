@@ -143,3 +143,10 @@ LCtrl & CapsLock::AltTab
         else
             Run, explorer.exe "%path1%"
     }
+
+;@ahk-neko-format-ignore-start
+; hotkey has sapce
+    MButton::AltTabMenu
+    WheelDown::AltTab
+    WheelUp::ShiftAltTab
+;@ahk-neko-format-ignore-end
