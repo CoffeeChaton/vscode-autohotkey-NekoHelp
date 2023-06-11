@@ -98,6 +98,8 @@ return
 ~RButton & LButton::MsgBox, You pressed the left mouse button while holding down the right.
 RButton & WheelUp::MsgBox, You turned the mouse wheel up while holding down the right button.
 
+; https://www.autohotkey.com/docs/v1/KeyList.htm#Controller
+2Joy16::
 Joy2::
     if not GetKeyState("Control") ; Neither the left nor right Control key is down.
         return ; i.e. Do nothing.

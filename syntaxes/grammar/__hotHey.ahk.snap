@@ -207,9 +207,7 @@
 #        ^^ source.ahk meta.hotkey.line.ahk
 #          ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #                ^ source.ahk meta.command.line.ahk punctuation.ahk
-#                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                        ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                             ^^^^^^^^ source.ahk meta.command.line.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >~RButton & C::MsgBox, You pressed C while holding down the right mouse button.
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 # ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
@@ -218,9 +216,7 @@
 #            ^^ source.ahk meta.hotkey.line.ahk
 #              ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #                    ^ source.ahk meta.command.line.ahk punctuation.ahk
-#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                                                 ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                                                      ^^^^^^^^ source.ahk meta.command.line.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >
 >AppsKey::ToolTip, Press < or > to cycle through windows.
 #^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
@@ -249,7 +245,7 @@
 #                    ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #                     ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #                      ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                       ^^^ source.ahk meta.command.line.ahk
+#                       ^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                          ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 >~AppsKey & >::Send, !{Esc}
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
@@ -262,7 +258,7 @@
 #                   ^ source.ahk meta.command.line.ahk
 #                    ^ source.ahk meta.command.line.ahk keyword.operator.arithmetic.ahk
 #                     ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                      ^^^ source.ahk meta.command.line.ahk
+#                      ^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                         ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 >
 >*LWin::Send, {LControl down}
@@ -273,7 +269,9 @@
 #           ^ source.ahk meta.command.line.ahk punctuation.ahk
 #            ^ source.ahk meta.command.line.ahk
 #             ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#              ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#              ^^^^^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
+#                      ^ source.ahk meta.command.line.ahk
+#                       ^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 >*LWin Up::Send, {LControl up}
 #^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
@@ -284,7 +282,9 @@
 #              ^ source.ahk meta.command.line.ahk punctuation.ahk
 #               ^ source.ahk meta.command.line.ahk
 #                ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                 ^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                 ^^^^^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
+#                         ^ source.ahk meta.command.line.ahk
+#                          ^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                            ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 >
 >LControl & F1::return  ; Make left-control a prefix by using it in front of "&" at least once.
@@ -386,7 +386,7 @@
 #             ^ source.ahk meta.command.line.ahk punctuation.ahk
 #              ^ source.ahk meta.command.line.ahk
 #               ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                ^^^^^^^^^ source.ahk meta.command.line.ahk
+#                ^^^^^^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                         ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                          ^^^^ source.ahk meta.command.line.ahk
 #                              ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
@@ -398,7 +398,7 @@
 #               ^ source.ahk meta.command.line.ahk punctuation.ahk
 #                ^ source.ahk meta.command.line.ahk
 #                 ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                  ^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                  ^^^^^^^^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                             ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                              ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
 #                               ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
@@ -427,9 +427,7 @@
 #                   ^^ source.ahk meta.hotkey.line.ahk
 #                     ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #                           ^ source.ahk meta.command.line.ahk punctuation.ahk
-#                            ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                            ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >^!WheelUp::MsgBox, You rotated the wheel up while holding down Control+Alt.
 #^^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
 #  ^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
@@ -560,11 +558,7 @@
 #                  ^^ source.ahk meta.hotkey.line.ahk
 #                    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #                          ^ source.ahk meta.command.line.ahk punctuation.ahk
-#                           ^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                                 ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                                      ^ source.ahk meta.command.line.ahk
-#                                                       ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >RButton & WheelUp::MsgBox, You turned the mouse wheel up while holding down the right button.
 #^^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
 #       ^^^ source.ahk meta.hotkey.line.ahk storage.modifier.and.hotkey.ahk
@@ -572,12 +566,15 @@
 #                 ^^ source.ahk meta.hotkey.line.ahk
 #                   ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #                         ^ source.ahk meta.command.line.ahk punctuation.ahk
-#                          ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                          ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >
+>; https://www.autohotkey.com/docs/v1/KeyList.htm#Controller
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>2Joy16::
+#^^^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.joy.ahk
+#      ^^ source.ahk meta.hotkey.line.ahk
 >Joy2::
-#^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#^^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.joy.ahk
 #    ^^ source.ahk meta.hotkey.line.ahk
 >    if not GetKeyState("Control") ; Neither the left nor right Control key is down.
 #^^^^ source.ahk
@@ -601,11 +598,7 @@
 #^^^^ source.ahk
 #    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #          ^ source.ahk meta.command.line.ahk punctuation.ahk
-#           ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                            ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                 ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
-#                                                    ^^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
-#                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
 >return
 #^^^^^^ source.ahk keyword.control.flow.ahk
 >
@@ -628,12 +621,14 @@
 #^^^^ source.ahk
 #    ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #           ^ source.ahk meta.command.line.ahk punctuation.ahk
-#            ^^^^^^^^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk
+#             ^^^^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 >    KeyWait, Alt
 #^^^^ source.ahk
 #    ^^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
 #           ^ source.ahk meta.command.line.ahk punctuation.ahk
-#            ^^^^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk
+#             ^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 >    Send, {Delete}
 #^^^^ source.ahk
 #    ^^^^ source.ahk meta.command.line.ahk support.function.ahk
@@ -693,7 +688,7 @@
 #                 ^^^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
 #                      ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                       ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#                        ^^^^^^ source.ahk meta.command.line.ahk
+#                        ^^^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                              ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                               ^ source.ahk meta.command.line.ahk
 #                                ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
@@ -709,7 +704,9 @@
 #         ^ source.ahk meta.command.line.ahk punctuation.ahk
 #          ^ source.ahk meta.command.line.ahk
 #           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#            ^^^^^^^^ source.ahk meta.command.line.ahk
+#            ^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                    ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                     ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                      ^^^ source.ahk meta.command.line.ahk keyword.command.option.ahk
@@ -724,7 +721,9 @@
 #         ^ source.ahk meta.command.line.ahk punctuation.ahk
 #          ^ source.ahk meta.command.line.ahk
 #           ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#            ^^^^^^ source.ahk meta.command.line.ahk
+#            ^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
+#               ^ source.ahk meta.command.line.ahk
+#                ^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                  ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                   ^ source.ahk meta.command.line.ahk
 #                    ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
@@ -740,7 +739,9 @@
 #           ^ source.ahk meta.command.line.ahk punctuation.ahk
 #            ^ source.ahk meta.command.line.ahk
 #             ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
-#              ^^^^^^ source.ahk meta.command.line.ahk
+#              ^^^ source.ahk meta.command.line.ahk keyword.keys.ahk
+#                 ^ source.ahk meta.command.line.ahk
+#                  ^^ source.ahk meta.command.line.ahk keyword.keys.ahk
 #                    ^ source.ahk meta.command.line.ahk punctuation.bracket.ahk
 #                     ^ source.ahk meta.command.line.ahk
 #                      ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk

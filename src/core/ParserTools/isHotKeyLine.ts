@@ -20,6 +20,10 @@ function checkHotKeyMa2(ma2: string): boolean {
         return true;
     }
 
+    if ((/^(?:1[0-6]|[1-9])joy/iu).test(ma2) && keyListUpSet.has(ma2.replace(/^(?:1[0-6]|[1-9])/u, '').toUpperCase())) {
+        return true;
+    }
+
     //
     if ((/^(?:vk[a-f\d]{1,2}(?:sc[a-f\d]+)?|sc[a-f\d]+)$/iu).test(ma2)) {
         return true;

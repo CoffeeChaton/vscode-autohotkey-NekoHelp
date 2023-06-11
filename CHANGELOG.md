@@ -105,6 +105,10 @@
 }
 ```
 
+- fix: `2joy1` ~ `16joy1` syntax-highlight and parser
+  > ([read doc](https://www.autohotkey.com/docs/v1/KeyList.htm#Controller))
+  > **Multiple controllers**: If the computer has more than one controller and you want to use one beyond the first, include the controller number (max 16) in front of the control name. For example, 2joy1 is the second controller's first button.
+
 ## v0.0.43(2023-06-04)
 
 - feat: add some sign of cmd

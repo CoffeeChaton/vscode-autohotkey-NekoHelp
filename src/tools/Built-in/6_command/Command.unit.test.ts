@@ -193,13 +193,19 @@ describe('check LineCommand ruler', () => {
         const tsData: readonly string[] = LineCommand
             .map((v): string => v.keyRawName);
 
-        const st1: string = (repository.command.patterns.at(-1)?.begin ?? '')
-            .replace('(?<=^|[ \\t:])\\b(?i:', '')
-            .replace(')\\b(?!\\()', '');
+        // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
+        const arr1: readonly string[] = [
+            ...(repository.command.patterns.at(-1)?.begin ?? '')
+                .replace('(?<=^|[ \\t:])\\b(?i:', '')
+                .replace(')\\b(?!\\()', '')
+                .split('|'),
+            'MsgBox',
+        ]
+            .sort();
 
         // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
         expect(tsData).toStrictEqual([...tsData].sort());
-        expect(tsData.join('|')).toBe(st1);
+        expect(tsData).toStrictEqual(arr1);
     });
 
     it('check: uri ruler', () => {
