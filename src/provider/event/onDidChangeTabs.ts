@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as vscode from 'vscode';
-import { getIgnoredList, needDiag } from '../../configUI';
+import { getAlwaysIncludeFolder, getIgnoredList, needDiag } from '../../configUI';
 import { rmFileDiag } from '../../core/diagColl';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { delOldCache, pm } from '../../core/ProjectManager';
@@ -52,14 +52,15 @@ export function onDidChangeTabs(tabChangeEvent: vscode.TabChangeEvent): void {
                 && isAhk(fsPath)
                 && fsPathIsAllow(fsPath, getIgnoredList());
 
-            const wsList: readonly vscode.Uri[] = getWorkspaceRoot();
-            const isInWorkspace: boolean = wsList.some((wsUri: vscode.Uri): boolean => fsPath.startsWith(wsUri.fsPath));
-
-            if (!externallyVisible || !isInWorkspace) {
-                /**
-                 * prevent unlimited memory growth
-                 */
-                delOldCache(uri);
+            if (!externallyVisible) {
+                const isInWorkspace: boolean = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()]
+                    .some((wsUri: string): boolean => fsPath.startsWith(wsUri));
+                if (!isInWorkspace) {
+                    /**
+                     * prevent unlimited memory growth
+                     */
+                    delOldCache(uri);
+                }
             }
 
             // eslint-disable-next-line security/detect-non-literal-fs-filename

@@ -50,7 +50,7 @@
   }
   ```
 
-- feat: add hover of focEx
+- feat: add hover of focEx `between contains in is` or `Files Parse Read Reg`
 
   ```ahk
   if var between 1 and 5
@@ -93,6 +93,17 @@
   1. support syntax-highlight of (**\`;**).
   2. support `%A_Tab%` `%A_Space%` of gotoDef/ Completion.
   3. support `%A_Desktop%` of gotoDef/ Completion.
+
+- feat: Directory whiteList Settings [#21](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/21)
+
+```jsonc
+{ // settings.json
+    "AhkNekoHelp.files.alwaysIncludeFolder": [
+        "D:\\Q2", // folder path
+        "D:/Q3" // use Linux-style separator Char is OK
+    ] // string[] as path[]
+}
+```
 
 ## v0.0.43(2023-06-04)
 

@@ -20,4 +20,4 @@ this option will break the privacy statement
 
 ## variables
 
-just support `%A_LineFile%` now.
+<https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16>

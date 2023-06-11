@@ -90,10 +90,9 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.window.tabGroups.onDidChangeTabs(onDidChangeTabs),
         // commands--------------------
         // commands.registerCommand(ECommand.CompletionMsgBox, CompletionMsgBox),
-        // "ahk.nekoHelp.displayLogMessage"
         vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
-        vscode.commands.registerCommand('ahk.nekoHelp.displayLogMessage', displayLogMessageFn),
+        vscode.commands.registerCommand('ahk.nekoHelp.displayLogMessage', displayLogMessageFn), // ctrl+alt+l
         vscode.commands.registerCommand(ECommand.CmdFindClassRef, CmdFindClassRef),
         vscode.commands.registerCommand(ECommand.CmdFindComObjConnectRegister, CmdFindComObjConnectRegister),
         vscode.commands.registerCommand(ECommand.CmdFindMethodRef, CmdFindMethodRef),
@@ -107,6 +106,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand(ECommand.showFileReport, getFileReport),
         vscode.commands.registerCommand(ECommand.showFuncAnalyze, AnalyzeFuncMain),
         vscode.commands.registerCommand(ECommand.showUnknownAnalyze, showUnknownAnalyze),
+        vscode.commands.registerCommand(ECommand.UpdateCacheAsync, UpdateCacheAsync),
         // root dispose
         log,
         statusBarItem,

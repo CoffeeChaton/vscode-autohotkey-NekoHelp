@@ -139,7 +139,7 @@ export async function generateAhkNekoSnapshot(): Promise<void> {
     }
 
     const t1: number = Date.now();
-    const rootList: readonly string[] = getWorkspaceRoot().map((uri: vscode.Uri): string => uri.fsPath);
+    const rootList: readonly string[] = getWorkspaceRoot();
     if (rootList.length === 0) {
         void vscode.window.showInformationMessage(
             'This feature is temporarily limited to cases that have an open workspace.',

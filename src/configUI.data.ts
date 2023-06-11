@@ -108,6 +108,7 @@ type TempConfigs = {
         useSquareBracketsIndent: boolean,
     },
     files: {
+        alwaysIncludeFolder: readonly string[],
         exclude: readonly string[],
         tryParserIncludeOpt: 'auto' | 'close' | 'open',
         tryParserIncludeLog: TTryParserIncludeLog,

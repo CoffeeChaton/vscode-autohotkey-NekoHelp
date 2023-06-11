@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable no-magic-numbers */
 import * as vscode from 'vscode';
+import { ECommand } from './command/ECommand';
 import type {
     ECommandOption,
     EFileRenameEvent,
@@ -14,6 +15,8 @@ import type {
 import { EDiagMasterSwitch } from './configUI.data';
 import { log } from './provider/vscWindows/log';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
+import { arrDeepEQ } from './tools/arrDeepEQ';
+import { CMemo } from './tools/CMemo';
 import { CConfigError } from './tools/DevClass/CConfigError';
 import { enumLog } from './tools/enumErr';
 import { str2RegexListCheck } from './tools/str2RegexListCheck';
@@ -31,9 +34,52 @@ function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigK
     return ed;
 }
 
-let oldCustomizeHoverFunctionDocStyle: 1 | 2 | null = null;
+let oldFnDocStyle: 1 | 2 | null = null;
 let oldSignInsertType: boolean | null = null;
-let oldFilesTryParserIncludeOpt: 'auto' | 'close' | 'open' | null = null;
+let oldTryParserIncludeOpt: 'auto' | 'close' | 'open' | null = null;
+let oldIncludeFolder: readonly string[] | null = null;
+
+function configEffectUp(ed: TConfigs): void {
+    // --------------------- oldFnDocStyle ---------------------
+    if (oldFnDocStyle !== null && oldFnDocStyle !== ed.customize.HoverFunctionDocStyle) {
+        void vscode.window.showWarningMessage(
+            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.customize.HoverFunctionDocStyle")',
+        );
+    }
+    oldFnDocStyle = ed.customize.HoverFunctionDocStyle;
+
+    // --------------------- oldSignInsertType ---------------------
+    if (oldSignInsertType !== null && oldSignInsertType !== ed.signatureHelp.insertType) {
+        void vscode.window.showWarningMessage(
+            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.signatureHelp.insertType")',
+        );
+    }
+    oldSignInsertType = ed.signatureHelp.insertType;
+
+    // --------------------- tryParserIncludeOpt ---------------------
+    if (
+        oldTryParserIncludeOpt !== null && ed.files.tryParserIncludeOpt !== 'close'
+        && oldTryParserIncludeOpt === 'close'
+    ) {
+        void vscode.window.showWarningMessage(
+            '[Privacy Statement 3](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement) is break!\n\n ("AhkNekoHelp.files.tryParserInclude")',
+        );
+    }
+    oldTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
+
+    // --------------------- oldIncludeFolder ---------------------
+    if (oldIncludeFolder === null || oldIncludeFolder.length > 0) {
+        // nothing
+    } else if (oldIncludeFolder.length === 0 && ed.files.alwaysIncludeFolder.length > 0) {
+        void vscode.window.showWarningMessage(
+            '[Privacy Statement 3](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement) is break!\n\n ("AhkNekoHelp.files.alwaysIncludeFolder")',
+        );
+    }
+    if (oldIncludeFolder !== null && arrDeepEQ(oldIncludeFolder, ed.files.alwaysIncludeFolder)) {
+        void vscode.commands.executeCommand(ECommand.UpdateCacheAsync, false);
+    }
+    oldIncludeFolder = ed.files.alwaysIncludeFolder;
+}
 
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
@@ -81,6 +127,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             useSquareBracketsIndent: getConfigs<boolean>(Configs, 'AhkNekoHelp.format.useSquareBracketsIndent'),
         },
         files: {
+            alwaysIncludeFolder: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.files.alwaysIncludeFolder'),
             exclude: getConfigs<readonly string[]>(Configs, 'AhkNekoHelp.files.exclude'),
             tryParserIncludeOpt: getConfigs<'auto' | 'close' | 'open'>(
                 Configs,
@@ -120,37 +167,11 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     } as const;
 
     statusBarItem.color = ed.customize.statusBarDisplayColor;
+
+    configEffectUp(ed);
+
     void str2RegexListCheck(ed.files.exclude);
     void str2RegexListCheck(ed.snippets.blockFilesList);
-
-    if (oldCustomizeHoverFunctionDocStyle === null) {
-        oldCustomizeHoverFunctionDocStyle = ed.customize.HoverFunctionDocStyle;
-    } else if (oldCustomizeHoverFunctionDocStyle !== ed.customize.HoverFunctionDocStyle) {
-        oldCustomizeHoverFunctionDocStyle = ed.customize.HoverFunctionDocStyle;
-        void vscode.window.showWarningMessage(
-            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.customize.HoverFunctionDocStyle")',
-        );
-    }
-
-    if (oldSignInsertType === null) {
-        oldSignInsertType = ed.signatureHelp.insertType;
-    } else if (oldSignInsertType !== ed.signatureHelp.insertType) {
-        oldSignInsertType = ed.signatureHelp.insertType;
-        void vscode.window.showWarningMessage(
-            'Configs change: please restart vscode!\n\n ("AhkNekoHelp.signatureHelp.insertType")',
-        );
-    }
-
-    if (oldFilesTryParserIncludeOpt === null) {
-        oldFilesTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
-    } else if (ed.files.tryParserIncludeOpt !== 'close' && oldFilesTryParserIncludeOpt === 'close') {
-        oldFilesTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
-        void vscode.window.showWarningMessage(
-            '[Privacy Statement 3](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement) is break!\n\n ("AhkNekoHelp.files.tryParserInclude")',
-        );
-    } else {
-        oldFilesTryParserIncludeOpt = ed.files.tryParserIncludeOpt;
-    }
 
     return ed;
 }
@@ -191,6 +212,20 @@ export function getIgnoredList(): readonly RegExp[] {
 
 export function getTryParserInclude(): 'auto' | 'close' | 'open' {
     return config.files.tryParserIncludeOpt;
+}
+
+const memoAlwaysIncludeFolder = new CMemo<readonly string[], readonly string[]>(
+    (alwaysIncludeFolder: readonly string[]): readonly string[] => {
+        const pathList: string[] = [];
+        for (const p of alwaysIncludeFolder) {
+            pathList.push(vscode.Uri.file(p).fsPath);
+        }
+
+        return pathList;
+    },
+);
+export function getAlwaysIncludeFolder(): readonly string[] {
+    return memoAlwaysIncludeFolder.up(config.files.alwaysIncludeFolder);
 }
 
 export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[]): void {

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable sonarjs/no-duplicate-string */
 import * as vscode from 'vscode';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';

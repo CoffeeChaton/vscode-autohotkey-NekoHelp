@@ -401,6 +401,14 @@
                         },
                         "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.exclude.md)) # Files.exclude \n\nWhen building the dataset, we exclude certain folders and files using a list of regular expressions. This list includes patterns for excluding folders like 'temp' and 'history', as well as files like '.ahk2' and '.ahk2'.\n\n- Note that I have standardized the two types of paths that can be used in Windows (common `\\` and compatible `/`) to a single Linux-style path `/` that doesn't require JavaScript to escape, and the default regular expression flags are `u` and `i`, [u-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode), [i-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase).\n\n| regex            | Description                      |\n| :--------------- | :------------------------------- |\n| `/\\.`           | a file/fold name startWith `.`   |\n| `/node_modules/` | the path includes `node_modules` |\n| `/build/`        | A built-fold in pattern          |\n| `/temp/`         | A temp-fold in pattern           |\n| `/ahk2/`         | A ahk2-fold in pattern           |\n| `\\.ah2$`         | file-name end with ah2           |\n| `/backup/`       | A backup-fold in pattern         |\n| `/history/`      | A history-fold in pattern        |"
                     },
+                    "AhkNekoHelp.files.alwaysIncludeFolder": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "string"
+                        },
+                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/21))\n\nIn addition to the current workspace, automatically scan the Folder,\n\nFor people who are not used to [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces)\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([privacy-statement](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`\n\n| path            | Description                      |\n| :--------------- | :------------------------------- |\n| `D:/myAutoHotkey/Lib`      | any path        |"
+                    },
                     "AhkNekoHelp.files.tryParserIncludeOpt": {
                         "type": "string",
                         "enum": [
@@ -409,7 +417,7 @@
                             "auto"
                         ],
                         "default": "close",
-                        "markdownDescription": "try Parser `#Include` to add `.ahk` data.\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/file.tryParserInclude.md))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`"
+                        "markdownDescription": "try Parser `#Include` to add `.ahk` data.\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.tryParserIncludeOpt.md))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`"
                     },
                     "AhkNekoHelp.files.tryParserIncludeLog": {
                         "type": "object",

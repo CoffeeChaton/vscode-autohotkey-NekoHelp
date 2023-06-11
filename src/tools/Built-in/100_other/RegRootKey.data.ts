@@ -37,14 +37,14 @@ export const RegRootList = [
     'HKEY_USERS',
 ] as const;
 
-const z = [
-    // eslint-disable-next-line sonarjs/no-duplicate-string
-    ['HKEY_CLASSES_ROOT (HKCR)', 'lib/RegRead.htm'],
-    ['HKEY_CURRENT_CONFIG (HKCC)', 'lib/RegRead.htm'],
-    ['HKEY_CURRENT_USER (HKCU)', 'lib/RegRead.htm'],
-    ['HKEY_LOCAL_MACHINE (HKLM)', 'lib/RegRead.htm'],
-    ['HKEY_USERS (HKU)', 'lib/RegRead.htm'],
-];
+// const z = [
+//     // eslint-disable-next-line sonarjs/no-duplicate-string
+//     ['HKEY_CLASSES_ROOT (HKCR)', 'lib/RegRead.htm'],
+//     ['HKEY_CURRENT_CONFIG (HKCC)', 'lib/RegRead.htm'],
+//     ['HKEY_CURRENT_USER (HKCU)', 'lib/RegRead.htm'],
+//     ['HKEY_LOCAL_MACHINE (HKLM)', 'lib/RegRead.htm'],
+//     ['HKEY_USERS (HKU)', 'lib/RegRead.htm'],
+// ];
 
 // \\workstation01:HKEY_LOCAL_MACHINE
 // [, \t:](HKCR|)[, \t\\]

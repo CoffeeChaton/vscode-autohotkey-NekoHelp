@@ -437,8 +437,8 @@ default via `ctrl+alt+l`
 
 - Do not upload any information.
 - only use vscode provided api, not any third party dependencies, Safe and Privacy.
-- just scan workspaces or open file. not auto scan any file without workspaces, until option the `"AhkNekoHelp.file.tryParserInclude"`.
-- If you need to place .ahk in other folders, this Extensions support [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces).
+- just scan workspaces or open file. not auto scan any file without workspaces, until option the `"AhkNekoHelp.file.tryParserInclude"` or `"AhkNekoHelp.files.alwaysIncludeFolder"`
+- If you need to place .ahk in other folders, this Extensions support [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces) or `"AhkNekoHelp.files.alwaysIncludeFolder"`
 
 ## Performance
 

@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 import * as fs from 'node:fs';
 import * as vscode from 'vscode';
-import { getIgnoredList } from '../../configUI';
+import { getAlwaysIncludeFolder, getIgnoredList } from '../../configUI';
 import { getWorkspaceRoot } from './getWorkspaceRoot';
 import { isAhk } from './isAhk';
 
@@ -27,14 +27,14 @@ function CollectorFsPath(fsPath: TFsPath, blockList: readonly RegExp[], Collecto
 }
 
 export function getUriList(): vscode.Uri[] {
-    const WorkspaceFolderList: readonly vscode.Uri[] = getWorkspaceRoot();
+    const WorkspaceFolderList: readonly string[] = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()];
     if (WorkspaceFolderList.length === 0) return [];
 
     const blockList: readonly RegExp[] = getIgnoredList();
     const Collector: Set<TFsPath> = new Set<TFsPath>();
 
-    for (const uri of WorkspaceFolderList) {
-        const rootFsPath: string = uri.fsPath.replaceAll('\\', '/');
+    for (const fsPath of WorkspaceFolderList) {
+        const rootFsPath: string = fsPath.replaceAll('\\', '/');
         CollectorFsPath(rootFsPath, blockList, Collector);
     }
 

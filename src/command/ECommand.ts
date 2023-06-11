@@ -13,5 +13,6 @@ export const enum ECommand {
     showFileReport = 'ahk.nekoHelp.showFileReport',
     showFuncAnalyze = 'ahk.nekoHelp.showFuncAnalyze',
     showUnknownAnalyze = 'ahk.nekoHelp.showUnknownAnalyze',
+    UpdateCacheAsync = 'ahk.nekoHelp.UpdateCacheAsync',
 }
 // Built-in Commands https://code.visualstudio.com/api/references/commands

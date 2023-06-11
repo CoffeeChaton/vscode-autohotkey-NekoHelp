@@ -1,8 +1,10 @@
 import * as vscode from 'vscode';
 import { getCustomize } from '../configUI';
 
+/**
+ * ctrl+alt+l
+ */
 export function displayLogMessageFn(): void {
-    //
     const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
     if (editor === undefined) return;
 
