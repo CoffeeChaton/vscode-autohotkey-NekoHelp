@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import type { TAssociated } from '../../../../../AhkSymbol/CAhkFunc';
 import { GuiControlGet_CMD_Pos_Core } from './GuiControlGet_CMD_Pos_Core';
+import { StringSplit_pseudoArray } from './StringSplit_pseudoArray';
 import { SysGet_CMD } from './SysGet_CMD';
 import { WinGet_CMD_List } from './WinGet_CMD_List';
 
@@ -20,6 +21,10 @@ export function pseudoArray(
 
     if (keyWord === 'WinGet'.toUpperCase()) {
         return WinGet_CMD_List(lStr, line, col);
+    }
+
+    if (keyWord === 'StringSplit'.toUpperCase()) {
+        return StringSplit_pseudoArray(lStr, line, col);
     }
 
     return null;

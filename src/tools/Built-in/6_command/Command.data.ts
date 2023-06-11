@@ -7916,7 +7916,7 @@ export const LineCommand: TCommandElement[] = [
         ],
         diag: EDiagCode.code899,
         _paramType: [
-            'S',
+            'O',
             'I',
             'S',
             'S',
@@ -7924,12 +7924,26 @@ export const LineCommand: TCommandElement[] = [
         _param: [
             {
                 name: 'OutputArray',
-                sign: 'S',
+                sign: 'O',
                 isOpt: false,
                 paramDoc: [
                     'The name of the [pseudo-array](https://www.autohotkey.com/docs/v1/misc/Arrays.htm#pseudo) in which to store each substring extracted from _InputVar_. For example, if MyArray is specified, the command will put the number of substrings produced (0 if none) into MyArray0, the first substring into MyArray1, the second into MyArray2, and so on.',
                     '',
                     'Within a [function](https://www.autohotkey.com/docs/v1/Functions.htm), to create a pseudo-array that is global instead of local, [declare](https://www.autohotkey.com/docs/v1/Functions.htm#Global) MyArray0 as a global variable inside the function (the converse is true for [assume-global](https://www.autohotkey.com/docs/v1/Functions.htm#AssumeGlobal) functions). However, it is often also necessary to declare each element, due to a [common source of confusion](https://www.autohotkey.com/docs/v1/Functions.htm#ArrayConfusion). For more details, see [Functions](https://www.autohotkey.com/docs/v1/Functions.htm#PseudoArrays).',
+                    '',
+                    '```ahk',
+                    '; exp',
+                    'Colors := "red,green,blue"',
+                    'StringSplit, ColorArray, Colors, `,',
+                    '',
+                    'ListVars',
+                    '; ColorArray0[1 of 3]: 3',
+                    '; ColorArray1[3 of 3]: red',
+                    '; ColorArray2[5 of 7]: green',
+                    '; ColorArray3[4 of 7]: blue',
+                    '; Colors[14 of 63]: red, green, blue',
+                    '```',
+                    '',
                 ],
             },
             {

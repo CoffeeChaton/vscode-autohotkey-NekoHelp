@@ -65,6 +65,9 @@ export const enum EPseudoArray {
 
     byWinGet_CMD_list = 300,
     byWinGet_CMD_list1 = 301,
+
+    byStringSplit0 = 400,
+    byStringSplit1 = 401,
     // Infinitely filled masquerade array...I don't know what to do with it =_= thanks you ahk
 }
 
