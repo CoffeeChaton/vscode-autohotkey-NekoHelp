@@ -1,4 +1,6 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,3,4,5] }] */
+/* eslint-disable dot-notation */
+/* eslint-disable max-lines-per-function */
+/* eslint-disable no-magic-numbers */
 import * as os from 'node:os';
 import {
     isAbsolute,
@@ -7,8 +9,11 @@ import {
     resolve,
 } from 'node:path';
 import * as vscode from 'vscode';
-import { ToUpCase } from '../tools/str/ToUpCase';
 import type { TBaseLineParam } from './CAhkLine';
+
+const osHomedir: string = os.homedir();
+
+const SystemDriveStr: string = process.env['SystemDrive'] ?? 'C:'; // SystemDrive:'C:'
 
 export const enum EInclude {
     A_LineFile = 0, // happy
@@ -20,47 +25,161 @@ export const enum EInclude {
     Lib = 4,
 
     A_Desktop = 5,
+    A_MyDocuments = 6,
+    A_AppData = 7,
+    A_AppDataCommon = 8,
+    A_DesktopCommon = 9,
+    A_WinDir = 10,
+    A_Temp = 11,
+    A_StartupCommon = 12,
+    A_Startup = 13,
+    A_StartMenuCommon = 14,
+    A_StartMenu = 15,
+    A_ProgramsCommon = 16,
+    A_Programs = 17,
+    A_ComSpec = 18,
 }
+
+export const AIncludePathKnownList: readonly EInclude[] = [
+    EInclude.Absolute,
+    EInclude.A_LineFile,
+    EInclude.A_Desktop,
+    //
+    EInclude.A_AppData,
+    EInclude.A_WinDir,
+    EInclude.A_AppDataCommon,
+    EInclude.A_DesktopCommon,
+    EInclude.A_MyDocuments,
+    EInclude.A_Temp,
+    EInclude.A_StartupCommon,
+    EInclude.A_Startup,
+    EInclude.A_StartMenuCommon,
+    EInclude.A_StartMenu,
+    EInclude.A_ProgramsCommon,
+    EInclude.A_Programs,
+    EInclude.A_ComSpec,
+];
 
 export type TRawData = {
     readonly type: EInclude,
     readonly mayPath: string,
     readonly warnMsg: string,
 };
-const setWarnMsgList = [
+const setWarnMsgList: readonly Readonly<RegExp>[] = [
     // 'A_LineFile',
-    'A_WinDir',
-    'A_UserName',
-    'A_Temp',
-    'A_StartupCommon',
-    'A_Startup',
-    'A_StartMenuCommon',
-    'A_StartMenu', // keep sort line reverse
-    'A_ScriptName',
-    'A_ScriptFullPath',
-    'A_ScriptDir', // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
-    'A_ProgramsCommon',
-    'A_Programs', // keep sort line reverse
-    'A_ProgramFiles',
-    'A_MyDocuments',
-    'A_IsCompiled',
-    'A_DesktopCommon',
+    // 'A_WinDir',
+    /%A_UserName%/iu,
+    // 'A_Temp',
+    // 'A_StartupCommon',
+    // 'A_Startup',
+    // 'A_StartMenuCommon',
+    // 'A_StartMenu',
+    /%A_ScriptName%/iu,
+    /%A_ScriptFullPath%/iu,
+    /%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+
+    // 'A_ProgramsCommon',
+    // 'A_Programs',
+    /%A_ProgramFiles%/iu,
+
+    // 'A_MyDocuments',
+    /%A_IsCompiled%/iu,
+    // 'A_DesktopCommon',
     //    'A_Desktop', // keep sort line reverse
-    'A_ComSpec',
-    'A_ComputerName',
-    'A_AppDataCommon',
-    'A_AppData',
-    'A_AhkPath',
-] as const;
+    // 'A_ComSpec',
+    /%A_ComputerName%/iu,
+
+    // 'A_AppDataCommon',
+    // 'A_AppData',
+    /%A_AhkPath%/iu,
+];
 
 function setWarnMsg(path1: string): string {
-    const pathUp: string = ToUpCase(path1);
-
-    const find: string | undefined = setWarnMsgList.find((v: string): boolean => pathUp.includes(v.toUpperCase()));
+    const find: Readonly<RegExp> | undefined = setWarnMsgList.find((reg: Readonly<RegExp>): boolean => reg.test(path1));
     return find === undefined
         ? ''
-        : `not yet support of "${find}"`;
+        : `not yet support of "${find.source}"`;
 }
+
+type TIncludeOsMap = {
+    reg: Readonly<RegExp>,
+    type: EInclude,
+    mayPathReplaceValue: string,
+};
+
+const IncludeOsMap: readonly TIncludeOsMap[] = [
+    {
+        reg: /^%A_Desktop%/iu,
+        type: EInclude.A_Desktop,
+        mayPathReplaceValue: `${osHomedir}/Desktop`,
+    },
+    {
+        reg: /^%A_MyDocuments%/iu,
+        type: EInclude.A_MyDocuments,
+        mayPathReplaceValue: `${osHomedir}/Documents`,
+    },
+    {
+        reg: /^%A_AppData%/iu,
+        type: EInclude.A_AppData,
+        mayPathReplaceValue: `${osHomedir}/AppData/Roaming`,
+    },
+    {
+        reg: /^%A_AppDataCommon%/iu,
+        type: EInclude.A_AppDataCommon,
+        mayPathReplaceValue: process.env['ALLUSERSPROFILE'] ?? 'C:/ProgramData',
+    },
+    {
+        reg: /^%A_DesktopCommon%/iu,
+        type: EInclude.A_DesktopCommon,
+        mayPathReplaceValue: `${process.env['PUBLIC'] ?? 'C:/Users/Public'}/Desktop`, // C:\\Users\\Public
+    },
+    {
+        reg: /^%A_WinDir%/iu,
+        type: EInclude.A_WinDir,
+        mayPathReplaceValue: process.env['windir'] ?? 'C:/Windows',
+    },
+    {
+        reg: /^%A_Temp%/iu,
+        type: EInclude.A_Temp,
+        mayPathReplaceValue: `${osHomedir}/AppData/Local/Temp`,
+    },
+    {
+        reg: /^%A_StartupCommon%/iu,
+        type: EInclude.A_StartupCommon,
+        mayPathReplaceValue: `${SystemDriveStr}/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup`,
+    },
+    {
+        reg: /^%A_Startup%/iu,
+        type: EInclude.A_Startup,
+        mayPathReplaceValue: `${osHomedir}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup`,
+    },
+    {
+        reg: /^%A_StartMenuCommon%/iu,
+        type: EInclude.A_StartMenuCommon,
+        mayPathReplaceValue: `${SystemDriveStr}/ProgramData/Microsoft/Windows/Start Menu`,
+    },
+    {
+        reg: /^%A_StartMenu%/iu,
+        type: EInclude.A_StartMenu,
+        mayPathReplaceValue: `${osHomedir}/AppData/Roaming/Microsoft/Windows/Start Menu`,
+    },
+    {
+        reg: /^%A_ProgramsCommon%/iu,
+        type: EInclude.A_ProgramsCommon,
+        mayPathReplaceValue: `${SystemDriveStr}/ProgramData/Microsoft/Windows/Start Menu/Programs`,
+    },
+    {
+        reg: /^%A_Programs%/iu,
+        type: EInclude.A_Programs,
+        mayPathReplaceValue: `${osHomedir}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs`,
+    },
+    {
+        reg: /^%A_ComSpec%/iu,
+        type: EInclude.A_ComSpec,
+        mayPathReplaceValue: process.env['ComSpec'] ?? 'C:/Windows/system32/cmd.exe',
+    },
+    // A_ProgramFiles
+];
 
 function getRawData(path1: string, fsPath: string): TRawData {
     const warnMsg: string = setWarnMsg(path1);
@@ -70,15 +189,6 @@ function getRawData(path1: string, fsPath: string): TRawData {
         return {
             type: EInclude.A_LineFile,
             mayPath: join(fsPath, `../${normalize(path1.replace(/^%A_LineFile%/iu, ''))}`),
-            warnMsg,
-        };
-    }
-
-    if ((/^%A_Desktop%/iu).test(path1)) {
-        return {
-            type: EInclude.A_Desktop,
-            mayPath: normalize(path1
-                .replace(/^%A_Desktop%/iu, `${os.homedir()}/Desktop`)),
             warnMsg,
         };
     }
@@ -105,6 +215,19 @@ function getRawData(path1: string, fsPath: string): TRawData {
             mayPath: normalize(path1),
             warnMsg,
         };
+    }
+
+    if (path1.startsWith('%')) { // %A_
+        for (const { reg, type, mayPathReplaceValue } of IncludeOsMap) {
+            if (reg.test(path1)) {
+                return {
+                    type,
+                    mayPath: normalize(path1
+                        .replace(reg, mayPathReplaceValue)),
+                    warnMsg,
+                };
+            }
+        }
     }
 
     return {

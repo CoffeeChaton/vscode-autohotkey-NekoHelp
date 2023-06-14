@@ -23,10 +23,23 @@ function getIncludeMap(): TIncludeMap {
 
 function getSearchPath(docPath: string, { type, mayPath }: TRawData): string {
     switch (type) {
-        case EInclude.A_Desktop:
-        case EInclude.A_LineFile:
         case EInclude.Absolute:
-        case EInclude.Relative:
+        case EInclude.Relative: // -----
+        case EInclude.A_AppData:
+        case EInclude.A_AppDataCommon:
+        case EInclude.A_ComSpec:
+        case EInclude.A_Desktop:
+        case EInclude.A_DesktopCommon:
+        case EInclude.A_LineFile:
+        case EInclude.A_MyDocuments:
+        case EInclude.A_Programs:
+        case EInclude.A_ProgramsCommon:
+        case EInclude.A_StartMenu:
+        case EInclude.A_StartMenuCommon:
+        case EInclude.A_Startup:
+        case EInclude.A_StartupCommon:
+        case EInclude.A_Temp:
+        case EInclude.A_WinDir:
             return mayPath;
 
         case EInclude.isUnknown:

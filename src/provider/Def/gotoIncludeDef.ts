@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { EInclude } from '../../AhkSymbol/CAhkInclude';
+import { AIncludePathKnownList } from '../../AhkSymbol/CAhkInclude';
 import { collectInclude } from '../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { EDetail } from '../../globalEnum';
@@ -8,7 +8,7 @@ let ignoreGotoIncludeDef = false;
 function gotoIncludeDefShowInfo(): void {
     if (!ignoreGotoIncludeDef) {
         void vscode.window.showInformationMessage<'Do not remind again'>(
-            '`#include` goto def just support `Absolute path` or `A_LineFile style` or `A_Desktop`',
+            '`#include` goto def just support `Absolute path` or `A_LineFile style` or `A_Desktop` \nhttps://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16',
             'Do not remind again',
         ).then((v): 0 => {
             if (v !== undefined) {
@@ -20,7 +20,6 @@ function gotoIncludeDefShowInfo(): void {
 }
 
 export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Position): vscode.LocationLink | null {
-    //
     const { DocStrMap, AST } = AhkFileData;
     const { line } = position;
     const { detail, lStr } = DocStrMap[line];
@@ -31,7 +30,7 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
             if (ahkInclude.range.contains(position)) {
                 const { rawData } = ahkInclude;
                 const { type, mayPath } = rawData;
-                if ([EInclude.Absolute, EInclude.A_LineFile, EInclude.A_Desktop].includes(type)) {
+                if (AIncludePathKnownList.includes(type)) {
                     const col0: number = lStr.length - lStr
                         .replace(/^\s*#Include(?:Again)?\s+/iu, '')
                         .replace(/\*i\s+/iu, '')
