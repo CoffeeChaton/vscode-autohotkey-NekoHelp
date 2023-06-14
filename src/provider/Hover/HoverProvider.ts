@@ -29,6 +29,7 @@ import { hoverFocEx } from './tools/hoverFocEx';
 import { hoverGlobalVar } from './tools/hoverGlobalVar';
 import { hoverGuiControlParam } from './tools/hoverGuiControlParam';
 import { hoverGuiParam } from './tools/hoverGuiParam';
+import { hoverIncludeStr } from './tools/hoverIncludeStr';
 import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
 import { hoverMenuParam } from './tools/hoverMenuParam';
@@ -80,6 +81,9 @@ function HoverProviderCore(
     // ex: #Warn
     const DirectivesMd: vscode.MarkdownString | null = hoverDirectives(position, AhkTokenLine);
     if (DirectivesMd !== null) return new vscode.Hover(DirectivesMd);
+
+    const IncludeMayStr: vscode.Hover | null = hoverIncludeStr(AhkFileData, position);
+    if (IncludeMayStr !== null) return IncludeMayStr;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);
     // eslint-disable-next-line @typescript-eslint/prefer-optional-chain

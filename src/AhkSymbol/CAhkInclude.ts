@@ -280,6 +280,13 @@ export class CAhkInclude extends vscode.DocumentSymbol {
             .trim()
             .replaceAll(/%A_Tab%/giu, '\t')
             .replaceAll(/%A_Space%/giu, ' ');
-        this.rawData = getRawData(tryRemoveComment, uri.fsPath);
+
+        const { type, mayPath, warnMsg } = getRawData(tryRemoveComment, uri.fsPath);
+
+        this.rawData = {
+            type,
+            mayPath: mayPath.replaceAll('\\', '/'),
+            warnMsg,
+        };
     }
 }

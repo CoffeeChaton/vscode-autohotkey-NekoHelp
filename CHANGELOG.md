@@ -28,6 +28,10 @@
 ## Next v0.0.45(2023-06-XX)
 
 - feat: [#11](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) pseudo-array support `StringSplit`
+- feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
+  1. cover more built-in variables like `%A_WinDir%`
+  2. hover `#include path` show may path
+     ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-45-hover-include-pathpng)
 
 ## v0.0.44(2023-06-12)
 
