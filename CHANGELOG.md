@@ -31,7 +31,7 @@
 - feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
   1. cover more built-in variables like `%A_WinDir%`
   2. hover `#include path` show may path
-     ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-45-hover-include-pathpng)
+     ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-45-hover-include-path.png)
 
 ## v0.0.44(2023-06-12)
 
