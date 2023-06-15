@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import * as fs from 'node:fs';
 import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';
@@ -269,19 +270,5 @@ describe('check cmd sign ruler', () => {
             'StringSplit', // doc-error?
             'SysGet', // only of `SysGet, OutputVar, Monitor , N`
         ]);
-    });
-
-    it('check : need to check data as 2023-05-01', () => {
-        expect.hasAssertions();
-
-        const today: Date = new Date();
-
-        // eslint-disable-next-line no-magic-numbers
-        const deadLine: Date = new Date(2023, 6, 1);
-        // 2023-5-1
-
-        const notDead: boolean = deadLine > today;
-
-        expect(notDead).toBe(true);
     });
 });

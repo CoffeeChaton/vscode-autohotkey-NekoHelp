@@ -66,39 +66,22 @@ export type TRawData = {
     readonly warnMsg: string,
 };
 const setWarnMsgList: readonly Readonly<RegExp>[] = [
-    // 'A_LineFile',
-    // 'A_WinDir',
-    /%A_UserName%/iu,
-    // 'A_Temp',
-    // 'A_StartupCommon',
-    // 'A_Startup',
-    // 'A_StartMenuCommon',
-    // 'A_StartMenu',
-    /%A_ScriptName%/iu,
-    /%A_ScriptFullPath%/iu,
-    /%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
-
-    // 'A_ProgramsCommon',
-    // 'A_Programs',
-    /%A_ProgramFiles%/iu,
-
-    // 'A_MyDocuments',
-    /%A_IsCompiled%/iu,
-    // 'A_DesktopCommon',
-    //    'A_Desktop', // keep sort line reverse
-    // 'A_ComSpec',
-    /%A_ComputerName%/iu,
-
-    // 'A_AppDataCommon',
-    // 'A_AppData',
     /%A_AhkPath%/iu,
+    /%A_ComputerName%/iu,
+    /%A_IsCompiled%/iu,
+    /%A_IsUnicode%/iu,
+    /%A_ProgramFiles%/iu,
+    /%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+    /%A_ScriptFullPath%/iu,
+    /%A_ScriptName%/iu,
+    /%A_UserName%/iu,
 ];
 
 function setWarnMsg(path1: string): string {
     const find: Readonly<RegExp> | undefined = setWarnMsgList.find((reg: Readonly<RegExp>): boolean => reg.test(path1));
     return find === undefined
         ? ''
-        : `not yet support of "${find.source}"`;
+        : `not plan support of "${find.source}"`;
 }
 
 type TIncludeOsMap = {
@@ -285,7 +268,7 @@ export class CAhkInclude extends vscode.DocumentSymbol {
 
         this.rawData = {
             type,
-            mayPath: mayPath.replaceAll('\\', '/'),
+            mayPath: mayPath.replaceAll('/', '\\'),
             warnMsg,
         };
     }

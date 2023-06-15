@@ -8,7 +8,7 @@ let ignoreGotoIncludeDef = false;
 function gotoIncludeDefShowInfo(): void {
     if (!ignoreGotoIncludeDef) {
         void vscode.window.showInformationMessage<'Do not remind again'>(
-            '`#include` goto def just support `Absolute path` or `A_LineFile style` or `A_Desktop` \nhttps://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16',
+            '`#include` goto def support list [at issues #16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)',
             'Do not remind again',
         ).then((v): 0 => {
             if (v !== undefined) {
@@ -25,7 +25,6 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
     const { detail, lStr } = DocStrMap[line];
 
     if (detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s/iu).test(lStr)) {
-        //
         for (const ahkInclude of collectInclude(AST)) {
             if (ahkInclude.range.contains(position)) {
                 const { rawData } = ahkInclude;
@@ -35,12 +34,11 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
                         .replace(/^\s*#Include(?:Again)?\s+/iu, '')
                         .replace(/\*i\s+/iu, '')
                         .length;
-                    const originSelectionRange: vscode.Range = new vscode.Range(
-                        new vscode.Position(line, col0),
-                        new vscode.Position(line, lStr.length),
-                    );
                     return {
-                        originSelectionRange,
+                        originSelectionRange: new vscode.Range(
+                            new vscode.Position(line, col0),
+                            new vscode.Position(line, lStr.length),
+                        ),
                         targetUri: vscode.Uri.file(mayPath),
                         targetRange: new vscode.Range(
                             new vscode.Position(0, 0),

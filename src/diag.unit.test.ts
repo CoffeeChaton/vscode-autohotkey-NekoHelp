@@ -71,20 +71,4 @@ describe('check diag-md uri', () => {
             'README.md',
         ]);
     });
-
-    it('should clear note#diagnostic', () => {
-        // note/README.md#diagnostic
-        // https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/README.md#diagnostic
-        expect.hasAssertions();
-
-        const today: Date = new Date();
-
-        // eslint-disable-next-line no-magic-numbers
-        const deadLine: Date = new Date(2023, 6, 1);
-        // 2023-5-1
-
-        const notDead: boolean = deadLine > today;
-
-        expect(notDead).toBe(true);
-    });
 });

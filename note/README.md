@@ -3,54 +3,9 @@
 > Personal Notes, for reference only
 
 - [neko-help-note](#neko-help-note)
-  - [Diagnostic](#diagnostic)
-    - [diag107](#diag107)
-    - [diag121](#diag121)
-    - [diag122](#diag122)
-    - [diag124](#diag124)
-    - [diag125](#diag125)
-    - [diag126](#diag126)
-    - [diag201](#diag201)
-    - [diag506](#diag506)
   - [about str or %](#about-str-or-)
   - [about ahk class](#about-ahk-class)
   - [DEV note](#dev-note)
-
-## Diagnostic
-
-It is expected to remove this jump list in 2023/5/1
-
-### diag107
-
-Moved to new page [[jump]](./code107.md)
-
-### diag121
-
-Moved to new page [[jump]](./code121.md)
-
-### diag122
-
-Moved to new page [[jump]](./code122.md)
-
-### diag124
-
-Moved to new page [[jump]](./code124.md)
-
-### diag125
-
-Moved to new page [[jump]](./code125.md)
-
-### diag126
-
-Moved to new page [[jump]](./code126.md)
-
-### diag201
-
-Moved to new page [[jump]](./code201.md)
-
-### diag506
-
-Moved to new page [[jump]](./code506.md)
 
 ## about str or %
 

@@ -5,20 +5,29 @@ import { getAlwaysIncludeFolder, getIgnoredList } from '../../configUI';
 import { getWorkspaceRoot } from './getWorkspaceRoot';
 import { isAhk } from './isAhk';
 
-type TFsPath = string;
-
 export function fsPathIsAllow(fsPath: string, blockList: readonly RegExp[]): boolean {
     return !blockList.some((reg: RegExp) => reg.test(fsPath));
 }
 
-function CollectorFsPath(fsPath: TFsPath, blockList: readonly RegExp[], Collector: Set<TFsPath>): void {
+function CollectorFsPath(
+    fsPath: string,
+    blockList: readonly RegExp[],
+    Collector: Set<string>,
+    record: Set<string>,
+): void {
+    if ((/\.asar$/iu).test(fsPath)) return;
+
     const Stats: fs.Stats = fs.statSync(fsPath);
     if (Stats.isDirectory()) {
         const files: string[] = fs.readdirSync(fsPath);
         for (const file of files) {
-            const fsPathNext: TFsPath = `${fsPath}/${file}`;
-            if (fsPathIsAllow(fsPathNext, blockList)) {
-                CollectorFsPath(fsPathNext, blockList, Collector);
+            const fsPathNext = `${fsPath}/${file}`;
+
+            if (!record.has(fsPathNext)) {
+                record.add(fsPathNext);
+                if (fsPathIsAllow(fsPathNext, blockList)) {
+                    CollectorFsPath(fsPathNext, blockList, Collector, record);
+                }
             }
         }
     } else if (Stats.isFile() && isAhk(fsPath)) {
@@ -27,15 +36,17 @@ function CollectorFsPath(fsPath: TFsPath, blockList: readonly RegExp[], Collecto
 }
 
 export function getUriList(): vscode.Uri[] {
-    const WorkspaceFolderList: readonly string[] = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()];
+    // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
+    const WorkspaceFolderList: readonly string[] = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()].sort();
     if (WorkspaceFolderList.length === 0) return [];
 
     const blockList: readonly RegExp[] = getIgnoredList();
-    const Collector: Set<TFsPath> = new Set<TFsPath>();
+    const Collector: Set<string> = new Set<string>();
+    const record: Set<string> = new Set<string>();
 
     for (const fsPath of WorkspaceFolderList) {
         const rootFsPath: string = fsPath.replaceAll('\\', '/');
-        CollectorFsPath(rootFsPath, blockList, Collector);
+        CollectorFsPath(rootFsPath, blockList, Collector, record);
     }
 
     return [...Collector].map((path0: string): vscode.Uri => vscode.Uri.file(path0));
