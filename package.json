@@ -439,10 +439,6 @@
                                 "type": "boolean",
                                 "default": false
                             },
-                            "not_support_include_directory": {
-                                "type": "boolean",
-                                "default": false
-                            },
                             "not_support_this_style": {
                                 "type": "boolean",
                                 "default": false
@@ -453,7 +449,6 @@
                             "parser_OK": false,
                             "parser_err": false,
                             "parser_duplicate": false,
-                            "not_support_include_directory": false,
                             "not_support_this_style": false
                         },
                         "markdownDescription": "while `\"AhkNekoHelp.files.tryParserIncludeOpt\"` open, select to record log."
@@ -468,7 +463,7 @@
                         "order": 0,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17)) and ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.insertType.md))"
+                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.insertType.md)) and ([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17))"
                     },
                     "AhkNekoHelp.signatureHelp.showParamInfo": {
                         "order": 1,
@@ -640,12 +635,12 @@
         "@types/assert": "^1.5.6",
         "@types/jest": "^29.5.2",
         "@types/node": "^20.3.1",
-        "@types/vscode": "^1.79.0",
+        "@types/vscode": "^1.79.1",
         "@typescript-eslint/eslint-plugin": "^5.59.11",
         "@typescript-eslint/parser": "^5.59.11",
         "@vscode/test-electron": "^2.3.3",
         "@vscode/vsce": "^2.19.0",
-        "esbuild": "^0.18.2",
+        "esbuild": "^0.18.3",
         "eslint": "^8.42.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",

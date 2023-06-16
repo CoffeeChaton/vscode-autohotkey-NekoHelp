@@ -249,10 +249,6 @@ export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLo
                 if (logOpt.parser_duplicate === true) log.warn(msgF);
                 break;
 
-            case 'not_support_include_directory':
-                if (logOpt.not_support_include_directory === true) log.warn(msgF);
-                break;
-
             case 'not_support_this_style':
                 if (logOpt.not_support_this_style === true) log.warn(msgF);
                 break;

@@ -42,7 +42,6 @@ export type TTryParserIncludeLog = DeepReadonly<{
     'parser_OK'?: boolean,
     'parser_err'?: boolean,
     'parser_duplicate'?: boolean,
-    'not_support_include_directory'?: boolean,
     'not_support_this_style'?: boolean,
 }>;
 

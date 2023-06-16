@@ -3,6 +3,7 @@
 /* eslint-disable no-magic-numbers */
 import * as os from 'node:os';
 import {
+    dirname,
     isAbsolute,
     join,
     normalize,
@@ -272,4 +273,25 @@ export class CAhkInclude extends vscode.DocumentSymbol {
             warnMsg,
         };
     }
+}
+
+export function pathJoinMagic(rawData: TRawData, rootPath: string): string {
+    const { type, mayPath, warnMsg } = rawData;
+
+    if (warnMsg !== '') return '';
+
+    if (EInclude.isUnknown === type) {
+        return join(dirname(rootPath), mayPath);
+    }
+
+    if (type === EInclude.Lib) {
+        return join(
+            dirname(rootPath),
+            mayPath
+                .replace(/^</u, '')
+                .replace(/>$/u, ''),
+        );
+    }
+
+    return mayPath;
 }

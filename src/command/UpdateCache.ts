@@ -6,7 +6,7 @@ import type { TTryParserIncludeLog } from '../configUI.data';
 import { rmAllDiag } from '../core/diagColl';
 import { BaseScanMemo } from '../core/ParserTools/getFileAST';
 import type { TAhkFileData } from '../core/ProjectManager';
-import { IncludePm, pm } from '../core/ProjectManager';
+import { pm } from '../core/ProjectManager';
 import { log } from '../provider/vscWindows/log';
 import { getUriList } from '../tools/fsTools/getUriList';
 import { getWorkspaceRoot } from '../tools/fsTools/getWorkspaceRoot';
@@ -34,7 +34,6 @@ async function tryUpdateDocDef(uri: vscode.Uri): Promise<TAhkFileData | null> {
 export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TAhkFileData[]> {
     rmAllDiag();
     pm.DocMap.clear();
-    IncludePm.clear();
     if (clearCache) {
         BaseScanMemo.memo.clear();
     }
@@ -58,10 +57,11 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
         const byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[] = [];
 
         const cloneList: readonly TAhkFileData[] = [...FileListData];
+        const history = new Set<string>();
         for (const { AST, uri } of cloneList) {
             FileListData.push(
                 // eslint-disable-next-line no-await-in-loop
-                ...await pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, byRefLogList),
+                ...await pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, byRefLogList, history),
             );
         }
 

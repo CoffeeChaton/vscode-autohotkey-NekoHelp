@@ -30,8 +30,9 @@
 - feat: [#11](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) pseudo-array support `StringSplit`
 - feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
   1. cover more built-in variables like `%A_WinDir%`
-  2. hover `#include path` show may path
+  2. hover `#include` show may path
      ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-45-hover-include-path.png)
+  3. try support `#include d:\folder\` like `#Include %A_Desktop%` and del `"AhkNekoHelp.files.tryParserIncludeLog.not_support_include_directory"`
 
 - perf: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20) avoid duplicate parsing
 

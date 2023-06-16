@@ -2,10 +2,9 @@
 /* eslint-disable max-depth */
 /* eslint-disable security/detect-non-literal-fs-filename */
 import * as fs from 'node:fs';
-import path from 'node:path';
 import * as vscode from 'vscode';
 import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
-import { EInclude } from '../AhkSymbol/CAhkInclude';
+import { pathJoinMagic } from '../AhkSymbol/CAhkInclude';
 import { collectInclude } from '../command/tools/collectInclude';
 import {
     getEventConfig,
@@ -24,16 +23,6 @@ import type { TMemo } from './ParserTools/getFileAST';
 import { BaseScanMemo, getFileAST } from './ParserTools/getFileAST';
 
 export type TAhkFileData = TMemo;
-
-export const IncludePm = {
-    /**
-     * may be can let `string[]` -> WeakSet<vscode.Uri> ?
-     */
-    wm: new WeakMap<CAhkInclude, string[]>(),
-    clear(): void {
-        IncludePm.wm = new WeakMap<CAhkInclude, string[]>();
-    },
-};
 
 /**
  * ProjectManager
@@ -164,7 +153,8 @@ export const pm = {
                 || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders !== undefined)
             ) {
                 const { AST, uri } = AhkFileData;
-                void pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, []); // if log is too much
+                const history = new Set<string>();
+                void pm.UpdateCacheAsyncCh(collectInclude(AST), uri.fsPath, [], history); // if log is too much
             }
         }
     },
@@ -173,22 +163,13 @@ export const pm = {
         ahkIncludeList: readonly CAhkInclude[],
         rootPath: string,
         byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[],
+        history: Set<string>,
     ): Promise<readonly TAhkFileData[]> {
         const FileListData: TAhkFileData[] = [];
         for (const ahkInclude of ahkIncludeList) {
-            const { type, mayPath, warnMsg } = ahkInclude.rawData;
-            const tryPath: string = EInclude.isUnknown === type
-                ? path.join(path.dirname(rootPath), mayPath)
-                : mayPath;
-            const history: string[] = IncludePm.wm.get(ahkInclude) ?? [];
-            if (history.includes(tryPath)) {
-                byRefLogList.push({
-                    type: 'parser_duplicate',
-                    msg: `"${ahkInclude.name}", to : "${tryPath}", rootPath: "${rootPath}"`,
-                });
-                continue;
-            }
-            if (type === EInclude.Lib || warnMsg !== '') {
+            const tryPath: string = pathJoinMagic(ahkInclude.rawData, rootPath);
+
+            if (tryPath === '') {
                 byRefLogList.push({
                     type: 'not_support_this_style',
                     msg: `"${ahkInclude.name}"`,
@@ -203,6 +184,13 @@ export const pm = {
                         : tryPath,
                 );
                 const { fsPath } = uri;
+                if (history.has(fsPath)) {
+                    byRefLogList.push({
+                        type: 'parser_duplicate',
+                        msg: `"${ahkInclude.name}", to : "${tryPath}", rootPath: "${rootPath}"`,
+                    });
+                    continue;
+                }
                 if (!fs.existsSync(fsPath)) {
                     byRefLogList.push({
                         type: 'file_not_exists',
@@ -212,35 +200,46 @@ export const pm = {
                 }
                 const Stats: fs.Stats = fs.statSync(fsPath);
                 if (Stats.isDirectory()) {
-                    // byRefLogList.push({
-                    //     type: 'not_support_include_directory',
-                    //     msg: `"${tryPath}", "${ahkInclude.name}"`,
-                    // });
-
+                    const FileListData2: TAhkFileData[] = [];
                     for (const uri2 of getUriList([fsPath])) {
-                        // eslint-disable-next-line no-await-in-loop
-                        const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri2);
-                        const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
-                        history.push(uri2.fsPath);
-                        IncludePm.wm.set(ahkInclude, history);
-                        if (AhkFileData === null) continue;
-
-                        byRefLogList.push({
-                            type: 'parser_OK',
-                            msg: `"${ahkInclude.name}", to : "${uri2.fsPath}", rootPath: "${rootPath}"`,
-                        });
-
-                        FileListData.push(
-                            AhkFileData,
+                        try {
+                            if (history.has(uri2.fsPath)) {
+                                byRefLogList.push({
+                                    type: 'parser_duplicate',
+                                    msg: `"${ahkInclude.name}", to : "${uri2.fsPath}", rootPath: "${rootPath}"`,
+                                });
+                                continue;
+                            }
                             // eslint-disable-next-line no-await-in-loop
-                            // ...await pm.UpdateCacheAsyncCh(
-                            //     collectInclude(AhkFileData.AST),
-                            //     rootPath,
-                            //     byRefLogList,
-                            // ),
-                        );
+                            const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri2);
+                            const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
+                            history.add(uri2.fsPath);
+                            if (AhkFileData === null) continue;
+
+                            byRefLogList.push({
+                                type: 'parser_OK',
+                                msg: `"${ahkInclude.name}", to : "${uri2.fsPath}", rootPath: "${rootPath}"`,
+                            });
+
+                            FileListData2.push(
+                                AhkFileData,
+                                // eslint-disable-next-line no-await-in-loop
+                                ...await pm.UpdateCacheAsyncCh(
+                                    collectInclude(AhkFileData.AST),
+                                    rootPath,
+                                    byRefLogList,
+                                    history,
+                                ),
+                            );
+                        } catch {
+                            byRefLogList.push({
+                                type: 'parser_err',
+                                msg: `"${ahkInclude.name}", file: "${tryPath}"`,
+                            });
+                        }
                     }
 
+                    FileListData.push(...FileListData2);
                     continue;
                 }
                 if (!Stats.isFile() || !isAhk(fsPath)) {
@@ -254,8 +253,7 @@ export const pm = {
                 // eslint-disable-next-line no-await-in-loop
                 const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri);
                 const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
-                history.push(tryPath);
-                IncludePm.wm.set(ahkInclude, history);
+                history.add(fsPath);
                 if (AhkFileData === null) continue;
 
                 byRefLogList.push({
@@ -270,6 +268,7 @@ export const pm = {
                         collectInclude(AhkFileData.AST),
                         rootPath,
                         byRefLogList,
+                        history,
                     ),
                 );
             } catch {
