@@ -1,3 +1,5 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable max-depth */
 /* eslint-disable security/detect-non-literal-fs-filename */
 import * as fs from 'node:fs';
 import path from 'node:path';
@@ -15,7 +17,7 @@ import { EFileRenameEvent } from '../configUI.data';
 import type { TFsPath } from '../globalEnum';
 import { renameFileNameFunc } from '../provider/event/renameFileNameFunc';
 import { log } from '../provider/vscWindows/log';
-import { fsPathIsAllow } from '../tools/fsTools/getUriList';
+import { fsPathIsAllow, getUriList } from '../tools/fsTools/getUriList';
 import { isAhk } from '../tools/fsTools/isAhk';
 import { rmFileDiag } from './diagColl';
 import type { TMemo } from './ParserTools/getFileAST';
@@ -195,7 +197,11 @@ export const pm = {
             }
 
             try {
-                const uri: vscode.Uri = vscode.Uri.file(tryPath);
+                const uri: vscode.Uri = vscode.Uri.file(
+                    tryPath.endsWith('\\')
+                        ? tryPath.replace(/\\$/u, '')
+                        : tryPath,
+                );
                 const { fsPath } = uri;
                 if (!fs.existsSync(fsPath)) {
                     byRefLogList.push({
@@ -206,10 +212,35 @@ export const pm = {
                 }
                 const Stats: fs.Stats = fs.statSync(fsPath);
                 if (Stats.isDirectory()) {
-                    byRefLogList.push({
-                        type: 'not_support_include_directory',
-                        msg: `"${tryPath}", "${ahkInclude.name}"`,
-                    });
+                    // byRefLogList.push({
+                    //     type: 'not_support_include_directory',
+                    //     msg: `"${tryPath}", "${ahkInclude.name}"`,
+                    // });
+
+                    for (const uri2 of getUriList([fsPath])) {
+                        // eslint-disable-next-line no-await-in-loop
+                        const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri2);
+                        const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
+                        history.push(uri2.fsPath);
+                        IncludePm.wm.set(ahkInclude, history);
+                        if (AhkFileData === null) continue;
+
+                        byRefLogList.push({
+                            type: 'parser_OK',
+                            msg: `"${ahkInclude.name}", to : "${uri2.fsPath}", rootPath: "${rootPath}"`,
+                        });
+
+                        FileListData.push(
+                            AhkFileData,
+                            // eslint-disable-next-line no-await-in-loop
+                            // ...await pm.UpdateCacheAsyncCh(
+                            //     collectInclude(AhkFileData.AST),
+                            //     rootPath,
+                            //     byRefLogList,
+                            // ),
+                        );
+                    }
+
                     continue;
                 }
                 if (!Stats.isFile() || !isAhk(fsPath)) {

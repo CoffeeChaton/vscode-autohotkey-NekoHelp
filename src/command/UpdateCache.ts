@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
-import { getTryParserInclude, LogParserInclude } from '../configUI';
+import { getAlwaysIncludeFolder, getTryParserInclude, LogParserInclude } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
 import { rmAllDiag } from '../core/diagColl';
 import { BaseScanMemo } from '../core/ParserTools/getFileAST';
@@ -9,6 +9,7 @@ import type { TAhkFileData } from '../core/ProjectManager';
 import { IncludePm, pm } from '../core/ProjectManager';
 import { log } from '../provider/vscWindows/log';
 import { getUriList } from '../tools/fsTools/getUriList';
+import { getWorkspaceRoot } from '../tools/fsTools/getWorkspaceRoot';
 import type { TShowFileParam } from '../tools/fsTools/showFileList';
 import { showFileList } from '../tools/fsTools/showFileList';
 import { collectInclude } from './tools/collectInclude';
@@ -37,8 +38,8 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
     if (clearCache) {
         BaseScanMemo.memo.clear();
     }
-
-    const uriList: vscode.Uri[] = getUriList();
+    // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
+    const uriList: vscode.Uri[] = getUriList([...getWorkspaceRoot(), ...getAlwaysIncludeFolder()].sort());
     if (uriList.length === 0) return [];
 
     const FileListData: TAhkFileData[] = [];

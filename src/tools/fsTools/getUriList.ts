@@ -1,8 +1,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 import * as fs from 'node:fs';
 import * as vscode from 'vscode';
-import { getAlwaysIncludeFolder, getIgnoredList } from '../../configUI';
-import { getWorkspaceRoot } from './getWorkspaceRoot';
+import { getIgnoredList } from '../../configUI';
 import { isAhk } from './isAhk';
 
 export function fsPathIsAllow(fsPath: string, blockList: readonly RegExp[]): boolean {
@@ -35,9 +34,11 @@ function CollectorFsPath(
     }
 }
 
-export function getUriList(): vscode.Uri[] {
-    // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
-    const WorkspaceFolderList: readonly string[] = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()].sort();
+/**
+ * @param WorkspaceFolderList = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()].sort()
+ * @returns
+ */
+export function getUriList(WorkspaceFolderList: readonly string[]): vscode.Uri[] {
     if (WorkspaceFolderList.length === 0) return [];
 
     const blockList: readonly RegExp[] = getIgnoredList();

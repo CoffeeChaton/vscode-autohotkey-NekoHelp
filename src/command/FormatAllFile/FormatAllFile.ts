@@ -1,9 +1,11 @@
 import * as vscode from 'vscode';
+import { getAlwaysIncludeFolder } from '../../configUI';
 import type { ErmFirstCommaCommand } from '../../configUI.data';
 import { EFormatChannel } from '../../globalEnum';
 import { FormatCore, FormatCoreWrap } from '../../provider/Format/FormatProvider';
 import { log } from '../../provider/vscWindows/log';
 import { getUriList } from '../../tools/fsTools/getUriList';
+import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
 import type { TShowFileParam } from '../../tools/fsTools/showFileList';
 import { showFileList } from '../../tools/fsTools/showFileList';
 import { UpdateCacheAsync } from '../UpdateCache';
@@ -41,7 +43,8 @@ async function formatByPathAsync(
 }
 
 export async function FormatAllFile(): Promise<null> {
-    const uriList: vscode.Uri[] = getUriList();
+    // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
+    const uriList: vscode.Uri[] = getUriList([...getWorkspaceRoot(), ...getAlwaysIncludeFolder()].sort());
     if (uriList.length === 0) return null;
 
     const fmtOpt: vscode.FormattingOptions | null = await setFormattingOptions();
