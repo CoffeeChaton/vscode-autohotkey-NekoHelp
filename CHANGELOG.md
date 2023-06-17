@@ -27,6 +27,11 @@
 
 ## Next v0.0.45(2023-06-XX)
 
+<!--
+dprint 0.37.1
+pnpm v8.6.2
+-->
+
 - feat: [#11](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) pseudo-array support `StringSplit`
 - feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
   1. cover more built-in variables like `%A_WinDir%`
@@ -35,6 +40,8 @@
   3. try support `#include d:\folder\` like `#Include %A_Desktop%` and del `"AhkNekoHelp.files.tryParserIncludeLog.not_support_include_directory"`
 
 - perf: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/20) avoid duplicate parsing
+- fix: syntax-highlight of `gui,add, Control`
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-45-gui-add.png)
 
 ## v0.0.44(2023-06-12)
 

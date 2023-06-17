@@ -4,7 +4,7 @@
 #     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
 #        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #         ^ source.ahk meta.command.line.gui.ahk
-#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
 #                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
 #                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
@@ -22,7 +22,7 @@
 #     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
 #        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #         ^ source.ahk meta.command.line.gui.ahk
-#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
 #                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
 #                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
@@ -38,7 +38,7 @@
 #     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
 #        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #         ^ source.ahk meta.command.line.gui.ahk
-#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
 #                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
 #                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
@@ -55,7 +55,7 @@
 #     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
 #        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #         ^ source.ahk meta.command.line.gui.ahk
-#          ^^^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
 #                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #                 ^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
 #                            ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.range.ahk keyword.string.gui.range.ahk
@@ -134,3 +134,167 @@
 #              ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
 >;    guiName: color should be variable.other.constant.gui.name.ahk
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>; Gui, add https://www.autohotkey.com/docs/v1/lib/GuiControls.htm
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Gui, add, Text
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Edit
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, UpDown
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Picture
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Button
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Checkbox
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Radio
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, DropDownList
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, ComboBox
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, ListBox
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, ListView
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, TreeView
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Link
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Hotkey
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, DateTime
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, MonthCal
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Slider
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Progress
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, GroupBox
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Tab
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, StatusBar
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, ActiveX
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>Gui, add, Custom
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk

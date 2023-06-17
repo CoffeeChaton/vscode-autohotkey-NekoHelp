@@ -78,6 +78,7 @@
     "files.readonlyInclude": {
         "node_modules/**": true,
         "dist/**": true
-    }
+    },
+    "dprint.path": "C:\\Users\\User\\AppData\\Local\\pnpm\\global\\5\\.pnpm\\dprint@0.37.1\\node_modules\\dprint\\dprint.exe"
     // "markdown.extension.list.indentationSize": "inherit"
 }

@@ -191,12 +191,20 @@
                 },
                 {
                     "match": "\\b(?i:AlwaysOnTop|Border|Caption|Delimiter|Disabled|DPIScale|HwndOutputVar|LabelName|LastFound|LastFoundExist|MaximizeBox|MaxSize|MinimizeBox|MinSize|OwnDialogs|Owner|Parent|Resize|SysMenu|Theme|ToolWindow)\\b",
-                    "name": "keyword.string.gui.other.options.ahk",
-                    "captures": { "1": { "name": "constant.numeric.gui.ahk" } }
+                    "name": "keyword.string.gui.other.options.ahk"
+                },
+                {
+                    "match": "(?<=(?i:add\\s*,\\s*))(?i:(Text|Edit|UpDown|Picture|Button|Checkbox|Radio|DropDownList|ComboBox|ListBox|ListView|TreeView|Link|Hotkey|DateTime|MonthCal|Slider|Progress|GroupBox|Tab|StatusBar|ActiveX|Custom))\\b",
+                    "name": "meta.keyword.string.gui.other.options.ahk",
+                    "captures": { "1": { "name": "keyword.gui.ahk" } }
                 },
                 { "include": "#command_options" },
                 { "include": "#keyword_mouse_keyboard" },
-                { "include": "#expression" }
+                { "include": "#expression" },
+                {
+                    "match": "\\b(?i:x|y)\\b\\+",
+                    "name": "keyword.string.gui.other.options.ahk"
+                }
             ]
         },
         "command_sysget": {
