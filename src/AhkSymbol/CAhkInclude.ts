@@ -223,6 +223,7 @@ function getRawData(path1: string, fsPath: string): TRawData {
 
 export class CAhkInclude extends vscode.DocumentSymbol {
     // https://www.autohotkey.com/docs/v1/lib/_Include.htm
+    // https://github.com/AutoHotkey/AutoHotkeyUX/commit/a8f202ff241df2fb8f7d5a654c39e2be1ad44126
 
     // #Include Compiler.ahk
     // #include *i __debug.ahk

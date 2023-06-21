@@ -14,6 +14,7 @@ import { removeFirstCommaDirective } from './removeFirstCommaDirective';
 import { rmFirstCommaCommand } from './rmFirstCommaCommand';
 import { ToFmtCore } from './ToFmtCore';
 import type { TFormatFlag } from './tools/getFormatFlag';
+import type { TCmdSemantic } from './tools/semanticCmd';
 
 type TWarnUse =
     & DeepReadonly<{
@@ -27,6 +28,7 @@ type TWarnUse =
         userConfigs: TConfigs['format'],
         betaList: TFormatFlag['betaList'],
         cmdTo1_or_2: ErmFirstCommaCommand,
+        cmdSemanticList: readonly TCmdSemantic[],
     }>
     & {
         brackets: TBrackets,
@@ -48,6 +50,7 @@ function fmtPlus(
         userConfigs,
         // eslint-disable-next-line @typescript-eslint/naming-convention
         cmdTo1_or_2,
+        cmdSemanticList,
     } = args;
     const { line, textRaw, detail } = AhkTokenLine;
 
@@ -96,7 +99,7 @@ function fmtPlus(
         }
     }
 
-    const newText: string = formatTextReplace && betaList[line]
+    const newText: string = formatTextReplace && betaList[line] && cmdSemanticList[line] === 0
         ? lineReplace(AhkTokenLine, `${indentBlank}${textRawTrimStart}`, lStrTrim) // Alpha test options
         : `${indentBlank}${textRawTrimStart}`;
 

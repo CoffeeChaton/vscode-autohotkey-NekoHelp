@@ -3,6 +3,7 @@
 import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
 import { EMultiline } from '../../../globalEnum';
 import type { TBrackets } from '../../../tools/Bracket';
+import { FocIfExMap } from '../../../tools/Built-in/3_foc/semanticFoc.data';
 
 /**
  * from src/tools/Built-in/statement.data.ts
@@ -273,7 +274,7 @@ export function getDeepKeywords({
         lockList,
         isHotFix22,
     } = lnStatus;
-    const { fistWordUp, line } = AhkTokenLine;
+    const { fistWordUp, line, SecondWordUpCol } = AhkTokenLine;
     if (isHotFix22) {
         return addLock({ lnStatus, AhkTokenLine });
     } // FIXME: if this line is `{ if` case
@@ -304,6 +305,9 @@ export function getDeepKeywords({
             return focElseFinallyCase({ AhkTokenLine, matrixBrackets, lnStatus });
         }
 
+        if (FocIfExMap.has(fistWordUp) && SecondWordUpCol !== -1) {
+            return focOccDiff({ AhkTokenLine, matrixBrackets, lnStatus });
+        }
         // other key word
         return {
             isHotFix22: false,

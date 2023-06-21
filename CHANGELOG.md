@@ -32,6 +32,11 @@ dprint 0.37.1
 pnpm v8.6.2
 -->
 
+- feat: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22)
+  1. support semantic-highlight of next cmd at same line
+  2. support Go to Definition / Find All References of next cmd at same line
+  3. fix format, if has command in the same line, next line not indentation.
+
 - feat: [#11](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) pseudo-array support `StringSplit`
 - feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
   1. cover more built-in variables like `%A_WinDir%`

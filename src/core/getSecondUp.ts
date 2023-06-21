@@ -1,14 +1,12 @@
+/* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,3,4] }] */
+
 import { log } from '../provider/vscWindows/log';
 import { getFistWordCore } from './getFistWordUpData';
+import { getSecondUpIfEx, type TPatternMatch } from './getSecondUpIfEx';
 
 type TSecondUpData = {
     SecondWordUp: string,
     SecondWordUpCol: number,
-};
-
-type TPatternMatch = {
-    name: string,
-    fn: (lStr: string, fistWordUpCol: number) => string,
 };
 
 const patternMatch = [
@@ -45,7 +43,6 @@ const patternMatch = [
             .trim(),
     },
     {
-        // Else Statement
         name: 'ELSE',
         //   If False {
         //       MsgBox % "True"
@@ -73,7 +70,12 @@ const patternMatch = [
             .trim(),
     },
     {
-        // Else Statement
+        // Try Throw, Exception("Message--152", "What", "Extra")
+        // Catch e {
+        //     MsgBox, % e.Message
+        // } Finally Loop, 3 { ;<------- loop
+        //     MsgBox, % A_Index
+        // }
         name: 'FINALLY',
         // dprint-ignore
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 'FINALLY'.length)
@@ -81,13 +83,9 @@ const patternMatch = [
             .replace(/^\s*\{/u, '')
             .trim(),
     },
+    ...getSecondUpIfEx,
 ] as const satisfies readonly TPatternMatch[];
 
-/**
- * //TODO https://www.autohotkey.com/docs/v1/lib/IfEqual.htm#Remarks
- *
- * IfEqual IfGreater ...etc
- */
 export function getSecondUp(lStr: string, fistWordUp: string, fistWordUpCol: number): TSecondUpData {
     const match: TPatternMatch | undefined = patternMatch.find((v: TPatternMatch): boolean => v.name === fistWordUp);
     if (match === undefined) return { SecondWordUpCol: -1, SecondWordUp: '' };

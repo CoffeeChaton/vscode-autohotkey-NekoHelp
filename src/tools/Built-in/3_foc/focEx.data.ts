@@ -3,7 +3,9 @@
 
 type TFocExElement = Readonly<{
     keyRawName: string,
-    body: string,
+    body:
+        | `If ${string}`
+        | `Loop, ${string}`,
     doc: string,
     link:
         | 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#new'
