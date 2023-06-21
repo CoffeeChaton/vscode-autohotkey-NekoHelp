@@ -129,7 +129,7 @@ export const enum EDiagCode {
 
     // code701 = 701, // 701~799 is Command error
     code701 = 701, // https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22 ifMsgBox OK, i++
-
+    code702 = 702, // https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22 IfInString, Var, SearchString cmd
     // 800~899 is Deprecated / Old Syntax
     code801 = 801,
     code802 = 802,
@@ -234,6 +234,10 @@ export const Diags: DeepReadonly<TDiags> = {
     // ifMsgBox OK, i++
     701: {
         msg: 'just allow command/Flow of Control',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22',
+    },
+    702: {
+        msg: 'if you miss `,` ? ',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22',
     },
     // 603: {

@@ -25,7 +25,7 @@ export type TPatternMatch = {
  * ;                       ^^^^^^^^^^^^^ fake
  * ```
  */
-function getIfCmdSecUp(name: string, ax: number): TTPatternMatchFn {
+export function getIfCmdSecUp(name: string, ax: number): TTPatternMatchFn {
     return (lStr: string, fistWordUpCol: number): string => {
         const strF: string = lStr.slice(fistWordUpCol + name.length)
             .replace(/^\s*,/u, '')
@@ -42,9 +42,11 @@ function getIfCmdSecUp(name: string, ax: number): TTPatternMatchFn {
     };
 }
 
+/**
+ * https://www.autohotkey.com/docs/v1/Language.htm#if-statement
+ * https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22
+ */
 export const getSecondUpIfEx = [
-    // https://www.autohotkey.com/docs/v1/Language.htm#if-statement
-    // https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22
     {
         name: 'IFMSGBOX',
         fn: getIfCmdSecUp('IfMsgBox', 1),
