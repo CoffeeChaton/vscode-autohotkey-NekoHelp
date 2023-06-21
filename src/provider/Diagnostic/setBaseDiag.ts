@@ -13,6 +13,7 @@ import { getTreeErr } from './tools/getTreeErr';
 import { getAssignErr } from './tools/lineErr/assignErr';
 import { getCode304Err } from './tools/lineErr/getCode304Err';
 import { getCode601Err } from './tools/lineErr/getCode601Err';
+import { getCode701Err } from './tools/lineErr/getCode701Err';
 
 const wm = new WeakMap<TTokenStream, readonly CDiagBase[]>();
 
@@ -42,6 +43,7 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
 
     const DiagShow: CDiagBase[] = [
         ...getCode601Err(AhkFileData),
+        ...getCode701Err(AhkFileData),
     ];
     const {
         code800Deprecated,

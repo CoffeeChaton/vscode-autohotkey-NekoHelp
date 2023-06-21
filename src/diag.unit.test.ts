@@ -24,7 +24,10 @@ describe('check diag-md uri', () => {
 
         for (const [k, v] of Object.entries(Diags)) {
             const uri: string = v.path;
-            if (uri.startsWith('https://www.autohotkey.com/docs/v1/')) {
+            if (
+                uri.startsWith('https://www.autohotkey.com/docs/v1/')
+                || uri.startsWith('https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/')
+            ) {
                 continue;
             }
             if (!uri.endsWith('.md')) {

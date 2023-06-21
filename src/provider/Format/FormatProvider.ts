@@ -15,7 +15,7 @@ import { getMatrixFileBrackets } from './tools/getMatrixFileBrackets';
 import { getMatrixMultLine } from './tools/getMatrixMultLine';
 import { getMatrixTopLabe } from './tools/getMatrixTopLabe';
 import type { TCmdSemantic } from './tools/semanticCmd';
-import { getCmdCll, getSemanticCmdShell } from './tools/semanticCmd';
+import { getSemanticCmdShell } from './tools/semanticCmd';
 import { fn_Warn_thisLineText_WARN } from './TWarnUse';
 import type { TLnStatus } from './wantRefactor/getDeepKeywords';
 import { getDeepKeywords } from './wantRefactor/getDeepKeywords';
@@ -99,7 +99,7 @@ export function FormatCore(
     const matrixMultLine: readonly (-999 | 0 | 1)[] = getMatrixMultLine(DocStrMap);
     const matrixAhk2exeKeep: readonly boolean[] = getMatrixAhk2exeKeep(DocStrMap);
     const cmdSemanticList: readonly TCmdSemantic[] = getSemanticCmdShell(AhkFileData);
-    const matrixCll: readonly (0 | 1)[] = getCmdCll(cmdSemanticList);
+    // const matrixCll: readonly (0 | 1)[] = getCmdCll(cmdSemanticList);
     const { mainList, betaList } = getFormatFlag(DocStrMap);
 
     let lnStatus: TLnStatus = {

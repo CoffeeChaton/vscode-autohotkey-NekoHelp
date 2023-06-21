@@ -128,6 +128,8 @@ export const enum EDiagCode {
     // code603 = 603,
 
     // code701 = 701, // 701~799 is Command error
+    code701 = 701, // https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22 ifMsgBox OK, i++
+
     // 800~899 is Deprecated / Old Syntax
     code801 = 801,
     code802 = 802,
@@ -228,6 +230,11 @@ export const Diags: DeepReadonly<TDiags> = {
     602: {
         msg: 'recommended that the following names not be used: On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss.',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code601.md',
+    },
+    // ifMsgBox OK, i++
+    701: {
+        msg: 'just allow command/Flow of Control',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22',
     },
     // 603: {
     //     msg: 'unknown #Directives in ahk-v1',
