@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [Next v0.0.45(2023-06-XX)](#next-v00452023-06-xx)
+  - [v0.0.45(2023-06-22)](#v00452023-06-22)
   - [v0.0.44(2023-06-12)](#v00442023-06-12)
   - [v0.0.43(2023-06-04)](#v00432023-06-04)
   - [v0.0.42(2023-05-29)](#v00422023-05-29)
@@ -25,17 +25,15 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## Next v0.0.45(2023-06-XX)
+## v0.0.45(2023-06-22)
 
-<!--
-dprint 0.37.1
-pnpm v8.6.2
--->
+<!-- dprint 0.37.1    pnpm v8.6.2 -->
 
 - feat: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22)
-  1. support semantic-highlight of next cmd at same line
-  2. support Go to Definition / Find All References of next cmd at same line
-  3. fix format, if has command in the same line, next line not indentation.
+  1. support _semantic-highlight_ of next cmd at same line
+  2. support _Go to Definition_ / _Find All References_ of next cmd at same line
+  3. fix _format_, if has command in the same line, next line not indentation.
+  4. _diag_ add `code701` and `code702`
 
 - feat: [#11](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) pseudo-array support `StringSplit`
 - feat: [#16](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/16)
