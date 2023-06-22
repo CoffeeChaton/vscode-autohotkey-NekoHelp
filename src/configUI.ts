@@ -185,7 +185,7 @@ export function configChangEvent(): void {
 /*
     ---set end---
 */
-export function showTimeSpend(showText: string): void {
+export function setStatusBarText(showText: string): void {
     statusBarItem.text = `$(heart) ${showText}`;
     statusBarItem.show();
 }

@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [Next v0.0.46(2023-06-XX)](#next-v00462023-06-xx)
   - [v0.0.45(2023-06-22)](#v00452023-06-22)
   - [v0.0.44(2023-06-12)](#v00442023-06-12)
   - [v0.0.43(2023-06-04)](#v00432023-06-04)
@@ -25,11 +26,16 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
+## Next v0.0.46(2023-06-XX)
+
+<!-- dprint 0.37.1 pnpm 8.6.3 -->
+
+- fix: StatusBarText hook add `"onDidChangeTextDocument"`
+  > if `breadcrumbs.enabled: false` , only `"SymbolProvider"` hook cannot status refresh.
+
 ## v0.0.45(2023-06-22)
 
-<!-- dprint 0.37.1    pnpm v8.6.2 -->
-
-- feat: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22)
+- feat: [#20](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22) support IfXXX (command-like If statements)
   1. support _semantic-highlight_ of next cmd at same line
   2. support _Go to Definition_ / _Find All References_ of next cmd at same line
   3. fix _format_, if has command in the same line, next line not indentation.

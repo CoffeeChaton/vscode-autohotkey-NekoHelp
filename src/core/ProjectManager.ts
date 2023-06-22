@@ -2,6 +2,7 @@
 /* eslint-disable max-depth */
 /* eslint-disable security/detect-non-literal-fs-filename */
 import * as fs from 'node:fs';
+import * as path from 'node:path';
 import * as vscode from 'vscode';
 import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
 import { pathJoinMagic } from '../AhkSymbol/CAhkInclude';
@@ -10,6 +11,7 @@ import {
     getEventConfig,
     getIgnoredList,
     getTryParserInclude,
+    setStatusBarText,
 } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
 import { EFileRenameEvent } from '../configUI.data';
@@ -145,6 +147,8 @@ export const pm = {
         if (languageId === 'ahk') {
             const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
             if (AhkFileData === null) return;
+
+            setStatusBarText(path.basename(AhkFileData.uri.fsPath));
 
             const TryParserInclude: 'auto' | 'close' | 'open' = getTryParserInclude();
 

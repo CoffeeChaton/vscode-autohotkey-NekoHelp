@@ -25,7 +25,7 @@ async function tryUpdateDocDef(uri: vscode.Uri): Promise<TAhkFileData | null> {
         if (error instanceof Error) {
             log.error(error, `scan to "${uri.fsPath}" has err`);
         } else {
-            log.error('Unknown Error', `scan to "${uri.fsPath}" has err`);
+            log.error('Unknown Error', `scan to "${uri.fsPath}" has err`, error);
         }
     }
     return null;
