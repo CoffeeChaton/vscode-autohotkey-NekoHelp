@@ -40,6 +40,10 @@
                 {
                     "match": "(?<![.#])\\b(?i:Clipboard|ClipboardAll|ComSpec|ErrorLevel|False|ProgramFiles|True|this)\\b",
                     "name": "variable.other.constant.builtin.ahk"
+                },
+                {
+                    "match": "(?<=(?i:this)\\.)[#$@\\w\\x{A1}-\\x{FFFF}]+(?=[#$@.`%!\"/&')*+,\\-:;<=>?[\\^\\\\]{|}~ \t]|$)",
+                    "name": "variable.other.property.ahk"
                 }
             ]
         },

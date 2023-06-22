@@ -30,6 +30,7 @@
 
 <!-- dprint 0.37.1 pnpm 8.6.3 -->
 
+- feat: syntax-highlight of `this.xxx` the `xxx` as `"variable.other.property.ahk"`
 - fix: StatusBarText hook add `"onDidChangeTextDocument"`
   > if `breadcrumbs.enabled: false` , only `"SymbolProvider"` hook cannot status refresh.
 

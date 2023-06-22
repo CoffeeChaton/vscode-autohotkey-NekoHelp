@@ -17,10 +17,45 @@
 #          ^ source.ahk punctuation.bracket.ahk
 #           ^ source.ahk
 #            ^ source.ahk punctuation.bracket.ahk
->
+>        this.foo()
+#^^^^^^^^ source.ahk
+#        ^^^^ source.ahk variable.other.constant.builtin.ahk
+#            ^ source.ahk
+#             ^^^ source.ahk entity.name.function.ahk
+#                ^ source.ahk punctuation.bracket.ahk
+#                 ^ source.ahk punctuation.bracket.ahk
 >    }
 #^^^^ source.ahk
 #    ^ source.ahk punctuation.bracket.ahk
+>    foo() {
+#^^^^ source.ahk
+#    ^^^ source.ahk entity.name.function.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk punctuation.bracket.ahk
+#         ^ source.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+>        
+>    }
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+>    this.aaa := 0
+#^^^^ source.ahk
+#    ^^^^ source.ahk variable.other.constant.builtin.ahk
+#        ^ source.ahk
+#         ^^^ source.ahk variable.other.property.ahk
+#            ^ source.ahk
+#             ^^ source.ahk keyword.operator.assignment.ahk
+#               ^ source.ahk
+#                ^ source.ahk constant.numeric.decimal.ahk
+>    this.±µ·¼，ӿwBBB := 0
+#^^^^ source.ahk
+#    ^^^^ source.ahk variable.other.constant.builtin.ahk
+#        ^ source.ahk
+#         ^^^^^^^^^^ source.ahk variable.other.property.ahk
+#                   ^ source.ahk
+#                    ^^ source.ahk keyword.operator.assignment.ahk
+#                      ^ source.ahk
+#                       ^ source.ahk constant.numeric.decimal.ahk
 >}
 #^ source.ahk punctuation.bracket.ahk
 >
