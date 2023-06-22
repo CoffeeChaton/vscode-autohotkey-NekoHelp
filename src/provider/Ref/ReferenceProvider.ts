@@ -2,7 +2,9 @@ import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { ToUpCase } from '../../tools/str/ToUpCase';
+import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { getClassDef } from '../Def/getClassDef';
+import { ClassProperty2Range, getClassProperty } from '../Def/getClassProperty';
 import { posAtLabelDef } from '../Def/getDefWithLabel';
 import { getFuncDef } from '../Def/getFuncDef';
 import { getRefSwitch } from '../Def/getRefSwitch';
@@ -14,6 +16,9 @@ function ReferenceProviderCore(
 ): vscode.Location[] | null {
     const AhkFileData: TAhkFileData | null = pm.getDocMap(document.uri.fsPath) ?? pm.updateDocDef(document);
     if (AhkFileData === null) return null;
+
+    const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
+    if (property !== null) return ClassProperty2Range(property, document.uri, true);
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,

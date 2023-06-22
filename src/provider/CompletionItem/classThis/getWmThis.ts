@@ -5,38 +5,59 @@ import { pm } from '../../../core/ProjectManager';
 import type { TTokenStream } from '../../../globalEnum';
 import { CMemo } from '../../../tools/CMemo';
 import { getDocStrMapMask } from '../../../tools/getDocStrMapMask';
+import { ToUpCase } from '../../../tools/str/ToUpCase';
 
-const WmThis = new CMemo<CAhkClass, vscode.CompletionItem[]>((AhkClassSymbol: CAhkClass): vscode.CompletionItem[] => {
-    const { fsPath } = AhkClassSymbol.uri;
-    const AhkFileData: TAhkFileData | undefined = pm.getDocMap(fsPath);
-    if (AhkFileData === undefined) return [];
-    const { DocStrMap } = AhkFileData;
-    const AhkTokenList: TTokenStream = getDocStrMapMask(AhkClassSymbol.range, DocStrMap);
+export type TWmThisPos = Readonly<{
+    rawName: string,
+    line: number,
+    col: number,
+}>;
+export type TWmThisMap = ReadonlyMap<string, readonly TWmThisPos[]>;
 
-    const mapStrNumber = new Map<string, number>();
+export const WmThisCore = new CMemo<CAhkClass, TWmThisMap>(
+    (AhkClassSymbol: CAhkClass): TWmThisMap => {
+        const { fsPath } = AhkClassSymbol.uri;
+        const map = new Map<string, TWmThisPos[]>();
 
-    for (const { lStr, line } of AhkTokenList) {
-        for (
-            const ma of lStr.matchAll(
-                /\bthis\.([#$@\w\u{A1}-\u{FFFF}]+)(?=[#$@.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/giu,
-            )
-            //                                                                 ^ with out (
-        ) {
-            //
-            const valName: string = ma[1];
-            if (!mapStrNumber.has(valName)) {
-                mapStrNumber.set(valName, line);
+        const AhkFileData: TAhkFileData | undefined = pm.getDocMap(fsPath);
+        if (AhkFileData === undefined) return map;
+        const { DocStrMap } = AhkFileData;
+        const AhkTokenList: TTokenStream = getDocStrMapMask(AhkClassSymbol.range, DocStrMap);
+
+        for (const { lStr, line } of AhkTokenList) {
+            for (
+                const ma of lStr.matchAll(
+                    /\bthis\.([#$@\w\u{A1}-\u{FFFF}]+)(?=[#$@.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/giu,
+                )
+                //                                                                 ^ with out (
+            ) {
+                const col: number = (ma.index ?? 0) + 'this.'.length;
+                const rawName: string = ma[1];
+                const upName: string = ToUpCase(rawName);
+                const oldArr: TWmThisPos[] = map.get(upName) ?? [];
+                oldArr.push({ rawName, line, col });
+                map.set(upName, oldArr);
             }
         }
-    }
+        return map;
+    },
+);
 
+const WmThis = new CMemo<CAhkClass, vscode.CompletionItem[]>((AhkClassSymbol: CAhkClass): vscode.CompletionItem[] => {
+    const map: TWmThisMap = WmThisCore.up(AhkClassSymbol);
+
+    const { fsPath } = AhkClassSymbol.uri;
     const itemS: vscode.CompletionItem[] = [];
-    for (const [label, line] of mapStrNumber) {
-        const item = new vscode.CompletionItem({ label, description: 'this' }, vscode.CompletionItemKind.Value);
+    for (const v of map.values()) {
+        const { line, col, rawName } = v[0];
+        const item = new vscode.CompletionItem(
+            { label: rawName, description: 'this' },
+            vscode.CompletionItemKind.Value,
+        );
         item.detail = 'neko help : class > this';
         item.documentation = new vscode.MarkdownString(AhkClassSymbol.name, true)
-            .appendMarkdown(`\n\n    this.${label}\n\n`)
-            .appendMarkdown(`line   ${line + 1}  of  ${fsPath}`);
+            .appendMarkdown(`\n\n    this.${rawName}\n\n`)
+            .appendMarkdown(`Ln ${line + 1}, Col ${col + 1}  of  ${fsPath}`);
         itemS.push(item);
     }
     return itemS;

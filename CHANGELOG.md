@@ -30,6 +30,9 @@
 
 <!-- dprint 0.37.1 pnpm 8.6.3 -->
 
+- feat: support `gotoDef`/`find all ref`/`hover` of `this.Property`
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-46-Property-support.gif)
+  > The code in the gif is from <https://github.com/Spawnova/ShinsImageScanClass>
 - feat: syntax-highlight of `this.xxx` the `xxx` as `"variable.other.property.ahk"`
 - fix: StatusBarText hook add `"onDidChangeTextDocument"`
   > if `breadcrumbs.enabled: false` , only `"SymbolProvider"` hook cannot status refresh.

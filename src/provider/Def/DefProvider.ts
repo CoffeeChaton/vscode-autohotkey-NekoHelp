@@ -2,7 +2,9 @@ import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { ToUpCase } from '../../tools/str/ToUpCase';
+import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { getClassDef } from './getClassDef';
+import { ClassProperty2Range, getClassProperty } from './getClassProperty';
 import { getDefReturn2Func } from './getDefReturn2Func';
 import { getDefSwitch } from './getDefSwitch';
 import { getDefWithLabelWrap } from './getDefWithLabel';
@@ -23,6 +25,8 @@ function DefProviderCore(
 
     const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);
     if (methodDef !== null) return methodDef;
+    const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
+    if (property !== null) return ClassProperty2Range(property, document.uri, false);
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,

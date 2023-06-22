@@ -18,6 +18,8 @@ import { getHoverCommand2 } from '../../tools/Built-in/6_command/Command.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
+import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
+import { ClassProperty2Md, getClassProperty } from '../Def/getClassProperty';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { hoverAhk2exe } from './tools/hoverAhk2exe';
 import { hoverClassName } from './tools/hoverClassName';
@@ -96,6 +98,9 @@ function HoverProviderCore(
 
     const Method: vscode.MarkdownString | null = hoverMethod(document, position, AhkFileData);
     if (Method !== null) return new vscode.Hover(Method);
+
+    const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
+    if (property !== null) return ClassProperty2Md(property);
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
