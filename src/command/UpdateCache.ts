@@ -52,7 +52,7 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
 
     if (
         TryParserInclude === 'open'
-        || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders !== undefined)
+           || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders === undefined)
     ) {
         const byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[] = [];
 

@@ -26,9 +26,13 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## v0.0.46(2023-06-24)
+## Next v0.0.47(2023-06-XX)
 
 <!-- dprint 0.37.1 pnpm 8.6.3 -->
+
+- fix: config error of `"AhkNekoHelp.files.tryParserIncludeOpt": "auto"`
+
+## v0.0.46(2023-06-24)
 
 - feat: [#24](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/24) add `"AhkNekoHelp.customize.HoverFuncShowReturnBlock"`
 - feat: [#23](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/23) support `this.Property` -> `gotoDef`/`find all ref`/`hover`

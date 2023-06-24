@@ -154,7 +154,7 @@ export const pm = {
 
             if (
                 TryParserInclude === 'open'
-                || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders !== undefined)
+                || (TryParserInclude === 'auto' && vscode.workspace.workspaceFolders === undefined)
             ) {
                 const { AST, uri } = AhkFileData;
                 const history = new Set<string>();
