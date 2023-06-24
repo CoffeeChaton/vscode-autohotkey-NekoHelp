@@ -133,6 +133,7 @@ type TempConfigs = {
         showInclude: boolean,
     },
     customize: {
+        HoverFuncShowReturnBlock: TShowReturnBlock,
         statusBarDisplayColor: string,
         CodeAction2GotoDefRef: boolean,
         HoverFunctionDocStyle: 1 | 2,

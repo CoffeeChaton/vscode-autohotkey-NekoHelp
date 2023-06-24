@@ -84,6 +84,7 @@ describe('check package ruler', () => {
                 // [4]
                 ['AhkNekoHelp.customize.statusBarDisplayColor', 'string'],
                 ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
+                ['AhkNekoHelp.customize.HoverFuncShowReturnBlock', 'string'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
                 ['AhkNekoHelp.customize.displayLogMessage', 'string'],
 

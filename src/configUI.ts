@@ -149,6 +149,10 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             showInclude: getConfigs<boolean>(Configs, 'AhkNekoHelp.SymbolProvider.showInclude'),
         },
         customize: {
+            HoverFuncShowReturnBlock: getConfigs<TShowReturnBlock>(
+                Configs,
+                'AhkNekoHelp.customize.HoverFuncShowReturnBlock',
+            ),
             statusBarDisplayColor: getConfigs<string>(Configs, 'AhkNekoHelp.customize.statusBarDisplayColor'),
             CodeAction2GotoDefRef: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.CodeAction2GotoDefRef'),
             HoverFunctionDocStyle: getConfigs<1 | 2>(Configs, 'AhkNekoHelp.customize.HoverFunctionDocStyle'),

@@ -30,7 +30,8 @@
 
 <!-- dprint 0.37.1 pnpm 8.6.3 -->
 
-- feat: [23](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/23) support `this.Property` -> `gotoDef`/`find all ref`/`hover`
+- feat: [#24](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/24) add `"AhkNekoHelp.customize.HoverFuncShowReturnBlock"`
+- feat: [#23](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/23) support `this.Property` -> `gotoDef`/`find all ref`/`hover`
 - feat: syntax-highlight of `this.xxx` the `xxx` as `"variable.other.property.ahk"`
 - fix: StatusBarText hook add `"onDidChangeTextDocument"`
   > if `breadcrumbs.enabled: false` , only `"SymbolProvider"` hook cannot status refresh.

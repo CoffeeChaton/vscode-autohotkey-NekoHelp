@@ -192,21 +192,25 @@ export function getFuncDocMake(
         ? ''
         : `class ${defStack.join('.')}\n\n`;
 
-    const { returnList } = meta;
+    const { returnList, ahkDocMeta } = meta;
     const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
         .appendMarkdown(`(${kindStr})     of     ${fileName}\n`)
-        .appendMarkdown(classStackStr)
-        .appendCodeblock(
-            `${selectionRangeText}${
-                getCustomize().HoverFunctionDocStyle === 1
-                    ? ''
-                    : '\n'
-            }{\n${
-                returnList
-                    .join('\n')
-            }\n}`,
-            'ahk',
-        );
+        .appendMarkdown(classStackStr);
+
+    const { HoverFuncShowReturnBlock } = getCustomize();
+    const fnSign: string = HoverFuncShowReturnBlock === 'always'
+            || (HoverFuncShowReturnBlock === 'auto' && ahkDocMeta.returnMeta.info.length === 0)
+        ? `${selectionRangeText}${
+            getCustomize().HoverFunctionDocStyle === 1
+                ? ''
+                : '\n'
+        }{\n${
+            returnList
+                .join('\n')
+        }\n}`
+        : selectionRangeText;
+
+    md.appendCodeblock(fnSign, 'ahk');
 
     if (ahkDoc !== '') {
         md.appendMarkdown('\n\n***\n\n')
