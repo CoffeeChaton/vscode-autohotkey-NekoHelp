@@ -32,6 +32,8 @@
 
 - fix: parser error of hotkey vs remap exp: `~F12:: foo()` is hotkey call fn, not remap.
 - fix: config error of `"AhkNekoHelp.files.tryParserIncludeOpt": "auto"`
+- fix: syntax-highlight of `and`
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-47-fix-and-syntax-highlight.png)
 
 ## v0.0.46(2023-06-24)
 

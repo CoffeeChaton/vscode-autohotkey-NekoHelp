@@ -1014,7 +1014,7 @@
             "name": "keyword.other.operator.hasdoc.ahk"
         },
         "operator": {
-            "match": "(?<=[#$@%!\"/&'()*+,\\-:;<=>?[\\^\\\\]{|}~ \\t])(?i:and|Between|contains|in|is|new|not|or|ByRef)(?:$|[ \\t])",
+            "match": "(?<=^|[#$@%!\"/&'()*+,\\-:;<=>?[\\^\\\\]{|}~ \\t])(?i:and|Between|contains|in|is|new|not|or|ByRef)(?:$|[ \\t])",
             "name": "keyword.other.operator.hasdoc.ahk"
         },
         "string": {
