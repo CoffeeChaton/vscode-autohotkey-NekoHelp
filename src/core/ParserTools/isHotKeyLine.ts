@@ -12,7 +12,7 @@ export function checkHotKeyMa2(ma2: string): boolean {
         return true;
     }
 
-    if ((/^[!-/]|[:-@[-`]|[\\{-~]$/u).test(ma2)) {
+    if ((/^[!-/:-@[-`{-~]$/u).test(ma2)) {
         return true;
     }
 

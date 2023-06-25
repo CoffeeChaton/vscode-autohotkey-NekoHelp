@@ -30,6 +30,7 @@
 
 <!-- dprint 0.37.1 pnpm 8.6.3 -->
 
+- fix: parser error of hotkey vs remap exp: `~F12:: foo()` is hotkey call fn, not remap.
 - fix: config error of `"AhkNekoHelp.files.tryParserIncludeOpt": "auto"`
 
 ## v0.0.46(2023-06-24)
