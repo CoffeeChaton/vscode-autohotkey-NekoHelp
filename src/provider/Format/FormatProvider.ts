@@ -17,8 +17,10 @@ import { getMatrixTopLabe } from './tools/getMatrixTopLabe';
 import type { TCmdSemantic } from './tools/semanticCmd';
 import { getSemanticCmdShell } from './tools/semanticCmd';
 import { fn_Warn_thisLineText_WARN } from './TWarnUse';
-import type { TLnStatus } from './wantRefactor/getDeepKeywords';
-import { getDeepKeywords } from './wantRefactor/getDeepKeywords';
+// import type { TLnStatus } from './wantRefactor/getDeepKeywords';
+// import { getDeepKeywords } from './wantRefactor/getDeepKeywords';
+import { getFocRange, inFocBlock } from './wantRefactor/semanticFoc.tools';
+import type { TSemanticFoc } from './wantRefactor/semanticFoc.type';
 import { getSwitchRange, inSwitchBlock } from './wantRefactor/SwitchCase';
 
 type TFmtCoreArgs = {
@@ -93,7 +95,7 @@ export function FormatCore(
     } = userConfigs;
     if (!AMasterSwitchUseFormatProvider) return newFmtMap;
 
-    const { DocStrMap, uri } = AhkFileData;
+    const { DocStrMap, uri, AST } = AhkFileData;
     const matrixTopLabe: readonly (0 | 1)[] = getMatrixTopLabe(AhkFileData, useTopLabelIndent);
     const matrixBrackets: readonly TBrackets[] = getMatrixFileBrackets(DocStrMap);
     const matrixMultLine: readonly (-999 | 0 | 1)[] = getMatrixMultLine(DocStrMap);
@@ -102,31 +104,35 @@ export function FormatCore(
     // const matrixCll: readonly (0 | 1)[] = getCmdCll(cmdSemanticList);
     const { mainList, betaList } = getFormatFlag(DocStrMap);
 
-    let lnStatus: TLnStatus = {
-        isHotFix22: false,
-        lockList: [],
-        occ: 0,
-        status: 'file start',
-    };
+    // let lnStatus: TLnStatus = {
+    //     isHotFix22: false,
+    //     lockList: [],
+    //     occ: 0,
+    //     status: 'file start',
+    // };
     // const memo: (Readonly<TLnStatus>)[] = [];
     // memo.push({ ...lnStatus });
     const switchRangeArray: vscode.Range[] = [];
+    const focList: TSemanticFoc[] = [];
 
     for (const AhkTokenLine of DocStrMap) {
         const { line, lStr } = AhkTokenLine;
         const lStrTrim: string = lStr.trim();
 
+        const focData: TSemanticFoc | null = getFocRange(DocStrMap, AST, line);
+        if (focData !== null) focList.push(focData);
+
         if (line >= fmtStart && line <= fmtEnd && mainList[line] && !matrixAhk2exeKeep[line]) {
-            const { occ, isHotFix22 } = lnStatus;
-            const occHotFix: number = isHotFix22
-                ? occ + 1
-                : occ;
+            // const { occ, isHotFix22 } = lnStatus;
+            // const occHotFix: number = isHotFix22
+            //     ? occ + 1
+            //     : occ;
 
             newFmtMap.set(
                 line,
                 fn_Warn_thisLineText_WARN({
                     lStrTrim,
-                    occ: occHotFix,
+                    occ: inFocBlock(AhkTokenLine, focList),
                     brackets: matrixBrackets[line],
                     options,
                     switchDeep: inSwitchBlock(lStrTrim, line, switchRangeArray),
@@ -147,13 +153,13 @@ export function FormatCore(
         const switchRange: vscode.Range | null = getSwitchRange(DocStrMap, lStrTrim, line);
         if (switchRange !== null) switchRangeArray.push(switchRange);
 
-        lnStatus = getDeepKeywords({
-            lStrTrim,
-            lnStatus,
-            AhkTokenLine,
-            matrixBrackets,
-            DocStrMap,
-        });
+        // lnStatus = getDeepKeywords({
+        //     lStrTrim,
+        //     lnStatus,
+        //     AhkTokenLine,
+        //     matrixBrackets,
+        //     DocStrMap,
+        // });
         // memo.push({ ...lnStatus });
     }
 
@@ -166,6 +172,7 @@ export function FormatCore(
             from,
         });
     }
+    console.log('🚀 ~ focList:', focList);
 
     return newFmtMap;
 }

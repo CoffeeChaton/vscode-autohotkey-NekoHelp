@@ -1,4 +1,4 @@
-import { Statement } from './foc.data';
+import { Statement } from '../../../tools/Built-in/3_foc/foc.data';
 import {
     FocIfExMap,
     FocOtherSet,

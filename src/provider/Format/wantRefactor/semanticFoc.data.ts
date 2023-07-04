@@ -1,21 +1,5 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [-1,0,1,2,3,4] }] */
 
-//  [
-//         'Break',          'Case',          'Catch',
-//         'Continue',       'Critical',      'Default',
-//         'Else',           'Exit',          'ExitApp',
-//         'Finally',        'For',           'GoSub',
-//         'Goto',           'If',            'IfEqual',
-//         'IfExist',        'IfGreater',     'IfGreaterOrEqual',
-//         'IfInString',     'IfLess',        'IfLessOrEqual',
-//         'IfMsgBox',       'IfNotEqual',    'IfNotExist',
-//         'IfNotInString',  'IfWinActive',   'IfWinExist',
-//         'IfWinNotActive', 'IfWinNotExist', 'Loop',
-//         'Pause',          'Reload',        'Return',
-//         'Switch',         'Throw',         'Try',
-//         'Until',          'While'
-//  ]
-
 export const FocSetOneLine: ReadonlySet<string> = new Set([
     'Break',
     'Continue',
@@ -67,9 +51,9 @@ export const FocTrySet: ReadonlySet<string> = new Set([
 ].map((s) => s.toUpperCase()));
 
 export const FocOtherSet: ReadonlySet<string> = new Set([
-    'ELSE',
-    'FOR',
-    'IF',
-    'LOOP',
-    'WHILE',
+    'else',
+    'for',
+    'if',
+    'loop',
+    'while',
 ].map((s) => s.toUpperCase()));

@@ -4,13 +4,13 @@ import { getRange } from '../../../tools/range/getRange';
 
 export function getSwitchRange(
     DocStrMap: TTokenStream,
-    textFix: string,
+    lStrTrim: string,
     line: number,
 ): vscode.Range | null {
     const { fistWordUp, fistWordUpCol } = DocStrMap[line]; // WTF
     if (fistWordUp !== 'SWITCH') return null;
 
-    const lineFix = textFix.endsWith('{')
+    const lineFix = lStrTrim.endsWith('{')
         ? line
         : line + 1;
 
@@ -20,15 +20,15 @@ export function getSwitchRange(
     return new vscode.Range(PosStart, PosEnd);
 }
 
-export function inSwitchBlock(textFix: string, line: number, switchRangeArray: DeepReadonly<vscode.Range[]>): number {
+export function inSwitchBlock(lStrTrim: string, line: number, switchRangeArray: DeepReadonly<vscode.Range[]>): number {
     const Pos = new vscode.Position(line, 0);
     let switchDeep = 0;
     for (const range of switchRangeArray) {
         if (range.contains(Pos)) switchDeep++;
     }
     if (
-        (/^\s*case[\s,]/iu).test(textFix)
-        || (/^\s*default[\s:]/iu).test(textFix)
+        (/^\s*case[\s,]/iu).test(lStrTrim)
+        || (/^\s*default[\s:]/iu).test(lStrTrim)
     ) {
         switchDeep--;
     }

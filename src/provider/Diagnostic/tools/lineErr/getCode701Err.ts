@@ -4,11 +4,11 @@ import type { TAhkFileData } from '../../../../core/ProjectManager';
 import { EDiagCode } from '../../../../diag';
 import type { TAhkTokenLine } from '../../../../globalEnum';
 import { StatementMDMap } from '../../../../tools/Built-in/3_foc/foc.tools';
-import { FocIfExMap } from '../../../../tools/Built-in/3_foc/semanticFoc.data';
 import { CommandMDMap } from '../../../../tools/Built-in/6_command/Command.tools';
 import { CMemo } from '../../../../tools/CMemo';
 import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import { FocIfExMap } from '../../../Format/wantRefactor/semanticFoc.data';
 import { CDiagBase } from '../CDiagBase';
 
 function getCode702(AhkTokenLine: TAhkTokenLine, match: number): CDiagBase | null {
