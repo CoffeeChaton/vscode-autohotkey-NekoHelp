@@ -32,6 +32,8 @@
 <!-- pnpm 8.9.0-->
 <!-- dprint 0.37.1 pnpm 8.6.3 -->
 
+- feat: [(#26)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/26) Go to Definition try support relative path like `#include a.ahk`.
+  ![img](https://user-images.githubusercontent.com/63182963/278785241-1d956407-b223-4360-9cfb-c7402d766f78.gif)
 - fix: parser error of hotkey vs remap exp: `~F12:: foo()` is hotkey call fn, not remap.
 - fix: config error of `"AhkNekoHelp.files.tryParserIncludeOpt": "auto"`
 - fix: syntax-highlight of `and`
