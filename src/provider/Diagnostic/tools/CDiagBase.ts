@@ -12,6 +12,7 @@ type TDiagBaseParam = {
 
 export class CDiagBase extends vscode.Diagnostic {
     public override readonly source: EDiagBase.source = EDiagBase.source;
+
     public override code: {
         value: EDiagCode,
         target: vscode.Uri,

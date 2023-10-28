@@ -3,7 +3,7 @@ import type { CAhkClass } from '../../AhkSymbol/CAhkClass';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getFileAllClass } from '../../tools/visitor/getFileAllClassList';
-import type { TWmThisMap, TWmThisPos } from '../CompletionItem/classThis/getWmThis';
+import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { WmThisCore } from '../CompletionItem/classThis/getWmThis';
 
 export function ClassProperty2Range(
@@ -66,9 +66,5 @@ export function getClassProperty(
     const ahkClass: CAhkClass | undefined = classList.find((c: CAhkClass): boolean => c.range.contains(position));
 
     if (ahkClass === undefined) return null;
-    const map: TWmThisMap = WmThisCore.up(ahkClass);
-    const PosList: readonly TWmThisPos[] | undefined = map.get(wordUp);
-    return PosList === undefined
-        ? null
-        : PosList;
+    return WmThisCore.up(ahkClass).get(wordUp) ?? null;
 }

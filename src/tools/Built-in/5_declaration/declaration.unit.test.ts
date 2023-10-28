@@ -10,7 +10,7 @@ describe('check declaration ruler', () => {
             .join('|')
             .replace('Class|', '');
 
-        const st1: string = (repository.declaration.match)
+        const st1: string = repository.declaration.match
             .replace('^[ \\t{]*(?i:', '')
             .replace(')(?=$|[ \\t])', '');
 

@@ -7,12 +7,12 @@ describe('check keyList ruler', (): void => {
         expect.hasAssertions();
 
         const st1: string[] = [
-            ...(repository.keylist.patterns[0].match)
+            ...repository.keylist.patterns[0].match
                 .replace('\\b(?i:', '')
                 .replace('|vk[a-f\\d]{1,2}(sc[a-f\\d]+)?|sc[a-f\\d]+)\\b', '')
                 .toLowerCase()
                 .split('|'),
-            ...(repository.keylist.patterns[1].match)
+            ...repository.keylist.patterns[1].match
                 .replace('\\b(1[0-6]|[1-9])?(?i:', '')
                 .replace(')\\b', '')
                 .toLowerCase()
@@ -26,12 +26,12 @@ describe('check keyList ruler', (): void => {
         expect.hasAssertions();
 
         const st1: string[] = [
-            ...(repository.keyword_mouse_keyboard.patterns[0].match)
+            ...repository.keyword_mouse_keyboard.patterns[0].match
                 .replace('(?<![.#])\\b(?i:', '')
                 .replace('|vk[a-f\\d]{1,2}(sc[a-f\\d]+)?|sc[a-f\\d]+)\\b(?!\\()', '')
                 .toLowerCase()
                 .split('|'),
-            ...(repository.keyword_mouse_keyboard.patterns[1].match)
+            ...repository.keyword_mouse_keyboard.patterns[1].match
                 .replace('(?<![.#])\\b(1[0-6]|[1-9])?(?i:', '')
                 .replace(')\\b(?!\\()', '')
                 .toLowerCase()
@@ -44,7 +44,7 @@ describe('check keyList ruler', (): void => {
     it('check : tmLanguage keyword_mouse_keyboard AltTab', () => {
         expect.hasAssertions();
 
-        const st1: string[] = (repository.keyword_mouse_keyboard.patterns[2].match)
+        const st1: string[] = repository.keyword_mouse_keyboard.patterns[2].match
             .replace('(?<![.#])\\b(?i:', '')
             .replace(')\\b(?!\\()', '')
             .split('|')

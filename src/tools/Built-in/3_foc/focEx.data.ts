@@ -2,7 +2,9 @@
 /* eslint-disable no-template-curly-in-string */
 
 type TFocExElement = Readonly<{
-    keyRawName: string,
+    keyRawName:
+        | `If${string}`
+        | `Loop${string}`,
     body:
         | `If ${string}`
         | `Loop, ${string}`,

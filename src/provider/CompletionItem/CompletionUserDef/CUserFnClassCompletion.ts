@@ -5,6 +5,7 @@ export class CUserFnClassCompletion extends vscode.CompletionItem {
     public readonly isSatisfyOpt2: boolean;
 
     declare public readonly label: vscode.CompletionItemLabel;
+
     declare public readonly kind: vscode.CompletionItemKind.Class | vscode.CompletionItemKind.Function;
 
     public constructor(

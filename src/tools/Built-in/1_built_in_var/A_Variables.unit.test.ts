@@ -249,11 +249,11 @@ describe('check A_Variables ruler', () => {
         expect.hasAssertions();
 
         const arr1Str: string = arr1.join('|');
-        const st1: string = (repository.builtin_variable.patterns[0].match)
+        const st1: string = repository.builtin_variable.patterns[0].match
             .replace('(?<![.#])\\b(?i:A_(?:', '')
             .replace('))\\b', '');
 
-        const st2: string = (repository.include_builtin_var.match)
+        const st2: string = repository.include_builtin_var.match
             .replace('(?<=%)(?i:A_(?:', '')
             .replace('))(?=%)', '');
 

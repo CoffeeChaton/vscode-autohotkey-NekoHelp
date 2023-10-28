@@ -54,6 +54,7 @@ export const pm = {
 
     delMap(e: vscode.FileDeleteEvent): void {
         for (const uri of e.files) {
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
             delOldCache(uri);
             rmFileDiag(uri);
         }

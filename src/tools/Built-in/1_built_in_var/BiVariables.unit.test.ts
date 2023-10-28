@@ -10,7 +10,7 @@ describe('check BiVariables ruler', () => {
     it('check : tmLanguage', () => {
         expect.hasAssertions();
 
-        const st1: string = (repository.builtin_variable.patterns[1].match)
+        const st1: string = repository.builtin_variable.patterns[1].match
             .replace('(?<![.#])\\b(?i:', '')
             .replace(')\\b', '');
 

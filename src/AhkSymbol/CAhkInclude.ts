@@ -234,12 +234,17 @@ export class CAhkInclude extends vscode.DocumentSymbol {
     public readonly hashtag = 'INCLUDE'; //
 
     public readonly IgnoreErrors: boolean;
+
     public readonly uri: vscode.Uri;
+
     public readonly path1: string;
+
     public readonly rawData: TRawData;
 
     declare public readonly kind: vscode.SymbolKind.Module;
+
     declare public readonly detail: '';
+
     declare public readonly children: never[];
 
     public constructor(

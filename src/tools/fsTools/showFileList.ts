@@ -1,4 +1,3 @@
-/* eslint-disable @fluffyfox/string/no-simple-template-literal */
 export type TShowFileParam = {
     fsPath: string,
     ms: number,

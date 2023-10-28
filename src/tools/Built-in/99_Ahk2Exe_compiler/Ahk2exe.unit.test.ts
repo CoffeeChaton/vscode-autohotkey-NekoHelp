@@ -50,7 +50,7 @@ describe('check Ahk2exeData ruler', () => {
     it('check : tmLanguage', () => {
         expect.hasAssertions();
 
-        const st1: string = (repository.comment_ahk2exe.match)
+        const st1: string = repository.comment_ahk2exe.match
             .replace('^[ \\t]*;(?i:(@Ahk2Exe-)(', '')
             .replace(')\\b).*', '');
 

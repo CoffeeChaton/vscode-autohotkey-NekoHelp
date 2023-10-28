@@ -7,8 +7,8 @@
     "extends": [
         "airbnb-base",
         "airbnb-typescript",
-        "eslint:all",
-        "plugin:@typescript-eslint/all",
+        // "eslint:all",
+        // "plugin:@typescript-eslint/all",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:import/errors",
@@ -19,8 +19,7 @@
         "plugin:regexp/recommended",
         "plugin:security/recommended",
         "plugin:sonarjs/recommended",
-        "plugin:unicorn/all",
-        "sukka/typescript"
+        "plugin:unicorn/all"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -86,6 +85,12 @@
     ],
     "root": true,
     "rules": {
+        "import/no-unresolved": "off",
+        "security/detect-non-literal-fs-filename": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "no-ternary": "off",
+        "camelcase": "off",
+        //
         "@typescript-eslint/no-unsafe-enum-comparison": "warn",
         "regexp/no-missing-g-flag": "warn",
         "sonarjs/no-unused-collection": "warn",
@@ -126,7 +131,6 @@
         "@typescript-eslint/no-misused-new": "warn",
         "@typescript-eslint/no-namespace": "warn",
         "@typescript-eslint/no-non-null-assertion": "warn",
-        "@typescript-eslint/no-parameter-properties": "warn",
         "@typescript-eslint/no-require-imports": "warn",
         "@typescript-eslint/no-shadow": [
             "error"
@@ -225,7 +229,6 @@
         "import/named": "error",
         "import/namespace": "error",
         "import/no-extraneous-dependencies": "off",
-        "import/no-unresolved": "warn",
         "import/prefer-default-export": "off",
         "indent": "off",
         "init-declarations": "error",

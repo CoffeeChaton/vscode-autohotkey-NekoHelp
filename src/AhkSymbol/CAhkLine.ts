@@ -25,7 +25,9 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
     public readonly hashtag: string; //
 
     declare public readonly kind: vscode.SymbolKind.Event;
+
     declare public readonly detail: '#Directives';
+
     declare public readonly children: never[];
 
     public constructor(
@@ -54,10 +56,13 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
 export class CAhkHotKeys extends vscode.DocumentSymbol {
     // https://www.autohotkey.com/docs/v1/misc/Labels.htm
     public readonly uri: vscode.Uri;
+
     public readonly AfterString: string;
 
     declare public readonly kind: vscode.SymbolKind.Event;
+
     declare public readonly detail: 'HotKeys' | 'Remap';
+
     declare public readonly children: never[];
 
     public constructor(
@@ -85,10 +90,13 @@ export class CAhkHotKeys extends vscode.DocumentSymbol {
  */
 export class CAhkHotString extends vscode.DocumentSymbol {
     public readonly uri: vscode.Uri;
+
     public readonly AfterString: string;
 
     declare public readonly kind: vscode.SymbolKind.Event;
+
     declare public readonly detail: 'HotString';
+
     declare public readonly children: never[];
 
     public constructor(
@@ -122,16 +130,20 @@ export class CAhkLabel extends vscode.DocumentSymbol {
     // https://www.autohotkey.com/docs/v1/misc/Labels.htm
     // Label names must be unique throughout the whole script.
     public readonly uri: vscode.Uri;
+
     public readonly AfterString: '';
 
     /**
      * label: -> LABEL
      */
     public readonly upName: string;
+
     public readonly md: vscode.MarkdownString;
 
     declare public readonly kind: vscode.SymbolKind.Namespace;
+
     declare public readonly detail: 'label';
+
     declare public readonly children: never[];
 
     public constructor(
@@ -155,7 +167,9 @@ export class CAhkComment extends vscode.DocumentSymbol {
     public readonly uri: vscode.Uri;
 
     declare public readonly kind: vscode.SymbolKind.Package;
+
     declare public readonly detail: '';
+
     declare public readonly children: never[];
 
     public constructor(

@@ -9,7 +9,7 @@ describe('check otherKeyword2 ruler', () => {
             .map((v) => v.keyRawName)
             .join('|');
 
-        const st1 = (repository.operator.match)
+        const st1 = repository.operator.match
             .replace('(?<=^|[#$@%!"/&\'()*+,\\-:;<=>?[\\^\\\\]{|}~ \\t])(?i:', '')
             .replace(')(?:$|[ \\t])', '');
 

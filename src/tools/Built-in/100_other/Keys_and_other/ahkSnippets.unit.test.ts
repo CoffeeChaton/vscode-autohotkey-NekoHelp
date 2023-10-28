@@ -18,7 +18,7 @@ describe('check ahkSnippets ruler', () => {
         expect.hasAssertions();
 
         // eslint-disable-next-line @typescript-eslint/require-array-sort-compare
-        const tmLanguageArr: string[] = (repository.command_options.patterns[0].match)
+        const tmLanguageArr: string[] = repository.command_options.patterns[0].match
             .replace('\\b(?!MsgBox)(?<![.#])(?i:', '')
             .replace(')(?![(.\\[])\\b', '')
             .split('|')

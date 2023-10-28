@@ -4,7 +4,9 @@ import type { TCommandElement } from './Command.data';
 
 export class CSnippetCommand extends vscode.CompletionItem {
     public readonly upName: string;
+
     public readonly recommended: boolean;
+
     public constructor(v: TCommandElement | TDeclarationData, md: vscode.MarkdownString) {
         const {
             keyRawName,

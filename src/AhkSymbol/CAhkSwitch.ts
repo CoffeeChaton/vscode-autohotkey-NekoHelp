@@ -7,7 +7,9 @@ export class CAhkSwitch extends vscode.DocumentSymbol {
     public readonly uri: vscode.Uri;
 
     declare public readonly kind: vscode.SymbolKind.Enum;
+
     declare public readonly detail: 'Switch';
+
     declare public readonly children: (CAhkCase | CAhkDefault)[];
 
     public constructor(
@@ -35,7 +37,9 @@ export class CAhkCase extends vscode.DocumentSymbol {
     public readonly uri: vscode.Uri;
 
     declare public readonly kind: vscode.SymbolKind.EnumMember;
+
     declare public readonly detail: 'Case';
+
     declare public readonly children: (CAhkSwitch | TLineClass)[];
 
     public constructor(
@@ -63,7 +67,9 @@ export class CAhkDefault extends vscode.DocumentSymbol {
     public readonly uri: vscode.Uri;
 
     declare public readonly kind: vscode.SymbolKind.EnumMember;
+
     declare public readonly detail: 'Default';
+
     declare public readonly children: (CAhkSwitch | TLineClass)[];
 
     public constructor(

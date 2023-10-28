@@ -157,19 +157,30 @@ type TCAhkFuncParam = {
 export class CAhkFunc extends vscode.DocumentSymbol {
     // readonly name...
     public readonly fnMode: EFnMode;
+
     public readonly nameRange: vscode.Range;
+
     public readonly selectionRangeText: string;
+
     public readonly md: vscode.MarkdownString;
+
     public readonly uri: vscode.Uri;
+
     public readonly upName: string;
+
     public readonly paramMap: TParamMapOut;
+
     public readonly valMap: TValMapOut;
+
     public readonly textMap: TTextMapOut;
+
     public readonly defStack: string[];
+
     public readonly meta: TFnMeta;
 
     //
     declare public readonly kind: vscode.SymbolKind.Function | vscode.SymbolKind.Method;
+
     declare public readonly children: (CAhkSwitch | TLineClass)[];
 
     public constructor(

@@ -10,20 +10,14 @@ import { FocIfExMap } from '../../../tools/Built-in/3_foc/semanticFoc.data';
  */
 const focSet: ReadonlySet<string> = new Set(
     [
-        // 'BREAK', does not affect the next line
-        // 'CASE', useSwitchCase
-        'CATCH',
-        // 'CONTINUE', does not affect the next line
-        // 'CRITICAL', does not affect the next line
-        // 'DEFAULT', useSwitchCase
-        'ELSE',
-        // 'EXIT', does not affect the next line
-        // 'EXITAPP', does not affect the next line
-        'FINALLY',
-        'FOR',
-        // 'GoSub',
-        // 'GOTO',
-        'IF',
+        // --
+
+        'Catch',
+        'else',
+        'Finally',
+        'for',
+        //
+        'if',
         'IfEqual',
         'IfExist',
         'IfGreater',
@@ -39,13 +33,10 @@ const focSet: ReadonlySet<string> = new Set(
         'IfWinExist',
         'IfWinNotActive',
         'IfWinNotExist',
-        'LOOP',
-        // 'RETURN', does not affect the next line
-        // 'SWITCH', useSwitchCase
-        // 'THROW', useSwitchCase
-        'TRY',
-        'WHILE',
-        // 'UNTIL',
+        //
+        'loop',
+        'try',
+        'while',
     ].map((s: string): string => s.toUpperCase()),
 );
 

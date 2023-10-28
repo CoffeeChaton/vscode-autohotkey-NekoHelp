@@ -46,7 +46,7 @@ describe('check BuiltInFunctionObj ruler', () => {
 
         const arr1: string[] = funcDataList.map((v): string => v.keyRawName);
 
-        const st1 = (repository.func_call.patterns[2].match)
+        const st1 = repository.func_call.patterns[2].match
             .replace('(?<![.`%#])\\b(?i:', '')
             .replace(')(?=\\()\\b', '');
 

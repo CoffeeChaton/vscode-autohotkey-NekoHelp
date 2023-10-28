@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import * as vscode from 'vscode';
 import { A1DevTools } from './A1DevTools/A1DevTools';
 import { AnalysisFuncReferenceWrap } from './AnalysisFuncReference/AnalysisFuncReference';

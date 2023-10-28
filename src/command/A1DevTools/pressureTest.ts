@@ -1,4 +1,3 @@
-/* eslint-disable @fluffyfox/prefer-timer-id */
 import * as vscode from 'vscode';
 import { log } from '../../provider/vscWindows/log';
 import { statusBarItem } from '../../provider/vscWindows/statusBarItem';

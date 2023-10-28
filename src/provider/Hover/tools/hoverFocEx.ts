@@ -4,15 +4,20 @@ import { focExMapOut } from '../../../tools/Built-in/3_foc/focEx.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
-/**
- * ```ahk
- *  Loop, Files
- *  Loop, Parse
- *  Loop, Read
- *  Loop, Reg
- *  ```
- */
-function hoverFocExLoop(lStr: string, wordUpCol: number, character: number): vscode.MarkdownString | null {
+type TFocExParser = {
+    FocUpName: 'IF' | 'LOOP',
+
+    /**
+     * `IN` of `ifIn`
+     */
+    exUpName: string,
+    /**
+     * pos of `in`
+     */
+    lPos: number,
+};
+
+function hoverFocExLoop(lStr: string, wordUpCol: number): TFocExParser | null {
     const strF: string = lStr
         .slice(wordUpCol)
         .replace(/^\s*Loop\b\s*,?\s*/iu, 'Loop,')
@@ -26,23 +31,14 @@ function hoverFocExLoop(lStr: string, wordUpCol: number, character: number): vsc
     if (a1 === undefined) return null;
     const { lPos, RawNameNew } = a1;
 
-    if (character >= lPos && character <= lPos + RawNameNew.length) {
-        const md: vscode.MarkdownString | undefined = focExMapOut.get(`LOOP${RawNameNew.trim().toUpperCase()}`);
-        if (md !== undefined) return md;
-    }
-
-    return null;
+    return {
+        FocUpName: 'LOOP',
+        exUpName: RawNameNew.trim().toUpperCase(),
+        lPos,
+    };
 }
 
-/**
- * ```ahk
- *  if between
- *  if contains
- *  if in
- *  if is
- *  ```
- */
-function hoverFocExIF(lStr: string, wordUpCol: number, character: number): vscode.MarkdownString | null {
+function hoverFocExIf(lStr: string, wordUpCol: number): TFocExParser | null {
     const strF: string = lStr
         .slice(wordUpCol)
         .replace(/^\s*IF\b\s*,?\s*/iu, 'IF,')
@@ -52,10 +48,21 @@ function hoverFocExIF(lStr: string, wordUpCol: number, character: number): vscod
     if (ma === null) return null;
 
     const name: string = ma[1];
-    const col: number = ma.index ?? strF.indexOf(name);
+    const lPos: number = ma.index ?? strF.indexOf(name);
 
-    if (character >= col && character <= col + name.length) {
-        const md: vscode.MarkdownString | undefined = focExMapOut.get(`IF${name.trim().toUpperCase()}`);
+    return {
+        FocUpName: 'IF',
+        exUpName: name.trim().toUpperCase(),
+        lPos,
+    };
+}
+
+function FocEx2Md(focExParser: TFocExParser | null, character: number): vscode.MarkdownString | null {
+    if (focExParser === null) return null;
+
+    const { lPos, exUpName, FocUpName } = focExParser;
+    if (character >= lPos && character <= lPos + exUpName.length) {
+        const md: vscode.MarkdownString | undefined = focExMapOut.get(`${FocUpName}${exUpName}`);
         if (md !== undefined) return md;
     }
 
@@ -84,10 +91,10 @@ export function hoverFocEx(
     if (character <= fistWordUp.length + fistWordUpCol) return null;
 
     if (fistWordUp === 'LOOP') {
-        return hoverFocExLoop(lStr, fistWordUpCol, character);
+        return FocEx2Md(hoverFocExLoop(lStr, fistWordUpCol), character);
     }
     if (fistWordUp === 'IF') {
-        return hoverFocExIF(lStr, fistWordUpCol, character);
+        return FocEx2Md(hoverFocExIf(lStr, fistWordUpCol), character);
     }
 
     return null;

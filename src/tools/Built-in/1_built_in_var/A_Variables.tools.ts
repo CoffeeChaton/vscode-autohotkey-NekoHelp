@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as vscode from 'vscode';
 import { AVariablesList } from './A_Variables.data';
 

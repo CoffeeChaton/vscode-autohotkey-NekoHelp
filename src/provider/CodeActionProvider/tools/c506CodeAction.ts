@@ -36,7 +36,6 @@ export function c506CodeAction(uri: vscode.Uri, diag: C506Class): vscode.CodeAct
     const CA0 = new vscode.CodeAction(title);
     CA0.kind = vscode.CodeActionKind.QuickFix;
     CA0.edit = new vscode.WorkspaceEdit();
-    // eslint-disable-next-line @fluffyfox/string/no-simple-template-literal
     CA0.edit.replace(uri, range, `${base10}`);
 
     return [CA0];

@@ -13,6 +13,7 @@ type TCDiagFnParam = {
 
 export class CDiagFn extends vscode.Diagnostic {
     public override readonly source: EDiagBase.sourceDA = EDiagBase.sourceDA;
+
     public override code: {
         value: EDiagCodeDA,
         target: vscode.Uri,

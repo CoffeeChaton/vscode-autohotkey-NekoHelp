@@ -2,10 +2,29 @@ import { Statement } from './foc.data';
 import {
     FocIfExMap,
     FocOtherSet,
-    FocSetOneLine,
-    FocSetSwitchCase,
     FocTrySet,
 } from './semanticFoc.data';
+
+const FocSetOneLine: ReadonlySet<string> = new Set([
+    'Break',
+    'Continue',
+    'Critical',
+    'Exit',
+    'ExitApp',
+    'GoSub',
+    'Goto',
+    'Pause',
+    'Reload',
+    'Return',
+    'Throw',
+    'Until',
+].map((s) => s.toUpperCase()));
+
+const FocSetSwitchCase: ReadonlySet<string> = new Set([
+    'Switch',
+    'Case',
+    'Default',
+].map((s) => s.toUpperCase()));
 
 describe('check semanticFoc ruler', () => {
     it('check: semanticFoc', () => {

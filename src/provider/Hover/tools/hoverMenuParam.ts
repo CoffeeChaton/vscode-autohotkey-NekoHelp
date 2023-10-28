@@ -46,10 +46,7 @@ function hoverMenuParamCore(lStr: string, col: number, character: number): vscod
     const { lPos, RawNameNew } = at2;
 
     if (character >= lPos && character <= lPos + RawNameNew.length) {
-        const md: vscode.MarkdownString | undefined = MenuMDMap.get(RawNameNew.trim().toUpperCase());
-        return md === undefined
-            ? unknownMenuSubCmdMd
-            : md;
+        return MenuMDMap.get(RawNameNew.trim().toUpperCase()) ?? unknownMenuSubCmdMd;
     }
 
     return null;

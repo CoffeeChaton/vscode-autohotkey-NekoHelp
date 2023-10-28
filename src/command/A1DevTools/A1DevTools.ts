@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import * as vscode from 'vscode';
 import { generateAhkNekoSnapshot } from './generateAhkNekoSnapshot';
 import { pressureTest } from './pressureTest';

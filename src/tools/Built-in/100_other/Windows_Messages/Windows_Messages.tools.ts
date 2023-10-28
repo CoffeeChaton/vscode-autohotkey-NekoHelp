@@ -31,7 +31,6 @@ const { snippetWinMsg, winMsgMDMap } = (() => {
                 `${k} := ${v[1]} ; ${v[0]}`,
                 `${k} := ${v[1]}`,
                 v[1],
-                // eslint-disable-next-line @fluffyfox/string/no-simple-template-literal
                 `${v[0]}`,
             ]);
 

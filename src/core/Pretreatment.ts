@@ -75,7 +75,7 @@ function getRequiresVersion(textTrimStart: string): 0 | 1 | 2 {
         .match(/^#Requires[ \t]+AutoHotkey\w*[ \t]+(.*)/iu);
 
     if (Requires !== null) {
-        const ahkV: RegExpMatchArray | null = (Requires[1]).match(/[v>=][ \t]*(\d)\b/iu);
+        const ahkV: RegExpMatchArray | null = Requires[1].match(/[v>=][ \t]*(\d)\b/iu);
         if (ahkV !== null) {
             if (ahkV[1] === '1') return 1;
             if (ahkV[1] === '2') return 2;

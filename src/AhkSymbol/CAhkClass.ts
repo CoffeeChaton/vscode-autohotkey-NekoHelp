@@ -15,9 +15,13 @@ type TCAhkClassInstanceVarParam = {
 export class CAhkClassInstanceVar extends vscode.DocumentSymbol {
     // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_Classes_var
     public readonly uri: vscode.Uri;
+
     public readonly isStatic: boolean;
+
     declare public readonly kind: vscode.SymbolKind.Variable;
+
     declare public readonly detail: 'Instance Var' | 'static ClassVar';
+
     declare public readonly children: [];
 
     public constructor(
@@ -42,7 +46,9 @@ export class CAhkClassGetSet extends vscode.DocumentSymbol {
     public readonly uri: vscode.Uri;
 
     declare public readonly kind: vscode.SymbolKind.Property;
+
     declare public readonly detail: 'Property';
+
     declare public readonly children: [];
 
     public constructor(
@@ -71,11 +77,17 @@ export class CAhkClass extends vscode.DocumentSymbol {
     // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_NewDelete
 
     public readonly Base: string;
+
     public readonly insertText: string;
+
     public readonly uri: vscode.Uri;
+
     public readonly upName: string;
+
     declare public readonly kind: vscode.SymbolKind.Class;
+
     declare public readonly children: TClassChildren[];
+
     declare public readonly detail: '';
 
     public constructor(

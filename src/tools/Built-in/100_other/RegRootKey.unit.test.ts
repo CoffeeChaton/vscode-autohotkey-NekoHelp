@@ -7,7 +7,7 @@ describe('check RegRoot ruler', () => {
 
         const tsStr: string = RegRootList.join('|');
 
-        const st1: string = (repository.const_var_reg.match)
+        const st1: string = repository.const_var_reg.match
             .replace('(?<=[, \\t:])(?i:(', '')
             .replace('))(?=[, \\t\\\\])', '');
 

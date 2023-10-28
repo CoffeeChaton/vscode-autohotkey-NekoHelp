@@ -10,7 +10,5 @@ export function getDAWithPos(
     const MethodOrFunc: CAhkFunc | undefined = getDAListTop(AstRoot)
         .find((top: CAhkFunc): boolean => top.range.contains(position));
 
-    return MethodOrFunc === undefined
-        ? null
-        : MethodOrFunc;
+    return MethodOrFunc ?? null;
 }
