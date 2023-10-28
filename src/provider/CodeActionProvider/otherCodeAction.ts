@@ -8,13 +8,14 @@ import type { CmdGotoFuncDef } from '../../command/CmdGotoFuncDef';
 import { ECommand } from '../../command/ECommand';
 import { getCustomize } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
-import type { TAhkTokenLine } from '../../globalEnum';
+import { EDetail, type TAhkTokenLine } from '../../globalEnum';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { getFileAllFunc } from '../../tools/visitor/getFileAllFuncList';
 import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { posAtFnRef } from '../Def/posAtFnRef';
+import { CodeActionAddInclude } from './CodeActionAddInclude';
 
 function atFnHead(
     ahkFn: CAhkFunc,
@@ -139,6 +140,18 @@ export function otherCodeAction(
 
     if (ahkFn === undefined && CodeAction2GotoDefRef) {
         need.push(...posAtFnReference(AhkFileData, active, document));
+    }
+
+    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[active.line];
+    const { detail, lStr, textRaw } = AhkTokenLine;
+    if (detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s*$/iu).test(lStr)) {
+        const position = new vscode.Position(
+            active.line,
+            (/[ \t]$/u).test(textRaw)
+                ? textRaw.length - 1
+                : textRaw.length,
+        );
+        need.push(CodeActionAddInclude(document.uri, position));
     }
 
     return need;
