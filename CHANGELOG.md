@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.48(2023-10)](#v00482023-10)
+  - [v0.0.48(2023-10-31)](#v00482023-10-31)
   - [v0.0.47(2023-07-05)](#v00472023-07-05)
   - [v0.0.46(2023-06-24)](#v00462023-06-24)
   - [v0.0.45(2023-06-22)](#v00452023-06-22)
@@ -28,7 +28,7 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## v0.0.48(2023-10)
+## v0.0.48(2023-10-31)
 
 <!-- pnpm 8.9.2-->
 <!-- dprint 0.41.0 -->
@@ -39,9 +39,6 @@
   ![img](https://user-images.githubusercontent.com/63182963/278793956-c04f1108-a8e7-4596-b72b-bb603f339640.gif)
 
 ## v0.0.47(2023-07-05)
-
-<!-- pnpm 8.9.0-->
-<!-- dprint 0.37.1 pnpm 8.6.3 -->
 
 - fix: parser error of hotkey vs remap exp: `~F12:: foo()` is hotkey call fn, not remap.
 - fix: config error of `"AhkNekoHelp.files.tryParserIncludeOpt": "auto"`
