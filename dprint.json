@@ -4,7 +4,8 @@
         "**/node_modules",
         "**/.vscode-test",
         "**/ahk.tmLanguage.json",
-        "./.github/ISSUE_TEMPLATE/bug_report.md"
+        "./.github/ISSUE_TEMPLATE/bug_report.md",
+        "./.github/ISSUE_TEMPLATE/feat_report.md"
     ],
     "includes": [
         "**/*.{ts,tsx,js,jsx,cjs,mjs,json,md,toml}"
