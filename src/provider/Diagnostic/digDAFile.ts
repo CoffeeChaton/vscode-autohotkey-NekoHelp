@@ -10,6 +10,7 @@ import { c512banGlobalVarName } from './DA/banName/c512banGlobalVarName';
 import { c513banLabelName } from './DA/banName/c513banLabelName';
 import { c514ComObjConnect } from './DA/banName/c514ComObjConnect';
 import { c521banNameReservedWords } from './DA/banName/c521banNameReservedWords';
+import { c522banNameReservedWords } from './DA/banName/c522banNameReservedWords';
 import { caseSensitivityVar } from './DA/caseSensitivity';
 import type { C500Class } from './DA/CDiagFnLib/C500Class';
 import { NeverUsedVar } from './DA/CDiagFnLib/C500Class';
@@ -134,5 +135,6 @@ export function digDAFile(AhkFileData: TAhkFileData): void {
         ...c513banLabelName(AST, displayFnErrList),
         ...c514ComObjConnect(AhkFileData, displayFnErrList),
         ...c521banNameReservedWords(AhkFileData, displayFnErrList),
+        ...c522banNameReservedWords(AhkFileData, displayFnErrList),
     ]);
 }

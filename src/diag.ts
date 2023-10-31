@@ -28,6 +28,7 @@ export const enum EDiagCodeDA {
 
     // TODO
     code521 = 521, // ban name with like goto , #28 https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28
+    code522 = 522, // ban name with like goto , #28 https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28
 }
 
 export type TDiagsDA = {
@@ -83,7 +84,11 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14',
     },
     521: {
-        msg: 'avoid var/function-name look like `Reserved words`',
+        msg: '*warn* avoid var/function use confusing names',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28',
+    },
+    522: {
+        msg: '*info* avoid var/function use confusing names',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28',
     },
 };

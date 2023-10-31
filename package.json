@@ -181,7 +181,7 @@
                     },
                     "AhkNekoHelp.Diag.code521": {
                         "type": "string",
-                        "default": "local,global,static,if,else,loop,for,while,until,break,continue,goto,return,switch,case,try,catch,finally,and,throw,Critical,Default,Exit,ExitApp,GoSub,IfMsgBox,Pause,Reload",
+                        "default": "local,global,static,if,else,loop,for,while,until,break,continue,goto,return,switch,case,try,catch,finally,throw,Critical,Default,Exit,ExitApp,GoSub,IfMsgBox,Pause,Reload",
                         "markdownDescription": "use *warn* to avoid confusing names. ([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))"
                     },
                     "AhkNekoHelp.Diag.code522": {
