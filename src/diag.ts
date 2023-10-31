@@ -109,8 +109,6 @@ export const enum EDiagCode {
     // 300~399 is func err
     code301 = 301, // user-config function size
 
-    code304 = 304, // avoid def-func-name look like foc (FlowOfControl)
-
     // code600~699 warn user
 
     /**
@@ -223,10 +221,6 @@ export const Diags: DeepReadonly<TDiags> = {
         msg: 'function or Method is so big',
         path: 'https://www.autohotkey.com/docs/v1/Functions.htm',
         // is user setting.
-    },
-    304: {
-        msg: 'avoid def-func-name look like Flow Of Control',
-        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code304.md',
     },
     601: {
         msg: 'Avoid defining function names like On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss.',

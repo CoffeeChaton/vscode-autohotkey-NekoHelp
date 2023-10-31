@@ -68,36 +68,14 @@ type TempConfigs = {
          */
         code107: boolean,
         code300fnSize: number,
-        code304: boolean,
         code500Max: number, // NeverUsedVar
         code502Max: number, // of var
         code503Max: number, // of param
         code511Max: number, // ban param/var-name same fn-name
         code512Max: number, // ban global-var name same fn-name
         code513Max: number, // ban label-var name same fn-name
-        code521: {
-            // Reserved words https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28
-            'local': boolean,
-            'global': boolean,
-            'static': boolean,
-            'if': boolean,
-            'else': boolean,
-            'loop': boolean,
-            'for': boolean,
-            'while': boolean,
-            'until': boolean,
-            'break': boolean,
-            'continue': boolean,
-            'goto': boolean,
-            'return': boolean,
-            'switch': boolean,
-            'case': boolean,
-            'try': boolean,
-            'catch': boolean,
-            'finally': boolean,
-            'and': boolean,
-            'throw': boolean,
-        },
+        code521: string,
+        code522: string,
         code800Deprecated: boolean,
         //  useDiagGlobalVarUnused: boolean, // of global-var
         useModuleValDiag: boolean,

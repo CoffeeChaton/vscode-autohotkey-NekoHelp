@@ -137,11 +137,6 @@
                         "maximum": 100000,
                         "markdownDescription": "(code300) lint of function/Method size (just calc non-blank lines)"
                     },
-                    "AhkNekoHelp.Diag.code304AvoidConfusingFuncNames": {
-                        "type": "boolean",
-                        "default": true,
-                        "markdownDescription": "([code304](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code304.md)) avoid def-func-name look like Flow Of Control"
-                    },
                     "AhkNekoHelp.Diag.code500": {
                         "type": "number",
                         "default": 20,
@@ -184,115 +179,15 @@
                         "maximum": 999,
                         "markdownDescription": "(code513) ban label-name same function-name. use ```0``` to close info."
                     },
-
                     "AhkNekoHelp.Diag.code521": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "local": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "global": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "static": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "if": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "else": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "loop": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "for": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "while": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "until": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "break": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "continue": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "goto": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "return": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "switch": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "case": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "try": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "catch": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "finally": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "and": {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            "throw": {
-                                "type": "boolean",
-                                "default": true
-                            }
-                        },
-                        "default": {
-                            "local": true,
-                            "global": true,
-                            "static": true,
-                            "if": true,
-                            "else": true,
-                            "loop": true,
-                            "for": true,
-                            "while": true,
-                            "until": true,
-                            "break": true,
-                            "continue": true,
-                            "goto": true,
-                            "return": true,
-                            "switch": true,
-                            "case": true,
-                            "try": true,
-                            "catch": true,
-                            "finally": true,
-                            "and": true,
-                            "throw": true
-                        },
-                        "markdownDescription": "Avoid confusing names like Reserved words ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))"
+                        "type": "string",
+                        "default": "local,global,static,if,else,loop,for,while,until,break,continue,goto,return,switch,case,try,catch,finally,and,throw,Critical,Default,Exit,ExitApp,GoSub,IfMsgBox,Pause,Reload",
+                        "markdownDescription": "use *warn* to avoid confusing names. ([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))"
+                    },
+                    "AhkNekoHelp.Diag.code522": {
+                        "type": "string",
+                        "default": "as,and,contains,false,in,is,IsSet,not,or,super,true,unset",
+                        "markdownDescription": "use *info* to avoid confusing names. ([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))"
                     },
                     "AhkNekoHelp.Diag.code800Deprecated": {
                         "type": "boolean",

@@ -11,7 +11,6 @@ import { getLineErr } from './tools/getLineErr';
 import { getMultilineDiag } from './tools/getMultilineDiag';
 import { getTreeErr } from './tools/getTreeErr';
 import { getAssignErr } from './tools/lineErr/assignErr';
-import { getCode304Err } from './tools/lineErr/getCode304Err';
 import { getCode601Err } from './tools/lineErr/getCode601Err';
 import { getCode701Err } from './tools/lineErr/getCode701Err';
 
@@ -48,7 +47,6 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
     const {
         code800Deprecated,
         code107,
-        code304,
         code300fnSize,
     } = getDiagConfig();
 
@@ -61,9 +59,6 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
     }
     if (code107) {
         DiagShow.push(...getAssignErr(DocStrMap));
-    }
-    if (code304) {
-        DiagShow.push(...getCode304Err(AhkFileData));
     }
 
     diagColl.set(uri, [

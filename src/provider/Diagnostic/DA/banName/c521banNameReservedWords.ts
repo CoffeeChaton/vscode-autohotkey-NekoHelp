@@ -44,15 +44,15 @@ export function c521banNameReservedWords(
     const fnMap: TFnMap = getFileAllFuncMap(AST);
 
     const { code521 } = getDiagConfig(); // MEMO ? js -> json -> string -> weakMap<AhkFileData,Map<json,readonly CDiagFn[]>>
-    const arr: string[] = [...Object.entries(code521)]
-        .filter((a: [string, boolean]): boolean => a[1])
-        .map((a: [string, boolean]): string => a[0])
+    const arr: string[] = code521
+        .toUpperCase()
+        .split(',')
         .sort();
-    const arrStr: string = arr.join(',');
+    const code521Format: string = arr.join(',');
 
     const map: TC521MemoMap = c521Memo.get(AhkFileData) ?? new Map<string, readonly CDiagFn[]>();
 
-    const cacheDiag: readonly CDiagFn[] | undefined = map.get(arrStr);
+    const cacheDiag: readonly CDiagFn[] | undefined = map.get(code521Format);
     if (cacheDiag !== undefined) {
         return cacheDiag;
     }
@@ -78,7 +78,7 @@ export function c521banNameReservedWords(
     }
 
     //
-    map.set(arrStr, diag521List);
+    map.set(code521Format, diag521List);
     c521Memo.set(AhkFileData, map);
     //
     return diag521List;

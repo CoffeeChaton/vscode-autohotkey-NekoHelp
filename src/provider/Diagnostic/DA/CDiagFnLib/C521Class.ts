@@ -10,8 +10,8 @@ export class C521Class extends CDiagFn {
             severity: vscode.DiagnosticSeverity.Warning,
             tags: [],
             message: isFuncName
-                ? 'avoid function-name look like `Reserved words`'
-                : 'avoid var-name look like `Reserved words`',
+                ? 'avoid function-name use confusing names'
+                : 'avoid var-name use confusing names',
         });
     }
 }
