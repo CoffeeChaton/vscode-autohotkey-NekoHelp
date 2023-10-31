@@ -107,6 +107,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             code511Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code511'), // ban var/parma name same fn-Name
             code512Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code512'), // ban global-var name same fn-name
             code513Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code513'), // ban label-name same fn-name
+            code521: getConfigs<TConfigs['Diag']['code521']>(Configs, 'AhkNekoHelp.Diag.code521'), // ban name like https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28
             code800Deprecated: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code800Deprecated'),
             useModuleValDiag: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.useModuleValDiag'),
         },

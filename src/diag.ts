@@ -25,8 +25,9 @@ export const enum EDiagCodeDA {
     code512 = 512, // ban global-var name same function-name.
     code513 = 513, // ban label-var name same function-name.
     code514 = 514, // `ComObjConnect` #14 https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14
-    // TODO ban name with cache
-    // code521 = 521, // ban name look like `new not and or`
+
+    // TODO
+    code521 = 521, // ban name with like goto , #28 https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28
 }
 
 export type TDiagsDA = {
@@ -80,6 +81,10 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
     514: {
         msg: '`PrefixEventName()` and `ComObjConnect()` should be in the same file.',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14',
+    },
+    521: {
+        msg: 'avoid var/function-name look like `Reserved words`',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28',
     },
 };
 

@@ -65,6 +65,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.Diag.code511', 'number'],
                 ['AhkNekoHelp.Diag.code512', 'number'],
                 ['AhkNekoHelp.Diag.code513', 'number'],
+                ['AhkNekoHelp.Diag.code521', 'object'],
                 ['AhkNekoHelp.Diag.code800Deprecated', 'boolean'],
                 ['AhkNekoHelp.Diag.useModuleValDiag', 'boolean'],
                 // [2]
