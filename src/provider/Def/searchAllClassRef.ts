@@ -57,7 +57,7 @@ function searchAllClassRefCore(wordUp: string, AhkFileData: TAhkFileData): reado
     return fileRefList;
 }
 
-export const wmClassRef = new WeakMap<TAhkFileData, TClassFileRefMapRW>();
+const wmClassRef = new WeakMap<TAhkFileData, TClassFileRefMapRW>();
 
 export function classRefOnePage(classDef: CAhkClass, AhkFileData: TAhkFileData): readonly vscode.Location[] {
     const wordUp: string = classDef.upName;
