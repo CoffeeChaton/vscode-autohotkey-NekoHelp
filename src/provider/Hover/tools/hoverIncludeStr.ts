@@ -1,7 +1,9 @@
+import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { collectInclude } from '../../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import { EDetail } from '../../../globalEnum';
+import { getAhkFileOutline } from '../../../tools/MD/getAhkFileOutline';
 
 export function hoverIncludeStr(AhkFileData: TAhkFileData, position: vscode.Position): vscode.Hover | null {
     const { DocStrMap, AST } = AhkFileData;
@@ -22,7 +24,14 @@ export function hoverIncludeStr(AhkFileData: TAhkFileData, position: vscode.Posi
                 );
 
                 const md: vscode.MarkdownString = new vscode.MarkdownString('', true);
-                md.appendCodeblock(`#Include ${mayPath.replaceAll('/', '\\')} ;may be`, 'ahk');
+
+                const md0: string = getAhkFileOutline(path.normalize(mayPath)).value;
+                if (md0.endsWith('unopened files')) {
+                    md.appendCodeblock(`#Include ${mayPath.replaceAll('/', '\\')} ;may be`, 'ahk');
+                } else {
+                    md.appendMarkdown(md0);
+                }
+
                 if (warnMsg !== '') {
                     md.appendMarkdown(warnMsg);
                 }
