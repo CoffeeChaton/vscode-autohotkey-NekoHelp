@@ -165,14 +165,15 @@ const IncludeOsMap: readonly TIncludeOsMap[] = [
     // A_ProgramFiles
 ];
 
-function getRawData(path1: string, fsPath: string): TRawData {
+export function getRawData(path1: string, fsPath: string): TRawData {
     const warnMsg: string = setWarnMsg(path1);
     if ((/^%A_LineFile%/iu).test(path1)) {
         // [v1.1.11+]: Use %A_LineFile%\.. to refer to the directory which contains the current file
         //    , even if it is not the main script file. For example, #Include %A_LineFile%\..\other.ahk.
+
         return {
             type: EInclude.A_LineFile,
-            mayPath: join(fsPath, `../${normalize(path1.replace(/^%A_LineFile%/iu, ''))}`),
+            mayPath: normalize(path1.replace(/^%A_LineFile%/iu, fsPath)),
             warnMsg,
         };
     }
