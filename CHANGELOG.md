@@ -35,6 +35,8 @@
 <!-- dprint 0.41.0 -->
 
 - fix: `#Include %A_LineFile%../../` parser errors
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-50-fix-A_LineFile-parser-error.jpg)
+- feat: [(#29)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/29) add `#include` new completion
 
 ## v0.0.48(2023-10-31)
 

@@ -31,7 +31,7 @@ import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
 import { CompletionUserDefFuncClass } from './CompletionUserDef/CompletionUserDefFuncClass';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
 import { getSnipGlobalVal } from './global/globalValCompletion';
-import { IncludeFsPath } from './Include_fsPath/Include_fsPath';
+import { IncludeFsPath } from './IncludeFsPath/IncludeFsPath';
 import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
 import { getSnipSubCmd } from './SubCommand/getSnipSubCmd';
 
@@ -64,8 +64,11 @@ function CompletionItemCore(
     } = AhkTokenLine;
     const subStr: string = lStr.slice(0, position.character).trim();
 
-    if (detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s/iu).test(lStr)) {
-        return IncludeFsPath(document.uri.fsPath, position);
+    if (
+        (context.triggerCharacter === '/' || context.triggerCharacter === '\\')
+        && detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s/iu).test(lStr)
+    ) {
+        return IncludeFsPath(document, position, AhkFileData, AhkTokenLine);
     }
 
     if ((/\bnew[ \t]+[#$@\w\u{A1}-\u{FFFF}]*$/iu).test(lStr.slice(0, position.character))) {
