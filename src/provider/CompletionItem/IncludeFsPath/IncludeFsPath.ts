@@ -5,8 +5,8 @@ import { EInclude, getRawData } from '../../../AhkSymbol/CAhkInclude';
 import { type TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { isAhk } from '../../../tools/fsTools/isAhk';
+import { getAhkFileOutline } from '../../../tools/MD/getAhkFileOutline';
 import { log } from '../../vscWindows/log';
-import { getAhkFileOutline } from './getAhkFileOutline';
 
 function CompletionAbsolutePathLogErr(error: unknown): void {
     if (error instanceof Error) {

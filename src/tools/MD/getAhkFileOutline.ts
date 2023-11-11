@@ -1,10 +1,10 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
-import { pm, type TAhkFileData } from '../../../core/ProjectManager';
-import type { TTokenStream } from '../../../globalEnum';
-import { CMemo } from '../../../tools/CMemo';
-import { getFileAllClass } from '../../../tools/visitor/getFileAllClassList';
-import { getFileAllFunc } from '../../../tools/visitor/getFileAllFuncList';
+import { pm, type TAhkFileData } from '../../core/ProjectManager';
+import type { TTokenStream } from '../../globalEnum';
+import { CMemo } from '../CMemo';
+import { getFileAllClass } from '../visitor/getFileAllClassList';
+import { getFileAllFunc } from '../visitor/getFileAllFuncList';
 
 function makeFileOutline(list: readonly vscode.DocumentSymbol[]): string[] {
     if (list.length === 0) return [];
@@ -22,7 +22,7 @@ function getFirstAhkDoc(DocStrMap: TTokenStream): string {
             if (i2 < length) {
                 const { lStr } = DocStrMap[i2];
                 if (lStr.trim() === '') {
-                    return ahkDoc;
+                    return `- file description\n\n${ahkDoc}`;
                 }
             }
             return ''; // first ahk-doc next line has some data...
@@ -40,7 +40,9 @@ const memoAhkFileOutline = new CMemo<TAhkFileData, vscode.MarkdownString>(
             DocStrMap,
         } = AhkFileData;
         const arr: string[] = [
-            path.normalize(uri.fsPath),
+            '```ahk',
+            `#Include ${path.normalize(uri.fsPath)}`,
+            '```',
             '',
             getFirstAhkDoc(DocStrMap),
             '',
@@ -87,7 +89,16 @@ export function getAhkFileOutline(
      * TODO add config of up this file ?
      */
     const AhkFileData: TAhkFileData | undefined = pm.DocMap.get(fsPath);
-    if (AhkFileData === undefined) return new vscode.MarkdownString(`${normalize}\n\nunopened files`);
+    if (AhkFileData === undefined) {
+        const arr: string[] = [
+            '```ahk',
+            `#Include ${normalize}`,
+            '```',
+            /* Hard coded, please do not modify it */ 'unopened files',
+        ];
+
+        return new vscode.MarkdownString(arr.join('\n'));
+    }
 
     return memoAhkFileOutline.up(AhkFileData);
 }
