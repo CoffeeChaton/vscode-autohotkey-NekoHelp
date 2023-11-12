@@ -321,7 +321,7 @@ support to find like
 
 ### 3. Completion of `#Include`
 
-![Completion of Include](image/Completion_Include.gif)
+![Completion of Include](image/Completion_Include_45.gif)
 
 ### 4. Completion of `class`
 
