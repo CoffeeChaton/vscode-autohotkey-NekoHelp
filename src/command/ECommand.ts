@@ -1,5 +1,6 @@
 export const enum ECommand {
     CmdCodeActionAddInclude = 'ahk.nekoHelp.CmdCodeActionAddInclude',
+    CmdCodeActionRenameInclude = 'ahk.nekoHelp.CmdCodeActionRenameInclude',
     CmdFindClassRef = 'ahk.nekoHelp.CmdFindClassRef',
     CmdFindComObjConnectRegister = 'ahk.nekoHelp.CmdFindComObjConnectRegister',
     CmdFindFuncRef = 'ahk.nekoHelp.CmdFindFuncRef',

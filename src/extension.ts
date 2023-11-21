@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { AnalyzeFuncMain } from './command/AnalyzeFunc/AnalyzeThisFunc';
 import { CmdCodeActionAddInclude } from './command/CmdCodeActionAddInclude';
+import { CmdCodeActionRenameInclude } from './command/CmdCodeActionRenameInclude';
 import { CmdFindClassRef } from './command/CmdFindClassRef';
 import { CmdFindComObjConnectRegister } from './command/CmdFindComObjConnectRegister';
 import { CmdFindFuncRef } from './command/CmdFindFuncRef';
@@ -95,6 +96,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
         vscode.commands.registerCommand('ahk.nekoHelp.displayLogMessage', displayLogMessageFn), // ctrl+alt+l
         vscode.commands.registerCommand(ECommand.CmdCodeActionAddInclude, CmdCodeActionAddInclude),
+        vscode.commands.registerCommand(ECommand.CmdCodeActionRenameInclude, CmdCodeActionRenameInclude),
         vscode.commands.registerCommand(ECommand.CmdFindClassRef, CmdFindClassRef),
         vscode.commands.registerCommand(ECommand.CmdFindComObjConnectRegister, CmdFindComObjConnectRegister),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),

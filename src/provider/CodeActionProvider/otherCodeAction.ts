@@ -16,6 +16,7 @@ import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { posAtFnRef } from '../Def/posAtFnRef';
 import { CodeActionAddInclude } from './CodeActionAddInclude';
+import { CodeActionTryRenameIncludePath } from './tools/CodeActionTryRenameIncludePath';
 
 function atFnHead(
     ahkFn: CAhkFunc,
@@ -126,8 +127,9 @@ export function otherCodeAction(
 ): vscode.CodeAction[] {
     if (!(selection instanceof vscode.Selection)) return [];
 
+    const { AST, DocStrMap } = AhkFileData;
     const { active } = selection;
-    const ahkFn: CAhkFunc | undefined = getFileAllFunc.up(AhkFileData.AST)
+    const ahkFn: CAhkFunc | undefined = getFileAllFunc.up(AST)
         .find((ahkFunc: CAhkFunc): boolean => ahkFunc.nameRange.contains(active));
 
     const need: vscode.CodeAction[] = [];
@@ -142,16 +144,20 @@ export function otherCodeAction(
         need.push(...posAtFnReference(AhkFileData, active, document));
     }
 
-    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[active.line];
+    const AhkTokenLine: TAhkTokenLine = DocStrMap[active.line];
     const { detail, lStr } = AhkTokenLine;
-    if (detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s*$/iu).test(lStr)) {
-        const position = new vscode.Position(
-            active.line,
-            (/[ \t]$/u).test(lStr)
-                ? lStr.length - 1
-                : lStr.length,
-        );
-        need.push(CodeActionAddInclude(document.uri, position));
+    if (detail.includes(EDetail.isDirectivesLine)) {
+        if ((/^\s*#Include(?:Again)?\s*$/iu).test(lStr)) {
+            const position = new vscode.Position(
+                active.line,
+                (/[ \t]$/u).test(lStr)
+                    ? lStr.length - 1
+                    : lStr.length,
+            );
+            need.push(CodeActionAddInclude(document.uri, position));
+        } else if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) {
+            need.push(...CodeActionTryRenameIncludePath(AhkFileData, active, AhkTokenLine));
+        }
     }
 
     return need;
