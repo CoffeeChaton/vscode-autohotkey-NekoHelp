@@ -143,13 +143,13 @@ export function otherCodeAction(
     }
 
     const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[active.line];
-    const { detail, lStr, textRaw } = AhkTokenLine;
+    const { detail, lStr } = AhkTokenLine;
     if (detail.includes(EDetail.isDirectivesLine) && (/^\s*#Include(?:Again)?\s*$/iu).test(lStr)) {
         const position = new vscode.Position(
             active.line,
-            (/[ \t]$/u).test(textRaw)
-                ? textRaw.length - 1
-                : textRaw.length,
+            (/[ \t]$/u).test(lStr)
+                ? lStr.length - 1
+                : lStr.length,
         );
         need.push(CodeActionAddInclude(document.uri, position));
     }
