@@ -84,7 +84,6 @@ export function gotoIncludeDef(AhkFileData: TAhkFileData, position: vscode.Posit
                     };
                 }
                 if (type === EInclude.isUnknown) {
-                    console.log('🚀 ~ ahkInclude:', ahkInclude);
                     return gotoIncludeDefWithTry(mayPath, lStr, line);
                 }
                 gotoIncludeDefShowInfo();

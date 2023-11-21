@@ -18,7 +18,7 @@ import { EFileRenameEvent } from '../configUI.data';
 import type { TFsPath } from '../globalEnum';
 import { renameFileNameFunc } from '../provider/event/renameFileNameFunc';
 import { log } from '../provider/vscWindows/log';
-import { fsPathIsAllow, getUriList } from '../tools/fsTools/getUriList';
+import { fsPathIsAllow } from '../tools/fsTools/getUriList';
 import { isAhk } from '../tools/fsTools/isAhk';
 import { rmFileDiag } from './diagColl';
 import type { TMemo } from './ParserTools/getFileAST';
@@ -205,46 +205,8 @@ export const pm = {
                 }
                 const Stats: fs.Stats = fs.statSync(fsPath);
                 if (Stats.isDirectory()) {
-                    const FileListData2: TAhkFileData[] = [];
-                    for (const uri2 of getUriList([fsPath])) {
-                        try {
-                            if (history.has(uri2.fsPath)) {
-                                byRefLogList.push({
-                                    type: 'parser_duplicate',
-                                    msg: `"${ahkInclude.name}", to : "${uri2.fsPath}", rootPath: "${rootPath}"`,
-                                });
-                                continue;
-                            }
-                            // eslint-disable-next-line no-await-in-loop
-                            const doc: vscode.TextDocument = await vscode.workspace.openTextDocument(uri2);
-                            const AhkFileData: TAhkFileData | null = pm.updateDocDef(doc);
-                            history.add(uri2.fsPath);
-                            if (AhkFileData === null) continue;
-
-                            byRefLogList.push({
-                                type: 'parser_OK',
-                                msg: `"${ahkInclude.name}", to : "${uri2.fsPath}", rootPath: "${rootPath}"`,
-                            });
-
-                            FileListData2.push(
-                                AhkFileData,
-                                // eslint-disable-next-line no-await-in-loop
-                                ...await pm.UpdateCacheAsyncCh(
-                                    collectInclude(AhkFileData.AST),
-                                    rootPath,
-                                    byRefLogList,
-                                    history,
-                                ),
-                            );
-                        } catch {
-                            byRefLogList.push({
-                                type: 'parser_err',
-                                msg: `"${ahkInclude.name}", file: "${tryPath}"`,
-                            });
-                        }
-                    }
-
-                    FileListData.push(...FileListData2);
+                    // TODO
+                    //
                     continue;
                 }
                 if (!Stats.isFile() || !isAhk(fsPath)) {

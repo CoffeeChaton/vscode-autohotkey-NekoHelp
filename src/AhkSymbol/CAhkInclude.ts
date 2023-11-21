@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable dot-notation */
 /* eslint-disable max-lines-per-function */
 /* eslint-disable no-magic-numbers */
@@ -88,78 +89,93 @@ function setWarnMsg(path1: string): string {
 type TIncludeOsMap = {
     reg: Readonly<RegExp>,
     type: EInclude,
+    name: `A_${string}`,
     mayPathReplaceValue: string,
 };
 
-const IncludeOsMap: readonly TIncludeOsMap[] = [
+export const IncludeOsMap: readonly TIncludeOsMap[] = [
     {
         reg: /^%A_Desktop%/iu,
         type: EInclude.A_Desktop,
+        name: 'A_Desktop',
         mayPathReplaceValue: `${osHomedir}/Desktop`,
     },
     {
         reg: /^%A_MyDocuments%/iu,
         type: EInclude.A_MyDocuments,
+        name: 'A_MyDocuments',
         mayPathReplaceValue: `${osHomedir}/Documents`,
     },
     {
         reg: /^%A_AppData%/iu,
         type: EInclude.A_AppData,
+        name: 'A_AppData',
         mayPathReplaceValue: `${osHomedir}/AppData/Roaming`,
     },
     {
         reg: /^%A_AppDataCommon%/iu,
         type: EInclude.A_AppDataCommon,
+        name: 'A_AppDataCommon',
         mayPathReplaceValue: process.env['ALLUSERSPROFILE'] ?? 'C:/ProgramData',
     },
     {
         reg: /^%A_DesktopCommon%/iu,
         type: EInclude.A_DesktopCommon,
+        name: 'A_DesktopCommon',
         mayPathReplaceValue: `${process.env['PUBLIC'] ?? 'C:/Users/Public'}/Desktop`, // C:\\Users\\Public
     },
     {
         reg: /^%A_WinDir%/iu,
         type: EInclude.A_WinDir,
+        name: 'A_WinDir',
         mayPathReplaceValue: process.env['windir'] ?? 'C:/Windows',
     },
     {
         reg: /^%A_Temp%/iu,
         type: EInclude.A_Temp,
+        name: 'A_Temp',
         mayPathReplaceValue: `${osHomedir}/AppData/Local/Temp`,
     },
     {
         reg: /^%A_StartupCommon%/iu,
         type: EInclude.A_StartupCommon,
+        name: 'A_StartupCommon',
         mayPathReplaceValue: `${SystemDriveStr}/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup`,
     },
     {
         reg: /^%A_Startup%/iu,
         type: EInclude.A_Startup,
+        name: 'A_Startup',
         mayPathReplaceValue: `${osHomedir}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup`,
     },
     {
         reg: /^%A_StartMenuCommon%/iu,
         type: EInclude.A_StartMenuCommon,
+        name: 'A_StartMenuCommon',
         mayPathReplaceValue: `${SystemDriveStr}/ProgramData/Microsoft/Windows/Start Menu`,
     },
     {
         reg: /^%A_StartMenu%/iu,
         type: EInclude.A_StartMenu,
+        name: 'A_StartMenu',
         mayPathReplaceValue: `${osHomedir}/AppData/Roaming/Microsoft/Windows/Start Menu`,
     },
     {
         reg: /^%A_ProgramsCommon%/iu,
         type: EInclude.A_ProgramsCommon,
+        name: 'A_ProgramsCommon',
         mayPathReplaceValue: `${SystemDriveStr}/ProgramData/Microsoft/Windows/Start Menu/Programs`,
     },
     {
         reg: /^%A_Programs%/iu,
         type: EInclude.A_Programs,
+        name: 'A_Programs',
         mayPathReplaceValue: `${osHomedir}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs`,
     },
     {
         reg: /^%A_ComSpec%/iu,
         type: EInclude.A_ComSpec,
+        name: 'A_ComSpec',
         mayPathReplaceValue: process.env['ComSpec'] ?? 'C:/Windows/system32/cmd.exe',
     },
     // A_ProgramFiles

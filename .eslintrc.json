@@ -19,7 +19,8 @@
         "plugin:regexp/recommended",
         "plugin:security/recommended",
         "plugin:sonarjs/recommended",
-        "plugin:unicorn/all"
+        "plugin:unicorn/all",
+        "eslint:recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -85,6 +86,7 @@
     ],
     "root": true,
     "rules": {
+        "no-undef": "off",
         "import/no-unresolved": "off",
         "security/detect-non-literal-fs-filename": "off",
         "@typescript-eslint/naming-convention": "off",
