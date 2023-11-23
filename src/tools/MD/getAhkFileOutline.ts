@@ -1,8 +1,8 @@
-import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { pm, type TAhkFileData } from '../../core/ProjectManager';
 import type { TTokenStream } from '../../globalEnum';
 import { CMemo } from '../CMemo';
+import { toNormalize } from '../fsTools/toNormalize';
 import { getFileAllClass } from '../visitor/getFileAllClassList';
 import { getFileAllFunc } from '../visitor/getFileAllFuncList';
 
@@ -41,7 +41,7 @@ const memoAhkFileOutline = new CMemo<TAhkFileData, vscode.MarkdownString>(
         } = AhkFileData;
         const arr: string[] = [
             '```ahk',
-            `#Include ${path.normalize(uri.fsPath)}`,
+            `#Include ${toNormalize(uri.fsPath)}`,
             '```',
             '',
             getFirstAhkDoc(DocStrMap),

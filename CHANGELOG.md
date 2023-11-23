@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.50(2023-11-XX)](#v00502023-11-xx)
+  - [v0.0.50(2023-11-24)](#v00502023-11-24)
   - [v0.0.49(2023-11-11)](#v00492023-11-11)
   - [v0.0.48(2023-10-31)](#v00482023-10-31)
   - [v0.0.47(2023-07-05)](#v00472023-07-05)
@@ -30,10 +30,10 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## v0.0.50(2023-11-XX)
+## v0.0.50(2023-11-24)
 
 - feat: [(#32)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/32) add a CodeAction (yellow light bulb) at `#include` or `#IncludeAgain` path range, provider refactor.
-  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-50-#32.gif)
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-50-%2332.gif)
 
 - fix: [(#30)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/30) Searching folders recursively, resulting in timeout error.
 
