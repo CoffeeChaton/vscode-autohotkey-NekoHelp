@@ -1,13 +1,15 @@
+/* eslint-disable max-depth */
 /* eslint-disable complexity */
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
-import type {
-    TParamMapIn,
-    TParamMetaIn,
-    TTextMapIn,
-    TTextMetaIn,
-    TValMapIn,
-    TValMetaIn,
+import {
+    EPseudoArray,
+    type TParamMapIn,
+    type TParamMetaIn,
+    type TTextMapIn,
+    type TTextMetaIn,
+    type TValMapIn,
+    type TValMetaIn,
 } from '../../AhkSymbol/CAhkFunc';
 import type { TGlobalVal, TGValMap } from '../../core/ParserTools/ahkGlobalDef';
 import { EGlobalDefBy } from '../../core/ParserTools/ahkGlobalDef';
@@ -20,6 +22,7 @@ import { StatementMDMap } from '../Built-in/3_foc/foc.tools';
 import { operatorMD } from '../Built-in/4_operator/operator.tools';
 import { CommandMDMap } from '../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../str/ToUpCase';
+import { getValMeta } from './FnVar/def/getValMeta';
 import { pushDef } from './pushDef';
 import { pushRef } from './pushRef';
 
@@ -193,6 +196,57 @@ export function getUnknownTextMap(
                 startPos,
                 new vscode.Position(line, character + wordUp.length),
             );
+            // hot-fix EPseudoArray.byStringSplitEtc https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11#issuecomment-1574741836
+            if ((/\d+$/u).test(wordUp)) {
+                const chUpNameFa: string = wordUp.replace(/\d+$/u, '');
+                const oldValStringSplit: TValMetaIn | undefined = valMap.get(chUpNameFa);
+                if (oldValStringSplit !== undefined) {
+                    const {
+                        AssociatedList,
+                        defRangeList,
+                        refRangeList,
+                        keyRawName: keyRawNameStringSplit,
+                        fnMode,
+                    } = oldValStringSplit;
+                    if (AssociatedList.length > 0) {
+                        // dprint-ignore
+                        const isDef:boolean = [':=', '+=', '-=', '*=', '/=', '//=', '.=', '|=', '&=', '^=', '>>=', '<<=', '>>>='].some((vvv: string): boolean => strF.startsWith(vvv));
+
+                        if (isDef) {
+                            defRangeList.push(range);
+                        } else {
+                            refRangeList.push(range);
+                        }
+                        for (const d of AssociatedList) {
+                            const { chList } = d;
+                            if (chList.length > 0) {
+                                // AssociatedList.chList.push();
+                                chList.push({ chName: keyRawName, by: EPseudoArray.byStringSplitEtc });
+                                const value: TValMetaIn = getValMeta({
+                                    line,
+                                    character,
+                                    RawName: keyRawName, // chName,
+                                    valMap,
+                                    lineComment: '',
+                                    fnMode,
+                                    Associated: {
+                                        faRawName: keyRawNameStringSplit,
+                                        chList: [],
+                                        line,
+                                        col: character,
+                                        by: EPseudoArray.byStringSplitEtc,
+                                    },
+                                });
+                                valMap.set(/* chUpName */ wordUp, value);
+                                break;
+                            }
+                        }
+                    }
+
+                    continue;
+                }
+            }
+
             //
             const need: TTextMetaIn = {
                 keyRawName,

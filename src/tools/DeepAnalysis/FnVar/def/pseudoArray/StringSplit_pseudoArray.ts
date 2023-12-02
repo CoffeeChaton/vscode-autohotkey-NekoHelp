@@ -38,17 +38,17 @@ export function StringSplit_pseudoArray(
     return {
         faRawName: RawNameNew,
         chList: [
-            {
-                chName: `${RawNameNew}0`,
-                by: EPseudoArray.byStringSplit0,
-            },
-            {
-                chName: `${RawNameNew}1`,
-                by: EPseudoArray.byStringSplit1,
-            },
+            // {
+            //     chName: `${RawNameNew}0`,
+            //     by: EPseudoArray.byStringSplit0,
+            // },
+            // {
+            //     chName: `${RawNameNew}1`,
+            //     by: EPseudoArray.byStringSplit1,
+            // },
         ],
         line,
         col: lPos,
-        by: EPseudoArray.byStringSplit0,
+        by: EPseudoArray.byStringSplitFa,
     };
 }

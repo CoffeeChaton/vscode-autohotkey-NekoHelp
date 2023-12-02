@@ -6,7 +6,6 @@ import type {
     TParamMetaOut,
 } from '../../AhkSymbol/CAhkFunc';
 import { getCustomize, getSignatureHelp } from '../../configUI';
-import type { DeepReadonly } from '../../globalEnum';
 import { CMemo } from '../../tools/CMemo';
 import { enumLog } from '../../tools/enumErr';
 import { getLStr } from '../../tools/str/removeSpecialChar';
@@ -73,7 +72,7 @@ function getSignDataZero(
     const { paramMeta, returnMeta } = ahkDocMeta;
 
     const paramMetaMap: TParamMetaMap = new Map(paramMeta
-        .map((v: TFnParamMeta): [string, DeepReadonly<TFnParamMeta>] => [ToUpCase(v.BParamName), v]));
+        .map((v: TFnParamMeta): [string, Readonly<TFnParamMeta>] => [ToUpCase(v.BParamName), v]));
 
     if (!insertType) {
         const parameters: vscode.ParameterInformation[] = [];

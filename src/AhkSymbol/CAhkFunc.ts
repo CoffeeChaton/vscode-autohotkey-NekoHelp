@@ -1,6 +1,5 @@
 /* eslint-disable no-magic-numbers */
 import * as vscode from 'vscode';
-import type { DeepReadonly } from '../globalEnum';
 import type { EFnMode } from '../tools/DeepAnalysis/FnVar/EFnMode';
 import { ToUpCase } from '../tools/str/ToUpCase';
 import type { TLineClass } from './CAhkLine';
@@ -40,7 +39,7 @@ export type TParamMetaIn = {
     defaultType: EParamDefaultType,
     commentList: string[],
 };
-export type TParamMetaOut = DeepReadonly<TParamMetaIn>;
+export type TParamMetaOut = Readonly<TParamMetaIn>;
 
 export type TParamMapIn = Map<TUpName, TParamMetaIn>; // k = valNameUP
 
@@ -66,8 +65,22 @@ export const enum EPseudoArray {
     byWinGet_CMD_list = 300,
     byWinGet_CMD_list1 = 301,
 
-    byStringSplit0 = 400,
-    byStringSplit1 = 401,
+    // byStringSplit0 = 400,
+    // byStringSplit1 = 401,
+    /**
+     * ```ahk
+     * Colors := "red,green,blue"
+     * StringSplit, ColorArray, Colors, `,
+     *
+     * ListVars
+     * MsgBOx % ColorArray0 ; ColorArray0[1 of 3]: 3
+     * MsgBOx % ColorArray1 ; ColorArray1[3 of 3]: red
+     * MsgBOx % ColorArray2 ; ColorArray2[5 of 7]: green
+     * MsgBOx % ColorArray3 ; ColorArray3[4 of 7]: blue
+     * ```
+     */
+    byStringSplitFa = 499,
+    byStringSplitEtc = 402,
     // Infinitely filled masquerade array...I don't know what to do with it =_= thanks you ahk
 }
 
@@ -89,7 +102,7 @@ export type TValMetaIn = {
     fnMode: EFnMode,
     AssociatedList: TAssociated[],
 };
-export type TValMetaOut = DeepReadonly<TValMetaIn>;
+export type TValMetaOut = Readonly<TValMetaIn>;
 
 export type TValMapIn = Map<TUpName, TValMetaIn>; // k = valNameUP
 
@@ -103,13 +116,13 @@ export type TTextMetaIn = {
     // defRangeList: never[];
     refRangeList: vscode.Range[],
 };
-export type TTextMetaOut = DeepReadonly<TTextMetaIn>;
+export type TTextMetaOut = Readonly<TTextMetaIn>;
 
 export type TTextMapIn = Map<TUpName, TTextMetaIn>; // k = valNameUP
 
 export type TTextMapOut = ReadonlyMap<TUpName, TTextMetaOut>; // k = valNameUP
 
-export type TFnParamMeta = DeepReadonly<{
+export type TFnParamMeta = Readonly<{
     ATypeDef: string,
     BParamName: string,
     CInfo: string[],
@@ -120,7 +133,7 @@ export type TFnReturnMeta = {
     info: string[],
 };
 
-export type TFnMeta = DeepReadonly<{
+export type TFnMeta = Readonly<{
     ahkDocMeta: {
         hasAhkDoc: boolean,
         paramMeta: TFnParamMeta[],
