@@ -128,6 +128,7 @@ export const pm = {
             pm.DocMap.delete(fsPath);
         }
 
+        setStatusBarText(path.basename(fsPath), pm.DocMap.size);
         return result;
     },
 
@@ -149,7 +150,7 @@ export const pm = {
             const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
             if (AhkFileData === null) return;
 
-            setStatusBarText(path.basename(AhkFileData.uri.fsPath));
+            setStatusBarText(path.basename(AhkFileData.uri.fsPath), pm.DocMap.size);
 
             const TryParserInclude: 'auto' | 'close' | 'open' = getTryParserInclude();
 

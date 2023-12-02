@@ -31,6 +31,7 @@ esbuild.config.js
 icon.svg
 image/
 jest.config.js
+knip.json
 node_modules/
 note/
 out/

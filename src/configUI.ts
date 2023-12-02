@@ -19,6 +19,8 @@ import { arrDeepEQ } from './tools/arrDeepEQ';
 import { CMemo } from './tools/CMemo';
 import { CConfigError } from './tools/DevClass/CConfigError';
 import { enumLog } from './tools/enumErr';
+import { getWorkspaceRoot } from './tools/fsTools/getWorkspaceRoot';
+import { toNormalize } from './tools/fsTools/toNormalize';
 import { str2RegexListCheck } from './tools/str2RegexListCheck';
 
 /*
@@ -190,10 +192,6 @@ export function configChangEvent(): void {
 /*
     ---set end---
 */
-export function setStatusBarText(showText: string): void {
-    statusBarItem.text = `$(heart) ${showText}`;
-    statusBarItem.show();
-}
 
 export function getCodeLenConfig(): TConfigs['CodeLens'] {
     return config.CodeLens;
@@ -231,6 +229,21 @@ const memoAlwaysIncludeFolder = new CMemo<readonly string[], readonly string[]>(
 );
 export function getAlwaysIncludeFolder(): readonly string[] {
     return memoAlwaysIncludeFolder.up(config.files.alwaysIncludeFolder);
+}
+
+export function setStatusBarText(showText: string, pmSize: number): void {
+    statusBarItem.text = `$(heart) ${showText}`;
+    // Workspace
+    //
+    const WorkspaceList: readonly string[] = [...getWorkspaceRoot(), ...getAlwaysIncludeFolder()]
+        .map((p: string): string => toNormalize(p));
+
+    const tooltip: string = WorkspaceList.length === 1
+        ? `Workspace : ${WorkspaceList[0]}`
+        : WorkspaceList.map((v: string, i: number): string => `Workspace${i} : ${WorkspaceList[i]}`).join('\n');
+
+    statusBarItem.tooltip = `${tooltip}\nCached files: ${pmSize}`;
+    statusBarItem.show();
 }
 
 export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[]): void {

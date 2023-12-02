@@ -19,7 +19,7 @@ function SymbolProviderCore(document: vscode.TextDocument): vscode.DocumentSymbo
         digDAFile(AhkFileData);
     }
 
-    setStatusBarText(path.basename(document.uri.fsPath));
+    setStatusBarText(path.basename(document.uri.fsPath), pm.DocMap.size);
 
     const { useSymbolProvider, showInclude } = getSymbolProviderConfig();
     if (!useSymbolProvider) return [];

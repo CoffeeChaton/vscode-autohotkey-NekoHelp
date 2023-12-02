@@ -438,18 +438,18 @@ export const DirectivesList: TDirectivesList[] = [
     },
     {
         keyRawName: '#Requires',
-        insert: '#Requires AutoHotkey ${1:v1.1.33+}',
+        insert: '#Requires AutoHotkey ${1|v1.1.33+,>=1.1.36 <1.2|}',
         doc: 'Displays an error and quits if a version requirement is not met.',
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/_Requires.htm',
         exp: [
             '#Requires Requirement',
             '',
-            '; exp: Causes the script to run only on v1.1.33.00 and later v1.1.* releases.',
             '#Requires AutoHotkey v1.1.33+',
-            'MsgBox This script will run only on v1.1.33.00 and later v1.1.* releases.',
-            '',
-            '#Requires AutoHotkey v2.0-a',
+            '#Requires AutoHotkey >=1.1.36 <1.2',
+            '#Requires AutoHotkey 64-bit',
+            '#Requires AutoHotkey v1.1.36 64-bit',
+            '#Requires AutoHotkey 1.1.37.01 ;July 8, 2023',
         ],
     },
     {
