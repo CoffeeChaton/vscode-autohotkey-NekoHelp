@@ -47,18 +47,32 @@ export function setMD(
     const doc: string = jsDocStyle === ''
         ? commentList2Str(commentList)
         : `---\n\n${jsDocStyle}\n\n---\n\n`;
-    const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-        .appendCodeblock(`${prefix} of ${funcName}()`)
-        .appendMarkdown(recStr)
-        .appendMarkdown(doc)
-        .appendMarkdown('- <details><summary>def</summary>\n')
-        .appendMarkdown(RangeList2Str(defRangeList))
-        .appendMarkdown('\n</details>')
-        .appendMarkdown('\n')
-        .appendMarkdown('- <details><summary>ref</summary>\n')
-        .appendMarkdown(RangeList2Str(refRangeList))
-        .appendMarkdown('\n</details>');
+    const st = [
+        '```ahk',
+        `${prefix} of ${funcName}()`,
+        '```',
+        recStr,
+        doc,
+        '- def',
+        RangeList2Str(defRangeList),
+        '',
+        '- ref',
+        RangeList2Str(refRangeList),
+        '',
+    ].join('\n');
+    const md: vscode.MarkdownString = new vscode.MarkdownString(st, true);
     md.supportHtml = true;
+
+    // .appendCodeblock(`${prefix} of ${funcName}()`)
+    // .appendMarkdown(recStr)
+    // .appendMarkdown(doc)
+    // .appendMarkdown('- <details><summary>def</summary>\n')
+    // .appendMarkdown(RangeList2Str(defRangeList))
+    // .appendMarkdown('\n</details>')
+    // .appendMarkdown('\n')
+    // .appendMarkdown('- <details><summary>ref</summary>\n')
+    // .appendMarkdown(RangeList2Str(refRangeList))
+    // .appendMarkdown('\n</details>');
     return md;
 }
 

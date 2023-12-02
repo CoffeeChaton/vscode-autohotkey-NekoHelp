@@ -33,6 +33,10 @@
 
 ## v0.0.51(2023-12-XX)
 
+- fix: hover at val/param doc-style
+  > I don’t know why, vscode’s behavior for `label <details>` and `label <summary>` has changed...
+  > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-51-fix-hover-style.jpg)
+
 - feat:style, hover at statusBar has small changes
 
 ## v0.0.50(2023-11-24)
