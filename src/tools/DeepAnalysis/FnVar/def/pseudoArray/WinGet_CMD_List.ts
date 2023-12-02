@@ -37,13 +37,13 @@ export function WinGet_CMD_List(
     return {
         faRawName: RawNameNew,
         chList: [
-            {
-                chName: `${RawNameNew}1`,
-                by: EPseudoArray.byWinGet_CMD_list1,
-            },
+            // {
+            //     chName: `${RawNameNew}1`,
+            //     by: EPseudoArray.byWinGet_CMD_list,
+            // },
         ],
         line,
         col: lPos,
-        by: EPseudoArray.byWinGet_CMD_list,
+        by: EPseudoArray.byWinGet_CMD_listFa,
     };
 }

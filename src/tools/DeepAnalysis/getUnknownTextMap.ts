@@ -22,7 +22,6 @@ import { StatementMDMap } from '../Built-in/3_foc/foc.tools';
 import { operatorMD } from '../Built-in/4_operator/operator.tools';
 import { CommandMDMap } from '../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../str/ToUpCase';
-import { getValMeta } from './FnVar/def/getValMeta';
 import { pushDef } from './pushDef';
 import { pushRef } from './pushRef';
 
@@ -175,11 +174,12 @@ export function getUnknownTextMap(
             if (
                 !textMap.has(wordUp) && (
                     CommandMDMap.has(wordUp)
-                    || AVariablesMDMap.has(wordUp) || StatementMDMap.has(wordUp)
+                    || AVariablesMDMap.has(wordUp)
+                    || StatementMDMap.has(wordUp)
                     || Bi_VarMDMap.has(wordUp)
+                    || operatorMD.has(wordUp) // and or
+                    || WinTitleMDMap.has(wordUp) // ahk_class
                     // || (/^_+$/u).test(wordUp) // str
-                    || operatorMD.has(wordUp)
-                    || WinTitleMDMap.has(wordUp)
                     /*
                      * let decLiteral: number = 6;
                      * let hexLiteral: number = 0xf00d;
@@ -196,50 +196,28 @@ export function getUnknownTextMap(
                 startPos,
                 new vscode.Position(line, character + wordUp.length),
             );
-            // hot-fix EPseudoArray.byStringSplitEtc https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11#issuecomment-1574741836
+            // fix EPseudoArray.byStringSplitEtc https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11#issuecomment-1574741836
             if ((/\d+$/u).test(wordUp)) {
                 const chUpNameFa: string = wordUp.replace(/\d+$/u, '');
                 const oldValStringSplit: TValMetaIn | undefined = valMap.get(chUpNameFa);
                 if (oldValStringSplit !== undefined) {
-                    const {
-                        AssociatedList,
-                        defRangeList,
-                        refRangeList,
-                        keyRawName: keyRawNameStringSplit,
-                        fnMode,
-                    } = oldValStringSplit;
-                    if (AssociatedList.length > 0) {
-                        // dprint-ignore
-                        const isDef:boolean = [':=', '+=', '-=', '*=', '/=', '//=', '.=', '|=', '&=', '^=', '>>=', '<<=', '>>>='].some((vvv: string): boolean => strF.startsWith(vvv));
+                    const { AssociatedList, refRangeList } = oldValStringSplit;
 
-                        if (isDef) {
-                            defRangeList.push(range);
-                        } else {
-                            refRangeList.push(range);
-                        }
-                        for (const d of AssociatedList) {
-                            const { chList } = d;
-                            if (chList.length > 0) {
-                                // AssociatedList.chList.push();
-                                chList.push({ chName: keyRawName, by: EPseudoArray.byStringSplitEtc });
-                                const value: TValMetaIn = getValMeta({
-                                    line,
-                                    character,
-                                    RawName: keyRawName, // chName,
-                                    valMap,
-                                    lineComment: '',
-                                    fnMode,
-                                    Associated: {
-                                        faRawName: keyRawNameStringSplit,
-                                        chList: [],
-                                        line,
-                                        col: character,
-                                        by: EPseudoArray.byStringSplitEtc,
-                                    },
-                                });
-                                valMap.set(/* chUpName */ wordUp, value);
+                    for (const { by, chList } of AssociatedList) {
+                        if (by === EPseudoArray.byWinGet_CMD_listFa || by === EPseudoArray.byStringSplitFa) {
+                            const byCh = by === EPseudoArray.byWinGet_CMD_listFa
+                                ? EPseudoArray.byWinGet_CMD_listCh
+                                : EPseudoArray.byStringSplitCh;
+                            if (
+                                by === EPseudoArray.byWinGet_CMD_listFa
+                                && (/\D0$/u).test(wordUp)
+                            ) {
                                 break;
                             }
+
+                            refRangeList.push(range);
+                            chList.push({ chName: keyRawName, by: byCh });
+                            break;
                         }
                     }
 

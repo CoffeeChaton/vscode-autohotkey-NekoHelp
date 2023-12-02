@@ -1,9 +1,11 @@
+/* eslint-disable max-lines-per-function */
 import type * as vscode from 'vscode';
 import type {
     CAhkFunc,
     TFnParamMeta,
     TParamMetaOut,
     TTextMetaOut,
+    TValMetaIn,
     TValMetaOut,
 } from '../../../AhkSymbol/CAhkFunc';
 import { EPrefix, setMD } from '../../../tools/MD/setMD';
@@ -77,6 +79,34 @@ export function DeepAnalysisHover(
             commentList,
             jsDocStyle,
         });
+    }
+
+    // #11 StringSplit https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11
+    if ((/\d+$/u).test(wordUp)) {
+        //
+        const chUpNameFa: string = wordUp.replace(/\d+$/u, '');
+        const oldValStringSplit: TValMetaIn | undefined = valMap.get(chUpNameFa);
+        if (oldValStringSplit !== undefined) {
+            const {
+                refRangeList,
+                defRangeList,
+                commentList,
+                jsDocStyle,
+            } = oldValStringSplit;
+            for (const ref of refRangeList) {
+                if (ref.contains(position)) {
+                    return setMD({
+                        prefix: EPrefix.var,
+                        refRangeList: [],
+                        defRangeList,
+                        funcName: name,
+                        recStr: '',
+                        commentList,
+                        jsDocStyle,
+                    });
+                }
+            }
+        }
     }
 
     const textMeta: TTextMetaOut | undefined = textMap.get(wordUp);

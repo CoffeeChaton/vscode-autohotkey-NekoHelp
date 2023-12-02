@@ -62,8 +62,25 @@ export const enum EPseudoArray {
     bySysGet_CMD_Right = 203,
     bySysGet_CMD_Top = 204,
 
-    byWinGet_CMD_list = 300,
-    byWinGet_CMD_list1 = 301,
+    /**
+     * ```ahk
+     * #Requires AutoHotkey v1.1.33+
+     * ; https://www.autohotkey.com/docs/v1/lib/WinGet.htm#List
+     * WinGet OutputVar, List ; To retrieve all windows on the entire system, omit all four title/text parameters.
+     *
+     * ListVars
+     *
+     * ; OutputVar[0 of 0]:
+     * ; OutputVar1[0 of 0]:
+     * ; OutputVar2[0 of 0]:
+     * ; OutputVar3[0 of 0]:
+     * ; ....
+     *
+     * MsgBox % "observe ListVars"
+     * ```
+     */
+    byWinGet_CMD_listFa = 399,
+    byWinGet_CMD_listCh = 302,
 
     // byStringSplit0 = 400,
     // byStringSplit1 = 401,
@@ -80,7 +97,7 @@ export const enum EPseudoArray {
      * ```
      */
     byStringSplitFa = 499,
-    byStringSplitEtc = 402,
+    byStringSplitCh = 402,
     // Infinitely filled masquerade array...I don't know what to do with it =_= thanks you ahk
 }
 
