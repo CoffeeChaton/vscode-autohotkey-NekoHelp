@@ -33,6 +33,15 @@
 
 ## v0.0.51(2023-12-XX)
 
+- feat: [(#11)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) StringSplit more support
+  - old: only support 0 and 1
+  - new: support any end with number
+  - support:
+    - semantic-highlight
+    - gotoDef
+    - findAllRef
+      ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-51-fix-issues-11-StringSplit.jpg)
+
 - fix: hover at val/param doc-style
   > I don’t know why, vscode’s behavior for `label <details>` and `label <summary>` has changed...
   > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-51-fix-hover-style.jpg)
