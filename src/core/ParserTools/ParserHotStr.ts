@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { CAhkHotString } from '../../AhkSymbol/CAhkLine';
+import { CAhkHotString } from '../../AhkSymbol/CAhkHotString';
 
 import { EDetail } from '../../globalEnum';
 import type { TFuncInput } from '../getChildren';

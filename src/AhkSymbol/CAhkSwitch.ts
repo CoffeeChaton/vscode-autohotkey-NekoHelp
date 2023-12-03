@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import * as vscode from 'vscode';
-import type { TLineClass } from './CAhkLine';
+import type { TLineClass } from './TLineClass';
 
 // switch
 export class CAhkSwitch extends vscode.DocumentSymbol {

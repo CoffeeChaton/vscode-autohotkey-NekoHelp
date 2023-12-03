@@ -2,8 +2,8 @@
 import * as vscode from 'vscode';
 import type { EFnMode } from '../tools/DeepAnalysis/FnVar/EFnMode';
 import { ToUpCase } from '../tools/str/ToUpCase';
-import type { TLineClass } from './CAhkLine';
 import type { CAhkSwitch } from './CAhkSwitch';
+import type { TLineClass } from './TLineClass';
 
 // ---------------------------------------------------------------------------
 // WTF

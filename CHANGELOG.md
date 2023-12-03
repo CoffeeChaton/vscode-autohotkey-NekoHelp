@@ -33,6 +33,9 @@
 
 ## v0.0.51(2023-12-XX)
 
+- feat: support hover at `:T:Out::OutputVar` [HotStrings Options](https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options)
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-51-hover-hotstr-option.jpg)
+
 - feat: [(#11)](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/11) StringSplit more support
   - old: only support 0 and 1
   - new: support any end with number

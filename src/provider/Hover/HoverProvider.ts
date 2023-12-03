@@ -15,6 +15,7 @@ import { getHoverStatement } from '../../tools/Built-in/3_foc/foc.tools';
 import { getHoverOperator } from '../../tools/Built-in/4_operator/operator.tools';
 import { getHoverDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
 import { getHoverCommand2 } from '../../tools/Built-in/6_command/Command.tools';
+import { HotStringsOptions } from '../../tools/Built-in/9_HotStrings_Options/HotStringsOptions.tool';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
@@ -102,6 +103,11 @@ function HoverProviderCore(
     const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
     if (property !== null) return ClassProperty2Md(property);
 
+    //
+    const HotStringsMd: vscode.MarkdownString | null = HotStringsOptions(position, AhkFileData);
+    if (HotStringsMd !== null) return new vscode.Hover(HotStringsMd);
+
+    //
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+(?!\()/u,

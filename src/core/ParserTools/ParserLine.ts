@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
 import { CAhkInclude } from '../../AhkSymbol/CAhkInclude';
-import type { CAhkComment, TLineClass } from '../../AhkSymbol/CAhkLine';
+import type { CAhkComment } from '../../AhkSymbol/CAhkLine';
 import { CAhkDirectives } from '../../AhkSymbol/CAhkLine';
+import type { TLineClass } from '../../AhkSymbol/TLineClass';
 import { EDetail } from '../../globalEnum';
 import { DirectivesMDMap } from '../../tools/Built-in/0_directive/Directives.tool';
 import { getRangeOfLine } from '../../tools/range/getRangeOfLine';

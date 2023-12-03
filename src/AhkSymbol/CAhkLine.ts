@@ -2,7 +2,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../globalEnum';
 import { ToUpCase } from '../tools/str/ToUpCase';
-import type { CAhkInclude } from './CAhkInclude';
 
 export type TBaseLineParam = {
     name: string,
@@ -86,35 +85,6 @@ export class CAhkHotKeys extends vscode.DocumentSymbol {
 }
 
 /**
- * @example ::ts,:: typescript
- */
-export class CAhkHotString extends vscode.DocumentSymbol {
-    public readonly uri: vscode.Uri;
-
-    public readonly AfterString: string;
-
-    declare public readonly kind: vscode.SymbolKind.Event;
-
-    declare public readonly detail: 'HotString';
-
-    declare public readonly children: never[];
-
-    public constructor(
-        {
-            name,
-            range,
-            selectionRange,
-            uri,
-        }: TBaseLineParam,
-        AfterString: string,
-    ) {
-        super(name, 'HotString', vscode.SymbolKind.Event, range, selectionRange);
-        this.uri = uri;
-        this.AfterString = AfterString;
-    }
-}
-
-/**
  * AHK_L will auto diag of Duplicate label.
  *
  * auto diag1
@@ -184,9 +154,3 @@ export class CAhkComment extends vscode.DocumentSymbol {
         this.uri = uri;
     }
 }
-
-export type TLineClass =
-    | CAhkComment
-    | CAhkDirectives
-    | CAhkInclude
-    | CAhkLabel;

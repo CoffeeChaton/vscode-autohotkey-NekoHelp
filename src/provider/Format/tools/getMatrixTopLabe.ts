@@ -2,12 +2,12 @@
 /* eslint-disable max-depth */
 
 import { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
+import { CAhkHotString } from '../../../AhkSymbol/CAhkHotString';
 import { CAhkInclude } from '../../../AhkSymbol/CAhkInclude';
 import {
     CAhkComment,
     CAhkDirectives,
     CAhkHotKeys,
-    CAhkHotString,
     CAhkLabel,
 } from '../../../AhkSymbol/CAhkLine';
 import type { TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
