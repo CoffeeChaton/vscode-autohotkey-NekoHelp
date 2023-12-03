@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.51(2023-12-XX)](#v00512023-12-xx)
+  - [v0.0.51(2023-12-03)](#v00512023-12-03)
   - [v0.0.50(2023-11-24)](#v00502023-11-24)
   - [v0.0.49(2023-11-11)](#v00492023-11-11)
   - [v0.0.48(2023-10-31)](#v00482023-10-31)
@@ -31,7 +31,10 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## v0.0.51(2023-12-XX)
+## v0.0.51(2023-12-03)
+
+<!-- pnpm 8.10.2 -->
+<!-- dprint 0.41.0 -->
 
 - feat: support hover at `:T:Out::OutputVar` [HotStrings Options](https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options)
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-51-hover-hotstr-option.jpg)

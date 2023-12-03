@@ -25,7 +25,7 @@ export class CAhkHotString extends vscode.DocumentSymbol {
 
     declare public readonly children: never[];
 
-    public opt: readonly THotStrData[] | null = null;
+    #opt: readonly THotStrData[] | null = null;
 
     public constructor(
         {
@@ -43,7 +43,7 @@ export class CAhkHotString extends vscode.DocumentSymbol {
     }
 
     public getOption(): readonly THotStrData[] {
-        const oldDat: readonly THotStrData[] | null = this.opt;
+        const oldDat: readonly THotStrData[] | null = this.#opt;
         if (oldDat !== null) {
             return oldDat;
         }
@@ -99,7 +99,7 @@ export class CAhkHotString extends vscode.DocumentSymbol {
             }
         }
 
-        this.opt = need;
+        this.#opt = need;
         return need;
     }
 }
