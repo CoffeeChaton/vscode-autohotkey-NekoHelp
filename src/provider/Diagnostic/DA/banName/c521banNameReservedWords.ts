@@ -25,7 +25,7 @@ function c521banVarName(
 ): void {
     const data = map.get(kUp);
     if (data !== undefined) {
-        const range: DeepReadonly<vscode.Range> = data.defRangeList[0];
+        const { range } = data.defRangeList[0];
         if (c521DisplayErr(range, displayFnErrList)) {
             diag521List.push(new C521Class(range, false));
         }

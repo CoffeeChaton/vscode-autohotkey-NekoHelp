@@ -7,7 +7,7 @@ function DA2SemanticHighlight(fn: CAhkFunc): TSemanticTokensLeaf[] {
     const Tokens: TSemanticTokensLeaf[] = [];
     const { paramMap, valMap } = fn;
     for (const { defRangeList, refRangeList } of paramMap.values()) {
-        for (const range of [...defRangeList, ...refRangeList]) {
+        for (const { range } of [...defRangeList, ...refRangeList]) {
             Tokens.push({
                 range,
                 tokenType: 'parameter', // <---------------
@@ -16,7 +16,7 @@ function DA2SemanticHighlight(fn: CAhkFunc): TSemanticTokensLeaf[] {
         }
     }
     for (const { defRangeList, refRangeList } of valMap.values()) {
-        for (const range of [...defRangeList, ...refRangeList]) {
+        for (const { range } of [...defRangeList, ...refRangeList]) {
             Tokens.push({
                 range,
                 tokenType: 'variable', // <---------------

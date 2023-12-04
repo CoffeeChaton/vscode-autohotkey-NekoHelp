@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { TParamMapOut } from '../../../../AhkSymbol/CAhkFunc';
+import type { TParamMapOut, TVarData } from '../../../../AhkSymbol/CAhkFunc';
 import { DiagsDA, EDiagCodeDA } from '../../../../diag';
 import { CDiagFn } from '../../tools/CDiagFn';
 
@@ -7,10 +7,10 @@ export class C501Class extends CDiagFn {
     //
     declare public readonly value: EDiagCodeDA.code501;
 
-    public constructor(defRangeList: readonly vscode.Range[]) {
+    public constructor(defRangeList: readonly TVarData[]) {
         super({
             value: EDiagCodeDA.code501,
-            range: defRangeList[0],
+            range: defRangeList[0].range,
             severity: vscode.DiagnosticSeverity.Warning,
             tags: [vscode.DiagnosticTag.Unnecessary],
             message: DiagsDA[EDiagCodeDA.code501].msg,
@@ -35,7 +35,7 @@ export function NeverUsedParam(
             isByRef
             || refRangeList.length > 0
             || keyRawName.startsWith('_')
-            || !displayErrList[defRangeList[0].start.line]
+            || !displayErrList[defRangeList[0].range.start.line]
         ) {
             continue;
         }

@@ -160,12 +160,11 @@ export function getParamDef(_fnName: string, selectionRange: vscode.Range, DocSt
 
             const ArgAnalysis: TParamMetaIn = {
                 keyRawName,
-                defRangeList: [range],
+                defRangeList: [{ range, c502: 0 }],
                 refRangeList: [],
                 parsedErrRange,
                 isByRef,
                 isVariadic,
-                c502Array: [0],
                 defaultValue,
                 defaultType,
                 commentList: [

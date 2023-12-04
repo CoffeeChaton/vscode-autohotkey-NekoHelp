@@ -1,19 +1,10 @@
-import type * as vscode from 'vscode';
-import type { TC502New, TParamMapOut, TValMapOut } from '../../../AhkSymbol/CAhkFunc';
+import type {
+    TParamMapOut,
+    TValMapOut,
+    TVarData,
+} from '../../../AhkSymbol/CAhkFunc';
 import type { EPrefixC502 } from './CDiagFnLib/C502Class';
 import { C502Class } from './CDiagFnLib/C502Class';
-
-function getRangeOfC502(
-    defRangeList: readonly vscode.Range[],
-    refRangeList: readonly vscode.Range[],
-    i: number,
-): vscode.Range {
-    const defRangeListLen: number = defRangeList.length;
-    if (defRangeListLen > i) {
-        return defRangeList[i];
-    }
-    return refRangeList[i - defRangeListLen];
-}
 
 export function caseSensitivityVar(
     prefix: EPrefixC502,
@@ -28,31 +19,24 @@ export function caseSensitivityVar(
 
     for (const ValAnalysis of paramOrValMap.values()) {
         const {
-            c502Array,
             defRangeList,
             refRangeList,
             keyRawName,
         } = ValAnalysis;
 
-        const c502ArrayLen: number = c502Array.length;
-        for (let i = 0; i < c502ArrayLen; i++) {
-            /**
-             * refStr: TC502New : string | 0
-             * 0 is mean OK
-             */
-            const refStr: TC502New = c502Array[i]; // string | 0
-            if (refStr === 0) continue;
+        const arrMain: readonly TVarData[] = [...defRangeList, ...refRangeList];
+        for (const { c502, range } of arrMain) {
+            if (c502 === 0) continue;
 
-            const refRange: vscode.Range = getRangeOfC502(defRangeList, refRangeList, i);
-            if (!displayErrList[refRange.start.line]) continue;
+            if (!displayErrList[range.start.line]) continue;
 
             const diagFn: C502Class = new C502Class(
                 {
-                    defRange: defRangeList[0],
+                    defRange: defRangeList[0].range,
                     defStr: keyRawName,
                     prefix,
-                    refRange,
-                    refStr,
+                    refRange: range,
+                    refStr: c502,
                 },
             );
 

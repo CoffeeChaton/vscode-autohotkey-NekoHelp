@@ -23,8 +23,7 @@ export function wrapFnValDef({
 }: TGetValue): TValMetaIn {
     const oldVal: TValMetaIn | undefined = valMap.get(ToUpCase(RawNameNew));
     if (oldVal !== undefined) {
-        oldVal.c502Array.push(newC502(oldVal.keyRawName, RawNameNew));
-        oldVal.defRangeList.push(defRange);
+        oldVal.defRangeList.push({ range: defRange, c502: newC502(oldVal.keyRawName, RawNameNew) });
         if (lineComment.startsWith(';')) {
             oldVal.commentList.push(lineComment.slice(1));
         }
@@ -36,9 +35,8 @@ export function wrapFnValDef({
 
     return {
         keyRawName: RawNameNew,
-        defRangeList: [defRange],
+        defRangeList: [{ range: defRange, c502: 0 }],
         refRangeList: [],
-        c502Array: [0],
         commentList: [
             lineComment.startsWith(';')
                 ? lineComment.slice(1)

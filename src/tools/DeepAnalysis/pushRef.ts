@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import type { TParamMetaIn, TValMetaIn } from '../../AhkSymbol/CAhkFunc';
+import type { TParamMetaIn, TValMetaIn, TVarData } from '../../AhkSymbol/CAhkFunc';
+
 import { newC502 } from './FnVar/def/c502';
 
 export function pushRef(
@@ -9,7 +10,7 @@ export function pushRef(
     character: number,
 ): null {
     const startPos: vscode.Position = new vscode.Position(line, character);
-    if (oldDef.defRangeList.some((defRange: vscode.Range): boolean => defRange.contains(startPos))) {
+    if (oldDef.defRangeList.some((varData: TVarData): boolean => varData.range.contains(startPos))) {
         return null;
     }
 
@@ -18,7 +19,9 @@ export function pushRef(
         new vscode.Position(line, character + keyRawName.length),
     );
 
-    oldDef.refRangeList.push(range);
-    oldDef.c502Array.push(newC502(oldDef.keyRawName, keyRawName));
+    oldDef.refRangeList.push({
+        range,
+        c502: newC502(oldDef.keyRawName, keyRawName),
+    });
     return null;
 }

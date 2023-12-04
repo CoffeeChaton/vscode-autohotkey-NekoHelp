@@ -45,7 +45,7 @@ export function C506DiagNumberStyle(
 ): void {
     for (const [keyUpName, v] of textMap) {
         if ((/^0o[0-7]+$/iu).test(keyUpName) || (/^0b[01]+$/iu).test(keyUpName)) {
-            for (const range of v.refRangeList) {
+            for (const { range } of v.refRangeList) {
                 if (displayErrList[range.start.line]) {
                     code506List.push(new C506Class({ range, keyUpName }));
                 }

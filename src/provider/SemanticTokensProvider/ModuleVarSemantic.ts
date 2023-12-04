@@ -5,7 +5,7 @@ export function ModuleVarSemantic(ModuleVar: TModuleVar): TSemanticTokensLeaf[] 
     const Tokens: TSemanticTokensLeaf[] = [];
     const { ModuleValMap } = ModuleVar;
     for (const { defRangeList, refRangeList } of ModuleValMap.values()) {
-        for (const range of [...defRangeList, ...refRangeList]) {
+        for (const { range } of [...defRangeList, ...refRangeList]) {
             Tokens.push({
                 range,
                 tokenType: 'variable',

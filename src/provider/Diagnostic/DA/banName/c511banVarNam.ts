@@ -25,7 +25,7 @@ export function c511banVarNam(
     for (const { paramMap, valMap } of getDAListTop(AST)) {
         for (const [k, v] of [...paramMap, ...valMap]) {
             const ahkFn: CAhkFunc | undefined = fnMap.get(k);
-            if (ahkFn !== undefined && displayFnErrList[v.defRangeList[0].start.line]) {
+            if (ahkFn !== undefined && displayFnErrList[v.defRangeList[0].range.start.line]) {
                 diag511List.push(new C511Class(v, ahkFn));
                 len++;
                 if (len >= code511Max) break;

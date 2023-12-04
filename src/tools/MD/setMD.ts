@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import type { TVarData } from '../../AhkSymbol/CAhkFunc';
 import type { ESnippetRecBecause } from '../../provider/CompletionItem/DA/ESnippetRecBecause';
 
 export const enum EPrefix {
@@ -10,16 +11,16 @@ export const enum EPrefix {
     unKnownText = 'unKnownText',
 }
 
-function RangeList2Str(RangeList: readonly vscode.Range[]): string {
+function RangeList2Str(RangeList: readonly TVarData[]): string {
     return RangeList
-        .map((range: vscode.Range): string => `  - line ${range.start.line + 1}, col ${range.start.character + 1}</br>`)
+        .map(({ range }: TVarData): string => `  - line ${range.start.line + 1}, col ${range.start.character + 1}</br>`)
         .join('\n');
 }
 
 type TSetMD = {
     prefix: EPrefix,
-    refRangeList: readonly vscode.Range[],
-    defRangeList: readonly vscode.Range[],
+    refRangeList: readonly TVarData[],
+    defRangeList: readonly TVarData[],
     funcName: string,
     recStr: ESnippetRecBecause | '',
     commentList: readonly string[],

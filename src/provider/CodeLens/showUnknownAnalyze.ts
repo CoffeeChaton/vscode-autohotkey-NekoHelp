@@ -13,7 +13,7 @@ export function showUnknownAnalyze(DA: CAhkFunc): void {
 
     for (const TextMetaOut of textMap.values()) {
         msgList.push(TextMetaOut.keyRawName);
-        for (const range of TextMetaOut.refRangeList) {
+        for (const { range } of TextMetaOut.refRangeList) {
             const { line, character } = range.start;
             msgList.push(`    at line ${line + 1} ;${fsPath}:${line + 1}:${character + 1}`);
         }

@@ -26,7 +26,7 @@ export function C507SetVarErr0xNumber(
     for (const [keyUpName, v] of paramOrValMap) {
         if ((/^0X[\dA-F]+$/u).test(keyUpName) || (/^\d+$/u).test(keyUpName)) {
             const { defRangeList, refRangeList } = v;
-            for (const range of [...defRangeList, ...refRangeList]) {
+            for (const { range } of [...defRangeList, ...refRangeList]) {
                 if (displayErrList[range.start.line]) {
                     code507List.push(new C507Class(range));
                 }

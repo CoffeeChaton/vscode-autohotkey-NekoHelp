@@ -215,7 +215,7 @@ export function getUnknownTextMap(
                                 break;
                             }
 
-                            refRangeList.push(range);
+                            refRangeList.push({ range, c502: 0 });
                             chList.push({ chName: keyRawName, by: byCh });
                             break;
                         }
@@ -228,7 +228,7 @@ export function getUnknownTextMap(
             //
             const need: TTextMetaIn = {
                 keyRawName,
-                refRangeList: [...textMap.get(wordUp)?.refRangeList ?? [], range],
+                refRangeList: [...textMap.get(wordUp)?.refRangeList ?? [], { range, c502: 0 }],
             };
 
             textMap.set(wordUp, need);

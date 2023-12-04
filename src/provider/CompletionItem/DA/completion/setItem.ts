@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import type { TVarData } from '../../../../AhkSymbol/CAhkFunc';
 import type { EPrefix } from '../../../../tools/MD/setMD';
 import { setMD } from '../../../../tools/MD/setMD';
 import type { ESnippetRecBecause, TSnippetRecMap } from '../ESnippetRecBecause';
@@ -8,8 +9,8 @@ type TSetItem = {
     recMap: TSnippetRecMap,
     keyRawName: string,
     funcName: string,
-    refRangeList: readonly vscode.Range[],
-    defRangeList: readonly vscode.Range[],
+    refRangeList: readonly TVarData[],
+    defRangeList: readonly TVarData[],
     snipKind: vscode.CompletionItemKind,
     kind: vscode.SymbolKind.Function | vscode.SymbolKind.Method,
     commentList: readonly string[],

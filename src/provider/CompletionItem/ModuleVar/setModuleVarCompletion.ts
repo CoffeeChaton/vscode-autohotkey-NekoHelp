@@ -6,10 +6,10 @@ import type { ESnippetRecBecause, TSnippetRecMap } from '../DA/ESnippetRecBecaus
 function needGlobalHead(DA: CAhkFunc | null, v: TValMetaOut): boolean {
     if (DA === null) return false;
 
-    const { range } = DA;
+    const DARange: vscode.Range = DA.range;
 
-    for (const rangeGlobal of [...v.refRangeList, ...v.defRangeList]) {
-        if (range.contains(rangeGlobal)) return false;
+    for (const { range } of [...v.refRangeList, ...v.defRangeList]) {
+        if (DARange.contains(range)) return false;
     }
 
     return true;

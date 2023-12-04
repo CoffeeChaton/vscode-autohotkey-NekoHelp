@@ -7,13 +7,14 @@ import type {
     TTextMetaOut,
     TValMetaIn,
     TValMetaOut,
+    TVarData,
 } from '../../../AhkSymbol/CAhkFunc';
 import { EPrefix, setMD } from '../../../tools/MD/setMD';
 import { setPreFix } from '../../../tools/str/setPreFix';
 import { ToUpCase } from '../../../tools/str/ToUpCase';
 
-function PosInRange(arr: readonly vscode.Range[], position: vscode.Position): boolean {
-    return arr.some((range: vscode.Range): boolean => range.contains(position));
+function PosInRange(arr: readonly TVarData[], position: vscode.Position): boolean {
+    return arr.some(({ range }: TVarData): boolean => range.contains(position));
 }
 
 export function DeepAnalysisHover(
@@ -93,8 +94,8 @@ export function DeepAnalysisHover(
                 commentList,
                 jsDocStyle,
             } = oldValStringSplit;
-            for (const ref of refRangeList) {
-                if (ref.contains(position)) {
+            for (const { range } of refRangeList) {
+                if (range.contains(position)) {
                     return setMD({
                         prefix: EPrefix.var,
                         refRangeList: [],

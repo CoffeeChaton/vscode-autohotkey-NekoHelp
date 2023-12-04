@@ -5,19 +5,20 @@ import type {
     TValMapOut,
     TValMetaIn,
     TValMetaOut,
+    TVarData,
 } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFucDefWordUpFix } from './getFucDefWordUpFix';
 import { searchAllGlobalVarRef } from './searchAllVarRef';
 
-function rangeList2LocList(rangeList: readonly vscode.Range[], uri: vscode.Uri): vscode.Location[] {
-    return rangeList.map((range) => new vscode.Location(uri, range));
+function rangeList2LocList(rangeList: TVarData[], uri: vscode.Uri): vscode.Location[] {
+    return rangeList.map(({ range }: TVarData) => new vscode.Location(uri, range));
 }
 
 function metaRangeList(
-    defRangeList: readonly vscode.Range[],
-    refRangeList: readonly vscode.Range[],
+    defRangeList: TVarData[],
+    refRangeList: TVarData[],
     listAllUsing: boolean,
     position: vscode.Position,
     uri: vscode.Uri,
@@ -26,7 +27,7 @@ function metaRangeList(
         return rangeList2LocList([...defRangeList, ...refRangeList], uri);
     }
 
-    return defRangeList[0].contains(position)
+    return defRangeList[0].range.contains(position)
         ? [new vscode.Location(uri, position)]
         : rangeList2LocList(defRangeList, uri);
 }
@@ -45,8 +46,8 @@ function getStringSplitDef(
         const oldValStringSplit: TValMetaIn | undefined = Map.get(chUpNameFa);
         if (oldValStringSplit !== undefined) {
             const { defRangeList, refRangeList } = oldValStringSplit;
-            for (const ref of refRangeList) {
-                if (ref.contains(position)) {
+            for (const { range } of refRangeList) {
+                if (range.contains(position)) {
                     return metaRangeList(defRangeList, refRangeList, listAllUsing, position, uri);
                 }
             }
@@ -73,7 +74,7 @@ function getModuleVarDef(
         }
 
         const { defRangeList } = valMeta;
-        return defRangeList[0].contains(position)
+        return defRangeList[0].range.contains(position)
             ? [new vscode.Location(uri, position)]
             : rangeList2LocList(defRangeList, uri);
     }

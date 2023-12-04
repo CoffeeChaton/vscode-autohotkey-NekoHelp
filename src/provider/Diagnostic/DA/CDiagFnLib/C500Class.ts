@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { TValMapOut, TValMetaOut } from '../../../../AhkSymbol/CAhkFunc';
+import type { TValMapOut, TValMetaOut, TVarData } from '../../../../AhkSymbol/CAhkFunc';
 import { EPseudoArray } from '../../../../AhkSymbol/CAhkFunc';
 import { EDiagCodeDA } from '../../../../diag';
 import { AVariablesMDMap } from '../../../../tools/Built-in/1_built_in_var/A_Variables.tools';
@@ -11,10 +11,10 @@ export class C500Class extends CDiagFn {
     //
     declare public readonly value: EDiagCodeDA.code500;
 
-    public constructor(defRangeList: readonly vscode.Range[], rawName: string) {
+    public constructor(defRangeList: readonly TVarData[], rawName: string) {
         super({
             value: EDiagCodeDA.code500,
-            range: defRangeList[0],
+            range: defRangeList[0].range,
             severity: vscode.DiagnosticSeverity.Warning,
             tags: [vscode.DiagnosticTag.Unnecessary],
             message: `var "${rawName}" is assigned but never used.`,
@@ -82,7 +82,7 @@ export function NeverUsedVar(
             AVariablesMDMap.has(key)
             || key.startsWith('_')
             || Bi_VarMDMap.has(key)
-            || !displayErrList[defRangeList[0].start.line]
+            || !displayErrList[defRangeList[0].range.start.line]
             || key === 'PCRE_CALLOUT'
         ) {
             continue;

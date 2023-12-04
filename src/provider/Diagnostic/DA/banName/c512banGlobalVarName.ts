@@ -19,7 +19,7 @@ export function c512banGlobalVarName(
     let len = 0;
     for (const [k, v] of ModuleValMap) {
         const ahkFn: CAhkFunc | undefined = fnMap.get(k);
-        if (ahkFn !== undefined && displayFnErrList[v.defRangeList[0].start.line]) {
+        if (ahkFn !== undefined && displayFnErrList[v.defRangeList[0].range.start.line]) {
             diag512List.push(new C512Class(v, ahkFn));
             len++;
             if (len >= code512Max) break;

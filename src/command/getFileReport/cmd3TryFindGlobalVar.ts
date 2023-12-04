@@ -58,7 +58,7 @@ function getByDefModuleVar(AhkFileData: TAhkFileData, set: Set<string>): readonl
     const arr: TMsg[] = [];
     for (const [k, { defRangeList, keyRawName }] of ModuleVar.ModuleValMap) {
         if (!set.has(k)) {
-            const { line } = defRangeList[0].start;
+            const { line } = defRangeList[0].range.start;
             const { textRaw } = DocStrMap[line];
             arr.push({ line, rawName: keyRawName, textRaw });
             set.add(k);

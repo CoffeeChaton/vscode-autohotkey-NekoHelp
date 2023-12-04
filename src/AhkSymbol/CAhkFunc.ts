@@ -27,11 +27,15 @@ export const enum EParamDefaultType {
     notArray = 11,
     notObject = 12,
 }
+export type TVarData = {
+    range: vscode.Range,
+    c502: TC502New,
+};
+
 export type TParamMetaIn = {
     keyRawName: string,
-    defRangeList: vscode.Range[],
-    refRangeList: vscode.Range[],
-    c502Array: TC502New[],
+    defRangeList: TVarData[],
+    refRangeList: TVarData[],
     parsedErrRange: vscode.Range | null,
     isByRef: boolean,
     isVariadic: boolean, // https://www.autohotkey.com/docs/v1/Functions.htm#Variadic
@@ -111,9 +115,8 @@ export type TAssociated = {
 
 export type TValMetaIn = {
     keyRawName: string,
-    defRangeList: vscode.Range[],
-    refRangeList: vscode.Range[],
-    c502Array: TC502New[],
+    defRangeList: TVarData[],
+    refRangeList: TVarData[],
     commentList: string[], // c++ style comments
     jsDocStyle: string, //
     fnMode: EFnMode,
@@ -131,7 +134,7 @@ export type TValMapOut = ReadonlyMap<TUpName, TValMetaOut>;
 export type TTextMetaIn = {
     keyRawName: string,
     // defRangeList: never[];
-    refRangeList: vscode.Range[],
+    refRangeList: TVarData[],
 };
 export type TTextMetaOut = Readonly<TTextMetaIn>;
 

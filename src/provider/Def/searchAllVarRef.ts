@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { TTextMetaOut, TValMetaOut } from '../../AhkSymbol/CAhkFunc';
+import type { TTextMetaOut, TValMetaOut, TVarData } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
@@ -10,18 +10,10 @@ const fileGVarRefMap = new WeakMap<TAhkFileData, TFileGVarRefMap>();
 function LocListPush(
     uri: vscode.Uri,
     fileList: vscode.Location[],
-    rangeList1: readonly vscode.Range[],
-    rangeList2: readonly vscode.Range[],
+    rangeList1: readonly TVarData[],
+    rangeList2: readonly TVarData[],
 ): void {
-    for (const range of rangeList1) {
-        fileList.push(
-            new vscode.Location(
-                uri,
-                range,
-            ),
-        );
-    }
-    for (const range of rangeList2) {
+    for (const { range } of [...rangeList1, ...rangeList2]) {
         fileList.push(
             new vscode.Location(
                 uri,

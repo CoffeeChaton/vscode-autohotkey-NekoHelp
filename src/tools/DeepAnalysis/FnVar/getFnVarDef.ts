@@ -176,7 +176,7 @@ export function getFnVarDef(
     // add jsdoc style comments
     for (const v of valMap.values()) {
         //
-        const fistLine: number = v.defRangeList[0].start.line;
+        const fistLine: number = v.defRangeList[0].range.start.line;
         if (fistLine === 0) continue;
         const { ahkDoc } = DocStrMap[fistLine - 1];
         v.jsDocStyle = ahkDoc;
