@@ -169,7 +169,7 @@ export type TAhkTokenLine = Readonly<{
     ahkDoc: string,
     // I know this is not Complete and correct Token.
 
-    lineFnCallRaw: TLineFnCallRaw[],
+    lineFnCallRaw: readonly TLineFnCallRaw[],
 }>;
 
 export type TTokenStream = readonly TAhkTokenLine[];

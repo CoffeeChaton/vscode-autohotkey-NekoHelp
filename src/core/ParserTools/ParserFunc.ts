@@ -44,10 +44,9 @@ function getAllowsListOfFunc(DocStrMap: TTokenStream, startLine: number, endLine
 
 // TODO spilt this func
 export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
-    const { line, lStr } = FuncInput.AhkTokenLine;
+    const { line, lStr, lineFnCallRaw } = FuncInput.AhkTokenLine;
 
-    const col: number = lStr.indexOf('(');
-    if (lStr.length === 0 || col === -1) return null;
+    if (lineFnCallRaw.length !== 1) return null;
 
     const {
         DocStrMap,
@@ -57,7 +56,7 @@ export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
         GValMap,
     } = FuncInput;
 
-    const fnDefData: TFuncDefData | null = getFuncDef(DocStrMap, line);
+    const fnDefData: TFuncDefData | null = getFuncDef(DocStrMap, line, lineFnCallRaw[0]);
     if (fnDefData === null) return null;
 
     const { name, selectionRange } = fnDefData;
@@ -118,7 +117,7 @@ export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
             selectionRange.start,
             new vscode.Position(
                 line,
-                col,
+                lStr.indexOf('('),
             ),
         ),
         fnMode,

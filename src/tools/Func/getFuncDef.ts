@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { TTokenStream } from '../../globalEnum';
+import type { TLineFnCallRaw, TTokenStream } from '../../globalEnum';
 
 export type TFuncDefData = {
     name: string,
@@ -50,19 +50,19 @@ function getFuncTail({
     return null;
 }
 
-export function getFuncDef(DocStrMap: TTokenStream, defLine: number): TFuncDefData | null {
+export function getFuncDef(
+    DocStrMap: TTokenStream,
+    defLine: number,
+    fistFnCallData: TLineFnCallRaw,
+): TFuncDefData | null {
     if (defLine + 1 === DocStrMap.length) return null;
-    const textFixTrim: string = DocStrMap[defLine].lStr.replace(/^[ \t}]*/u, '').trim();
 
-    const fnHead: RegExpMatchArray | null = textFixTrim.match(/^([#$@\w\u{A1}-\u{FFFF}]+)\(/u); //  funcName(...
-    if (fnHead === null) return null;
-
-    const name: string = fnHead[1];
+    const name: string = fistFnCallData.fnName;
     if ((/^(?:if|while)$/iu).test(name)) return null;
 
     const funcData: TFuncDefData | null = getFuncTail({
         DocStrMap,
-        searchTextTrim: textFixTrim,
+        searchTextTrim: DocStrMap[defLine].lStr.replace(/^[ \t}]*/u, '').trim(),
         name,
         searchLine: defLine,
         defLine,
