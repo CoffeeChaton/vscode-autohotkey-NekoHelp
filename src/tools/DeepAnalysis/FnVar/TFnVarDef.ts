@@ -1,5 +1,6 @@
 import type { TParamMapIn, TValMapIn } from '../../../AhkSymbol/CAhkFunc';
 import type { TGValMap } from '../../../core/ParserTools/ahkGlobalDef';
+import type { TAhkTokenLine } from '../../../globalEnum';
 import type { EFnMode } from './EFnMode';
 
 export type TGetFnDefNeed = {
@@ -11,4 +12,5 @@ export type TGetFnDefNeed = {
     lStrTrimLen: number,
     lineComment: string,
     fnMode: EFnMode,
+    AhkTokenLine: TAhkTokenLine,
 };

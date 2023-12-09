@@ -139,6 +139,7 @@ export function getFnVarDef(
             lStrTrimLen,
             lineComment,
             fnMode,
+            AhkTokenLine,
         };
         walrusOperator(need); // :=
         varSetCapacityFunc(need); // VarSetCapacity(varName) or NumGet(varName) or NumGet(&varName)
