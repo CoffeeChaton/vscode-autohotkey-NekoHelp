@@ -7,7 +7,8 @@ import { getSetTimerWrap } from '../../tools/Command/SetTimerTools';
 import { getSortFunc } from '../../tools/Command/sotrTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../tools/str/ToUpCase';
-import { fnRefLStr, fnRefTextRaw, fnRefTextRawReg } from './getFnRef';
+import { fnRefLStr } from './fnRefLStr';
+import { fnRefTextRaw, fnRefTextRawReg } from './getFnRef';
 
 /**
 * ```ahk

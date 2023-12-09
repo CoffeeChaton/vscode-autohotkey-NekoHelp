@@ -5,13 +5,14 @@ import type { CAhkLabel } from '../../AhkSymbol/CAhkLine';
 import { geRenameConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import { EFnRefBy } from '../../globalEnum';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { getUserDefTopClassSymbol } from '../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { findLabel } from '../../tools/labels';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TFnRefLike } from '../Def/getFnRef';
-import { EFnRefBy, getFuncRef } from '../Def/getFnRef';
+import { getFuncRef } from '../Def/getFnRef';
 import { log } from '../vscWindows/log';
 
 function RenameProviderCore(

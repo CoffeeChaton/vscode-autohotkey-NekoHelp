@@ -1,14 +1,13 @@
 import type * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
-import type { TAhkTokenLine } from '../../globalEnum';
+import type { TAhkTokenLine, TLineFnCall } from '../../globalEnum';
 import type { TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { CMemo } from '../../tools/CMemo';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
-import type { TLineFnCall } from '../Def/getFnRef';
-import { fnRefLStr } from '../Def/getFnRef';
+import { fnRefLStr } from '../Def/fnRefLStr';
 import { SignBiFn } from './SignatureFuncBuiltIn';
 import { SignUserFn } from './SignatureFuncUser';
 

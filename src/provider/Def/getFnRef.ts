@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
-import type { TAhkTokenLine } from '../../globalEnum';
+import { EFnRefBy, type TAhkTokenLine, type TLineFnCall } from '../../globalEnum';
 import { CMemo } from '../../tools/CMemo';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
 import { getHotkeyWrap } from '../../tools/Command/HotkeyTools';
@@ -14,101 +14,13 @@ import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandA
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
 import { findLabel } from '../../tools/labels';
 import { ToUpCase } from '../../tools/str/ToUpCase';
+import { fnRefLStr } from './fnRefLStr';
 
-export const enum EFnRefBy {
-    /**
-     * by funcName(
-     */
-    justCall = 1,
-
-    /**
-     * by "funcName"
-     */
-    wordWrap = 2,
-
-    /**
-     * Sort f-flag
-     */
-    SortFlag = 7,
-
-    /**
-     * by -> (?CCallout)\
-     * or -> (?CNumber)\
-     * <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
-     */
-    Reg1 = 8,
-
-    /**
-     * by (?C:Function)\
-     * <https://www.autohotkey.com/board/topic/36196-regex-callouts/page-2>
-     */
-    Reg2 = 9,
-
-    /**
-     * by (?CNumber:Function)\
-     * <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#auto>
-     */
-    Reg3 = 10,
-
-    //
-    SetTimer = 11,
-    Hotkey = 12,
-    Menu = 13,
-    Gui = 14,
-    //
-
-    ComObjConnect = 991,
-    /**
-     * Do not use compare
-     * need ts5.0
-     * https://github.com/microsoft/TypeScript/issues/52701
-     */
-    // eslint-disable-next-line @typescript-eslint/no-mixed-enums
-    banCompare = 'Do not use compare',
-}
 export function mayBeIsLabel(by: EFnRefBy): boolean {
     return [EFnRefBy.SetTimer, EFnRefBy.Hotkey, EFnRefBy.Hotkey, EFnRefBy.Gui].includes(by);
 }
 
-export type TLineFnCall = {
-    upName: string,
-    line: number,
-    col: number,
-    by: EFnRefBy,
-};
-
 export type TFuncRef = Omit<TLineFnCall, 'upName'>;
-
-export function fnRefLStr(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
-    const { lStr, line } = AhkTokenLine;
-    const arr: TLineFnCall[] = [];
-
-    for (const ma of lStr.matchAll(/(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
-        // -----------------------------------^ without .`% and #$@                         ^funcName(      of lStr
-        const col: number | undefined = ma.index;
-        if (col === undefined) continue;
-
-        if ((/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(lStr.slice(0, col).trimEnd())) {
-            // ^ all case mock \b
-            continue;
-        }
-
-        const upName: string = ToUpCase(ma[1]);
-
-        arr.push({
-            by: EFnRefBy.justCall,
-            col,
-            line,
-            upName,
-        });
-    }
-    // don't search of
-    // MsgBox,
-    // (
-    //   fnName()
-    // )
-    return arr;
-}
 
 export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] {
     const { lStr, textRaw, line } = AhkTokenLine;

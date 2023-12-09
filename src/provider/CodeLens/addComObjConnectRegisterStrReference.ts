@@ -2,9 +2,9 @@ import * as vscode from 'vscode';
 import type { CmdFindComObjConnectRegister } from '../../command/CmdFindComObjConnectRegister';
 import { ECommand } from '../../command/ECommand';
 import type { TAhkFileData } from '../../core/ProjectManager';
+import type { TLineFnCall } from '../../globalEnum';
 import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
-import type { TLineFnCall } from '../Def/getFnRef';
 import { fixComObjConnect } from '../Def/getFnRef';
 import { ECodeLensStr } from './ECodeLensStr';
 

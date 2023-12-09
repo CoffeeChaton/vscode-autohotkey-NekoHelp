@@ -24,9 +24,9 @@
         "editor.defaultFormatter": "dprint.dprint"
     },
     "editor.codeActionsOnSave": {
-        "addMissingImports": true,
-        "source.fixAll": true,
-        "source.organizeImports": true
+        "addMissingImports": "explicit",
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
     },
     // "editor.defaultFormatter": "dprint.dprint",
     "eslint.enable": true,

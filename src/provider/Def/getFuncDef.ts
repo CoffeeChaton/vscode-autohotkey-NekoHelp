@@ -1,11 +1,10 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
-import type { TAhkTokenLine } from '../../globalEnum';
+import type { TAhkTokenLine, TLineFnCall } from '../../globalEnum';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
-import type { TLineFnCall } from './getFnRef';
 import { fixComObjConnect, RefLike2Location } from './getFnRef';
 import { getFucDefWordUpFix } from './getFucDefWordUpFix';
 import { getMethodRef } from './getMethodRef';

@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import type { TAhkFileData } from '../../../../core/ProjectManager';
+import type { TLineFnCall } from '../../../../globalEnum';
 import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
-import type { TLineFnCall } from '../../../Def/getFnRef';
 import { fixComObjConnect } from '../../../Def/getFnRef';
 import type { CDiagFn } from '../../tools/CDiagFn';
 import { C514Class } from '../CDiagFnLib/C514Class';

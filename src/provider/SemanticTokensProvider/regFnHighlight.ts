@@ -1,8 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
-import type { TAhkTokenLine } from '../../globalEnum';
-import type { TLineFnCall } from '../Def/getFnRef';
-import { EFnRefBy, fnRefTextRawReg } from '../Def/getFnRef';
+import { EFnRefBy, type TAhkTokenLine, type TLineFnCall } from '../../globalEnum';
+import { fnRefTextRawReg } from '../Def/getFnRef';
 import type { TSemanticTokensLeaf } from './tools';
 
 export function regFnHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): 0 | 1 {

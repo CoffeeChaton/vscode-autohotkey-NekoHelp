@@ -73,7 +73,71 @@ export type TMultilineFlag =
     }>
     | null;
 
-export type TAhkTokenLine = DeepReadonly<{
+export const enum EFnRefBy {
+    /**
+     * by funcName(
+     */
+    justCall = 1,
+
+    /**
+     * by "funcName"
+     */
+    wordWrap = 2,
+
+    /**
+     * Sort f-flag
+     */
+    SortFlag = 7,
+
+    /**
+     * by -> (?CCallout)\
+     * or -> (?CNumber)\
+     * <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#callout-functions>
+     */
+    Reg1 = 8,
+
+    /**
+     * by (?C:Function)\
+     * <https://www.autohotkey.com/board/topic/36196-regex-callouts/page-2>
+     */
+    Reg2 = 9,
+
+    /**
+     * by (?CNumber:Function)\
+     * <https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm#auto>
+     */
+    Reg3 = 10,
+
+    //
+    SetTimer = 11,
+    Hotkey = 12,
+    Menu = 13,
+    Gui = 14,
+    //
+
+    ComObjConnect = 991,
+    /**
+     * Do not use compare
+     * need ts5.0
+     * https://github.com/microsoft/TypeScript/issues/52701
+     */
+    // eslint-disable-next-line @typescript-eslint/no-mixed-enums
+    banCompare = 'Do not use compare',
+}
+
+export type TLineFnCall = {
+    upName: string,
+    line: number,
+    col: number,
+    by: EFnRefBy,
+};
+
+export type TLineFnCallRaw = {
+    fnName: string,
+    col: number,
+};
+
+export type TAhkTokenLine = Readonly<{
     // TODO: replace as ([upName,col])[]
     /**
      * first ...
@@ -104,6 +168,8 @@ export type TAhkTokenLine = DeepReadonly<{
     displayFnErr: boolean,
     ahkDoc: string,
     // I know this is not Complete and correct Token.
+
+    lineFnCallRaw: TLineFnCallRaw[],
 }>;
 
 export type TTokenStream = readonly TAhkTokenLine[];

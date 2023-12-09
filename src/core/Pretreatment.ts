@@ -18,6 +18,7 @@ import { getFistWordUpData } from './getFistWordUpData';
 import { getSecondUp } from './getSecondUp';
 import { callDeep2 } from './ParserTools/calcDeep';
 import { ContinueLongLine } from './ParserTools/ContinueLongLine';
+import { fnRefLStrCore } from './ParserTools/fnRefLStrCore';
 import { isHotKeyLine } from './ParserTools/isHotKeyLine';
 
 /**
@@ -167,6 +168,7 @@ export function Pretreatment(
                     SecondWordUp: '',
                     SecondWordUpCol: -1,
                     textRaw,
+                    lineFnCallRaw: [],
                 });
                 continue;
             }
@@ -207,6 +209,9 @@ export function Pretreatment(
                 SecondWordUp,
                 SecondWordUpCol,
                 textRaw,
+                lineFnCallRaw: hasXFlag
+                    ? fnRefLStrCore(lStrHotStrCase)
+                    : [],
             });
             continue;
         }
@@ -247,6 +252,7 @@ export function Pretreatment(
                     SecondWordUp,
                     SecondWordUpCol,
                     textRaw,
+                    lineFnCallRaw: fnRefLStrCore(lStr),
                 });
                 continue;
             }
@@ -280,6 +286,7 @@ export function Pretreatment(
                 SecondWordUp: '',
                 SecondWordUpCol: -1,
                 textRaw,
+                lineFnCallRaw: [],
             });
             continue;
         }
@@ -304,12 +311,14 @@ export function Pretreatment(
                 SecondWordUp: '',
                 SecondWordUpCol: -1,
                 textRaw,
+                lineFnCallRaw: [],
             });
 
             continue;
         }
 
         if (isSetVarTradition(textTrimStart)) {
+            const lStr: string = SetVarTradition(textRaw);
             result.push({
                 ahkDoc,
                 cll: 0,
@@ -321,12 +330,13 @@ export function Pretreatment(
                 fistWordUpCol: -1,
                 line,
                 lineComment: '',
-                lStr: SetVarTradition(textRaw),
+                lStr,
                 multiline,
                 multilineFlag: null,
                 SecondWordUp: '',
                 SecondWordUpCol: -1,
                 textRaw,
+                lineFnCallRaw: fnRefLStrCore(lStr),
             });
             continue;
         }
@@ -375,6 +385,7 @@ export function Pretreatment(
                 SecondWordUp: '',
                 SecondWordUpCol: -1,
                 textRaw,
+                lineFnCallRaw: [],
             });
             continue;
         }
@@ -406,6 +417,7 @@ export function Pretreatment(
                         SecondWordUp: '',
                         SecondWordUpCol: -1,
                         textRaw,
+                        lineFnCallRaw: [],
                     });
                     continue;
                 }
@@ -440,6 +452,7 @@ export function Pretreatment(
                 SecondWordUp: '',
                 SecondWordUpCol: -1,
                 textRaw,
+                lineFnCallRaw: fnRefLStrCore(lStr),
             });
             continue;
         }
@@ -538,6 +551,7 @@ export function Pretreatment(
             SecondWordUp,
             SecondWordUpCol,
             textRaw,
+            lineFnCallRaw: fnRefLStrCore(lStr),
         });
     }
 
