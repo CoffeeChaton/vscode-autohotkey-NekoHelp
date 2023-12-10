@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [v0.0.52(2023-12-XX)](#v00522023-12-xx)
   - [v0.0.51(2023-12-03)](#v00512023-12-03)
   - [v0.0.50(2023-11-24)](#v00502023-11-24)
   - [v0.0.49(2023-11-11)](#v00492023-11-11)
@@ -30,6 +31,24 @@
   - [0.0.25(2023-02-26)](#00252023-02-26)
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
+
+## v0.0.52(2023-12-XX)
+
+<!-- pnpm 8.10.2 ?????-->
+<!-- dprint 0.41.0 ??????-->
+
+- feat:([#35](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/35)) support get var-def by [`DllCall()`](https://www.autohotkey.com/docs/v1/lib/DllCall.htm)
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-52--1-DllCall-support.jpg)
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-52--2-DllCall-support.png)
+
+  ```ahk
+  DllCall("DllFile\Function"      , Type1
+                                  , Arg1  ; -----> OK
+                                  , Type2
+                                  , Arg2  ; -----> OK
+                                  , Type3 , Arg3  ; -----> OK
+                                  , "ReturnType" )                   ; not need
+  ```
 
 ## v0.0.51(2023-12-03)
 
