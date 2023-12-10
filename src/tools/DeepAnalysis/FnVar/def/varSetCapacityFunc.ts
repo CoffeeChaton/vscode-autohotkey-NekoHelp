@@ -263,6 +263,49 @@ function SetVar_by_DllCall(
         }
     }
 }
+
+function SetVar_by_RegExMatch(
+    arr: TArr[],
+    need: TGetFnDefNeed,
+): void {
+    // https://www.autohotkey.com/docs/v1/lib/RegExMatch.htm
+    // RegExMatch(Haystack, NeedleRegEx , OutputVar, StartingPos)
+    // RegExMatch(Options, pattern_opts "W([\-\d\.]+)(p*)", PWidth)
+
+    const {
+        fnMode,
+        GValMap,
+        paramMap,
+        valMap,
+    } = need;
+    const firstArg: TArr[] = arr.filter((v) => v.comma === 2 && v.StrPart.trim() !== '');
+    if (firstArg.length !== 1) return;
+    const {
+        StrPart,
+        col: _col,
+        ln,
+        lineComment,
+    } = firstArg[0];
+
+    const RawName: string = StrPart
+        .trim();
+    if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawName)) {
+        const UpName: string = ToUpCase(RawName);
+        if (paramMap.has(UpName) || GValMap.has(UpName)) return;
+        const character: number = _col + StrPart.indexOf(RawName);
+        const value: TValMetaIn = getValMeta({
+            line: ln,
+            character,
+            RawName,
+            valMap,
+            lineComment,
+            fnMode,
+            Associated: null,
+        });
+        valMap.set(ToUpCase(RawName), value);
+    }
+}
+
 export function varSetCapacityFunc(need: TGetFnDefNeed): void {
     const leftFn: readonly TLineFnCall[] = fnRefLStr(need.AhkTokenLine);
     if (leftFn.length === 0) return;
@@ -292,6 +335,8 @@ export function varSetCapacityFunc(need: TGetFnDefNeed): void {
             SetVar_by_NumGet(arr, need);
         } else if (upName === 'DllCall'.toUpperCase()) {
             SetVar_by_DllCall(arr, need);
+        } else if (upName === 'RegExMatch'.toUpperCase()) {
+            SetVar_by_RegExMatch(arr, need);
         }
     }
 }
