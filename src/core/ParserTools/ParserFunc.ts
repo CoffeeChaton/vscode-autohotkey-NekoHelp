@@ -44,9 +44,23 @@ function getAllowsListOfFunc(DocStrMap: TTokenStream, startLine: number, endLine
 
 // TODO spilt this func
 export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
-    const { line, lStr, lineFnCallRaw } = FuncInput.AhkTokenLine;
+    const {
+        line,
+        lStr,
+        lineFnCallRaw,
+        fistWordUpCol,
+    } = FuncInput.AhkTokenLine;
 
-    if (lineFnCallRaw.length !== 1) return null;
+    if (lineFnCallRaw.length !== 1 || fistWordUpCol !== -1) return null;
+
+    if (
+        lStr
+            .slice(0, lineFnCallRaw[0].col)
+            .replace(/^[ \t}]*/u, '') // } nextFuncDef(){
+            .length > 0
+    ) {
+        return null;
+    }
 
     const {
         DocStrMap,
