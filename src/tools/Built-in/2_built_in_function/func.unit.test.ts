@@ -1,3 +1,4 @@
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3] }] */
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
 import { funcDataList } from './func.data';
 
@@ -221,6 +222,47 @@ describe('check BuiltInFunctionObj ruler', () => {
             ['OnExit', 'https://www.autohotkey.com/docs/v1/lib/OnExit.htm#function'],
             // Trim() / LTrim() / RTrim()
             ['RTrim', 'https://www.autohotkey.com/docs/v1/lib/Trim.htm'],
+        ]);
+    });
+
+    it('check : param startWith OutPut', () => {
+        expect.hasAssertions();
+
+        const snapshotList: [fnName: string, paramName: string, i: number][] = [];
+        for (const v of funcDataList) {
+            const { keyRawName, sign } = v;
+
+            const param: string = sign
+                .replace(/^\w+\s:=\s/u, '')
+                .replace(`${keyRawName}(`, '')
+                .replace(/\)$/u, '');
+
+            if (param === '') continue;
+
+            const paramList: string[] = param
+                .replaceAll('[', '')
+                .replaceAll(']', '')
+                .split(',')
+                .map((s: string): string => (
+                    s
+                        .replace(/^\s*ByRef\s*/u, '')
+                        .replace(/:=.*/u, '')
+                        .trim()
+                ));
+
+            for (const [i, paramName] of paramList.entries()) {
+                if ((/out/iu).test(paramName)) {
+                    snapshotList.push([keyRawName, paramName, i]);
+                }
+            }
+        }
+
+        expect(snapshotList).toStrictEqual([
+            ['LV_GetText', 'OutputVar', 0],
+            ['RegExMatch', 'OutputVar', 2],
+            ['RegExReplace', 'OutputVarCount', 3],
+            ['StrReplace', 'OutputVarCount', 3],
+            ['TV_GetText', 'OutputVar', 0],
         ]);
     });
 });

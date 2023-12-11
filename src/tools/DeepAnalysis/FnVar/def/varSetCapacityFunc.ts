@@ -1,150 +1,10 @@
-/* eslint-disable max-depth */
-/* eslint-disable sonarjs/no-collapsible-if */
-/* eslint-disable max-lines-per-function */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3] }] */
 import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
-import type { TAhkTokenLine, TLineFnCall, TTokenStream } from '../../../../globalEnum';
-import { fnRefLStr } from '../../../../provider/Def/fnRefLStr';
 import { C507_varName_like_number } from '../../../../provider/Diagnostic/DA/CDiagFnLib/C507_varName_like_number';
 import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
+import { fnSetVar, type TArr } from './fnSetVar_recursion';
 import { getValMeta } from './getValMeta';
-
-// NumGet(OutputVar [, Offset := 0, Type := "UPtr"])
-// VarSetCapacity(OutputVar)
-// TV_GetText(OutputVar, ItemID)
-// LV_GetText(OutputVar, RowNumber [, ColumnNumber])
-
-type TSearchData = {
-    iStart: number,
-    _AhkTokenLine: TAhkTokenLine,
-    brackets1: number,
-    brackets2: number,
-    brackets3: number,
-    comma: number,
-};
-
-type TArr = {
-    StrPart: string,
-    ln: number,
-    col: number,
-    by: 0 | 1 | 2, // just of debug in this .ts .file
-    lineComment: string,
-    comma: number,
-};
-
-function fnSetVar_recursion(
-    {
-        iStart,
-        _AhkTokenLine,
-        brackets1: _brackets1,
-        brackets2: _brackets2,
-        brackets3: _brackets3,
-        comma: _comma,
-    }: TSearchData,
-    AhkTokenList: TTokenStream,
-    arr: TArr[],
-): void {
-    let StrPart = '';
-
-    let brackets1 = _brackets1;
-    let brackets2 = _brackets2;
-    let brackets3 = _brackets3;
-    let comma = _comma;
-    const { lStr, line, lineComment } = _AhkTokenLine;
-    const max = lStr.length;
-    for (let i = iStart; i < max; i++) {
-        const s: string = lStr[i];
-        switch (s) {
-            case '[':
-                brackets2++;
-                break;
-            case ']':
-                brackets2--;
-                break;
-
-            case '{':
-                brackets3++;
-                break;
-            case '}':
-                brackets3--;
-                break;
-            default:
-                break;
-        }
-
-        if (brackets2 > 0 || brackets3 > 0) continue;
-
-        // eslint-disable-next-line unicorn/prefer-switch
-        if (s === '(') {
-            brackets1++;
-        } else if (s === ')') {
-            if (brackets1 === 0) {
-                arr.push({
-                    StrPart,
-                    ln: line,
-                    col: i - StrPart.length,
-                    by: 0,
-                    lineComment,
-                    comma,
-                });
-                brackets1--;
-                StrPart = '';
-                continue;
-            }
-            brackets1--;
-        } else if (s === ',') {
-            if (brackets1 === 0) {
-                //
-                arr.push({
-                    StrPart,
-                    ln: line,
-                    col: i - StrPart.length,
-                    by: 1,
-                    lineComment,
-                    comma,
-                });
-                comma++;
-                StrPart = '';
-            }
-            continue;
-        }
-        StrPart += s;
-    }
-
-    /**
-     * after this line
-     */
-    if (brackets1 === 0) {
-        arr.push({
-            StrPart,
-            ln: line,
-            col: max - StrPart.length,
-            by: 2,
-            lineComment,
-            comma,
-        });
-        StrPart = '';
-
-        // find next line
-        const nextLine: TAhkTokenLine | undefined = AhkTokenList.find(
-            (v: TAhkTokenLine): boolean => v.line === (line + 1) && v.cll === 1,
-        );
-        if (nextLine !== undefined) {
-            fnSetVar_recursion(
-                {
-                    iStart: 0,
-                    _AhkTokenLine: nextLine,
-                    brackets1,
-                    brackets2,
-                    brackets3,
-                    comma,
-                },
-                AhkTokenList,
-                arr,
-            );
-        }
-    }
-}
 
 function SetVar_by_NumGet(
     arr: TArr[],
@@ -156,7 +16,7 @@ function SetVar_by_NumGet(
         paramMap,
         valMap,
     } = need;
-    const firstArg: TArr[] = arr.filter((v) => v.comma === 0 && v.StrPart.trim() !== '');
+    const firstArg: TArr[] = arr.filter((v) => v.comma === 0);
     if (firstArg.length !== 1) return;
     const {
         StrPart,
@@ -167,7 +27,7 @@ function SetVar_by_NumGet(
 
     const RawName: string = StrPart
         .replace(/^[ \t]*&[ \t]*/u, '')
-        .trim();
+        .replace(/[ \t]*$/u, '');
     if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawName)) {
         const UpName: string = ToUpCase(RawName);
         if (paramMap.has(UpName) || GValMap.has(UpName)) return;
@@ -225,26 +85,40 @@ function SetVar_by_DllCall(
      *
      * ```
      */
-    const DllCallArr: TArr[] = [];
+    const set = new Set<number>();
+    const commaMap = new Map<number, TArr>();
 
+    /**
+     * start with 1, not need first
+     */
     for (let i = 1; i < arr.length; i += 1) {
-        const iArg: TArr = arr[i]; // not need it
-        // const NextIsReturnType: TArr | undefined = arr.at(i + 1);
-        // if (NextIsReturnType === undefined) break; // iType is "ReturnType"
+        const iArg: TArr = arr[i];
+        const {
+            col: _col,
+            comma,
+        } = iArg;
+        if (comma % 2 !== 0) continue;
 
+        if (set.has(comma)) {
+            commaMap.delete(comma);
+        } else {
+            commaMap.set(comma, iArg);
+            set.add(comma);
+        }
+    }
+
+    for (const iArg of commaMap.values()) {
         const {
             StrPart,
             ln,
             col: _col,
             lineComment,
-            comma,
         } = iArg;
-        if (comma % 2 !== 0) continue;
         // note!
         // at DllCall(), arg cant be any number , but it while set it be a var-name
         const RawName: string = StrPart
             .replace(/^[ \t]*&[ \t]*/u, '')
-            .trim();
+            .replace(/[ \t]*$/u, '');
         if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawName) && !C507_varName_like_number(RawName)) {
             const UpName: string = ToUpCase(RawName);
             if (paramMap.has(UpName) || GValMap.has(UpName)) continue;
@@ -259,36 +133,38 @@ function SetVar_by_DllCall(
                 Associated: null,
             });
             valMap.set(ToUpCase(RawName), value);
-            DllCallArr.push(iArg);
         }
     }
 }
 
-function SetVar_by_RegExMatch(
+function SetVar_by_Base(
     arr: TArr[],
     need: TGetFnDefNeed,
+    /**
+     * ```ahk
+     * RegExMatch() is 2
+     * RegExReplace() is 3
+     * ```
+     */
+    comma: number,
 ): void {
-    // https://www.autohotkey.com/docs/v1/lib/RegExMatch.htm
-    // RegExMatch(Haystack, NeedleRegEx , OutputVar, StartingPos)
-    // RegExMatch(Options, pattern_opts "W([\-\d\.]+)(p*)", PWidth)
-
     const {
         fnMode,
         GValMap,
         paramMap,
         valMap,
     } = need;
-    const firstArg: TArr[] = arr.filter((v) => v.comma === 2 && v.StrPart.trim() !== '');
-    if (firstArg.length !== 1) return;
+    const selectArg: TArr[] = arr.filter((v) => v.comma === comma);
+    if (selectArg.length !== 1) return;
     const {
         StrPart,
         col: _col,
         ln,
         lineComment,
-    } = firstArg[0];
+    } = selectArg[0];
 
-    const RawName: string = StrPart
-        .trim();
+    const RawName: string = StrPart.trim();
+
     if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawName)) {
         const UpName: string = ToUpCase(RawName);
         if (paramMap.has(UpName) || GValMap.has(UpName)) return;
@@ -306,37 +182,45 @@ function SetVar_by_RegExMatch(
     }
 }
 
+// ['LV_GetText', 'OutputVar', 0],
+// ['RegExMatch', 'OutputVar', 2],
+// ['RegExReplace', 'OutputVarCount', 3],
+// ['StrReplace', 'OutputVarCount', 3],
+// ['TV_GetText', 'OutputVar', 0],
+const varSetCapacityFuncArr: readonly [string, number][] = [
+    ['LV_GetText'.toUpperCase(), 0],
+    // RegExMatch(Haystack, NeedleRegEx , OutputVar, StartingPos)
+    //              0          1            2
+    ['RegExMatch'.toUpperCase(), 2],
+
+    // RegExReplace(Haystack, NeedleRegEx , Replacement, OutputVarCount, Limit, StartingPos)
+    //                 0           1              2       3
+    ['RegExReplace'.toUpperCase(), 3],
+
+    // StrReplace(Haystack, Needle , ReplaceText, OutputVarCount, Limit)
+    //            0           1          2           3
+    ['StrReplace'.toUpperCase(), 3],
+
+    ['TV_GetText'.toUpperCase(), 0],
+];
+
 export function varSetCapacityFunc(need: TGetFnDefNeed): void {
-    const leftFn: readonly TLineFnCall[] = fnRefLStr(need.AhkTokenLine);
-    if (leftFn.length === 0) return;
+    const map: ReadonlyMap<string, TArr[]> = fnSetVar(need);
 
-    for (const fnRefData of leftFn) {
-        const { upName, col } = fnRefData;
-        const arr: TArr[] = [];
-        const {
-            AhkTokenLine,
-            AhkTokenList,
-        } = need;
+    for (const [upName, arr] of map.entries()) {
+        const paramPos = varSetCapacityFuncArr.find((v) => v[0] === upName);
 
-        fnSetVar_recursion(
-            {
-                iStart: col + upName.length + 1,
-                _AhkTokenLine: AhkTokenLine,
-                brackets1: 0,
-                brackets2: 0,
-                brackets3: 0,
-                comma: 0,
-            },
-            AhkTokenList,
-            arr,
-        );
-
-        if ((/^VarSetCapacity|NumGet|[TL]V_GetText$/iu).test(upName)) {
-            SetVar_by_NumGet(arr, need);
+        if (paramPos !== undefined) {
+            SetVar_by_Base(arr, need, paramPos[1]);
         } else if (upName === 'DllCall'.toUpperCase()) {
             SetVar_by_DllCall(arr, need);
-        } else if (upName === 'RegExMatch'.toUpperCase()) {
-            SetVar_by_RegExMatch(arr, need);
+        } else if (
+            upName === 'VarSetCapacity'.toUpperCase()
+            || upName === 'NumGet'.toUpperCase()
+        ) {
+            SetVar_by_NumGet(arr, need);
         }
+
+        // TODO https://www.autohotkey.com/docs/v1/lib/RegExReplace.htm
     }
 }
