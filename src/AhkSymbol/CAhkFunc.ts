@@ -255,17 +255,35 @@ export class CAhkFunc extends vscode.DocumentSymbol {
     }
 
     public getParamInlayHintLabelPart(comma: number): vscode.InlayHintLabelPart {
+        const arr: Readonly<TParamMetaIn>[] = [...this.paramMap.values()];
+        const len: number = arr.length;
+        if (len === 0 && comma === 0) {
+            return new vscode.InlayHintLabelPart('');
+        }
+
         let i = 0;
-        for (const v of this.paramMap.values()) {
+        for (const v of arr) {
             if (i === comma) {
-                const { keyRawName, defRangeList } = v;
-                const InlayHintLabelPart = new vscode.InlayHintLabelPart(`${keyRawName}:`);
+                const { keyRawName, defRangeList, isVariadic } = v;
+                const labelName = isVariadic
+                    ? `${keyRawName}[0]:`
+                    : `${keyRawName}:`;
+                const InlayHintLabelPart = new vscode.InlayHintLabelPart(labelName);
                 InlayHintLabelPart.location = new vscode.Location(this.uri, defRangeList[0].range);
                 return InlayHintLabelPart;
             }
             i++;
         }
 
+        if (comma >= len) {
+            const lastParam: Readonly<TParamMetaIn> | undefined = arr.at(-1);
+            if (lastParam !== undefined && lastParam.isVariadic) {
+                const { keyRawName, defRangeList } = lastParam;
+                const InlayHintLabelPart = new vscode.InlayHintLabelPart(`${keyRawName}[${comma - len + 1}]:`);
+                InlayHintLabelPart.location = new vscode.Location(this.uri, defRangeList[0].range);
+                return InlayHintLabelPart;
+            }
+        }
         return new vscode.InlayHintLabelPart('unknown');
     }
 }

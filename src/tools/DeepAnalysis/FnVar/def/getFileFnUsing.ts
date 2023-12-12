@@ -75,7 +75,10 @@ function getFnArgs_recursion(
                 break;
         }
 
-        if (brackets2 > 0 || brackets3 > 0) continue;
+        if (brackets2 > 0 || brackets3 > 0) {
+            StrPart += s;
+            continue;
+        }
 
         // eslint-disable-next-line unicorn/prefer-switch
         if (s === '(') {

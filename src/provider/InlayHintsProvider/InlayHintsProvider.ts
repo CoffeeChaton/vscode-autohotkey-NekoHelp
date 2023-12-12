@@ -1,13 +1,14 @@
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
+import { getInlayHintsProviderConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TFnRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { getFileFnUsing } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
+import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
-import { getInlayHintsProviderConfig } from '../../configUI';
 
 function InlayHintsProviderCore(
     document: vscode.TextDocument,
@@ -16,7 +17,7 @@ function InlayHintsProviderCore(
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return [];
 
-    const { DocStrMap } = AhkFileData;
+    const { DocStrMap, AST } = AhkFileData;
     const allFileFnUsing: readonly TFnRefEx[] = getFileFnUsing(DocStrMap);
 
     const fullFuncMap: TFullFuncMap = getAllFunc();
@@ -42,9 +43,16 @@ function InlayHintsProviderCore(
                         continue;
                     }
                     commaSet.add(comma);
+
                     const colFix = col;
                     const position: vscode.Position = new vscode.Position(ln, colFix);
-
+                    const DA: CAhkFunc | null = getDAWithPos(AST, position);
+                    if (
+                        DA !== null
+                        && DA.selectionRange.contains(position)
+                    ) {
+                        break;
+                    }
                     need.push(new vscode.InlayHint(position, [useDefFunc.getParamInlayHintLabelPart(comma)]));
                 }
             }
