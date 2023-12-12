@@ -7,7 +7,7 @@ import { fnSetVar, type TArr } from './fnSetVar_recursion';
 import { getValMeta } from './getValMeta';
 
 function SetVar_by_NumGet(
-    arr: TArr[],
+    arr: readonly TArr[],
     need: TGetFnDefNeed,
 ): void {
     const {
@@ -46,7 +46,7 @@ function SetVar_by_NumGet(
 }
 
 function SetVar_by_DllCall(
-    arr: TArr[],
+    arr: readonly TArr[],
     need: TGetFnDefNeed,
 ): void {
     const {
@@ -116,9 +116,7 @@ function SetVar_by_DllCall(
         } = iArg;
         // note!
         // at DllCall(), arg cant be any number , but it while set it be a var-name
-        const RawName: string = StrPart
-            .replace(/^[ \t]*&[ \t]*/u, '')
-            .replace(/[ \t]*$/u, '');
+        const RawName: string = StrPart.trim();
         if ((/^[#$@\w\u{A1}-\u{FFFF}]+$/u).test(RawName) && !C507_varName_like_number(RawName)) {
             const UpName: string = ToUpCase(RawName);
             if (paramMap.has(UpName) || GValMap.has(UpName)) continue;
@@ -138,7 +136,7 @@ function SetVar_by_DllCall(
 }
 
 function SetVar_by_Base(
-    arr: TArr[],
+    arr: readonly TArr[],
     need: TGetFnDefNeed,
     /**
      * ```ahk
@@ -205,9 +203,9 @@ const varSetCapacityFuncArr: readonly [string, number][] = [
 ];
 
 export function varSetCapacityFunc(need: TGetFnDefNeed): void {
-    const map: ReadonlyMap<string, TArr[]> = fnSetVar(need);
+    const allFull: readonly [string, readonly TArr[]][] = fnSetVar(need);
 
-    for (const [upName, arr] of map.entries()) {
+    for (const [upName, arr] of allFull) {
         const paramPos = varSetCapacityFuncArr.find((v) => v[0] === upName);
 
         if (paramPos !== undefined) {

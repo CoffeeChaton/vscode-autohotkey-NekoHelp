@@ -75,12 +75,12 @@ function fnSetVar_recursion(
             if (brackets1 === 0) {
                 if (!(/^[ \t]*$/u).test(StrPart)) {
                     arr.push({
-                        StrPart,
-                        ln: line,
-                        col: i - StrPart.length,
                         by: 0,
-                        lineComment,
+                        col: i - StrPart.length,
                         comma,
+                        lineComment,
+                        ln: line,
+                        StrPart,
                     });
                 }
                 brackets1--;
@@ -92,12 +92,12 @@ function fnSetVar_recursion(
             if (brackets1 === 0) {
                 if (!(/^[ \t]*$/u).test(StrPart)) {
                     arr.push({
-                        StrPart,
-                        ln: line,
-                        col: i - StrPart.length,
                         by: 1,
-                        lineComment,
+                        col: i - StrPart.length,
                         comma,
+                        lineComment,
+                        ln: line,
+                        StrPart,
                     });
                 }
                 comma++;
@@ -114,12 +114,12 @@ function fnSetVar_recursion(
     if (brackets1 === 0) {
         if (!(/^[ \t]*$/u).test(StrPart)) {
             arr.push({
-                StrPart,
-                ln: line,
-                col: max - StrPart.length,
                 by: 2,
-                lineComment,
+                col: max - StrPart.length,
                 comma,
+                lineComment,
+                ln: line,
+                StrPart,
             });
         }
         StrPart = '';
@@ -145,17 +145,17 @@ function fnSetVar_recursion(
     }
 }
 
-const memoFnSetVar = new CMemo<TGetFnDefNeed, ReadonlyMap<string, TArr[]>>(
-    (need: TGetFnDefNeed): ReadonlyMap<string, TArr[]> => {
+const memoFnSetVar = new CMemo<TGetFnDefNeed, readonly [string, readonly TArr[]][]>(
+    (need: TGetFnDefNeed): readonly [string, readonly TArr[]][] => {
         const leftFn: readonly TLineFnCall[] = fnRefLStr(need.AhkTokenLine);
-        if (leftFn.length === 0) return new Map();
+        if (leftFn.length === 0) return [];
 
         const {
             AhkTokenLine,
             AhkTokenList,
         } = need;
 
-        const map = new Map<string, TArr[]>();
+        const arrFull: [fnName: string, readonly TArr[]][] = [];
         for (const fnRefData of leftFn) {
             const { upName, col } = fnRefData;
             const arr: TArr[] = [];
@@ -172,13 +172,13 @@ const memoFnSetVar = new CMemo<TGetFnDefNeed, ReadonlyMap<string, TArr[]>>(
                 AhkTokenList,
                 arr,
             );
-            map.set(upName, arr);
+            arrFull.push([upName, arr]);
         }
 
-        return map;
+        return arrFull;
     },
 );
 
-export function fnSetVar(need: TGetFnDefNeed): ReadonlyMap<string, TArr[]> {
+export function fnSetVar(need: TGetFnDefNeed): readonly [string, readonly TArr[]][] {
     return memoFnSetVar.up(need);
 }

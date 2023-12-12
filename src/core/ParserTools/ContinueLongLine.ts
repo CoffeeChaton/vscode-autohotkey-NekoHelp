@@ -18,8 +18,8 @@ Return
 const CLL: DeepReadonly<RegExp[]> = [
     /^[,.?]/u,
     /^:[^:]/u, // ? : Ternary operation -> ':' // if (hasDoubleSemicolon === true)  will not goto this line.
-    /^\+[^+]/u, // +
-    /^-[^-]/u, // -
+    /^\+/u, // +
+    /^-/u, // -
     /^\*[^/]/u, // /^*  but not */
     /^\//u, // /
     /^and\s/iu, //
