@@ -30,6 +30,7 @@ import { FormatProvider } from './provider/Format/FormatProvider';
 import { RangeFormatProvider } from './provider/FormatRange/RangeFormatProvider';
 import { OnTypeFormattingEditProvider } from './provider/FormattingEditOnType/OnTypeFormattingEditProvider';
 import { HoverProvider } from './provider/Hover/HoverProvider';
+import { InlayHintsProvider } from './provider/InlayHintsProvider/InlayHintsProvider';
 import { ReferenceProvider } from './provider/Ref/ReferenceProvider';
 import { RenameProvider } from './provider/Rename/RenameProvider';
 import { AhkFullSemanticHighlight, legend } from './provider/SemanticTokensProvider/SemanticTokensProvider';
@@ -76,6 +77,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerRenameProvider(selector, RenameProvider),
         vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
         vscode.languages.registerSignatureHelpProvider(selector, SignatureHelpProvider, metadata),
+        vscode.languages.registerInlayHintsProvider(selector, InlayHintsProvider),
         // workspace-------------------
         // workspace.onDidOpenTextDocument(pm.OpenFile),
         // workspace.onDidSaveTextDocument(pm.OnDidSaveTextDocument),

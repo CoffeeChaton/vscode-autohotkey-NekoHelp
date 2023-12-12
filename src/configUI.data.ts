@@ -149,6 +149,9 @@ type TempConfigs = {
 
         CmdShowParamInfo: boolean,
     },
+    InlayHintsProvider: {
+        mainSwitch: boolean,
+    },
     RenameFunctionInStr: boolean,
 };
 

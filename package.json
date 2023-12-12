@@ -530,7 +530,19 @@
             },
             {
                 "type": "object",
-                "title": "8. misc",
+                "title": "8. InlayHintsProvider",
+                "properties": {
+                    "AhkNekoHelp.InlayHintsProvider.mainSwitch": {
+                        "order": 1,
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18))"
+                    }
+                }
+            },
+            {
+                "type": "object",
+                "title": "9. misc",
                 "properties": {
                     "AhkNekoHelp.method": {
                         "type": "object",

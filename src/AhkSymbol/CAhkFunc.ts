@@ -253,4 +253,19 @@ export class CAhkFunc extends vscode.DocumentSymbol {
         this.fnMode = fnMode;
         this.meta = meta;
     }
+
+    public getParamInlayHintLabelPart(comma: number): vscode.InlayHintLabelPart {
+        let i = 0;
+        for (const v of this.paramMap.values()) {
+            if (i === comma) {
+                const { keyRawName, defRangeList } = v;
+                const InlayHintLabelPart = new vscode.InlayHintLabelPart(`${keyRawName}:`);
+                InlayHintLabelPart.location = new vscode.Location(this.uri, defRangeList[0].range);
+                return InlayHintLabelPart;
+            }
+            i++;
+        }
+
+        return new vscode.InlayHintLabelPart('unknown');
+    }
 }

@@ -35,7 +35,7 @@ export type TFnRefEx = {
     refList: readonly TFnRefSplit[],
 };
 
-function getfnArgs_recursion(
+function getFnArgs_recursion(
     {
         iStart,
         _AhkTokenLine,
@@ -138,7 +138,7 @@ function getfnArgs_recursion(
             (v: TAhkTokenLine): boolean => v.line === (line + 1) && v.cll === 1,
         );
         if (nextLine !== undefined) {
-            getfnArgs_recursion(
+            getFnArgs_recursion(
                 {
                     iStart: 0,
                     _AhkTokenLine: nextLine,
@@ -173,7 +173,7 @@ const memoGetFileFnUsing = new CMemo<TTokenStream, readonly TFnRefEx[]>(
                 const { upName: fnUpName, col } = fnRefData;
                 const args: TArgs[] = [];
 
-                getfnArgs_recursion(
+                getFnArgs_recursion(
                     {
                         iStart: col + fnUpName.length + 1,
                         _AhkTokenLine: AhkTokenLine,

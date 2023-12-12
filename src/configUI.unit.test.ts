@@ -18,7 +18,7 @@ describe('check package ruler', () => {
             'AhkNekoHelp.customize.',
             'AhkNekoHelp.files.',
             'AhkNekoHelp.signatureHelp.',
-
+            'AhkNekoHelp.InlayHintsProvider',
             'AhkNekoHelp.',
         ];
 
@@ -103,7 +103,10 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.signatureHelp.showReturnBlock', 'string'],
                 ['AhkNekoHelp.signatureHelp.CmdShowParamInfo', 'boolean'],
 
-                // [7] misc
+                // [7]
+                ['AhkNekoHelp.InlayHintsProvider.mainSwitch', 'boolean'],
+
+                // [8] misc
                 ['AhkNekoHelp.method', 'object'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
