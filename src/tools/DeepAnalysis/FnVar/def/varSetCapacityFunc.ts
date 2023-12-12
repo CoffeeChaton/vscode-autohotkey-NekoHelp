@@ -3,11 +3,12 @@ import type { TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
 import { C507_varName_like_number } from '../../../../provider/Diagnostic/DA/CDiagFnLib/C507_varName_like_number';
 import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
-import { fnSetVar, type TArr } from './fnSetVar_recursion';
+import type { TArgs, TFnRefEx } from './getFileFnUsing';
+
 import { getValMeta } from './getValMeta';
 
 function SetVar_by_NumGet(
-    arr: readonly TArr[],
+    args: readonly TArgs[],
     need: TGetFnDefNeed,
 ): void {
     const {
@@ -16,7 +17,7 @@ function SetVar_by_NumGet(
         paramMap,
         valMap,
     } = need;
-    const firstArg: TArr[] = arr.filter((v) => v.comma === 0);
+    const firstArg: TArgs[] = args.filter((v) => v.comma === 0);
     if (firstArg.length !== 1) return;
     const {
         StrPart,
@@ -46,7 +47,7 @@ function SetVar_by_NumGet(
 }
 
 function SetVar_by_DllCall(
-    arr: readonly TArr[],
+    args: readonly TArgs[],
     need: TGetFnDefNeed,
 ): void {
     const {
@@ -86,13 +87,13 @@ function SetVar_by_DllCall(
      * ```
      */
     const set = new Set<number>();
-    const commaMap = new Map<number, TArr>();
+    const commaMap = new Map<number, TArgs>();
 
     /**
      * start with 1, not need first
      */
-    for (let i = 1; i < arr.length; i += 1) {
-        const iArg: TArr = arr[i];
+    for (let i = 1; i < args.length; i += 1) {
+        const iArg: TArgs = args[i];
         const {
             col: _col,
             comma,
@@ -136,7 +137,7 @@ function SetVar_by_DllCall(
 }
 
 function SetVar_by_Base(
-    arr: readonly TArr[],
+    args: readonly TArgs[],
     need: TGetFnDefNeed,
     /**
      * ```ahk
@@ -152,7 +153,7 @@ function SetVar_by_Base(
         paramMap,
         valMap,
     } = need;
-    const selectArg: TArr[] = arr.filter((v) => v.comma === comma);
+    const selectArg: TArgs[] = args.filter((v) => v.comma === comma);
     if (selectArg.length !== 1) return;
     const {
         StrPart,
@@ -202,21 +203,19 @@ const varSetCapacityFuncArr: readonly [string, number][] = [
     ['TV_GetText'.toUpperCase(), 0],
 ];
 
-export function varSetCapacityFunc(need: TGetFnDefNeed): void {
-    const allFull: readonly [string, readonly TArr[]][] = fnSetVar(need);
-
-    for (const [upName, arr] of allFull) {
-        const paramPos = varSetCapacityFuncArr.find((v) => v[0] === upName);
+export function varSetCapacityFunc(need: TGetFnDefNeed, selectLine: TFnRefEx): void {
+    for (const { fnUpName, args } of selectLine.refList) {
+        const paramPos = varSetCapacityFuncArr.find((v) => v[0] === fnUpName);
 
         if (paramPos !== undefined) {
-            SetVar_by_Base(arr, need, paramPos[1]);
-        } else if (upName === 'DllCall'.toUpperCase()) {
-            SetVar_by_DllCall(arr, need);
+            SetVar_by_Base(args, need, paramPos[1]);
+        } else if (fnUpName === 'DllCall'.toUpperCase()) {
+            SetVar_by_DllCall(args, need);
         } else if (
-            upName === 'VarSetCapacity'.toUpperCase()
-            || upName === 'NumGet'.toUpperCase()
+            fnUpName === 'VarSetCapacity'.toUpperCase()
+            || fnUpName === 'NumGet'.toUpperCase()
         ) {
-            SetVar_by_NumGet(arr, need);
+            SetVar_by_NumGet(args, need);
         }
 
         // TODO https://www.autohotkey.com/docs/v1/lib/RegExReplace.htm

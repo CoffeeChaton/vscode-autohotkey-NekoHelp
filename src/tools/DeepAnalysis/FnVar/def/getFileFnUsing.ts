@@ -2,7 +2,6 @@
 import type { TAhkTokenLine, TLineFnCall, TTokenStream } from '../../../../globalEnum';
 import { fnRefLStr } from '../../../../provider/Def/fnRefLStr';
 import { CMemo } from '../../../CMemo';
-import type { TGetFnDefNeed } from '../TFnVarDef';
 
 // NumGet(OutputVar [, Offset := 0, Type := "UPtr"])
 // VarSetCapacity(OutputVar)
@@ -17,7 +16,7 @@ type TSearchData = {
     comma: number,
 };
 
-export type TArr = {
+export type TArgs = {
     StrPart: string,
     ln: number,
     col: number,
@@ -26,7 +25,17 @@ export type TArr = {
     comma: number,
 };
 
-function fnSetVar_recursion(
+export type TFnRefSplit = {
+    fnUpName: string,
+    args: readonly TArgs[],
+};
+
+export type TFnRefEx = {
+    line: number,
+    refList: readonly TFnRefSplit[],
+};
+
+function getfnArgs_recursion(
     {
         iStart,
         _AhkTokenLine,
@@ -35,8 +44,8 @@ function fnSetVar_recursion(
         brackets3: _brackets3,
         comma: _comma,
     }: TSearchData,
-    AhkTokenList: TTokenStream,
-    arr: TArr[],
+    DocStrMap: TTokenStream,
+    Args: TArgs[],
 ): void {
     let StrPart = '';
 
@@ -74,7 +83,7 @@ function fnSetVar_recursion(
         } else if (s === ')') {
             if (brackets1 === 0) {
                 if (!(/^[ \t]*$/u).test(StrPart)) {
-                    arr.push({
+                    Args.push({
                         by: 0,
                         col: i - StrPart.length,
                         comma,
@@ -91,7 +100,7 @@ function fnSetVar_recursion(
         } else if (s === ',') {
             if (brackets1 === 0) {
                 if (!(/^[ \t]*$/u).test(StrPart)) {
-                    arr.push({
+                    Args.push({
                         by: 1,
                         col: i - StrPart.length,
                         comma,
@@ -113,7 +122,7 @@ function fnSetVar_recursion(
      */
     if (brackets1 === 0) {
         if (!(/^[ \t]*$/u).test(StrPart)) {
-            arr.push({
+            Args.push({
                 by: 2,
                 col: max - StrPart.length,
                 comma,
@@ -125,11 +134,11 @@ function fnSetVar_recursion(
         StrPart = '';
 
         // find next line
-        const nextLine: TAhkTokenLine | undefined = AhkTokenList.find(
+        const nextLine: TAhkTokenLine | undefined = DocStrMap.find(
             (v: TAhkTokenLine): boolean => v.line === (line + 1) && v.cll === 1,
         );
         if (nextLine !== undefined) {
-            fnSetVar_recursion(
+            getfnArgs_recursion(
                 {
                     iStart: 0,
                     _AhkTokenLine: nextLine,
@@ -138,47 +147,62 @@ function fnSetVar_recursion(
                     brackets3,
                     comma,
                 },
-                AhkTokenList,
-                arr,
+                DocStrMap,
+                Args,
             );
         }
     }
 }
 
-const memoFnSetVar = new CMemo<TGetFnDefNeed, readonly [string, readonly TArr[]][]>(
-    (need: TGetFnDefNeed): readonly [string, readonly TArr[]][] => {
-        const leftFn: readonly TLineFnCall[] = fnRefLStr(need.AhkTokenLine);
-        if (leftFn.length === 0) return [];
+const memoGetFileFnUsing = new CMemo<TTokenStream, readonly TFnRefEx[]>(
+    (DocStrMap: TTokenStream): readonly TFnRefEx[] => {
+        const fileAllFnRefData: TFnRefEx[] = [];
+        for (const AhkTokenLine of DocStrMap) {
+            const { line } = AhkTokenLine;
+            const leftFn: readonly TLineFnCall[] = fnRefLStr(AhkTokenLine);
+            if (leftFn.length === 0) {
+                fileAllFnRefData.push({
+                    line,
+                    refList: [],
+                });
+                continue;
+            }
 
-        const {
-            AhkTokenLine,
-            AhkTokenList,
-        } = need;
+            const refList: TFnRefSplit[] = [];
+            for (const fnRefData of leftFn) {
+                const { upName: fnUpName, col } = fnRefData;
+                const args: TArgs[] = [];
 
-        const arrFull: [fnName: string, readonly TArr[]][] = [];
-        for (const fnRefData of leftFn) {
-            const { upName, col } = fnRefData;
-            const arr: TArr[] = [];
+                getfnArgs_recursion(
+                    {
+                        iStart: col + fnUpName.length + 1,
+                        _AhkTokenLine: AhkTokenLine,
+                        brackets1: 0,
+                        brackets2: 0,
+                        brackets3: 0,
+                        comma: 0,
+                    },
+                    DocStrMap,
+                    args,
+                );
+                refList.push({
+                    fnUpName,
+                    args,
+                });
+            }
 
-            fnSetVar_recursion(
+            fileAllFnRefData.push(
                 {
-                    iStart: col + upName.length + 1,
-                    _AhkTokenLine: AhkTokenLine,
-                    brackets1: 0,
-                    brackets2: 0,
-                    brackets3: 0,
-                    comma: 0,
+                    line,
+                    refList,
                 },
-                AhkTokenList,
-                arr,
             );
-            arrFull.push([upName, arr]);
         }
 
-        return arrFull;
+        return fileAllFnRefData;
     },
 );
 
-export function fnSetVar(need: TGetFnDefNeed): readonly [string, readonly TArr[]][] {
-    return memoFnSetVar.up(need);
+export function getFileFnUsing(DocStrMap: TTokenStream): readonly TFnRefEx[] {
+    return memoGetFileFnUsing.up(DocStrMap);
 }

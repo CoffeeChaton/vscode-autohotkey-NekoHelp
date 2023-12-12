@@ -8,6 +8,8 @@ import { EDetail } from '../../../globalEnum';
 import type { TBrackets } from '../../Bracket';
 import { ToUpCase } from '../../str/ToUpCase';
 import { forLoop } from './def/forLoop';
+import type { TFnRefEx } from './def/getFileFnUsing';
+import { getFileFnUsing } from './def/getFileFnUsing';
 import { getValMeta } from './def/getValMeta';
 import { OutputVarCommandBase } from './def/OutputVarCommandBase';
 import { OutputVarCommandPlus } from './def/OutputVarCommandPlus';
@@ -77,6 +79,7 @@ export function getFnVarDef(
     let fistWordVarMix: '' | 'GLOBAL' | 'LOCAL' | 'STATIC' = '';
     let BracketsRaw: TBrackets = [0, 0, 0];
 
+    const allFileFnUsing: readonly TFnRefEx[] = getFileFnUsing(DocStrMap);
     const valMap: TValMapIn = new Map<string, TValMetaIn>();
     for (const AhkTokenLine of AhkTokenList) {
         const {
@@ -143,7 +146,7 @@ export function getFnVarDef(
             AhkTokenList,
         };
         walrusOperator(need); // :=
-        varSetCapacityFunc(need); // VarSetCapacity(varName) or NumGet(varName) or NumGet(&varName)
+        varSetCapacityFunc(need, allFileFnUsing[line]); // VarSetCapacity(varName) or NumGet(varName) or NumGet(&varName)
 
         const {
             SecondWordUp,
