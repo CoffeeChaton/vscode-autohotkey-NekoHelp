@@ -34,8 +34,8 @@
 
 ## v0.0.52(2023-12-XX)
 
-<!-- pnpm 8.10.2 ?????-->
-<!-- dprint 0.41.0 ??????-->
+<!-- pnpm 8.10.2 -->
+<!-- dprint 0.41.0 -->
 
 - feat:([#35](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/35)) support get var-def by [`DllCall()`](https://www.autohotkey.com/docs/v1/lib/DllCall.htm)
   ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-52--1-DllCall-support.jpg)
@@ -51,7 +51,7 @@
   ```
 
 - feat: ([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) support InlayHints Provider
-  > draft <https://www.youtube.com/watch?v=qvPI2tf8OLc>
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-52--3-support-InlayHints-Provider.gif)
 
 ## v0.0.51(2023-12-03)
 

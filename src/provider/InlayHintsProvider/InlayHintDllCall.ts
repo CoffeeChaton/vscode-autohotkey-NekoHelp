@@ -33,7 +33,9 @@ export function InlayHintDllCall(
 
     const Remainder: number = comma % 2;
 
-    const i = (comma - Remainder) / 2 + 1; // doc is start with 1
+    const i = Remainder === 0
+        ? comma / 2
+        : (comma - Remainder) / 2 + 1;
     const name = Remainder === 0
         ? `Arg${i}:`
         : `Type${i}:`;
