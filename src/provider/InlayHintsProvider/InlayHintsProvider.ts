@@ -5,6 +5,8 @@ import { getInlayHintsConfig } from '../../configUI';
 import type { TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import type { TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
+import { getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
 import type { TFnRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { getFileFnUsing } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
@@ -48,9 +50,19 @@ function InlayHintsProviderCore(
             const useDefFunc: CAhkFunc | undefined = fullFuncMap.get(fnUpName);
             if (useDefFunc !== undefined) {
                 need.push(...InlayHintsUserFunc(
-                    useDefFunc,
                     args,
                     config,
+                    useDefFunc,
+                ));
+                continue;
+            }
+            //
+            const biFunc: TBiFuncMsg | undefined = getBuiltInFuncMD(fnUpName);
+            if (biFunc !== undefined) {
+                need.push(...InlayHintsUserFunc(
+                    args,
+                    config,
+                    biFunc,
                 ));
             }
         }
