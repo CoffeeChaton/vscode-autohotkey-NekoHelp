@@ -18,7 +18,7 @@ describe('check package ruler', () => {
             'AhkNekoHelp.customize.',
             'AhkNekoHelp.files.',
             'AhkNekoHelp.signatureHelp.',
-            'AhkNekoHelp.InlayHintsProvider',
+            'AhkNekoHelp.inlayHints',
             'AhkNekoHelp.',
         ];
 
@@ -104,7 +104,8 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.signatureHelp.CmdShowParamInfo', 'boolean'],
 
                 // [7]
-                ['AhkNekoHelp.InlayHintsProvider.mainSwitch', 'boolean'],
+                ['AhkNekoHelp.inlayHints.AMainSwitch', 'boolean'],
+                ['AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName', 'boolean'],
 
                 // [8] misc
                 ['AhkNekoHelp.method', 'object'],

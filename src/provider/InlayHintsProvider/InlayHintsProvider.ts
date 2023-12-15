@@ -1,7 +1,8 @@
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
-import { getInlayHintsProviderConfig } from '../../configUI';
+import { getInlayHintsConfig } from '../../configUI';
+import type { TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TFnRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
@@ -13,10 +14,12 @@ import { getAllFunc } from '../../tools/Func/getAllFunc';
 function InlayHintsProviderCore(
     document: vscode.TextDocument,
     range: vscode.Range,
+    config: TConfigs['inlayHints'],
 ): vscode.InlayHint[] {
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return [];
 
+    const { parameterNamesSuppressWhenArgumentMatchesName } = config;
     const { DocStrMap, AST } = AhkFileData;
     const allFileFnUsing: readonly TFnRefEx[] = getFileFnUsing(DocStrMap);
 
@@ -38,6 +41,7 @@ function InlayHintsProviderCore(
                         ln,
                         col,
                         comma,
+                        StrPart,
                     } = arg;
                     if (commaSet.has(comma)) {
                         continue;
@@ -53,7 +57,19 @@ function InlayHintsProviderCore(
                     ) {
                         break;
                     }
-                    need.push(new vscode.InlayHint(position, [useDefFunc.getParamInlayHintLabelPart(comma)]));
+                    const label: vscode.InlayHintLabelPart = useDefFunc.getParamInlayHintLabelPart(comma);
+
+                    if (parameterNamesSuppressWhenArgumentMatchesName) {
+                        const { value } = label;
+                        if (StrPart.trim() === value.replace(': ', '')) continue;
+                    }
+                    need.push(
+                        new vscode.InlayHint(
+                            position,
+                            [label],
+                            vscode.InlayHintKind.Parameter,
+                        ),
+                    );
                 }
             }
         }
@@ -71,8 +87,9 @@ export const InlayHintsProvider: vscode.InlayHintsProvider = {
         range: vscode.Range,
         _token: vscode.CancellationToken,
     ): vscode.ProviderResult<vscode.InlayHint[]> {
-        if (getInlayHintsProviderConfig().mainSwitch) {
-            return InlayHintsProviderCore(document, range);
+        const config: TConfigs['inlayHints'] = getInlayHintsConfig();
+        if (config.AMainSwitch) {
+            return InlayHintsProviderCore(document, range, config);
         }
         return [];
     },

@@ -530,13 +530,19 @@
             },
             {
                 "type": "object",
-                "title": "8. InlayHintsProvider",
+                "title": "8. inlayHints",
                 "properties": {
-                    "AhkNekoHelp.InlayHintsProvider.mainSwitch": {
+                    "AhkNekoHelp.inlayHints.AMainSwitch": {
                         "order": 1,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18))"
+                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) main switch of inlay Hints"
+                    },
+                    "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": {
+                        "order": 2,
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Suppress parameter name hints on arguments whose text is identical to the parameter name."
                     }
                 }
             },

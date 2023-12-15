@@ -149,8 +149,16 @@ type TempConfigs = {
 
         CmdShowParamInfo: boolean,
     },
-    InlayHintsProvider: {
-        mainSwitch: boolean,
+    inlayHints: {
+        AMainSwitch: boolean,
+        /**
+         * "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true
+         * Suppress parameter name hints on arguments whose text is identical to the parameter name.
+         */
+        parameterNamesSuppressWhenArgumentMatchesName: boolean,
+        // "typescript.inlayHints.parameterNames.enabled": "literals"
+        // "typescript.inlayHints.parameterNames.enabled": "none"
+        // "typescript.inlayHints.parameterNames.enabled": "all"
     },
     RenameFunctionInStr: boolean,
 };

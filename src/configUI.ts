@@ -170,8 +170,12 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
 
             CmdShowParamInfo: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.CmdShowParamInfo'),
         },
-        InlayHintsProvider: {
-            mainSwitch: getConfigs<boolean>(Configs, 'AhkNekoHelp.InlayHintsProvider.mainSwitch'),
+        inlayHints: {
+            AMainSwitch: getConfigs<boolean>(Configs, 'AhkNekoHelp.inlayHints.AmainSwitch'),
+            parameterNamesSuppressWhenArgumentMatchesName: getConfigs<boolean>(
+                Configs,
+                'AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName',
+            ),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
     } as const;
@@ -196,8 +200,8 @@ export function configChangEvent(): void {
     ---set end---
 */
 
-export function getInlayHintsProviderConfig(): TConfigs['InlayHintsProvider'] {
-    return config.InlayHintsProvider;
+export function getInlayHintsConfig(): TConfigs['inlayHints'] {
+    return config.inlayHints;
 }
 
 export function getCodeLenConfig(): TConfigs['CodeLens'] {
