@@ -543,6 +543,12 @@
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Suppress parameter name hints on arguments whose text is identical to the parameter name."
+                    },
+                    "AhkNekoHelp.inlayHints.HideSingleParameters": {
+                        "order": 3,
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Hide inline parameters if a function only has 1 parameter."
                     }
                 }
             },

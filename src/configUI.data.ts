@@ -159,6 +159,8 @@ type TempConfigs = {
         // "typescript.inlayHints.parameterNames.enabled": "literals"
         // "typescript.inlayHints.parameterNames.enabled": "none"
         // "typescript.inlayHints.parameterNames.enabled": "all"
+
+        HideSingleParameters: boolean,
     },
     RenameFunctionInStr: boolean,
 };

@@ -19,7 +19,7 @@ function InlayHintsProviderCore(
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return [];
 
-    const { parameterNamesSuppressWhenArgumentMatchesName } = config;
+    const { parameterNamesSuppressWhenArgumentMatchesName, HideSingleParameters } = config;
     const { DocStrMap, AST } = AhkFileData;
     const allFileFnUsing: readonly TFnRefEx[] = getFileFnUsing(DocStrMap);
 
@@ -58,10 +58,16 @@ function InlayHintsProviderCore(
                         break;
                     }
                     const label: vscode.InlayHintLabelPart = useDefFunc.getParamInlayHintLabelPart(comma);
-
+                    if (label.value === '') { // len === 0 && comma === 0
+                        continue;
+                    }
                     if (parameterNamesSuppressWhenArgumentMatchesName) {
                         const { value } = label;
-                        if (StrPart.trim() === value.replace(': ', '')) continue;
+                        if (StrPart.trim() === value.replace(':', '')) continue;
+                    }
+
+                    if (HideSingleParameters && args.length === 1 && useDefFunc.paramMap.size === 1) {
+                        continue;
                     }
                     need.push(
                         new vscode.InlayHint(

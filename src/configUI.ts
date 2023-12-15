@@ -171,11 +171,12 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             CmdShowParamInfo: getConfigs<boolean>(Configs, 'AhkNekoHelp.signatureHelp.CmdShowParamInfo'),
         },
         inlayHints: {
-            AMainSwitch: getConfigs<boolean>(Configs, 'AhkNekoHelp.inlayHints.AmainSwitch'),
+            AMainSwitch: getConfigs<boolean>(Configs, 'AhkNekoHelp.inlayHints.AMainSwitch'),
             parameterNamesSuppressWhenArgumentMatchesName: getConfigs<boolean>(
                 Configs,
                 'AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName',
             ),
+            HideSingleParameters: getConfigs<boolean>(Configs, 'AhkNekoHelp.inlayHints.HideSingleParameters'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
     } as const;

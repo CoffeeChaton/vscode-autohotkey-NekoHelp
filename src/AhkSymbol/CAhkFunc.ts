@@ -266,8 +266,8 @@ export class CAhkFunc extends vscode.DocumentSymbol {
             if (i === comma) {
                 const { keyRawName, defRangeList, isVariadic } = v;
                 const labelName = isVariadic
-                    ? `${keyRawName}[0]: `
-                    : `${keyRawName}: `;
+                    ? `${keyRawName}[0]:`
+                    : `${keyRawName}:`;
                 const InlayHintLabelPart = new vscode.InlayHintLabelPart(labelName);
                 InlayHintLabelPart.location = new vscode.Location(this.uri, defRangeList[0].range);
                 return InlayHintLabelPart;
@@ -279,7 +279,7 @@ export class CAhkFunc extends vscode.DocumentSymbol {
             const lastParam: Readonly<TParamMetaIn> | undefined = arr.at(-1);
             if (lastParam !== undefined && lastParam.isVariadic) {
                 const { keyRawName, defRangeList } = lastParam;
-                const InlayHintLabelPart = new vscode.InlayHintLabelPart(`${keyRawName}[${comma - len + 1}]: `);
+                const InlayHintLabelPart = new vscode.InlayHintLabelPart(`${keyRawName}[${comma - len + 1}]:`);
                 InlayHintLabelPart.location = new vscode.Location(this.uri, defRangeList[0].range);
                 return InlayHintLabelPart;
             }

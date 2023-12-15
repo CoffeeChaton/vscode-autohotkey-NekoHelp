@@ -106,6 +106,7 @@ describe('check package ruler', () => {
                 // [7]
                 ['AhkNekoHelp.inlayHints.AMainSwitch', 'boolean'],
                 ['AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName', 'boolean'],
+                ['AhkNekoHelp.inlayHints.HideSingleParameters', 'boolean'],
 
                 // [8] misc
                 ['AhkNekoHelp.method', 'object'],
