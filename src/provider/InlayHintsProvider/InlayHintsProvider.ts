@@ -33,7 +33,13 @@ function InlayHintsProviderCore(
     for (let line = start.line; line <= end.line; line++) {
         const selectLine: TFnRefEx = allFileFnUsing[line];
         for (const { fnUpName, args } of selectLine) {
-            const position: vscode.Position = new vscode.Position(line, args[0].col);
+            /**
+             * args.at(0)?.col --->\
+             * a(0,1,2,3,b())
+             * ** b() **
+             * ** b() ** -> args.len === 0
+             */
+            const position: vscode.Position = new vscode.Position(line, args.at(0)?.col ?? 0);
             const DA: CAhkFunc | null = getDAWithPos(AST, position);
             if (DA !== null && DA.selectionRange.contains(position)) {
                 break; // at func/method definition range
