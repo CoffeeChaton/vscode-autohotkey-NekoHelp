@@ -7,6 +7,7 @@ import type { TArgs } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { isBuiltin } from '../../tools/isBuiltin';
 import { isLookLikeNumber } from '../../tools/isNumber';
 import { isString } from '../../tools/isString';
+import { InlayHintDllCall } from './InlayHintDllCall';
 
 const BiFuncInlayHint = new CMemo<TBiFuncMsg, readonly string[]>(
     (md: TBiFuncMsg): readonly string[] => {
@@ -30,11 +31,19 @@ const BiFuncInlayHint = new CMemo<TBiFuncMsg, readonly string[]>(
     },
 );
 
-function biFunc2InlayHint(biFunc: TBiFuncMsg, comma: number): vscode.InlayHintLabelPart {
+function biFunc2InlayHint(
+    biFunc: TBiFuncMsg,
+    comma: number,
+    args: readonly TArgs[],
+): vscode.InlayHintLabelPart {
     const arr: readonly string[] = BiFuncInlayHint.up(biFunc);
     const len: number = arr.length;
     if (len === 0 && comma === 0) {
         return new vscode.InlayHintLabelPart('');
+    }
+
+    if (biFunc.keyRawName === 'DllCall') {
+        return InlayHintDllCall(comma, args);
     }
 
     let i = 0;
@@ -91,7 +100,7 @@ export function InlayHintsUserFunc(
 
         const label: vscode.InlayHintLabelPart = ahkFuncData instanceof CAhkFunc
             ? ahkFuncData.getParamInlayHintLabelPart(comma)
-            : biFunc2InlayHint(ahkFuncData, comma);
+            : biFunc2InlayHint(ahkFuncData, comma, args);
 
         const { value } = label;
         if (value === '') continue; // len === 0 && comma === 0
