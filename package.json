@@ -538,14 +538,30 @@
                         "default": true,
                         "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) main switch of inlay Hints"
                     },
-                    "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": {
+                    "AhkNekoHelp.inlayHints.parameterNamesEnabled": {
                         "order": 2,
+                        "type": "string",
+                        "default": "all",
+                        "enum": [
+                            "none",
+                            "literals",
+                            "all"
+                        ],
+                        "enumDescriptions": [
+                            "Disable parameter name hints.",
+                            "Enable parameter name hints only for literal arguments.",
+                            "Enable parameter name hints for literal and non-literal arguments."
+                        ],
+                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```"
+                    },
+                    "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": {
+                        "order": 3,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) If the value given to a parameter is the same as the parameter name, hide it."
                     },
                     "AhkNekoHelp.inlayHints.HideSingleParameters": {
-                        "order": 3,
+                        "order": 4,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Hide inline parameters if a function only has 1 parameter."

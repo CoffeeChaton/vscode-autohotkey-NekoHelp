@@ -176,6 +176,10 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
                 Configs,
                 'AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName',
             ),
+            parameterNamesEnabled: getConfigs<'none' | 'literals' | 'all'>(
+                Configs,
+                'AhkNekoHelp.inlayHints.parameterNamesEnabled',
+            ),
             HideSingleParameters: getConfigs<boolean>(Configs, 'AhkNekoHelp.inlayHints.HideSingleParameters'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),

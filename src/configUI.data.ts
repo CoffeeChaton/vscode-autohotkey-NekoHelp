@@ -156,10 +156,13 @@ type TempConfigs = {
          * Suppress parameter name hints on arguments whose text is identical to the parameter name.
          */
         parameterNamesSuppressWhenArgumentMatchesName: boolean,
-        // "typescript.inlayHints.parameterNames.enabled": "literals"
-        // "typescript.inlayHints.parameterNames.enabled": "none"
-        // "typescript.inlayHints.parameterNames.enabled": "all"
 
+        /**
+         * "typescript.inlayHints.parameterNames.enabled": "literals"
+         * "typescript.inlayHints.parameterNames.enabled": "all"
+         */
+        //
+        parameterNamesEnabled: 'none' | 'literals' | 'all',
         HideSingleParameters: boolean,
     },
     RenameFunctionInStr: boolean,

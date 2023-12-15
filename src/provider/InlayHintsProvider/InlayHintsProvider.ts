@@ -60,7 +60,12 @@ export const InlayHintsProvider: vscode.InlayHintsProvider = {
         _token: vscode.CancellationToken,
     ): vscode.ProviderResult<vscode.InlayHint[]> {
         const config: TConfigs['inlayHints'] = getInlayHintsConfig();
-        if (config.AMainSwitch) {
+        /**
+         * // FIXME: if i Provider cmd InlayHints
+         *
+         * need to clear `config.parameterNamesEnabled !== 'none'`
+         */
+        if (config.AMainSwitch && config.parameterNamesEnabled !== 'none') {
             return InlayHintsProviderCore(document, range, config);
         }
         return [];
