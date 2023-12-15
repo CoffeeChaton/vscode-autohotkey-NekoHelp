@@ -30,10 +30,7 @@ export type TFnRefSplit = {
     args: readonly TArgs[],
 };
 
-export type TFnRefEx = {
-    line: number,
-    refList: readonly TFnRefSplit[],
-};
+export type TFnRefEx = readonly TFnRefSplit[];
 
 function getFnArgs_recursion(
     {
@@ -136,11 +133,8 @@ function getFnArgs_recursion(
         }
         StrPart = '';
 
-        // find next line
-        const nextLine: TAhkTokenLine | undefined = DocStrMap.find(
-            (v: TAhkTokenLine): boolean => v.line === (line + 1) && v.cll === 1,
-        );
-        if (nextLine !== undefined) {
+        const nextLine: TAhkTokenLine | undefined = DocStrMap.at(line + 1);
+        if (nextLine !== undefined && nextLine.cll === 1) {
             getFnArgs_recursion(
                 {
                     iStart: 0,
@@ -161,13 +155,9 @@ const memoGetFileFnUsing = new CMemo<TTokenStream, readonly TFnRefEx[]>(
     (DocStrMap: TTokenStream): readonly TFnRefEx[] => {
         const fileAllFnRefData: TFnRefEx[] = [];
         for (const AhkTokenLine of DocStrMap) {
-            const { line } = AhkTokenLine;
             const leftFn: readonly TLineFnCall[] = fnRefLStr(AhkTokenLine);
             if (leftFn.length === 0) {
-                fileAllFnRefData.push({
-                    line,
-                    refList: [],
-                });
+                fileAllFnRefData.push([]);
                 continue;
             }
 
@@ -194,12 +184,7 @@ const memoGetFileFnUsing = new CMemo<TTokenStream, readonly TFnRefEx[]>(
                 });
             }
 
-            fileAllFnRefData.push(
-                {
-                    line,
-                    refList,
-                },
-            );
+            fileAllFnRefData.push(refList);
         }
 
         return fileAllFnRefData;

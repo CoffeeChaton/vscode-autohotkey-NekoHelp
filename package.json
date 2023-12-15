@@ -542,7 +542,7 @@
                         "order": 2,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Suppress parameter name hints on arguments whose text is identical to the parameter name."
+                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) If the value given to a parameter is the same as the parameter name, hide it."
                     },
                     "AhkNekoHelp.inlayHints.HideSingleParameters": {
                         "order": 3,

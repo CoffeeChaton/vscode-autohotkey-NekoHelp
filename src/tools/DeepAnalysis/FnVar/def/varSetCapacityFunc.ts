@@ -204,7 +204,7 @@ const varSetCapacityFuncArr: readonly [string, number][] = [
 ];
 
 export function varSetCapacityFunc(need: TGetFnDefNeed, selectLine: TFnRefEx): void {
-    for (const { fnUpName, args } of selectLine.refList) {
+    for (const { fnUpName, args } of selectLine) {
         const paramPos = varSetCapacityFuncArr.find((v) => v[0] === fnUpName);
 
         if (paramPos !== undefined) {

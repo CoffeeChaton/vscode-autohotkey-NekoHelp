@@ -10,6 +10,7 @@ import { getFileFnUsing } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsin
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
+import { InlayHintsUserFunc } from './InlayHintsUserFunc';
 
 function InlayHintsProviderCore(
     document: vscode.TextDocument,
@@ -19,7 +20,6 @@ function InlayHintsProviderCore(
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return [];
 
-    const { parameterNamesSuppressWhenArgumentMatchesName, HideSingleParameters } = config;
     const { DocStrMap, AST } = AhkFileData;
     const allFileFnUsing: readonly TFnRefEx[] = getFileFnUsing(DocStrMap);
 
@@ -32,51 +32,20 @@ function InlayHintsProviderCore(
     // eslint-disable-next-line prefer-destructuring
     for (let line = start.line; line <= end.line; line++) {
         const selectLine: TFnRefEx = allFileFnUsing[line];
-        for (const { fnUpName, args } of selectLine.refList) {
+        for (const { fnUpName, args } of selectLine) {
+            const position: vscode.Position = new vscode.Position(line, args[0].col);
+            const DA: CAhkFunc | null = getDAWithPos(AST, position);
+            if (DA !== null && DA.selectionRange.contains(position)) {
+                break; // at func/method definition range
+            }
+
             const useDefFunc: CAhkFunc | undefined = fullFuncMap.get(fnUpName);
             if (useDefFunc !== undefined) {
-                const commaSet = new Set<number>();
-                for (const arg of args) {
-                    const {
-                        ln,
-                        col,
-                        comma,
-                        StrPart,
-                    } = arg;
-                    if (commaSet.has(comma)) {
-                        continue;
-                    }
-                    commaSet.add(comma);
-
-                    const colFix = col;
-                    const position: vscode.Position = new vscode.Position(ln, colFix);
-                    const DA: CAhkFunc | null = getDAWithPos(AST, position);
-                    if (
-                        DA !== null
-                        && DA.selectionRange.contains(position)
-                    ) {
-                        break;
-                    }
-                    const label: vscode.InlayHintLabelPart = useDefFunc.getParamInlayHintLabelPart(comma);
-                    if (label.value === '') { // len === 0 && comma === 0
-                        continue;
-                    }
-                    if (parameterNamesSuppressWhenArgumentMatchesName) {
-                        const { value } = label;
-                        if (StrPart.trim() === value.replace(':', '')) continue;
-                    }
-
-                    if (HideSingleParameters && args.length === 1 && useDefFunc.paramMap.size === 1) {
-                        continue;
-                    }
-                    need.push(
-                        new vscode.InlayHint(
-                            position,
-                            [label],
-                            vscode.InlayHintKind.Parameter,
-                        ),
-                    );
-                }
+                need.push(...InlayHintsUserFunc(
+                    useDefFunc,
+                    args,
+                    config,
+                ));
             }
         }
     }
@@ -84,9 +53,6 @@ function InlayHintsProviderCore(
     return need;
 }
 
-//
-
-//
 export const InlayHintsProvider: vscode.InlayHintsProvider = {
     provideInlayHints(
         document: vscode.TextDocument,
