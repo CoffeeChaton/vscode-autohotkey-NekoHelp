@@ -1,9 +1,12 @@
 import * as vscode from 'vscode';
 import { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
+import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
 import type { TConfigs } from '../../configUI.data';
-import type { TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
+import { getBuiltInFuncMD, type TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { CMemo } from '../../tools/CMemo';
-import type { TArgs } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
+import type { TArgs, TFnRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
+import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
+import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 import { isBuiltin } from '../../tools/isBuiltin';
 import { isLookLikeNumber } from '../../tools/isNumber';
 import { isString } from '../../tools/isString';
@@ -67,7 +70,7 @@ function biFunc2InlayHint(
     return new vscode.InlayHintLabelPart('unknown:');
 }
 
-export function InlayHintsUserFunc(
+function InlayHintsFuncCore(
     args: readonly TArgs[],
     config: TConfigs['inlayHints'],
     ahkFuncData: CAhkFunc | TBiFuncMsg,
@@ -115,6 +118,51 @@ export function InlayHintsUserFunc(
                 vscode.InlayHintKind.Parameter,
             ),
         );
+    }
+
+    return need;
+}
+
+export function InlayHintsFunc(
+    allFileFnUsing: readonly TFnRefEx[],
+    line: number,
+    AST: TAstRoot,
+    fullFuncMap: TFullFuncMap,
+    config: TConfigs['inlayHints'],
+): vscode.InlayHint[] {
+    const need: vscode.InlayHint[] = [];
+    const selectLine: TFnRefEx = allFileFnUsing[line];
+    for (const { fnUpName, args } of selectLine) {
+        /**
+         * args.at(0)?.col --->\
+         * a(0,1,2,3,b())
+         * ** b() **
+         * ** b() ** -> args.len === 0
+         */
+        const position: vscode.Position = new vscode.Position(line, args.at(0)?.col ?? 0);
+        const DA: CAhkFunc | null = getDAWithPos(AST, position);
+        if (DA !== null && DA.selectionRange.contains(position)) {
+            break; // at func/method definition range
+        }
+
+        const useDefFunc: CAhkFunc | undefined = fullFuncMap.get(fnUpName);
+        if (useDefFunc !== undefined) {
+            need.push(...InlayHintsFuncCore(
+                args,
+                config,
+                useDefFunc,
+            ));
+            continue;
+        }
+        //
+        const biFunc: TBiFuncMsg | undefined = getBuiltInFuncMD(fnUpName);
+        if (biFunc !== undefined) {
+            need.push(...InlayHintsFuncCore(
+                args,
+                config,
+                biFunc,
+            ));
+        }
     }
 
     return need;

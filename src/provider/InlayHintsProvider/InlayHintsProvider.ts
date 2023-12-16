@@ -1,18 +1,14 @@
 /* eslint-disable max-depth */
-import * as vscode from 'vscode';
-import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
+import type * as vscode from 'vscode';
 import { getInlayHintsConfig } from '../../configUI';
 import type { TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
-import type { TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
-import { getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
 import type { TFnRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { getFileFnUsing } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
-import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
-import { InlayHintsUserFunc } from './InlayHintsUserFunc';
+import { InlayHintsFunc } from './InlayHintsFunc';
 
 function InlayHintsProviderCore(
     document: vscode.TextDocument,
@@ -33,39 +29,15 @@ function InlayHintsProviderCore(
 
     // eslint-disable-next-line prefer-destructuring
     for (let line = start.line; line <= end.line; line++) {
-        const selectLine: TFnRefEx = allFileFnUsing[line];
-        for (const { fnUpName, args } of selectLine) {
-            /**
-             * args.at(0)?.col --->\
-             * a(0,1,2,3,b())
-             * ** b() **
-             * ** b() ** -> args.len === 0
-             */
-            const position: vscode.Position = new vscode.Position(line, args.at(0)?.col ?? 0);
-            const DA: CAhkFunc | null = getDAWithPos(AST, position);
-            if (DA !== null && DA.selectionRange.contains(position)) {
-                break; // at func/method definition range
-            }
+        // func
+        /**
+         * func
+         *
+         * can not memo -> fullFuncMap && config
+         */
+        need.push(...InlayHintsFunc(allFileFnUsing, line, AST, fullFuncMap, config));
 
-            const useDefFunc: CAhkFunc | undefined = fullFuncMap.get(fnUpName);
-            if (useDefFunc !== undefined) {
-                need.push(...InlayHintsUserFunc(
-                    args,
-                    config,
-                    useDefFunc,
-                ));
-                continue;
-            }
-            //
-            const biFunc: TBiFuncMsg | undefined = getBuiltInFuncMD(fnUpName);
-            if (biFunc !== undefined) {
-                need.push(...InlayHintsUserFunc(
-                    args,
-                    config,
-                    biFunc,
-                ));
-            }
-        }
+        // CMD
     }
 
     return need;
