@@ -4,10 +4,13 @@ import { getInlayHintsConfig } from '../../configUI';
 import type { TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import type { TCmdRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileCmdUsing';
+import { getFileCmdUsing } from '../../tools/DeepAnalysis/FnVar/def/getFileCmdUsing';
 import type { TFnRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { getFileFnUsing } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import type { TFullFuncMap } from '../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
+import { InlayHintsCmd } from './InlayHintsCmd';
 import { InlayHintsFunc } from './InlayHintsFunc';
 
 function InlayHintsProviderCore(
@@ -20,6 +23,7 @@ function InlayHintsProviderCore(
 
     const { DocStrMap, AST } = AhkFileData;
     const allFileFnUsing: readonly TFnRefEx[] = getFileFnUsing(DocStrMap);
+    const allFileCmdUsing: readonly TCmdRefEx[] = getFileCmdUsing(DocStrMap);
 
     const fullFuncMap: TFullFuncMap = getAllFunc();
 
@@ -29,15 +33,18 @@ function InlayHintsProviderCore(
 
     // eslint-disable-next-line prefer-destructuring
     for (let line = start.line; line <= end.line; line++) {
-        // func
-        /**
-         * func
-         *
-         * can not memo -> fullFuncMap && config
-         */
-        need.push(...InlayHintsFunc(allFileFnUsing, line, AST, fullFuncMap, config));
-
-        // CMD
+        need.push(
+            /**
+             * func
+             *
+             * can not memo -> fullFuncMap && config
+             */
+            ...InlayHintsFunc(allFileFnUsing, line, AST, fullFuncMap, config),
+            /**
+             * cmd
+             */
+            ...InlayHintsCmd(DocStrMap, allFileCmdUsing, line, config),
+        );
     }
 
     return need;
