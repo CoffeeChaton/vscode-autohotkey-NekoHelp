@@ -106,12 +106,13 @@ function getFnArgs_recursion(
                         comma,
                         lineComment,
                         ln: line,
-                        StrPart,
+                        StrPart: `${StrPart} `, // don't use ',' here , because 'b,'.trim() !== 'b '.trim()
                     });
                 }
                 comma++;
                 StrPart = '';
             }
+            StrPart += ' ';
             continue;
         }
         StrPart += s;

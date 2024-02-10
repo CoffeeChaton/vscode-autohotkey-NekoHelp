@@ -36,9 +36,8 @@
 ## v0.0.53(2023-02-XX)
 
 - fix:([#41](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/41))
-  - [ ] The position for "string:" is incorrect.
-  - [x] inlint hint not follow leading 0's.
-
+  1. inlint hint miss "," len. The position for "string:" is incorrect.
+  2. inlint hint not follow leading 0's.
 
 ## v0.0.52(2023-12-15)
 
