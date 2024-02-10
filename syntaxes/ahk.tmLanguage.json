@@ -1005,7 +1005,7 @@
                 },
                 {
                     "match": "(?<![.#])\\b(?i:False|True)\\b",
-                    "name": "variable.other.constant.builtin.ahk"
+                    "name": "variable.other.constant.builtin.boolean.ahk"
                 }
             ]
         },
