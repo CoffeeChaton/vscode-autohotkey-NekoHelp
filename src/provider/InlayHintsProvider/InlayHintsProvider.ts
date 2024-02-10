@@ -43,7 +43,7 @@ function InlayHintsProviderCore(
             /**
              * cmd
              */
-            ...InlayHintsCmd(DocStrMap, allFileCmdUsing, line, config),
+            ...InlayHintsCmd(allFileCmdUsing[line], config),
         );
     }
 
@@ -57,14 +57,9 @@ export const InlayHintsProvider: vscode.InlayHintsProvider = {
         _token: vscode.CancellationToken,
     ): vscode.ProviderResult<vscode.InlayHint[]> {
         const config: TConfigs['inlayHints'] = getInlayHintsConfig();
-        /**
-         * // FIXME: if i Provider cmd InlayHints
-         *
-         * need to clear `config.parameterNamesEnabled !== 'none'`
-         */
-        if (config.AMainSwitch && config.parameterNamesEnabled !== 'none') {
-            return InlayHintsProviderCore(document, range, config);
-        }
-        return [];
+
+        return config.AMainSwitch
+            ? InlayHintsProviderCore(document, range, config)
+            : [];
     },
 };

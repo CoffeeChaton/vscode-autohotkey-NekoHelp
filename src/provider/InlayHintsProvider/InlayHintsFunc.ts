@@ -111,9 +111,10 @@ function InlayHintsFuncCore(
             continue;
         }
 
+        const colPos = StrPart.length - StrPart.trimStart().length;
         need.push(
             new vscode.InlayHint(
-                new vscode.Position(ln, col),
+                new vscode.Position(ln, col + colPos),
                 [label],
                 vscode.InlayHintKind.Parameter,
             ),
@@ -130,6 +131,10 @@ export function InlayHintsFunc(
     fullFuncMap: TFullFuncMap,
     config: TConfigs['inlayHints'],
 ): vscode.InlayHint[] {
+    if (config.parameterNamesEnabled === 'none') {
+        return [];
+    }
+
     const need: vscode.InlayHint[] = [];
     const selectLine: TFnRefEx = allFileFnUsing[line];
     for (const { fnUpName, args } of selectLine) {

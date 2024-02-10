@@ -1,8 +1,5 @@
-/* eslint-disable complexity */
-/* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { TConfigs } from '../../configUI.data';
-import type { TTokenStream } from '../../globalEnum';
 import { CommandMDMap, type TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
 import type { TCmdRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileCmdUsing';
 import type { TArgs } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
@@ -385,15 +382,13 @@ function InlayHintsCmdCore(
 }
 
 export function InlayHintsCmd(
-    _DocStrMap: TTokenStream,
-    allFileCmdUsing: readonly TCmdRefEx[],
-    line: number,
+    selectLineData: TCmdRefEx,
     config: TConfigs['inlayHints'],
 ): vscode.InlayHint[] {
     const need: vscode.InlayHint[] = [];
-    const selectLine: TCmdRefEx = allFileCmdUsing[line];
+    // allFileCmdUsing[line];
 
-    for (const { CmdUpName, args } of selectLine) {
+    for (const { CmdUpName, args } of selectLineData) {
         if (CmdUpName === '') {
             continue;
         }
