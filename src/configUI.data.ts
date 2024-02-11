@@ -128,6 +128,7 @@ type TempConfigs = {
             Control?: boolean, // api-change
             ControlGet?: boolean, // api-change
         },
+        autoInsertGlobal: boolean,
     },
     SymbolProvider: {
         useSymbolProvider: boolean,

@@ -81,6 +81,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.snippets.exclude', 'array'],
                 ['AhkNekoHelp.snippets.fromOtherFile', 'number'],
                 ['AhkNekoHelp.snippets.subCmdPlus', 'object'],
+                ['AhkNekoHelp.snippets.autoInsertGlobal', 'boolean'],
 
                 // [4]
                 ['AhkNekoHelp.customize.statusBarDisplayColor', 'string'],

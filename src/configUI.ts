@@ -146,6 +146,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             CommandOption: getConfigs<ECommandOption>(Configs, 'AhkNekoHelp.snippets.CommandOption'),
             fromOtherFile: getConfigs<0 | 1 | 2>(Configs, 'AhkNekoHelp.snippets.fromOtherFile'),
             subCmdPlus: getConfigs<TConfigs['snippets']['subCmdPlus']>(Configs, 'AhkNekoHelp.snippets.subCmdPlus'),
+            autoInsertGlobal: getConfigs<boolean>(Configs, 'AhkNekoHelp.snippets.autoInsertGlobal'),
         },
         SymbolProvider: {
             useSymbolProvider: getConfigs<boolean>(Configs, 'AhkNekoHelp.useSymbolProvider'),

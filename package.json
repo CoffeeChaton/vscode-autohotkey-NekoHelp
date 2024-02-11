@@ -346,6 +346,11 @@
                             "ControlGet": false
                         },
                         "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` / `SysGet` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.subCmdPlus.md))"
+                    },
+                    "AhkNekoHelp.snippets.autoInsertGlobal": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "([#39](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/39)) auto insert `global` keywords of `global-var` in func/method range"
                     }
                 }
             },

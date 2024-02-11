@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc, TValMapOut, TValMetaOut } from '../../../AhkSymbol/CAhkFunc';
+import { getCommandOptions } from '../../../configUI';
 import { EPrefix, setMD } from '../../../tools/MD/setMD';
 import type { ESnippetRecBecause, TSnippetRecMap } from '../DA/ESnippetRecBecause';
 
@@ -22,6 +23,7 @@ export function setModuleVarCompletion(
         DA,
     }: { ModuleValMap: TValMapOut, fileName: string, recMap: TSnippetRecMap, DA: CAhkFunc | null },
 ): vscode.CompletionItem[] {
+    const insertGlobal: boolean = getCommandOptions().autoInsertGlobal;
     return [...ModuleValMap.values()].map((v: TValMetaOut): vscode.CompletionItem => {
         const {
             keyRawName,
@@ -36,7 +38,7 @@ export function setModuleVarCompletion(
         const label: vscode.CompletionItemLabel = {
             label: DA === null
                 ? keyRawName
-                : `global ${keyRawName}`,
+                : `${keyRawName} (global)`,
 
             description: recStr === undefined
                 ? fileName // "⌬ ";
@@ -46,10 +48,10 @@ export function setModuleVarCompletion(
         const item: vscode.CompletionItem = new vscode.CompletionItem(label);
         item.kind = vscode.CompletionItemKind.Variable; // vscode.CompletionItemKind.Variable;
 
-        item.insertText = needGlobalHead(DA, v)
+        item.insertText = insertGlobal && needGlobalHead(DA, v)
             ? `global ${keyRawName}`
             : keyRawName;
-
+        item.sortText = keyRawName;
         item.detail = `${EPrefix.var} (neko-help-ModuleVar)`;
 
         item.documentation = setMD({

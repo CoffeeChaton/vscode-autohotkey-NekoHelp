@@ -41,7 +41,6 @@
 
 - feat: ([#38](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/38)) separate scope for boolean values
 
-
 ## v0.0.52(2023-12-15)
 
 <!-- pnpm 8.10.2 -->
