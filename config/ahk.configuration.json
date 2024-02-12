@@ -18,7 +18,6 @@
         ["[", "]"],
         ["(", ")"],
         { "open": "\"", "close": "\"", "notIn": ["string"] },
-        { "open": "%", "close": "%", "notIn": ["string"] },
         { "open": "/**", "close": "\n*/", "notIn": ["string"] }
         // { "open": "/**", "close": "\n*/", "notIn": ["string"] }
     ],
@@ -27,13 +26,12 @@
         ["{", "}"],
         ["[", "]"],
         ["(", ")"],
-        ["\"", "\""],
-        ["%", "%"]
+        ["\"", "\""]
     ],
     "folding": {
         "markers": {
-            "start": "^[ \\t]*\\/\\*", // /*
-            "end": "^[ \\t]*\\*\\/" // */
+            "start": "^\\s*;\\s*\\[region\\]", // /*
+            "end": "^\\s*;\\s*\\[endRegion\\]" // */
         }
     },
     "onEnterRules": [
