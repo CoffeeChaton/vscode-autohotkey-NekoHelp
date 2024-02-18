@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.53(2023-02-XX)](#v00532023-02-xx)
+  - [v0.0.53(2023-02-18)](#v00532023-02-18)
   - [v0.0.52(2023-12-15)](#v00522023-12-15)
   - [v0.0.51(2023-12-03)](#v00512023-12-03)
   - [v0.0.50(2023-11-24)](#v00502023-11-24)
@@ -33,12 +33,13 @@
   - [0.0.24(2023-02-24)](#00242023-02-24)
   - [\<= 0.0.23(2023-02-17)](#-00232023-02-17)
 
-## v0.0.53(2023-02-XX)
+## v0.0.53(2023-02-18)
 
 - fix:([#41](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/41))
   1. inlint hint miss "," len. The position for "string:" is incorrect.
   2. inlint hint not follow leading 0's.
 
+- feat: ([#37](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/37)) cmd InlayHints add Overload support.
 - feat: ([#38](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/38)) separate scope for boolean values.
 - feat: ([#40](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/40)) change regions keywords.
 
