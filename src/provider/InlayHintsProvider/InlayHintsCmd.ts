@@ -371,7 +371,7 @@ function InlayHintsCmdCore(
 
         need.push(
             new vscode.InlayHint(
-                new vscode.Position(ln, col),
+                new vscode.Position(ln, col + (StrPart.length - StrPart.trimStart().length)),
                 [label],
                 vscode.InlayHintKind.Parameter,
             ),
