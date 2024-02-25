@@ -112,13 +112,13 @@ function InlayHintsFuncCore(
         }
 
         const colPos = StrPart.length - StrPart.trimStart().length;
-        need.push(
-            new vscode.InlayHint(
-                new vscode.Position(ln, col + colPos),
-                [label],
-                vscode.InlayHintKind.Parameter,
-            ),
+        const InlayHint = new vscode.InlayHint(
+            new vscode.Position(ln, col + colPos),
+            [label],
+            vscode.InlayHintKind.Parameter,
         );
+        InlayHint.paddingRight = true;
+        need.push(InlayHint);
     }
 
     return need;
