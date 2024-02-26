@@ -1,32 +1,32 @@
 {
-    // 
+    // 1 thanks green tea 999
     "AhkNekoHelp.title.1": "1. 代码透镜",
-    "AhkNekoHelp.CodeLens.showClassReference": "在类定义行显示引用",
-    "AhkNekoHelp.CodeLens.showFuncReference": "在函数定义行显示引用",
+    "AhkNekoHelp.CodeLens.showClassReference": "在class定义处，显示引用次数",
+    "AhkNekoHelp.CodeLens.showFuncReference": "在函数定义处，显示引用次数",
     "AhkNekoHelp.CodeLens.showLabelReference": "显示 `标签:` 定义行处的参考信息（仅支持文件顶部标签）",
-    "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": "在 `ComObjConnect(..., \"str\")` 寄存器行显示参考 ([#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14))",
-    "AhkNekoHelp.CodeLens.showDevTool": "显示 Func 和 Method 开发工具",
+    "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": "在 `ComObjConnect(..., \"str\")` 行，显示引用次数 ([#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14))",
+    "AhkNekoHelp.CodeLens.showDevTool": "在函数和方法的定义处，显示开发工具",
     "AhkNekoHelp.CodeLens.showFileReport": "在文件顶部显示 CodeLens",
-    //
-    "AhkNekoHelp.title.2": "2. 诊断和绒毛",
-    "AhkNekoHelp.Diag.AMasterSwitch": "[诊断](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts) 总开关",
-    "AhkNekoHelp.Diag.AMasterSwitch-1": "任何时候都不要诊断。",
+    // 2 thanks green tea 999
+    "AhkNekoHelp.title.2": "2. 代码诊断与代码风格限制",
+    "AhkNekoHelp.Diag.AMasterSwitch": "[代码诊断](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts) 总开关",
+    "AhkNekoHelp.Diag.AMasterSwitch-1": "任何时候都不要代码诊断。",
     "AhkNekoHelp.Diag.AMasterSwitch-2": "(默认）如果打开 [工作区](https://code.visualstudio.com/docs/editor/workspaces)，则诊断，否则不诊断。",
-    "AhkNekoHelp.Diag.AMasterSwitch-3": "随时诊断",
+    "AhkNekoHelp.Diag.AMasterSwitch-3": "任何时候都代码诊断。",
     "AhkNekoHelp.Diag.code107LegacyAssignment": "(code107) 诊断 [`var=value`(传统赋值)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm) 并建议 '尝试使用`:=`替换`=`'",
     "AhkNekoHelp.Diag.code300FuncSize": "(code300)函数/方法大小的校验（只计算非空行）",
-    "AhkNekoHelp.Diag.code500": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md))var已分配但从未使用，这是文件的最大警告号。使用 ```0``` 关闭警告。",
-    "AhkNekoHelp.Diag.code502": "(code502)检查变量的大小写敏感性，文件最大警告数。",
-    "AhkNekoHelp.Diag.code503": "(code503)参数大小写敏感性检查，文件最大检查数。",
-    "AhkNekoHelp.Diag.code511": "(code511)禁止 var/param 名称与函数名称相同。使用 ```0``` 关闭信息",
+    "AhkNekoHelp.Diag.code500": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md))提示var已分配但从未使用，这是文件的最大警告数量。使用 ```0``` 关闭警告。",
+    "AhkNekoHelp.Diag.code502": "(code502)检查var的大小写敏感性，文件最大警告数。使用 ```0``` 关闭信息",
+    "AhkNekoHelp.Diag.code503": "(code503)检查 param大小写敏感性检查，文件最大检查数。使用 ```0``` 关闭信息",
+    "AhkNekoHelp.Diag.code511": "(code511)禁止var/param名称与函数名称相同。使用 ```0``` 关闭信息",
     "AhkNekoHelp.Diag.code512": "(code512)禁止使用与函数名相同的全局变量名，使用 ```0``` 关闭信息。",
     "AhkNekoHelp.Diag.code513": "(code513)禁止标签名称与函数名称相同。使用 ```0``` 关闭信息。",
     "AhkNekoHelp.Diag.code521": "使用 *warn* 以避免名称混淆。([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))",
     "AhkNekoHelp.Diag.code522": "使用 *info* 以避免名称混淆。([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))",
-    "AhkNekoHelp.Diag.code800Deprecated": "(code8xx) 诊断已废弃的命令，使用 false 隐藏类似 [8xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L206) 的对角代码",
+    "AhkNekoHelp.Diag.code800Deprecated": "(code8xx) 诊断已废弃的命令，使用 false 隐藏类似 [8xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L206) 的代码",
     "AhkNekoHelp.Diag.useModuleValDiag": "beta 测试：尝试在所有文件中使用 Diag [5xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L29)",
-    // 3
-    "AhkNekoHelp.title.3": "3. 格式",
+    // 3 thanks green tea 999
+    "AhkNekoHelp.title.3": "3. 格式化。",
     "AhkNekoHelp.format.AMasterSwitchUseFormatProvider": "如果要使用其他格式工具或手动处理，请关闭此选项。",
     "AhkNekoHelp.format.textReplace": "`阿尔法测试选项`，除高级用户外，***不建议***打开。",
     "AhkNekoHelp.format.removeFirstCommaDirective": "([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaDirective.md)) 移除 #Directive 后的第一个逗号",
@@ -35,12 +35,12 @@
     "AhkNekoHelp.format.removeFirstCommaCommand-2": "try `Sleep 1000` -> `Sleep, 1000` ; （在命令后添加第一个可选逗号）",
     "AhkNekoHelp.format.removeFirstCommaCommand-3": "try `Sleep, 1000` -> `Sleep 1000` ; (删除命令后第一个逗号）",
     "AhkNekoHelp.format.useTopLabelIndent": "将 `label`、`HotString` 和 `HotKey` 缩进文档顶部",
-    "AhkNekoHelp.format.useParenthesesIndent": "用`(`和`)`缩进而不是关闭",
-    "AhkNekoHelp.format.useSquareBracketsIndent": "用`[`和`]`缩进而不是关闭",
-    // 4
-    "AhkNekoHelp.title.4": "4. 完成和片段",
-    "AhkNekoHelp.snippets.CommandOption-1": "不过滤命令，提供所有输入的命令。",
-    "AhkNekoHelp.snippets.CommandOption-2": "过滤器不推荐指挥部。(来自 AhkNekoHelp 的推荐规则）。",
-    "AhkNekoHelp.snippets.CommandOption-3": "过滤命令与软件包具有相同的名称功能，不推荐使用。",
-    "AhkNekoHelp.snippets.CommandOption-4": "未提供任何指挥."
+    "AhkNekoHelp.format.useParenthesesIndent": "當`(`和`)`未关闭時缩进",
+    "AhkNekoHelp.format.useSquareBracketsIndent": "當`[`和`]`未关闭時缩进",
+    // 4 DeepL now
+    "AhkNekoHelp.title.4": "4. 自动完成及代码片段完成和片段",
+    "AhkNekoHelp.snippets.CommandOption-1": "提供所有命令",
+    "AhkNekoHelp.snippets.CommandOption-2": "过滤掉不推荐的命令。(来自 AhkNekoHelp 的推荐规则）。",
+    "AhkNekoHelp.snippets.CommandOption-3": "过滤命令与软件包具有相同的名称功能，不推荐使用。", // TODO need gif/jpg here
+    "AhkNekoHelp.snippets.CommandOption-4": "不提供任何命令"
 }
