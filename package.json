@@ -73,43 +73,43 @@
         "configuration": [
             {
                 "type": "object",
-                "title": "1. CodeLens",
+                "title": "%AhkNekoHelp.title.1%",
                 "properties": {
                     "AhkNekoHelp.CodeLens.showClassReference": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "show Reference at Class def line"
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showClassReference%"
                     },
                     "AhkNekoHelp.CodeLens.showFuncReference": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "show Reference at function def line"
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showFuncReference%"
                     },
                     "AhkNekoHelp.CodeLens.showLabelReference": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "show Reference at `label:` def line (just support file top label)"
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showLabelReference%"
                     },
                     "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "show Reference at `ComObjConnect(..., \"str\")` Register line ([#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14))"
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference%"
                     },
                     "AhkNekoHelp.CodeLens.showDevTool": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "show Func and Method dev tools"
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showDevTool%"
                     },
                     "AhkNekoHelp.CodeLens.showFileReport": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "show CodeLens at file top"
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showFileReport%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "2. Diagnostics and Lint",
+                "title": "%AhkNekoHelp.title.2%",
                 "properties": {
                     "AhkNekoHelp.Diag.AMasterSwitch": {
                         "type": "string",
@@ -120,106 +120,106 @@
                             "alway"
                         ],
                         "markdownEnumDescriptions": [
-                            "don't diagnose at any time.",
-                            "(default) if open [workspace](https://code.visualstudio.com/docs/editor/workspaces) then diagnose, else not.",
-                            "alway diagnose"
+                            "%AhkNekoHelp.Diag.AMasterSwitch-1%",
+                            "%AhkNekoHelp.Diag.AMasterSwitch-2%",
+                            "%AhkNekoHelp.Diag.AMasterSwitch-3%"
                         ],
-                        "markdownDescription": "[Diagnostic](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts) Master Switch"
+                        "markdownDescription": "%AhkNekoHelp.Diag.AMasterSwitch%"
                     },
                     "AhkNekoHelp.Diag.code107LegacyAssignment": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "(code107) Diagnostic [`var = value`(legacy assignment)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm) and suggest \"try to use `:=` replace `=`\""
+                        "markdownDescription": "%AhkNekoHelp.Diag.code107LegacyAssignment%"
                     },
                     "AhkNekoHelp.Diag.code300FuncSize": {
                         "type": "number",
                         "default": 100,
                         "minimum": 3,
                         "maximum": 100000,
-                        "markdownDescription": "(code300) lint of function/Method size (just calc non-blank lines)"
+                        "markdownDescription": "%AhkNekoHelp.Diag.code300FuncSize%"
                     },
                     "AhkNekoHelp.Diag.code500": {
                         "type": "number",
                         "default": 20,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md)) var is assigned but never used, a file max warn number. use ```0``` to close warn."
+                        "markdownDescription": "%AhkNekoHelp.Diag.code500%"
                     },
                     "AhkNekoHelp.Diag.code502": {
                         "type": "number",
                         "default": 10,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "(code502) case sensitivity check of variable, a file max warn number. use ```0``` to close warn."
+                        "markdownDescription": "%AhkNekoHelp.Diag.code502%"
                     },
                     "AhkNekoHelp.Diag.code503": {
                         "type": "number",
                         "default": 10,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "(code503) case sensitivity check of parameter, a file max checks number. use ```0``` to close warn."
+                        "markdownDescription": "%AhkNekoHelp.Diag.code503%"
                     },
                     "AhkNekoHelp.Diag.code511": {
                         "type": "number",
                         "default": 0,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "(code511) ban var/param name same function-name. use ```0``` to close info."
+                        "markdownDescription": "%AhkNekoHelp.Diag.code511%"
                     },
                     "AhkNekoHelp.Diag.code512": {
                         "type": "number",
                         "default": 0,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "(code512) ban global-var-name same function-name. use ```0``` to close info."
+                        "markdownDescription": "%AhkNekoHelp.Diag.code512%"
                     },
                     "AhkNekoHelp.Diag.code513": {
                         "type": "number",
                         "default": 0,
                         "minimum": 0,
                         "maximum": 999,
-                        "markdownDescription": "(code513) ban label-name same function-name. use ```0``` to close info."
+                        "markdownDescription": "%AhkNekoHelp.Diag.code513%"
                     },
                     "AhkNekoHelp.Diag.code521": {
                         "type": "string",
                         "default": "local,global,static,if,else,loop,for,while,until,break,continue,goto,return,switch,case,try,catch,finally,throw,Critical,Default,Exit,ExitApp,GoSub,IfMsgBox,Pause,Reload",
-                        "markdownDescription": "use *warn* to avoid confusing names. ([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))"
+                        "markdownDescription": "%AhkNekoHelp.Diag.code521%"
                     },
                     "AhkNekoHelp.Diag.code522": {
                         "type": "string",
                         "default": "as,and,contains,false,in,is,IsSet,not,or,super,true,unset",
-                        "markdownDescription": "use *info* to avoid confusing names. ([Read More #28](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28))"
+                        "markdownDescription": "%AhkNekoHelp.Diag.code522%"
                     },
                     "AhkNekoHelp.Diag.code800Deprecated": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "(code8xx) Diagnostic Deprecated commands, false to hide diag code like [8xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L206)"
+                        "markdownDescription": "%AhkNekoHelp.Diag.code800Deprecated%"
                     },
                     "AhkNekoHelp.Diag.useModuleValDiag": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "beta test: try to Diag [5xx](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts#L29) at all file"
+                        "markdownDescription": "%AhkNekoHelp.Diag.useModuleValDiag%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "3. format",
+                "title": "%AhkNekoHelp.title.3%",
                 "properties": {
                     "AhkNekoHelp.format.AMasterSwitchUseFormatProvider": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "if you want to use other format tools or manual processing, close this"
+                        "markdownDescription": "%AhkNekoHelp.format.AMasterSwitchUseFormatProvider%"
                     },
                     "AhkNekoHelp.format.textReplace": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "`Alpha test options`, It is **not recommended** to turn on except for advanced users."
+                        "markdownDescription": "%AhkNekoHelp.format.textReplace%"
                     },
                     "AhkNekoHelp.format.removeFirstCommaDirective": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaDirective.md)) Remove the first comma after #Directive"
+                        "markdownDescription": "%AhkNekoHelp.format.removeFirstCommaDirective%"
                     },
                     "AhkNekoHelp.format.removeFirstCommaCommand": {
                         "type": "number",
@@ -230,32 +230,32 @@
                             2
                         ],
                         "markdownEnumDescriptions": [
-                            "Not doing anything",
-                            "try `Sleep 1000` -> `Sleep, 1000` ; (add first optional comma after command)",
-                            "try `Sleep, 1000` -> `Sleep 1000` ; (Remove first optional comma after command)"
+                            "%AhkNekoHelp.format.removeFirstCommaCommand-1%",
+                            "%AhkNekoHelp.format.removeFirstCommaCommand-2%",
+                            "%AhkNekoHelp.format.removeFirstCommaCommand-3%"
                         ],
-                        "markdownDescription": "(beta-test)([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/format.removeFirstCommaCommand.md)) add/remove the first comma after Command"
+                        "markdownDescription": "%AhkNekoHelp.format.removeFirstCommaCommand%"
                     },
                     "AhkNekoHelp.format.useTopLabelIndent": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "Indent the `label`, `HotString`, and `HotKey` at the top of the document"
+                        "markdownDescription": "%AhkNekoHelp.format.useTopLabelIndent%"
                     },
                     "AhkNekoHelp.format.useParenthesesIndent": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "Indent the wih `(` and `)` not close"
+                        "markdownDescription": "%AhkNekoHelp.format.useParenthesesIndent%"
                     },
                     "AhkNekoHelp.format.useSquareBracketsIndent": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "Indent the wih `[` and `]` not close"
+                        "markdownDescription": "%AhkNekoHelp.format.useSquareBracketsIndent%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "4. completion and snippets",
+                "title": "%AhkNekoHelp.title.4%",
                 "properties": {
                     "AhkNekoHelp.snippets.CommandOption": {
                         "type": "number",
@@ -267,10 +267,10 @@
                             3
                         ],
                         "markdownEnumDescriptions": [
-                            "Don't filter Command, Provides all entered commands.",
-                            "filter not recommended Command. (Referral rules from AhkNekoHelp.)",
-                            "filter Command with the pack has same name function and not recommended Command",
-                            "not provided any Command."
+                            "%AhkNekoHelp.snippets.CommandOption-1%",
+                            "%AhkNekoHelp.snippets.CommandOption-2%",
+                            "%AhkNekoHelp.snippets.CommandOption-3%",
+                            "%AhkNekoHelp.snippets.CommandOption-4%"
                         ]
                     },
                     "AhkNekoHelp.snippets.exclude": {
