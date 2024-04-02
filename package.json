@@ -76,31 +76,37 @@
                 "title": "%AhkNekoHelp.title.1%",
                 "properties": {
                     "AhkNekoHelp.CodeLens.showClassReference": {
+                        "order": 1,
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showClassReference%"
                     },
                     "AhkNekoHelp.CodeLens.showFuncReference": {
+                        "order": 2,
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showFuncReference%"
                     },
                     "AhkNekoHelp.CodeLens.showLabelReference": {
+                        "order": 3,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showLabelReference%"
                     },
                     "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": {
+                        "order": 4,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference%"
                     },
                     "AhkNekoHelp.CodeLens.showDevTool": {
+                        "order": 5,
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showDevTool%"
                     },
                     "AhkNekoHelp.CodeLens.showFileReport": {
+                        "order": 6,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showFileReport%"
@@ -207,21 +213,25 @@
                 "title": "%AhkNekoHelp.title.3%",
                 "properties": {
                     "AhkNekoHelp.format.AMasterSwitchUseFormatProvider": {
+                        "order": 1,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.format.AMasterSwitchUseFormatProvider%"
                     },
                     "AhkNekoHelp.format.textReplace": {
+                        "order": 2,
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.format.textReplace%"
                     },
                     "AhkNekoHelp.format.removeFirstCommaDirective": {
+                        "order": 3,
                         "type": "boolean",
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.format.removeFirstCommaDirective%"
                     },
                     "AhkNekoHelp.format.removeFirstCommaCommand": {
+                        "order": 4,
                         "type": "number",
                         "default": 0,
                         "enum": [
@@ -237,16 +247,19 @@
                         "markdownDescription": "%AhkNekoHelp.format.removeFirstCommaCommand%"
                     },
                     "AhkNekoHelp.format.useTopLabelIndent": {
+                        "order": 5,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.format.useTopLabelIndent%"
                     },
                     "AhkNekoHelp.format.useParenthesesIndent": {
+                        "order": 6,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.format.useParenthesesIndent%"
                     },
                     "AhkNekoHelp.format.useSquareBracketsIndent": {
+                        "order": 7,
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.format.useSquareBracketsIndent%"
@@ -258,6 +271,7 @@
                 "title": "%AhkNekoHelp.title.4%",
                 "properties": {
                     "AhkNekoHelp.snippets.CommandOption": {
+                        "order": 1,
                         "type": "number",
                         "default": 1,
                         "enum": [
@@ -274,6 +288,7 @@
                         ]
                     },
                     "AhkNekoHelp.snippets.exclude": {
+                        "order": 2,
                         "type": "array",
                         "default": [
                             "/Gdip_all_2020_08_24\\.ahk"
@@ -281,9 +296,10 @@
                         "items": {
                             "type": "string"
                         },
-                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.exclude.md)) Disable IntelliSense when the file path contains a match of any of the provided **Array of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp)**. \n\nNote: pathname separator use ```\"/\"``` **not windows-default-style** ```\"\\\"```"
+                        "markdownDescription": "%AhkNekoHelp.snippets.exclude%"
                     },
                     "AhkNekoHelp.snippets.fromOtherFile": {
+                        "order": 3,
                         "type": "number",
                         "default": 1,
                         "enum": [
@@ -292,13 +308,14 @@
                             2
                         ],
                         "markdownEnumDescriptions": [
-                            "never completion from other files",
-                            "completion from other files",
-                            "completion from other files, but the `function_name` `class_name` should startWith filename"
+                            "%AhkNekoHelp.snippets.fromOtherFile-0%",
+                            "%AhkNekoHelp.snippets.fromOtherFile-1%",
+                            "%AhkNekoHelp.snippets.fromOtherFile-2%"
                         ],
-                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.fromOtherFile.md))"
+                        "markdownDescription": "%AhkNekoHelp.snippets.fromOtherFile%"
                     },
                     "AhkNekoHelp.snippets.subCmdPlus": {
+                        "order": 4,
                         "type": "object",
                         "additionalProperties": false,
                         "properties": {
@@ -345,25 +362,28 @@
                             "Control": false,
                             "ControlGet": false
                         },
-                        "markdownDescription": "Provide a snip containing sub-command of `Menu` / `Gui` / `GuiControl` / `SysGet` ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/snippets.subCmdPlus.md))"
+                        "markdownDescription": "%AhkNekoHelp.snippets.subCmdPlus%"
                     },
                     "AhkNekoHelp.snippets.autoInsertGlobal": {
+                        "order": 5,
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "([#39](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/39)) auto insert `global` keywords of `global-var` in func/method range"
+                        "markdownDescription": "%AhkNekoHelp.snippets.autoInsertGlobal%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "5. customize or style",
+                "title": "%AhkNekoHelp.title.5%",
                 "properties": {
                     "AhkNekoHelp.customize.statusBarDisplayColor": {
+                        "order": 1,
                         "type": "string",
                         "default": "",
-                        "markdownDescription": "color of [status bar](https://code.visualstudio.com/api/extension-capabilities/extending-workbench), use HTML Color, exp: ```#e783e1``` or ```rgb(255,255,100)```"
+                        "markdownDescription": "%AhkNekoHelp.customize.statusBarDisplayColor%"
                     },
                     "AhkNekoHelp.customize.HoverFunctionDocStyle": {
+                        "order": 2,
                         "type": "number",
                         "default": 1,
                         "enum": [
@@ -374,9 +394,10 @@
                             "```ahk\nfoo(){\n\n}\n```",
                             "```ahk\nfoo()\n{\n\n}\n```"
                         ],
-                        "markdownDescription": "`1` K&R style\n```ahk\nfoo(){\n\n}\n```\n`2` Allman-style\n```ahk\nfoo()\n{\n\n}\n```\njust of hover/completion style, not affect format"
+                        "markdownDescription": "%AhkNekoHelp.customize.HoverFunctionDocStyle%"
                     },
                     "AhkNekoHelp.customize.HoverFuncShowReturnBlock": {
+                        "order": 3,
                         "type": "string",
                         "default": "always",
                         "enum": [
@@ -385,29 +406,32 @@
                             "never"
                         ],
                         "markdownEnumDescriptions": [
-                            "if has `@returns` label, then not show ReturnBlock",
-                            "always show ReturnBlock",
-                            "never show ReturnBlock"
+                            "%AhkNekoHelp.customize.HoverFuncShowReturnBlock-1%",
+                            "%AhkNekoHelp.customize.HoverFuncShowReturnBlock-2%",
+                            "%AhkNekoHelp.customize.HoverFuncShowReturnBlock-3%"
                         ],
-                        "markdownDescription": "```ahk\n;\nfn(){\n    ;return block\n    return something\n}\n```\n"
+                        "markdownDescription": "%AhkNekoHelp.customize.HoverFuncShowReturnBlock%"
                     },
                     "AhkNekoHelp.customize.CodeAction2GotoDefRef": {
+                        "order": 4,
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)"
+                        "markdownDescription": "%AhkNekoHelp.customize.CodeAction2GotoDefRef%"
                     },
                     "AhkNekoHelp.customize.displayLogMessage": {
+                        "order": 5,
                         "type": "string",
                         "default": "MsgBox % \"♥ ~ {selectText} \" {selectText} \" at \" A_ThisFunc",
-                        "markdownDescription": "default key is `ctrl+alt+l`, use `{selectText}` (case sensitive)"
+                        "markdownDescription": "%AhkNekoHelp.customize.displayLogMessage%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "6. files and `#include`",
+                "title": "%AhkNekoHelp.title.6%",
                 "properties": {
                     "AhkNekoHelp.files.exclude": {
+                        "order": 1,
                         "type": "array",
                         "default": [
                             "/\\.",
@@ -425,17 +449,19 @@
                         "items": {
                             "type": "string"
                         },
-                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.exclude.md)) # Files.exclude \n\nWhen building the dataset, we exclude certain folders and files using a list of regular expressions. This list includes patterns for excluding folders like 'temp' and 'history', as well as files like '.ahk2' and '.ahk2'.\n\n- Note that I have standardized the two types of paths that can be used in Windows (common `\\` and compatible `/`) to a single Linux-style path `/` that doesn't require JavaScript to escape, and the default regular expression flags are `u` and `i`, [u-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode), [i-flag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase).\n\n| regex            | Description                      |\n| :--------------- | :------------------------------- |\n| `/\\.`           | a file/fold name startWith `.`   |\n| `/node_modules/` | the path includes `node_modules` |\n| `/build/`        | A built-fold in pattern          |\n| `/temp/`         | A temp-fold in pattern           |\n| `/ahk2/`         | A ahk2-fold in pattern           |\n| `\\.ah2$`         | file-name end with ah2           |\n| `/backup/`       | A backup-fold in pattern         |\n| `/history/`      | A history-fold in pattern        |"
+                        "markdownDescription": "%AhkNekoHelp.files.exclude%"
                     },
                     "AhkNekoHelp.files.alwaysIncludeFolder": {
+                        "order": 2,
                         "type": "array",
                         "default": [],
                         "items": {
                             "type": "string"
                         },
-                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/21))\n\nIn addition to the current workspace, automatically scan the Folder,\n\nFor people who are not used to [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces)\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([privacy-statement](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp#privacy-statement))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`\n\n| path            | Description                      |\n| :--------------- | :------------------------------- |\n| `D:/myAutoHotkey/Lib`      | any path        |"
+                        "markdownDescription": "%AhkNekoHelp.files.alwaysIncludeFolder%"
                     },
                     "AhkNekoHelp.files.tryParserIncludeOpt": {
+                        "order": 3,
                         "type": "string",
                         "enum": [
                             "close",
@@ -443,9 +469,10 @@
                             "auto"
                         ],
                         "default": "close",
-                        "markdownDescription": "try Parser `#Include` to add `.ahk` data.\n\n1. *warn!* this option is allow this extension try to the get file information by `#include` without workspaces. ([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/files.tryParserIncludeOpt.md))\n\n2. still respect `\"AhkNekoHelp.files.exclude\"`"
+                        "markdownDescription": "%AhkNekoHelp.files.tryParserIncludeOpt%"
                     },
                     "AhkNekoHelp.files.tryParserIncludeLog": {
+                        "order": 4,
                         "type": "object",
                         "additionalProperties": false,
                         "properties": {
@@ -477,37 +504,37 @@
                             "parser_duplicate": false,
                             "not_support_this_style": false
                         },
-                        "markdownDescription": "while `\"AhkNekoHelp.files.tryParserIncludeOpt\"` open, select to record log."
+                        "markdownDescription": "%AhkNekoHelp.files.tryParserIncludeLog%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "7. signatureHelp",
+                "title": "%AhkNekoHelp.title.7%",
                 "properties": {
                     "AhkNekoHelp.signatureHelp.insertType": {
                         "order": 0,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.insertType.md)) and ([#17](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/17))"
+                        "markdownDescription": "%AhkNekoHelp.signatureHelp.insertType%"
                     },
                     "AhkNekoHelp.signatureHelp.showParamInfo": {
                         "order": 1,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "if has `@param` in ahkDoc, then show or not.([ReadMore](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/signatureHelp.showParamInfo.md))"
+                        "markdownDescription": "%AhkNekoHelp.signatureHelp.showParamInfo%"
                     },
                     "AhkNekoHelp.signatureHelp.showOtherDoc": {
                         "order": 2,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "show `@param` `@returns` else information in ahkDoc"
+                        "markdownDescription": "%AhkNekoHelp.signatureHelp.showOtherDoc%"
                     },
                     "AhkNekoHelp.signatureHelp.showReturnInfo": {
                         "order": 3,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "if has `@returns` in ahkDoc, then show or not"
+                        "markdownDescription": "%AhkNekoHelp.signatureHelp.showReturnInfo%"
                     },
                     "AhkNekoHelp.signatureHelp.showReturnBlock": {
                         "order": 4,
@@ -519,23 +546,23 @@
                             "never"
                         ],
                         "markdownEnumDescriptions": [
-                            "if has `@returns` label, then not show ReturnBlock",
-                            "always show ReturnBlock",
-                            "never show ReturnBlock"
+                            "%AhkNekoHelp.signatureHelp.showReturnBlock-1%",
+                            "%AhkNekoHelp.signatureHelp.showReturnBlock-2%",
+                            "%AhkNekoHelp.signatureHelp.showReturnBlock-3%"
                         ],
-                        "markdownDescription": "if has `@returns` in ahkDoc, then show it or not.\n```ahk\n;return block\nfn(){\n    return something\n}\n```\n"
+                        "markdownDescription": "%AhkNekoHelp.signatureHelp.showReturnBlock%"
                     },
                     "AhkNekoHelp.signatureHelp.CmdShowParamInfo": {
                         "order": 5,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "exp: \n```ahk\nMsgBox , Options, Title, Text, Timeout_Sec\n;show info of Options, Title, Text, Timeout_Sec\n```\n"
+                        "markdownDescription": "%AhkNekoHelp.signatureHelp.CmdShowParamInfo%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "8. inlayHints",
+                "title": "%AhkNekoHelp.title.8%",
                 "properties": {
                     "AhkNekoHelp.inlayHints.AMainSwitch": {
                         "order": 1,

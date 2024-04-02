@@ -2,11 +2,11 @@
 
 ## options `true`
 
-![exp menu command expand](../img/signatureHelp.insertType.true.png)
+![exp menu command expand](../img/signatureHelp.InsertType.true.png)
 
 ## options `false`
 
-![exp menu command expand](../img/signatureHelp.insertType.false.png)
+![exp menu command expand](../img/signatureHelp.InsertType.false.png)
 
 ## other
 
