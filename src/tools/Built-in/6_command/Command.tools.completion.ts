@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-unsafe-regex */
 import { getCommandOptions } from '../../../configUI';
 import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';

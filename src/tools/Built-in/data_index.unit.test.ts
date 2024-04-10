@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import { describe, expect, it } from '@jest/globals';
 import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';

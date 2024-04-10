@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { contributes } from '../package.json';
 import * as nls_en from '../package.nls.json';
 import * as nls_cn from '../package.nls.zh-cn.json';

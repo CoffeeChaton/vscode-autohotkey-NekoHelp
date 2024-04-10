@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../../syntaxes/ahk.tmLanguage.json';
 import type { TGuiControlCmdElement } from './GuiControl.data';
 import { GuiControlSubCmdList } from './GuiControl.data';

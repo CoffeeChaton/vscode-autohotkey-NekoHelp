@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { nekoExCommentData } from './nekoExComment.data';
 
 describe('check nekoExComment ruler', (): void => {

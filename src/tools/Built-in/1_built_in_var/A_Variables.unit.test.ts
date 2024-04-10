@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
 import type { TAElement } from './A_Variables.data';
 import { AVariablesList } from './A_Variables.data';

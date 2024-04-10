@@ -1,5 +1,5 @@
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
-
 import { Ahk2exeData } from './Ahk2exe.data';
 
 type TErrObj = {

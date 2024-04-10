@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../../syntaxes/ahk.tmLanguage.json';
 import { ControlGetSubCmdList } from './ControlGet.data';
 

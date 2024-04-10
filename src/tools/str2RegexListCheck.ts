@@ -14,7 +14,6 @@ const RegexMemo = new CMemo<readonly string[], readonly RegExp[]>((strList: read
     try {
         for (const str of strList) {
             errRuler = str;
-            // eslint-disable-next-line security/detect-non-literal-regexp
             const re = new RegExp(str, 'iu');
             regexList.push(re);
         }

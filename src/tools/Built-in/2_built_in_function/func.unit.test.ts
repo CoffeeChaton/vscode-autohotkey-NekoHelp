@@ -1,4 +1,5 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3] }] */
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
 import { funcDataList } from './func.data';
 

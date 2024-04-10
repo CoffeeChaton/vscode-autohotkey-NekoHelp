@@ -1,5 +1,6 @@
 /* eslint-disable jest/no-commented-out-tests */
 /* eslint-disable no-template-curly-in-string */
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../../syntaxes/ahk.tmLanguage.json';
 import { WinSetSubCmdList } from './WinSet.data';
 

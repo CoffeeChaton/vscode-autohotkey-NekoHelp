@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable security/detect-unsafe-regex */
 /* eslint-disable no-magic-numbers */
 
 // start

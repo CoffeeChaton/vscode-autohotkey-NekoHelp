@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
 import { EDiagCode } from '../../../diag';
 import { replacerSpace } from '../../str/removeSpecialChar';

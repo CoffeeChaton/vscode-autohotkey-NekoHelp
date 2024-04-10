@@ -1,5 +1,5 @@
 /* cSpell:disable */
-
+import { describe, expect, it } from '@jest/globals';
 import { inPutVarMap, OutputCommandBaseMap, OutputCommandPlusMap } from './Command.tools';
 
 const outBase = [

@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
 import { getAlwaysIncludeFolder, getTryParserInclude, LogParserInclude } from '../configUI';

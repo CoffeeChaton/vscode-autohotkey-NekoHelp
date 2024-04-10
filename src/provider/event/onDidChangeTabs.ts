@@ -27,7 +27,6 @@ export function onDidChangeActiveTab(e: vscode.TextEditor | undefined): void {
 
 function checkPmFileExist(): void {
     for (const [fsPath, { uri }] of pm.DocMap) {
-        // eslint-disable-next-line security/detect-non-literal-fs-filename
         if (!fs.existsSync(fsPath)) {
             delOldCache(uri);
         }
@@ -63,7 +62,6 @@ export function onDidChangeTabs(tabChangeEvent: vscode.TabChangeEvent): void {
                 }
             }
 
-            // eslint-disable-next-line security/detect-non-literal-fs-filename
             if (!fs.existsSync(fsPath)) {
                 delOldCache(uri);
                 checkPmFileExist();

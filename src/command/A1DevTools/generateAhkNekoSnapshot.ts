@@ -113,7 +113,6 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
 
         const mdPath: string = path.join(targetDir, `${base}.md`);
         snapList.push(mdPath);
-        // eslint-disable-next-line security/detect-non-literal-fs-filename
         fs.writeFileSync(mdPath, data);
     }
 

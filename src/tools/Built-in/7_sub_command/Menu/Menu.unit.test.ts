@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { MenuSubCmdList } from './Menu.data';
 
 describe('check Menu subCmd ruler', () => {

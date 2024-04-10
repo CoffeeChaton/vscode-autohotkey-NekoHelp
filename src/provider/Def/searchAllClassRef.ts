@@ -9,7 +9,6 @@ import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
 type TClassFileRefMapRW = Map<string, readonly vscode.Location[]>;
 
 function searchAllClassRefCore(wordUp: string, AhkFileData: TAhkFileData): readonly vscode.Location[] {
-    // eslint-disable-next-line security/detect-non-literal-regexp
     const reg = new RegExp(
         `(?<=[%!"/&'()*+,\\-:;<=>?[\\\\^\\]{|}~ \\t]|^)(${wordUp})(?=[(.%!"/&')*+,\\-:;<=>?[\\\\^\\]{|}~ \\t]|$)`,
         //        ^ without .` and #$@                                       ^ // without ` and #$@

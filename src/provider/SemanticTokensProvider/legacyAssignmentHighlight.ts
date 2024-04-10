@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-unsafe-regex */
 import * as vscode from 'vscode';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';

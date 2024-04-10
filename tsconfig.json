@@ -4,7 +4,9 @@
         "esModuleInterop": true,
         "exactOptionalPropertyTypes": true,
         "forceConsistentCasingInFileNames": true,
-        "lib": ["ESNext"],
+        "lib": [
+            "ESNext"
+        ],
         "module": "CommonJS",
         "moduleResolution": "node",
         "noEmit": true,
@@ -19,7 +21,9 @@
         "sourceMap": true,
         "strict": true,
         "target": "ES2021",
-        "types": ["@types/node", "@types/jest"],
+        "types": [
+            "@types/node"
+        ],
         "useUnknownInCatchVariables": false
     },
     "diagnostics": true,

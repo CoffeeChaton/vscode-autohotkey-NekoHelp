@@ -17,7 +17,7 @@
         "plugin:import/warnings",
         "plugin:promise/recommended",
         "plugin:regexp/recommended",
-        "plugin:security/recommended",
+        // "plugin:security/recommended",
         "plugin:sonarjs/recommended",
         "plugin:unicorn/all",
         "eslint:recommended"
@@ -79,16 +79,16 @@
         "fp",
         "import",
         "promise",
-        "security",
+        // "security",
         "sonarjs",
         "unicorn"
         // "immutable",
     ],
     "root": true,
     "rules": {
+        "unicorn/import-style": "off",
         "no-undef": "off",
         "import/no-unresolved": "off",
-        "security/detect-non-literal-fs-filename": "off",
         "@typescript-eslint/naming-convention": "off",
         "no-ternary": "off",
         "camelcase": "off",
@@ -106,24 +106,14 @@
         "@typescript-eslint/ban-types": "warn",
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/consistent-type-assertions": "warn",
-        "@typescript-eslint/consistent-type-definitions": [
-            "error",
-            "type"
-        ],
+        "@typescript-eslint/consistent-type-definitions": "off",
         "@typescript-eslint/consistent-type-imports": "error",
         "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/explicit-member-accessibility": "warn",
-        "@typescript-eslint/indent": [
-            "error",
-            4,
-            {
-                "SwitchCase": 1
-            }
-        ],
+        "@typescript-eslint/indent": "off",
         "@typescript-eslint/member-delimiter-style": "off",
         "@typescript-eslint/member-ordering": "warn",
         "@typescript-eslint/no-array-constructor": "warn",
-        "@typescript-eslint/no-empty-interface": "warn",
         "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/no-extraneous-class": "warn",
         "@typescript-eslint/no-floating-promises": "warn",
@@ -134,15 +124,13 @@
         "@typescript-eslint/no-namespace": "warn",
         "@typescript-eslint/no-non-null-assertion": "warn",
         "@typescript-eslint/no-require-imports": "warn",
-        "@typescript-eslint/no-shadow": [
-            "error"
-        ],
+        "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-this-alias": "warn",
         "@typescript-eslint/no-type-alias": "off",
         "@typescript-eslint/prefer-string-starts-ends-with": "warn",
         "@typescript-eslint/prefer-nullish-coalescing": "warn",
         "@typescript-eslint/no-unnecessary-condition": [
-            "error",
+            "off",
             {
                 "allowConstantLoopConditions": false,
                 "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": false
@@ -361,8 +349,6 @@
         "regexp/no-useless-flag": "warn",
         "require-await": "error",
         "require-unicode-regexp": "error",
-        "security/detect-object-injection": "off",
-        "security/detect-unsafe-regex": "off",
         "sort-imports": "off",
         "sort-keys": "off",
         "unicorn/custom-error-definition": "error",

@@ -1,6 +1,5 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable max-depth */
-/* eslint-disable security/detect-non-literal-fs-filename */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as vscode from 'vscode';

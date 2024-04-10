@@ -1,5 +1,6 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,3,4] }] */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { describe, expect, it } from '@jest/globals';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 // import * as url from 'node:url';

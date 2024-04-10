@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { WinTitleParameterData } from './WinTitleParameter.data';
 
 describe('check WinTitle ruler', () => {
