@@ -84,10 +84,8 @@
     "AhkNekoHelp.inlayHints.parameterNamesEnabled-1": "停用參數名稱提示。",
     "AhkNekoHelp.inlayHints.parameterNamesEnabled-2": "僅對文字參數啟用參數名稱提示。",
     "AhkNekoHelp.inlayHints.parameterNamesEnabled-3": "為文字和非文字參數啟用參數名稱提示。",
-
     "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) 如果給定參數的值與參數名稱相同，則隱藏它。",
     "AhkNekoHelp.inlayHints.HideSingleParameters": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) 如果函數隻有 1 個參數，則隱藏嵌入提示。",
-
     "_9": "",
     "AhkNekoHelp.title.9": "9. misc(雜項)",
     "AhkNekoHelp.method": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))",
