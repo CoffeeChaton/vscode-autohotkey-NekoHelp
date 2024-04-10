@@ -79,6 +79,24 @@
     "AhkNekoHelp.signatureHelp.CmdShowParamInfo": "exp: \n```ahk\nMsgBox , Options, Title, Text, Timeout_Sec\n;show info of Options, Title, Text, Timeout_Sec\n```\n",
     "_8": "",
     "AhkNekoHelp.title.8": "8. inlayHints(嵌入提示)",
+    "AhkNekoHelp.inlayHints.AMainSwitch": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) 嵌入提示 主开关",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) 启用/禁用参数名称的嵌入提示:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled-1": "禁用参数名称提示。",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled-2": "仅对文字参数启用参数名称提示。",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled-3": "为文字和非文字参数启用参数名称提示。",
 
-    "_9": ""
+    "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) 如果给定参数的值与参数名称相同，则隐藏它。",
+    "AhkNekoHelp.inlayHints.HideSingleParameters": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) 如果函数只有 1 个参数，则隐藏嵌入提示。",
+
+    "_9": "",
+    "AhkNekoHelp.title.9": "9. misc(杂项)",
+    "AhkNekoHelp.method": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))",
+    "AhkNekoHelp.useSymbolProvider": "使用[大纲](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) 和[面包屑](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), 如果你喜欢其他插件SymBolProvider,可以关闭这个。如果你喜欢其他插件SymBolProvider，可以关闭这个。",
+    "AhkNekoHelp.SymbolProvider.showInclude": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), 在[大纲](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) 和 [面包屑](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) 展示 [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm).",
+    "AhkNekoHelp.Rename.functionInStr": "if 函数名称在字符串中，例如 `func(\"funcName\")` , 默认不替换为新名称 [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.functionInStr.md)",
+    "AhkNekoHelp.event.FileRenameEvent": "移动或重命名事件 ([预览](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5))",
+    "AhkNekoHelp.event.FileRenameEvent-1": "在后台紀錄日誌（默认） ",
+    "AhkNekoHelp.event.FileRenameEvent-2": "记录并显示",
+    "AhkNekoHelp.event.FileRenameEvent-3": "记录并尝试重命名 `#Include` (`Alpha 测试选项`)",
+    "_10": ""
 }

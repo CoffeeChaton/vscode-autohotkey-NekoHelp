@@ -79,6 +79,23 @@
     "AhkNekoHelp.signatureHelp.CmdShowParamInfo": "exp: \n```ahk\nMsgBox , Options, Title, Text, Timeout_Sec\n;show info of Options, Title, Text, Timeout_Sec\n```\n",
     "_8": "TODO",
     "AhkNekoHelp.title.8": "8. inlayHints",
+    "AhkNekoHelp.inlayHints.AMainSwitch": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) main switch of inlay Hints",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled-1": "Disable parameter name hints.",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled-2": "Enable parameter name hints only for literal arguments.",
+    "AhkNekoHelp.inlayHints.parameterNamesEnabled-3": "Enable parameter name hints for literal and non-literal arguments.",
 
-    "_9": ""
+    "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) If the value given to a parameter is the same as the parameter name, hide it.",
+    "AhkNekoHelp.inlayHints.HideSingleParameters": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Hide inline parameters if a function only has 1 parameter.",
+    "_9": "",
+    "AhkNekoHelp.title.9": "9. misc",
+    "AhkNekoHelp.method": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))",
+    "AhkNekoHelp.useSymbolProvider": "use [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), if you like other plugins SymBolProvider, can close this.",
+    "AhkNekoHelp.SymbolProvider.showInclude": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), at [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) show [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm).",
+    "AhkNekoHelp.Rename.functionInStr": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.functionInStr.md)",
+    "AhkNekoHelp.event.FileRenameEvent": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5))",
+    "AhkNekoHelp.event.FileRenameEvent-1": "log at background (default) ",
+    "AhkNekoHelp.event.FileRenameEvent-2": "log and show",
+    "AhkNekoHelp.event.FileRenameEvent-3": "log and try to Rename `#Include` (`Alpha test options`)",
+    "_10": ""
 }

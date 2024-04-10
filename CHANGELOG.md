@@ -36,11 +36,16 @@
 
 ## v0.0.54(2023-02-XX)
 
+<!-- pnpm 8.10.2 -->
+<!-- dprint 0.41.0 -->
+
 - fix:([#41](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/41))
   1. inlint hint not follow leading 0's at `cmd` case.
 
 - feat: ([#43](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/43)) InlayHint add padding
-  ![InlayHint add padding](https://private-user-images.githubusercontent.com/63182963/307564119-7f6e97d7-8584-4c12-afdb-fd7b044fdc84.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDg4MzE4NjUsIm5iZiI6MTcwODgzMTU2NSwicGF0aCI6Ii82MzE4Mjk2My8zMDc1NjQxMTktN2Y2ZTk3ZDctODU4NC00YzEyLWFmZGItZmQ3YjA0NGZkYzg0LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAyMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMjI1VDAzMjYwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFiZmFmMDIyMWU3N2MwY2ZiMDNiZTJmYjY1YzdiODFjNDJiZDUzNWRkMGFlYjhiNjJkMjdjNjc1ZjkyMjI4YWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.c0E1h4HtNnJLeLADdFnxUwggUzP1nr3WS4eaecg0Iqc)
+  ![InlayHint add padding](https://private-user-images.githubusercontent.com/63182963/307564119-7f6e97d7-8584-4c12-afdb-fd7b044fdc84.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTI3MzI1NjAsIm5iZiI6MTcxMjczMjI2MCwicGF0aCI6Ii82MzE4Mjk2My8zMDc1NjQxMTktN2Y2ZTk3ZDctODU4NC00YzEyLWFmZGItZmQ3YjA0NGZkYzg0LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDEwVDA2NTc0MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc1YjZjMTFiZmZlNzIxNjk2OTQyMzRhNjliYmI5NjIxY2ZkY2I5MWNiOGIwYjYzZGFhNzkyOGUyMDRkZDUwMTImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.sys3HLY24Xmj2ZMC82heZBaQ34NUrLyIYPlGltjHeY8)
+
+- feat: ([#44](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/44)) add Chinese support.
 
 ## v0.0.53(2023-02-18)
 

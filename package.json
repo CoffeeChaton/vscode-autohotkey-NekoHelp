@@ -1,7 +1,7 @@
 {
     "name": "vscode-autohotkey-neko-help",
     "displayName": "AutoHotkey NekoHelp",
-    "version": "0.0.53",
+    "version": "0.0.54",
     "description": "AutoHotkey-1.1 IntelliSense, format, linters, and language support for VS Code",
     "categories": [
         "Programming Languages",
@@ -568,7 +568,7 @@
                         "order": 1,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) main switch of inlay Hints"
+                        "markdownDescription": "%AhkNekoHelp.inlayHints.AMainSwitch%"
                     },
                     "AhkNekoHelp.inlayHints.parameterNamesEnabled": {
                         "order": 2,
@@ -584,25 +584,25 @@
                             "Enable parameter name hints only for literal arguments.",
                             "Enable parameter name hints for literal and non-literal arguments."
                         ],
-                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```"
+                        "markdownDescription": "%AhkNekoHelp.inlayHints.parameterNamesEnabled%"
                     },
                     "AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName": {
                         "order": 3,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) If the value given to a parameter is the same as the parameter name, hide it."
+                        "markdownDescription": "%AhkNekoHelp.inlayHints.parameterNamesSuppressWhenArgumentMatchesName%"
                     },
                     "AhkNekoHelp.inlayHints.HideSingleParameters": {
                         "order": 4,
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([#18](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/18)) Hide inline parameters if a function only has 1 parameter."
+                        "markdownDescription": "%AhkNekoHelp.inlayHints.HideSingleParameters%"
                     }
                 }
             },
             {
                 "type": "object",
-                "title": "9. misc",
+                "title": "%AhkNekoHelp.title.9%",
                 "properties": {
                     "AhkNekoHelp.method": {
                         "type": "object",
@@ -650,22 +650,22 @@
                             "findAllRef": "precision_mode",
                             "CodeLens": "none"
                         },
-                        "markdownDescription": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))"
+                        "markdownDescription": "%AhkNekoHelp.method%"
                     },
                     "AhkNekoHelp.useSymbolProvider": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "use [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), if you like other plugins SymBolProvider, can close this."
+                        "markdownDescription": "%AhkNekoHelp.useSymbolProvider%"
                     },
                     "AhkNekoHelp.SymbolProvider.showInclude": {
                         "type": "boolean",
                         "default": true,
-                        "markdownDescription": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), at [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) show [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm)."
+                        "markdownDescription": "%AhkNekoHelp.SymbolProvider.showInclude%"
                     },
                     "AhkNekoHelp.Rename.functionInStr": {
                         "type": "boolean",
                         "default": false,
-                        "markdownDescription": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.functionInStr.md)"
+                        "markdownDescription": "%AhkNekoHelp.Rename.functionInStr%"
                     },
                     "AhkNekoHelp.event.FileRenameEvent": {
                         "type": "number",
@@ -676,11 +676,11 @@
                             2
                         ],
                         "markdownEnumDescriptions": [
-                            "log at background (default) ",
-                            "log and show",
-                            "log and try to Rename `#Include` (`Alpha test options`)"
+                            "%AhkNekoHelp.event.FileRenameEvent-1%",
+                            "%AhkNekoHelp.event.FileRenameEvent-2%",
+                            "%AhkNekoHelp.event.FileRenameEvent-3%"
                         ],
-                        "markdownDescription": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5))"
+                        "markdownDescription": "%AhkNekoHelp.event.FileRenameEvent%"
                     }
                 }
             }

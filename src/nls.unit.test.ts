@@ -1,6 +1,7 @@
 import { contributes } from '../package.json';
-import * as nls from '../package.nls.json';
+import * as nls_en from '../package.nls.json';
 import * as nls_cn from '../package.nls.zh-cn.json';
+import * as nls_tw from '../package.nls.zh-tw.json';
 //
 
 describe('check nls', () => {
@@ -10,8 +11,9 @@ describe('check nls', () => {
         const errList0: string[] = [];
         // const log: string[] = [];
 
-        const nlsJs: ReadonlySet<string> = new Set(Object.keys(nls));
-        const nlsCnJs: ReadonlySet<string> = new Set(Object.keys(nls_cn));
+        const nlsEn: ReadonlySet<string> = new Set(Object.keys(nls_en));
+        const nlsCn: ReadonlySet<string> = new Set(Object.keys(nls_cn));
+        const nlsTW: ReadonlySet<string> = new Set(Object.keys(nls_tw));
 
         function deepJson(obj: NonNullable<unknown>): void {
             for (const [_k, v] of Object.entries(obj)) {
@@ -27,12 +29,16 @@ describe('check nls', () => {
                     const vv: string = v.replaceAll('%', '');
 
                     // log.push(vv);
-                    if (!nlsJs.has(vv)) {
-                        errList0.push(`nls not found${vv}`);
+                    if (!nlsEn.has(vv)) {
+                        errList0.push(`nlsEn not found${vv}`);
                     }
 
-                    if (!nlsCnJs.has(vv)) {
-                        errList0.push(`nls_cn not found${vv}`);
+                    if (!nlsCn.has(vv)) {
+                        errList0.push(`nlsCn not found${vv}`);
+                    }
+
+                    if (!nlsTW.has(vv)) {
+                        errList0.push(`nlsTW not found${vv}`);
                     }
                 }
             }
@@ -40,6 +46,11 @@ describe('check nls', () => {
 
         for (const v0 of contributes.configuration) {
             deepJson(v0);
+        }
+
+        for (const [k, v] of Object.entries(nls_en)) {
+            // eslint-disable-next-line no-control-regex
+            if ((/[^\u0000-\u007F]/u).test(v)) errList0.push(`There is Chinese "${k}"`);
         }
 
         expect(errList0).toHaveLength(0);
