@@ -2,6 +2,8 @@ import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine, TLineFnCall } from '../../globalEnum';
+import type { TBiFuncMsg } from '../../tools/Built-in/2_built_in_function/func.tools';
+import { getBuiltInFuncDefRange, getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
@@ -58,9 +60,13 @@ export function getFuncDef(
     const funcSymbol: CAhkFunc | null = getFuncWithName(wordUpFix);
     if (funcSymbol === null) {
         const ComObjConnectRegister: TLineFnCall | undefined = fixComObjConnectDef(AhkFileData, wordUp, position);
-        return ComObjConnectRegister === undefined
-            ? null
-            : ComObjConnectRegisterFindAllFuncLoc(ComObjConnectRegister);
+        if (ComObjConnectRegister !== undefined) {
+            return ComObjConnectRegisterFindAllFuncLoc(ComObjConnectRegister);
+        }
+        //
+        const md: TBiFuncMsg | undefined = getBuiltInFuncMD(wordUpFix);
+        if (md === undefined) return null;
+        return getBuiltInFuncDefRange(wordUpFix);
     }
 
     if (

@@ -1,7 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint no-magic-numbers: ["error", { "ignore": [0,3] }] */
+import * as fs from 'node:fs';
 import * as vscode from 'vscode';
-import { funcDataList } from './func.data';
+import { getNlsPath, readNlsJson } from '../nls.tools';
+import type { TBuiltInFuncElement } from './func.data';
 
 const baseGroup = ['COM', 'IL_', 'LV_', 'OBJ', 'SB_', 'TV_', '_'] as const;
 
@@ -34,7 +36,7 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
 
     const map2 = new Map<string, TBiFuncMsg>();
 
-    type TV = typeof funcDataList[number];
+    type TV = TBuiltInFuncElement;
 
     const makeMd = (v: TV): vscode.MarkdownString => {
         const {
@@ -162,7 +164,9 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
         });
     }
 
-    for (const v of funcDataList) {
+    const r: TV[] = readNlsJson('func') as TV[];
+
+    for (const v of r) {
         const {
             keyRawName,
             upName,
@@ -187,7 +191,7 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
     /**
      * after initialization clear
      */
-    funcDataList.length = 0;
+    r.length = 0;
 
     return [Obj1, map2];
 })();
@@ -230,4 +234,30 @@ export function getBuiltInFuncMD(keyUp: string): TBiFuncMsg | undefined {
         return ComObjResult;
     }
     return undefined;
+}
+
+const buildInFuncDefMap: ReadonlyMap<string, [vscode.Location]> = (() => {
+    const mm = new Map<string, [vscode.Location]>();
+    //
+    const targetPath: string = getNlsPath('func');
+    const dataList: string[] = fs.readFileSync(targetPath).toString()
+        .split('\n');
+    for (const [line, text] of dataList.entries()) {
+        if (text.includes('"upName": "')) {
+            // "upName": "ACOS",
+            const uri: vscode.Uri = vscode.Uri.file(targetPath);
+            const character: number = text.indexOf(': "') + ': "'.length;
+            const pos: vscode.Position = new vscode.Position(line, character);
+            const upKey: string = text.trim()
+                .replace('"upName": "', '')
+                .replace('",', '');
+            mm.set(upKey, [new vscode.Location(uri, pos)]);
+        }
+    }
+
+    return mm;
+})();
+
+export function getBuiltInFuncDefRange(keyUp: string): vscode.Location[] {
+    return buildInFuncDefMap.get(keyUp) ?? [];
 }

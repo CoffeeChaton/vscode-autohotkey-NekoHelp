@@ -26,7 +26,7 @@ type TElementGroup =
     | 'TreeView'
     | 'Window'; // OBJ_XX
 
-type TBuiltInFuncElement = Readonly<{
+export type TBuiltInFuncElement = Readonly<{
     upName: string,
     keyRawName: string,
     group: TElementGroup,
