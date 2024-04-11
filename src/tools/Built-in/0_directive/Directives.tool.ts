@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
-import { initNlsDefMap, readNlsJson } from '../nls.tools';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import type { TDirectivesList } from './Directives.data';
 
 export type TDirectivesMeta = {
@@ -35,7 +35,7 @@ export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDi
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown('#Directives')
             .appendCodeblock(keyRawName, 'ahk')
-            .appendMarkdown(doc)
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown('\n')
             .appendMarkdown(`[(Read Doc)](${link})`)
             .appendMarkdown('\n\n***')
@@ -97,7 +97,7 @@ export function getDirectivesMeta(
     return null;
 }
 
-export const DirectivesDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Directives', '"keyRawName": "');
+export const DirectivesDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Directives');
 
 export function gotoDirectivesDef(
     position: vscode.Position,

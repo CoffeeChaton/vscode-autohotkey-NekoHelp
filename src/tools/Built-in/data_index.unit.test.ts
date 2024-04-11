@@ -128,7 +128,7 @@ describe('check cmd sign ruler', () => {
         expect.hasAssertions();
 
         const myList: string[] = [
-            ...AVariablesList.map((v): string => v.body),
+            ...AVariablesList.map((v): string => v.keyRawName),
             ...BiVariables.map((v): string => v.keyRawName),
         ];
         const doc: string[] = [...indexDataMap1.keys(), 'this'];

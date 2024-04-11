@@ -1,7 +1,7 @@
 export type TBiVElement = {
     keyRawName: string,
     link: `https://www.autohotkey.com/docs/v1/${string}`,
-    doc: string,
+    doc: string[],
     exp: readonly string[],
 };
 
@@ -14,7 +14,9 @@ export const BiVariables: TBiVElement[] = [
     {
         keyRawName: 'Clipboard',
         link: 'https://www.autohotkey.com/docs/v1/misc/Clipboard.htm',
-        doc: '_Clipboard_ is a built-in [variable](https://www.autohotkey.com/docs/v1/Variables.htm) that reflects the current contents of the Windows clipboard if those contents can be expressed as text. By contrast, _[ClipboardAll](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm#ClipboardAll)_ contains everything on the clipboard, such as pictures and formatting.',
+        doc: [
+            '_Clipboard_ is a built-in [variable](https://www.autohotkey.com/docs/v1/Variables.htm) that reflects the current contents of the Windows clipboard if those contents can be expressed as text. By contrast, _[ClipboardAll](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm#ClipboardAll)_ contains everything on the clipboard, such as pictures and formatting.',
+        ],
         exp: [
             'clipboard := "my text"   ; Give the clipboard entirely new contents.',
             'clipboard := ""   ; Empty the clipboard.',
@@ -26,7 +28,9 @@ export const BiVariables: TBiVElement[] = [
     {
         keyRawName: 'ClipboardAll',
         link: 'https://www.autohotkey.com/docs/v1/misc/Clipboard.htm#ClipboardAll',
-        doc: '_ClipboardAll_ contains everything on the clipboard (such as pictures and formatting). It is most commonly used to save the clipboard\'s contents so that the script can temporarily use the clipboard for an operation.',
+        doc: [
+            '_ClipboardAll_ contains everything on the clipboard (such as pictures and formatting). It is most commonly used to save the clipboard\'s contents so that the script can temporarily use the clipboard for an operation.',
+        ],
         exp: [
             'ClipSaved := ClipboardAll   ; Save the entire clipboard to a variable of your choice.',
             '; ... here make temporary use of the clipboard, such as for pasting Unicode text via Transform Unicode ...',
@@ -37,7 +41,9 @@ export const BiVariables: TBiVElement[] = [
     {
         keyRawName: 'ComSpec',
         link: 'https://www.autohotkey.com/docs/v1/Variables.htm#ComSpec',
-        doc: 'Contains the same string as the environment\'s ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). For example: `C:\\Windows\\system32\\cmd.exe`',
+        doc: [
+            'Contains the same string as the environment\'s ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). For example: `C:\\Windows\\system32\\cmd.exe`',
+        ],
         exp: [
             ';Runs the dir command in minimized state and stores the output in a text file. After that, the text file and its properties dialog will be opened.',
             '',
@@ -50,7 +56,9 @@ export const BiVariables: TBiVElement[] = [
     {
         keyRawName: 'ErrorLevel',
         link: 'https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm',
-        doc: 'This is a built-in variable that is set to indicate the success or failure of some of the commands (not all commands change the value of ErrorLevel). A value of 0 usually indicates success, and any other value usually indicates failure. You can also set the value of ErrorLevel yourself.',
+        doc: [
+            'This is a built-in variable that is set to indicate the success or failure of some of the commands (not all commands change the value of ErrorLevel). A value of 0 usually indicates success, and any other value usually indicates failure. You can also set the value of ErrorLevel yourself.',
+        ],
         exp: [
             '; Waits a maximum of 1 second until MyWindow exists. If WinWait times out, ErrorLevel is set to 1, otherwise to 0.',
             '',
@@ -63,7 +71,9 @@ export const BiVariables: TBiVElement[] = [
     },
     {
         keyRawName: 'False',
-        doc: '`0` to represent `false`. They can be used to make a script more readable. For details, see [Boolean Values](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean).',
+        doc: [
+            '`0` to represent `false`. They can be used to make a script more readable. For details, see [Boolean Values](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean).',
+        ],
         link: 'https://www.autohotkey.com/docs/v1/Variables.htm#misc',
         exp: [
             'False',
@@ -83,7 +93,7 @@ export const BiVariables: TBiVElement[] = [
             '- The _ProgramFiles(x86)_ environment variable contains the path of the 32-bit Program Files directory.',
             '',
             '[[v1.0.43.08+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.08 and later"): The A_ prefix may be omitted, which helps ease the transition to [#NoEnv](https://www.autohotkey.com/docs/v1/lib/_NoEnv.htm).',
-        ].join('\n'),
+        ],
         exp: [
             'ProgramFiles or A_ProgramFiles',
             '',
@@ -95,7 +105,9 @@ export const BiVariables: TBiVElement[] = [
     },
     {
         keyRawName: 'True',
-        doc: '`1` to represent `true`. They can be used to make a script more readable. For details, see [Boolean Values](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean).',
+        doc: [
+            '`1` to represent `true`. They can be used to make a script more readable. For details, see [Boolean Values](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean).',
+        ],
         link: 'https://www.autohotkey.com/docs/v1/Variables.htm#misc',
         exp: [
             'true',
@@ -104,7 +116,7 @@ export const BiVariables: TBiVElement[] = [
     },
     {
         keyRawName: 'this',
-        doc: 'this ... i can\'t find documentation for "this"',
+        doc: ['this ... i can\'t find documentation for "this"'],
         link: 'https://www.autohotkey.com/docs/v1/Objects.htm#Custom_NewDelete',
         exp: [
             'm1 := new GMem(0, 20)',

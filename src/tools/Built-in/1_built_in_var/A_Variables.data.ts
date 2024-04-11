@@ -3,7 +3,7 @@
 /* cSpell:disable */
 
 export type TAElement = {
-    body: `A_${string}`,
+    keyRawName: `A_${string}`,
     group:
         | 'Date'
         | 'GUI'
@@ -33,7 +33,7 @@ export type TAElement = {
  */
 export const AVariablesList: TAElement[] = [
     {
-        body: 'A_AhkPath',
+        keyRawName: 'A_AhkPath',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AhkPath',
         group: 'Script',
         doc: [
@@ -50,7 +50,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_AhkVersion',
+        keyRawName: 'A_AhkVersion',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AhkVersion',
         group: 'Script',
         doc: [
@@ -62,7 +62,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_AppData',
+        keyRawName: 'A_AppData',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AppData',
         group: 'OS',
         doc: [
@@ -75,7 +75,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_AppDataCommon',
+        keyRawName: 'A_AppDataCommon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AppDataCommon',
         group: 'OS',
         doc: [
@@ -88,7 +88,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Args',
+        keyRawName: 'A_Args',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Args',
         group: 'Script',
         doc: [
@@ -96,13 +96,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_AutoTrim',
+        keyRawName: 'A_AutoTrim',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AutoTrim',
         group: 'Setting',
         doc: ['The current mode (`On or Off`) set by [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm).'],
     },
     {
-        body: 'A_BatchLines',
+        keyRawName: 'A_BatchLines',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#BatchLines',
         group: 'Setting',
         doc: [
@@ -115,7 +115,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_NumBatchLines',
+        keyRawName: 'A_NumBatchLines',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#BatchLines',
         group: 'Setting',
         doc: [
@@ -128,7 +128,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CaretX',
+        keyRawName: 'A_CaretX',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Caret',
         group: 'Misc.',
         doc: [
@@ -149,7 +149,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CaretY',
+        keyRawName: 'A_CaretY',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Caret',
         group: 'Misc.',
         doc: [
@@ -170,7 +170,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Clipboard',
+        keyRawName: 'A_Clipboard',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Clipboard',
         group: 'Misc.',
         doc: [
@@ -178,7 +178,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ComSpec',
+        keyRawName: 'A_ComSpec',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ComSpec',
         group: 'OS',
         doc: [
@@ -186,13 +186,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ComputerName',
+        keyRawName: 'A_ComputerName',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ComputerName',
         group: 'OS',
         doc: ['The name of the computer as seen on the network.'],
     },
     {
-        body: 'A_ControlDelay',
+        keyRawName: 'A_ControlDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ControlDelay',
         group: 'Setting',
         doc: [
@@ -200,7 +200,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CoordModeCaret',
+        keyRawName: 'A_CoordModeCaret',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
         doc: [
@@ -208,7 +208,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CoordModeMenu',
+        keyRawName: 'A_CoordModeMenu',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
         doc: [
@@ -216,7 +216,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CoordModeMouse',
+        keyRawName: 'A_CoordModeMouse',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
         doc: [
@@ -224,7 +224,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CoordModePixel',
+        keyRawName: 'A_CoordModePixel',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
         doc: [
@@ -232,7 +232,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_CoordModeToolTip',
+        keyRawName: 'A_CoordModeToolTip',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
         doc: [
@@ -240,7 +240,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Cursor',
+        keyRawName: 'A_Cursor',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Cursor',
         group: 'Misc.',
         doc: [
@@ -248,31 +248,31 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DD',
+        keyRawName: 'A_DD',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DD',
         group: 'Date',
         doc: ['Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`.'],
     },
     {
-        body: 'A_MDay',
+        keyRawName: 'A_MDay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DD',
         group: 'Date',
         doc: ['Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`.'],
     },
     {
-        body: 'A_DDD',
+        keyRawName: 'A_DDD',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DDD',
         group: 'Date',
         doc: ['Current day of the week\'s abbreviation in the current user\'s language, e.g. `Sun`'],
     },
     {
-        body: 'A_DDDD',
+        keyRawName: 'A_DDDD',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DDDD',
         group: 'Date',
         doc: ['Current day of the week\'s full name in the current user\'s language, e.g. `Sunday`'],
     },
     {
-        body: 'A_DefaultGui',
+        keyRawName: 'A_DefaultGui',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultGui',
         group: 'GUI',
         doc: [
@@ -280,7 +280,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DefaultListView',
+        keyRawName: 'A_DefaultListView',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultListView',
         group: 'GUI',
         doc: [
@@ -288,7 +288,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DefaultMouseSpeed',
+        keyRawName: 'A_DefaultMouseSpeed',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultMouseSpeed',
         group: 'Setting',
         doc: [
@@ -296,7 +296,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DefaultTreeView',
+        keyRawName: 'A_DefaultTreeView',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultTreeView',
         group: 'GUI',
         doc: [
@@ -304,7 +304,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Desktop',
+        keyRawName: 'A_Desktop',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Desktop',
         group: 'OS',
         doc: [
@@ -317,7 +317,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DesktopCommon',
+        keyRawName: 'A_DesktopCommon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DesktopCommon',
         group: 'OS',
         doc: [
@@ -330,7 +330,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DetectHiddenText',
+        keyRawName: 'A_DetectHiddenText',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DetectHiddenText',
         group: 'Setting',
         doc: [
@@ -338,7 +338,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_DetectHiddenWindows',
+        keyRawName: 'A_DetectHiddenWindows',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DetectHiddenWindows',
         group: 'Setting',
         doc: [
@@ -346,7 +346,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_EndChar',
+        keyRawName: 'A_EndChar',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#EndChar',
         group: 'Hotkeys',
         doc: [
@@ -354,7 +354,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_EventInfo',
+        keyRawName: 'A_EventInfo',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#EventInfo',
         group: 'GUI',
         doc: [
@@ -368,7 +368,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ExitReason',
+        keyRawName: 'A_ExitReason',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ExitReason',
         group: 'Script',
         doc: [
@@ -376,7 +376,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_FileEncoding',
+        keyRawName: 'A_FileEncoding',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#FileEncoding',
         group: 'Setting',
         doc: [
@@ -384,7 +384,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_FormatFloat',
+        keyRawName: 'A_FormatFloat',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#FormatFloat',
         group: 'Setting',
         doc: [
@@ -392,7 +392,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_FormatInteger',
+        keyRawName: 'A_FormatInteger',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#FormatInteger',
         group: 'Setting',
         doc: [
@@ -400,7 +400,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Gui',
+        keyRawName: 'A_Gui',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Gui',
         group: 'GUI',
         doc: [
@@ -408,7 +408,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiControl',
+        keyRawName: 'A_GuiControl',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiControl',
         group: 'GUI',
         doc: [
@@ -420,7 +420,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiControlEvent',
+        keyRawName: 'A_GuiControlEvent',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiControlEvent',
         group: 'GUI',
         doc: [
@@ -436,7 +436,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiEvent',
+        keyRawName: 'A_GuiEvent',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiEvent',
         group: 'GUI',
         doc: [
@@ -452,7 +452,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiHeight',
+        keyRawName: 'A_GuiHeight',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiWidth',
         group: 'GUI',
         doc: [
@@ -460,7 +460,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiWidth',
+        keyRawName: 'A_GuiWidth',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiWidth',
         group: 'GUI',
         doc: [
@@ -468,7 +468,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiX',
+        keyRawName: 'A_GuiX',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiX',
         group: 'GUI',
         doc: [
@@ -476,7 +476,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_GuiY',
+        keyRawName: 'A_GuiY',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiY',
         group: 'GUI',
         doc: [
@@ -484,7 +484,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Hour',
+        keyRawName: 'A_Hour',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Hour',
         group: 'Date',
         doc: [
@@ -498,31 +498,31 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IPAddress1',
+        keyRawName: 'A_IPAddress1',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
         doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
-        body: 'A_IPAddress2',
+        keyRawName: 'A_IPAddress2',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
         doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
-        body: 'A_IPAddress3',
+        keyRawName: 'A_IPAddress3',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
         doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
-        body: 'A_IPAddress4',
+        keyRawName: 'A_IPAddress4',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
         doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
-        body: 'A_IconFile',
+        keyRawName: 'A_IconFile',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IconFile',
         group: 'Setting',
         doc: [
@@ -534,7 +534,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IconHidden',
+        keyRawName: 'A_IconHidden',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IconHidden',
         group: 'Setting',
         doc: [
@@ -542,13 +542,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IconNumber',
+        keyRawName: 'A_IconNumber',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IconNumber',
         group: 'Setting',
         doc: ['Blank if A_IconFile is blank. Otherwise, it\'s the number of the icon in A_IconFile (typically 1).'],
     },
     {
-        body: 'A_IconTip',
+        keyRawName: 'A_IconTip',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IconTip',
         group: 'Setting',
         doc: [
@@ -560,7 +560,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Index',
+        keyRawName: 'A_Index',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Index',
         group: 'Loop',
         doc: [
@@ -568,7 +568,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Is64bitOS',
+        keyRawName: 'A_Is64bitOS',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS',
         group: 'OS',
         doc: [
@@ -576,7 +576,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IsAdmin',
+        keyRawName: 'A_IsAdmin',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsAdmin',
         group: 'OS',
         doc: [
@@ -586,7 +586,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IsCompiled',
+        keyRawName: 'A_IsCompiled',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsCompiled',
         group: 'Script',
         doc: [
@@ -596,7 +596,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IsCritical',
+        keyRawName: 'A_IsCritical',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsCritical',
         group: 'Setting',
         doc: [
@@ -612,7 +612,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IsPaused',
+        keyRawName: 'A_IsPaused',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsPaused',
         group: 'Setting',
         doc: [
@@ -620,7 +620,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IsSuspended',
+        keyRawName: 'A_IsSuspended',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsSuspended',
         group: 'Setting',
         doc: [
@@ -628,7 +628,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_IsUnicode',
+        keyRawName: 'A_IsUnicode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsUnicode',
         group: 'Script',
         doc: [
@@ -638,7 +638,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_KeyDelay',
+        keyRawName: 'A_KeyDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelay',
         group: 'Setting',
         doc: [
@@ -646,7 +646,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_KeyDelayPlay',
+        keyRawName: 'A_KeyDelayPlay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelayPlay',
         group: 'Setting',
         doc: [
@@ -654,7 +654,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_KeyDuration',
+        keyRawName: 'A_KeyDuration',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelay',
         group: 'Setting',
         doc: [
@@ -662,7 +662,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_KeyDurationPlay',
+        keyRawName: 'A_KeyDurationPlay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelayPlay',
         group: 'Setting',
         doc: [
@@ -670,7 +670,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Language',
+        keyRawName: 'A_Language',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Language',
         group: 'OS',
         doc: [
@@ -810,7 +810,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LastError',
+        keyRawName: 'A_LastError',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#LastError',
         group: 'Misc.',
         doc: [
@@ -818,7 +818,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LineFile',
+        keyRawName: 'A_LineFile',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#LineFile',
         group: 'Script',
         doc: [
@@ -830,7 +830,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LineNumber',
+        keyRawName: 'A_LineNumber',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#LineNumber',
         group: 'Script',
         doc: [
@@ -844,7 +844,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ListLines',
+        keyRawName: 'A_ListLines',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ListLines',
         group: 'Setting',
         doc: [
@@ -852,7 +852,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopField',
+        keyRawName: 'A_LoopField',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopParse.htm#LoopField',
         group: 'LoopParse',
         doc: [
@@ -860,13 +860,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileAttrib',
+        keyRawName: 'A_LoopFileAttrib',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileAttrib',
         group: 'LoopFile',
         doc: ['The attributes of the file currently retrieved.'],
     },
     {
-        body: 'A_LoopFileDir',
+        keyRawName: 'A_LoopFileDir',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileDir',
         group: 'LoopFile',
         doc: [
@@ -874,13 +874,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileExt',
+        keyRawName: 'A_LoopFileExt',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileExt',
         group: 'LoopFile',
         doc: ['The file\'s extension (e.g. TXT, DOC, or EXE). The period (.) is not included.'],
     },
     {
-        body: 'A_LoopFileFullPath',
+        keyRawName: 'A_LoopFileFullPath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileFullPath',
         group: 'LoopFile',
         doc: [
@@ -888,7 +888,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileLongPath',
+        keyRawName: 'A_LoopFileLongPath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileLongPath',
         group: 'LoopFile',
         doc: [
@@ -896,13 +896,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileName',
+        keyRawName: 'A_LoopFileName',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileName',
         group: 'LoopFile',
         doc: ['The name of the file or folder currently retrieved (without the path).'],
     },
     {
-        body: 'A_LoopFilePath',
+        keyRawName: 'A_LoopFilePath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileFullPath',
         group: 'LoopFile',
         doc: [
@@ -910,7 +910,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileShortName',
+        keyRawName: 'A_LoopFileShortName',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileShortName',
         group: 'LoopFile',
         doc: [
@@ -918,7 +918,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileShortPath',
+        keyRawName: 'A_LoopFileShortPath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileShortPath',
         group: 'LoopFile',
         doc: [
@@ -926,43 +926,43 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopFileSize',
+        keyRawName: 'A_LoopFileSize',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileSize',
         group: 'LoopFile',
         doc: ['The size in bytes of the file currently retrieved. Files larger than 4 gigabytes are also supported.'],
     },
     {
-        body: 'A_LoopFileSizeKB',
+        keyRawName: 'A_LoopFileSizeKB',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileSizeKB',
         group: 'LoopFile',
         doc: ['The size in Kbytes of the file currently retrieved, rounded down to the nearest integer.'],
     },
     {
-        body: 'A_LoopFileSizeMB',
+        keyRawName: 'A_LoopFileSizeMB',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileSizeMB',
         group: 'LoopFile',
         doc: ['The size in Mbytes of the file currently retrieved, rounded down to the nearest integer.'],
     },
     {
-        body: 'A_LoopFileTimeAccessed',
+        keyRawName: 'A_LoopFileTimeAccessed',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileTimeAccessed',
         group: 'LoopFile',
         doc: ['The time the file was last accessed. Format YYYYMMDDHH24MISS.'],
     },
     {
-        body: 'A_LoopFileTimeCreated',
+        keyRawName: 'A_LoopFileTimeCreated',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileTimeCreated',
         group: 'LoopFile',
         doc: ['The time the file was created. Format YYYYMMDDHH24MISS.'],
     },
     {
-        body: 'A_LoopFileTimeModified',
+        keyRawName: 'A_LoopFileTimeModified',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileTimeModified',
         group: 'LoopFile',
         doc: ['The time the file was last modified. Format YYYYMMDDHH24MISS.'],
     },
     {
-        body: 'A_LoopReadLine',
+        keyRawName: 'A_LoopReadLine',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm#LoopReadLine',
         group: 'LoopReadFile',
         doc: [
@@ -970,7 +970,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopRegKey',
+        keyRawName: 'A_LoopRegKey',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
         doc: [
@@ -978,7 +978,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopRegName',
+        keyRawName: 'A_LoopRegName',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
         doc: [
@@ -986,7 +986,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopRegSubKey',
+        keyRawName: 'A_LoopRegSubKey',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
         doc: [
@@ -994,7 +994,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopRegTimeModified',
+        keyRawName: 'A_LoopRegTimeModified',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
         doc: [
@@ -1002,7 +1002,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_LoopRegType',
+        keyRawName: 'A_LoopRegType',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
         doc: [
@@ -1010,31 +1010,31 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_MM',
+        keyRawName: 'A_MM',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MM',
         group: 'Date',
         doc: ['Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`.'],
     },
     {
-        body: 'A_Mon',
+        keyRawName: 'A_Mon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MM',
         group: 'Date',
         doc: ['Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`.'],
     },
     {
-        body: 'A_MMM',
+        keyRawName: 'A_MMM',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MMM',
         group: 'Date',
         doc: ['Current month\'s abbreviation in the current user\'s language, e.g. `Jul`'],
     },
     {
-        body: 'A_MMMM',
+        keyRawName: 'A_MMMM',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MMMM',
         group: 'Date',
         doc: ['Current month\'s full name in the current user\'s language, e.g. `July`'],
     },
     {
-        body: 'A_MSec',
+        keyRawName: 'A_MSec',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MSec',
         group: 'Date',
         doc: [
@@ -1046,13 +1046,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Min',
+        keyRawName: 'A_Min',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Min',
         group: 'Date',
         doc: ['Current 2-digit minute (00-59). '],
     },
     {
-        body: 'A_MouseDelay',
+        keyRawName: 'A_MouseDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MouseDelay',
         group: 'Setting',
         doc: [
@@ -1060,7 +1060,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_MouseDelayPlay',
+        keyRawName: 'A_MouseDelayPlay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MouseDelay',
         group: 'Setting',
         doc: [
@@ -1068,7 +1068,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_MyDocuments',
+        keyRawName: 'A_MyDocuments',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MyDocuments',
         group: 'OS',
         doc: [
@@ -1081,7 +1081,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Now',
+        keyRawName: 'A_Now',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Now',
         group: 'Date',
         doc: [
@@ -1091,7 +1091,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_NowUTC',
+        keyRawName: 'A_NowUTC',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#NowUTC',
         group: 'Date',
         doc: [
@@ -1099,7 +1099,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_OSType',
+        keyRawName: 'A_OSType',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#OSType',
         group: 'OS',
         doc: [
@@ -1107,7 +1107,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_OSVersion',
+        keyRawName: 'A_OSVersion',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#OSVersion',
         group: 'OS',
         doc: [
@@ -1130,13 +1130,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_PriorHotkey',
+        keyRawName: 'A_PriorHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#PriorHotkey',
         group: 'Hotkeys',
         doc: ['Same as above except for the previous hotkey. It will be blank if none.'],
     },
     {
-        body: 'A_PriorKey',
+        keyRawName: 'A_PriorKey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#PriorKey',
         group: 'Hotkeys',
         doc: [
@@ -1144,7 +1144,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ProgramFiles',
+        keyRawName: 'A_ProgramFiles',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ProgramFiles',
         group: 'OS',
         doc: [
@@ -1160,7 +1160,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Programs',
+        keyRawName: 'A_Programs',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Programs',
         group: 'OS',
         doc: [
@@ -1173,7 +1173,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ProgramsCommon',
+        keyRawName: 'A_ProgramsCommon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ProgramsCommon',
         group: 'OS',
         doc: [
@@ -1186,7 +1186,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_PtrSize',
+        keyRawName: 'A_PtrSize',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#PtrSize',
         group: 'OS',
         doc: [
@@ -1194,7 +1194,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_RegView',
+        keyRawName: 'A_RegView',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#RegView',
         group: 'Setting',
         doc: [
@@ -1202,7 +1202,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScreenDPI',
+        keyRawName: 'A_ScreenDPI',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScreenDPI',
         group: 'OS',
         doc: [
@@ -1210,7 +1210,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScreenHeight',
+        keyRawName: 'A_ScreenHeight',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Screen',
         group: 'OS',
         doc: [
@@ -1227,7 +1227,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScreenWidth',
+        keyRawName: 'A_ScreenWidth',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Screen',
         group: 'OS',
         doc: [
@@ -1244,7 +1244,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScriptDir',
+        keyRawName: 'A_ScriptDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScriptDir',
         group: 'Script',
         doc: [
@@ -1252,7 +1252,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScriptFullPath',
+        keyRawName: 'A_ScriptFullPath',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScriptFullPath',
         group: 'Script',
         doc: [
@@ -1261,7 +1261,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScriptHwnd',
+        keyRawName: 'A_ScriptHwnd',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScriptHwnd',
         group: 'Script',
         doc: [
@@ -1269,7 +1269,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ScriptName',
+        keyRawName: 'A_ScriptName',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScriptName',
         group: 'Script',
         doc: [
@@ -1278,13 +1278,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Sec',
+        keyRawName: 'A_Sec',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Sec',
         group: 'Date',
         doc: ['Current 2-digit second (00-59).'],
     },
     {
-        body: 'A_SendLevel',
+        keyRawName: 'A_SendLevel',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#SendLevel',
         group: 'Setting',
         doc: [
@@ -1292,7 +1292,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_SendMode',
+        keyRawName: 'A_SendMode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#SendMode',
         group: 'Setting',
         doc: [
@@ -1300,7 +1300,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Space',
+        keyRawName: 'A_Space',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Space',
         group: 'Spec',
         doc: [
@@ -1308,7 +1308,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_StartMenu',
+        keyRawName: 'A_StartMenu',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StartMenu',
         group: 'OS',
         doc: [
@@ -1321,7 +1321,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_StartMenuCommon',
+        keyRawName: 'A_StartMenuCommon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StartMenuCommon',
         group: 'OS',
         doc: [
@@ -1334,7 +1334,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Startup',
+        keyRawName: 'A_Startup',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Startup',
         group: 'OS',
         doc: [
@@ -1347,7 +1347,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_StartupCommon',
+        keyRawName: 'A_StartupCommon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StartupCommon',
         group: 'OS',
         doc: [
@@ -1360,7 +1360,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_StoreCapsLockMode',
+        keyRawName: 'A_StoreCapsLockMode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StoreCapslockMode',
         group: 'Setting',
         doc: [
@@ -1368,7 +1368,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_StringCaseSense',
+        keyRawName: 'A_StringCaseSense',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StringCaseSense',
         group: 'Setting',
         doc: [
@@ -1376,7 +1376,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Tab',
+        keyRawName: 'A_Tab',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Tab',
         group: 'Spec',
         doc: [
@@ -1384,7 +1384,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Temp',
+        keyRawName: 'A_Temp',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Temp',
         group: 'OS',
         doc: [
@@ -1394,7 +1394,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ThisFunc',
+        keyRawName: 'A_ThisFunc',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisFunc',
         group: 'Script',
         doc: [
@@ -1402,7 +1402,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ThisHotkey',
+        keyRawName: 'A_ThisHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisHotkey',
         group: 'Hotkeys',
         doc: [
@@ -1416,7 +1416,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ThisLabel',
+        keyRawName: 'A_ThisLabel',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel',
         group: 'Script',
         doc: [
@@ -1424,13 +1424,13 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ThisMenu',
+        keyRawName: 'A_ThisMenu',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenu',
         group: 'Hotkeys',
         doc: ['The name of the menu from which A_ThisMenuItem was selected.'],
     },
     {
-        body: 'A_ThisMenuItem',
+        keyRawName: 'A_ThisMenuItem',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenuItem',
         group: 'Hotkeys',
         doc: [
@@ -1438,7 +1438,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_ThisMenuItemPos',
+        keyRawName: 'A_ThisMenuItemPos',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenuItemPos',
         group: 'Hotkeys',
         doc: [
@@ -1446,7 +1446,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TickCount',
+        keyRawName: 'A_TickCount',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TickCount',
         group: 'Date',
         doc: [
@@ -1463,7 +1463,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TimeIdle',
+        keyRawName: 'A_TimeIdle',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdle',
         group: 'User Idle Time',
         doc: [
@@ -1476,7 +1476,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TimeIdleKeyboard',
+        keyRawName: 'A_TimeIdleKeyboard',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdleKeyboard',
         group: 'User Idle Time',
         doc: [
@@ -1484,7 +1484,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TimeIdleMouse',
+        keyRawName: 'A_TimeIdleMouse',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdleMouse',
         group: 'User Idle Time',
         doc: [
@@ -1492,7 +1492,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TimeIdlePhysical',
+        keyRawName: 'A_TimeIdlePhysical',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdlePhysical',
         group: 'User Idle Time',
         doc: [
@@ -1500,7 +1500,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TimeSincePriorHotkey',
+        keyRawName: 'A_TimeSincePriorHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeSincePriorHotkey',
         group: 'Hotkeys',
         doc: [
@@ -1508,7 +1508,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TimeSinceThisHotkey',
+        keyRawName: 'A_TimeSinceThisHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeSinceThisHotkey',
         group: 'Hotkeys',
         doc: [
@@ -1516,7 +1516,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TitleMatchMode',
+        keyRawName: 'A_TitleMatchMode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TitleMatchMode',
         group: 'Setting',
         doc: [
@@ -1524,7 +1524,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_TitleMatchModeSpeed',
+        keyRawName: 'A_TitleMatchModeSpeed',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TitleMatchModeSpeed',
         group: 'Setting',
         doc: [
@@ -1532,19 +1532,19 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_UserName',
+        keyRawName: 'A_UserName',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#UserName',
         group: 'OS',
         doc: ['The logon name of the user who launched this script.'],
     },
     {
-        body: 'A_WDay',
+        keyRawName: 'A_WDay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WDay',
         group: 'Date',
         doc: ['Current 1-digit day of the week (1-7). 1 is Sunday in all locales.'],
     },
     {
-        body: 'A_WinDelay',
+        keyRawName: 'A_WinDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WinDelay',
         group: 'Setting',
         doc: [
@@ -1552,7 +1552,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_WinDir',
+        keyRawName: 'A_WinDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WinDir',
         group: 'OS',
         doc: [
@@ -1565,7 +1565,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_WorkingDir',
+        keyRawName: 'A_WorkingDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir',
         group: 'Script',
         doc: [
@@ -1573,7 +1573,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_InitialWorkingDir',
+        keyRawName: 'A_InitialWorkingDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#InitialWorkingDir',
         group: 'Script',
         doc: [
@@ -1581,7 +1581,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_YDay',
+        keyRawName: 'A_YDay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#YDay',
         group: 'Date',
         doc: [
@@ -1593,7 +1593,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_YWeek',
+        keyRawName: 'A_YWeek',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#YWeek',
         group: 'Date',
         doc: [
@@ -1611,7 +1611,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_YYYY',
+        keyRawName: 'A_YYYY',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#YYYY',
         group: 'Date',
         doc: [
@@ -1629,7 +1629,7 @@ export const AVariablesList: TAElement[] = [
         ],
     },
     {
-        body: 'A_Year',
+        keyRawName: 'A_Year',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#YYYY',
         group: 'Date',
         doc: [

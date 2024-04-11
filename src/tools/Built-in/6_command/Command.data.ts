@@ -27,7 +27,7 @@ export type TCommandElement = Readonly<{
     upName: string,
     keyRawName: string,
     body: string,
-    doc: string,
+    doc: string[],
     recommended: boolean,
     link: `https://www.autohotkey.com/docs/v1/lib/${string}.htm${'' | '#command'}`,
     exp: readonly string[],
@@ -58,14 +58,16 @@ export type TCommandElement = Readonly<{
 }>;
 
 /**
- * after initialization clear
+ * Generate .json indirect reference, no longer direct reference
  */
 export const LineCommand: TCommandElement[] = [
     {
         upName: 'AUTOTRIM',
         keyRawName: 'AutoTrim',
         body: 'AutoTrim, ${1|On,Off|}',
-        doc: 'Determines whether [traditional assignments](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm "Deprecated. New scripts should use Var := Value instead.") like `Var1 = %Var2%` omit spaces and tabs from the beginning and end of _Var2_.',
+        doc: [
+            'Determines whether [traditional assignments](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm "Deprecated. New scripts should use Var := Value instead.") like `Var1 = %Var2%` omit spaces and tabs from the beginning and end of _Var2_.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm',
         exp: [
@@ -99,7 +101,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'BLOCKINPUT',
         keyRawName: 'BlockInput',
         body: 'BlockInput, ${1|On,Off,Send,Mouse,SendAndMouse,Default,MouseMove,MouseMoveOff|}',
-        doc: 'Disables or enables the user\'s ability to interact with the computer via keyboard and mouse.',
+        doc: ['Disables or enables the user\'s ability to interact with the computer via keyboard and mouse.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/BlockInput.htm',
         exp: [
@@ -142,7 +144,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'CLICK',
         keyRawName: 'Click',
         body: 'Click [, ${1:Options}]',
-        doc: 'Clicks a mouse button at the specified coordinates. It can also hold down a mouse button, turn the mouse wheel, or move the mouse.',
+        doc: [
+            'Clicks a mouse button at the specified coordinates. It can also hold down a mouse button, turn the mouse wheel, or move the mouse.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Click.htm',
         exp: [
@@ -189,7 +193,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'CLIPWAIT',
         keyRawName: 'ClipWait',
         body: 'ClipWait [, ${1:Timeout_Sec}, ${2|False,True|}]',
-        doc: 'Waits until the [clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm) contains data.',
+        doc: ['Waits until the [clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm) contains data.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ClipWait.htm',
         exp: [
@@ -251,7 +255,7 @@ export const LineCommand: TCommandElement[] = [
             '- [Choose](https://www.autohotkey.com/docs/v1/lib/Control.htm#Choose): Sets the selection in a ListBox or ComboBox to be the specified entry number.',
             '- [ChooseString](https://www.autohotkey.com/docs/v1/lib/Control.htm#ChooseString): Sets the selection in a ListBox or ComboBox to be the first entry whose leading part matches the specified string.',
             '- [EditPaste](https://www.autohotkey.com/docs/v1/lib/Control.htm#EditPaste): Pastes the specified string at the caret in an Edit control.',
-        ].join('\n'),
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Control.htm',
         exp: [
@@ -350,7 +354,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlClick',
         body:
             'ControlClick, [${1:Control_or_Pos}, ${2:WinTitle}, ${3:WinText}, ${4:WhichButton}, ${5:ClickCount}, ${6:Options}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
-        doc: 'Sends a mouse button or mouse wheel event to a control.',
+        doc: ['Sends a mouse button or mouse wheel event to a control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlClick.htm',
         exp: [
@@ -464,7 +468,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'CONTROLFOCUS',
         keyRawName: 'ControlFocus',
         body: 'ControlFocus [, ${1:Control}, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Sets input focus to a given control on a window.',
+        doc: ['Sets input focus to a given control on a window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlFocus.htm',
         exp: [
@@ -543,7 +547,7 @@ export const LineCommand: TCommandElement[] = [
             '| [Style](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Style)                                                                                                                            | Retrieves an 8-digit hexadecimal number representing the style of the control.             |',
             '| [ExStyle](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#ExStyle)                                                                                                                        | Retrieves an 8-digit hexadecimal number representing the extended style of the control.    |',
             '| [Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) [\\[v1.1.04+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 "Applies to AutoHotkey v1.1.04 and later") | Retrieves the window handle (HWND) of the control.                                         |',
-        ].join('\n'),
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlGet.htm',
         exp: [
@@ -644,7 +648,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'CONTROLGETFOCUS',
         keyRawName: 'ControlGetFocus',
         body: 'ControlGetFocus, ${1:OutputVar}, [${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Retrieves which control of the target window has input focus, if any.',
+        doc: ['Retrieves which control of the target window has input focus, if any.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlGetFocus.htm',
         exp: [
@@ -707,7 +711,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlGetPos',
         body:
             'ControlGetPos, [${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:Control}, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]',
-        doc: 'Retrieves the position and size of a control.',
+        doc: ['Retrieves the position and size of a control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlGetPos.htm',
         exp: [
@@ -816,7 +820,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlGetText',
         body:
             'ControlGetText, ${1:OutputVar} [, ${2:Control}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Retrieves text from a control.\n\n* Note: To retrieve text from a ListView, ListBox, or ComboBox, use ControlGet List instead.',
+        doc: [
+            'Retrieves text from a control.\n\n* Note: To retrieve text from a ListView, ListBox, or ComboBox, use ControlGet List instead.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlGetText.htm',
         exp: [
@@ -893,7 +899,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlMove',
         body:
             'ControlMove, ${1:Control}, ${2:X}, ${3:Y}, ${4:Width}, ${5:Height} [, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]',
-        doc: 'Moves or resizes a control.',
+        doc: ['Moves or resizes a control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlMove.htm',
         exp: [
@@ -1002,7 +1008,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlSend',
         body:
             'ControlSend, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Sends simulated keystrokes to a window or control.',
+        doc: ['Sends simulated keystrokes to a window or control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlSend.htm',
         exp: [
@@ -1072,7 +1078,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlSendRaw',
         body:
             'ControlSendRaw, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Sends simulated keystrokes to a window or control.',
+        doc: ['Sends simulated keystrokes to a window or control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlSend.htm',
         exp: [
@@ -1142,7 +1148,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'ControlSetText',
         body:
             'ControlSetText, [${1:Control}, ${2:NewText}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Changes the text of a control.',
+        doc: ['Changes the text of a control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ControlSetText.htm',
         exp: [
@@ -1207,7 +1213,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'COORDMODE',
         keyRawName: 'CoordMode',
         body: 'CoordMode, ${1|ToolTip,Pixel,Mouse,Caret,Menu|} [, ${2|Screen,Relative,Window,Client|}]',
-        doc: 'Sets coordinate mode for various commands to be relative to either the active window or the screen.\n\n1. **TargetType**:\n> The type of target to affect. Specify one of the following words:\n- **ToolTip**: Affects [ToolTip](https://www.autohotkey.com/docs/v1/lib/ToolTip.htm).\n- **Pixel**: Affects [PixelGetColor](https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm), [PixelSearch](https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm), and [ImageSearch](https://www.autohotkey.com/docs/v1/lib/ImageSearch.htm).\n- **Mouse**: Affects [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).\n- **Caret**: Affects the built-in variables [A_CaretX](https://www.autohotkey.com/docs/v1/Variables.htm#Caret) and [A_CaretY](https://www.autohotkey.com/docs/v1/Variables.htm#Caret).\n- **Menu**: Affects the [Menu Show](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Show) command when coordinates are specified for it.\n\n2. **RelativeTo**:\n> The area to which TargetType is to be related. Specify one of the following words (if omitted, it defaults to Screen):\n- **Screen**: Coordinates are relative to the desktop (entire screen).\n- **Relative**: Coordinates are relative to the active window.\n- **Window** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 "Applies to AutoHotkey v1.1.05 and later"): Synonymous with _Relative_ and recommended for clarity.\n- **Client** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 "Applies to AutoHotkey v1.1.05 and later"): Coordinates are relative to the active window\'s client area, which excludes the window\'s title bar, menu (if it has a standard one) and borders. Client coordinates are less dependent on OS version and theme.',
+        doc: [
+            'Sets coordinate mode for various commands to be relative to either the active window or the screen.\n\n1. **TargetType**:\n> The type of target to affect. Specify one of the following words:\n- **ToolTip**: Affects [ToolTip](https://www.autohotkey.com/docs/v1/lib/ToolTip.htm).\n- **Pixel**: Affects [PixelGetColor](https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm), [PixelSearch](https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm), and [ImageSearch](https://www.autohotkey.com/docs/v1/lib/ImageSearch.htm).\n- **Mouse**: Affects [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).\n- **Caret**: Affects the built-in variables [A_CaretX](https://www.autohotkey.com/docs/v1/Variables.htm#Caret) and [A_CaretY](https://www.autohotkey.com/docs/v1/Variables.htm#Caret).\n- **Menu**: Affects the [Menu Show](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Show) command when coordinates are specified for it.\n\n2. **RelativeTo**:\n> The area to which TargetType is to be related. Specify one of the following words (if omitted, it defaults to Screen):\n- **Screen**: Coordinates are relative to the desktop (entire screen).\n- **Relative**: Coordinates are relative to the active window.\n- **Window** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 "Applies to AutoHotkey v1.1.05 and later"): Synonymous with _Relative_ and recommended for clarity.\n- **Client** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 "Applies to AutoHotkey v1.1.05 and later"): Coordinates are relative to the active window\'s client area, which excludes the window\'s title bar, menu (if it has a standard one) and borders. Client coordinates are less dependent on OS version and theme.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/CoordMode.htm',
         exp: [
@@ -1264,7 +1272,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'DETECTHIDDENTEXT',
         keyRawName: 'DetectHiddenText',
         body: 'DetectHiddenText, ${1|On,Off|}',
-        doc: 'Determines whether invisible text in a window is "seen" for the purpose of finding the window. This affects commands, built-in functions and control flow statements such as WinExist() and WinActivate.',
+        doc: [
+            'Determines whether invisible text in a window is "seen" for the purpose of finding the window. This affects commands, built-in functions and control flow statements such as WinExist() and WinActivate.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm',
         exp: [
@@ -1294,7 +1304,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'DETECTHIDDENWINDOWS',
         keyRawName: 'DetectHiddenWindows',
         body: 'DetectHiddenWindows, ${1|On,Off|}',
-        doc: 'Determines whether invisible windows are "seen" by the script.',
+        doc: ['Determines whether invisible windows are "seen" by the script.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm',
         exp: [
@@ -1332,7 +1342,7 @@ export const LineCommand: TCommandElement[] = [
             '| [Lock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Lock)     | Prevents the eject feature of a drive from working. |',
             '| [Unlock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Unlock) | Restores the eject feature of a drive.              |',
             '| [Eject](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Eject)   | Ejects or retracts the tray of a CD or DVD drive.   |',
-        ].join('\n'),
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Drive.htm',
         exp: [
@@ -1390,7 +1400,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'DriveGet',
         body:
             'DriveGet, ${1:OutputVar}, ${2|List,Capacity,FileSystem,Label,Serial,Type,Status,StatusCD|} [, ${3:Value}]',
-        doc: 'Retrieves various types of information about the computer\'s drive(s).\n*SubCommand*\n* List:        Retrieves a string of letters, one character for each drive letter in the system.\n* Capacity:    Retrieves the total capacity of the specified path in megabytes.\n* FileSystem:  Retrieves the type of the specified drive\'s file system.\n* Label:       Retrieves the volume label of the specified drive.\n* Serial:      Retrieves the volume serial number of the specified drive.\n* Type:        Retrieves the drive type of the specified path.\n* Status:      Retrieves the status of the specified path.\n* StatusCD:    Retrieves the media status of a CD or DVD drive.',
+        doc: [
+            'Retrieves various types of information about the computer\'s drive(s).\n*SubCommand*\n* List:        Retrieves a string of letters, one character for each drive letter in the system.\n* Capacity:    Retrieves the total capacity of the specified path in megabytes.\n* FileSystem:  Retrieves the type of the specified drive\'s file system.\n* Label:       Retrieves the volume label of the specified drive.\n* Serial:      Retrieves the volume serial number of the specified drive.\n* Type:        Retrieves the drive type of the specified path.\n* Status:      Retrieves the status of the specified path.\n* StatusCD:    Retrieves the media status of a CD or DVD drive.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/DriveGet.htm',
         exp: [
@@ -1454,7 +1466,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'DRIVESPACEFREE',
         keyRawName: 'DriveSpaceFree',
         body: 'DriveSpaceFree, ${1:OutputVar_MBSize}, ${2:C:\\\\}',
-        doc: 'Retrieves the free disk space of a drive, in Megabytes.',
+        doc: ['Retrieves the free disk space of a drive, in Megabytes.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/DriveSpaceFree.htm',
         exp: [
@@ -1502,7 +1514,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'EDIT',
         keyRawName: 'Edit',
         body: 'Edit',
-        doc: 'Opens the current script for editing in the associated editor.',
+        doc: ['Opens the current script for editing in the associated editor.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Edit.htm',
         exp: [
@@ -1515,7 +1527,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVADD',
         keyRawName: 'EnvAdd',
         body: 'EnvAdd, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]',
-        doc: 'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to the sum of itself plus the given value (can also add or subtract time from a [date-time](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) value). Synonymous with: `Var += Value`.',
+        doc: [
+            'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to the sum of itself plus the given value (can also add or subtract time from a [date-time](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) value). Synonymous with: `Var += Value`.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvAdd.htm',
         exp: [
@@ -1570,7 +1584,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVDIV',
         keyRawName: 'EnvDiv',
         body: 'EnvDiv, ${1:OutVar}, ${2:Value}',
-        doc: 'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself divided by the given value. Synonymous with: `Var /= Value`.',
+        doc: [
+            'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself divided by the given value. Synonymous with: `Var /= Value`.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvDiv.htm',
         exp: [
@@ -1606,7 +1622,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVGET',
         keyRawName: 'EnvGet',
         body: 'EnvGet, ${1:OutputVar}, ${2:EnvVarName}',
-        doc: 'Retrieves an environment variable.\n- [Parameters](https://www.autohotkey.com/docs/v1/lib/EnvGet.htm#Parameters)\n* OutputVar : \n  The name of the variable in which to store the string.\n* EnvVarName :\n  The name of the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to retrieve.\n  Exp : `Path` or `TEMP`or `TMP`',
+        doc: [
+            'Retrieves an environment variable.\n- [Parameters](https://www.autohotkey.com/docs/v1/lib/EnvGet.htm#Parameters)\n* OutputVar : \n  The name of the variable in which to store the string.\n* EnvVarName :\n  The name of the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to retrieve.\n  Exp : `Path` or `TEMP`or `TMP`',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvGet.htm',
         exp: [
@@ -1643,7 +1661,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVMULT',
         keyRawName: 'EnvMult',
         body: 'EnvMult, ${1:OutVar}, ${2:Value}',
-        doc: 'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself times the given value. Synonymous with: `Var *= Value`.',
+        doc: [
+            'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself times the given value. Synonymous with: `Var *= Value`.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvMult.htm',
         exp: [
@@ -1679,7 +1699,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVSET',
         keyRawName: 'EnvSet',
         body: 'EnvSet, ${1:EnvVar}, ${2:Value}',
-        doc: 'Writes a value to a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contained in the environment.\n## Parameters\n* EnvVar : \n  Name of the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to use, e.g. "COMSPEC" or "PATH".\n* Value :\n  Value to set the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to.',
+        doc: [
+            'Writes a value to a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contained in the environment.\n## Parameters\n* EnvVar : \n  Name of the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to use, e.g. "COMSPEC" or "PATH".\n* Value :\n  Value to set the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvSet.htm',
         exp: [
@@ -1712,7 +1734,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVSUB',
         keyRawName: 'EnvSub',
         body: 'EnvSub, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]',
-        doc: 'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself minus the given value (can also compare [date-time](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) values). Synonymous with: `Var -= Value`.\n- Var : The name of the [variable](https://www.autohotkey.com/docs/v1/Variables.htm) upon which to operate.\n- Value : Any integer, floating point number, or [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n- TimeUnits : `Seconds`, `Minutes`, `Hours`, `Days`',
+        doc: [
+            'Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself minus the given value (can also compare [date-time](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) values). Synonymous with: `Var -= Value`.\n- Var : The name of the [variable](https://www.autohotkey.com/docs/v1/Variables.htm) upon which to operate.\n- Value : Any integer, floating point number, or [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n- TimeUnits : `Seconds`, `Minutes`, `Hours`, `Days`',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvSub.htm',
         exp: [
@@ -1768,7 +1792,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ENVUPDATE',
         keyRawName: 'EnvUpdate',
         body: 'EnvUpdate',
-        doc: 'Notifies the OS and all running applications that [environment variable(s)](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) have changed.',
+        doc: [
+            'Notifies the OS and all running applications that [environment variable(s)](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) have changed.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/EnvUpdate.htm',
         exp: [
@@ -1781,7 +1807,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEAPPEND',
         keyRawName: 'FileAppend',
         body: 'FileAppend [, ${1:Text} , ${2:Filename}, ${3:Encoding}]',
-        doc: 'Writes text to the end of a file (first creating the file, if necessary).',
+        doc: ['Writes text to the end of a file (first creating the file, if necessary).'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileAppend.htm',
         exp: [
@@ -1849,7 +1875,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILECOPY',
         keyRawName: 'FileCopy',
         body: 'FileCopy, ${1:SourcePattern}, ${2:DestPattern} [, ${3|0,1|}]',
-        doc: 'Copies one or more files.\n* Overwrite\n* If omitted or 0 (false), the command does not overwrite existing files.\n* If this parameter is 1 (true), the command overwrites existing files.',
+        doc: [
+            'Copies one or more files.\n* Overwrite\n* If omitted or 0 (false), the command does not overwrite existing files.\n* If this parameter is 1 (true), the command overwrites existing files.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileCopy.htm',
         exp: [
@@ -1911,7 +1939,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILECOPYDIR',
         keyRawName: 'FileCopyDir',
         body: 'FileCopyDir, ${1:Source}, ${2:Dest} [, ${3|0,1|}]',
-        doc: 'Copies a folder along with all its sub-folders and files (similar to xcopy).\n* **Overwrite**\n* This parameter determines whether to overwrite files if they already exist. If omitted, it defaults to 0 (false). Specify one of the following values:\n* 0 (false): Do not overwrite existing files. The operation will fail and have no effect if _Dest_ already exists as a file or directory.\n* 1 (true): Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted.\n* This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions), even one that evalutes to true or false (since true and false are stored internally as 1 and 0).',
+        doc: [
+            'Copies a folder along with all its sub-folders and files (similar to xcopy).\n* **Overwrite**\n* This parameter determines whether to overwrite files if they already exist. If omitted, it defaults to 0 (false). Specify one of the following values:\n* 0 (false): Do not overwrite existing files. The operation will fail and have no effect if _Dest_ already exists as a file or directory.\n* 1 (true): Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted.\n* This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions), even one that evalutes to true or false (since true and false are stored internally as 1 and 0).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileCopyDir.htm',
         exp: [
@@ -1966,7 +1996,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILECREATEDIR',
         keyRawName: 'FileCreateDir',
         body: 'FileCreateDir, ${1:Path}',
-        doc: 'Creates a folder.',
+        doc: ['Creates a folder.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileCreateDir.htm',
         exp: [
@@ -2000,7 +2030,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'FileCreateShortcut',
         body:
             'FileCreateShortcut, ${1:Target}, ${2:C:\\My Shortcut.lnk} [, ${3:WorkingDir}, ${4:Args}, ${5:Description}, ${6:IconFile}, ${7:ShortcutKey}, ${8:IconNumber}, ${9|1,3,7|} ]',
-        doc: 'Creates a shortcut (.lnk) file.',
+        doc: ['Creates a shortcut (.lnk) file.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileCreateShortcut.htm',
         exp: [
@@ -2105,7 +2135,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEDELETE',
         keyRawName: 'FileDelete',
         body: 'FileDelete, ${1:FilePattern}',
-        doc: 'Deletes one or more files.\n\n### FilePattern\n1. The name of a single file or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n2. To remove an entire folder, along with all its sub-folders and files, use [FileRemoveDir](https://www.autohotkey.com/docs/v1/lib/FileRemoveDir.htm).',
+        doc: [
+            'Deletes one or more files.\n\n### FilePattern\n1. The name of a single file or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n2. To remove an entire folder, along with all its sub-folders and files, use [FileRemoveDir](https://www.autohotkey.com/docs/v1/lib/FileRemoveDir.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileDelete.htm',
         exp: [
@@ -2134,7 +2166,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEENCODING',
         keyRawName: 'FileEncoding',
         body: 'FileEncoding, [${1|ANSI,UTF-8,UTF-8-RAW,UTF-16,UTF-16-RAW,CPnnn|}]',
-        doc: 'Sets the default encoding for [FileRead](https://www.autohotkey.com/docs/v1/lib/FileRead.htm), [FileReadLine](https://www.autohotkey.com/docs/v1/lib/FileReadLine.htm), [Loop Read](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm), [FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm), and [FileOpen()](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm).\n\n### Encoding\nOne of the following values : (if omitted, it defaults to the system default ANSI code page, which is also the default setting)\n- UTF-8: Unicode UTF-8, equivalent to CP65001.\n- UTF-8-RAW: As above, but no byte order mark is written when a new file is created.\n- UTF-16: Unicode UTF-16 with little endian byte order, equivalent to CP1200.\n- UTF-16-RAW: As above, but no byte order mark is written when a new file is created.\n- CP_nnn_: A code page with numeric identifier _nnn_. See [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/dd317756.aspx).',
+        doc: [
+            'Sets the default encoding for [FileRead](https://www.autohotkey.com/docs/v1/lib/FileRead.htm), [FileReadLine](https://www.autohotkey.com/docs/v1/lib/FileReadLine.htm), [Loop Read](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm), [FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm), and [FileOpen()](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm).\n\n### Encoding\nOne of the following values : (if omitted, it defaults to the system default ANSI code page, which is also the default setting)\n- UTF-8: Unicode UTF-8, equivalent to CP65001.\n- UTF-8-RAW: As above, but no byte order mark is written when a new file is created.\n- UTF-16: Unicode UTF-16 with little endian byte order, equivalent to CP1200.\n- UTF-16-RAW: As above, but no byte order mark is written when a new file is created.\n- CP_nnn_: A code page with numeric identifier _nnn_. See [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/dd317756.aspx).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm',
         exp: [
@@ -2171,7 +2205,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEGETATTRIB',
         keyRawName: 'FileGetAttrib',
         body: 'FileGetAttrib, ${1:OutputVar} , [${2:Filename}]',
-        doc: 'Reports whether a file or folder is read-only, hidden, etc.\n1. `Remarks` - The string returned will contain a subset of the letters in the string "RASHNDOCT":\n\n- R = READONLY\n- A = ARCHIVE\n- S = SYSTEM\n- H = HIDDEN\n- N = NORMAL\n- D = DIRECTORY\n- O = OFFLINE\n- C = COMPRESSED\n- T = TEMPORARY',
+        doc: [
+            'Reports whether a file or folder is read-only, hidden, etc.\n1. `Remarks` - The string returned will contain a subset of the letters in the string "RASHNDOCT":\n\n- R = READONLY\n- A = ARCHIVE\n- S = SYSTEM\n- H = HIDDEN\n- N = NORMAL\n- D = DIRECTORY\n- O = OFFLINE\n- C = COMPRESSED\n- T = TEMPORARY',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileGetAttrib.htm',
         exp: [
@@ -2210,7 +2246,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'FileGetShortcut',
         body:
             'FileGetShortcut, ${1:LinkFile} [, ${2:OutTarget}, ${3:OutDir}, ${4:OutArgs}, ${5:OutDescription}, ${6:OutIcon}, ${7:OutIconNum}, ${8:OutRunState}]',
-        doc: 'Retrieves information about a shortcut (.lnk) file, such as its target file.\n### [Parameters](https://www.autohotkey.com/docs/v1/lib/FileGetShortcut.htm#Parameters)\n\n- LinkFile\n> Name of the shortcut file to be analyzed, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. Be sure to include the **.lnk** extension.\n- OutTarget\n> Name of the variable in which to store the shortcut\'s target (not including any arguments it might have). For example: C:\\WINDOWS\\system32\\notepad.exe\n- OutDir\n> Name of the variable in which to store the shortcut\'s working directory. For example: C:\\My Documents. If environment variables such as %WinDir% are present in the string, one way to resolve them is via [StrReplace()](https://www.autohotkey.com/docs/v1/lib/StrReplace.htm) or [StringReplace](https://www.autohotkey.com/docs/v1/lib/StringReplace.htm "Deprecated. New scripts should use StrReplace() instead."). For example: [StringReplace](https://www.autohotkey.com/docs/v1/lib/StringReplace.htm), OutDir, OutDir, %WinDir%, %[A_WinDir](https://www.autohotkey.com/docs/v1/Variables.htm#WinDir)%.\n- OutArgs\n> Name of the variable in which to store the shortcut\'s parameters (blank if none).\n- OutDescription\n> Name of the variable in which to store the shortcut\'s comments (blank if none).\n- OutIcon\n> Name of the variable in which to store the filename of the shortcut\'s icon (blank if none).\n- OutIconNum\n> Name of the variable in which to store the shortcut\'s icon number within the icon file (blank if none). This value is most often 1, which means the first icon.\n- OutRunState\n> Name of the variable in which to store the shortcut\'s initial launch state, which is one of the following digits:\n> - 1 = Normal\n> - 3 = Maximized\n> - 7 = Minimized',
+        doc: [
+            'Retrieves information about a shortcut (.lnk) file, such as its target file.\n### [Parameters](https://www.autohotkey.com/docs/v1/lib/FileGetShortcut.htm#Parameters)\n\n- LinkFile\n> Name of the shortcut file to be analyzed, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. Be sure to include the **.lnk** extension.\n- OutTarget\n> Name of the variable in which to store the shortcut\'s target (not including any arguments it might have). For example: C:\\WINDOWS\\system32\\notepad.exe\n- OutDir\n> Name of the variable in which to store the shortcut\'s working directory. For example: C:\\My Documents. If environment variables such as %WinDir% are present in the string, one way to resolve them is via [StrReplace()](https://www.autohotkey.com/docs/v1/lib/StrReplace.htm) or [StringReplace](https://www.autohotkey.com/docs/v1/lib/StringReplace.htm "Deprecated. New scripts should use StrReplace() instead."). For example: [StringReplace](https://www.autohotkey.com/docs/v1/lib/StringReplace.htm), OutDir, OutDir, %WinDir%, %[A_WinDir](https://www.autohotkey.com/docs/v1/Variables.htm#WinDir)%.\n- OutArgs\n> Name of the variable in which to store the shortcut\'s parameters (blank if none).\n- OutDescription\n> Name of the variable in which to store the shortcut\'s comments (blank if none).\n- OutIcon\n> Name of the variable in which to store the filename of the shortcut\'s icon (blank if none).\n- OutIconNum\n> Name of the variable in which to store the shortcut\'s icon number within the icon file (blank if none). This value is most often 1, which means the first icon.\n- OutRunState\n> Name of the variable in which to store the shortcut\'s initial launch state, which is one of the following digits:\n> - 1 = Normal\n> - 3 = Maximized\n> - 7 = Minimized',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileGetShortcut.htm',
         exp: [
@@ -2305,7 +2343,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEGETSIZE',
         keyRawName: 'FileGetSize',
         body: 'FileGetSize, ${1:OutputVar} [, % "${2:Filename}", ${3|K,M|}]',
-        doc: 'Retrieves the size of a file.',
+        doc: ['Retrieves the size of a file.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileGetSize.htm',
         exp: [
@@ -2355,7 +2393,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEGETTIME',
         keyRawName: 'FileGetTime',
         body: 'FileGetTime, ${1:OutputVar} [, % "${2:Filename}", ${3|M,C,A|} ]',
-        doc: 'Retrieves the datetime stamp of a file or folder.\n1. `OutputVar` : YYYYMMDDHH24MISS. The time is your own local time, not UTC/GMT.\n2. `Filename` : The name of the target file or folder, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime`: \n- `M` = Modification time(defaults)\n- `C` = Creation time\n- `A` = Last access time',
+        doc: [
+            'Retrieves the datetime stamp of a file or folder.\n1. `OutputVar` : YYYYMMDDHH24MISS. The time is your own local time, not UTC/GMT.\n2. `Filename` : The name of the target file or folder, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime`: \n- `M` = Modification time(defaults)\n- `C` = Creation time\n- `A` = Last access time',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileGetTime.htm',
         exp: [
@@ -2410,7 +2450,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEGETVERSION',
         keyRawName: 'FileGetVersion',
         body: 'FileGetVersion, ${1:OutputVar} [, % "${2:Filename}"]',
-        doc: 'Retrieves the version of a file.\n1. `OutputVar` - The name of the variable in which to store the version number/string.\n2. `Filename` - The name of the target file. If a full path is not specified, this function uses the search sequence specified by the system [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175) function. If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.',
+        doc: [
+            'Retrieves the version of a file.\n1. `OutputVar` - The name of the variable in which to store the version number/string.\n2. `Filename` - The name of the target file. If a full path is not specified, this function uses the search sequence specified by the system [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175) function. If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileGetVersion.htm',
         exp: [
@@ -2445,7 +2487,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEINSTALL',
         keyRawName: 'FileInstall',
         body: 'FileInstall, ${1:Source}, % "${2:Dest}" [, ${3|true,false|}]',
-        doc: 'Includes the specified file inside the [compiled version](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) of the script.\n1. `Source` - \n> - The name of the file to be added to the compiled EXE. The file is assumed to be in (or relative to) the script\'s own directory if an absolute path isn\'t specified.\n> - The file name **must not** contain double quotes, variable references (e.g. %A_ProgramFiles%), or wildcards. In addition, any special characters such as literal percent signs and commas must be [escaped](https://www.autohotkey.com/docs/v1/misc/EscapeChar.htm) (just like in the parameters of all other commands). Finally, this parameter must be listed to the right of the FileInstall command (that is, not on a [continuation line](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation) beneath it).\n2. `Dest` - When _Source_ is extracted from the EXE, this is the name of the file to be created. It is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. The destination directory must already exist. Unlike _Source_, variable references may be used.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist.',
+        doc: [
+            'Includes the specified file inside the [compiled version](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) of the script.\n1. `Source` - \n> - The name of the file to be added to the compiled EXE. The file is assumed to be in (or relative to) the script\'s own directory if an absolute path isn\'t specified.\n> - The file name **must not** contain double quotes, variable references (e.g. %A_ProgramFiles%), or wildcards. In addition, any special characters such as literal percent signs and commas must be [escaped](https://www.autohotkey.com/docs/v1/misc/EscapeChar.htm) (just like in the parameters of all other commands). Finally, this parameter must be listed to the right of the FileInstall command (that is, not on a [continuation line](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation) beneath it).\n2. `Dest` - When _Source_ is extracted from the EXE, this is the name of the file to be created. It is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. The destination directory must already exist. Unlike _Source_, variable references may be used.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileInstall.htm',
         exp: [
@@ -2497,7 +2541,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEMOVE',
         keyRawName: 'FileMove',
         body: 'FileMove, % "${1:SourcePattern}", % "${2:DestPattern}" [, ${3|true,false|} ]',
-        doc: 'Moves or renames one or more files.\n1. `SourcePattern` - The name of a single file or a wildcard pattern such as C:\\Temp\\*.tmp. _SourcePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n2. `DestPattern` - \n> - The name or pattern of the destination, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n> - If present, the first asterisk (`*`) in the filename is replaced with the source filename excluding its extension, while the first asterisk after the last full stop (`.`) is replaced with the source file\'s extension. If an asterisk is present but the extension is omitted, the source file\'s extension is used.\n> - To perform a simple move -- retaining the existing file name(s) -- specify only the folder name as shown in these mostly equivalent examples:\n> - ```FileMove, C:\\*.txt, C:\\My Folder```\n> - ```FileMove, C:\\*.txt, C:\\My Folder\\*.*```\n> - The destination directory must already exist. If _My Folder_ does not exist, the first example above will use "My Folder" as the target filename, while the second example will move no files.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist.',
+        doc: [
+            'Moves or renames one or more files.\n1. `SourcePattern` - The name of a single file or a wildcard pattern such as C:\\Temp\\*.tmp. _SourcePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n2. `DestPattern` - \n> - The name or pattern of the destination, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n> - If present, the first asterisk (`*`) in the filename is replaced with the source filename excluding its extension, while the first asterisk after the last full stop (`.`) is replaced with the source file\'s extension. If an asterisk is present but the extension is omitted, the source file\'s extension is used.\n> - To perform a simple move -- retaining the existing file name(s) -- specify only the folder name as shown in these mostly equivalent examples:\n> - ```FileMove, C:\\*.txt, C:\\My Folder```\n> - ```FileMove, C:\\*.txt, C:\\My Folder\\*.*```\n> - The destination directory must already exist. If _My Folder_ does not exist, the first example above will use "My Folder" as the target filename, while the second example will move no files.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileMove.htm',
         exp: [
@@ -2561,7 +2607,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEMOVEDIR',
         keyRawName: 'FileMoveDir',
         body: 'FileMoveDir, % "${1:Source}", % "${2:Dest}" [, ${3|0,1,2,R|}]',
-        doc: 'Moves a folder along with all its sub-folders and files. It can also rename a folder.\n1. `Source` - Name of the source directory (with no trailing backslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. For example: C:\\My Folder\n2. `Dest` - The new path and name of the directory (with no trailing baskslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. For example: D:\\My Folder.\n> **Note**: _Dest_ is the actual path and name that the directory will have after it is moved; it is _not_ the directory into which _Source_ is moved (except for the known limitation mentioned below).\n3. `Flag` - \n> - **0** (default): Do not overwrite existing files. The operation will fail if _Dest_ already exists as a file or directory.\n> - **1**: Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted. **Known limitation:** If _Dest_ already exists as a folder and it is on the same volume as _Source_, _Source_ will be moved into it rather than overwriting it. To avoid this, see the next option.\n> - **2**: The same as mode 1 above except that the limitation is absent.\n> - **R**: Rename the directory rather than moving it. Although renaming normally has the same effect as moving, it is helpful in cases where you want "all or none" behavior; that is, when you don\'t want the operation to be only partially successful when _Source_ or one of its files is locked (in use). Although this method cannot move _Source_ onto a different volume, it can move it to any other directory on its own volume. The operation will fail if _Dest_ already exists as a file or directory.',
+        doc: [
+            'Moves a folder along with all its sub-folders and files. It can also rename a folder.\n1. `Source` - Name of the source directory (with no trailing backslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. For example: C:\\My Folder\n2. `Dest` - The new path and name of the directory (with no trailing baskslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified. For example: D:\\My Folder.\n> **Note**: _Dest_ is the actual path and name that the directory will have after it is moved; it is _not_ the directory into which _Source_ is moved (except for the known limitation mentioned below).\n3. `Flag` - \n> - **0** (default): Do not overwrite existing files. The operation will fail if _Dest_ already exists as a file or directory.\n> - **1**: Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted. **Known limitation:** If _Dest_ already exists as a folder and it is on the same volume as _Source_, _Source_ will be moved into it rather than overwriting it. To avoid this, see the next option.\n> - **2**: The same as mode 1 above except that the limitation is absent.\n> - **R**: Rename the directory rather than moving it. Although renaming normally has the same effect as moving, it is helpful in cases where you want "all or none" behavior; that is, when you don\'t want the operation to be only partially successful when _Source_ or one of its files is locked (in use). Although this method cannot move _Source_ onto a different volume, it can move it to any other directory on its own volume. The operation will fail if _Dest_ already exists as a file or directory.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileMoveDir.htm',
         exp: [
@@ -2619,7 +2667,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEREAD',
         keyRawName: 'FileRead',
         body: 'FileRead, ${1:OutputVar}, % "${2:Filename}"',
-        doc: 'Reads a file\'s contents into a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).\n > try to use [function](https://www.autohotkey.com/docs/v1/Language.htm#commands-vs-functions) replace [FileOpen](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm) and [File.Read](https://www.autohotkey.com/docs/v1/objects/File.htm#Read)',
+        doc: [
+            'Reads a file\'s contents into a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).\n > try to use [function](https://www.autohotkey.com/docs/v1/Language.htm#commands-vs-functions) replace [FileOpen](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm) and [File.Read](https://www.autohotkey.com/docs/v1/objects/File.htm#Read)',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileRead.htm',
         exp: [
@@ -2668,7 +2718,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEREADLINE',
         keyRawName: 'FileReadLine',
         body: 'FileReadLine, ${1:OutputVar}, % "${2:Filename}", ${3:LineNum}',
-        doc: 'Reads the specified line from a file and stores the text in a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).\n > `Remarks` - It is strongly recommended to use this command only for small files, or in cases where only a single line of text is needed. To scan and process a large number of lines (one by one), use a [file-reading loop](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm) for best performance.',
+        doc: [
+            'Reads the specified line from a file and stores the text in a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).\n > `Remarks` - It is strongly recommended to use this command only for small files, or in cases where only a single line of text is needed. To scan and process a large number of lines (one by one), use a [file-reading loop](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm) for best performance.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileReadLine.htm',
         exp: [
@@ -2715,7 +2767,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILERECYCLE',
         keyRawName: 'FileRecycle',
         body: 'FileRecycle, % "${1:FilePattern}"',
-        doc: 'Sends a file or directory to the recycle bin if possible, *or permanently deletes it.*',
+        doc: ['Sends a file or directory to the recycle bin if possible, *or permanently deletes it.*'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileRecycle.htm',
         exp: [
@@ -2743,7 +2795,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILERECYCLEEMPTY',
         keyRawName: 'FileRecycleEmpty',
         body: 'FileRecycleEmpty [, % "${1:DriveLetter}"]',
-        doc: 'Empties the recycle bin.',
+        doc: ['Empties the recycle bin.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileRecycleEmpty.htm',
         exp: [
@@ -2775,7 +2827,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILEREMOVEDIR',
         keyRawName: 'FileRemoveDir',
         body: 'FileRemoveDir, % "${1:DirName}" [, ${2|true,false|}]',
-        doc: 'Deletes a folder.',
+        doc: ['Deletes a folder.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileRemoveDir.htm',
         exp: [
@@ -2816,7 +2868,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILESELECTFILE',
         keyRawName: 'FileSelectFile',
         body: 'FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir\\\\Filename}, ${4:Title}, ${5:Filter}]',
-        doc: 'Displays a standard dialog that allows the user to open or save file(s).',
+        doc: ['Displays a standard dialog that allows the user to open or save file(s).'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileSelectFile.htm',
         exp: [
@@ -2907,7 +2959,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILESELECTFOLDER',
         keyRawName: 'FileSelectFolder',
         body: 'FileSelectFolder, ${1:OutputVar} [, ${2:StartingFolder}, ${3:Options}, ${4:Prompt}]',
-        doc: 'Displays a standard dialog that allows the user to select a folder.\n\n`Options`:\n- **0**: The options below are all disabled (except on Windows 2000, where the "make new folder" button might appear anyway).\n- **1** (default): A button is provided that allows the user to create new folders.\n- **Add 2** to the above number to provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a "make new folder" button.\n- **Add 4** to the above number to omit the BIF_NEWDIALOGSTYLE property. Adding 4 ensures that FileSelectFolder will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a "make new folder" button, at least on Windows XP. ["4" requires v1.0.48+]',
+        doc: [
+            'Displays a standard dialog that allows the user to select a folder.\n\n`Options`:\n- **0**: The options below are all disabled (except on Windows 2000, where the "make new folder" button might appear anyway).\n- **1** (default): A button is provided that allows the user to create new folders.\n- **Add 2** to the above number to provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a "make new folder" button.\n- **Add 4** to the above number to omit the BIF_NEWDIALOGSTYLE property. Adding 4 ensures that FileSelectFolder will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a "make new folder" button, at least on Windows XP. ["4" requires v1.0.48+]',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileSelectFolder.htm',
         exp: [
@@ -2988,7 +3042,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILESETATTRIB',
         keyRawName: 'FileSetAttrib',
         body: 'FileSetAttrib, ${1:Attributes} [, % "${2:D:\\test.txt}", ${3|0,1,2|}, ${4|0,1|}]',
-        doc: 'Changes the attributes of one or more files or folders. Wildcards are supported.\n1. `Attributes` -\n> - The attributes to change. For example, `+HA-R`.\n> - To easily turn on, turn off or toggle attributes, prefix one or more of the following attribute letters with a plus sign (+), minus sign (-) or caret (^), respectively:\n> 1. `R` = READONLY\n> 2. `A` = ARCHIVE\n> 3. `S` = SYSTEM\n> 4. `H` = HIDDEN\n> 5. `N` = NORMAL (this is valid only when used without any other attributes)\n> 6. `O` = OFFLINE\n> 7. `T` = TEMPORARY\n2. `FilePattern` -\n> - The name of a single file or folder, or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n> - If omitted, the current file of the innermost enclosing File-Loop will be used instead.\n3. `OperateOnFolders` -\n> - `0` (default) = Folders are not operated upon (only files).\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n4. `Recurse` -\n> - `0` (default) = Subfolders are not recursed into.\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation.',
+        doc: [
+            'Changes the attributes of one or more files or folders. Wildcards are supported.\n1. `Attributes` -\n> - The attributes to change. For example, `+HA-R`.\n> - To easily turn on, turn off or toggle attributes, prefix one or more of the following attribute letters with a plus sign (+), minus sign (-) or caret (^), respectively:\n> 1. `R` = READONLY\n> 2. `A` = ARCHIVE\n> 3. `S` = SYSTEM\n> 4. `H` = HIDDEN\n> 5. `N` = NORMAL (this is valid only when used without any other attributes)\n> 6. `O` = OFFLINE\n> 7. `T` = TEMPORARY\n2. `FilePattern` -\n> - The name of a single file or folder, or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.\n> - If omitted, the current file of the innermost enclosing File-Loop will be used instead.\n3. `OperateOnFolders` -\n> - `0` (default) = Folders are not operated upon (only files).\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n4. `Recurse` -\n> - `0` (default) = Subfolders are not recursed into.\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileSetAttrib.htm',
         exp: [
@@ -3069,7 +3125,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FILESETTIME',
         keyRawName: 'FileSetTime',
         body: 'FileSetTime [, ${1:YYYYMMDDHH24MISS}, % "${2:D:\\test.txt}", ${3|M,C,A|}, ${4|0,1,2|}, ${5|0,1|}]',
-        doc: 'Changes the datetime stamp of one or more files or folders. Wildcards are supported.\n1. `YYYYMMDDHH24MISS` - This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n2. `FilePattern` - The name of a single file or folder, or a wildcard pattern such as C:\\Temp\\*.tmp. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir).\n if an absolute path isn\'t specified.If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime` -\n> - `M` = Modification time (default)\n> - `C` = Creation time\n> - `A` = Last access time\n4. `OperateOnFolders` -\n> - `0` = Folders are not operated upon (only files).  (default)\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n5. `OperateOnFolders` -\n> - `0` = Subfolders are not recursed into. (default)\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation.',
+        doc: [
+            'Changes the datetime stamp of one or more files or folders. Wildcards are supported.\n1. `YYYYMMDDHH24MISS` - This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n2. `FilePattern` - The name of a single file or folder, or a wildcard pattern such as C:\\Temp\\*.tmp. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir).\n if an absolute path isn\'t specified.If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime` -\n> - `M` = Modification time (default)\n> - `C` = Creation time\n> - `A` = Last access time\n4. `OperateOnFolders` -\n> - `0` = Folders are not operated upon (only files).  (default)\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n5. `OperateOnFolders` -\n> - `0` = Subfolders are not recursed into. (default)\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm',
         exp: [
@@ -3159,7 +3217,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'FORMATTIME',
         keyRawName: 'FormatTime',
         body: 'FormatTime, ${1:OutputVar} [, ${2:YYYYMMDDHH24MISS}, ${3:yyyy-MM-dd HH:mm:ss} ]',
-        doc: 'Transforms a [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) timestamp into the specified date/time format.',
+        doc: [
+            'Transforms a [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) timestamp into the specified date/time format.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/FormatTime.htm',
         exp: [
@@ -3232,7 +3292,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'GETKEYSTATE',
         keyRawName: 'GetKeyState',
         body: 'GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3|P,T|}]',
-        doc: '**Deprecated:** This command is not recommended for use in new scripts. Use the [GetKeyState](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#function) function instead.',
+        doc: [
+            '**Deprecated:** This command is not recommended for use in new scripts. Use the [GetKeyState](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#function) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#command',
         exp: [
@@ -3289,7 +3351,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'GROUPACTIVATE',
         keyRawName: 'GroupActivate',
         body: 'GroupActivate, ${1:GroupName} [, ${2:R} ]',
-        doc: 'Activates the next window in a window group that was defined with [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm).',
+        doc: [
+            'Activates the next window in a window group that was defined with [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm',
         exp: [
@@ -3328,7 +3392,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'GroupAdd',
         body:
             'GroupAdd, ${1:GroupName} [, ${2:WinTitle}, ${3:WinText}, ${4:Label}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Adds a window specification to a window group, creating the group if necessary.',
+        doc: ['Adds a window specification to a window group, creating the group if necessary.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm',
         exp: [
@@ -3393,7 +3457,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'GROUPCLOSE',
         keyRawName: 'GroupClose',
         body: 'GroupClose, ${1:GroupName} [, ${2|A,R|}]',
-        doc: 'Closes the active window if it was just activated by [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) or [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm). It then activates the next window in the series. It can also close all windows in a group.',
+        doc: [
+            'Closes the active window if it was just activated by [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) or [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm). It then activates the next window in the series. It can also close all windows in a group.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/GroupClose.htm',
         exp: [
@@ -3430,7 +3496,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'GROUPDEACTIVATE',
         keyRawName: 'GroupDeactivate',
         body: 'GroupDeactivate, ${1:GroupName} [, ${2:R}]',
-        doc: 'Similar to [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) except activates the next window **not** in the group.',
+        doc: [
+            'Similar to [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) except activates the next window **not** in the group.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm',
         exp: [
@@ -3466,7 +3534,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'Gui',
         body:
             'Gui, ${1|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${2:Value1}, ${3:Value2}, ${4:Value3}]',
-        doc: 'Creates and manages windows and controls. Such windows can be used as data entry forms or custom user interfaces.\n1. `Sub-commands` -\n\n- [New](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New) [[v1.1.04+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 "Applies to AutoHotkey v1.1.04 and later"): Creates a new window.\n- [Add](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Add): Creates a control such as text, button, or checkbox.\n- [Show](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Show): Displays the window. It can also minimize, maximize, or move the window.\n- [Submit](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Submit): Saves the user\'s input and optionally hides the window.\n- [Cancel](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Cancel) / [Hide](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Hide): Hides the window.\n- [Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy): Deletes the window.\n- [Font](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Font): Sets the typeface, size, style, and text color for subsequently created controls.\n- [Color](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Color): Sets the background color for the window and/or its controls.\n- [Margin](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Margin): Sets the margin/spacing used whenever no explicit position has been specified for a control.\n- [Options and styles for a window](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Options): Sets various options for the appearance and behavior of the window.\n- [Menu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Menu): Adds or removes a menu bar.\n- [Minimize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Minimize) / [Maximize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Maximize) / [Restore](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Restore): Performs the indicated operation on the window.\n- [Flash](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Flash): Blinks the window and its taskbar button.\n- [Default](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default): Changes the current thread\'s default GUI window name.',
+        doc: [
+            'Creates and manages windows and controls. Such windows can be used as data entry forms or custom user interfaces.\n1. `Sub-commands` -\n\n- [New](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New) [[v1.1.04+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 "Applies to AutoHotkey v1.1.04 and later"): Creates a new window.\n- [Add](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Add): Creates a control such as text, button, or checkbox.\n- [Show](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Show): Displays the window. It can also minimize, maximize, or move the window.\n- [Submit](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Submit): Saves the user\'s input and optionally hides the window.\n- [Cancel](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Cancel) / [Hide](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Hide): Hides the window.\n- [Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy): Deletes the window.\n- [Font](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Font): Sets the typeface, size, style, and text color for subsequently created controls.\n- [Color](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Color): Sets the background color for the window and/or its controls.\n- [Margin](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Margin): Sets the margin/spacing used whenever no explicit position has been specified for a control.\n- [Options and styles for a window](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Options): Sets various options for the appearance and behavior of the window.\n- [Menu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Menu): Adds or removes a menu bar.\n- [Minimize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Minimize) / [Maximize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Maximize) / [Restore](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Restore): Performs the indicated operation on the window.\n- [Flash](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Flash): Blinks the window and its taskbar button.\n- [Default](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default): Changes the current thread\'s default GUI window name.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Gui.htm',
         exp: [
@@ -3536,7 +3606,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'GuiControl',
         body:
             'GuiControl, ${1|(Blank),Text,Move,MoveDraw,Focus,Disable,Enable,Hide,Show,Delete,Choose,ChooseString,Font,Options|}, ${2:ControlID} [, ${3:Value}]',
-        doc: 'Makes a variety of changes to a control in a GUI window.\n1. `SubCommand` -\n\n- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank): Puts new contents into the control.\n- [Text](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text): Changes the text/caption of the control.\n- [Move](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move): Moves and/or resizes the control.\n- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw): Moves and/or resizes the control and repaints the region occupied by it.\n- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus): Sets keyboard focus to the control.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable): Disables (grays out) the control.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable): Enables the control.\n- [Hide](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide): Hides the control.\n- [Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show): Shows the control.\n- [Delete](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete): Not yet implemented.\n- [Choose](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose): Selects the specified item number in a multi-item control.\n- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString): Selects a item in a multi-item control whose leading part matches a string.\n- [Font](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font): Changes the control\'s font typeface, size, color, and style.\n- [Options](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options): Add or remove various control-specific or general options and styles.',
+        doc: [
+            'Makes a variety of changes to a control in a GUI window.\n1. `SubCommand` -\n\n- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank): Puts new contents into the control.\n- [Text](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text): Changes the text/caption of the control.\n- [Move](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move): Moves and/or resizes the control.\n- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw): Moves and/or resizes the control and repaints the region occupied by it.\n- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus): Sets keyboard focus to the control.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable): Disables (grays out) the control.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable): Enables the control.\n- [Hide](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide): Hides the control.\n- [Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show): Shows the control.\n- [Delete](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete): Not yet implemented.\n- [Choose](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose): Selects the specified item number in a multi-item control.\n- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString): Selects a item in a multi-item control whose leading part matches a string.\n- [Font](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font): Changes the control\'s font typeface, size, color, and style.\n- [Options](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options): Add or remove various control-specific or general options and styles.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/GuiControl.htm',
         exp: [
@@ -3600,7 +3672,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'GuiControlGet',
         body:
             'GuiControlGet, ${1:OutputVar} [, ${2|(Blank),Pos,Focus,FocusV,Enabled,Visible,Hwnd,Name|}, ${3:ControlID}, ${4:Value}]',
-        doc: 'Retrieves various types of information about a control in a GUI window.\n1. `SubCommand` -\n- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Blank): Retrieves the contents of the control.\n- [Pos](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Pos): Retrieves the position and size of the control.\n- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Focus): Retrieves the control identifier (ClassNN) for the control that currently has keyboard focus.\n- [FocusV](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#FocusV) [[v1.0.43.06+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the name of the focused control\'s associated variable.\n- [Enabled](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Enabled): Retrieves 1 if the control is enabled or 0 if it is disabled.\n- [Visible](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Visible): Retrieves 1 if the control is visible or 0 if it is hidden.\n- [Hwnd](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Hwnd) [[v1.0.46.16+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.46.16 "Applies to AutoHotkey v1.0.46.16 and later"): Retrieves the window handle (HWND) of the control.\n- [Name](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Name) [[v1.1.03+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.03.00 "Applies to AutoHotkey v1.1.03 and later"): Retrieves the name of the control\'s associated variable.',
+        doc: [
+            'Retrieves various types of information about a control in a GUI window.\n1. `SubCommand` -\n- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Blank): Retrieves the contents of the control.\n- [Pos](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Pos): Retrieves the position and size of the control.\n- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Focus): Retrieves the control identifier (ClassNN) for the control that currently has keyboard focus.\n- [FocusV](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#FocusV) [[v1.0.43.06+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the name of the focused control\'s associated variable.\n- [Enabled](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Enabled): Retrieves 1 if the control is enabled or 0 if it is disabled.\n- [Visible](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Visible): Retrieves 1 if the control is visible or 0 if it is hidden.\n- [Hwnd](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Hwnd) [[v1.0.46.16+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#v1.0.46.16 "Applies to AutoHotkey v1.0.46.16 and later"): Retrieves the window handle (HWND) of the control.\n- [Name](https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm#Name) [[v1.1.03+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.03.00 "Applies to AutoHotkey v1.1.03 and later"): Retrieves the name of the control\'s associated variable.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/GuiControlGet.htm',
         exp: [
@@ -3666,7 +3740,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'HOTKEY',
         keyRawName: 'Hotkey',
         body: 'Hotkey, ${1:KeyName} [, ${2:Label_or_funcName}, ${3:Options}]',
-        doc: 'Creates, modifies, enables, or disables a hotkey while the script is running.',
+        doc: ['Creates, modifies, enables, or disables a hotkey while the script is running.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Hotkey.htm',
         exp: [
@@ -3734,7 +3808,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'IMAGESEARCH',
         keyRawName: 'ImageSearch',
         body: 'ImageSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:ImageFile}',
-        doc: 'Searches a region of the screen for an image.',
+        doc: ['Searches a region of the screen for an image.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ImageSearch.htm',
         exp: [
@@ -3831,7 +3905,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'INIDELETE',
         keyRawName: 'IniDelete',
         body: 'IniDelete, % "${1:Filename}", % "${2:Section}" [, % "${3:Key}"]',
-        doc: 'Deletes a value from a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```',
+        doc: [
+            'Deletes a value from a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/IniDelete.htm',
         exp: [
@@ -3872,7 +3948,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'INIREAD',
         keyRawName: 'IniRead',
         body: 'IniRead, ${1:OutputVar}, % "${2:Filename}", % "${3:Section}", % "${4:Key}" [,% "${5:Default}"]',
-        doc: 'Reads a value, section or list of section names from a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```',
+        doc: [
+            'Reads a value, section or list of section names from a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/IniRead.htm',
         exp: [
@@ -3960,7 +4038,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'INIWRITE',
         keyRawName: 'IniWrite',
         body: 'IniWrite, % "${1:Value}", % "${2:Filename}", % "${3:Section}", % "${4:Key}"',
-        doc: 'Writes a value or section to a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```',
+        doc: [
+            'Writes a value or section to a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/IniWrite.htm',
         exp: [
@@ -4032,7 +4112,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'INPUT',
         keyRawName: 'Input',
         body: 'Input [, ${1:OutputVar}, ${2:Options}, ${3:EndKeys}, ${4:MatchList}]',
-        doc: 'Waits for the user to type a string.',
+        doc: ['Waits for the user to type a string.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Input.htm',
         exp: [
@@ -4130,7 +4210,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'InputBox',
         body:
             'InputBox, ${1:OutputVar} [,% "${2:Title}", % "${3:Prompt}", ${4:HIDE}, ${5:Width}, ${6:Height}, ${7:X}, ${8:Y}, ${9:Locale}, ${10:Timeout_Sec}, % "${11:Default_Str}"]',
-        doc: 'Displays an input box to ask the user to enter a string.',
+        doc: ['Displays an input box to ask the user to enter a string.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/InputBox.htm',
         exp: [
@@ -4256,7 +4336,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'KEYHISTORY',
         keyRawName: 'KeyHistory',
         body: 'KeyHistory',
-        doc: 'Displays script info and a history of the most recent keystrokes and mouse clicks.',
+        doc: ['Displays script info and a history of the most recent keystrokes and mouse clicks.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/KeyHistory.htm',
         exp: [
@@ -4272,7 +4352,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'KEYWAIT',
         keyRawName: 'KeyWait',
         body: 'KeyWait, ${1:KeyName} [, ${2:Options}]',
-        doc: 'Waits for a key or mouse/joystick button to be released or pressed down.',
+        doc: ['Waits for a key or mouse/joystick button to be released or pressed down.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/KeyWait.htm',
         exp: [
@@ -4317,7 +4397,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'LISTHOTKEYS',
         keyRawName: 'ListHotkeys',
         body: 'ListHotkeys',
-        doc: 'Displays the hotkeys in use by the current script, whether their subroutines are currently running, and whether or not they use the [keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) hook.',
+        doc: [
+            'Displays the hotkeys in use by the current script, whether their subroutines are currently running, and whether or not they use the [keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) hook.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ListHotkeys.htm',
         exp: [
@@ -4330,7 +4412,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'LISTLINES',
         keyRawName: 'ListLines',
         body: 'ListLines [, ${1|On,Off|}]',
-        doc: 'Displays the script lines most recently executed.',
+        doc: ['Displays the script lines most recently executed.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ListLines.htm',
         exp: [
@@ -4364,7 +4446,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'LISTVARS',
         keyRawName: 'ListVars',
         body: 'ListVars',
-        doc: 'Displays the script\'s [variables](https://www.autohotkey.com/docs/v1/Variables.htm): their names and current contents.',
+        doc: [
+            'Displays the script\'s [variables](https://www.autohotkey.com/docs/v1/Variables.htm): their names and current contents.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ListVars.htm',
         exp: [
@@ -4378,7 +4462,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'Menu',
         body:
             'Menu, ${1:MenuName}, ${2|Add,Insert,Delete,DeleteAll,Rename,Check,Uncheck,ToggleCheck,Enable,Disable,ToggleEnable,Default,NoDefault,Standard,NoStandard,Icon,NoIcon,Tip,Show,Color,Click,MainWindow,NoMainWindow,UseErrorLevel|} [, ${3:Value1}, ${4:Value2}, ${5:Value3}, ${6:Value4}]',
-        doc: 'Creates, deletes, modifies and displays menus and menu items. Changes the tray icon and its tooltip. Controls whether the main window of a [compiled script](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) can be opened.\n1. `SubCommand` -\n- [Add](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Add): Adds a menu item, updates one with a new submenu or label, or converts one from a normal item into a submenu (or vice versa).\n- [Insert](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Insert) [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later"): Inserts a new item before the specified menu item.\n- [Delete](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Delete): Deletes the specified menu item from the menu.\n- [DeleteAll](https://www.autohotkey.com/docs/v1/lib/Menu.htm#DeleteAll): Deletes all custom menu items from the menu.\n- [Rename](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Rename): Renames the specified menu item.\n- [Check](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Check): Adds a visible checkmark in the menu next to the specified menu item.\n- [Uncheck](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Uncheck): Removes the checkmark from the specified menu item.\n- [ToggleCheck](https://www.autohotkey.com/docs/v1/lib/Menu.htm#ToggleCheck): Adds a checkmark to the specified menu item; otherwise, removes it.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Enable): Enables the specified menu item if was previously disabled.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Disable): Disables the specified menu item.\n- [ToggleEnable](https://www.autohotkey.com/docs/v1/lib/Menu.htm#ToggleEnable): Disables the specified menu item; otherwise, enables it.\n- [Default](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Default): Changes the menu\'s default item to be the specified menu item and makes its font bold.\n- [NoDefault](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoDefault): Reverses setting a user-defined default menu item.\n- [Standard](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Standard): Inserts the standard menu items at the bottom of the menu.\n- [NoStandard](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoStandard): Removes all standard menu items from the menu.\n- [Icon](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Icon): Changes the script\'s tray icon or [[in v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L17 "Applies to:AutoHotkey_L Revision 17 and later AutoHotkey v1.0.90.00 and later") sets a icon for the specified menu item.\n- [NoIcon](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoIcon): Removes the tray icon or [[in v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L17 "Applies to:AutoHotkey_L Revision 17 and later AutoHotkey v1.0.90.00 and later") removes the icon from the specified menu item.\n- [Tip](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Tip): Changes the tray icon\'s tooltip.\n- [Show](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Show): Displays the specified menu.\n- [Color](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Color): Changes the background color of the menu.\n- [Click](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Click): Sets the number of clicks to activate the tray menu\'s default menu item.\n- [MainWindow](https://www.autohotkey.com/docs/v1/lib/Menu.htm#MainWindow): Allows the main window of a script to be opened via the tray icon.\n- [NoMainWindow](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoMainWindow): Prevents the main window from being opened via the tray icon.\n- [UseErrorLevel](https://www.autohotkey.com/docs/v1/lib/Menu.htm#UseErrorLevel): Skips any warning dialogs and thread terminations whenever the Menu command generates an error.',
+        doc: [
+            'Creates, deletes, modifies and displays menus and menu items. Changes the tray icon and its tooltip. Controls whether the main window of a [compiled script](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) can be opened.\n1. `SubCommand` -\n- [Add](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Add): Adds a menu item, updates one with a new submenu or label, or converts one from a normal item into a submenu (or vice versa).\n- [Insert](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Insert) [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later"): Inserts a new item before the specified menu item.\n- [Delete](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Delete): Deletes the specified menu item from the menu.\n- [DeleteAll](https://www.autohotkey.com/docs/v1/lib/Menu.htm#DeleteAll): Deletes all custom menu items from the menu.\n- [Rename](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Rename): Renames the specified menu item.\n- [Check](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Check): Adds a visible checkmark in the menu next to the specified menu item.\n- [Uncheck](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Uncheck): Removes the checkmark from the specified menu item.\n- [ToggleCheck](https://www.autohotkey.com/docs/v1/lib/Menu.htm#ToggleCheck): Adds a checkmark to the specified menu item; otherwise, removes it.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Enable): Enables the specified menu item if was previously disabled.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Disable): Disables the specified menu item.\n- [ToggleEnable](https://www.autohotkey.com/docs/v1/lib/Menu.htm#ToggleEnable): Disables the specified menu item; otherwise, enables it.\n- [Default](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Default): Changes the menu\'s default item to be the specified menu item and makes its font bold.\n- [NoDefault](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoDefault): Reverses setting a user-defined default menu item.\n- [Standard](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Standard): Inserts the standard menu items at the bottom of the menu.\n- [NoStandard](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoStandard): Removes all standard menu items from the menu.\n- [Icon](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Icon): Changes the script\'s tray icon or [[in v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L17 "Applies to:AutoHotkey_L Revision 17 and later AutoHotkey v1.0.90.00 and later") sets a icon for the specified menu item.\n- [NoIcon](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoIcon): Removes the tray icon or [[in v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L17 "Applies to:AutoHotkey_L Revision 17 and later AutoHotkey v1.0.90.00 and later") removes the icon from the specified menu item.\n- [Tip](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Tip): Changes the tray icon\'s tooltip.\n- [Show](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Show): Displays the specified menu.\n- [Color](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Color): Changes the background color of the menu.\n- [Click](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Click): Sets the number of clicks to activate the tray menu\'s default menu item.\n- [MainWindow](https://www.autohotkey.com/docs/v1/lib/Menu.htm#MainWindow): Allows the main window of a script to be opened via the tray icon.\n- [NoMainWindow](https://www.autohotkey.com/docs/v1/lib/Menu.htm#NoMainWindow): Prevents the main window from being opened via the tray icon.\n- [UseErrorLevel](https://www.autohotkey.com/docs/v1/lib/Menu.htm#UseErrorLevel): Skips any warning dialogs and thread terminations whenever the Menu command generates an error.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Menu.htm',
         exp: [
@@ -4463,7 +4549,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'MouseClick',
         body:
             'MouseClick [, ${1|Left,Right,Middle,WheelUp,WheelDown,WheelLeft,WheelRight|} , ${2:X}, ${3:Y}, ${4:ClickCount}, ${5:0-100}, ${6|D,U|}, ${7:R}]',
-        doc: 'Clicks or holds down a mouse button, or turns the mouse wheel. NOTE: The [Click command](https://www.autohotkey.com/docs/v1/lib/Click.htm) is generally more flexible and easier to use.',
+        doc: [
+            'Clicks or holds down a mouse button, or turns the mouse wheel. NOTE: The [Click command](https://www.autohotkey.com/docs/v1/lib/Click.htm) is generally more flexible and easier to use.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/MouseClick.htm',
         exp: [
@@ -4560,7 +4648,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'MouseClickDrag',
         body:
             'MouseClickDrag, ${1|Left,Right,Middle,WheelUp,WheelDown|}, ${2:X1}, ${3:Y1}, ${4:X2}, ${5:Y2} [, ${6:0-100}, ${7:R}]',
-        doc: 'Clicks and holds the specified mouse button, moves the mouse to the destination coordinates, then releases the button.',
+        doc: [
+            'Clicks and holds the specified mouse button, moves the mouse to the destination coordinates, then releases the button.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm',
         exp: [
@@ -4653,7 +4743,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'MouseGetPos',
         body:
             'MouseGetPos [, ${1:OutputVarX}, ${2:OutputVarY}, ${3:OutputVarWin}, ${4:OutputVarControl}, ${5|0,1,2,3|}]',
-        doc: 'Retrieves the current position of the mouse cursor, and optionally which window and control it is hovering over.\n1. `OutputVarX`, `OutputVarY` - The names of the variables in which to store the X and Y coordinates. The retrieved coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change to screen coordinates.\n2. `OutputVarWin` -\n> - This optional parameter is the name of the variable in which to store the [unique ID number](https://www.autohotkey.com/docs/v1/lib/WinGet.htm) of the window under the mouse cursor. If the window cannot be determined, this variable will be made blank.\n> - The window does not have to be active to be detected. Hidden windows cannot be detected.\n3. `OutputVarControl` -\n> - This optional parameter is the name of the variable in which to store the name (ClassNN) of the control under the mouse cursor. If the control cannot be determined, this variable will be made blank.\n> - The names of controls should always match those shown by the version of Window Spy distributed with [[v1.0.14+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.14 and later") (but not necessarily older versions of Window Spy). The window under the mouse cursor does not have to be active for a control to be detected.\n4. `Flag` - If omitted or 0, the command uses the default method to determine _OutputVarControl_ and stores the control\'s ClassNN. To change this behavior, add up one or both of the following digits:\n> - **1**: Uses a simpler method to determine _OutputVarControl_. This method correctly retrieves the active/topmost child window of an Multiple Document Interface (MDI) application such as SysEdit or TextPad. However, it is less accurate for other purposes such as detecting controls inside a GroupBox control.\n> - **2** [[v1.0.43.06+]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later") Stores the [control\'s HWND](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) in _OutputVarControl_ rather than the control\'s ClassNN.\n> - For example, to put both options into effect, the _Flag_ parameter must be set to 3.',
+        doc: [
+            'Retrieves the current position of the mouse cursor, and optionally which window and control it is hovering over.\n1. `OutputVarX`, `OutputVarY` - The names of the variables in which to store the X and Y coordinates. The retrieved coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) was used to change to screen coordinates.\n2. `OutputVarWin` -\n> - This optional parameter is the name of the variable in which to store the [unique ID number](https://www.autohotkey.com/docs/v1/lib/WinGet.htm) of the window under the mouse cursor. If the window cannot be determined, this variable will be made blank.\n> - The window does not have to be active to be detected. Hidden windows cannot be detected.\n3. `OutputVarControl` -\n> - This optional parameter is the name of the variable in which to store the name (ClassNN) of the control under the mouse cursor. If the control cannot be determined, this variable will be made blank.\n> - The names of controls should always match those shown by the version of Window Spy distributed with [[v1.0.14+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.14 and later") (but not necessarily older versions of Window Spy). The window under the mouse cursor does not have to be active for a control to be detected.\n4. `Flag` - If omitted or 0, the command uses the default method to determine _OutputVarControl_ and stores the control\'s ClassNN. To change this behavior, add up one or both of the following digits:\n> - **1**: Uses a simpler method to determine _OutputVarControl_. This method correctly retrieves the active/topmost child window of an Multiple Document Interface (MDI) application such as SysEdit or TextPad. However, it is less accurate for other purposes such as detecting controls inside a GroupBox control.\n> - **2** [[v1.0.43.06+]:](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later") Stores the [control\'s HWND](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) in _OutputVarControl_ rather than the control\'s ClassNN.\n> - For example, to put both options into effect, the _Flag_ parameter must be set to 3.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm',
         exp: [
@@ -4736,7 +4828,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'MOUSEMOVE',
         keyRawName: 'MouseMove',
         body: 'MouseMove, ${1:X}, ${2:Y} [, ${3:0-100}, ${4:R}]',
-        doc: 'Moves the mouse cursor.',
+        doc: ['Moves the mouse cursor.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/MouseMove.htm',
         exp: [
@@ -4803,7 +4895,7 @@ export const LineCommand: TCommandElement[] = [
             '- **Options** : type is number, Indicates the type of message box and the possible button combinations. ',
             '- **Title** : type is string',
             '- **Timeout** : type is number of second, exp: `10` or `% mins*60`',
-        ].join('\n'),
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/MsgBox.htm',
         exp: [
@@ -4862,7 +4954,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'ONEXIT',
         keyRawName: 'OnExit',
         body: 'OnExit [, ${1:Label}]',
-        doc: 'Specifies a [callback function](https://www.autohotkey.com/docs/v1/Functions.htm) or [subroutine](https://www.autohotkey.com/docs/v1/lib/Gosub.htm) to run automatically when the script exits.',
+        doc: [
+            'Specifies a [callback function](https://www.autohotkey.com/docs/v1/Functions.htm) or [subroutine](https://www.autohotkey.com/docs/v1/lib/Gosub.htm) to run automatically when the script exits.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command',
         exp: [
@@ -4890,7 +4984,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'OUTPUTDEBUG',
         keyRawName: 'OutputDebug',
         body: 'OutputDebug, % "${1:Text}"',
-        doc: 'Sends a string to the debugger (if any) for display.',
+        doc: ['Sends a string to the debugger (if any) for display.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/OutputDebug.htm',
         exp: [
@@ -4916,7 +5010,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'PIXELGETCOLOR',
         keyRawName: 'PixelGetColor',
         body: 'PixelGetColor, ${1:OutputVar}, ${2:X}, ${3:Y} [, ${4:Alt Slow RGB}]',
-        doc: 'Retrieves the color of the pixel at the specified x,y coordinates.',
+        doc: ['Retrieves the color of the pixel at the specified x,y coordinates.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm',
         exp: [
@@ -4980,7 +5074,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'PixelSearch',
         body:
             'PixelSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:0x16_BGR_ColorID} [, ${8:0-255}, ${9:Fast RGB}]',
-        doc: 'Searches a region of the screen for a pixel of the specified color.',
+        doc: ['Searches a region of the screen for a pixel of the specified color.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm',
         exp: [
@@ -5092,7 +5186,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'PostMessage',
         body:
             'PostMessage, ${1:Msg} [, ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
-        doc: 'Sends a message to a window or control (SendMessage additionally waits for acknowledgement).',
+        doc: ['Sends a message to a window or control (SendMessage additionally waits for acknowledgement).'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/PostMessage.htm',
         exp: [
@@ -5180,7 +5274,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'PROCESS',
         keyRawName: 'Process',
         body: 'Process, ${1|Exist,Close,List,Priority,Wait,WaitClose|} [, % ${2:PID_Or_Name} , % "${3:Value}" ]',
-        doc: 'Performs one of the following operations on a process: checks if it exists; changes its priority; closes it; waits for it to close.\n1. SubCommand\n- [Exist](https://www.autohotkey.com/docs/v1/lib/Process.htm#Exist): Checks whether the specified process is present.\n- [Close](https://www.autohotkey.com/docs/v1/lib/Process.htm#Close): Forces the first matching process to close.\n- [List](https://www.autohotkey.com/docs/v1/lib/Process.htm#List): Not yet implemented.\n- [Priority](https://www.autohotkey.com/docs/v1/lib/Process.htm#Priority): Changes the priority level of the first matching process.\n- [Wait](https://www.autohotkey.com/docs/v1/lib/Process.htm#Wait): Waits for the specified process to exist.\n- [WaitClose](https://www.autohotkey.com/docs/v1/lib/Process.htm#WaitClose): Waits for all matching processes to close.',
+        doc: [
+            'Performs one of the following operations on a process: checks if it exists; changes its priority; closes it; waits for it to close.\n1. SubCommand\n- [Exist](https://www.autohotkey.com/docs/v1/lib/Process.htm#Exist): Checks whether the specified process is present.\n- [Close](https://www.autohotkey.com/docs/v1/lib/Process.htm#Close): Forces the first matching process to close.\n- [List](https://www.autohotkey.com/docs/v1/lib/Process.htm#List): Not yet implemented.\n- [Priority](https://www.autohotkey.com/docs/v1/lib/Process.htm#Priority): Changes the priority level of the first matching process.\n- [Wait](https://www.autohotkey.com/docs/v1/lib/Process.htm#Wait): Waits for the specified process to exist.\n- [WaitClose](https://www.autohotkey.com/docs/v1/lib/Process.htm#WaitClose): Waits for all matching processes to close.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Process.htm',
         exp: [
@@ -5236,7 +5332,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'PROGRESS',
         keyRawName: 'Progress',
         body: 'Progress, ${1:ProgressParam1} [, ${2:SubText}, ${3:MainText}, ${4:WinTitle}, ${5:FontName}]',
-        doc: 'Creates or updates a window containing a progress bar or an image.',
+        doc: ['Creates or updates a window containing a progress bar or an image.'],
         recommended: false,
         diag: EDiagCode.code813,
         link: 'https://www.autohotkey.com/docs/v1/lib/Progress.htm',
@@ -5308,7 +5404,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'RANDOM',
         keyRawName: 'Random',
         body: 'Random, ${1:OutputVar} [, ${2:Min}, ${3:Max}]',
-        doc: 'Generates a pseudo-random number.',
+        doc: ['Generates a pseudo-random number.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Random.htm',
         exp: [
@@ -5354,7 +5450,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'REGDELETE',
         keyRawName: 'RegDelete',
         body: 'RegDelete, % "${1|HKLM,HKU,HKCU,HKCR,HKCC|}\\" [, % "${2:ValueName}]"',
-        doc: 'Deletes a subkey or value from the registry.\n - **Warning**: Deleting from the registry is potentially dangerous - please exercise caution!',
+        doc: [
+            'Deletes a subkey or value from the registry.\n - **Warning**: Deleting from the registry is potentially dangerous - please exercise caution!',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/RegDelete.htm',
         exp: [
@@ -5389,7 +5487,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'REGREAD',
         keyRawName: 'RegRead',
         body: 'RegRead, ${1:OutputVar}, % "${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\" [, % "${3:ValueName}" ]',
-        doc: 'Reads a value from the registry.',
+        doc: ['Reads a value from the registry.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/RegRead.htm',
         exp: [
@@ -5434,7 +5532,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'RegWrite',
         body:
             'RegWrite, ${1|REG_SZ,REG_EXPAND_SZ,REG_MULTI_SZ,REG_DWORD,REG_BINARY|}, % "${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\" [, ${3:ValueName}, ${4:Value}]',
-        doc: 'Writes a value to the registry.',
+        doc: ['Writes a value to the registry.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/RegWrite.htm',
         exp: [
@@ -5488,7 +5586,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'Run',
         body:
             'Run, % "${1:ReadMe.docx}" [, % "${2:D:\\document}", % "${3:Max Min Hide UseErrorLevel}", ${4:OutputVarPID}]',
-        doc: 'Runs an external program.',
+        doc: ['Runs an external program.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Run.htm',
         exp: [
@@ -5568,7 +5666,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'RUNAS',
         keyRawName: 'RunAs',
         body: 'RunAs, [${1:User}, ${2:Password}, ${3:Domain}]',
-        doc: 'Specifies a set of user credentials to use for all subsequent uses of Run and RunWait.',
+        doc: ['Specifies a set of user credentials to use for all subsequent uses of Run and RunWait.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/RunAs.htm',
         exp: [
@@ -5616,7 +5714,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'RunWait',
         body:
             'RunWait, % "${1:ReadMe.docx}" [, % "${2:D:\\document}", % "${3:Max Min Hide UseErrorLevel}", ${4:OutputVarPID}]',
-        doc: 'Unlike Run, RunWait will wait until the program finishes before continuing.',
+        doc: ['Unlike Run, RunWait will wait until the program finishes before continuing.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Run.htm',
         exp: [
@@ -5696,7 +5794,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SEND',
         keyRawName: 'Send',
         body: 'Send, ${1:Keys}',
-        doc: 'Sends simulated keystrokes and mouse clicks to the active window.',
+        doc: ['Sends simulated keystrokes and mouse clicks to the active window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Send.htm',
         exp: [
@@ -5741,7 +5839,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SENDEVENT',
         keyRawName: 'SendEvent',
         body: 'SendEvent, ${1:Keys}',
-        doc: 'SendEvent sends keystrokes using the same method as the pre-1.0.43 Send command. The rate at which keystrokes are sent is determined by SetKeyDelay.',
+        doc: [
+            'SendEvent sends keystrokes using the same method as the pre-1.0.43 Send command. The rate at which keystrokes are sent is determined by SetKeyDelay.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Send.htm',
         exp: [
@@ -5788,7 +5888,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SENDINPUT',
         keyRawName: 'SendInput',
         body: 'SendInput, ${1:Keys}',
-        doc: 'SendInput and SendPlay use the same syntax as Send but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user\'s keystrokes from being interspersed with those being sent.',
+        doc: [
+            'SendInput and SendPlay use the same syntax as Send but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user\'s keystrokes from being interspersed with those being sent.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Send.htm',
         exp: [
@@ -5835,7 +5937,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SENDLEVEL',
         keyRawName: 'SendLevel',
         body: 'SendLevel, ${1:0-100}',
-        doc: 'Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings.',
+        doc: ['Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SendLevel.htm',
         exp: [
@@ -5860,7 +5962,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'SendMessage',
         body:
             'SendMessage, ${1:Msg}, [ ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}, ${9:Timeout}]',
-        doc: 'Sends a message to a window or control (SendMessage additionally waits for acknowledgement).',
+        doc: ['Sends a message to a window or control (SendMessage additionally waits for acknowledgement).'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/PostMessage.htm',
         exp: [
@@ -5956,7 +6058,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SENDMODE',
         keyRawName: 'SendMode',
         body: 'SendMode, ${1|Event,Play,Input,InputThenPlay|}',
-        doc: 'Makes Send synonymous with SendInput or SendPlay rather than the default (SendEvent). Also makes Click and MouseMove/Click/Drag use the specified method.',
+        doc: [
+            'Makes Send synonymous with SendInput or SendPlay rather than the default (SendEvent). Also makes Click and MouseMove/Click/Drag use the specified method.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SendMode.htm',
         exp: [
@@ -5998,7 +6102,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SENDPLAY',
         keyRawName: 'SendPlay',
         body: 'SendPlay, ${1:Keys}',
-        doc: 'SendInput and SendPlay use the same syntax as Send but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user\'s keystrokes from being interspersed with those being sent.',
+        doc: [
+            'SendInput and SendPlay use the same syntax as Send but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user\'s keystrokes from being interspersed with those being sent.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Send.htm',
         exp: [
@@ -6045,7 +6151,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SENDRAW',
         keyRawName: 'SendRaw',
         body: 'SendRaw, ${1:Keys}',
-        doc: 'Similar to Send, except that all characters in Keys are interpreted and sent literally. See Raw mode for details.',
+        doc: [
+            'Similar to Send, except that all characters in Keys are interpreted and sent literally. See Raw mode for details.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Send.htm',
         exp: [
@@ -6092,7 +6200,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETBATCHLINES',
         keyRawName: 'SetBatchLines',
         body: 'SetBatchLines, ${1|-1,20ms,LineCount|}',
-        doc: 'Determines how fast a script will run (affects CPU utilization).',
+        doc: ['Determines how fast a script will run (affects CPU utilization).'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm',
         exp: [
@@ -6124,7 +6232,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETCAPSLOCKSTATE',
         keyRawName: 'SetCapsLockState',
         body: 'SetCapsLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
-        doc: 'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
+        doc: [
+            'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetNumScrollCapsLockState.htm',
         exp: [
@@ -6160,7 +6270,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETCONTROLDELAY',
         keyRawName: 'SetControlDelay',
         body: 'SetControlDelay, ${1:Delay_ms}',
-        doc: 'Sets the delay that will occur after each control-modifying command.',
+        doc: ['Sets the delay that will occur after each control-modifying command.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetControlDelay.htm',
         exp: [
@@ -6187,7 +6297,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETDEFAULTMOUSESPEED',
         keyRawName: 'SetDefaultMouseSpeed',
         body: 'SetDefaultMouseSpeed, ${1:0-100}',
-        doc: 'Sets the mouse speed that will be used if unspecified in [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm) and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).',
+        doc: [
+            'Sets the mouse speed that will be used if unspecified in [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm) and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetDefaultMouseSpeed.htm',
         exp: [
@@ -6213,7 +6325,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETENV',
         keyRawName: 'SetEnv',
         body: 'SetEnv, ${1:OutVar}, ${2:Value}',
-        doc: 'Assigns the specified value to a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).',
+        doc: ['Assigns the specified value to a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).'],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetEnv.htm',
         exp: [
@@ -6249,7 +6361,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETFORMAT',
         keyRawName: 'SetFormat',
         body: 'SetFormat, ${1|IntegerFast,FloatFast,Integer,Float|}, ${2:Format}',
-        doc: 'Sets the format of integers and floating point numbers generated by math operations.',
+        doc: ['Sets the format of integers and floating point numbers generated by math operations.'],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetFormat.htm',
         exp: [
@@ -6309,7 +6421,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETKEYDELAY',
         keyRawName: 'SetKeyDelay',
         body: 'SetKeyDelay [, ${1:Delay_ms} , ${2:PressDuration}, ${3:Play}]',
-        doc: 'Sets the delay that will occur after each keystroke sent by [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [ControlSend](https://www.autohotkey.com/docs/v1/lib/ControlSend.htm).',
+        doc: [
+            'Sets the delay that will occur after each keystroke sent by [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [ControlSend](https://www.autohotkey.com/docs/v1/lib/ControlSend.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm',
         exp: [
@@ -6360,7 +6474,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETMOUSEDELAY',
         keyRawName: 'SetMouseDelay',
         body: 'SetMouseDelay, ${1:Delay_ms}, [ ${2:Play}]',
-        doc: 'Sets the delay that will occur after each mouse movement or click.',
+        doc: ['Sets the delay that will occur after each mouse movement or click.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm',
         exp: [
@@ -6393,7 +6507,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETNUMLOCKSTATE',
         keyRawName: 'SetNumLockState',
         body: 'SetNumLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
-        doc: 'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
+        doc: [
+            'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetNumScrollCapsLockState.htm',
         exp: [
@@ -6431,7 +6547,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETREGVIEW',
         keyRawName: 'SetRegView',
         body: 'SetRegView, ${1|32,64,Default|}',
-        doc: 'Sets the registry view used by [RegRead](https://www.autohotkey.com/docs/v1/lib/RegRead.htm), [RegWrite](https://www.autohotkey.com/docs/v1/lib/RegWrite.htm), [RegDelete](https://www.autohotkey.com/docs/v1/lib/RegDelete.htm) and [registry loops](https://www.autohotkey.com/docs/v1/lib/LoopReg.htm), allowing them in a 32-bit script to access the 64-bit registry view and vice versa.',
+        doc: [
+            'Sets the registry view used by [RegRead](https://www.autohotkey.com/docs/v1/lib/RegRead.htm), [RegWrite](https://www.autohotkey.com/docs/v1/lib/RegWrite.htm), [RegDelete](https://www.autohotkey.com/docs/v1/lib/RegDelete.htm) and [registry loops](https://www.autohotkey.com/docs/v1/lib/LoopReg.htm), allowing them in a 32-bit script to access the 64-bit registry view and vice versa.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetRegView.htm',
         exp: [
@@ -6460,7 +6578,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETSCROLLLOCKSTATE',
         keyRawName: 'SetScrollLockState',
         body: 'SetScrollLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
-        doc: 'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
+        doc: [
+            'Sets the state of **CapsLock** / **NumLock** / **ScrollLock**. Can also force the key to stay on or off.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetNumScrollCapsLockState.htm',
         exp: [
@@ -6498,7 +6618,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETSTORECAPSLOCKMODE',
         keyRawName: 'SetStoreCapsLockMode',
         body: 'SetStoreCapsLockMode, ${1|On,Off|}',
-        doc: 'Whether to restore the state of CapsLock after a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm).',
+        doc: [
+            'Whether to restore the state of CapsLock after a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetStoreCapslockMode.htm',
         exp: [
@@ -6530,7 +6652,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETTIMER',
         keyRawName: 'SetTimer',
         body: 'SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off,Delete,Default|}, ${3:Priority_int}]',
-        doc: 'Causes a subroutine to be launched automatically and repeatedly at a specified time interval.',
+        doc: ['Causes a subroutine to be launched automatically and repeatedly at a specified time interval.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetTimer.htm',
         exp: [
@@ -6619,7 +6741,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETTITLEMATCHMODE',
         keyRawName: 'SetTitleMatchMode',
         body: 'SetTitleMatchMode, ${1|Fast,Slow,RegEx,1,2,3|}',
-        doc: 'Sets the matching behavior of the WinTitle parameter in commands such as [WinWait](https://www.autohotkey.com/docs/v1/lib/WinWait.htm).',
+        doc: [
+            'Sets the matching behavior of the WinTitle parameter in commands such as [WinWait](https://www.autohotkey.com/docs/v1/lib/WinWait.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm',
         exp: [
@@ -6666,7 +6790,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETWINDELAY',
         keyRawName: 'SetWinDelay',
         body: 'SetWinDelay, ${1:Delay_ms}',
-        doc: 'Sets the delay that will occur after each windowing command, such as [WinActivate](https://www.autohotkey.com/docs/v1/lib/WinActivate.htm).',
+        doc: [
+            'Sets the delay that will occur after each windowing command, such as [WinActivate](https://www.autohotkey.com/docs/v1/lib/WinActivate.htm).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetWinDelay.htm',
         exp: [
@@ -6691,7 +6817,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SETWORKINGDIR',
         keyRawName: 'SetWorkingDir',
         body: 'SetWorkingDir, % "${1:DirName}"',
-        doc: 'Changes the script\'s current working directory.\n - `DirName` - The name of the new working directory, which is assumed to be a subfolder of the current [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+        doc: [
+            'Changes the script\'s current working directory.\n - `DirName` - The name of the new working directory, which is assumed to be a subfolder of the current [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn\'t specified.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SetWorkingDir.htm',
         exp: [
@@ -6717,7 +6845,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SHUTDOWN',
         keyRawName: 'Shutdown',
         body: 'Shutdown, ${1:Flag}',
-        doc: 'Shuts down, restarts, or logs off the system.\n1. `Flag` - A combination (sum) of the following numbers:\n\n- 0 = Logoff\n- 1 = Shutdown\n- 2 = Reboot\n- 4 = Force\n- 8 = Power down\n\nAdd the required values together. For example, to shutdown and power down the flag would be 9 (shutdown + power down = 1 + 8 = 9). Alternatively, an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) such as 1+8 can be specified.\n\nThe "Force" value (4) forces all open applications to close. It should only be used in an emergency because it may cause any open applications to lose data.\n\nThe "Power down" value (8) shuts down the system and turns off the power.',
+        doc: [
+            'Shuts down, restarts, or logs off the system.\n1. `Flag` - A combination (sum) of the following numbers:\n\n- 0 = Logoff\n- 1 = Shutdown\n- 2 = Reboot\n- 4 = Force\n- 8 = Power down\n\nAdd the required values together. For example, to shutdown and power down the flag would be 9 (shutdown + power down = 1 + 8 = 9). Alternatively, an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) such as 1+8 can be specified.\n\nThe "Force" value (4) forces all open applications to close. It should only be used in an emergency because it may cause any open applications to lose data.\n\nThe "Power down" value (8) shuts down the system and turns off the power.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Shutdown.htm',
         exp: [
@@ -6755,7 +6885,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SLEEP',
         keyRawName: 'Sleep',
         body: 'Sleep, ${1:Delay_ms}',
-        doc: 'Waits the specified amount of time before continuing.\n `Delay` - The amount of time to pause (in milliseconds) between 0 and 2147483647 (24 days), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+        doc: [
+            'Waits the specified amount of time before continuing.\n `Delay` - The amount of time to pause (in milliseconds) between 0 and 2147483647 (24 days), which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Sleep.htm',
         exp: [
@@ -6784,7 +6916,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SORT',
         keyRawName: 'Sort',
         body: 'Sort, ${1:InputVarName} [, ${2:Options}]',
-        doc: 'Arranges a variable\'s contents in alphabetical, numerical, or random order (optionally removing duplicates).',
+        doc: [
+            'Arranges a variable\'s contents in alphabetical, numerical, or random order (optionally removing duplicates).',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Sort.htm',
         exp: [
@@ -6819,7 +6953,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SOUNDBEEP',
         keyRawName: 'SoundBeep',
         body: 'SoundBeep [, ${1:Frequency_37_to_32767}, ${2:Duration_ms}]',
-        doc: 'Emits a tone from the PC speaker.',
+        doc: ['Emits a tone from the PC speaker.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SoundBeep.htm',
         exp: [
@@ -6856,7 +6990,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'SoundGet',
         body:
             'SoundGet, ${1:OutputVar} [, ${2|MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|}, ${3:ControlType}, ${4:DeviceNumber}]',
-        doc: 'Retrieves various settings from a sound device (master mute, master volume, etc.)',
+        doc: ['Retrieves various settings from a sound device (master mute, master volume, etc.)'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SoundGet.htm',
         exp: [
@@ -6916,7 +7050,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SOUNDGETWAVEVOLUME',
         keyRawName: 'SoundGetWaveVolume',
         body: 'SoundGetWaveVolume, ${1:OutputVar} [, ${2:DeviceNumber}]',
-        doc: 'Retrieves the wave output volume of a sound device.',
+        doc: ['Retrieves the wave output volume of a sound device.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SoundGetWaveVolume.htm',
         exp: [
@@ -6952,7 +7086,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SOUNDPLAY',
         keyRawName: 'SoundPlay',
         body: 'SoundPlay, ${1:Filename} [, ${2:wait}]',
-        doc: 'Plays a sound, video, or other supported file type.',
+        doc: ['Plays a sound, video, or other supported file type.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SoundPlay.htm',
         exp: [
@@ -6997,7 +7131,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SOUNDSET',
         keyRawName: 'SoundSet',
         body: 'SoundSet, ${1:NewSetting} [, ${2:ComponentType}, ${3:ControlType}, ${4:DeviceNumber}]',
-        doc: 'Changes various settings of a sound device (master mute, master volume, etc.)',
+        doc: ['Changes various settings of a sound device (master mute, master volume, etc.)'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SoundSet.htm',
         exp: [
@@ -7069,7 +7203,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SOUNDSETWAVEVOLUME',
         keyRawName: 'SoundSetWaveVolume',
         body: 'SoundSetWaveVolume, ${1:Percent}, [ ${2:DeviceNumber}]',
-        doc: '\nChanges the wave output volume of a sound device.\n\n1. Percent\n- Percentage number between -100 and 100 inclusive (it can be a floating point number or an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)).\n- If the number begins with a plus or minus sign, the **current volume level** will be adjusted up or down by the indicated amount.\n- Otherwise, the volume will be set explicitly to the level indicated by _Percent_.\n\n2. DeviceNumber\n- If this parameter is omitted, it defaults to 1 (the first sound device), which is usually the system\'s default device for recording and playback. Specify a number higher than 1 to operate upon a different sound device.',
+        doc: [
+            '\nChanges the wave output volume of a sound device.\n\n1. Percent\n- Percentage number between -100 and 100 inclusive (it can be a floating point number or an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)).\n- If the number begins with a plus or minus sign, the **current volume level** will be adjusted up or down by the indicated amount.\n- Otherwise, the volume will be set explicitly to the level indicated by _Percent_.\n\n2. DeviceNumber\n- If this parameter is omitted, it defaults to 1 (the first sound device), which is usually the system\'s default device for recording and playback. Specify a number higher than 1 to operate upon a different sound device.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SoundSetWaveVolume.htm',
         exp: [
@@ -7114,7 +7250,7 @@ export const LineCommand: TCommandElement[] = [
         body:
             'SplashImage, [, ${1:ImageFile}, ${2:Options}, ${3:SubText}, ${4:MainText}, ${5:WinTitle}, ${6:FontName}]',
         // SplashImage , ImageFile, Options, SubText, MainText, WinTitle, FontName
-        doc: 'Creates or updates a window containing a progress bar or an image.',
+        doc: ['Creates or updates a window containing a progress bar or an image.'],
         recommended: false,
         diag: EDiagCode.code813,
         link: 'https://www.autohotkey.com/docs/v1/lib/Progress.htm',
@@ -7201,7 +7337,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SPLASHTEXTOFF',
         keyRawName: 'SplashTextOff',
         body: 'SplashTextOff',
-        doc: 'Creates or removes a customizable text popup window.',
+        doc: ['Creates or removes a customizable text popup window.'],
         recommended: false,
         diag: EDiagCode.code816,
         link: 'https://www.autohotkey.com/docs/v1/lib/SplashTextOn.htm',
@@ -7215,7 +7351,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SPLASHTEXTON',
         keyRawName: 'SplashTextOn',
         body: 'SplashTextOn [, ${1:Width}, ${2:Height}, ${3:Title}, ${4:Text}]',
-        doc: 'Creates or removes a customizable text popup window.',
+        doc: ['Creates or removes a customizable text popup window.'],
         recommended: false,
         diag: EDiagCode.code816,
         link: 'https://www.autohotkey.com/docs/v1/lib/SplashTextOn.htm',
@@ -7266,7 +7402,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'SplitPath',
         body:
             'SplitPath, ${1:InputFullFileName} [, ${2:OutFileName}, ${3:OutDir}, ${4:OutExtension}, ${5:OutNameNoExt}, ${6:OutDrive}]',
-        doc: '\nSeparates a file name or URL into its name, directory, extension, and drive.\n\n1. InputVar\n- Name of the variable containing the file name or URL to be analyzed.\n- Note that this command expects filename paths to contain backslashes (\\\\) only and URLs to contain forward slashes (/) only.',
+        doc: [
+            '\nSeparates a file name or URL into its name, directory, extension, and drive.\n\n1. InputVar\n- Name of the variable containing the file name or URL to be analyzed.\n- Note that this command expects filename paths to contain backslashes (\\\\) only and URLs to contain forward slashes (/) only.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SplitPath.htm',
         exp: [
@@ -7360,7 +7498,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'StatusBarGetText',
         body:
             'StatusBarGetText, ${1:OutputVar} [, ${2:Part#}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Retrieves the text from a standard status bar control.',
+        doc: ['Retrieves the text from a standard status bar control.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/StatusBarGetText.htm',
         exp: [
@@ -7429,7 +7567,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'StatusBarWait',
         body:
             'StatusBarWait, [${1:BarText}, ${2:Timeout_sec}, ${3:Part#}, ${4:WinTitle}, ${5:WinText}, ${6:Interval}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
-        doc: 'Waits until a window\'s status bar contains the specified string.',
+        doc: ['Waits until a window\'s status bar contains the specified string.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/StatusBarWait.htm',
         exp: [
@@ -7515,7 +7653,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGCASESENSE',
         keyRawName: 'StringCaseSense',
         body: 'StringCaseSense, ${1|On,Off,Locale|}',
-        doc: 'Determines whether string comparisons are case sensitive (default is "not case sensitive").',
+        doc: ['Determines whether string comparisons are case sensitive (default is "not case sensitive").'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm',
         exp: [
@@ -7549,7 +7687,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGGETPOS',
         keyRawName: 'StringGetPos',
         body: 'StringGetPos, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:Occurrence}, ${5:Offset}]',
-        doc: 'Retrieves the position of the specified substring within a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [InStr](https://www.autohotkey.com/docs/v1/lib/InStr.htm) function instead.',
+        doc: [
+            'Retrieves the position of the specified substring within a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [InStr](https://www.autohotkey.com/docs/v1/lib/InStr.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringGetPos.htm',
         exp: [
@@ -7621,7 +7761,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGLEFT',
         keyRawName: 'StringLeft',
         body: 'StringLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
-        doc: 'Retrieves a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        doc: [
+            'Retrieves a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLeft.htm',
         exp: [
@@ -7665,7 +7807,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGLEN',
         keyRawName: 'StringLen',
         body: 'StringLen, ${1:OutputVar}, ${2:InputVar}',
-        doc: 'Retrieves the count of how many characters are in a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [StrLen](https://www.autohotkey.com/docs/v1/lib/StrLen.htm) function instead.',
+        doc: [
+            'Retrieves the count of how many characters are in a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [StrLen](https://www.autohotkey.com/docs/v1/lib/StrLen.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLen.htm',
         exp: [
@@ -7697,7 +7841,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGLOWER',
         keyRawName: 'StringLower',
         body: 'StringLower, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]',
-        doc: 'Converts a string to lowercase or uppercase.',
+        doc: ['Converts a string to lowercase or uppercase.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLower.htm',
         exp: [
@@ -7738,7 +7882,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGMID',
         keyRawName: 'StringMid',
         body: 'StringMid, ${1:OutputVar}, ${2:InputVar}, ${3:StartChar} [, ${4:Count}, ${5:L}]',
-        doc: 'Retrieves one or more characters from the specified position in a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        doc: [
+            'Retrieves one or more characters from the specified position in a string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringMid.htm',
         exp: [
@@ -7801,7 +7947,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGREPLACE',
         keyRawName: 'StringReplace',
         body: 'StringReplace, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:ReplaceText}, ${5:ReplaceAll}]',
-        doc: 'Replaces the specified substring with a new string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [StrReplace](https://www.autohotkey.com/docs/v1/lib/StrReplace.htm) function instead.',
+        doc: [
+            'Replaces the specified substring with a new string.\n\n**Deprecated:** This command is not recommended for use in new scripts. Use the [StrReplace](https://www.autohotkey.com/docs/v1/lib/StrReplace.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringReplace.htm',
         exp: [
@@ -7862,7 +8010,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGRIGHT',
         keyRawName: 'StringRight',
         body: 'StringRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
-        doc: 'Retrieves a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        doc: [
+            'Retrieves a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLeft.htm',
         exp: [
@@ -7906,9 +8056,11 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGSPLIT',
         keyRawName: 'StringSplit',
         body: 'StringSplit, ${1:OutputArray}, ${2:InputVar} [, ${3:Delimiters}, ${4:OmitChars}]',
-        doc: 'Separates a string into an array of substrings using the specified delimiters.'
-            + ''
-            + '**Deprecated:** This command is not recommended for use in new scripts. Use the [StrSplit](https://www.autohotkey.com/docs/v1/lib/StrSplit.htm) function instead.',
+        doc: [
+            'Separates a string into an array of substrings using the specified delimiters.',
+            '',
+            '**Deprecated:** This command is not recommended for use in new scripts. Use the [StrSplit](https://www.autohotkey.com/docs/v1/lib/StrSplit.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringSplit.htm',
         exp: [
@@ -7982,7 +8134,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGTRIMLEFT',
         keyRawName: 'StringTrimLeft',
         body: 'StringTrimLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
-        doc: 'Removes a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        doc: [
+            'Removes a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringTrimLeft.htm',
         exp: [
@@ -8023,7 +8177,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGTRIMRIGHT',
         keyRawName: 'StringTrimRight',
         body: 'StringTrimRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
-        doc: 'Removes a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        doc: [
+            'Removes a number of characters from the left or right-hand side of a string.\n\n**Deprecated:** These commands are not recommended for use in new scripts. Use the [SubStr](https://www.autohotkey.com/docs/v1/lib/SubStr.htm) function instead.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringTrimLeft.htm',
         exp: [
@@ -8064,7 +8220,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'STRINGUPPER',
         keyRawName: 'StringUpper',
         body: 'StringUpper, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]',
-        doc: 'Converts a string to lowercase or uppercase.\n\nCommand -> func https://www.autohotkey.com/docs/v1/Language.htm#commands-vs-functions',
+        doc: [
+            'Converts a string to lowercase or uppercase.\n\nCommand -> func https://www.autohotkey.com/docs/v1/Language.htm#commands-vs-functions',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/StringLower.htm',
         exp: [
@@ -8104,7 +8262,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'SUSPEND',
         keyRawName: 'Suspend',
         body: 'Suspend [, ${1|On,Off,Toggle,Permit|}]',
-        doc: 'Disables or enables all or selected [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm) and [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm).\n\n- **On**: Suspends all [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm) and [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm) except those explained the Remarks section.\n- **Off**: Re-enables the hotkeys and hotstrings that were disable above.\n- **Toggle** (default): Changes to the opposite of its previous state (On or Off).\n- **Permit**: Does nothing except mark the current subroutine as being exempt from suspension.',
+        doc: [
+            'Disables or enables all or selected [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm) and [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm).\n\n- **On**: Suspends all [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm) and [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm) except those explained the Remarks section.\n- **Off**: Re-enables the hotkeys and hotstrings that were disable above.\n- **Toggle** (default): Changes to the opposite of its previous state (On or Off).\n- **Permit**: Does nothing except mark the current subroutine as being exempt from suspension.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Suspend.htm',
         exp: [
@@ -8144,7 +8304,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'SysGet',
         body:
             'SysGet, ${1:OutputVar}, ${2|MonitorCount,MonitorPrimary,Monitor,MonitorWorkArea,MonitorName,(Numeric)|} [, ${3:Value}]',
-        doc: 'Retrieves screen resolution, multi-monitor info, dimensions of system objects, and other system properties.\n- [MonitorCount](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorCount): Retrieves the total number of monitors.\n- [MonitorPrimary](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorPrimary): Retrieves the number of the primary monitor.\n- [Monitor](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#Monitor): Retrieves the bounding coordinates of the specified monitor.\n- [MonitorWorkArea](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorWorkArea): Retrieves the working area\'s bounding coordinates of the specified monitor.\n- [MonitorName](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorName): Retrieves the name of the specified monitor.\n- [(Numeric)](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#Numeric): Retrieve the corresponding value from the tables below.',
+        doc: [
+            'Retrieves screen resolution, multi-monitor info, dimensions of system objects, and other system properties.\n- [MonitorCount](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorCount): Retrieves the total number of monitors.\n- [MonitorPrimary](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorPrimary): Retrieves the number of the primary monitor.\n- [Monitor](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#Monitor): Retrieves the bounding coordinates of the specified monitor.\n- [MonitorWorkArea](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorWorkArea): Retrieves the working area\'s bounding coordinates of the specified monitor.\n- [MonitorName](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#MonitorName): Retrieves the name of the specified monitor.\n- [(Numeric)](https://www.autohotkey.com/docs/v1/lib/SysGet.htm#Numeric): Retrieve the corresponding value from the tables below.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/SysGet.htm',
         exp: [
@@ -8187,7 +8349,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'THREAD',
         keyRawName: 'Thread',
         body: 'Thread, ${1|NoTimers,Priority,Interrupt|} [, ${2:Value1}, ${3:Value2}]',
-        doc: 'Sets the priority or interruptibility of [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm). It can also temporarily disable all [timers](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm).\n- [NoTimers](https://www.autohotkey.com/docs/v1/lib/Thread.htm#NoTimers): Prevents interruptions from any timers.\n- [Priority](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Priority): Changes the priority level of the current thread.\n- [Interrupt](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Interrupt): Changes the duration of interruptibility for newly launched threads.',
+        doc: [
+            'Sets the priority or interruptibility of [threads](https://www.autohotkey.com/docs/v1/misc/Threads.htm). It can also temporarily disable all [timers](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm).\n- [NoTimers](https://www.autohotkey.com/docs/v1/lib/Thread.htm#NoTimers): Prevents interruptions from any timers.\n- [Priority](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Priority): Changes the priority level of the current thread.\n- [Interrupt](https://www.autohotkey.com/docs/v1/lib/Thread.htm#Interrupt): Changes the duration of interruptibility for newly launched threads.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/Thread.htm',
         exp: [
@@ -8229,7 +8393,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'TOOLTIP',
         keyRawName: 'ToolTip',
         body: 'ToolTip [, % "${1:Text}", ${2:X}, ${3:Y}, ${4:1_to_20}]',
-        doc: 'Creates an always-on-top window anywhere on the screen.',
+        doc: ['Creates an always-on-top window anywhere on the screen.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ToolTip.htm',
         exp: [
@@ -8290,7 +8454,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'Transform',
         body:
             'Transform, ${1:OutputVar}, ${2|Unicode,Deref,HTML,Asc,Chr,Mod,Exp,Sqrt,Log,Ln,Round,Ceil,Floor,Abs,Sin,Cos,Tan,ASin,ACos,ATan,Pow,BitNot,BitAnd,BitOr,BitXOr,BitShiftLeft,BitShiftRight|}, ${3:Value1} [, ${4:Value2}]',
-        doc: 'Performs miscellaneous math functions, bitwise operations, and tasks such as ASCII/Unicode conversion.\n- **Deprecated:** This command is not recommended for use in new scripts. For details on what you can use instead, see the sub-command sections below.\nFor _SubCommand_, specify one of the following:\n\n- [Unicode](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Unicode) (for ANSI builds only): Retrieves or stores Unicode text on the clipboard.\n- [Deref](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Deref): Expands variable references and escape sequences contained inside other variables.\n- [HTML](https://www.autohotkey.com/docs/v1/lib/Transform.htm#HTML): Converts the specified string into its HTML equivalent.\n- [Asc](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Asc): Retrieves the character code for the first character in the specified string.\n- [Chr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Chr): Retrieves the single character corresponding to the character code.\n- [Mod](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Mod): Retrieves the remainder of a division.\n- [Exp](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Exp): Retrieves e raised to the _N_th power.\n- [Sqrt](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Sqrt): Retrieves the square root of a number.\n- [Log](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Log): Retrieves the logarithm (base 10) of a number.\n- [Ln](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Ln): Retrieves the natural logarithm (base e) of a number.\n- [Round](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Round): Retrieves a number rounded to _N_ decimal places.\n- [Ceil](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Ceil): Retrieves a number rounded up to the nearest integer.\n- [Floor](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Floor): Retrieves a number rounded down to the nearest integer.\n- [Abs](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Abs): Retrieves the absolute value of a number.\n- [Sin](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Sin): Retrieves the trigonometric sine of a number.\n- [Cos](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Cos): Retrieves the trigonometric cosine of a number.\n- [Tan](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Tan): Retrieves the trigonometric tangent of a number.\n- [ASin](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ASin): Retrieves the arcsine in radians.\n- [ACos](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ACos): Retrieves the arccosine in radians.\n- [ATan](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ATan): Retrieves the arctangent in radians.\n- [Pow](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Pow): Retrieves a base raised to the power of an exponent.\n- [BitNot](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitNot): Retrieves the bit-inverted version of a number.\n- [BitAnd](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitAnd): Retrieves the result of the bitwise-AND of the specified numbers.\n- [BitOr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitOr): Retrieves the result of the bitwise-OR of the specified numbers.\n- [BitXOr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitXOr): Retrieves the result of the bitwise-EXCLUSIVE-OR of the specified numbers.\n- [BitShiftLeft](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitShiftLeft): Retrieves the result of shifting a number to the left by _N_ bit positions.\n- [BitShiftRight](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitShiftRight): Retrieves the result of shifting a number to the right by _N_ bit positions.',
+        doc: [
+            'Performs miscellaneous math functions, bitwise operations, and tasks such as ASCII/Unicode conversion.\n- **Deprecated:** This command is not recommended for use in new scripts. For details on what you can use instead, see the sub-command sections below.\nFor _SubCommand_, specify one of the following:\n\n- [Unicode](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Unicode) (for ANSI builds only): Retrieves or stores Unicode text on the clipboard.\n- [Deref](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Deref): Expands variable references and escape sequences contained inside other variables.\n- [HTML](https://www.autohotkey.com/docs/v1/lib/Transform.htm#HTML): Converts the specified string into its HTML equivalent.\n- [Asc](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Asc): Retrieves the character code for the first character in the specified string.\n- [Chr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Chr): Retrieves the single character corresponding to the character code.\n- [Mod](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Mod): Retrieves the remainder of a division.\n- [Exp](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Exp): Retrieves e raised to the _N_th power.\n- [Sqrt](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Sqrt): Retrieves the square root of a number.\n- [Log](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Log): Retrieves the logarithm (base 10) of a number.\n- [Ln](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Ln): Retrieves the natural logarithm (base e) of a number.\n- [Round](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Round): Retrieves a number rounded to _N_ decimal places.\n- [Ceil](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Ceil): Retrieves a number rounded up to the nearest integer.\n- [Floor](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Floor): Retrieves a number rounded down to the nearest integer.\n- [Abs](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Abs): Retrieves the absolute value of a number.\n- [Sin](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Sin): Retrieves the trigonometric sine of a number.\n- [Cos](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Cos): Retrieves the trigonometric cosine of a number.\n- [Tan](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Tan): Retrieves the trigonometric tangent of a number.\n- [ASin](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ASin): Retrieves the arcsine in radians.\n- [ACos](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ACos): Retrieves the arccosine in radians.\n- [ATan](https://www.autohotkey.com/docs/v1/lib/Transform.htm#ATan): Retrieves the arctangent in radians.\n- [Pow](https://www.autohotkey.com/docs/v1/lib/Transform.htm#Pow): Retrieves a base raised to the power of an exponent.\n- [BitNot](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitNot): Retrieves the bit-inverted version of a number.\n- [BitAnd](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitAnd): Retrieves the result of the bitwise-AND of the specified numbers.\n- [BitOr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitOr): Retrieves the result of the bitwise-OR of the specified numbers.\n- [BitXOr](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitXOr): Retrieves the result of the bitwise-EXCLUSIVE-OR of the specified numbers.\n- [BitShiftLeft](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitShiftLeft): Retrieves the result of shifting a number to the left by _N_ bit positions.\n- [BitShiftRight](https://www.autohotkey.com/docs/v1/lib/Transform.htm#BitShiftRight): Retrieves the result of shifting a number to the right by _N_ bit positions.',
+        ],
         recommended: false,
         link: 'https://www.autohotkey.com/docs/v1/lib/Transform.htm',
         exp: [
@@ -8362,7 +8528,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'TRAYTIP',
         keyRawName: 'TrayTip',
         body: 'TrayTip [, ${1:Title}, ${2:Text}, ${3:Seconds}, ${4:Options}]',
-        doc: 'Creates a balloon message window near the tray icon. On Windows 10, a toast notification may be shown instead.',
+        doc: [
+            'Creates a balloon message window near the tray icon. On Windows 10, a toast notification may be shown instead.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/TrayTip.htm',
         exp: [
@@ -8433,7 +8601,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'URLDOWNLOADTOFILE',
         keyRawName: 'UrlDownloadToFile',
         body: 'UrlDownloadToFile, % "${1:URL_https}", % "${2:Filename}"',
-        doc: 'Downloads a file from the Internet.',
+        doc: ['Downloads a file from the Internet.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/URLDownloadToFile.htm',
         exp: [
@@ -8470,7 +8638,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINACTIVATE',
         keyRawName: 'WinActivate',
         body: 'WinActivate [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
-        doc: 'Activates the specified window..',
+        doc: ['Activates the specified window..'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinActivate.htm',
         exp: [
@@ -8517,7 +8685,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINACTIVATEBOTTOM',
         keyRawName: 'WinActivateBottom',
         body: 'WinActivateBottom, [ ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText} ]',
-        doc: 'Same as [WinActivate](https://www.autohotkey.com/docs/v1/lib/WinActivate.htm) except that it activates the bottommost matching window rather than the topmost.',
+        doc: [
+            'Same as [WinActivate](https://www.autohotkey.com/docs/v1/lib/WinActivate.htm) except that it activates the bottommost matching window rather than the topmost.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinActivateBottom.htm',
         exp: [
@@ -8564,7 +8734,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINCLOSE',
         keyRawName: 'WinClose',
         body: 'WinClose [, ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText} ]',
-        doc: 'Closes the specified window.',
+        doc: ['Closes the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinClose.htm',
         exp: [
@@ -8621,7 +8791,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'WinGet',
         body:
             'WinGet, ${1:OutputVar} [, ${2|ID,IDLast,PID,ProcessName,ProcessPath,Count,List,MinMax,ControlList,ControlListHwnd,Transparent,TransColor,Style,ExStyle|}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText} ]',
-        doc: 'Retrieves the specified window\'s unique ID, process ID, process name, or a list of its controls. It can also retrieve a list of all windows matching the specified criteria.\n- [ID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ID): Retrieves the unique ID number of a window.\n- [IDLast](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#IDLast): Retrieves the unique ID number of the last/bottommost window if there is more than one match.\n- [PID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#PID): Retrieves the Process ID number of a window.\n- [ProcessName](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessName): Retrieves the name of the process that owns a window.\n- [ProcessPath](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessPath) [[v1.1.01+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later"): Retrieves the full path and name of the process that owns a window.\n- [Count](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Count): Retrieves the number of existing windows that match the title/text parameters.\n- [List](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#List): Retrieves the unique ID numbers of all existing windows that match the title/text parameters.\n- [MinMax](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#MinMax): Retrieves the minimized/maximized state for a window.\n- [ControlList](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlList): Retrieves the control name for each control in a window.\n- [ControlListHwnd](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlListHwnd) [[v1.0.43.06+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the unique ID number for each control in a window.\n- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Transparent): Retrieves the degree of transparency of a window.\n- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#TransColor): Retrieves the color that is marked transparent in a window.\n- [Style](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Style): Retrieves an 8-digit hexadecimal number representing the style of a window.\n- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ExStyle): Retrieves an 8-digit hexadecimal number representing the extended style of a window.',
+        doc: [
+            'Retrieves the specified window\'s unique ID, process ID, process name, or a list of its controls. It can also retrieve a list of all windows matching the specified criteria.\n- [ID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ID): Retrieves the unique ID number of a window.\n- [IDLast](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#IDLast): Retrieves the unique ID number of the last/bottommost window if there is more than one match.\n- [PID](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#PID): Retrieves the Process ID number of a window.\n- [ProcessName](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessName): Retrieves the name of the process that owns a window.\n- [ProcessPath](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ProcessPath) [[v1.1.01+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later"): Retrieves the full path and name of the process that owns a window.\n- [Count](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Count): Retrieves the number of existing windows that match the title/text parameters.\n- [List](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#List): Retrieves the unique ID numbers of all existing windows that match the title/text parameters.\n- [MinMax](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#MinMax): Retrieves the minimized/maximized state for a window.\n- [ControlList](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlList): Retrieves the control name for each control in a window.\n- [ControlListHwnd](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ControlListHwnd) [[v1.0.43.06+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.06 and later"): Retrieves the unique ID number for each control in a window.\n- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Transparent): Retrieves the degree of transparency of a window.\n- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#TransColor): Retrieves the color that is marked transparent in a window.\n- [Style](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#Style): Retrieves an 8-digit hexadecimal number representing the style of a window.\n- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinGet.htm#ExStyle): Retrieves an 8-digit hexadecimal number representing the extended style of a window.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGet.htm',
         exp: [
@@ -8701,7 +8873,9 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINGETACTIVESTATS',
         keyRawName: 'WinGetActiveStats',
         body: 'WinGetActiveStats, ${1:OutTitle}, ${2:OutWidth}, ${3:OutHeight}, ${4:OutX}, ${5:OutY}',
-        doc: 'Combines the functions of [WinGetActiveTitle](https://www.autohotkey.com/docs/v1/lib/WinGetActiveTitle.htm) and [WinGetPos](https://www.autohotkey.com/docs/v1/lib/WinGetPos.htm) into one command.',
+        doc: [
+            'Combines the functions of [WinGetActiveTitle](https://www.autohotkey.com/docs/v1/lib/WinGetActiveTitle.htm) and [WinGetPos](https://www.autohotkey.com/docs/v1/lib/WinGetPos.htm) into one command.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetActiveStats.htm',
         exp: [
@@ -8771,7 +8945,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINGETACTIVETITLE',
         keyRawName: 'WinGetActiveTitle',
         body: 'WinGetActiveTitle, ${1:OutputVar}',
-        doc: 'Retrieves the title of the active window.',
+        doc: ['Retrieves the title of the active window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetActiveTitle.htm',
         exp: [
@@ -8794,7 +8968,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINGETCLASS',
         keyRawName: 'WinGetClass',
         body: 'WinGetClass, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Retrieves the specified window\'s class name.',
+        doc: ['Retrieves the specified window\'s class name.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetClass.htm',
         exp: [
@@ -8849,7 +9023,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'WinGetPos',
         body:
             'WinGetPos, [ ${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText} ]',
-        doc: 'Retrieves the position and size of the specified window.',
+        doc: ['Retrieves the position and size of the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetPos.htm',
         exp: [
@@ -8933,7 +9107,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINGETTEXT',
         keyRawName: 'WinGetText',
         body: 'WinGetText, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Retrieves the text from the specified window.',
+        doc: ['Retrieves the text from the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetText.htm',
         exp: [
@@ -8987,7 +9161,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINGETTITLE',
         keyRawName: 'WinGetTitle',
         body: 'WinGetTitle, ${1:OutputVar} ${2:[, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]}',
-        doc: 'Retrieves the title of the specified window.',
+        doc: ['Retrieves the title of the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinGetTitle.htm',
         exp: [
@@ -9041,7 +9215,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINHIDE',
         keyRawName: 'WinHide',
         body: 'WinHide, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
-        doc: 'Hides the specified window.',
+        doc: ['Hides the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinHide.htm',
         exp: [
@@ -9088,7 +9262,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINKILL',
         keyRawName: 'WinKill',
         body: 'WinKill, [ ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Forces the specified window to close.',
+        doc: ['Forces the specified window to close.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinKill.htm',
         exp: [
@@ -9144,7 +9318,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINMAXIMIZE',
         keyRawName: 'WinMaximize',
         body: 'WinMaximize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
-        doc: 'Enlarges the specified window to its maximum size.',
+        doc: ['Enlarges the specified window to its maximum size.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinMaximize.htm',
         exp: [
@@ -9192,7 +9366,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'WinMenuSelectItem',
         body:
             'WinMenuSelectItem, ${1:WinTitle}, ${2:WinText}, ${3:Menu} [, ${4:SubMenu1}, ${5:SubMenu2}, ${6:SubMenu3}, ${7:SubMenu4}, ${8:SubMenu5}, ${9:SubMenu6}, ${10:ExcludeTitle}, ${11:ExcludeText} ]',
-        doc: 'Invokes a menu item from the menu bar of the specified window.',
+        doc: ['Invokes a menu item from the menu bar of the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinMenuSelectItem.htm',
         exp: [
@@ -9302,7 +9476,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINMINIMIZE',
         keyRawName: 'WinMinimize',
         body: 'WinMinimize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
-        doc: 'Collapses the specified window into a button on the task bar.',
+        doc: ['Collapses the specified window into a button on the task bar.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinMinimize.htm',
         exp: [
@@ -9349,7 +9523,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINMINIMIZEALL',
         keyRawName: 'WinMinimizeAll',
         body: 'WinMinimizeAll',
-        doc: 'Minimizes all windows.',
+        doc: ['Minimizes all windows.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinMinimizeAll.htm',
         exp: [
@@ -9368,7 +9542,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINMINIMIZEALLUNDO',
         keyRawName: 'WinMinimizeAllUndo',
         body: 'WinMinimizeAllUndo',
-        doc: 'Unminimizes all windows.',
+        doc: ['Unminimizes all windows.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinMinimizeAll.htm',
         exp: [
@@ -9388,7 +9562,7 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'WinMove',
         body:
             'WinMove, ${1:WinTitle}, ${2:WinText}, ${3:X}, ${4:Y}, [${5:Width}, ${6:Height}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
-        doc: 'Changes the position and/or size of the specified window.',
+        doc: ['Changes the position and/or size of the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinMove.htm',
         exp: [
@@ -9485,7 +9659,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINRESTORE',
         keyRawName: 'WinRestore',
         body: 'WinRestore, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
-        doc: 'Unminimizes or unmaximizes the specified window if it is minimized or maximized.',
+        doc: ['Unminimizes or unmaximizes the specified window if it is minimized or maximized.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinRestore.htm',
         exp: [
@@ -9536,7 +9710,9 @@ export const LineCommand: TCommandElement[] = [
         keyRawName: 'WinSet',
         body:
             'WinSet, ${1|AlwaysOnTop,Bottom,Top,Disable,Enable,Redraw,Style,ExStyle,Region,Transparent,TransColor|}, ${2:Value} [, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
-        doc: 'Makes a variety of changes to the specified window, such as "always on top" and transparency.\n- [AlwaysOnTop](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#AlwaysOnTop): Makes a window stay on top of all other windows.\n- [Bottom](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Bottom): Sends a window to the bottom of stack; that is, beneath all other windows.\n- [Top](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Top): Brings a window to the top of the stack without explicitly activating it.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Disable): Disables a window.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Enable): Enables a window.\n- [Redraw](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Redraw): Redraws a window.\n- [Style](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Style): Changes the style of a window.\n- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#ExStyle): Changes the extended style of a window.\n- [Region](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Region): Changes the shape of a window to be the specified rectangle, ellipse, or polygon.\n- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Transparent): Makes a window semi-transparent.\n- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#TransColor): Makes all pixels of the chosen color invisible inside the target window.',
+        doc: [
+            'Makes a variety of changes to the specified window, such as "always on top" and transparency.\n- [AlwaysOnTop](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#AlwaysOnTop): Makes a window stay on top of all other windows.\n- [Bottom](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Bottom): Sends a window to the bottom of stack; that is, beneath all other windows.\n- [Top](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Top): Brings a window to the top of the stack without explicitly activating it.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Disable): Disables a window.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Enable): Enables a window.\n- [Redraw](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Redraw): Redraws a window.\n- [Style](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Style): Changes the style of a window.\n- [ExStyle](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#ExStyle): Changes the extended style of a window.\n- [Region](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Region): Changes the shape of a window to be the specified rectangle, ellipse, or polygon.\n- [Transparent](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#Transparent): Makes a window semi-transparent.\n- [TransColor](https://www.autohotkey.com/docs/v1/lib/WinSet.htm#TransColor): Makes all pixels of the chosen color invisible inside the target window.',
+        ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinSet.htm',
         exp: [
@@ -9611,7 +9787,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINSETTITLE',
         keyRawName: 'WinSetTitle',
         body: 'WinSetTitle, ${1:WinTitle}, ${2:WinText}, ${3:NewTitle} [, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Changes the title of the specified window.',
+        doc: ['Changes the title of the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinSetTitle.htm',
         exp: [
@@ -9673,7 +9849,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINSHOW',
         keyRawName: 'WinShow',
         body: 'WinShow [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
-        doc: 'Unhides the specified window.',
+        doc: ['Unhides the specified window.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinShow.htm',
         exp: [
@@ -9720,7 +9896,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINWAIT',
         keyRawName: 'WinWait',
         body: 'WinWait [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Waits until the specified window exists.',
+        doc: ['Waits until the specified window exists.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWait.htm',
         exp: [
@@ -9778,7 +9954,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINWAITACTIVE',
         keyRawName: 'WinWaitActive',
         body: 'WinWaitActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Waits until the specified window is active.',
+        doc: ['Waits until the specified window is active.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWaitActive.htm',
         exp: [
@@ -9835,7 +10011,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINWAITCLOSE',
         keyRawName: 'WinWaitClose',
         body: 'WinWaitClose [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Waits until the specified window does not exist.',
+        doc: ['Waits until the specified window does not exist.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWaitClose.htm',
         exp: [
@@ -9891,7 +10067,7 @@ export const LineCommand: TCommandElement[] = [
         upName: 'WINWAITNOTACTIVE',
         keyRawName: 'WinWaitNotActive',
         body: 'WinWaitNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
-        doc: 'Waits until the specified window is not active.',
+        doc: ['Waits until the specified window is not active.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/WinWaitActive.htm',
         exp: [

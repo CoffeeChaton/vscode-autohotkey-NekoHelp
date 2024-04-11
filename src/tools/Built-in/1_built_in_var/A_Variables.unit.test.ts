@@ -242,7 +242,7 @@ type TErrObj = {
 
 describe('check A_Variables ruler', () => {
     const arr1: string[] = AVariablesList
-        .map((v): string => v.body.replace('A_', ''));
+        .map((v): string => v.keyRawName.replace('A_', ''));
 
     const max = 158;
 
@@ -271,7 +271,7 @@ describe('check A_Variables ruler', () => {
         const LoopRegList: string[] = [];
         const SpecialUriList: [`https:${string}`, `A_${string}`][] = [];
         for (const e of AVariablesList) {
-            const { uri, body, group } = e;
+            const { uri, keyRawName: body, group } = e;
             if (body.startsWith('A_LoopFile')) {
                 LoopFileList.push(body);
                 LoopFileError(group, errList, e, uri, body);
@@ -455,7 +455,7 @@ describe('check A_Variables ruler', () => {
 
         const docList: string[] = [];
         for (const e of AVariablesList) {
-            const { doc, body, group } = e;
+            const { doc, keyRawName: body, group } = e;
 
             const docs: string = doc.join('\n');
             if (docs.includes('(https://www.autohotkey.com/docs/v1/')) continue;

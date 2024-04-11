@@ -2,7 +2,7 @@ import * as fs from 'node:fs';
 import path from 'node:path';
 import * as vscode from 'vscode';
 
-export type TLanguage = 'en' | 'zh-tw' | 'zh-cn';
+export type TLanguage = 'en' | 'zh-cn';
 export const localeLanguage: TLanguage = ((): TLanguage => {
     const { language } = vscode.env;
 
@@ -17,12 +17,13 @@ export const localeLanguage: TLanguage = ((): TLanguage => {
 export type TSupportDoc =
     | 'A_Variables'
     | 'BiVariables'
+    | 'Command'
     | 'Directives'
     | 'func';
 
 const rootDir: string = path.resolve(__dirname, '../ahk.json');
 
-export function getNlsPath(filename: TSupportDoc): string {
+function getNlsPath(filename: TSupportDoc): string {
     return path
         .join(rootDir, `${filename}.${localeLanguage}.ahk.json`)
         .replace('\\', '/');
@@ -35,11 +36,7 @@ export function readNlsJson(filename: TSupportDoc): unknown {
     return JSON.parse(dataFromJson).body;
 }
 
-type TSearchKey =
-    | '"body": "'
-    | '"keyRawName": "';
-
-export function initNlsDefMap(filename: TSupportDoc, searchKey: TSearchKey): ReadonlyMap<string, [vscode.Location]> {
+export function initNlsDefMap(filename: TSupportDoc): ReadonlyMap<string, [vscode.Location]> {
     const mm = new Map<string, [vscode.Location]>();
     //
     const targetPath: string = getNlsPath(filename);
@@ -47,6 +44,7 @@ export function initNlsDefMap(filename: TSupportDoc, searchKey: TSearchKey): Rea
     const dataList: string[] = fs.readFileSync(targetPath).toString()
         .split('\n');
 
+    const searchKey = '"keyRawName": "';
     for (const [line, text] of dataList.entries()) {
         const i: number = text.indexOf(searchKey);
         if (i >= 0) {

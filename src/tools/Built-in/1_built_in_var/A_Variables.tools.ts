@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { initNlsDefMap, readNlsJson } from '../nls.tools';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import type { TAElement } from './A_Variables.data';
 
 type TA_MD_Map = ReadonlyMap<string, vscode.MarkdownString>;
@@ -15,23 +15,23 @@ export const [AVariablesMDMap, snippetStartWihA] = ((): [TA_MD_Map, TA_snippet_l
             uri,
             group,
             doc,
-            body,
+            keyRawName,
         } = vv;
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-            .appendCodeblock(body, 'ahk')
+            .appendCodeblock(keyRawName, 'ahk')
             .appendMarkdown(group)
             .appendMarkdown(`\n\n[(Read Doc)](${uri})\n\n`)
             .appendMarkdown(doc.join('\n'));
 
         md.supportHtml = true;
-        map1.set(body.toUpperCase(), md);
+        map1.set(keyRawName.toUpperCase(), md);
         //
         const item: vscode.CompletionItem = new vscode.CompletionItem({
-            label: body, // Left
+            label: keyRawName, // Left
             description: group, // Right
         });
         item.kind = vscode.CompletionItemKind.Variable; // icon of https://code.visualstudio.com/docs/editor/intellisense#_types-of-completions
-        item.insertText = body;
+        item.insertText = keyRawName;
         item.detail = 'Built-in Variables (neko-help)';
         item.documentation = md;
         //
@@ -51,4 +51,4 @@ export function hoverAVar(wordUp: string): vscode.MarkdownString | undefined {
     return AVariablesMDMap.get(wordUp);
 }
 
-export const biAVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('A_Variables', '"body": "');
+export const biAVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('A_Variables');

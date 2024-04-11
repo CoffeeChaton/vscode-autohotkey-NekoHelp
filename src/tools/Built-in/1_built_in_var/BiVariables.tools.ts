@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as vscode from 'vscode';
-import { initNlsDefMap, readNlsJson } from '../nls.tools';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import type { TBiVElement } from './BiVariables.data';
 
 /**
@@ -27,7 +27,7 @@ export const [Bi_VarMDMap, snippetBiVar] = ((): [TBi_VarMDMap, TBi_snippet_list]
             .appendCodeblock(keyRawName, 'ahk')
             .appendMarkdown(`Built-in Variables ([Read Doc](${link}))`)
             .appendMarkdown('\n\n')
-            .appendMarkdown(doc)
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'), 'ahk');
@@ -60,4 +60,4 @@ export function getSnipBiVar(PartStr: string): readonly vscode.CompletionItem[] 
         : snippetBiVar;
 }
 
-export const biBVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('BiVariables', '"keyRawName": "');
+export const biBVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('BiVariables');

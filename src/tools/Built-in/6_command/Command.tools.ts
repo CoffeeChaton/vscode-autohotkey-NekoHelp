@@ -2,8 +2,8 @@
 
 import * as vscode from 'vscode';
 import { Diags } from '../../../diag';
-import type { TAllowDiagCode, TCommandParams } from './Command.data';
-import { LineCommand } from './Command.data';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
+import type { TAllowDiagCode, TCommandElement, TCommandParams } from './Command.data';
 import { CSnippetCommand } from './CSnippetCommand';
 
 export type TCmdMsg = {
@@ -40,6 +40,7 @@ export const {
         return arr;
     }
 
+    const LineCommand: TCommandElement[] = readNlsJson('Command') as TCommandElement[];
     for (const v of LineCommand) {
         const {
             doc,
@@ -70,7 +71,7 @@ export const {
             .appendMarkdown('Command')
             .appendCodeblock(cmdSignLabel, 'ahk')
             .appendMarkdown(`[(Read Doc)](${link})\n\n`)
-            .appendMarkdown(doc)
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'), 'ahk');
@@ -108,11 +109,6 @@ export const {
         }
     }
 
-    /**
-     * after initialization clear
-     */
-    LineCommand.length = 0;
-
     // ---
     // Catch, e
     outBaseMapRW.set('CATCH', 'CATCH'.length);
@@ -132,3 +128,5 @@ export const {
 export function getHoverCommand2(wordUp: string): vscode.MarkdownString | undefined {
     return CommandMDMap.get(wordUp)?.md;
 }
+
+export const cmdDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Command');

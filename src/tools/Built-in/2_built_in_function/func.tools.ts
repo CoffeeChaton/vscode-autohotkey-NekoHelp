@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint no-magic-numbers: ["error", { "ignore": [0,3] }] */
 import * as vscode from 'vscode';
-import { initNlsDefMap, readNlsJson } from '../nls.tools';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import type { TBuiltInFuncElement } from './func.data';
 
 const baseGroup = ['COM', 'IL_', 'LV_', 'OBJ', 'SB_', 'TV_', '_'] as const;
@@ -40,7 +40,7 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
     const makeMd = (v: TV): vscode.MarkdownString => {
         const {
             group,
-            msg,
+            doc,
             link,
             exp,
             sign,
@@ -48,7 +48,7 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown(`Built-in Function (${group})`)
             .appendCodeblock(sign, 'ahk')
-            .appendMarkdown(msg.join('\n'))
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown('\n')
             .appendMarkdown(`[(Read Doc)](${link})`)
             .appendMarkdown('\n\n***')
@@ -141,4 +141,4 @@ export function getBuiltInFuncMD(keyUp: string): TBiFuncMsg | undefined {
     return undefined;
 }
 
-export const biFuDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('func', '"keyRawName": "');
+export const biFuDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('func');
