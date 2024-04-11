@@ -75,95 +75,6 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
         return item;
     };
 
-    const otherComObjFuncList: TV[] = [
-        {
-            upName: 'COMOBJMISSING',
-            group: 'COM',
-            keyRawName: 'ComObjMissing',
-            link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
-            msg: [
-                'Creates an object which may be used in place of an optional parameter\'s default value when calling a method of a COM object.',
-                '[[v1.1.12+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.12.00 "Applies to AutoHotkey v1.1.12 and later"):',
-                ' This function is obsolete. Instead, simply write two consecutive commas, as in `Obj.Method(1,,3)`',
-                '**Deprecated:** The usages shown below are deprecated and may be altered or unavailable in a future release.',
-            ],
-            insert: 'ComObjMissing($0)',
-            exp: [
-                '; is Deprecated',
-                'ParamObj := ComObjMissing()',
-            ],
-            sign: 'ComObjMissing()',
-        },
-        {
-            upName: 'COMOBJPARAMETER',
-            group: 'COM',
-            keyRawName: 'ComObjParameter',
-            link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
-            msg: [
-                'Wraps a value and type to pass as a parameter to a COM method.',
-                'In current versions, any function-call beginning with "ComObj" ',
-                'that does not match one of the other COM functions actually calls ComObjActive.',
-            ],
-            insert: 'ComObjParameter($0)',
-            exp: [
-                '; is Deprecated',
-                'MP := ComObjParameter(10,0x80020004)',
-            ],
-            sign: 'ComObjParameter(VarType, Value [, Flags])',
-        },
-        {
-            upName: 'COMOBJENWRAP',
-            group: 'COM',
-            keyRawName: 'ComObjEnwrap',
-            link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
-            msg: [
-                'Wraps/unwraps a COM object.',
-                'In current versions, any function-call beginning with "ComObj" ',
-                'that does not match one of the other COM functions actually calls ComObjActive.',
-                'For example, `ComObjEnwrap(DispPtr)` and `[ComObjActive](https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm)(DispPtr)`',
-            ],
-            insert: 'ComObjEnwrap($0)',
-            exp: [
-                '; is Deprecated',
-                'ComObject := ComObjEnwrap(DispPtr)',
-            ],
-            sign: 'ComObjEnwrap(DispPtr)',
-        },
-        {
-            upName: 'COMOBJUNWRAP',
-            group: 'COM',
-            keyRawName: 'ComObjUnwrap',
-            link: 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm',
-            msg: [
-                'Wraps/unwraps a COM object.',
-                '**Deprecated:** The usages shown below are deprecated and may be altered or unavailable in a future release.',
-            ],
-            insert: 'ComObjUnwrap($0)',
-            exp: [
-                '; is Deprecated',
-                'DispPtr := ComObjUnwrap(ComObject)',
-            ],
-            sign: 'ComObjUnwrap(ComObject)',
-        },
-    ];
-
-    for (const vv of otherComObjFuncList) {
-        const {
-            keyRawName,
-            link,
-            upName,
-            sign,
-        } = vv;
-
-        const md: vscode.MarkdownString = makeMd(vv);
-        map2.set(upName, {
-            keyRawName,
-            md,
-            link,
-            sign,
-        });
-    }
-
     const r: TV[] = readNlsJson('func') as TV[];
 
     for (const v of r) {
@@ -183,7 +94,7 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
 
         const item: vscode.CompletionItem = makeSnip(v, md);
 
-        const head = upName.slice(0, 3);
+        const head: string = upName.slice(0, 3);
         const index: TrGroup = baseGroup.find((search: TrGroup) => search === head) ?? '_';
         Obj1[index].push(item);
     }
@@ -236,27 +147,39 @@ export function getBuiltInFuncMD(keyUp: string): TBiFuncMsg | undefined {
     return undefined;
 }
 
-const buildInFuncDefMap: ReadonlyMap<string, [vscode.Location]> = (() => {
-    const mm = new Map<string, [vscode.Location]>();
-    //
-    const targetPath: string = getNlsPath('func');
-    const dataList: string[] = fs.readFileSync(targetPath).toString()
-        .split('\n');
-    for (const [line, text] of dataList.entries()) {
-        if (text.includes('"upName": "')) {
-            // "upName": "ACOS",
-            const uri: vscode.Uri = vscode.Uri.file(targetPath);
-            const character: number = text.indexOf(': "') + ': "'.length;
-            const pos: vscode.Position = new vscode.Position(line, character);
-            const upKey: string = text.trim()
-                .replace('"upName": "', '')
-                .replace('",', '');
-            mm.set(upKey, [new vscode.Location(uri, pos)]);
-        }
-    }
+export const buildInFuncDefMap: ReadonlyMap<string, [vscode.Location]> = (
+    (): ReadonlyMap<string, [vscode.Location]> => {
+        const mm = new Map<string, [vscode.Location]>();
+        //
+        const targetPath: string = getNlsPath('func');
+        const uri: vscode.Uri = vscode.Uri.file(targetPath);
+        const dataList: string[] = fs.readFileSync(targetPath).toString()
+            .split('\n');
 
-    return mm;
-})();
+        const searchKey = '"keyRawName": "';
+        for (const [line, text] of dataList.entries()) {
+            const i: number = text.indexOf(searchKey);
+            if (i >= 0) {
+                const character: number = i + searchKey.length;
+                const upKey: string = text.trim()
+                    .replace(searchKey, '')
+                    .replace('",', '')
+                    .toUpperCase();
+                mm.set(upKey, [
+                    new vscode.Location(
+                        uri,
+                        new vscode.Range(
+                            new vscode.Position(line, character),
+                            new vscode.Position(line, character + upKey.length),
+                        ),
+                    ),
+                ]);
+            }
+        }
+
+        return mm;
+    }
+)();
 
 export function getBuiltInFuncDefRange(keyUp: string): vscode.Location[] {
     return buildInFuncDefMap.get(keyUp) ?? [];

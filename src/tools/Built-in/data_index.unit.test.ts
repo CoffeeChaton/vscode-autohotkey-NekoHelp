@@ -144,10 +144,6 @@ describe('check cmd sign ruler', () => {
 
         myList.push(
             // TODO...
-            'ComObjEnwrap()',
-            'ComObjMissing()',
-            'ComObjParameter()',
-            'ComObjUnwrap()',
             'ObjClone()',
             'ObjCount()',
             'ObjDelete()',

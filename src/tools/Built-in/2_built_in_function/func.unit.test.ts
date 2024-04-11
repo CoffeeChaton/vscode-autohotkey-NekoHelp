@@ -52,7 +52,7 @@ describe('check BuiltInFunctionObj ruler', () => {
             .replace('(?<![.`%#])\\b(?i:', '')
             .replace(')(?=\\()\\b', '');
 
-        const max = 111;
+        const max = 115;
 
         expect(funcDataList).toHaveLength(max);
         expect(st1).toBe(arr1.join('|'));
@@ -125,6 +125,10 @@ describe('check BuiltInFunctionObj ruler', () => {
             'ObjRawSet()',
             'ObjSetBase()',
             'OnClipboardChange()',
+            'ComObjMissing()',
+            'ComObjParameter()',
+            'ComObjEnwrap()',
+            'ComObjUnwrap()',
         ]);
     });
 
@@ -223,6 +227,10 @@ describe('check BuiltInFunctionObj ruler', () => {
             ['OnExit', 'https://www.autohotkey.com/docs/v1/lib/OnExit.htm#function'],
             // Trim() / LTrim() / RTrim()
             ['RTrim', 'https://www.autohotkey.com/docs/v1/lib/Trim.htm'],
+            ['ComObjMissing', 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm'],
+            ['ComObjParameter', 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm'],
+            ['ComObjEnwrap', 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm'],
+            ['ComObjUnwrap', 'https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm'],
         ]);
     });
 
