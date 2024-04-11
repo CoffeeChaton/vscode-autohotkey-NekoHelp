@@ -457,8 +457,9 @@ describe('check A_Variables ruler', () => {
         for (const e of AVariablesList) {
             const { doc, body, group } = e;
 
-            if (doc.includes('(https://www.autohotkey.com/docs/v1/')) continue;
-            if (doc.includes('```ahk\n') && doc.includes(body)) continue;
+            const docs: string = doc.join('\n');
+            if (docs.includes('(https://www.autohotkey.com/docs/v1/')) continue;
+            if (docs.includes('```ahk\n') && docs.includes(body)) continue;
             if (group === 'LoopFile' || group === 'LoopReg') continue;
 
             docList.push(body);

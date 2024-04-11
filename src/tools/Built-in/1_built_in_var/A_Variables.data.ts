@@ -25,7 +25,7 @@ export type TAElement = {
         | 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars' // doc not id
         | `https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFile${string}`
         | `https://www.autohotkey.com/docs/v1/Variables.htm#${string}`,
-    doc: string,
+    doc: string[],
 };
 
 /**
@@ -47,7 +47,7 @@ export const AVariablesList: TAElement[] = [
             '```',
             '',
             '[[v1.1.34+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.34.00 "Applies to AutoHotkey v1.1.34 and later") For compiled scripts based on an .exe file, A_AhkPath contains the full path of the compiled script. This can be used in combination with [/script](https://www.autohotkey.com/docs/v1/Scripts.htm#SlashScript) to execute external scripts. To instead locate the installed copy of AutoHotkey, read the registry as shown above.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_AhkVersion',
@@ -59,7 +59,7 @@ export const AVariablesList: TAElement[] = [
             '    if A_AhkVersion >= 1.0.25.07',
             '```',
             'See also: [#Requires](https://www.autohotkey.com/docs/v1/lib/_Requires.htm) and [VerCompare()](https://www.autohotkey.com/docs/v1/lib/VerCompare.htm)',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_AppData',
@@ -72,7 +72,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_AppData',
             '    MsgBox % "C:\\Users\\<UserName>\\AppData\\Roaming"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_AppDataCommon',
@@ -85,19 +85,21 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_AppDataCommon',
             '    MsgBox % "C:\\ProgramData"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Args',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Args',
         group: 'Script',
-        doc: 'Contains an [array](https://www.autohotkey.com/docs/v1/Objects.htm#Usage_Simple_Arrays) of command line parameters. For details, see [Passing Command Line Parameters to a Script](https://www.autohotkey.com/docs/v1/Scripts.htm#cmd).',
+        doc: [
+            'Contains an [array](https://www.autohotkey.com/docs/v1/Objects.htm#Usage_Simple_Arrays) of command line parameters. For details, see [Passing Command Line Parameters to a Script](https://www.autohotkey.com/docs/v1/Scripts.htm#cmd).',
+        ],
     },
     {
         body: 'A_AutoTrim',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AutoTrim',
         group: 'Setting',
-        doc: 'The current mode (`On or Off`) set by [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm).',
+        doc: ['The current mode (`On or Off`) set by [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm).'],
     },
     {
         body: 'A_BatchLines',
@@ -110,7 +112,7 @@ export const AVariablesList: TAElement[] = [
             '```',
             '',
             'The current value as set by [SetBatchLines](https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm). Examples: `200` or `10ms` (depending on format).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_NumBatchLines',
@@ -123,7 +125,7 @@ export const AVariablesList: TAElement[] = [
             '```',
             '',
             'The current value as set by [SetBatchLines](https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm). Examples: `200` or `10ms` (depending on format).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_CaretX',
@@ -144,7 +146,7 @@ export const AVariablesList: TAElement[] = [
             '    ToolTip, % "X: " A_CaretX "`n Y: " A_CaretY',
             '}',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_CaretY',
@@ -165,115 +167,141 @@ export const AVariablesList: TAElement[] = [
             '    ToolTip, % "X: " A_CaretX "`n Y: " A_CaretY',
             '}',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Clipboard',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Clipboard',
         group: 'Misc.',
-        doc: 'Can be used to get or set the contents of the OS\'s clipboard. For details, see [Clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm).',
+        doc: [
+            'Can be used to get or set the contents of the OS\'s clipboard. For details, see [Clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm).',
+        ],
     },
     {
         body: 'A_ComSpec',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ComSpec',
         group: 'OS',
-        doc: 'Contains the same string as the environment\'s ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` ',
+        doc: [
+            'Contains the same string as the environment\'s ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` ',
+        ],
     },
     {
         body: 'A_ComputerName',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ComputerName',
         group: 'OS',
-        doc: 'The name of the computer as seen on the network.',
+        doc: ['The name of the computer as seen on the network.'],
     },
     {
         body: 'A_ControlDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ControlDelay',
         group: 'Setting',
-        doc: 'The current delay set by [SetControlDelay](https://www.autohotkey.com/docs/v1/lib/SetControlDelay.htm) (always decimal, not hex).',
+        doc: [
+            'The current delay set by [SetControlDelay](https://www.autohotkey.com/docs/v1/lib/SetControlDelay.htm) (always decimal, not hex).',
+        ],
     },
     {
         body: 'A_CoordModeCaret',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        ],
     },
     {
         body: 'A_CoordModeMenu',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        ],
     },
     {
         body: 'A_CoordModeMouse',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        ],
     },
     {
         body: 'A_CoordModePixel',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        ],
     },
     {
         body: 'A_CoordModeToolTip',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm).',
+        ],
     },
     {
         body: 'A_Cursor',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Cursor',
         group: 'Misc.',
-        doc: 'The type of mouse cursor currently being displayed. It will be one of the following words: AppStarting, Arrow, Cross, Help, IBeam, Icon, No, Size, SizeAll, SizeNESW, SizeNS, SizeNWSE, SizeWE, UpArrow, Wait, Unknown. The acronyms used with the size-type cursors are compass directions, e.g. NESW = NorthEast+SouthWest. The hand-shaped cursors (pointing and grabbing) are classified as Unknown. ',
+        doc: [
+            'The type of mouse cursor currently being displayed. It will be one of the following words: AppStarting, Arrow, Cross, Help, IBeam, Icon, No, Size, SizeAll, SizeNESW, SizeNS, SizeNWSE, SizeWE, UpArrow, Wait, Unknown. The acronyms used with the size-type cursors are compass directions, e.g. NESW = NorthEast+SouthWest. The hand-shaped cursors (pointing and grabbing) are classified as Unknown. ',
+        ],
     },
     {
         body: 'A_DD',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DD',
         group: 'Date',
-        doc: 'Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`.',
+        doc: ['Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`.'],
     },
     {
         body: 'A_MDay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DD',
         group: 'Date',
-        doc: 'Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`.',
+        doc: ['Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`.'],
     },
     {
         body: 'A_DDD',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DDD',
         group: 'Date',
-        doc: 'Current day of the week\'s abbreviation in the current user\'s language, e.g. `Sun`',
+        doc: ['Current day of the week\'s abbreviation in the current user\'s language, e.g. `Sun`'],
     },
     {
         body: 'A_DDDD',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DDDD',
         group: 'Date',
-        doc: 'Current day of the week\'s full name in the current user\'s language, e.g. `Sunday`',
+        doc: ['Current day of the week\'s full name in the current user\'s language, e.g. `Sunday`'],
     },
     {
         body: 'A_DefaultGui',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultGui',
         group: 'GUI',
-        doc: 'The name or number of the current thread\'s [default GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default).',
+        doc: [
+            'The name or number of the current thread\'s [default GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default).',
+        ],
     },
     {
         body: 'A_DefaultListView',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultListView',
         group: 'GUI',
-        doc: 'The [variable name](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events) or [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of the [TreeView control](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) upon which the [TreeView functions](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn) operate. If the default GUI lacks a TreeView, this variable is blank.',
+        doc: [
+            'The [variable name](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events) or [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of the [TreeView control](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) upon which the [TreeView functions](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn) operate. If the default GUI lacks a TreeView, this variable is blank.',
+        ],
     },
     {
         body: 'A_DefaultMouseSpeed',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultMouseSpeed',
         group: 'Setting',
-        doc: 'The current speed set by [SetDefaultMouseSpeed](https://www.autohotkey.com/docs/v1/lib/SetDefaultMouseSpeed.htm) (always decimal, not hex).',
+        doc: [
+            'The current speed set by [SetDefaultMouseSpeed](https://www.autohotkey.com/docs/v1/lib/SetDefaultMouseSpeed.htm) (always decimal, not hex).',
+        ],
     },
     {
         body: 'A_DefaultTreeView',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DefaultTreeView',
         group: 'GUI',
-        doc: 'The [variable name](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events) or [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of the [TreeView control](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) upon which the [TreeView functions](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn) operate. If the default GUI lacks a TreeView, this variable is blank.',
+        doc: [
+            'The [variable name](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events) or [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of the [TreeView control](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) upon which the [TreeView functions](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn) operate. If the default GUI lacks a TreeView, this variable is blank.',
+        ],
     },
     {
         body: 'A_Desktop',
@@ -286,7 +314,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_Desktop',
             '    MsgBox % "C:\\Users\\<UserName>\\Desktop"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_DesktopCommon',
@@ -299,25 +327,31 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_DesktopCommon',
             '    MsgBox % "C:\\Users\\Public\\Desktop"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_DetectHiddenText',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DetectHiddenText',
         group: 'Setting',
-        doc: 'The current mode (`On or Off`) set by [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm).',
+        doc: [
+            'The current mode (`On or Off`) set by [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm).',
+        ],
     },
     {
         body: 'A_DetectHiddenWindows',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#DetectHiddenWindows',
         group: 'Setting',
-        doc: 'The current mode (`On or Off`) set by [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm).',
+        doc: [
+            'The current mode (`On or Off`) set by [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm).',
+        ],
     },
     {
         body: 'A_EndChar',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#EndChar',
         group: 'Hotkeys',
-        doc: 'The [ending character](https://www.autohotkey.com/docs/v1/Hotstrings.htm#EndChars) that was pressed by the user to trigger the most recent [non-auto-replace hotstring](https://www.autohotkey.com/docs/v1/Hotstrings.htm). If no ending character was required (due to the \\* option), this variable will be blank.',
+        doc: [
+            'The [ending character](https://www.autohotkey.com/docs/v1/Hotstrings.htm#EndChars) that was pressed by the user to trigger the most recent [non-auto-replace hotstring](https://www.autohotkey.com/docs/v1/Hotstrings.htm). If no ending character was required (due to the \\* option), this variable will be blank.',
+        ],
     },
     {
         body: 'A_EventInfo',
@@ -331,37 +365,47 @@ export const AVariablesList: TAElement[] = [
             '> - [RegisterCallback()](https://www.autohotkey.com/docs/v1/lib/RegisterCallback.htm)',
             '> - [Regular Expression Callouts](https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm)',
             '> - [GUI events](https://www.autohotkey.com/docs/v1/lib/Gui.htm#label), namely [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles), [ListBox](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#ListBox), [ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm), [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm), and [StatusBar](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#StatusBar). If there is no additional information for an event, A_EventInfo contains 0.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ExitReason',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ExitReason',
         group: 'Script',
-        doc: 'The most recent reason the script was asked to terminate. This variable is blank unless the script has an [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command "Deprecated. New scripts should use OnExit() instead.") subroutine and that subroutine is currently running or has been called at least once by an exit attempt. See [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command "Deprecated. New scripts should use OnExit() instead.") for details.',
+        doc: [
+            'The most recent reason the script was asked to terminate. This variable is blank unless the script has an [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command "Deprecated. New scripts should use OnExit() instead.") subroutine and that subroutine is currently running or has been called at least once by an exit attempt. See [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command "Deprecated. New scripts should use OnExit() instead.") for details.',
+        ],
     },
     {
         body: 'A_FileEncoding',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#FileEncoding',
         group: 'Setting',
-        doc: '[[v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L46 "Applies to: AutoHotkey_L Revision 46 and later AutoHotkey v1.0.90.00 and later"): Contains the default encoding for various commands; see [FileEncoding](https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm).',
+        doc: [
+            '[[v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L46 "Applies to: AutoHotkey_L Revision 46 and later AutoHotkey v1.0.90.00 and later"): Contains the default encoding for various commands; see [FileEncoding](https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm).',
+        ],
     },
     {
         body: 'A_FormatFloat',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#FormatFloat',
         group: 'Setting',
-        doc: 'The current floating point number format set by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead.").',
+        doc: [
+            'The current floating point number format set by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead.").',
+        ],
     },
     {
         body: 'A_FormatInteger',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#FormatInteger',
         group: 'Setting',
-        doc: 'The current integer format (H or D) set by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead."). [[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 "Applies to: AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later") This may also contain lower-case h.',
+        doc: [
+            'The current integer format (H or D) set by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm "Deprecated. New scripts should use Format() instead."). [[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 "Applies to: AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later") This may also contain lower-case h.',
+        ],
     },
     {
         body: 'A_Gui',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Gui',
         group: 'GUI',
-        doc: 'The name or number of the [GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm) that launched the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). This variable is blank unless a Gui control, menu bar item, or event such as GuiClose/GuiEscape launched the current thread.',
+        doc: [
+            'The name or number of the [GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm) that launched the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). This variable is blank unless a Gui control, menu bar item, or event such as GuiClose/GuiEscape launched the current thread.',
+        ],
     },
     {
         body: 'A_GuiControl',
@@ -373,7 +417,7 @@ export const AVariablesList: TAElement[] = [
             '2. a GUI menu bar item or event such as GuiClose/GuiEscape launched the current thread;',
             '3. the control lacks an associated variable and has no caption;',
             '4. The control that originally launched the current thread no longer exists (perhaps due to [Gui Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy)).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_GuiControlEvent',
@@ -389,7 +433,7 @@ export const AVariablesList: TAElement[] = [
             '> **RightClick**: Occurs only for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [ListViews](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeViews](https://www.autohotkey.com/docs/v1/lib/TreeView.htm).',
             '',
             '> **Context-sensitive values:** For details see [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles), [Slider](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Slider), [MonthCal](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#MonthCal), [ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_GuiEvent',
@@ -405,31 +449,39 @@ export const AVariablesList: TAElement[] = [
             '> **RightClick**: Occurs only for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [ListViews](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeViews](https://www.autohotkey.com/docs/v1/lib/TreeView.htm).',
             '',
             '> **Context-sensitive values:** For details see [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles), [Slider](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Slider), [MonthCal](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#MonthCal), [ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_GuiHeight',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiWidth',
         group: 'GUI',
-        doc: 'These contain the GUI window\'s width and height when referenced in a [GuiSize subroutine](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize). They apply to the window\'s client area, which is the area excluding title bar, menu bar, and borders. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        doc: [
+            'These contain the GUI window\'s width and height when referenced in a [GuiSize subroutine](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize). They apply to the window\'s client area, which is the area excluding title bar, menu bar, and borders. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        ],
     },
     {
         body: 'A_GuiWidth',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiWidth',
         group: 'GUI',
-        doc: 'These contain the GUI window\'s width and height when referenced in a [GuiSize subroutine](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize). They apply to the window\'s client area, which is the area excluding title bar, menu bar, and borders. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        doc: [
+            'These contain the GUI window\'s width and height when referenced in a [GuiSize subroutine](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize). They apply to the window\'s client area, which is the area excluding title bar, menu bar, and borders. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        ],
     },
     {
         body: 'A_GuiX',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiX',
         group: 'GUI',
-        doc: 'These contain the X and Y coordinates for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) and [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) events. Coordinates are relative to the upper-left corner of the window. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        doc: [
+            'These contain the X and Y coordinates for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) and [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) events. Coordinates are relative to the upper-left corner of the window. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        ],
     },
     {
         body: 'A_GuiY',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#GuiY',
         group: 'GUI',
-        doc: 'These contain the X and Y coordinates for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) and [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) events. Coordinates are relative to the upper-left corner of the window. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        doc: [
+            'These contain the X and Y coordinates for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) and [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) events. Coordinates are relative to the upper-left corner of the window. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 "Applies to AutoHotkey v1.1.11 and later") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        ],
     },
     {
         body: 'A_Hour',
@@ -443,31 +495,31 @@ export const AVariablesList: TAElement[] = [
             '    FormatTime, OutputVar, , h:mm:ss tt',
             '    MsgBox % OutputVar',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_IPAddress1',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
-        doc: 'The IP addresses of the first 4 network adapters in the computer.',
+        doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
         body: 'A_IPAddress2',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
-        doc: 'The IP addresses of the first 4 network adapters in the computer.',
+        doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
         body: 'A_IPAddress3',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
-        doc: 'The IP addresses of the first 4 network adapters in the computer.',
+        doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
         body: 'A_IPAddress4',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress',
         group: 'OS',
-        doc: 'The IP addresses of the first 4 network adapters in the computer.',
+        doc: ['The IP addresses of the first 4 network adapters in the computer.'],
     },
     {
         body: 'A_IconFile',
@@ -479,19 +531,21 @@ export const AVariablesList: TAElement[] = [
             '```ahk',
             '    Menu, tray, icon ;-- in which case it\'s the full path and name of the icon\'s file.',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_IconHidden',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IconHidden',
         group: 'Setting',
-        doc: 'Contains 1 if the [tray icon](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon) is currently hidden or 0 otherwise. The icon can be hidden via [#NoTrayIcon](https://www.autohotkey.com/docs/v1/lib/_NoTrayIcon.htm) or the [Menu](https://www.autohotkey.com/docs/v1/lib/Menu.htm) command.',
+        doc: [
+            'Contains 1 if the [tray icon](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon) is currently hidden or 0 otherwise. The icon can be hidden via [#NoTrayIcon](https://www.autohotkey.com/docs/v1/lib/_NoTrayIcon.htm) or the [Menu](https://www.autohotkey.com/docs/v1/lib/Menu.htm) command.',
+        ],
     },
     {
         body: 'A_IconNumber',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IconNumber',
         group: 'Setting',
-        doc: 'Blank if A_IconFile is blank. Otherwise, it\'s the number of the icon in A_IconFile (typically 1).',
+        doc: ['Blank if A_IconFile is blank. Otherwise, it\'s the number of the icon in A_IconFile (typically 1).'],
     },
     {
         body: 'A_IconTip',
@@ -503,19 +557,23 @@ export const AVariablesList: TAElement[] = [
             '```ahk',
             '    Menu, Tray, Tip ;-- in which case it\'s the text of the tip.',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Index',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Index',
         group: 'Loop',
-        doc: 'This is the number of the current loop iteration (a 64-bit integer). For example, the first time the script executes the body of a loop, this variable will contain the number 1. For details see [Loop](https://www.autohotkey.com/docs/v1/lib/Loop.htm) or [While-loop](https://www.autohotkey.com/docs/v1/lib/While.htm).',
+        doc: [
+            'This is the number of the current loop iteration (a 64-bit integer). For example, the first time the script executes the body of a loop, this variable will contain the number 1. For details see [Loop](https://www.autohotkey.com/docs/v1/lib/Loop.htm) or [While-loop](https://www.autohotkey.com/docs/v1/lib/While.htm).',
+        ],
     },
     {
         body: 'A_Is64bitOS',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS',
         group: 'OS',
-        doc: '[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 "Applies to AutoHotkey v1.1.08 and later") Contains 1 (true) if the OS is 64-bit or 0 (false) if it is 32-bit.',
+        doc: [
+            '[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 "Applies to AutoHotkey v1.1.08 and later") Contains 1 (true) if the OS is 64-bit or 0 (false) if it is 32-bit.',
+        ],
     },
     {
         body: 'A_IsAdmin',
@@ -525,7 +583,7 @@ export const AVariablesList: TAElement[] = [
             'If the current user has admin rights, this variable contains `1`. Otherwise, it contains `0`.',
             '',
             '- To have the script restart itself as admin (or show a prompt to the user requesting admin), use [Run \\*RunAs](https://www.autohotkey.com/docs/v1/lib/Run.htm#RunAs). However, note that running the script as admin causes all programs launched by the script to also run as admin. For a possible alternative, see [the FAQ](https://www.autohotkey.com/docs/v1/FAQ.htm#uac).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_IsCompiled',
@@ -535,7 +593,7 @@ export const AVariablesList: TAElement[] = [
             'Contains 1 if the script is running as a [compiled EXE](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) and an empty string (which is considered [false](https://www.autohotkey.com/docs/v1/Variables.htm#Boolean)) if it is not.',
             '',
             'For non-compiled scripts prior to [[v1.1.06]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00), A_IsCompiled was left undefined; that is, the script could assign to it, and attempting to read it could trigger a [UseUnsetGlobal warning](https://www.autohotkey.com/docs/v1/lib/_Warn.htm). In later versions it is always defined and is read-only.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_IsCritical',
@@ -551,19 +609,23 @@ export const AVariablesList: TAElement[] = [
             '    ; followed later by',
             '    Critical %Old_IsCritical%',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_IsPaused',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsPaused',
         group: 'Setting',
-        doc: 'Contains 1 if the [thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) immediately underneath the current thread is [paused](https://www.autohotkey.com/docs/v1/lib/Pause.htm). Otherwise it contains 0.',
+        doc: [
+            'Contains 1 if the [thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) immediately underneath the current thread is [paused](https://www.autohotkey.com/docs/v1/lib/Pause.htm). Otherwise it contains 0.',
+        ],
     },
     {
         body: 'A_IsSuspended',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#IsSuspended',
         group: 'Setting',
-        doc: 'Contains 1 if the script is [suspended](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) and 0 otherwise.',
+        doc: [
+            'Contains 1 if the script is [suspended](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) and 0 otherwise.',
+        ],
     },
     {
         body: 'A_IsUnicode',
@@ -573,31 +635,39 @@ export const AVariablesList: TAElement[] = [
             'Contains 1 if strings are Unicode (16-bit) and an empty string (which is considered [false](https://www.autohotkey.com/docs/v1/Variables.htm#Boolean)) if strings are ANSI (8-bit). The format of strings depends on the version of AutoHotkey.exe which is used to run the script, or if it is compiled, which bin file was used to compile it.',
             '',
             'For ANSI executables prior to [[v1.1.06]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00), A_IsUnicode was left undefined; that is, the script could assign to it, and attempting to read it could trigger a [UseUnsetGlobal warning](https://www.autohotkey.com/docs/v1/lib/_Warn.htm). In later versions it is always defined and is read-only.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_KeyDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelay',
         group: 'Setting',
-        doc: 'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) (always decimal, not hex). A_KeyDuration requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        doc: [
+            'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) (always decimal, not hex). A_KeyDuration requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        ],
     },
     {
         body: 'A_KeyDelayPlay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelayPlay',
         group: 'Setting',
-        doc: 'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) for the [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail) mode (always decimal, not hex). Requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        doc: [
+            'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) for the [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail) mode (always decimal, not hex). Requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        ],
     },
     {
         body: 'A_KeyDuration',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelay',
         group: 'Setting',
-        doc: 'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) (always decimal, not hex). A_KeyDuration requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        doc: [
+            'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) (always decimal, not hex). A_KeyDuration requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        ],
     },
     {
         body: 'A_KeyDurationPlay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#KeyDelayPlay',
         group: 'Setting',
-        doc: 'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) for the [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail) mode (always decimal, not hex). Requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        doc: [
+            'The current delay or duration set by [SetKeyDelay](https://www.autohotkey.com/docs/v1/lib/SetKeyDelay.htm) for the [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail) mode (always decimal, not hex). Requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        ],
     },
     {
         body: 'A_Language',
@@ -737,13 +807,15 @@ export const AVariablesList: TAElement[] = [
             'the_language := languageCode_%A_Language%  ; Get the name of the system\'s default language.',
             'MsgBox %the_language%  ; Display the language name.',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_LastError',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#LastError',
         group: 'Misc.',
-        doc: 'The result from the OS\'s GetLastError() function or the last COM object invocation. For details, see [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#LastError) and [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm#LastError).',
+        doc: [
+            'The result from the OS\'s GetLastError() function or the last COM object invocation. For details, see [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#LastError) and [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm#LastError).',
+        ],
     },
     {
         body: 'A_LineFile',
@@ -755,7 +827,7 @@ export const AVariablesList: TAElement[] = [
             '- If the script was [compiled](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) based on a [.bin file](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe-base), this is the full path and name of the current executable file, the same as [A_ScriptFullPath](https://www.autohotkey.com/docs/v1/Variables.htm#ScriptFullPath).',
             '',
             '- [[v1.1.34+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.34.00 "Applies to AutoHotkey v1.1.34 and later") If the script is [embedded](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts), A_LineFile contains an asterisk (\\*) followed by the resource name; e.g. \\*#1',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_LineNumber',
@@ -769,169 +841,197 @@ export const AVariablesList: TAElement[] = [
             '```',
             '',
             '- Since a [compiled script](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) has merged all its [#Include files](https://www.autohotkey.com/docs/v1/lib/_Include.htm) into one big script, its line numbering may be different than when it is run in non-compiled mode.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ListLines',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ListLines',
         group: 'Setting',
-        doc: 'Contains 1 if [ListLines](https://www.autohotkey.com/docs/v1/lib/ListLines.htm) is enabled. Otherwise it contains 0.',
+        doc: [
+            'Contains 1 if [ListLines](https://www.autohotkey.com/docs/v1/lib/ListLines.htm) is enabled. Otherwise it contains 0.',
+        ],
     },
     {
         body: 'A_LoopField',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopParse.htm#LoopField',
         group: 'LoopParse',
-        doc: 'The built-in variable **A_LoopField** exists within any parsing loop. It contains the contents of the current substring (field) from _InputVar_. If an inner parsing loop is enclosed by an outer parsing loop, the innermost loop\'s field will take precedence.',
+        doc: [
+            'The built-in variable **A_LoopField** exists within any parsing loop. It contains the contents of the current substring (field) from _InputVar_. If an inner parsing loop is enclosed by an outer parsing loop, the innermost loop\'s field will take precedence.',
+        ],
     },
     {
         body: 'A_LoopFileAttrib',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileAttrib',
         group: 'LoopFile',
-        doc: 'The attributes of the file currently retrieved.',
+        doc: ['The attributes of the file currently retrieved.'],
     },
     {
         body: 'A_LoopFileDir',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileDir',
         group: 'LoopFile',
-        doc: 'The path of the directory in which A_LoopFileName resides. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. A root directory will not contain a trailing backslash. For example: C:',
+        doc: [
+            'The path of the directory in which A_LoopFileName resides. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. A root directory will not contain a trailing backslash. For example: C:',
+        ],
     },
     {
         body: 'A_LoopFileExt',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileExt',
         group: 'LoopFile',
-        doc: 'The file\'s extension (e.g. TXT, DOC, or EXE). The period (.) is not included.',
+        doc: ['The file\'s extension (e.g. TXT, DOC, or EXE). The period (.) is not included.'],
     },
     {
         body: 'A_LoopFileFullPath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileFullPath',
         group: 'LoopFile',
-        doc: 'The path and name of the file/folder currently retrieved. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. In addition, any short (8.3) folder names in FilePattern will still be short (see next item to get the long version).        \nA_LoopFilePath is available in [v1.1.28+] as an alias of A_LoopFileFullPath, which is a misnomer. ',
+        doc: [
+            'The path and name of the file/folder currently retrieved. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. In addition, any short (8.3) folder names in FilePattern will still be short (see next item to get the long version).        \nA_LoopFilePath is available in [v1.1.28+] as an alias of A_LoopFileFullPath, which is a misnomer. ',
+        ],
     },
     {
         body: 'A_LoopFileLongPath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileLongPath',
         group: 'LoopFile',
-        doc: 'This is different than A_LoopFileFullPath in the following ways: 1) It always contains the absolute/complete path of the file even if FilePattern contains a relative path; 2) Any short (8.3) folder names in FilePattern itself are converted to their long names; 3) Characters in FilePattern are converted to uppercase or lowercase to match the case stored in the file system. This is useful for converting file names -- such as those passed into a script as command line parameters -- to their exact path names as shown by Explorer. ',
+        doc: [
+            'This is different than A_LoopFileFullPath in the following ways: 1) It always contains the absolute/complete path of the file even if FilePattern contains a relative path; 2) Any short (8.3) folder names in FilePattern itself are converted to their long names; 3) Characters in FilePattern are converted to uppercase or lowercase to match the case stored in the file system. This is useful for converting file names -- such as those passed into a script as command line parameters -- to their exact path names as shown by Explorer. ',
+        ],
     },
     {
         body: 'A_LoopFileName',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileName',
         group: 'LoopFile',
-        doc: 'The name of the file or folder currently retrieved (without the path).',
+        doc: ['The name of the file or folder currently retrieved (without the path).'],
     },
     {
         body: 'A_LoopFilePath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileFullPath',
         group: 'LoopFile',
-        doc: 'The path and name of the file/folder currently retrieved. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. In addition, any short (8.3) folder names in FilePattern will still be short (see next item to get the long version).        \nA_LoopFilePath is available in [v1.1.28+] as an alias of A_LoopFileFullPath, which is a misnomer. ',
+        doc: [
+            'The path and name of the file/folder currently retrieved. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. In addition, any short (8.3) folder names in FilePattern will still be short (see next item to get the long version).        \nA_LoopFilePath is available in [v1.1.28+] as an alias of A_LoopFileFullPath, which is a misnomer. ',
+        ],
     },
     {
         body: 'A_LoopFileShortName',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileShortName',
         group: 'LoopFile',
-        doc: 'The 8.3 short name, or alternate name of the file. If the file doesn\'t have one (due to the long name being shorter than 8.3 or perhaps because short-name generation is disabled on an NTFS file system), A_LoopFileName will be retrieved instead. ',
+        doc: [
+            'The 8.3 short name, or alternate name of the file. If the file doesn\'t have one (due to the long name being shorter than 8.3 or perhaps because short-name generation is disabled on an NTFS file system), A_LoopFileName will be retrieved instead. ',
+        ],
     },
     {
         body: 'A_LoopFileShortPath',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileShortPath',
         group: 'LoopFile',
-        doc: 'The 8.3 short path and name of the file/folder currently retrieved. For example: C:\\MYDOCU~1\\ADDRES~1.txt. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative.         \nTo retrieve the complete 8.3 path and name for a single file or folder, specify its name for FilePattern as in this example:         Loop, C:\\My Documents\\Address List.txt ShortPathName := A_LoopFileShortPath        \nNote: This variable will be blank if the file does not have a short name, which can happen on systems where NtfsDisable8dot3NameCreation has been set in the registry. It will also be blank if FilePattern contains a relative path and the body of the loop uses SetWorkingDir to switch away from the working directory in effect for the loop itself. ',
+        doc: [
+            'The 8.3 short path and name of the file/folder currently retrieved. For example: C:\\MYDOCU~1\\ADDRES~1.txt. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative.         \nTo retrieve the complete 8.3 path and name for a single file or folder, specify its name for FilePattern as in this example:         Loop, C:\\My Documents\\Address List.txt ShortPathName := A_LoopFileShortPath        \nNote: This variable will be blank if the file does not have a short name, which can happen on systems where NtfsDisable8dot3NameCreation has been set in the registry. It will also be blank if FilePattern contains a relative path and the body of the loop uses SetWorkingDir to switch away from the working directory in effect for the loop itself. ',
+        ],
     },
     {
         body: 'A_LoopFileSize',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileSize',
         group: 'LoopFile',
-        doc: 'The size in bytes of the file currently retrieved. Files larger than 4 gigabytes are also supported.',
+        doc: ['The size in bytes of the file currently retrieved. Files larger than 4 gigabytes are also supported.'],
     },
     {
         body: 'A_LoopFileSizeKB',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileSizeKB',
         group: 'LoopFile',
-        doc: 'The size in Kbytes of the file currently retrieved, rounded down to the nearest integer.',
+        doc: ['The size in Kbytes of the file currently retrieved, rounded down to the nearest integer.'],
     },
     {
         body: 'A_LoopFileSizeMB',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileSizeMB',
         group: 'LoopFile',
-        doc: 'The size in Mbytes of the file currently retrieved, rounded down to the nearest integer.',
+        doc: ['The size in Mbytes of the file currently retrieved, rounded down to the nearest integer.'],
     },
     {
         body: 'A_LoopFileTimeAccessed',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileTimeAccessed',
         group: 'LoopFile',
-        doc: 'The time the file was last accessed. Format YYYYMMDDHH24MISS.',
+        doc: ['The time the file was last accessed. Format YYYYMMDDHH24MISS.'],
     },
     {
         body: 'A_LoopFileTimeCreated',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileTimeCreated',
         group: 'LoopFile',
-        doc: 'The time the file was created. Format YYYYMMDDHH24MISS.',
+        doc: ['The time the file was created. Format YYYYMMDDHH24MISS.'],
     },
     {
         body: 'A_LoopFileTimeModified',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm#LoopFileTimeModified',
         group: 'LoopFile',
-        doc: 'The time the file was last modified. Format YYYYMMDDHH24MISS.',
+        doc: ['The time the file was last modified. Format YYYYMMDDHH24MISS.'],
     },
     {
         body: 'A_LoopReadLine',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm#LoopReadLine',
         group: 'LoopReadFile',
-        doc: 'The built-in variable **A_LoopReadLine** exists within any file-reading loop. It contains the contents of the current line excluding the carriage return and linefeed (`r`n) that marks the end of the line. If an inner file-reading loop is enclosed by an outer file-reading loop, the innermost loop\'s file-line will take precedence.',
+        doc: [
+            'The built-in variable **A_LoopReadLine** exists within any file-reading loop. It contains the contents of the current line excluding the carriage return and linefeed (`r`n) that marks the end of the line. If an inner file-reading loop is enclosed by an outer file-reading loop, the innermost loop\'s file-line will take precedence.',
+        ],
     },
     {
         body: 'A_LoopRegKey',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
-        doc: 'The name of the root key being accessed (HKEY_LOCAL_MACHINE, HKEY_USERS, HKEY_CURRENT_USER, HKEY_CLASSES_ROOT, or HKEY_CURRENT_CONFIG). For remote registry access, this value will not include the computer name.',
+        doc: [
+            'The name of the root key being accessed (HKEY_LOCAL_MACHINE, HKEY_USERS, HKEY_CURRENT_USER, HKEY_CLASSES_ROOT, or HKEY_CURRENT_CONFIG). For remote registry access, this value will not include the computer name.',
+        ],
     },
     {
         body: 'A_LoopRegName',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
-        doc: 'Name of the currently retrieved item, which can be either a value name or the name of a subkey. Value names displayed by Windows RegEdit as "(Default)" will be retrieved if a value has been assigned to them, but A_LoopRegName will be blank for them.',
+        doc: [
+            'Name of the currently retrieved item, which can be either a value name or the name of a subkey. Value names displayed by Windows RegEdit as "(Default)" will be retrieved if a value has been assigned to them, but A_LoopRegName will be blank for them.',
+        ],
     },
     {
         body: 'A_LoopRegSubKey',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
-        doc: 'Name of the current subkey. This will be the same as the Key parameter unless the Recurse        parameter is being used to recursively explore other subkeys. In that case, it will be the full path of the currently retrieved item, not including the root key. For example: Software\\SomeApplication\\My SubKey',
+        doc: [
+            'Name of the current subkey. This will be the same as the Key parameter unless the Recurse        parameter is being used to recursively explore other subkeys. In that case, it will be the full path of the currently retrieved item, not including the root key. For example: Software\\SomeApplication\\My SubKey',
+        ],
     },
     {
         body: 'A_LoopRegTimeModified',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
-        doc: 'The time the current subkey or any of its values was last modified. Format YYYYMMDDHH24MISS. This variable will be empty if the currently retrieved item is not a subkey (i.e. A_LoopRegType is not the word KEY).',
+        doc: [
+            'The time the current subkey or any of its values was last modified. Format YYYYMMDDHH24MISS. This variable will be empty if the currently retrieved item is not a subkey (i.e. A_LoopRegType is not the word KEY).',
+        ],
     },
     {
         body: 'A_LoopRegType',
         uri: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#vars',
         group: 'LoopReg',
-        doc: 'The type of the currently retrieved item, which is one of the following words: KEY (i.e. the currently retrieved item is a subkey not a value), REG_SZ, REG_EXPAND_SZ, REG_MULTI_SZ, REG_DWORD, REG_QWORD, REG_BINARY, REG_LINK, REG_RESOURCE_LIST, REG_FULL_RESOURCE_DESCRIPTOR, REG_RESOURCE_REQUIREMENTS_LIST, REG_DWORD_BIG_ENDIAN (probably rare on most Windows hardware). It will be empty if the currently retrieved item is of an unknown type.',
+        doc: [
+            'The type of the currently retrieved item, which is one of the following words: KEY (i.e. the currently retrieved item is a subkey not a value), REG_SZ, REG_EXPAND_SZ, REG_MULTI_SZ, REG_DWORD, REG_QWORD, REG_BINARY, REG_LINK, REG_RESOURCE_LIST, REG_FULL_RESOURCE_DESCRIPTOR, REG_RESOURCE_REQUIREMENTS_LIST, REG_DWORD_BIG_ENDIAN (probably rare on most Windows hardware). It will be empty if the currently retrieved item is of an unknown type.',
+        ],
     },
     {
         body: 'A_MM',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MM',
         group: 'Date',
-        doc: 'Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`.',
+        doc: ['Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`.'],
     },
     {
         body: 'A_Mon',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MM',
         group: 'Date',
-        doc: 'Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`.',
+        doc: ['Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`.'],
     },
     {
         body: 'A_MMM',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MMM',
         group: 'Date',
-        doc: 'Current month\'s abbreviation in the current user\'s language, e.g. `Jul`',
+        doc: ['Current month\'s abbreviation in the current user\'s language, e.g. `Jul`'],
     },
     {
         body: 'A_MMMM',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MMMM',
         group: 'Date',
-        doc: 'Current month\'s full name in the current user\'s language, e.g. `July`',
+        doc: ['Current month\'s full name in the current user\'s language, e.g. `July`'],
     },
     {
         body: 'A_MSec',
@@ -943,25 +1043,29 @@ export const AVariablesList: TAElement[] = [
             '```ahk',
             '    Milliseconds := A_MSec + 0.',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Min',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Min',
         group: 'Date',
-        doc: 'Current 2-digit minute (00-59). ',
+        doc: ['Current 2-digit minute (00-59). '],
     },
     {
         body: 'A_MouseDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MouseDelay',
         group: 'Setting',
-        doc: 'The current delay set by [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) (always decimal, not hex). A_MouseDelay is for the traditional SendEvent mode, whereas A_MouseDelayPlay is for [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail). A_MouseDelayPlay requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        doc: [
+            'The current delay set by [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) (always decimal, not hex). A_MouseDelay is for the traditional SendEvent mode, whereas A_MouseDelayPlay is for [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail). A_MouseDelayPlay requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        ],
     },
     {
         body: 'A_MouseDelayPlay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#MouseDelay',
         group: 'Setting',
-        doc: 'The current delay set by [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) (always decimal, not hex). A_MouseDelay is for the traditional SendEvent mode, whereas A_MouseDelayPlay is for [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail). A_MouseDelayPlay requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        doc: [
+            'The current delay set by [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) (always decimal, not hex). A_MouseDelay is for the traditional SendEvent mode, whereas A_MouseDelayPlay is for [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail). A_MouseDelayPlay requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later").',
+        ],
     },
     {
         body: 'A_MyDocuments',
@@ -974,7 +1078,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_MyDocuments',
             '    MsgBox % "C:\\Users\\<UserName>\\Documents"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Now',
@@ -984,19 +1088,23 @@ export const AVariablesList: TAElement[] = [
             'The current local time in [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format.',
             '',
             '**Note**: Date and time math can be performed with [EnvAdd](https://www.autohotkey.com/docs/v1/lib/EnvAdd.htm) and [EnvSub](https://www.autohotkey.com/docs/v1/lib/EnvSub.htm). Also, [FormatTime](https://www.autohotkey.com/docs/v1/lib/FormatTime.htm) can format the date and/or time according to your locale or preferences.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_NowUTC',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#NowUTC',
         group: 'Date',
-        doc: 'The current Coordinated Universal Time (UTC) in [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format. UTC is essentially the same as Greenwich Mean Time (GMT).',
+        doc: [
+            'The current Coordinated Universal Time (UTC) in [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format. UTC is essentially the same as Greenwich Mean Time (GMT).',
+        ],
     },
     {
         body: 'A_OSType',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#OSType',
         group: 'OS',
-        doc: 'The type of operating system being run. Since AutoHotkey 1.1 only supports NT-based operating systems, this is always WIN32_NT. Older versions of AutoHotkey return WIN32_WINDOWS when run on Windows 95/98/ME.',
+        doc: [
+            'The type of operating system being run. Since AutoHotkey 1.1 only supports NT-based operating systems, this is always WIN32_NT. Older versions of AutoHotkey return WIN32_WINDOWS when run on Windows 95/98/ME.',
+        ],
     },
     {
         body: 'A_OSVersion',
@@ -1019,19 +1127,21 @@ export const AVariablesList: TAElement[] = [
             '        ExitApp',
             '    }',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_PriorHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#PriorHotkey',
         group: 'Hotkeys',
-        doc: 'Same as above except for the previous hotkey. It will be blank if none.',
+        doc: ['Same as above except for the previous hotkey. It will be blank if none.'],
     },
     {
         body: 'A_PriorKey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#PriorKey',
         group: 'Hotkeys',
-        doc: '[[v1.1.01+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later") The name of the last key which was pressed prior to the most recent key-press or key-release, or blank if no applicable key-press can be found in the key history. All input generated by AutoHotkey scripts is excluded. For this variable to be of use, the [keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) must be installed and [key history](https://www.autohotkey.com/docs/v1/lib/KeyHistory.htm) must be enabled.',
+        doc: [
+            '[[v1.1.01+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 "Applies to AutoHotkey v1.1.01 and later") The name of the last key which was pressed prior to the most recent key-press or key-release, or blank if no applicable key-press can be found in the key history. All input generated by AutoHotkey scripts is excluded. For this variable to be of use, the [keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) must be installed and [key history](https://www.autohotkey.com/docs/v1/lib/KeyHistory.htm) must be enabled.',
+        ],
     },
     {
         body: 'A_ProgramFiles',
@@ -1047,7 +1157,7 @@ export const AVariablesList: TAElement[] = [
             '> - The _ProgramFiles(x86)_ environment variable contains the path of the 32-bit Program Files directory.',
             '',
             '- [[v1.0.43.08+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes "Applies to AutoHotkey v1.0.43.08 and later"): The A_prefix may be omitted, which helps ease the transition to [#NoEnv](https://www.autohotkey.com/docs/v1/lib/_NoEnv.htm).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Programs',
@@ -1060,7 +1170,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_Programs',
             '    MsgBox % "C:\\Users\\<UserName>\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ProgramsCommon',
@@ -1073,25 +1183,31 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_ProgramsCommon',
             '    MsgBox % "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_PtrSize',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#PtrSize',
         group: 'OS',
-        doc: '[[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 " Applies to:AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later") Contains the size of a pointer, in bytes. This is either 4 (32-bit) or 8 (64-bit), depending on what type of executable (EXE) is running the script.',
+        doc: [
+            '[[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 " Applies to:AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later") Contains the size of a pointer, in bytes. This is either 4 (32-bit) or 8 (64-bit), depending on what type of executable (EXE) is running the script.',
+        ],
     },
     {
         body: 'A_RegView',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#RegView',
         group: 'Setting',
-        doc: '[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 "Applies to AutoHotkey v1.1.08 and later") The current registry view as set by [SetRegView](https://www.autohotkey.com/docs/v1/lib/SetRegView.htm).',
+        doc: [
+            '[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 "Applies to AutoHotkey v1.1.08 and later") The current registry view as set by [SetRegView](https://www.autohotkey.com/docs/v1/lib/SetRegView.htm).',
+        ],
     },
     {
         body: 'A_ScreenDPI',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScreenDPI',
         group: 'OS',
-        doc: 'Number of pixels per logical inch along the screen width. In a system with multiple display monitors, this value is the same for all monitors. On most systems this is 96; it depends on the system\'s text size (DPI) setting. See also [Gui -DPIScale](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        doc: [
+            'Number of pixels per logical inch along the screen width. In a system with multiple display monitors, this value is the same for all monitors. On most systems this is 96; it depends on the system\'s text size (DPI) setting. See also [Gui -DPIScale](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale).',
+        ],
     },
     {
         body: 'A_ScreenHeight',
@@ -1108,7 +1224,7 @@ export const AVariablesList: TAElement[] = [
             '[SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm), VirtualHeight, 79',
             '',
             'In addition, use [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) to discover the work area of a monitor, which can be smaller than the monitor\'s total area because the taskbar and other registered desktop toolbars are excluded.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ScreenWidth',
@@ -1125,13 +1241,15 @@ export const AVariablesList: TAElement[] = [
             '[SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm), VirtualHeight, 79',
             '',
             'In addition, use [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) to discover the work area of a monitor, which can be smaller than the monitor\'s total area because the taskbar and other registered desktop toolbars are excluded.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ScriptDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScriptDir',
         group: 'Script',
-        doc: 'The full path of the directory where the current script is located. The final backslash is omitted (even for root directories).',
+        doc: [
+            'The full path of the directory where the current script is located. The final backslash is omitted (even for root directories).',
+        ],
     },
     {
         body: 'A_ScriptFullPath',
@@ -1140,13 +1258,15 @@ export const AVariablesList: TAElement[] = [
         doc: [
             'The full path of the current script, e.g. `C:\\Scripts\\My Script.ahk`',
             '- If the script is [compiled](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) or [embedded](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts), this is the full path of the current executable file.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ScriptHwnd',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ScriptHwnd',
         group: 'Script',
-        doc: 'The unique ID (HWND/handle) of the script\'s hidden [main window](https://www.autohotkey.com/docs/v1/Program.htm#main-window).',
+        doc: [
+            'The unique ID (HWND/handle) of the script\'s hidden [main window](https://www.autohotkey.com/docs/v1/Program.htm#main-window).',
+        ],
     },
     {
         body: 'A_ScriptName',
@@ -1155,31 +1275,37 @@ export const AVariablesList: TAElement[] = [
         doc: [
             'The file name of the current script, without its path, e.g. `MyScript.ahk`',
             '- If the script is [compiled](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) or [embedded](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts), this is the name of the current executable file.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Sec',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Sec',
         group: 'Date',
-        doc: 'Current 2-digit second (00-59).',
+        doc: ['Current 2-digit second (00-59).'],
     },
     {
         body: 'A_SendLevel',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#SendLevel',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current [SendLevel](https://www.autohotkey.com/docs/v1/lib/SendLevel.htm) setting (an integer between 0 and 100, inclusive).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current [SendLevel](https://www.autohotkey.com/docs/v1/lib/SendLevel.htm) setting (an integer between 0 and 100, inclusive).',
+        ],
     },
     {
         body: 'A_SendMode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#SendMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Event, Input, Play or InputThenPlay) set by [SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (Event, Input, Play or InputThenPlay) set by [SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm).',
+        ],
     },
     {
         body: 'A_Space',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Space',
         group: 'Spec',
-        doc: 'This variable contains a single space character. See [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) for details.',
+        doc: [
+            'This variable contains a single space character. See [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) for details.',
+        ],
     },
     {
         body: 'A_StartMenu',
@@ -1192,7 +1318,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_StartMenu',
             '    MsgBox % "C:\\Users\\<UserName>\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_StartMenuCommon',
@@ -1205,7 +1331,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_StartMenuCommon',
             '    MsgBox % "C:\\ProgramData\\Microsoft\\Windows\\Start Menu"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Startup',
@@ -1218,7 +1344,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_Startup',
             '    MsgBox % "C:\\Users\\<UserName>\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_StartupCommon',
@@ -1231,25 +1357,31 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_StartupCommon',
             '    MsgBox % "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_StoreCapsLockMode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StoreCapslockMode',
         group: 'Setting',
-        doc: '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (On or Off) set by [SetStoreCapsLockMode](https://www.autohotkey.com/docs/v1/lib/SetStoreCapslockMode.htm).',
+        doc: [
+            '[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 "Applies to AutoHotkey v1.1.23 and later") The current mode (On or Off) set by [SetStoreCapsLockMode](https://www.autohotkey.com/docs/v1/lib/SetStoreCapslockMode.htm).',
+        ],
     },
     {
         body: 'A_StringCaseSense',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#StringCaseSense',
         group: 'Setting',
-        doc: 'The current mode (`On, Off, or Locale`) set by [StringCaseSense](https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm).',
+        doc: [
+            'The current mode (`On, Off, or Locale`) set by [StringCaseSense](https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm).',
+        ],
     },
     {
         body: 'A_Tab',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Tab',
         group: 'Spec',
-        doc: 'This variable contains a single tab character. See [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) for details.',
+        doc: [
+            'This variable contains a single tab character. See [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) for details.',
+        ],
     },
     {
         body: 'A_Temp',
@@ -1259,13 +1391,15 @@ export const AVariablesList: TAElement[] = [
             'The full path and name of the folder designated to hold temporary files. It is retrieved from one of the following locations (in order): 1) the [environment variables](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) TMP, TEMP, or USERPROFILE; 2) the Windows directory.',
             '',
             '- For example::  `C:\\Users\\<UserName>\\AppData\\Local\\Temp`',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ThisFunc',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisFunc',
         group: 'Script',
-        doc: 'The name of the [user-defined function](https://www.autohotkey.com/docs/v1/Functions.htm) that is currently executing (blank if none); for example: MyFunction. See also: [IsFunc()](https://www.autohotkey.com/docs/v1/lib/IsFunc.htm)',
+        doc: [
+            'The name of the [user-defined function](https://www.autohotkey.com/docs/v1/Functions.htm) that is currently executing (blank if none); for example: MyFunction. See also: [IsFunc()](https://www.autohotkey.com/docs/v1/lib/IsFunc.htm)',
+        ],
     },
     {
         body: 'A_ThisHotkey',
@@ -1279,31 +1413,37 @@ export const AVariablesList: TAElement[] = [
             '- When a hotstring is first created, the exact text used to create it becomes the permanent name of the hotstring.',
             '',
             '- See also: [A_ThisLabel](https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel)',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_ThisLabel',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel',
         group: 'Script',
-        doc: 'The name of the [label](https://www.autohotkey.com/docs/v1/misc/Labels.htm) (subroutine) that is currently executing (blank if none); for example: MyLabel. It is updated whenever the script executes [Gosub](https://www.autohotkey.com/docs/v1/lib/Gosub.htm)/[Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) or [Goto](https://www.autohotkey.com/docs/v1/lib/Goto.htm). It is also updated for automatically-called labels such as [timers](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm), [GUI threads](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DefaultWin), [menu items](https://www.autohotkey.com/docs/v1/lib/Menu.htm), [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm), [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm), [OnClipboardChange labels](https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label "Deprecated. New scripts should use OnClipboardChange() instead."), and [OnExit labels](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command "Deprecated. New scripts should use OnExit() instead."). However, A_ThisLabel is not updated when execution "falls into" a label from above; when that happens, A_ThisLabel retains its previous value. See also: [A_ThisHotkey](https://www.autohotkey.com/docs/v1/Variables.htm#ThisHotkey) and [IsLabel()](https://www.autohotkey.com/docs/v1/lib/IsLabel.htm)',
+        doc: [
+            'The name of the [label](https://www.autohotkey.com/docs/v1/misc/Labels.htm) (subroutine) that is currently executing (blank if none); for example: MyLabel. It is updated whenever the script executes [Gosub](https://www.autohotkey.com/docs/v1/lib/Gosub.htm)/[Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) or [Goto](https://www.autohotkey.com/docs/v1/lib/Goto.htm). It is also updated for automatically-called labels such as [timers](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm), [GUI threads](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DefaultWin), [menu items](https://www.autohotkey.com/docs/v1/lib/Menu.htm), [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm), [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm), [OnClipboardChange labels](https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label "Deprecated. New scripts should use OnClipboardChange() instead."), and [OnExit labels](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command "Deprecated. New scripts should use OnExit() instead."). However, A_ThisLabel is not updated when execution "falls into" a label from above; when that happens, A_ThisLabel retains its previous value. See also: [A_ThisHotkey](https://www.autohotkey.com/docs/v1/Variables.htm#ThisHotkey) and [IsLabel()](https://www.autohotkey.com/docs/v1/lib/IsLabel.htm)',
+        ],
     },
     {
         body: 'A_ThisMenu',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenu',
         group: 'Hotkeys',
-        doc: 'The name of the menu from which A_ThisMenuItem was selected.',
+        doc: ['The name of the menu from which A_ThisMenuItem was selected.'],
     },
     {
         body: 'A_ThisMenuItem',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenuItem',
         group: 'Hotkeys',
-        doc: 'The name of the most recently selected [custom menu item](https://www.autohotkey.com/docs/v1/lib/Menu.htm) (blank if none).',
+        doc: [
+            'The name of the most recently selected [custom menu item](https://www.autohotkey.com/docs/v1/lib/Menu.htm) (blank if none).',
+        ],
     },
     {
         body: 'A_ThisMenuItemPos',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenuItemPos',
         group: 'Hotkeys',
-        doc: 'A number indicating the current position of A_ThisMenuItem within A_ThisMenu. The first item in the menu is 1, the second is 2, and so on. Menu separator lines are counted. This variable is blank if A_ThisMenuItem is blank or no longer exists within A_ThisMenu. It is also blank if A_ThisMenu itself no longer exists.',
+        doc: [
+            'A number indicating the current position of A_ThisMenuItem within A_ThisMenu. The first item in the menu is 1, the second is 2, and so on. Menu separator lines are counted. This variable is blank if A_ThisMenuItem is blank or no longer exists within A_ThisMenu. It is also blank if A_ThisMenu itself no longer exists.',
+        ],
     },
     {
         body: 'A_TickCount',
@@ -1320,7 +1460,7 @@ export const AVariablesList: TAElement[] = [
             '```',
             '',
             'If you need more precision than A_TickCount\'s 10ms, use [QueryPerformanceCounter()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#QPC).',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_TimeIdle',
@@ -1333,67 +1473,83 @@ export const AVariablesList: TAElement[] = [
             'IfGreater, A_TimeIdle, 600000',
             '    MsgBox, % "The last keyboard or mouse activity was at least 10 minutes ago."',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_TimeIdleKeyboard',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdleKeyboard',
         group: 'User Idle Time',
-        doc: 'If the [keyboard hook](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) is installed, this is the number of milliseconds that have elapsed since the system last received physical keyboard input. Otherwise, this variable is equivalent to A_TimeIdle.',
+        doc: [
+            'If the [keyboard hook](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) is installed, this is the number of milliseconds that have elapsed since the system last received physical keyboard input. Otherwise, this variable is equivalent to A_TimeIdle.',
+        ],
     },
     {
         body: 'A_TimeIdleMouse',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdleMouse',
         group: 'User Idle Time',
-        doc: 'If the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed, this is the number of milliseconds that have elapsed since the system last received physical mouse input. Otherwise, this variable is equivalent to A_TimeIdle.',
+        doc: [
+            'If the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed, this is the number of milliseconds that have elapsed since the system last received physical mouse input. Otherwise, this variable is equivalent to A_TimeIdle.',
+        ],
     },
     {
         body: 'A_TimeIdlePhysical',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdlePhysical',
         group: 'User Idle Time',
-        doc: 'Similar to above but ignores artificial keystrokes and/or mouse clicks whenever the corresponding hook ([keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)) is installed; that is, it responds only to physical events. (This prevents simulated keystrokes and mouse clicks from falsely indicating that a user is present.) If neither hook is installed, this variable is equivalent to A_TimeIdle. If only one hook is installed, only its type of physical input affects A_TimeIdlePhysical (the other/non-installed hook\'s input, both physical and artificial, has no effect).',
+        doc: [
+            'Similar to above but ignores artificial keystrokes and/or mouse clicks whenever the corresponding hook ([keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)) is installed; that is, it responds only to physical events. (This prevents simulated keystrokes and mouse clicks from falsely indicating that a user is present.) If neither hook is installed, this variable is equivalent to A_TimeIdle. If only one hook is installed, only its type of physical input affects A_TimeIdlePhysical (the other/non-installed hook\'s input, both physical and artificial, has no effect).',
+        ],
     },
     {
         body: 'A_TimeSincePriorHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeSincePriorHotkey',
         group: 'Hotkeys',
-        doc: 'The number of milliseconds that have elapsed since A_PriorHotkey was pressed. It will be -1 whenever A_PriorHotkey is blank.',
+        doc: [
+            'The number of milliseconds that have elapsed since A_PriorHotkey was pressed. It will be -1 whenever A_PriorHotkey is blank.',
+        ],
     },
     {
         body: 'A_TimeSinceThisHotkey',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TimeSinceThisHotkey',
         group: 'Hotkeys',
-        doc: 'The number of milliseconds that have elapsed since A_ThisHotkey was pressed. It will be -1 whenever A_ThisHotkey is blank.',
+        doc: [
+            'The number of milliseconds that have elapsed since A_ThisHotkey was pressed. It will be -1 whenever A_ThisHotkey is blank.',
+        ],
     },
     {
         body: 'A_TitleMatchMode',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TitleMatchMode',
         group: 'Setting',
-        doc: 'The current mode set by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm): `1, 2, 3, or RegEx`',
+        doc: [
+            'The current mode set by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm): `1, 2, 3, or RegEx`',
+        ],
     },
     {
         body: 'A_TitleMatchModeSpeed',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#TitleMatchModeSpeed',
         group: 'Setting',
-        doc: 'The current match speed (fast or slow) set by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
+        doc: [
+            'The current match speed (fast or slow) set by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).',
+        ],
     },
     {
         body: 'A_UserName',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#UserName',
         group: 'OS',
-        doc: 'The logon name of the user who launched this script.',
+        doc: ['The logon name of the user who launched this script.'],
     },
     {
         body: 'A_WDay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WDay',
         group: 'Date',
-        doc: 'Current 1-digit day of the week (1-7). 1 is Sunday in all locales.',
+        doc: ['Current 1-digit day of the week (1-7). 1 is Sunday in all locales.'],
     },
     {
         body: 'A_WinDelay',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WinDelay',
         group: 'Setting',
-        doc: 'The current delay set by [SetWinDelay](https://www.autohotkey.com/docs/v1/lib/SetWinDelay.htm) (always decimal, not hex).',
+        doc: [
+            'The current delay set by [SetWinDelay](https://www.autohotkey.com/docs/v1/lib/SetWinDelay.htm) (always decimal, not hex).',
+        ],
     },
     {
         body: 'A_WinDir',
@@ -1406,19 +1562,23 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % A_WinDir',
             '    MsgBox % "C:\\Windows"',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_WorkingDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir',
         group: 'Script',
-        doc: 'The script\'s current working directory, which is where files will be accessed by default. The final backslash is not included unless it is the root directory. Two examples: C:\\ and C:\\My Documents. Use [SetWorkingDir](https://www.autohotkey.com/docs/v1/lib/SetWorkingDir.htm) to change the working directory.',
+        doc: [
+            'The script\'s current working directory, which is where files will be accessed by default. The final backslash is not included unless it is the root directory. Two examples: C:\\ and C:\\My Documents. Use [SetWorkingDir](https://www.autohotkey.com/docs/v1/lib/SetWorkingDir.htm) to change the working directory.',
+        ],
     },
     {
         body: 'A_InitialWorkingDir',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#InitialWorkingDir',
         group: 'Script',
-        doc: 'The script\'s initial working directory, which is determined by how it was launched. For example, if it was run via shortcut -- such as on the Start Menu -- its initial working directory is determined by the "Start in" field within the shortcut\'s properties.',
+        doc: [
+            'The script\'s initial working directory, which is determined by how it was launched. For example, if it was run via shortcut -- such as on the Start Menu -- its initial working directory is determined by the "Start in" field within the shortcut\'s properties.',
+        ],
     },
     {
         body: 'A_YDay',
@@ -1430,7 +1590,7 @@ export const AVariablesList: TAElement[] = [
             '```ahk',
             '    FormatTime, OutputVar,, YDay0',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_YWeek',
@@ -1448,7 +1608,7 @@ export const AVariablesList: TAElement[] = [
             '```',
             '',
             'Precise definition of A_YWeek: If the week containing January 1st has four or more days in the new year, it is considered week 1. Otherwise, it is the last week of the previous year, and the next week is week 1.',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_YYYY',
@@ -1466,7 +1626,7 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % OutputVar2',
             '    MsgBox % A_YYYY',
             '```',
-        ].join('\n'),
+        ],
     },
     {
         body: 'A_Year',
@@ -1484,6 +1644,6 @@ export const AVariablesList: TAElement[] = [
             '    MsgBox % OutputVar2',
             '    MsgBox % A_Year',
             '```',
-        ].join('\n'),
+        ],
     },
 ];

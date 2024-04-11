@@ -3,6 +3,7 @@ import * as fs from 'node:fs';
 import path from 'node:path';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { funcDataList } from './2_built_in_function/func.data';
+import type { TSupportDoc } from './nls.tools';
 
 const space = 4;
 const mainPath: string = path.join(__dirname, '../../../ahk.json');
@@ -36,9 +37,10 @@ function readJsonData(filename: string): string {
     }
 }
 
-function updateJson(param: unknown, filename: string): void {
-    if (readJsonData(filename) !== fmtRawData(param)) {
-        makeEnJson(param, filename);
+function updateJson(param: unknown, filename: TSupportDoc): void {
+    const file = `${filename}.en.ahk.json`;
+    if (readJsonData(file) !== fmtRawData(param)) {
+        makeEnJson(param, file);
     }
 }
 
@@ -46,8 +48,8 @@ describe('generate .ahk.json', () => {
     it('generate: func.data.ts', () => {
         expect.hasAssertions();
 
-        updateJson(funcDataList, 'func.en.ahk.json');
-        updateJson(AVariablesList, 'A_Variables.en.ahk.json');
+        updateJson(funcDataList, 'func');
+        updateJson(AVariablesList, 'A_Variables');
 
         expect(true).toBeTruthy();
     });

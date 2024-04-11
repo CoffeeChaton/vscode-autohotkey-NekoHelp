@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import { AVariablesList } from './A_Variables.data';
+import { initNlsDefMap, readNlsJson } from '../nls.tools';
+import type { TAElement } from './A_Variables.data';
 
 type TA_MD_Map = ReadonlyMap<string, vscode.MarkdownString>;
 type TA_snippet_list = readonly vscode.CompletionItem[];
@@ -8,6 +9,7 @@ export const [AVariablesMDMap, snippetStartWihA] = ((): [TA_MD_Map, TA_snippet_l
     const map1 = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     //
+    const AVariablesList = readNlsJson('A_Variables') as TAElement[];
     for (const vv of AVariablesList) {
         const {
             uri,
@@ -18,8 +20,9 @@ export const [AVariablesMDMap, snippetStartWihA] = ((): [TA_MD_Map, TA_snippet_l
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendCodeblock(body, 'ahk')
             .appendMarkdown(group)
-            .appendMarkdown(`\n\n${doc}\n\n`)
-            .appendMarkdown(`[Read Doc](${uri})`);
+            .appendMarkdown(`\n\n[(Read Doc)](${uri})\n\n`)
+            .appendMarkdown(doc.join('\n'));
+
         md.supportHtml = true;
         map1.set(body.toUpperCase(), md);
         //
@@ -35,10 +38,6 @@ export const [AVariablesMDMap, snippetStartWihA] = ((): [TA_MD_Map, TA_snippet_l
         List2.push(item);
     }
 
-    /**
-     * after initialization clear
-     */
-    AVariablesList.length = 0;
     return [map1, List2];
 })();
 
@@ -51,3 +50,5 @@ export function getSnippetStartWihA(PartStr: string): readonly vscode.Completion
 export function hoverAVar(wordUp: string): vscode.MarkdownString | undefined {
     return AVariablesMDMap.get(wordUp);
 }
+
+export const biAVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('A_Variables', '"body": "');

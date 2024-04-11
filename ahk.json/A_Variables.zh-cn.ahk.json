@@ -9,16 +9,18 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#AhkPath",
             "group": "Script",
             "doc": [
-                "For non-compiled or [embedded](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts) scripts: The full path and name of the EXE file that is actually running the current script. For example: `C:\\Program Files\\AutoHotkey\\AutoHotkey.exe`",
+                "对于未编译或[嵌入](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts)的脚本：实际运行当前脚本的 EXE 文件的完整路径和名称。",
                 "",
-                "For [compiled scripts](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) based on a [.bin file](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe-base), the value is determined by reading the installation directory from the registry and appending \"\\AutoHotkey.exe\". If AutoHotkey is not installed, the value is blank. The example below is equivalent:",
+                "例如： `C:\\Program Files\\AutoHotkey\\AutoHotkey.exe`",
+                "",
+                "对于基于 [.bin 文件](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe-base)的[编译脚本](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe)，该值是通过从注册表中读取安装目录并附加“\\AutoHotkey.exe”来确定的。如果未安装 AutoHotkey,则该值为空。下面的示例是等效的:",
                 "",
                 "```ahk",
                 "    RegRead InstallDir, HKLM\\SOFTWARE\\AutoHotkey, InstallDir",
                 "    AhkPath := ErrorLevel ? \"\" : InstallDir \"\\AutoHotkey.exe\"",
                 "```",
                 "",
-                "[[v1.1.34+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.34.00 \"Applies to AutoHotkey v1.1.34 and later\") For compiled scripts based on an .exe file, A_AhkPath contains the full path of the compiled script. This can be used in combination with [/script](https://www.autohotkey.com/docs/v1/Scripts.htm#SlashScript) to execute external scripts. To instead locate the installed copy of AutoHotkey, read the registry as shown above."
+                "[\\[v1.1.34+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.34.00 \"Applies to AutoHotkey v1.1.34 and later\")：对于基于.exe文件的编译脚本,A\\_AhkPath包含编译脚本的完整路径。这可以与 [/script](https://www.autohotkey.com/docs/v1/Scripts.htm#SlashScript) 结合使用以执行外部脚本。若要改为找到已安装的 AutoHotkey 副本，请阅读如上所示的注册表。"
             ]
         },
         {

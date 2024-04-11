@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine, TLineFnCall } from '../../globalEnum';
-import { buildInFuncDefMap } from '../../tools/Built-in/2_built_in_function/func.tools';
+import { biFuDefMap } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { getAllFunc } from '../../tools/Func/getAllFunc';
@@ -62,7 +62,7 @@ export function getFuncDef(
         if (ComObjConnectRegister !== undefined) {
             return ComObjConnectRegisterFindAllFuncLoc(ComObjConnectRegister);
         }
-        return buildInFuncDefMap.get(wordUpFix) ?? null;
+        return biFuDefMap.get(wordUpFix) ?? null;
     }
 
     if (

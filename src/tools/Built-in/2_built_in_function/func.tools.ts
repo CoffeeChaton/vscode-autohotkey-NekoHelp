@@ -1,8 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint no-magic-numbers: ["error", { "ignore": [0,3] }] */
-import * as fs from 'node:fs';
 import * as vscode from 'vscode';
-import { getNlsPath, readNlsJson } from '../nls.tools';
+import { initNlsDefMap, readNlsJson } from '../nls.tools';
 import type { TBuiltInFuncElement } from './func.data';
 
 const baseGroup = ['COM', 'IL_', 'LV_', 'OBJ', 'SB_', 'TV_', '_'] as const;
@@ -99,11 +98,6 @@ const [SnippetObj, BuiltInFuncMDMap] = ((): [TSnip, TBiFuncMap] => {
         Obj1[index].push(item);
     }
 
-    /**
-     * after initialization clear
-     */
-    r.length = 0;
-
     return [Obj1, map2];
 })();
 
@@ -147,40 +141,4 @@ export function getBuiltInFuncMD(keyUp: string): TBiFuncMsg | undefined {
     return undefined;
 }
 
-export const buildInFuncDefMap: ReadonlyMap<string, [vscode.Location]> = (
-    (): ReadonlyMap<string, [vscode.Location]> => {
-        const mm = new Map<string, [vscode.Location]>();
-        //
-        const targetPath: string = getNlsPath('func');
-        const uri: vscode.Uri = vscode.Uri.file(targetPath);
-        const dataList: string[] = fs.readFileSync(targetPath).toString()
-            .split('\n');
-
-        const searchKey = '"keyRawName": "';
-        for (const [line, text] of dataList.entries()) {
-            const i: number = text.indexOf(searchKey);
-            if (i >= 0) {
-                const character: number = i + searchKey.length;
-                const upKey: string = text.trim()
-                    .replace(searchKey, '')
-                    .replace('",', '')
-                    .toUpperCase();
-                mm.set(upKey, [
-                    new vscode.Location(
-                        uri,
-                        new vscode.Range(
-                            new vscode.Position(line, character),
-                            new vscode.Position(line, character + upKey.length),
-                        ),
-                    ),
-                ]);
-            }
-        }
-
-        return mm;
-    }
-)();
-
-export function getBuiltInFuncDefRange(keyUp: string): vscode.Location[] {
-    return buildInFuncDefMap.get(keyUp) ?? [];
-}
+export const biFuDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('func', '"keyRawName": "');
