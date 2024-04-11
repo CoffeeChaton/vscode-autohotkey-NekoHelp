@@ -76,6 +76,7 @@ describe('generate .ahk.json', () => {
 
         interface TV {
             keyRawName: string;
+            doc: string[];
         }
         interface TK {
             body: TV[];
