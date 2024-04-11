@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import * as fs from 'node:fs';
 import path from 'node:path';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
+import { BiVariables } from './1_built_in_var/BiVariables.data';
 import { funcDataList } from './2_built_in_function/func.data';
 import type { TSupportDoc } from './nls.tools';
 
@@ -33,6 +34,7 @@ function readJsonData(filename: string): string {
         const dataFromJson: string = fs.readFileSync(targetPath).toString();
         return dataFromJson;
     } catch {
+        console.error('can\'t find .json');
         return '';
     }
 }
@@ -50,6 +52,7 @@ describe('generate .ahk.json', () => {
 
         updateJson(funcDataList, 'func');
         updateJson(AVariablesList, 'A_Variables');
+        updateJson(BiVariables, 'BiVariables');
 
         expect(true).toBeTruthy();
     });

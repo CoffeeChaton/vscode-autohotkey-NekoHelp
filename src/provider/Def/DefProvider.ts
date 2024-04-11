@@ -2,6 +2,7 @@ import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { biAVarDefMap } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
+import { biBVarDefMap } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { getClassDef } from './getClassDef';
@@ -65,7 +66,7 @@ function DefProviderCore(
     );
     if (valInFunc !== null) return valInFunc;
 
-    const biAVarDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp);
+    const biAVarDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp) ?? biBVarDefMap.get(wordUp);
     if (biAVarDef !== undefined) return biAVarDef;
 
     return null;

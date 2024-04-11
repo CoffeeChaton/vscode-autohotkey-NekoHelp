@@ -40,7 +40,7 @@ export type TBuiltInFuncElement = Readonly<{
 }>;
 
 /**
- * after initialization clear
+ * Generate .json indirect reference, no longer direct reference
  */
 export const funcDataList: TBuiltInFuncElement[] = [
     {

@@ -9,13 +9,14 @@ export const localeLanguage: TLanguage = ((): TLanguage => {
     if (language === 'en') return 'en';
     if (language === 'en-US') return 'en';
     if (language === 'zh-cn') return 'zh-cn';
-    if (language === 'zh-tw') return 'zh-tw';
+    if (language === 'zh-tw') return 'zh-cn'; // TODO: if all languages is call zh-cn, then make it
 
     return 'en';
 })();
 
 export type TSupportDoc =
     | 'A_Variables'
+    | 'BiVariables'
     | 'func';
 
 const rootDir: string = path.resolve(__dirname, '../ahk.json');

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as vscode from 'vscode';
-import { BiVariables } from './BiVariables.data';
+import { initNlsDefMap, readNlsJson } from '../nls.tools';
+import type { TBiVElement } from './BiVariables.data';
 
 /**
  * built-in variables
@@ -14,6 +15,7 @@ export const [Bi_VarMDMap, snippetBiVar] = ((): [TBi_VarMDMap, TBi_snippet_list]
     const map1 = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     //
+    const BiVariables = readNlsJson('BiVariables') as TBiVElement[];
     for (const v of BiVariables) {
         const {
             keyRawName,
@@ -45,11 +47,6 @@ export const [Bi_VarMDMap, snippetBiVar] = ((): [TBi_VarMDMap, TBi_snippet_list]
         List2.push(item);
     }
 
-    /**
-     * after initialization clear
-     */
-    BiVariables.length = 0;
-
     return [map1, List2];
 })();
 
@@ -62,3 +59,5 @@ export function getSnipBiVar(PartStr: string): readonly vscode.CompletionItem[] 
         ? []
         : snippetBiVar;
 }
+
+export const biBVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('BiVariables', '"keyRawName": "');

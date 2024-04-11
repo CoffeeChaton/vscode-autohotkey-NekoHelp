@@ -1,4 +1,4 @@
-type TBiVElement = {
+export type TBiVElement = {
     keyRawName: string,
     link: `https://www.autohotkey.com/docs/v1/${string}`,
     doc: string,
@@ -8,7 +8,7 @@ type TBiVElement = {
 /**
  * built-in variables
  *
- * after initialization clear
+ * Generate .json indirect reference, no longer direct reference
  */
 export const BiVariables: TBiVElement[] = [
     {

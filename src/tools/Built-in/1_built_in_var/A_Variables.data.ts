@@ -29,7 +29,7 @@ export type TAElement = {
 };
 
 /**
- * after initialization clear
+ * Generate .json indirect reference, no longer direct reference
  */
 export const AVariablesList: TAElement[] = [
     {
