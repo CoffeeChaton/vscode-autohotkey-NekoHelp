@@ -1,4 +1,5 @@
 {
+    "$schema": "./A_Variables.schema.json",
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp"
