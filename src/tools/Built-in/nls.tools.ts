@@ -17,6 +17,7 @@ export const localeLanguage: TLanguage = ((): TLanguage => {
 export type TSupportDoc =
     | 'A_Variables'
     | 'BiVariables'
+    | 'Directives'
     | 'func';
 
 const rootDir: string = path.resolve(__dirname, '../ahk.json');

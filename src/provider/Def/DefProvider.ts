@@ -1,6 +1,8 @@
 import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import type { TAhkTokenLine } from '../../globalEnum';
+import { gotoDirectivesDef } from '../../tools/Built-in/0_directive/Directives.tool';
 import { biAVarDefMap } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
 import { biBVarDefMap } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { ToUpCase } from '../../tools/str/ToUpCase';
@@ -24,6 +26,10 @@ function DefProviderCore(
 
     const IncludeFile: vscode.LocationLink | null = gotoIncludeDef(AhkFileData, position);
     if (IncludeFile !== null) return [IncludeFile];
+
+    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[position.line];
+    const DirectivesDef: [vscode.Location] | null = gotoDirectivesDef(position, AhkTokenLine);
+    if (DirectivesDef !== null) return DirectivesDef;
 
     const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);
     if (methodDef !== null) return methodDef;

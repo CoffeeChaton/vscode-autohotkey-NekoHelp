@@ -1,6 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import * as fs from 'node:fs';
 import path from 'node:path';
+import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';
 import { funcDataList } from './2_built_in_function/func.data';
@@ -18,8 +19,7 @@ function fmtRawData(param: unknown): string {
         },
         body: param,
     };
-    const data: string = JSON.stringify(obj, null, space);
-    return data;
+    return JSON.stringify(obj, null, space);
 }
 
 function makeEnJson(param: unknown, filename: string): void {
@@ -53,6 +53,7 @@ describe('generate .ahk.json', () => {
         updateJson(funcDataList, 'func');
         updateJson(AVariablesList, 'A_Variables');
         updateJson(BiVariables, 'BiVariables');
+        updateJson(DirectivesList, 'Directives');
 
         expect(true).toBeTruthy();
     });

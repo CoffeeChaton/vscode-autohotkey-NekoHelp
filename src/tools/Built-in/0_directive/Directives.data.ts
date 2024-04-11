@@ -3,7 +3,7 @@
 /* cSpell:disable */
 /* eslint-disable no-template-curly-in-string */
 
-type TDirectivesList = Readonly<{
+export type TDirectivesList = Readonly<{
     keyRawName: `#${string}`,
     insert: string,
     doc: string,
@@ -18,7 +18,7 @@ type TDirectivesList = Readonly<{
 }>;
 
 /**
- * after initialization clear
+ * Generate .json indirect reference, no longer direct reference
  */
 export const DirectivesList: TDirectivesList[] = [
     {
