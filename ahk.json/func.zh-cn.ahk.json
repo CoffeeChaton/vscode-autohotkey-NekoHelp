@@ -2,7 +2,7 @@
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "ABS"
+        "google Translation progress": "INSTR Line 654"
     },
     "body": [
         {
@@ -26,8 +26,8 @@
             "keyRawName": "ACos",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#ACos",
             "doc": [
-                "Returns the arcsine/arccosine/arctangent in radians.",
-                "If _Number_ is less than -1 or greater than 1, the function yields a blank result (empty string)."
+                "以弧度为单位返回反余弦（余弦为指定数字的数字）。",
+                "如果 _Number_ 小于 -1 或大于 1,则该函数将生成空白结果（空字符串）。"
             ],
             "insert": "ACos(${1:Number})",
             "exp": [
@@ -53,7 +53,7 @@
             "keyRawName": "Array",
             "link": "https://www.autohotkey.com/docs/v1/Objects.htm#Usage_Simple_Arrays",
             "doc": [
-                " Create an array"
+                "创建一个数组"
             ],
             "insert": "Array($0)",
             "exp": [
@@ -68,8 +68,8 @@
             "keyRawName": "Asc",
             "link": "https://www.autohotkey.com/docs/v1/lib/Asc.htm",
             "doc": [
-                "Returns the numeric value of the first byte or UTF-16 code unit in the specified string.",
-                "This function returns a numeric value in the range 0 to 255 (for ANSI) or 0 to 0xFFFF (for Unicode). See [Unicode vs ANSI](https://www.autohotkey.com/docs/v1/Compat.htm#Format) for details. If _String_ is empty, it returns 0."
+                "返回指定字符串中第一个字节或 UTF-16 代码单元的数值。",
+                "此函数返回 0 到 255（对于 ANSI）或 0 到 0xFFFF（对于 Unicode）范围内的数值。有关详细信息,请参阅 [Unicode 与 ANSI](https://www.autohotkey.com/docs/v1/Compat.htm#Format)。如果 _String_ 为空,则返回 0。"
             ],
             "insert": "Asc(${1:String})",
             "exp": [
@@ -86,8 +86,8 @@
             "keyRawName": "ASin",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#ASin",
             "doc": [
-                " Returns the arcsine/arccosine/arctangent in radians.",
-                "If Number is less than -1 or greater than 1, the function yields a blank result (empty string)."
+                "返回反正弦（正弦值为指定数字的数字）,单位为弧度。",
+                "如果 _Number_ 小于 -1 或大于 1,则该函数将生成空白结果（空字符串）。"
             ],
             "insert": "ASin(${1:Number})",
             "exp": [
@@ -113,7 +113,7 @@
             "keyRawName": "ATan",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#ATan",
             "doc": [
-                " Returns the arcsine/arccosine/arctangent in radians."
+                "以弧度为单位返回反正切（正切为指定数字的数字）。"
             ],
             "insert": "ATan(${1:Number})",
             "exp": [
@@ -128,7 +128,7 @@
             "keyRawName": "Ceil",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#Ceil",
             "doc": [
-                " Returns _Number_ rounded up to the nearest integer (without any .00 suffix)."
+                "返回四舍五入到最接近的整数（不带任何 .00 后缀）的指定数字。"
             ],
             "insert": "Ceil($1)",
             "exp": [
@@ -143,7 +143,7 @@
             "keyRawName": "Chr",
             "link": "https://www.autohotkey.com/docs/v1/lib/Chr.htm",
             "doc": [
-                "Returns the string (usually a single character) corresponding to the character code indicated by the specified number."
+                "返回与指定数字指示的字符代码相对应的字符串（通常为单个字符）。"
             ],
             "insert": "Chr(${1:Number})",
             "exp": [
@@ -158,7 +158,7 @@
             "keyRawName": "ComObjActive",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm",
             "doc": [
-                "Retrieves a running object that has been registered with OLE."
+                "检索已向 OLE 注册的运行对象"
             ],
             "insert": "ComObjActive(${1:CLSID})",
             "exp": [
@@ -172,7 +172,7 @@
             "keyRawName": "ComObjArray",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjArray.htm",
             "doc": [
-                " Creates a SAFEARRAY for use with COM."
+                "创建一个 SAFEARRAY 以与 COM 一起使用。"
             ],
             "insert": "ComObjArray(${1:VarType}, ${2:Count1})",
             "exp": [
@@ -193,7 +193,7 @@
             "keyRawName": "ComObjConnect",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjConnect.htm",
             "doc": [
-                " Connects a COM object's event sources to functions with a given prefix."
+                "将 COM 对象的事件源连接到具有给定前缀的函数。"
             ],
             "insert": "ComObjConnect(${1:ComObject})",
             "exp": [
@@ -209,7 +209,7 @@
             "keyRawName": "ComObjCreate",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjCreate.htm",
             "doc": [
-                " Creates a COM object."
+                "创建 COM 对象。"
             ],
             "insert": "ComObjCreate(${1:CLSID})",
             "exp": [
@@ -225,7 +225,7 @@
             "keyRawName": "ComObject",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjActive.htm",
             "doc": [
-                " Creates an object representing a typed value to be passed as a parameter or return value."
+                "创建一个表示要作为参数或返回值传递的类型化值的对象。"
             ],
             "insert": "ComObject(${1:VarType}, ${2:Value})",
             "exp": [
@@ -239,7 +239,7 @@
             "keyRawName": "ComObjError",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjError.htm",
             "doc": [
-                " Enables or disables notification of COM errors."
+                "启用或禁用 COM 错误通知。"
             ],
             "insert": "ComObjError($1)",
             "exp": [
@@ -253,7 +253,7 @@
             "keyRawName": "ComObjFlags",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjFlags.htm",
             "doc": [
-                "Retrieves or changes flags which control a COM wrapper object's behaviour."
+                "检索或更改控制 COM 包装对象行为的标志。"
             ],
             "insert": "ComObjFlags(${1:ComObject})",
             "exp": [
@@ -267,7 +267,7 @@
             "keyRawName": "ComObjGet",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjGet.htm",
             "doc": [
-                " Returns a reference to an object provided by a COM component."
+                "返回对 COM 组件提供的对象的引用。"
             ],
             "insert": "ComObjGet(${1:Name})",
             "exp": [
@@ -283,7 +283,7 @@
             "keyRawName": "ComObjQuery",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjQuery.htm",
             "doc": [
-                " Queries a COM object for an interface or service."
+                "查询接口或服务的 COM 对象。"
             ],
             "insert": "ComObjQuery(${1:ComObject})",
             "exp": [
@@ -297,7 +297,7 @@
             "keyRawName": "ComObjType",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjType.htm",
             "doc": [
-                "Retrieves type information from a COM object."
+                "从 COM 对象中检索类型信息。"
             ],
             "insert": "ComObjType(${2:ComObject}, \"${1|Name,IID,Class,CLSID|}\")",
             "exp": [
@@ -316,7 +316,7 @@
             "keyRawName": "ComObjValue",
             "link": "https://www.autohotkey.com/docs/v1/lib/ComObjValue.htm",
             "doc": [
-                "Retrieves the value or pointer stored in a COM wrapper object."
+                "检索存储在 COM 包装对象中的值或指针。"
             ],
             "insert": "ComObjValue(${1:ComObject})",
             "exp": [
@@ -330,7 +330,7 @@
             "keyRawName": "Cos",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#Cos",
             "doc": [
-                " Returns the trigonometric sine/cosine/tangent of _Number_."
+                "返回指定数字的三角余弦。"
             ],
             "insert": "Cos(${1:Number})",
             "exp": [
@@ -348,7 +348,7 @@
             "keyRawName": "DllCall",
             "link": "https://www.autohotkey.com/docs/v1/lib/DllCall.htm",
             "doc": [
-                "Calls a function inside a DLL, such as a standard Windows API function."
+                "调用 DLL 中的函数,例如标准 Windows API 函数。"
             ],
             "insert": "DllCall(\"${1:DllFile\\Function}\", ${2:Type1}, ${3:Arg1}, ${4:Type2}, ${5:Arg2})",
             "exp": [
@@ -365,12 +365,12 @@
             "keyRawName": "Exception",
             "link": "https://www.autohotkey.com/docs/v1/lib/Throw.htm#Exception",
             "doc": [
-                "Creates an object which can be used to throw a custom exception.",
-                "- **Message:** An error message or [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) value.",
-                "- **What:** The name of the command, function or label which was executing or about to execute when the error occurred.",
-                "- **Extra:** Additional information about the error, if available.",
-                "- **File:** Set automatically to the full path of the script file which contains the line at which the error occurred.",
-                "- **Line:** Set automatically to the line number at which the error occurred."
+                "创建具有属性的对象,该属性也适用于[运行时错误](https://www.autohotkey.com/docs/v1/lib/Catch.htm#RuntimeErrors)创建的异常。",
+                "- **Message:** 错误消息或 [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) 值。",
+                "- **What:** 发生错误时正在执行或将要执行的命令、函数或标签的名称。",
+                "- **Extra:** 有关错误的其他信息（如果可用）。",
+                "- **File:** 自动设置为脚本文件的完整路径,其中包含发生错误的行。",
+                "- **Line:** 自动设置为发生错误的行号。"
             ],
             "insert": "Exception(\"${1:Message}\" , ${2|\"What\",-1|}, \"${3:Extra}\")",
             "exp": [
@@ -386,7 +386,7 @@
             "keyRawName": "Exp",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#Exp",
             "doc": [
-                " Returns _e_ (which is approximately 2.71828182845905) raised to the _N_th power."
+                "返回将 e(大约为 2.71828182845905) 提高到_第 N_次方的结果。"
             ],
             "insert": "Exp($1)",
             "exp": [
@@ -400,22 +400,22 @@
             "keyRawName": "FileExist",
             "link": "https://www.autohotkey.com/docs/v1/lib/FileExist.htm",
             "doc": [
-                "Checks for the existence of a file or folder and returns its attributes.",
+                "检查文件或文件夹是否存在并返回其属性。",
                 "",
                 "### Return Value",
-                "This function returns the attribute string (a subset of \"RASHNDOCT\") of the first matching file or folder:",
+                "此函数返回第一个匹配文件或文件夹的属性。此字符串是 的子集,其中每个字母表示以下内容：",
                 "",
-                "- R = READONLY",
-                "- A = ARCHIVE",
-                "- S = SYSTEM",
-                "- H = HIDDEN",
-                "- N = NORMAL",
-                "- D = DIRECTORY",
-                "- O = OFFLINE",
-                "- C = COMPRESSED",
-                "- T = TEMPORARY",
+                "- R = READONLY 只读",
+                "- A = ARCHIVE 存档",
+                "- S = SYSTEM 系统",
+                "- H = HIDDEN 隐藏",
+                "- N = NORMAL 正常",
+                "- D = DIRECTORY 目录",
+                "- O = OFFLINE 脱机",
+                "- C = COMPRESSED 压缩",
+                "- T = TEMPORARY 临时",
                 "",
-                "If the file has no attributes (rare), \"X\" is returned. If no file is found, an empty string is returned."
+                "如果文件没有属性(罕见),则返回“X”。如果未找到文件或文件夹,则返回空字符串。"
             ],
             "insert": "FileExist(\"${1:C:\\My_File.txt}\")",
             "exp": [
@@ -430,7 +430,7 @@
             "keyRawName": "FileOpen",
             "link": "https://www.autohotkey.com/docs/v1/lib/FileOpen.htm",
             "doc": [
-                "Opens a file to read specific content from it and/or to write new content into it."
+                "打开文件以从中读取特定内容和/或将新内容写入其中。"
             ],
             "insert": "FileOpen($1:{Filename}, Flags , Encoding)",
             "exp": [
@@ -444,7 +444,7 @@
             "keyRawName": "Floor",
             "link": "https://www.autohotkey.com/docs/v1/lib/Math.htm#Floor",
             "doc": [
-                " Returns _Number_ rounded down to the nearest integer (without any .00 suffix)."
+                "返回向下舍入到最接近的整数（不带任何 .00 后缀）的指定数字。"
             ],
             "insert": "Floor($1)",
             "exp": [
@@ -459,12 +459,12 @@
             "keyRawName": "Format",
             "link": "https://www.autohotkey.com/docs/v1/lib/Format.htm",
             "doc": [
-                "Formats a variable number of input values according to a format string."
+                "根据格式字符串格式化可变数量的输入值。"
             ],
             "insert": "Format(${1:FormatStr })",
             "exp": [
                 "String := Format(FormatStr , Values...)",
-                "; use a variadic function call:",
+                "; 使用可变参数函数调用：",
                 "arr := [13, 240]",
                 "MsgBox % Format(\"{2:x}{1:02x}\", arr*)"
             ],
@@ -476,8 +476,8 @@
             "keyRawName": "Func",
             "link": "https://www.autohotkey.com/docs/v1/lib/Func.htm",
             "doc": [
-                "Retrieves a reference to the specified function.",
-                "[Func Object](https://www.autohotkey.com/docs/v1/objects/Func.htm)"
+                "检索对指定函数的引用。",
+                "ReadMore of [Func Object](https://www.autohotkey.com/docs/v1/objects/Func.htm)"
             ],
             "insert": "Func(${1:FunctionName})",
             "exp": [
@@ -500,7 +500,7 @@
             "keyRawName": "GetKeyName",
             "link": "https://www.autohotkey.com/docs/v1/lib/GetKey.htm",
             "doc": [
-                "Retrieves the name/text, virtual key code or scan code of a key."
+                "检索按键的名称/文本、虚拟按键代码或扫描代码。"
             ],
             "insert": "GetKeyName(${1:Key})",
             "exp": [
@@ -520,7 +520,7 @@
             "keyRawName": "GetKeySC",
             "link": "https://www.autohotkey.com/docs/v1/lib/GetKey.htm",
             "doc": [
-                "Retrieves the name/text, virtual key code or scan code of a key."
+                "检索按键的名称/文本、虚拟按键代码或扫描代码。"
             ],
             "insert": "GetKeySC(${1:Key})",
             "exp": [
@@ -540,7 +540,7 @@
             "keyRawName": "GetKeyState",
             "link": "https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#function",
             "doc": [
-                "Returns true , link: \"1\", if the specified key is down and false , link: \"0\", if it is up."
+                "返回 1 (true) 或 0 (false),具体取决于指定的键盘键或鼠标/控制器按钮是向下还是向上。还检索控制器状态。"
             ],
             "insert": "GetKeyState(${1:KeyName})",
             "exp": [
@@ -555,7 +555,7 @@
             "keyRawName": "GetKeyVK",
             "link": "https://www.autohotkey.com/docs/v1/lib/GetKey.htm",
             "doc": [
-                "Retrieves the name/text, virtual key code or scan code of a key."
+                "检索按键的名称/文本、虚拟按键代码或扫描代码。"
             ],
             "insert": "GetKeyVK(${1:Key})",
             "exp": [
@@ -575,7 +575,7 @@
             "keyRawName": "Hotstring",
             "link": "https://www.autohotkey.com/docs/v1/lib/Hotstring.htm",
             "doc": [
-                "Creates, modifies, enables, or disables a hotstring while the script is running."
+                "在脚本运行时创建、修改、启用或禁用[热字符串](https://www.autohotkey.com/docs/v1/Hotstrings.htm)。"
             ],
             "insert": "Hotstring(${1:String})",
             "exp": [
@@ -592,8 +592,8 @@
             "keyRawName": "IL_Add",
             "link": "https://www.autohotkey.com/docs/v1/lib/ListView.htm#IL_Add",
             "doc": [
-                "Adds an icon or picture to the specified _ImageListID_",
-                "and returns the new icon's index (1 is the first icon, 2 is the second, and so on)."
+                "将图标或图片添加到指定的 _ImageList_",
+                "成功后,此函数将返回新图标的索引(1 是第一个图标,2 是第二个图标,依此类推)。失败时,它返回 0。"
             ],
             "insert": "IL_Add(${1:ImageListID}, ${2:Filename})",
             "exp": [
@@ -608,7 +608,11 @@
             "keyRawName": "IL_Create",
             "link": "https://www.autohotkey.com/docs/v1/lib/ListView.htm#IL_Create",
             "doc": [
-                "Creates a new ImageList, initially empty, and returns the unique ID of the ImageList (or 0 upon failure)."
+                "成功后,此函数返回新创建的 ImageList 的唯一 ID。失败时,它返回 0。",
+                "",
+                "- InitialCount:如果省略,则默认为 2。否则,请指定要立即放入列表中的图标数。",
+                "- GrowCount:如果省略,则默认为 5。否则,请指定每次列表超过当前列表容量时列表将增长的图标数。",
+                "- LargeIcons:如果省略,则默认为 0,这意味着 ImageList 将包含小图标。否则,请指定一个非零值以使 ImageList 包含大图标。添加到列表中的图标会自动缩放,以符合小图标和大图标的系统尺寸。"
             ],
             "insert": "IL_Create($1)",
             "exp": [
@@ -623,7 +627,7 @@
             "keyRawName": "IL_Destroy",
             "link": "https://www.autohotkey.com/docs/v1/lib/ListView.htm#IL_Destroy",
             "doc": [
-                "Deletes the specified ImageList and returns 1 upon success and 0 upon failure."
+                "删除指定的 ImageList。成功后,此函数返回 1 (true) 。失败时,它返回 0 (false)。"
             ],
             "insert": "IL_Destroy(${1:ImageListID})",
             "exp": [
@@ -638,7 +642,7 @@
             "keyRawName": "InputHook",
             "link": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm",
             "doc": [
-                "Creates an object which can be used to collect or intercept keyboard input."
+                "创建一个可用于收集或截获键盘输入的对象。"
             ],
             "insert": "InputHook($1)",
             "exp": [

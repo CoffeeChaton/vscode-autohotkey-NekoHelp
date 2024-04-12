@@ -5,6 +5,7 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import { gotoDirectivesDef } from '../../tools/Built-in/0_directive/Directives.tool';
 import { biAVarDefMap } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
 import { biBVarDefMap } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
+import { focDefMap } from '../../tools/Built-in/3_foc/foc.tools';
 import { cmdDefMap } from '../../tools/Built-in/6_command/Command.tools';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
@@ -75,7 +76,8 @@ function DefProviderCore(
 
     const jsonDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp)
         ?? biBVarDefMap.get(wordUp)
-        ?? cmdDefMap.get(wordUp);
+        ?? cmdDefMap.get(wordUp)
+        ?? focDefMap.get(wordUp);
     if (jsonDef !== undefined) return jsonDef;
 
     return null;

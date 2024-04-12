@@ -1,0 +1,664 @@
+{
+    "headData": {
+        "note": "machine generated, Please do not manually modify this file!",
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp"
+    },
+    "body": [
+        {
+            "keyRawName": "Break",
+            "body": "Break",
+            "doc": [
+                "Exits (terminates) any type of [loop statement](https://www.autohotkey.com/docs/v1/Language.htm#loop-statement)."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Break.htm",
+            "exp": [
+                "Break [, LoopLabel]",
+                "",
+                ";exp",
+                "Loop",
+                "{",
+                "    ; ...",
+                "    if (var > 25)",
+                "        break",
+                "    ; ...",
+                "    if (var <= 5)",
+                "        continue",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Case",
+            "body": "Case $0:",
+            "doc": [
+                "Executes one case from a list of mutually exclusive candidates."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Switch.htm",
+            "exp": [
+                "Switch UserInput {",
+                "    Case \"btw\":   MsgBox % \"by the way\"",
+                "    Case \"otoh\":  MsgBox % \"on the other hand\"",
+                "    Case \"fl\":    MsgBox % \"Florida\" Send, {backspace 3}Florida",
+                "    Case \"ca\":    MsgBox % \"California\"  Send, {backspace 3}California",
+                "    Case \"ahk\":   Run, % \"https://www.autohotkey.com\"",
+                "    Default :     MsgBox % \"default\"",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Catch",
+            "body": "Catch, ${1:error}",
+            "doc": [
+                "Specifies the code to execute if an exception is raised during execution of a [try](https://www.autohotkey.com/docs/v1/lib/Try.htm) statement."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Catch.htm",
+            "exp": [
+                "Try {",
+                "    ...",
+                "} Catch e {",
+                "    MsgBox, % \"e is\" e.Message",
+                "    MsgBox % \"Error in \" e.What \", which was called at line \" e.Line ",
+                "} Finally {",
+                "    ...",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Continue",
+            "body": "Continue",
+            "doc": [
+                "Skips the rest of a [loop statement](https://www.autohotkey.com/docs/v1/Language.htm#loop-statement)'s current iteration and begins a new one."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Continue.htm",
+            "exp": [
+                "Continue , LoopLabel",
+                "",
+                "Loop, 10",
+                "{",
+                "    if (A_Index <= 5)",
+                "        continue",
+                "    MsgBox %A_Index%",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Critical",
+            "body": "Critical, ${1|Off,On|}",
+            "doc": [
+                "Prevents the current thread from being interrupted by other threads, or enables it to be interrupted."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Critical.htm",
+            "exp": [
+                "Critical [, OnOffNumeric]",
+                ";          TargetType",
+                ";                 -> On (defaults)",
+                ";                 -> Off"
+            ],
+            "_paramType": [
+                "S"
+            ]
+        },
+        {
+            "keyRawName": "Default",
+            "body": "Default : $0",
+            "doc": [
+                "Executes one case from a list of mutually exclusive candidates."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Switch.htm",
+            "exp": [
+                "Switch UserInput {",
+                "    Case \"btw\":   MsgBox % \"by the way\"",
+                "    Case \"otoh\":  MsgBox % \"on the other hand\"",
+                "    Case \"fl\":    MsgBox % \"Florida\" Send, {backspace 3}Florida",
+                "    Case \"ca\":    MsgBox % \"California\"  Send, {backspace 3}California",
+                "    Case \"ahk\":   Run, % \"https://www.autohotkey.com\"",
+                "    Default :     MsgBox % \"default\"",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Else",
+            "body": "else",
+            "link": "https://www.autohotkey.com/docs/v1/lib/Else.htm",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if an [If statement](https://www.autohotkey.com/docs/v1/Language.htm#if-statement) evaluates to false."
+            ],
+            "recommended": true,
+            "exp": [
+                "; exp of \"Else\"",
+                "if (x = 1) {",
+                "    ; ...",
+                "} else if (x < y) {",
+                "    ; ...",
+                "} else {",
+                "    ; ...",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Exit",
+            "body": "Exit [, ${1:ExitCode}]",
+            "doc": [
+                "Exits the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) or (if the script is not [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm)) the entire script.\n* ExitCode\n\n> An integer between -2147483648 and 2147483647 (can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)) that is returned to its caller when the script exits. This code is accessible to any program that spawned the script, such as another script (via RunWait) or a batch (.bat) file. If omitted, _ExitCode_ defaults to zero. Zero is traditionally used to indicate success."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Exit.htm",
+            "exp": [
+                "#z::",
+                "    GoSub, Sub2",
+                "    MsgBox, % \"This MsgBox will never happen because of the EXIT.\"",
+                "Return",
+                "",
+                "Sub2:",
+                "Exit  ; Terminate this subroutine as well as the calling subroutine."
+            ],
+            "_paramType": [
+                "E"
+            ]
+        },
+        {
+            "keyRawName": "ExitApp",
+            "body": "ExitApp [, ${1:ExitCode}]",
+            "doc": [
+                "Terminates the script.\n* ExitCode\n1. An integer between -2147483648 and 2147483647\n2. If omitted, _ExitCode_ defaults to zero.\n3. Zero is traditionally used to indicate success."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/ExitApp.htm",
+            "exp": [
+                "ExitApp [, ExitCode]",
+                "",
+                ";exp Press a hotkey to terminate the script.",
+                "#x::ExitApp  ; Win+X"
+            ],
+            "_paramType": [
+                "E"
+            ]
+        },
+        {
+            "keyRawName": "Finally",
+            "body": "Finally",
+            "doc": [
+                "Ensures that one or more statements are always executed after a [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) statement finishes."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Finally.htm",
+            "exp": [
+                "Try {",
+                "    ...",
+                "} Catch e {",
+                "    ...",
+                "} Finally {",
+                "    ...",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "For",
+            "body": "For ${1:Key}, ${2:Value} in ${3:Expression} {\n}",
+            "doc": [
+                "Repeats a series of commands once for each key-value pair in an object."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/For.htm",
+            "exp": [
+                "For Key [, Value] in Expression",
+                ";",
+                "; exp",
+                "For Key , Value in [\"A\", \"B\", \"C\"] {",
+                "    MsgBox % Key \" & \" Value",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "GoSub",
+            "body": "GoSub, ${1:Label}",
+            "doc": [
+                "Jumps to the specified label and continues execution until [Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) is encountered."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/GoSub.htm",
+            "exp": [
+                "GoSub, Label1 ",
+                "    MsgBox, The Label1 subroutine has returned (it is finished).",
+                "return",
+                "",
+                "Label1:",
+                "    MsgBox, The Label1 subroutine is now running.",
+                "return"
+            ]
+        },
+        {
+            "keyRawName": "Goto",
+            "body": "Goto, ${1:Label}",
+            "doc": [
+                "Jumps to the specified label and continues execution."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Goto.htm",
+            "exp": [
+                "Goto, MyLabel",
+                "",
+                "; ...",
+                "",
+                "MyLabel:",
+                "",
+                "Sleep, 100",
+                "; ...",
+                ""
+            ]
+        },
+        {
+            "keyRawName": "If",
+            "body": "if ($0)",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) evaluates to true."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfExpression.htm",
+            "exp": [
+                "; exp of \"If\"",
+                "if (x = 1) {",
+                "    ; ...",
+                "} else if (x < y) {",
+                "    ; ...",
+                "} else {",
+                "    ; ...",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "IfEqual",
+            "body": "IfEqual, ${1:Var} [, ${2:Value} ]",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if the comparison of a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to a value evaluates to true."
+            ],
+            "recommended": false,
+            "diag": 806,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfEqual.htm",
+            "exp": [
+                "IfEqual, Var , Value ; if Var = Value"
+            ]
+        },
+        {
+            "keyRawName": "IfExist",
+            "body": "IfExist, ${1:FilePattern}",
+            "doc": [
+                "Checks for the existence of a file or folder."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfExist.htm",
+            "exp": [
+                "IfExist, FilePattern",
+                "IfNotExist, FilePattern",
+                "",
+                ";exp",
+                "IfExist, D:\\Docs\\*.txt",
+                "    MsgBox, At least one .txt file exists."
+            ]
+        },
+        {
+            "keyRawName": "IfGreater",
+            "body": "IfGreater, ${1:Var} [, ${2:Value} ]",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if the comparison of a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to a value evaluates to true."
+            ],
+            "recommended": false,
+            "diag": 806,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfEqual.htm",
+            "exp": [
+                "IfGreater, Var , Value ; if Var > Value"
+            ]
+        },
+        {
+            "keyRawName": "IfGreaterOrEqual",
+            "body": "IfGreaterOrEqual, ${1:Var} [, ${2:Value} ]",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if the comparison of a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to a value evaluates to true."
+            ],
+            "recommended": false,
+            "diag": 806,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfEqual.htm",
+            "exp": [
+                "IfGreaterOrEqual, Var , Value ; if Var >= Value"
+            ]
+        },
+        {
+            "keyRawName": "IfInString",
+            "body": "IfInString, ${1:Var}, ${2:SearchString}",
+            "doc": [
+                "Checks if a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contains the specified string."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfInString.htm",
+            "exp": [
+                "IfInString, Var, SearchString",
+                "IfNotInString, Var, SearchString"
+            ]
+        },
+        {
+            "keyRawName": "IfLess",
+            "body": "IfLess, ${1:Var} [, ${2:Value} ]",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if the comparison of a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to a value evaluates to true."
+            ],
+            "recommended": false,
+            "diag": 806,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfEqual.htm",
+            "exp": [
+                "IfLess, Var , Value ; if Var < Value"
+            ]
+        },
+        {
+            "keyRawName": "IfLessOrEqual",
+            "body": "IfLessOrEqual, ${1:Var} [, ${2:Value} ]",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if the comparison of a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to a value evaluates to true."
+            ],
+            "recommended": false,
+            "diag": 806,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfEqual.htm",
+            "exp": [
+                "IfLessOrEqual, Var , Value ; if Var <= Value"
+            ]
+        },
+        {
+            "keyRawName": "IfMsgBox",
+            "body": "IfMsgBox, ${1|Yes,No,OK,Cancel,Abort,Ignore,Retry,Continue,TryAgain,Timeout|}",
+            "doc": [
+                "Checks which button was pushed by the user during the most recent [MsgBox](https://www.autohotkey.com/docs/v1/lib/MsgBox.htm) command."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfMsgBox.htm",
+            "exp": [
+                "IfMsgBox, ButtonName",
+                "",
+                "Loop, Parse, clipboard, `n, `r",
+                "{",
+                "    MsgBox, 4, ,% \"File number \" A_Index \" is \" A_LoopField \".`n`nContinue?\"",
+                "    IfMsgBox, No, break",
+                "",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "IfNotEqual",
+            "body": "IfNotEqual, ${1:Var} [, ${2:Value} ]",
+            "doc": [
+                "Specifies one or more [statements](https://www.autohotkey.com/docs/v1/Concepts.htm#statement) to execute if the comparison of a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to a value evaluates to true."
+            ],
+            "recommended": false,
+            "diag": 806,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfEqual.htm",
+            "exp": [
+                "IfNotEqual, Var , Value ; if Var != Value"
+            ]
+        },
+        {
+            "keyRawName": "IfNotExist",
+            "body": "IfNotExist, ${1:FilePattern}",
+            "doc": [
+                "Checks for the existence of a file or folder."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfExist.htm",
+            "exp": [
+                "IfExist, FilePattern",
+                "IfNotExist, FilePattern",
+                "",
+                ";exp",
+                "IfExist, D:\\Docs\\*.txt",
+                "    MsgBox, At least one .txt file exists."
+            ]
+        },
+        {
+            "keyRawName": "IfNotInString",
+            "body": "IfNotInString, ${1:Var}, ${2:SearchString}",
+            "doc": [
+                "Checks if a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contains the specified string."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfInString.htm",
+            "exp": [
+                "IfInString, Var, SearchString",
+                "IfNotInString, Var, SearchString"
+            ]
+        },
+        {
+            "keyRawName": "IfWinActive",
+            "body": "IfWinActive [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
+            "doc": [
+                "Checks if the specified window exists and is currently active (foremost)."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm",
+            "exp": [
+                "IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
+                "IfWinNotActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]"
+            ]
+        },
+        {
+            "keyRawName": "IfWinExist",
+            "body": "IfWinExist [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
+            "doc": [
+                "Checks if the specified window exists."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm",
+            "exp": [
+                "IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
+                "IfWinNotExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]"
+            ]
+        },
+        {
+            "keyRawName": "IfWinNotActive",
+            "body": "IfWinNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
+            "doc": [
+                "Checks if the specified window exists and is currently active (foremost)."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm",
+            "exp": [
+                "IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
+                "IfWinNotActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]"
+            ]
+        },
+        {
+            "keyRawName": "IfWinNotExist",
+            "body": "IfWinNotExist  [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
+            "doc": [
+                "Checks if the specified window exists."
+            ],
+            "recommended": false,
+            "diag": 899,
+            "link": "https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm",
+            "exp": [
+                "IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
+                "IfWinNotExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]"
+            ]
+        },
+        {
+            "keyRawName": "Loop",
+            "body": "Loop, ${1:10} {\n\n}",
+            "doc": [
+                "Performs a series of commands repeatedly: either the specified number of times or until [break](https://www.autohotkey.com/docs/v1/lib/Break.htm) is encountered."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Loop.htm",
+            "exp": [
+                "Loop, 3 {",
+                "    MsgBox, % \"Iteration number is \" A_Index \"!\"  ; A_Index will be 1, 2, then 3",
+                "    Sleep, 100",
+                "}",
+                "; ---",
+                "iMax := 5",
+                "Loop, % iMax + 2 {",
+                "    MsgBox, % \"Iteration number is \" A_Index \"!\" ; 1 to 7",
+                "    Sleep, 100",
+                "}",
+                "",
+                ";--- loop 0",
+                "Loop, iMax { ; Count cannot be an expression, use %",
+                "    MsgBox, % \"never loop \"  A_Index ; loop 0",
+                "    Sleep, 100",
+                "}",
+                ""
+            ]
+        },
+        {
+            "keyRawName": "Pause",
+            "body": "Pause, [ ${1|On,Off,Toggle|}, ${2|0,1|} ]",
+            "doc": [
+                "Pauses the script's [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm)."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Pause.htm",
+            "exp": [
+                "Pause , OnOffToggle, OperateOnUnderlyingThread",
+                "; exp",
+                "Pause::Pause  ; The Pause/Break key.",
+                "#p::Pause  ; Win+P"
+            ],
+            "_paramType": [
+                "S",
+                "S"
+            ]
+        },
+        {
+            "keyRawName": "Reload",
+            "body": "Reload",
+            "doc": [
+                "Replaces the currently running instance of the script with a new one."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Reload.htm",
+            "exp": [
+                "^!r::Reload  ; Ctrl+Alt+R"
+            ],
+            "_paramType": []
+        },
+        {
+            "keyRawName": "Return",
+            "body": "Return",
+            "doc": [
+                "Returns from a subroutine to which execution had previously jumped via [function-call](https://www.autohotkey.com/docs/v1/Functions.htm), [GoSub](https://www.autohotkey.com/docs/v1/lib/GoSub.htm), [Hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm) activation, [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm), or other means."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Return.htm",
+            "exp": [
+                "     Return 3",
+                "     Return \"literal string\"",
+                "     Return MyVar ",
+                "     Return i + 1",
+                "     Return true  ; Returns the number 1 to mean \"true\".",
+                "     Return ItemCount < MaxItems  ; Returns a true or false value.",
+                "     Return FindColor(TargetColor)"
+            ]
+        },
+        {
+            "keyRawName": "Switch",
+            "body": "Switch ${1:key} {\n    Case ${2:val1}:\n        $0\n    Case ${3:val2}, ${4:val3}:\n        \n    Default:\n        \n}",
+            "doc": [
+                "Executes one case from a list of mutually exclusive candidates."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Switch.htm",
+            "exp": [
+                "Switch UserInput {",
+                "    Case \"btw\":   MsgBox % \"by the way\"",
+                "    Case \"otoh\":  MsgBox % \"on the other hand\"",
+                "    Case \"fl\":    MsgBox % \"Florida\" Send, {backspace 3}Florida",
+                "    Case \"ca\":    MsgBox % \"California\"  Send, {backspace 3}California",
+                "    Case \"ahk\":   Run, % \"https://www.autohotkey.com\"",
+                "    Default:     MsgBox % \"default\"",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Throw",
+            "body": "Throw, Exception(\"${1:Message}\" , ${2|\"What\",-1|}, \"${3:Extra}\")",
+            "doc": [
+                "Signals the occurrence of an error. This signal can be caught by a [try](https://www.autohotkey.com/docs/v1/lib/Try.htm)\\-[catch](https://www.autohotkey.com/docs/v1/lib/Catch.htm) statement."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Throw.htm",
+            "exp": [
+                "Throw 3",
+                "Throw \"literal string\"",
+                "Throw MyVar",
+                "Throw i + 1",
+                "Throw { what: \"Custom error\", file: A_LineFile, line: A_LineNumber } ; Throws an object"
+            ]
+        },
+        {
+            "keyRawName": "Try",
+            "body": "Try {\n$0\n} Catch error {\n\n} Finally {\n\n}",
+            "doc": [
+                "Guards one or more statements (commands or expressions) against runtime errors and exceptions thrown by the [throw](https://www.autohotkey.com/docs/v1/lib/Throw.htm) command."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Try.htm",
+            "exp": [
+                "Try {",
+                "    ...",
+                "} Catch e {",
+                "    ...",
+                "} Finally {",
+                "    ...",
+                "}"
+            ]
+        },
+        {
+            "keyRawName": "Until",
+            "body": "Until $0",
+            "doc": [
+                "Applies a condition to the continuation of a Loop or For-loop."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/Until.htm",
+            "exp": [
+                "Loop {",
+                "    ...",
+                "} Until Expression"
+            ]
+        },
+        {
+            "keyRawName": "While",
+            "body": "While ($0) {\n\n}",
+            "doc": [
+                "Performs a series of commands repeatedly until the specified [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions) evaluates to false."
+            ],
+            "recommended": true,
+            "link": "https://www.autohotkey.com/docs/v1/lib/While.htm",
+            "exp": [
+                ";exp1 As the user drags the left mouse button, a tooltip displays the size of the region inside the drag-area.",
+                "",
+                "CoordMode, Mouse, Screen",
+                "",
+                "~LButton::fn_lb1()",
+                "",
+                "fn_lb1(){",
+                "    MouseGetPos, begin_x, begin_y",
+                "    While GetKeyState(\"LButton\")",
+                "    {",
+                "        MouseGetPos, x, y",
+                "        ToolTip, % begin_x \", \" begin_y \"`n\" Abs(begin_x-x) \" x \" Abs(begin_y-y)",
+                "        Sleep, 10",
+                "    }",
+                "    ToolTip",
+                "}"
+            ]
+        }
+    ]
+}

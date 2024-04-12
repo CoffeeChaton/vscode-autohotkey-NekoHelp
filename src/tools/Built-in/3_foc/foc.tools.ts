@@ -2,7 +2,8 @@ import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
 import { CommandMDMap } from '../6_command/Command.tools';
-import { Statement } from './foc.data';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
+import type { TStatementElement } from './foc.data';
 
 type TStatementMDMap = ReadonlyMap<string, vscode.MarkdownString>;
 type TSnippetStatement = readonly vscode.CompletionItem[];
@@ -10,6 +11,8 @@ type TSnippetStatement = readonly vscode.CompletionItem[];
 export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippetStatement] => {
     const map1: Map<string, vscode.MarkdownString> = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
+
+    const Statement: TStatementElement[] = readNlsJson('foc') as TStatementElement[];
     for (const v of Statement) {
         const {
             keyRawName,
@@ -18,11 +21,10 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
             exp,
             body,
             recommended,
-            upName,
         } = v;
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendCodeblock(keyRawName, 'ahk')
-            .appendMarkdown(doc)
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown('\n')
             .appendMarkdown(`[(Read Doc)](${link})`)
             .appendMarkdown('\n\n***')
@@ -30,7 +32,7 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
             .appendCodeblock(exp.join('\n'), 'ahk');
 
         md.supportHtml = true;
-        map1.set(upName, md);
+        map1.set(keyRawName.toUpperCase(), md);
 
         if (!recommended) continue;
         const item: vscode.CompletionItem = new vscode.CompletionItem({
@@ -53,12 +55,6 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
         List2.push(item);
     }
 
-    /**
-     * after initialization clear
-     * Flow of Control
-     * FOC
-     */
-    Statement.length = 0;
     return [map1, List2]; // [Map(19), Array(19)]
 })();
 
@@ -81,3 +77,5 @@ export function getSnippetStatement(
 export function getHoverStatement(wordUp: string): vscode.MarkdownString | undefined {
     return StatementMDMap.get(wordUp);
 }
+
+export const focDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('foc');

@@ -13,8 +13,8 @@
 ## scheme
 
 ```ts
-interface ISchema {
-    keyRawName:string,
-    doc:string[]
+interface TV {
+    keyRawName: string;
+    doc: string[];
 }
 ```

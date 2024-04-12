@@ -19,6 +19,7 @@ export type TSupportDoc =
     | 'BiVariables'
     | 'Command'
     | 'Directives'
+    | 'foc'
     | 'func';
 
 const rootDir: string = path.resolve(__dirname, '../ahk.json');

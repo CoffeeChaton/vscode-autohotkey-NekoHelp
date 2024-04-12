@@ -31,7 +31,7 @@ describe('check semanticFoc ruler', () => {
     it('check: semanticFoc', () => {
         expect.hasAssertions();
 
-        const full = new Set(Statement.map((v): string => v.upName));
+        const full = new Set(Statement.map((v): string => v.keyRawName.toUpperCase()));
 
         const arr: string[] = [
             ...FocSetOneLine,

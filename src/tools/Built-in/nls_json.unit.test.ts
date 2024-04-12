@@ -1,3 +1,4 @@
+/* eslint-disable jest/max-expects */
 import { describe, expect, it } from '@jest/globals';
 import * as fs from 'node:fs';
 import path from 'node:path';
@@ -9,6 +10,8 @@ import * as cmd_en from '../../../ahk.json/Command.en.ahk.json';
 import * as cmd_cn from '../../../ahk.json/Command.zh-cn.ahk.json';
 import * as Directives_en from '../../../ahk.json/Directives.en.ahk.json';
 import * as Directives_cn from '../../../ahk.json/Directives.zh-cn.ahk.json';
+import * as foc_en from '../../../ahk.json/foc.en.ahk.json';
+import * as foc_cn from '../../../ahk.json/foc.zh-cn.ahk.json';
 import * as func_en from '../../../ahk.json/func.en.ahk.json';
 import * as func_cn from '../../../ahk.json/func.zh-cn.ahk.json';
 
@@ -16,6 +19,7 @@ import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';
 import { funcDataList } from './2_built_in_function/func.data';
+import { Statement } from './3_foc/foc.data';
 import { LineCommand } from './6_command/Command.data';
 import { type TSupportDoc } from './nls_json.tools';
 
@@ -58,6 +62,19 @@ function updateJson(param: unknown, filename: TSupportDoc): void {
     }
 }
 
+function checkIsJustEn(param: unknown): string {
+    const fullText: string = fmtRawData(param);
+    const textList: string[] = fullText.split('\n');
+    for (const text of textList) {
+        // eslint-disable-next-line no-control-regex, sonarjs/no-collapsible-if
+        if ((/[^\u0000-\u007F]/u).test(text)) {
+            // eslint-disable-next-line unicorn/no-lonely-if
+            if (!(/[^△↑→↓←]/u).test(text)) return text;
+        }
+    }
+    return '';
+}
+
 describe('generate .ahk.json', () => {
     it('generate: updateJson', () => {
         expect.hasAssertions();
@@ -67,11 +84,12 @@ describe('generate .ahk.json', () => {
         updateJson(BiVariables, 'BiVariables');
         updateJson(DirectivesList, 'Directives');
         updateJson(LineCommand, 'Command');
+        updateJson(Statement, 'foc');
 
         expect(true).toBeTruthy();
     });
 
-    it('generate: check zh-cn like en', () => {
+    it('generate: check zh-cn structure like en', () => {
         expect.hasAssertions();
 
         interface TV {
@@ -88,5 +106,18 @@ describe('generate .ahk.json', () => {
         expect(fn(cmd_en)).toStrictEqual(fn(cmd_cn));
         expect(fn(Directives_en)).toStrictEqual(fn(Directives_cn));
         expect(fn(func_en)).toStrictEqual(fn(func_cn));
+        expect(fn(foc_en)).toStrictEqual(fn(foc_cn));
+    });
+
+    it('confirmed as pure English', () => {
+        expect.hasAssertions();
+        //
+
+        expect(checkIsJustEn(funcDataList)).toBe('');
+        expect(checkIsJustEn(AVariablesList)).toBe('');
+        expect(checkIsJustEn(BiVariables)).toBe('');
+        expect(checkIsJustEn(DirectivesList)).toBe('');
+        expect(checkIsJustEn(LineCommand)).toBe('');
+        expect(checkIsJustEn(Statement)).toBe('');
     });
 });

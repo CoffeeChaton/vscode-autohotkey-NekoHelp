@@ -5,12 +5,15 @@ import { Statement } from './foc.data';
 
 /**
  * Capitalize<Lowercase<str>>;
+ * X break
+ * X BREAK
+ * O Break
  */
 function CapitalizeLowercase(str: string): string {
     return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-function isAllowList(keyRawName: string, upName: string): boolean {
+function isAllowList(keyRawName: string): boolean {
     if (keyRawName.startsWith('If')) return false;
     if (
         [
@@ -20,7 +23,7 @@ function isAllowList(keyRawName: string, upName: string): boolean {
     ) {
         return false;
     }
-    return keyRawName !== CapitalizeLowercase(upName);
+    return keyRawName !== CapitalizeLowercase(keyRawName.toUpperCase());
 }
 
 type TErrObj = {
@@ -46,23 +49,17 @@ describe('check Statement ruler', () => {
                 keyRawName,
                 body,
                 exp,
-                upName,
             } = v;
 
-            const v1 = upName.toUpperCase() !== upName;
-            const v2 = keyRawName.toUpperCase() !== upName;
             const v3 = !body.toUpperCase().includes(keyRawName.toUpperCase());
             const v4 = !exp.join('\n').includes(keyRawName);
-            const v5 = isAllowList(keyRawName, upName);
-            if (v1 || v2 || v3 || v4 || v5) {
+            const v5 = isAllowList(keyRawName);
+            if (v3 || v4 || v5) {
                 errList.push({
                     msg: '--15--36--49--76--56',
                     value: {
-                        v1,
-                        v2,
                         v3,
                         v4,
-                        upName,
                         v,
                     },
                 });
