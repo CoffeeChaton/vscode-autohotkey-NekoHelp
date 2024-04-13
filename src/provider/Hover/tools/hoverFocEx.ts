@@ -1,6 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { focExMapOut } from '../../../tools/Built-in/3_foc/focEx.tools';
+import type { TFocExMeta } from '../../../tools/Built-in/3_foc/focEx.tools';
+import { focExDefMap, focExMapOut } from '../../../tools/Built-in/3_foc/focEx.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
@@ -57,13 +58,31 @@ function hoverFocExIf(lStr: string, wordUpCol: number): TFocExParser | null {
     };
 }
 
-function FocEx2Md(focExParser: TFocExParser | null, character: number): vscode.MarkdownString | null {
+function FocEx2Md(focExParser: TFocExParser | null, character: number): TFocExMeta | null {
     if (focExParser === null) return null;
 
     const { lPos, exUpName, FocUpName } = focExParser;
     if (character >= lPos && character <= lPos + exUpName.length) {
-        const md: vscode.MarkdownString | undefined = focExMapOut.get(`${FocUpName}${exUpName}`);
+        const md: TFocExMeta | undefined = focExMapOut.get(`${FocUpName}${exUpName}`);
         if (md !== undefined) return md;
+    }
+
+    return null;
+}
+
+export function PosGetFocExMeta(
+    AhkTokenLine: TAhkTokenLine,
+    position: vscode.Position,
+): TFocExMeta | null {
+    const { character } = position;
+    const { fistWordUp, fistWordUpCol, lStr } = AhkTokenLine;
+    if (character <= fistWordUp.length + fistWordUpCol) return null;
+
+    if (fistWordUp === 'LOOP') {
+        return FocEx2Md(hoverFocExLoop(lStr, fistWordUpCol), character);
+    }
+    if (fistWordUp === 'IF') {
+        return FocEx2Md(hoverFocExIf(lStr, fistWordUpCol), character);
     }
 
     return null;
@@ -86,16 +105,14 @@ export function hoverFocEx(
     AhkTokenLine: TAhkTokenLine,
     position: vscode.Position,
 ): vscode.MarkdownString | null {
-    const { character } = position;
-    const { fistWordUp, fistWordUpCol, lStr } = AhkTokenLine;
-    if (character <= fistWordUp.length + fistWordUpCol) return null;
+    return PosGetFocExMeta(AhkTokenLine, position)?.md ?? null;
+}
 
-    if (fistWordUp === 'LOOP') {
-        return FocEx2Md(hoverFocExLoop(lStr, fistWordUpCol), character);
-    }
-    if (fistWordUp === 'IF') {
-        return FocEx2Md(hoverFocExIf(lStr, fistWordUpCol), character);
-    }
-
-    return null;
+export function gotoFocExDef(
+    AhkTokenLine: TAhkTokenLine,
+    position: vscode.Position,
+): [vscode.Location] | undefined {
+    const id: string | undefined = PosGetFocExMeta(AhkTokenLine, position)?.ID;
+    if (id === undefined) return undefined;
+    return focExDefMap.get(id);
 }

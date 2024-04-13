@@ -12,6 +12,8 @@ import * as Directives_en from '../../../ahk.json/Directives.en.ahk.json';
 import * as Directives_cn from '../../../ahk.json/Directives.zh-cn.ahk.json';
 import * as foc_en from '../../../ahk.json/foc.en.ahk.json';
 import * as foc_cn from '../../../ahk.json/foc.zh-cn.ahk.json';
+import * as focEx_en from '../../../ahk.json/focEx.en.ahk.json';
+import * as focEx_cn from '../../../ahk.json/focEx.zh-cn.ahk.json';
 import * as func_en from '../../../ahk.json/func.en.ahk.json';
 import * as func_cn from '../../../ahk.json/func.zh-cn.ahk.json';
 
@@ -20,6 +22,7 @@ import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';
 import { funcDataList } from './2_built_in_function/func.data';
 import { Statement } from './3_foc/foc.data';
+import { focExDataList } from './3_foc/focEx.data';
 import { LineCommand } from './6_command/Command.data';
 import { type TSupportDoc } from './nls_json.tools';
 
@@ -85,6 +88,7 @@ describe('generate .ahk.json', () => {
         updateJson(DirectivesList, 'Directives');
         updateJson(LineCommand, 'Command');
         updateJson(Statement, 'foc');
+        updateJson(focExDataList, 'focEx');
 
         expect(true).toBeTruthy();
     });
@@ -107,6 +111,7 @@ describe('generate .ahk.json', () => {
         expect(fn(Directives_en)).toStrictEqual(fn(Directives_cn));
         expect(fn(func_en)).toStrictEqual(fn(func_cn));
         expect(fn(foc_en)).toStrictEqual(fn(foc_cn));
+        expect(fn(focEx_en)).toStrictEqual(fn(focEx_cn));
     });
 
     it('confirmed as pure English', () => {
@@ -119,5 +124,6 @@ describe('generate .ahk.json', () => {
         expect(checkIsJustEn(DirectivesList)).toBe('');
         expect(checkIsJustEn(LineCommand)).toBe('');
         expect(checkIsJustEn(Statement)).toBe('');
+        expect(checkIsJustEn(focExDataList)).toBe('');
     });
 });

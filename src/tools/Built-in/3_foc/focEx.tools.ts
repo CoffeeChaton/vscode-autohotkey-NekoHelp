@@ -1,8 +1,13 @@
 import * as vscode from 'vscode';
-import { focExDataList } from './focEx.data';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
+import type { TStatementElement } from './foc.data';
 
 type TSnipList = readonly vscode.CompletionItem[];
 
+export type TFocExMeta = {
+    ID: string,
+    md: vscode.MarkdownString,
+};
 /**
  * ```ahk
  *  if between
@@ -15,12 +20,13 @@ type TSnipList = readonly vscode.CompletionItem[];
  *  Loop, Reg
  *  ```
  */
-export type TFocExMsgMap = ReadonlyMap<string, vscode.MarkdownString>;
+export type TFocExMsgMap = ReadonlyMap<string, TFocExMeta>;
 
 const { focExSnip, focExMap } = ((): { focExSnip: TSnipList, focExMap: TFocExMsgMap } => {
-    const focExMapRw = new Map<string, vscode.MarkdownString>();
+    const focExMapRw = new Map<string, TFocExMeta>();
     const List2: vscode.CompletionItem[] = [];
 
+    const focExDataList: TStatementElement[] = readNlsJson('focEx') as TStatementElement[];
     for (const v of focExDataList) {
         const {
             doc,
@@ -38,7 +44,7 @@ const { focExSnip, focExMap } = ((): { focExSnip: TSnipList, focExMap: TFocExMsg
         item.detail = 'Flow of Control (neko-help)';
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendCodeblock(keyRawName, 'ahk')
-            .appendMarkdown(doc)
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown(`\n[(Read Doc)](${link})`)
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
@@ -46,7 +52,8 @@ const { focExSnip, focExMap } = ((): { focExSnip: TSnipList, focExMap: TFocExMsg
         item.documentation = md;
 
         List2.push(item);
-        focExMapRw.set(keyRawName.toUpperCase(), md);
+        const ID: string = keyRawName.toUpperCase();
+        focExMapRw.set(ID, { md, ID });
     }
     return {
         focExSnip: List2,
@@ -61,3 +68,4 @@ export function getSnipFocEx(subStr: string): TSnipList {
 }
 
 export const focExMapOut: TFocExMsgMap = focExMap;
+export const focExDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('focEx');

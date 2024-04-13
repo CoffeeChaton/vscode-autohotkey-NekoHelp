@@ -2,7 +2,8 @@
     "$schema": "./_.schema.json",
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
-        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp"
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress":"1/158 A_AhkPath"
     },
     "body": [
         {

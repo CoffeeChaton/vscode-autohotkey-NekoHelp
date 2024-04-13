@@ -20,6 +20,7 @@ export type TSupportDoc =
     | 'Command'
     | 'Directives'
     | 'foc'
+    | 'focEx'
     | 'func';
 
 const rootDir: string = path.resolve(__dirname, '../ahk.json');

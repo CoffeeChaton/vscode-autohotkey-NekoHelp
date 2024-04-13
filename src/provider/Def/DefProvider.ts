@@ -9,6 +9,7 @@ import { focDefMap } from '../../tools/Built-in/3_foc/foc.tools';
 import { cmdDefMap } from '../../tools/Built-in/6_command/Command.tools';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
+import { gotoFocExDef } from '../Hover/tools/hoverFocEx';
 import { getClassDef } from './getClassDef';
 import { ClassProperty2Range, getClassProperty } from './getClassProperty';
 import { getDefReturn2Func } from './getDefReturn2Func';
@@ -77,7 +78,8 @@ function DefProviderCore(
     const jsonDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp)
         ?? biBVarDefMap.get(wordUp)
         ?? cmdDefMap.get(wordUp)
-        ?? focDefMap.get(wordUp);
+        ?? focDefMap.get(wordUp)
+        ?? gotoFocExDef(AhkTokenLine, position);
     if (jsonDef !== undefined) return jsonDef;
 
     return null;

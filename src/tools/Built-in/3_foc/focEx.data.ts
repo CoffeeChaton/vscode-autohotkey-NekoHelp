@@ -8,7 +8,7 @@ type TFocExElement = Readonly<{
     body:
         | `If ${string}`
         | `Loop, ${string}`,
-    doc: string,
+    doc: string[],
     link:
         | 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm#new'
         | `https://www.autohotkey.com/docs/v1/lib/${'If' | 'Loop'}${string}.htm`,
@@ -24,7 +24,9 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'IfBetween',
         body: 'If ${1:Var} ${2|not, |} between ${3:Low} and ${4:High}',
-        doc: 'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents are numerically or alphabetically between two values (inclusive).',
+        doc: [
+            'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents are numerically or alphabetically between two values (inclusive).',
+        ],
         link: 'https://www.autohotkey.com/docs/v1/lib/IfBetween.htm',
         exp: [
             'if var between 1 and 5',
@@ -34,7 +36,9 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'IfContains',
         body: 'If ${1:Var} ${2|not, |} contains ${3:Value,Value2}',
-        doc: 'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents match one of the items in a list.',
+        doc: [
+            'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents match one of the items in a list.',
+        ],
         link: 'https://www.autohotkey.com/docs/v1/lib/IfIn.htm',
         exp: [
             'if var contains 1,3  ; Note that it compares the values as strings, not numbers.',
@@ -44,7 +48,9 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'IfIn',
         body: 'If ${1:Var} ${2|not, |} in ${3:Value,Value2}',
-        doc: 'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents match one of the items in a list.',
+        doc: [
+            'Checks whether a [variable\'s](https://www.autohotkey.com/docs/v1/Variables.htm) contents match one of the items in a list.',
+        ],
         link: 'https://www.autohotkey.com/docs/v1/lib/IfIn.htm',
         exp: [
             'if var in exe,bat,com',
@@ -54,7 +60,7 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'IfIs',
         body: 'If ${1:Var} is ${2|not, |} ${3|integer,float,number,digit,XDigit,alpha,upper,lower,alnum,space,time|}',
-        doc: 'Checks whether a variable\'s contents are numeric, uppercase, etc.',
+        doc: ['Checks whether a variable\'s contents are numeric, uppercase, etc.'],
         link: 'https://www.autohotkey.com/docs/v1/lib/IfIs.htm',
         exp: [
             'if var is float',
@@ -64,7 +70,7 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'LoopFiles',
         body: 'Loop, Files, ${1:FilePattern}, ${2:Mode_DRF}',
-        doc: 'Retrieves the specified files or folders, one at a time.',
+        doc: ['Retrieves the specified files or folders, one at a time.'],
         link: 'https://www.autohotkey.com/docs/v1/lib/LoopFile.htm',
         exp: [
             'Loop Files, % A_ProgramFiles "\\*.txt", R  ; Recurse into subfolders.',
@@ -78,7 +84,7 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'LoopParse',
         body: 'Loop, Parse, ${2:InputVar} [, ${3:Delimiters_or_CSV}, ${4:OmitChars}]',
-        doc: 'Retrieves substrings (fields) from a string, one at a time.',
+        doc: ['Retrieves substrings (fields) from a string, one at a time.'],
         link: 'https://www.autohotkey.com/docs/v1/lib/LoopParse.htm',
         exp: [
             'Colors := "red,green,blue"',
@@ -96,7 +102,7 @@ export const focExDataList: TFocExElement[] = [
     {
         keyRawName: 'LoopRead',
         body: 'Loop, Read, ${2:InputFile} [, ${3:OutputFile}]',
-        doc: 'Retrieves the lines in a text file, one at a time (performs better than FileReadLine).',
+        doc: ['Retrieves the lines in a text file, one at a time (performs better than FileReadLine).'],
         link: 'https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm',
         exp: [
             'Loop, Read, C:\\Log File.txt',
@@ -107,7 +113,7 @@ export const focExDataList: TFocExElement[] = [
         keyRawName: 'LoopReg',
         body:
             'Loop, Reg, ${1|HKEY_LOCAL_MACHINE,HKEY_USERS,HKEY_CURRENT_USER,HKEY_CLASSES_ROOT,HKEY_CURRENT_CONFIG|}\\ $0 [, ${2:Mode_KVR}]',
-        doc: 'Retrieves the contents of the specified registry subkey, one item at a time.',
+        doc: ['Retrieves the contents of the specified registry subkey, one item at a time.'],
         link: 'https://www.autohotkey.com/docs/v1/lib/LoopReg.htm',
         exp: [
             'Loop, Reg, HKEY_CURRENT_USER\\Software\\Microsoft\\Windows, KVR',
