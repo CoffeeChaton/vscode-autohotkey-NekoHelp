@@ -40,6 +40,7 @@ let oldFnDocStyle: 1 | 2 | null = null;
 let oldSignInsertType: boolean | null = null;
 let oldTryParserIncludeOpt: 'auto' | 'close' | 'open' | null = null;
 let oldIncludeFolder: readonly string[] | null = null;
+let oldDocLanguage: 'auto' | 'en' | 'zh-cn' | null = null;
 
 function configEffectUp(ed: TConfigs): void {
     // --------------------- oldFnDocStyle ---------------------
@@ -81,6 +82,14 @@ function configEffectUp(ed: TConfigs): void {
         void vscode.commands.executeCommand(ECommand.UpdateCacheAsync, false);
     }
     oldIncludeFolder = ed.files.alwaysIncludeFolder;
+
+    // --------------------- oldDocLanguage ---------------------
+    if (oldDocLanguage !== null && oldDocLanguage !== ed.docLanguage) {
+        void vscode.window.showInformationMessage(
+            'For performance reasons, the extension needs to be restarted to reload the document\n为了性能,需重新启动扩展以重新载入文档',
+        );
+    }
+    oldDocLanguage = ed.docLanguage;
 }
 
 function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
@@ -184,6 +193,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             HideSingleParameters: getConfigs<boolean>(Configs, 'AhkNekoHelp.inlayHints.HideSingleParameters'),
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
+        docLanguage: getConfigs<'auto' | 'en' | 'zh-cn'>(Configs, 'AhkNekoHelp.doc.language'),
     } as const;
 
     statusBarItem.color = ed.customize.statusBarDisplayColor;
@@ -205,6 +215,10 @@ export function configChangEvent(): void {
 /*
     ---set end---
 */
+
+export function getDocLanguageConfig(): TConfigs['docLanguage'] {
+    return config.docLanguage;
+}
 
 export function getInlayHintsConfig(): TConfigs['inlayHints'] {
     return config.inlayHints;

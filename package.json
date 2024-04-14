@@ -31,9 +31,12 @@
         "jest": "jest --onlyChanged",
         "knip": "knip",
         "lint": "eslint src",
-        "package": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/",
+        "package": "pnpm run readOnlyJsonAdd && pnpm run packageCore && pnpm run readOnlyJsonRm",
+        "packageCore": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/",
         "pnpm clean cache": "pnpm store prune",
         "prepare": "husky install",
+        "readOnlyJsonAdd": "node readonlyJsonAdd.js",
+        "readOnlyJsonRm": "node readonlyJsonRm.js",
         "sort_pack": "sort-package-json",
         "test": "jest && pnpm run test_grammar_snap_test",
         "test_grammar_snap_test": "pnpm vscode-tmgrammar-snap syntaxes/grammar/*.ahk",
@@ -681,6 +684,21 @@
                             "%AhkNekoHelp.event.FileRenameEvent-3%"
                         ],
                         "markdownDescription": "%AhkNekoHelp.event.FileRenameEvent%"
+                    },
+                    "AhkNekoHelp.doc.language": {
+                        "type": "string",
+                        "default": "auto",
+                        "enum": [
+                            "auto",
+                            "en",
+                            "zh-cn"
+                        ],
+                        "markdownEnumDescriptions": [
+                            "%AhkNekoHelp.doc.language-auto%",
+                            "%AhkNekoHelp.doc.language-en%",
+                            "%AhkNekoHelp.doc.language-zh-cn%"
+                        ],
+                        "markdownDescription": "%AhkNekoHelp.doc.language%"
                     }
                 }
             }
@@ -732,7 +750,7 @@
         "@typescript-eslint/eslint-plugin": "^7.6.0",
         "@typescript-eslint/parser": "^7.6.0",
         "@vscode/test-electron": "^2.3.9",
-        "@vscode/vsce": "^2.24.0",
+        "@vscode/vsce": "^2.25.0",
         "esbuild": "^0.20.2",
         "eslint": "^8.57.0",
         "eslint-config-airbnb-base": "^15.0.0",

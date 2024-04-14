@@ -36,6 +36,8 @@ node_modules/
 note/
 out/
 pnpm-lock.yaml
+readonlyJsonAdd.js
+readonlyJsonRm.js
 src/
 syntaxes/grammar/
 syntaxes/README.md

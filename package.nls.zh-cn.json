@@ -96,5 +96,9 @@
     "AhkNekoHelp.event.FileRenameEvent-1": "在后台紀錄日誌（默认） ",
     "AhkNekoHelp.event.FileRenameEvent-2": "记录并显示",
     "AhkNekoHelp.event.FileRenameEvent-3": "记录并尝试重命名 `#Include` (`Alpha 测试选项`)",
+    "AhkNekoHelp.doc.language": "内置文档的语言\n原始依据为 [线上文档](https://www.autohotkey.com/docs/v1/),但为了在vscode内有更好的排版,有所更动,如有修改需求/翻译错误,请到 [github](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp) 通知我。",
+    "AhkNekoHelp.doc.language-auto": "自动选择文档语言(现在只有`en`和`zh-cn`)",
+    "AhkNekoHelp.doc.language-en": "始终选择英文文档",
+    "AhkNekoHelp.doc.language-zh-cn": "始终选择中文文档",
     "_10": ""
 }

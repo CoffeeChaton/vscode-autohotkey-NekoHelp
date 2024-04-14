@@ -96,5 +96,10 @@
     "AhkNekoHelp.event.FileRenameEvent-1": "log at background (default) ",
     "AhkNekoHelp.event.FileRenameEvent-2": "log and show",
     "AhkNekoHelp.event.FileRenameEvent-3": "log and try to Rename `#Include` (`Alpha test options`)",
+    "AhkNekoHelp.doc.language": "Language of built-in documentation\nThe original basis is an [online document](https://www.autohotkey.com/docs/v1/), but in order to have better typesetting in vscode, some changes have been made. If there are any modification requirements/translation errors, please notify me on [github](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp).",
+    "AhkNekoHelp.doc.language-auto": "Automatically select document language (only `en` and `zh-cn` now)",
+    "AhkNekoHelp.doc.language-en": "Always choose English documents",
+    "AhkNekoHelp.doc.language-zh-cn": "Always select Chinese documents",
+
     "_10": ""
 }

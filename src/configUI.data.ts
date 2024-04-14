@@ -167,6 +167,7 @@ type TempConfigs = {
         HideSingleParameters: boolean,
     },
     RenameFunctionInStr: boolean,
+    docLanguage: 'auto' | 'en' | 'zh-cn',
 };
 
 /**
