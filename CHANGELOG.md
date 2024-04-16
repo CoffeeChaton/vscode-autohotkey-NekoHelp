@@ -37,8 +37,11 @@
 
 ## v0.0.55(2023-04-XX)
 
-<!-- pnpm 8.15.6   iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.0.0  iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
+
+- feat:([#45](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/45))
+  1. support zn-ch(中文)
 
 ## v0.0.54(2023-04-10)
 

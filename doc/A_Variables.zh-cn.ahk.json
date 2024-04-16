@@ -3,7 +3,7 @@
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress":"1/158 A_AhkPath"
+        "google Translation progress": "A_AutoTrim / x of 158 / 83 Line"
     },
     "body": [
         {
@@ -30,11 +30,11 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#AhkVersion",
             "group": "Script",
             "doc": [
-                "In versions prior to 1.0.22, this variable is blank. Otherwise, it contains the version of AutoHotkey that is running the script, such as 1.0.22. In the case of a [compiled script](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe), the version that was originally used to compile it is reported. The formatting of the version number allows a script to check whether A_AhkVersion is greater than some minimum version number with > or >= as in this example:",
+                "在 1.0.22 之前的版本中，此变量为空。否则，它包含运行脚本的 AutoHotkey 版本，例如 1.0.22。对于[已编译的脚本](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe),将报告最初用于编译它的版本。版本号的格式允许脚本检查A\\_AhkVersion是否大于 > 或 >= 的最小版本号，如以下示例所示",
                 "```ahk",
                 "    if A_AhkVersion >= 1.0.25.07",
                 "```",
-                "See also: [#Requires](https://www.autohotkey.com/docs/v1/lib/_Requires.htm) and [VerCompare()](https://www.autohotkey.com/docs/v1/lib/VerCompare.htm)"
+                "[#Requires](https://www.autohotkey.com/docs/v1/lib/_Requires.htm) 和 [VerCompare()](https://www.autohotkey.com/docs/v1/lib/VerCompare.htm)"
             ]
         },
         {
@@ -42,7 +42,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#AppData",
             "group": "OS",
             "doc": [
-                "The full path and name of the folder containing the current user's application-specific data. For example:",
+                "包含当前用户的应用程序特定数据的文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_AppData",
@@ -55,7 +55,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#AppDataCommon",
             "group": "OS",
             "doc": [
-                "The full path and name of the folder containing the all-users application-specific data. For example:",
+                "包含所有用户应用程序特定数据的文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_AppDataCommon",
@@ -68,7 +68,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Args",
             "group": "Script",
             "doc": [
-                "Contains an [array](https://www.autohotkey.com/docs/v1/Objects.htm#Usage_Simple_Arrays) of command line parameters. For details, see [Passing Command Line Parameters to a Script](https://www.autohotkey.com/docs/v1/Scripts.htm#cmd)."
+                "包含命令行参数[数组](https://www.autohotkey.com/docs/v1/Objects.htm#Usage_Simple_Arrays)。有关详细信息，请参阅将[命令行参数传递给脚本](https://www.autohotkey.com/docs/v1/Scripts.htm#cmd)。"
             ]
         },
         {
@@ -76,7 +76,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#AutoTrim",
             "group": "Setting",
             "doc": [
-                "The current mode (`On or Off`) set by [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm)."
+                "[AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) 设置的当前模式 (`On or Off`)"
             ]
         },
         {

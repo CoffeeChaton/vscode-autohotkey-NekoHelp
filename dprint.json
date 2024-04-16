@@ -7,7 +7,7 @@
         "./.github/ISSUE_TEMPLATE/bug_report.md",
         "./.github/ISSUE_TEMPLATE/feat_report.md",
         "dprint.json",
-        "**/ahk.json/**"
+        "./doc/**"
     ],
     "includes": [
         "**/*.{ts,tsx,js,jsx,cjs,mjs,json,md,toml}"
@@ -21,7 +21,7 @@
         "https://plugins.dprint.dev/json-0.19.2.wasm",
         "https://plugins.dprint.dev/markdown-0.16.4.wasm",
         "https://plugins.dprint.dev/toml-0.6.1.wasm",
-        "https://plugins.dprint.dev/typescript-0.90.0.wasm"
+        "https://plugins.dprint.dev/typescript-0.90.1.wasm"
     ],
     "typescript": {
         "binaryExpression.operatorPosition": "nextLine",

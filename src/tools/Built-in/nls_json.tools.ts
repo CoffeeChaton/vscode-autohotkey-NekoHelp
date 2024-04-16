@@ -29,7 +29,7 @@ export type TSupportDoc =
     | 'focEx'
     | 'func';
 
-const rootDir: string = path.resolve(__dirname, '../ahk.json');
+const rootDir: string = path.resolve(__dirname, '../doc');
 
 function getNlsPath(filename: TSupportDoc): string {
     return path

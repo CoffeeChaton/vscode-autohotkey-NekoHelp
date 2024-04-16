@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const execSync = require('child_process').execSync;
 
-const mainPath = path.join(__dirname, './ahk.json');
+const mainPath = path.join(__dirname, './doc');
 
 const files = fs.readdirSync(mainPath);
 for (const file of files) {

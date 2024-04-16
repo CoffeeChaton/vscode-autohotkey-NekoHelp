@@ -1,21 +1,25 @@
 /* eslint-disable jest/max-expects */
-import { describe, expect, it } from '@jest/globals';
+import {
+    describe,
+    expect,
+    it,
+} from '@jest/globals';
 import * as fs from 'node:fs';
 import path from 'node:path';
-import * as A_Variables_en from '../../../ahk.json/A_Variables.en.ahk.json';
-import * as A_Variables_cn from '../../../ahk.json/A_Variables.zh-cn.ahk.json';
-import * as BiVariables_en from '../../../ahk.json/BiVariables.en.ahk.json';
-import * as BiVariables_cn from '../../../ahk.json/BiVariables.zh-cn.ahk.json';
-import * as cmd_en from '../../../ahk.json/Command.en.ahk.json';
-import * as cmd_cn from '../../../ahk.json/Command.zh-cn.ahk.json';
-import * as Directives_en from '../../../ahk.json/Directives.en.ahk.json';
-import * as Directives_cn from '../../../ahk.json/Directives.zh-cn.ahk.json';
-import * as foc_en from '../../../ahk.json/foc.en.ahk.json';
-import * as foc_cn from '../../../ahk.json/foc.zh-cn.ahk.json';
-import * as focEx_en from '../../../ahk.json/focEx.en.ahk.json';
-import * as focEx_cn from '../../../ahk.json/focEx.zh-cn.ahk.json';
-import * as func_en from '../../../ahk.json/func.en.ahk.json';
-import * as func_cn from '../../../ahk.json/func.zh-cn.ahk.json';
+import * as A_Variables_en from '../../../doc/A_Variables.en.ahk.json';
+import * as A_Variables_cn from '../../../doc/A_Variables.zh-cn.ahk.json';
+import * as BiVariables_en from '../../../doc/BiVariables.en.ahk.json';
+import * as BiVariables_cn from '../../../doc/BiVariables.zh-cn.ahk.json';
+import * as cmd_en from '../../../doc/Command.en.ahk.json';
+import * as cmd_cn from '../../../doc/Command.zh-cn.ahk.json';
+import * as Directives_en from '../../../doc/Directives.en.ahk.json';
+import * as Directives_cn from '../../../doc/Directives.zh-cn.ahk.json';
+import * as foc_en from '../../../doc/foc.en.ahk.json';
+import * as foc_cn from '../../../doc/foc.zh-cn.ahk.json';
+import * as focEx_en from '../../../doc/focEx.en.ahk.json';
+import * as focEx_cn from '../../../doc/focEx.zh-cn.ahk.json';
+import * as func_en from '../../../doc/func.en.ahk.json';
+import * as func_cn from '../../../doc/func.zh-cn.ahk.json';
 
 import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
@@ -27,7 +31,7 @@ import { LineCommand } from './6_command/Command.data';
 import { type TSupportDoc } from './nls_json.tools';
 
 const space = 4;
-const mainPath: string = path.join(__dirname, '../../../ahk.json');
+const mainPath: string = path.join(__dirname, '../../../doc');
 // console.log('mdPath', mainPath);
 
 function fmtRawData(param: unknown): string {
@@ -79,7 +83,7 @@ function checkIsJustEn(param: unknown): string {
 }
 
 describe('generate .ahk.json', () => {
-    it('generate: updateJson', () => {
+    it('generate: check zh-cn structure like en', () => {
         expect.hasAssertions();
 
         updateJson(funcDataList, 'func');
@@ -89,12 +93,6 @@ describe('generate .ahk.json', () => {
         updateJson(LineCommand, 'Command');
         updateJson(Statement, 'foc');
         updateJson(focExDataList, 'focEx');
-
-        expect(true).toBeTruthy();
-    });
-
-    it('generate: check zh-cn structure like en', () => {
-        expect.hasAssertions();
 
         interface TV {
             keyRawName: string;
