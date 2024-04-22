@@ -8,6 +8,7 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import { hoverWindowsClassIdentifiers } from '../../tools/Built-in/100_other/CLSID/WindowsClassIdentifiers.tools';
 import { hover2winMsgMd } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.tools';
 import { hoverWinTitleParam } from '../../tools/Built-in/100_other/WinTitle/WinTitleParameter.tools';
+import { HotKeyOpt } from '../../tools/Built-in/10_HotKey/HotKeyOpt.tool';
 import { hoverAVar } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
 import { hoverBiVar } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { getBuiltInFuncMD } from '../../tools/Built-in/2_built_in_function/func.tools';
@@ -106,6 +107,9 @@ function HoverProviderCore(
     //
     const HotStringsMd: vscode.MarkdownString | null = HotStringsOptions(position, AhkFileData);
     if (HotStringsMd !== null) return new vscode.Hover(HotStringsMd);
+
+    const HotKeyMd: vscode.MarkdownString | null = HotKeyOpt(position, AhkFileData);
+    if (HotKeyMd !== null) return new vscode.Hover(HotKeyMd);
 
     //
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(

@@ -12,6 +12,8 @@ form GPL-V2
 - 6 - command
 - 7 - sub-command
 - 8 - built-in method/property
+- 9 - _HostString_
+- 10 - _HotKey_
 - 99 - Ahk2Exe compiler
 
 ## Directory Structure from content.js

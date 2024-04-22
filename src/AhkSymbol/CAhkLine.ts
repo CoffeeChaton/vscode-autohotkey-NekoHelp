@@ -50,41 +50,6 @@ export class CAhkDirectives extends vscode.DocumentSymbol {
 }
 
 /**
- * @example ~F10::
- */
-export class CAhkHotKeys extends vscode.DocumentSymbol {
-    // https://www.autohotkey.com/docs/v1/misc/Labels.htm
-    public readonly uri: vscode.Uri;
-
-    public readonly AfterString: string;
-
-    declare public readonly kind: vscode.SymbolKind.Event;
-
-    declare public readonly detail: 'HotKeys' | 'Remap';
-
-    declare public readonly children: never[];
-
-    public constructor(
-        {
-            name,
-            range,
-            selectionRange,
-            uri,
-        }: TBaseLineParam,
-        AfterString: string,
-        isRemap: boolean,
-    ) {
-        const detail: 'HotKeys' | 'Remap' = isRemap
-            ? 'Remap'
-            : 'HotKeys';
-        super(name, detail, vscode.SymbolKind.Event, range, selectionRange);
-        this.uri = uri;
-        this.AfterString = AfterString;
-        this.detail = detail;
-    }
-}
-
-/**
  * AHK_L will auto diag of Duplicate label.
  *
  * auto diag1

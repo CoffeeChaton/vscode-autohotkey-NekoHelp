@@ -37,11 +37,15 @@
 
 ## v0.0.55(2023-04-XX)
 
-<!-- pnpm 9.0.0  iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.0.4  iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
+
+- feat:([#46](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/46)) add hover at Hotkeys `~F12::`.
+  ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-55--1-hover-at-hotkey.jpg)
 
 - feat:([#45](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/45))
   1. support zn-ch(中文)
+  2. support goto built-in doc
 
 ## v0.0.54(2023-04-10)
 

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { CAhkHotKeys } from '../../AhkSymbol/CAhkLine';
+import { CAhkHotKeys } from '../../AhkSymbol/CAhkHotKeys';
 
 import { EDetail } from '../../globalEnum';
 import { keyAltTabListUpSet } from '../../tools/Built-in/100_other/Keys_and_other/keyList.data';

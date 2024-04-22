@@ -32,9 +32,6 @@ export type THotStringsOptionsList = Readonly<{
     parseFn: (s: string) => THotStringsOptions | null,
 }>;
 
-/**
- * after initialization clear
- */
 export const HotStringsOptionsList: THotStringsOptionsList[] = [
     {
         humanName: '* (asterisk)',

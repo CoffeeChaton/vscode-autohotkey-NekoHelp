@@ -1,0 +1,25 @@
+{
+    "AhkHotKeys.hover.md": [
+        "Hotkeys",
+        "",
+        "[Hotkeys Doc](https://www.autohotkey.com/docs/v1/Hotkeys.htm#Symbols)",
+        "",
+        "[Keys Doc](https://www.autohotkey.com/docs/v1/KeyList.htm)",
+        "",
+        "| 符号 | 描述                                                                      |",
+        "| ------ | :--------------------------------------------------------------------- |",
+        "| `#`    | `win`                                                                  |",
+        "| `!`    | `Alt`                                                                  |",
+        "| `^`    | `Ctrl`                                                                 |",
+        "| `+`    | `Shift`                                                                |",
+        "| `&`    | and                                                                    |",
+        "| `<`    | 左側的键 exp: `<+` -> left  Shift                                       |",
+        "| `>`    | 右键                                                                    |",
+        "| `<^>!` | `AltGr`                                                                 |",
+        "| `*`    | 通配符：即使按下额外的修饰符，也会触发热键。                                |",
+        "| `~`    | 密钥不会被阻止                                                           |",
+        "| `$`    | 避免命令 `Send` 调用它                                                   |",
+        "| `UP`   | ```*LWin::Send {LCtrl down} and *LWin Up::Send {LCtrl up}```            |",
+        ""
+    ]
+}

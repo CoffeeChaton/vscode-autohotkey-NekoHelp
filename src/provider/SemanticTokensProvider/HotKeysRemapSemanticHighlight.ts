@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { CAhkHotKeys } from '../../AhkSymbol/CAhkLine';
+import { CAhkHotKeys } from '../../AhkSymbol/CAhkHotKeys';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TSemanticTokensLeaf } from './tools';
 

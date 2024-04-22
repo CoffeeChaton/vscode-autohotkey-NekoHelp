@@ -1,24 +1,7 @@
 import * as fs from 'node:fs';
 import path from 'node:path';
 import * as vscode from 'vscode';
-import { getDocLanguageConfig } from '../../configUI';
-
-export type TLanguage = 'en' | 'zh-cn';
-export const localeLanguage: TLanguage = ((): TLanguage => {
-    const mode: 'en' | 'zh-cn' | 'auto' = getDocLanguageConfig();
-    if (mode === 'en') return 'en';
-    if (mode === 'zh-cn') return 'zh-cn';
-
-    // auto
-    const { language } = vscode.env;
-
-    if (language === 'en') return 'en';
-    if (language === 'en-US') return 'en';
-    if (language === 'zh-cn') return 'zh-cn';
-    if (language === 'zh-tw') return 'zh-cn'; // TODO: if all languages is call zh-cn, then make it
-
-    return 'en';
-})();
+import { localeLanguage } from '../../i18n';
 
 export type TSupportDoc =
     | 'A_Variables'

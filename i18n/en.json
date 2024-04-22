@@ -1,0 +1,25 @@
+{
+    "AhkHotKeys.hover.md": [
+        "Hotkeys",
+        "",
+        "[Hotkeys Doc](https://www.autohotkey.com/docs/v1/Hotkeys.htm#Symbols)",
+        "",
+        "[Keys Doc](https://www.autohotkey.com/docs/v1/KeyList.htm)",
+        "",
+        "| Symbol | Description                                                              |",
+        "| ------ | :----------------------------------------------------------------------- |",
+        "| `#`    | `win`                                                                    |",
+        "| `!`    | `Alt`                                                                    |",
+        "| `^`    | `Ctrl`                                                                   |",
+        "| `+`    | `Shift`                                                                  |",
+        "| `&`    | and                                                                      |",
+        "| `<`    | left key   exp: `<+` -> left  Shift                                      |",
+        "| `>`    | right key                                                                |",
+        "| `<^>!` | `AltGr`                                                                  |",
+        "| `*`    | Wildcard: Fire the hotkey even if extra modifiers are being held down.   |",
+        "| `~`    | key's will not be blocked                                                |",
+        "| `$`    | avoid cmd `Send` call it                                                 |",
+        "| `UP`   | ```*LWin::Send {LCtrl down} and *LWin Up::Send {LCtrl up}```             |",
+        ""
+    ]
+}

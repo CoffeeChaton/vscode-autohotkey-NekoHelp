@@ -1,4 +1,3 @@
-/* eslint-disable max-depth */
 import type * as vscode from 'vscode';
 import type { THotStrData } from '../../../AhkSymbol/CAhkHotString';
 import { CAhkHotString } from '../../../AhkSymbol/CAhkHotString';
