@@ -1,9 +1,8 @@
 {
-    "$schema": "./_.schema.json",
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "A_AutoTrim / x of 158 / 83 Line"
+        "google Translation progress": "A_DetectHiddenText"
     },
     "body": [
         {
@@ -89,7 +88,7 @@
                 "    A_NumBatchLines === A_BatchLines ;synonymous",
                 "```",
                 "",
-                "The current value as set by [SetBatchLines](https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm). Examples: `200` or `10ms` (depending on format)."
+                "(A\\_NumBatchLines的同义词)[由 SetBatchLines](https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm) 设置的当前值。示例: 200 或 10 毫秒（取决于格式）。"
             ]
         },
         {
@@ -102,7 +101,7 @@
                 "    A_NumBatchLines === A_BatchLines ;synonymous",
                 "```",
                 "",
-                "The current value as set by [SetBatchLines](https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm). Examples: `200` or `10ms` (depending on format)."
+                "(A\\_NumBatchLines的同义词)[由 SetBatchLines](https://www.autohotkey.com/docs/v1/lib/SetBatchLines.htm) 设置的当前值。示例: 200 或 10 毫秒（取决于格式）。"
             ]
         },
         {
@@ -110,9 +109,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Caret",
             "group": "Misc.",
             "doc": [
-                "- The current X and Y coordinates of the caret (text insertion point). The coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) is used to make them relative to the entire screen. If there is no active window or the caret position cannot be determined, these variables are blank.",
+                "- 插入符号的当前 X 和 Y 坐标（文本插入点）。坐标是相对于活动窗口的，除非使用 [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 使它们相对于整个屏幕。如果没有活动窗口或无法确定插入点位置，则这些变量为空。",
                 "",
-                "- The following script allows you to move the caret around to see its current position displayed in an auto-update tooltip. Note that some windows (e.g. certain versions of MS Word) report the same caret position regardless of its actual position.",
+                "- 以下脚本允许您移动插入符号以查看其当前位置，以显示在自动更新工具提示中。请注意，某些窗口(例如某些版本的 MS Word)报告相同的插入符号位置，而不管其实际位置如何。",
                 "",
                 "```ahk",
                 "#Persistent",
@@ -120,7 +119,7 @@
                 "Return",
                 "",
                 "WatchCaret(){",
-                "    ; can open txt to observed A_CaretX",
+                "    ;可以打开txt来观察A_CaretX",
                 "    ToolTip, % \"X: \" A_CaretX \"`n Y: \" A_CaretY",
                 "}",
                 "```"
@@ -131,9 +130,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Caret",
             "group": "Misc.",
             "doc": [
-                "- The current X and Y coordinates of the caret (text insertion point). The coordinates are relative to the active window unless [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) is used to make them relative to the entire screen. If there is no active window or the caret position cannot be determined, these variables are blank.",
+                "- 插入符号的当前 X 和 Y 坐标（文本插入点）。坐标是相对于活动窗口的，除非使用 [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 使它们相对于整个屏幕。如果没有活动窗口或无法确定插入点位置，则这些变量为空。",
                 "",
-                "- The following script allows you to move the caret around to see its current position displayed in an auto-update tooltip. Note that some windows (e.g. certain versions of MS Word) report the same caret position regardless of its actual position.",
+                "- 以下脚本允许您移动插入符号以查看其当前位置，以显示在自动更新工具提示中。请注意，某些窗口(例如某些版本的 MS Word)报告相同的插入符号位置，而不管其实际位置如何。",
                 "",
                 "```ahk",
                 "#Persistent",
@@ -141,7 +140,7 @@
                 "Return",
                 "",
                 "WatchCaret(){",
-                "    ; can open txt to observed A_CaretX",
+                "    ;可以打开txt来观察A_CaretX",
                 "    ToolTip, % \"X: \" A_CaretX \"`n Y: \" A_CaretY",
                 "}",
                 "```"
@@ -152,7 +151,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Clipboard",
             "group": "Misc.",
             "doc": [
-                "Can be used to get or set the contents of the OS's clipboard. For details, see [Clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm)."
+                "可用于获取或设置操作系统剪贴板的内容。有关详细信息，请参阅[剪贴板](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm)。"
             ]
         },
         {
@@ -160,7 +159,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ComSpec",
             "group": "OS",
             "doc": [
-                "Contains the same string as the environment's ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` "
+                "包含与 ComSpec 环境变量相同的字符串，该变量通常是命令提示符可执行文件 (cmd.exe) 的完整路径。通常与 [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm) 一起使用。例如： \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` "
             ]
         },
         {
@@ -168,7 +167,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ComputerName",
             "group": "OS",
             "doc": [
-                "The name of the computer as seen on the network."
+                "在网络上看到的计算机的名称。"
             ]
         },
         {
@@ -176,7 +175,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ControlDelay",
             "group": "Setting",
             "doc": [
-                "The current delay set by [SetControlDelay](https://www.autohotkey.com/docs/v1/lib/SetControlDelay.htm) (always decimal, not hex)."
+                "[SetControlDelay](https://www.autohotkey.com/docs/v1/lib/SetControlDelay.htm) 设置的当前延迟（始终为十进制，而不是十六进制）。"
             ]
         },
         {
@@ -184,7 +183,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm)."
+                "[\\[v1.1.23+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\"):[CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 设置的当前模式（窗口、客户端或屏幕）。"
             ]
         },
         {
@@ -192,7 +191,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm)."
+                "[\\[v1.1.23+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\"):[CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 设置的当前模式（窗口、客户端或屏幕）。"
             ]
         },
         {
@@ -200,7 +199,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm)."
+                "[\\[v1.1.23+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\"):[CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 设置的当前模式（窗口、客户端或屏幕）。"
             ]
         },
         {
@@ -208,7 +207,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm)."
+                "[\\[v1.1.23+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\"):[CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 设置的当前模式（窗口、客户端或屏幕）。"
             ]
         },
         {
@@ -216,7 +215,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#CoordMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (Window, Client or Screen) set by [CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm)."
+                "[\\[v1.1.23+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\"):[CoordMode](https://www.autohotkey.com/docs/v1/lib/CoordMode.htm) 设置的当前模式（窗口、客户端或屏幕）。"
             ]
         },
         {
@@ -224,7 +223,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Cursor",
             "group": "Misc.",
             "doc": [
-                "The type of mouse cursor currently being displayed. It will be one of the following words: AppStarting, Arrow, Cross, Help, IBeam, Icon, No, Size, SizeAll, SizeNESW, SizeNS, SizeNWSE, SizeWE, UpArrow, Wait, Unknown. The acronyms used with the size-type cursors are compass directions, e.g. NESW = NorthEast+SouthWest. The hand-shaped cursors (pointing and grabbing) are classified as Unknown. "
+                "当前显示的鼠标光标类型。它将是以下单词之一:AppStarting、Arrow、Cross、Help、IBeam、Icon、No、Size、SizeAll、SizeNESW、SizeNS、SizeNWSE、SizeWE、UpArrow、Wait、Unknown。与大小类型光标一起使用的首字母缩略词是指南针方向,例如 NESW = NorthEast+SouthWest。手形光标(指向和抓取)被归类为未知。"
             ]
         },
         {
@@ -232,7 +231,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DD",
             "group": "Date",
             "doc": [
-                "Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`."
+                "当前 2 位数的日期 (01-31)。 `A_MDay` 同义於 `A_DD`."
             ]
         },
         {
@@ -240,7 +239,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DD",
             "group": "Date",
             "doc": [
-                "Current 2-digit day of the month (01-31). Synonymous with `A_MDay` or `A_DD`."
+                "当前 2 位数的日期 (01-31)。 `A_MDay` 同义於 `A_DD`."
             ]
         },
         {
@@ -248,7 +247,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DDD",
             "group": "Date",
             "doc": [
-                "Current day of the week's abbreviation in the current user's language, e.g. `Sun`"
+                "当前用户语言中的当前星期几的缩写，例如 `Sun`"
             ]
         },
         {
@@ -256,7 +255,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DDDD",
             "group": "Date",
             "doc": [
-                "Current day of the week's full name in the current user's language, e.g. `Sunday`"
+                "当前用户语言中的当前星期几的全名，例如 星期日 `Sunday`"
             ]
         },
         {
@@ -264,7 +263,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DefaultGui",
             "group": "GUI",
             "doc": [
-                "The name or number of the current thread's [default GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default)."
+                "当前线程[的默认 GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default) 的名称或编号。"
             ]
         },
         {
@@ -272,7 +271,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DefaultListView",
             "group": "GUI",
             "doc": [
-                "The [variable name](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events) or [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of the [TreeView control](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) upon which the [TreeView functions](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn) operate. If the default GUI lacks a TreeView, this variable is blank."
+                "[ListView 函数](https://www.autohotkey.com/docs/v1/lib/ListView.htm#BuiltIn)对其进行操作的 [ListView 控件](https://www.autohotkey.com/docs/v1/lib/ListView.htm)的[变量名称](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events)或 [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar)。如果默认 GUI 缺少 ListView，则此变量为空。"
             ]
         },
         {
@@ -280,7 +279,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DefaultMouseSpeed",
             "group": "Setting",
             "doc": [
-                "The current speed set by [SetDefaultMouseSpeed](https://www.autohotkey.com/docs/v1/lib/SetDefaultMouseSpeed.htm) (always decimal, not hex)."
+                "[SetDefaultMouseSpeed](https://www.autohotkey.com/docs/v1/lib/SetDefaultMouseSpeed.htm) 设置的当前速度（始终为十进制，而不是十六进制）。"
             ]
         },
         {
@@ -288,7 +287,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DefaultTreeView",
             "group": "GUI",
             "doc": [
-                "The [variable name](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events) or [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar) of the [TreeView control](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) upon which the [TreeView functions](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn) operate. If the default GUI lacks a TreeView, this variable is blank."
+                "[TreeView 函数](https://www.autohotkey.com/docs/v1/lib/TreeView.htm#BuiltIn)对其进行操作的 [TreeView 控件](https://www.autohotkey.com/docs/v1/lib/TreeView.htm)的[变量名称](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events)或 [HWND](https://www.autohotkey.com/docs/v1/lib/Gui.htm#HwndOutputVar)。如果默认 GUI 缺少 TreeView，则此变量为空。"
             ]
         },
         {
@@ -296,7 +295,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Desktop",
             "group": "OS",
             "doc": [
-                "The full path and name of the folder containing the current user's desktop files. For example:",
+                "包含当前用户的桌面文件的文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_Desktop",
@@ -309,7 +308,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DesktopCommon",
             "group": "OS",
             "doc": [
-                "The full path and name of the folder containing the all-users desktop files. For example:",
+                "包含所有用户桌面文件的文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_DesktopCommon",

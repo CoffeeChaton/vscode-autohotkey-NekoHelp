@@ -7,22 +7,9 @@ import { isBuiltin } from '../../tools/isBuiltin';
 import { isLookLikeNumber } from '../../tools/isNumber';
 import { isString } from '../../tools/isString';
 import { SignatureCmdOverloadMap } from '../SignatureHelpProvider/SignatureCmdOverload';
+import { InlayHintsCmdMake } from './InlayHintsCmdMake';
 
-const memoCmdSignLabel2Arr = new Map<string, string[]>();
-
-function tryGetCmdSignLabel2Arr(cmdSignLabel: string): string[] {
-    const arr: string[] | undefined = memoCmdSignLabel2Arr.get(cmdSignLabel);
-    if (arr === undefined) {
-        const rr: string[] = cmdSignLabel
-            .replaceAll('[', '')
-            .replaceAll(']', '')
-            .split(',')
-            .map((v: string): string => v.trim());
-        memoCmdSignLabel2Arr.set(cmdSignLabel, rr);
-        return rr;
-    }
-    return arr;
-}
+const unknownLabelPart = new vscode.InlayHintLabelPart('unknown:');
 
 /**
  * ```ahk
@@ -36,13 +23,12 @@ function getInlayHintLabelPartMsgBox(
     cmdDataList: readonly TCmdMsg[],
 ): vscode.InlayHintLabelPart {
     const maxCOmma: number = args.at(-1)?.comma ?? -1;
-    const select: string = maxCOmma > 0
-        ? cmdDataList[1].cmdSignLabel // Overload
-        : cmdDataList[0].cmdSignLabel;
+    const select: TCmdMsg = maxCOmma > 0
+        ? cmdDataList[1] // Overload
+        : cmdDataList[0];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -62,13 +48,12 @@ function getInlayHintLabelPartRandom(
         .join('')
         .trim();
 
-    const select: string = firstArgs === ''
-        ? cmdDataList[1].cmdSignLabel
-        : cmdDataList[0].cmdSignLabel;
+    const select: TCmdMsg = firstArgs === ''
+        ? cmdDataList[1]
+        : cmdDataList[0];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -103,19 +88,19 @@ function getInlayHintLabelPartHotkey(
                 ? new vscode.InlayHintLabelPart('% FunctionObject:')
                 : new vscode.InlayHintLabelPart('Expression:');
         }
-        return new vscode.InlayHintLabelPart('unknown:');
+        return unknownLabelPart;
     }
 
     if (firstArgs.startsWith('IF')) { // IfWinActive/Exist
         if (comma === 0) return new vscode.InlayHintLabelPart(''); // IfWinActive/Exist
         if (comma === 1) return new vscode.InlayHintLabelPart('WinTitle:');
         if (comma === 2) return new vscode.InlayHintLabelPart('WinText:');
-        return new vscode.InlayHintLabelPart('unknown:');
+        return unknownLabelPart;
     }
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(cmdDataList[0].cmdSignLabel);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const select: TCmdMsg = cmdDataList[0];
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -128,43 +113,33 @@ function getInlayHintLabelPartHotkey(
 function getInlayHintLabelPartIniRead(
     comma: number,
     args: readonly TArgs[],
-    _cmdDataList: readonly TCmdMsg[],
+    cmdDataList: readonly TCmdMsg[],
 ): vscode.InlayHintLabelPart {
     const maxComma: number = args.at(-1)?.comma ?? -1;
+
     // eslint-disable-next-line no-magic-numbers
-    if (maxComma >= 3) { // IfWinActive/Exist
-        // dprint-ignore
-        switch (comma) {
-            case 0: return new vscode.InlayHintLabelPart('OutputVar:');
-            case 1: return new vscode.InlayHintLabelPart('Filename:');
-            case 2: return new vscode.InlayHintLabelPart('Section:');
-                // eslint-disable-next-line no-magic-numbers
-            case 3: return new vscode.InlayHintLabelPart('Key:');
-                // eslint-disable-next-line no-magic-numbers
-            case 4: return new vscode.InlayHintLabelPart('Default:');
-            default: return new vscode.InlayHintLabelPart('unknown:');
-        }
+    if (maxComma >= 3) {
+        // IniRead, OutputVar, Filename, Section, Key [, Default]
+        const select: TCmdMsg = cmdDataList[0];
+        const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+        return rr.at(comma) ?? unknownLabelPart;
     }
 
-    if (maxComma === 2) { // IfWinActive/Exist
-        // dprint-ignore
-        switch (comma) {
-            case 0: return new vscode.InlayHintLabelPart('OutputVarSection:');
-            case 1: return new vscode.InlayHintLabelPart('Filename:');
-            case 2: return new vscode.InlayHintLabelPart('Section:');
-            default: return new vscode.InlayHintLabelPart('unknown:');
-        }
-    }
-    if (maxComma === 1) { // IfWinActive/Exist
-        // dprint-ignore
-        switch (comma) {
-            case 0: return new vscode.InlayHintLabelPart('OutputVarSectionNames:');
-            case 1: return new vscode.InlayHintLabelPart('Filename:');
-            default: return new vscode.InlayHintLabelPart('unknown:');
-        }
+    if (maxComma === 2) {
+        // IniRead, OutputVarSection, Filename, Section
+        const select: TCmdMsg = cmdDataList[1];
+        const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+        return rr.at(comma) ?? unknownLabelPart;
     }
 
-    return new vscode.InlayHintLabelPart('unknown:');
+    if (maxComma === 1) {
+        // IniRead, OutputVarSectionNames, Filename
+        const select: TCmdMsg = cmdDataList[2];
+        const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+        return rr.at(comma) ?? unknownLabelPart;
+    }
+
+    return unknownLabelPart;
 }
 
 /**
@@ -180,13 +155,12 @@ function getInlayHintLabelPartIniWrite(
 ): vscode.InlayHintLabelPart {
     const maxCOmma: number = args.at(-1)?.comma ?? -1;
     // eslint-disable-next-line no-magic-numbers
-    const select: string = maxCOmma >= 3
-        ? cmdDataList[0].cmdSignLabel // Overload
-        : cmdDataList[1].cmdSignLabel;
+    const select: TCmdMsg = maxCOmma >= 3
+        ? cmdDataList[0] // Overload
+        : cmdDataList[1];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -207,13 +181,12 @@ function getInlayHintLabelPartSplashImage(
         .trim()
         .toUpperCase();
 
-    const select: string = firstArgs === 'OFF'
-        ? cmdDataList[1].cmdSignLabel // Overload
-        : cmdDataList[0].cmdSignLabel;
+    const select: TCmdMsg = firstArgs === 'OFF'
+        ? cmdDataList[1] // Overload
+        : cmdDataList[0];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -235,13 +208,12 @@ function getInlayHintLabelPartProgress(
         .trim()
         .toUpperCase();
 
-    const select: string = firstArgs === 'OFF'
-        ? cmdDataList[1].cmdSignLabel // Overload
-        : cmdDataList[0].cmdSignLabel;
+    const select: TCmdMsg = firstArgs === 'OFF'
+        ? cmdDataList[1] // Overload
+        : cmdDataList[0];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -256,13 +228,12 @@ function getInlayHintLabelPartWinMove(
     cmdDataList: readonly TCmdMsg[],
 ): vscode.InlayHintLabelPart {
     const maxCOmma: number = args.at(-1)?.comma ?? -1;
-    const select: string = maxCOmma > 1
-        ? cmdDataList[0].cmdSignLabel // Overload
-        : cmdDataList[1].cmdSignLabel;
+    const select: TCmdMsg = maxCOmma > 1
+        ? cmdDataList[0] // Overload
+        : cmdDataList[1];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 /**
@@ -277,13 +248,12 @@ function getInlayHintLabelPartWinSetTitle(
     cmdDataList: readonly TCmdMsg[],
 ): vscode.InlayHintLabelPart {
     const maxCOmma: number = args.at(-1)?.comma ?? -1;
-    const select: string = maxCOmma > 0
-        ? cmdDataList[0].cmdSignLabel // Overload
-        : cmdDataList[1].cmdSignLabel;
+    const select: TCmdMsg = maxCOmma > 0
+        ? cmdDataList[0] // Overload
+        : cmdDataList[1];
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(select);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 function getInlayHintLabelPart(
@@ -295,9 +265,9 @@ function getInlayHintLabelPart(
      * 99% case
      */
     if (cmdDataList.length === 1) {
-        const rr: string[] = tryGetCmdSignLabel2Arr(cmdDataList[0].cmdSignLabel);
-        const value: string = rr.at(comma + 1) ?? 'unknown';
-        return new vscode.InlayHintLabelPart(`${value}:`);
+        const select: TCmdMsg = cmdDataList[0];
+        const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+        return rr.at(comma) ?? unknownLabelPart;
     }
 
     /**
@@ -308,7 +278,6 @@ function getInlayHintLabelPart(
      * IniRead
      * IniWrite
      * SplashImage
-     * ---
      * Progress
      * WinMove
      * WinSetTitle
@@ -325,9 +294,9 @@ function getInlayHintLabelPart(
     if (keyRawName === 'WinMove') return getInlayHintLabelPartWinMove(comma, args, cmdDataList);
     if (keyRawName === 'WinSetTitle') return getInlayHintLabelPartWinSetTitle(comma, args, cmdDataList);
 
-    const rr: string[] = tryGetCmdSignLabel2Arr(cmdDataList[0].cmdSignLabel);
-    const value: string = rr.at(comma + 1) ?? 'unknown';
-    return new vscode.InlayHintLabelPart(`${value}:`);
+    const select: TCmdMsg = cmdDataList[0];
+    const rr: readonly vscode.InlayHintLabelPart[] = InlayHintsCmdMake(select);
+    return rr.at(comma) ?? unknownLabelPart;
 }
 
 function InlayHintsCmdCore(

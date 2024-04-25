@@ -1534,7 +1534,7 @@
             "keyRawName": "EnvAdd",
             "body": "EnvAdd, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]",
             "doc": [
-                "Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to the sum of itself plus the given value (can also add or subtract time from a [date-time](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) value). Synonymous with: `Var += Value`."
+                "将[变量](https://www.autohotkey.com/docs/v1/Variables.htm)设置为自身加上给定值的总和（也可以从[日期时间](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD)值中添加或减去时间）。代名词： `Var += Value`."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvAdd.htm",
@@ -1544,9 +1544,9 @@
                 "Var++",
                 ";-----",
                 "; exp 1",
-                "var1 := \"\"  ; Make it blank so that the below will use the current timestamp instead.",
+                "var1 := \"\"  ; 将其设为空白，以便下面的内容将使用当前时间戳。",
                 "var1 += 31, days",
-                "MsgBox, % var1  ; The answer will be the date 31 days from now."
+                "MsgBox, % var1  ; 答案是 31 天后的日期。"
             ],
             "_paramType": [
                 "O",
@@ -1559,7 +1559,7 @@
                     "sign": "O",
                     "isOpt": false,
                     "paramDoc": [
-                        "The name of the [variable](https://www.autohotkey.com/docs/v1/Variables.htm) upon which to operate."
+                        "要对其进行操作的[变量](https://www.autohotkey.com/docs/v1/Variables.htm)的名称。"
                     ]
                 },
                 {
@@ -1567,7 +1567,7 @@
                     "sign": "E",
                     "isOpt": false,
                     "paramDoc": [
-                        "Any integer, floating point number, or [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)."
+                        "任何整数、浮点数或[表达式](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)。"
                     ]
                 },
                 {
@@ -1575,13 +1575,13 @@
                     "sign": "S",
                     "isOpt": true,
                     "paramDoc": [
-                        "If present, this parameter directs the command to add _Value_ to _Var_, treating _Var_ as a date-time stamp in the [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format and treating _Value_ as the integer or floating point number of units to add (specify a negative number to perform subtraction). _TimeUnits_ can be either Seconds, Minutes, Hours, or Days (or just the first letter of each of these).",
+                        "如果存在，此参数指示命令向 _Var_ 添加 _Value_,将 _Var_ 视为 [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) 格式的日期时间戳，并将 _Value_ 视为要添加的单位的整数或浮点数(指定负数以执行减法)。_TimeUnits_ 可以是秒、分钟、小时或天（或只是每个字母的第一个字母）。",
                         "",
-                        "If _Var_ is an empty variable, the current time will be used in its place. If _Var_ contains an invalid timestamp or a year prior to 1601, or if _Value_ is non-numeric, _Var_ will be made blank to indicate the problem.",
+                        "如果 _Var_ 是空变量，则将使用当前时间代替它。如果 _Var_ 包含无效的时间戳或 1601 之前的年份，或者如果 _Value_ 为非数字,则 _Var_ 将变为空白以指示问题。",
                         "",
-                        "The built-in variable **A\\_Now** contains the current local time in [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format.",
+                        "内置变量 **A\\_Now** 以[YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) 格式包含当前本地时间。",
                         "",
-                        "To calculate the amount of time between two timestamps, use [EnvSub](https://www.autohotkey.com/docs/v1/lib/EnvSub.htm)."
+                        "若要计算两个时间戳之间的时间量，请使用 [EnvSub](https://www.autohotkey.com/docs/v1/lib/EnvSub.htm)。"
                     ]
                 }
             ]
@@ -4001,7 +4001,14 @@
             "keyRawName": "IniRead",
             "body": "IniRead, ${1:OutputVar}, % \"${2:Filename}\", % \"${3:Section}\", % \"${4:Key}\" [,% \"${5:Default}\"]",
             "doc": [
-                "Reads a value, section or list of section names from a standard format .ini file.\n- A standard *ini* file looks like:\n```ini\n[Section]\nKey=Value\n```"
+                "从标准格式.ini文件中读取值、节或节名称列表。",
+                "",
+                "标准 ini 文件如下所示：",
+                "",
+                "```ini",
+                "[Section]",
+                "Key=Value",
+                "```"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/IniRead.htm",
@@ -4025,8 +4032,9 @@
                     "sign": "O",
                     "isOpt": false,
                     "paramDoc": [
-                        "The name of the output variable in which to store the retrieved value. If the value cannot be retrieved, the variable is set to the value indicated by the _Default_ parameter (described below).",
+                        "用于存储检索值的输出变量的名称。如果无法检索该值，则将变量设置为 _Default_ 参数指示的值（如下所述）。",
                         "",
+                        "标准 ini 文件如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4038,8 +4046,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "The name of the .ini file, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.",
+                        ".ini 文件的名称，如果未指定绝对路径，则假定该名称位于 [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) 中。",
                         "",
+                        "标准 ini 文件如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4051,8 +4060,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "The section name in the .ini file, which is the heading phrase that appears in square brackets (do not include the brackets in this parameter).",
+                        ".ini文件中的节名称,即显示在方括号中的标题短语(此参数中不包括括号)。",
                         "",
+                        "标准 ini 文件如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4064,8 +4074,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "The key name in the .ini file.",
+                        ".ini 文件中的键名称。",
                         "",
+                        "标准 ini 文件如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4077,11 +4088,11 @@
                     "sign": "S",
                     "isOpt": true,
                     "paramDoc": [
-                        "The value to store in _OutputVar_ if the requested key is not found. If omitted, it defaults to the word ERROR. To store a blank value (empty string), specify [%A\\_Space%](https://www.autohotkey.com/docs/v1/Variables.htm#Space).",
+                        "如果为空或省略，则默认为单词 ERROR。否则,如果找不到请求的键,请指定要存储在 _OutputVar_ 中的值。若要存储空白值（空字符串），请指定 [%A\\_Space%。](https://www.autohotkey.com/docs/v1/Variables.htm#Space)",
                         "",
                         "[\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L57 \"Applies to:",
                         "AutoHotkey_L Revision 57 and later",
-                        "AutoHotkey v1.0.90.00 and later\") This parameter is not used if _Key_ is omitted."
+                        "AutoHotkey v1.0.90.00 and later\") 如果省略 _Key_ ，则不使用此参数。"
                     ]
                 }
             ]

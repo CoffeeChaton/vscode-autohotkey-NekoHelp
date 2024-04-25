@@ -11,6 +11,7 @@ export type TCmdMsg = {
     readonly keyRawName: string,
     readonly _param: readonly TCommandParams[],
     readonly cmdSignLabel: string,
+    readonly link: TCommandElement['link'],
 };
 
 export const {
@@ -88,6 +89,7 @@ export const {
             cmdSignLabel,
             keyRawName,
             md,
+            link,
         });
 
         snippetCommandTemp.push(new CSnippetCommand(v, md));
@@ -115,7 +117,6 @@ export const {
     // ---
     return {
         snippetCommand: snippetCommandTemp as readonly CSnippetCommand[],
-        // dprint-ignore
         CommandMDMap: CommandMDMapTemp as ReadonlyMap<string, TCmdMsg>,
         CommandErrMap: CommandErrMapTemp as ReadonlyMap<string, TAllowDiagCode>,
         //
