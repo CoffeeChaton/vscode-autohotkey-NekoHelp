@@ -341,7 +341,7 @@
   >
   > 1. api-change `@Return` -> `@returns`
   > 2. `@param` can generate type from default value
-     > ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc2.gif)
+  >    ![img](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/func_yellow_light_bulb_add_ahkDoc2.gif)
 
 - feat: hover and snip, read ahkDoc `@param` data
 - feat: add `"AhkNekoHelp.customize.signatureHelpInsertType"`, [4k 36 sec](https://youtu.be/HxjzRf7stpA)

@@ -36,6 +36,7 @@ function DefProviderCore(
 
     const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);
     if (methodDef !== null) return methodDef;
+
     const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
     if (property !== null) return ClassProperty2Range(property, document.uri, false);
 
@@ -49,38 +50,23 @@ function DefProviderCore(
 
     if ((/^0x[A-F\d]+$/iu).test(wordUp) || (/^\d+$/u).test(wordUp)) return null;
 
-    const listAllUsing = false;
-
     const Return2FuncLoc: [vscode.LocationLink] | null = getDefReturn2Func(AhkFileData, position, wordUp);
     if (Return2FuncLoc !== null) return Return2FuncLoc;
 
-    const switchDef: vscode.Location[] | null = getDefSwitch(AhkFileData, document.uri, position, wordUp);
-    if (switchDef !== null) return switchDef;
+    const listAllUsing = false;
+    const userDefLoc: vscode.Location[] | null = getDefSwitch(AhkFileData, document.uri, position, wordUp)
+        ?? getDefWithLabelWrap(AhkFileData, position, wordUp)
+        ?? getFuncDef(AhkFileData, position, wordUp, listAllUsing)
+        ?? getClassDef(wordUp, listAllUsing)
+        ?? getValDefInFunc(AhkFileData, document.uri, position, wordUp, listAllUsing);
+    if (userDefLoc !== null) return userDefLoc;
 
-    const LabelDef: vscode.Location[] | null = getDefWithLabelWrap(AhkFileData, position, wordUp);
-    if (LabelDef !== null) return LabelDef;
-
-    const userDefFuncLink: vscode.Location[] | null = getFuncDef(AhkFileData, position, wordUp, listAllUsing);
-    if (userDefFuncLink !== null) return userDefFuncLink;
-
-    const classDef: vscode.Location[] | null = getClassDef(wordUp, listAllUsing);
-    if (classDef !== null) return classDef; // class name is variable name, should before function.variable name
-
-    const valInFunc: vscode.Location[] | null = getValDefInFunc(
-        AhkFileData,
-        document.uri,
-        position,
-        wordUp,
-        listAllUsing,
-    );
-    if (valInFunc !== null) return valInFunc;
-
-    const jsonDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp)
+    const biDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp)
         ?? biBVarDefMap.get(wordUp)
         ?? cmdDefMap.get(wordUp)
         ?? focDefMap.get(wordUp)
         ?? gotoFocExDef(AhkTokenLine, position);
-    if (jsonDef !== undefined) return jsonDef;
+    if (biDef !== undefined) return biDef;
 
     return null;
 }

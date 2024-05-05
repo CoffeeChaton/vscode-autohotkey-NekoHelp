@@ -99,6 +99,9 @@ export function getDirectivesMeta(
 
 export const DirectivesDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Directives');
 
+/**
+ * goto `#warn` def-json
+ */
 export function gotoDirectivesDef(
     position: vscode.Position,
     AhkTokenLine: TAhkTokenLine,
