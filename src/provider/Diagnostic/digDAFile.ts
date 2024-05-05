@@ -24,6 +24,7 @@ import type { C506Class } from './DA/CDiagFnLib/C506Class';
 import { C506DiagNumberStyle } from './DA/CDiagFnLib/C506Class';
 import type { C507Class } from './DA/CDiagFnLib/C507Class';
 import { C507SetVarErr0xNumber } from './DA/CDiagFnLib/C507Class';
+import { NeverUsedGVar } from './DA/CDiagFnLib/C508Class';
 import { c505ErrParamParsedError } from './DA/param/paramParsedErrRange';
 import { paramVariadicErr } from './DA/param/paramVariadicErr';
 import { CDiagFn } from './tools/CDiagFn';
@@ -126,6 +127,7 @@ export function digDAFile(AhkFileData: TAhkFileData): void {
     const displayFnErrList: readonly boolean[] = DocStrMap
         .map(({ displayFnErr }: TAhkTokenLine): boolean => displayFnErr);
 
+    const code508Max = 20;
     diagColl.set(uri, [
         ...(diagColl.get(uri) ?? []).filter((diag: vscode.Diagnostic): boolean => !(diag instanceof CDiagFn)),
         ...diagDAFileCore(AhkFileData, displayFnErrList),
@@ -136,5 +138,6 @@ export function digDAFile(AhkFileData: TAhkFileData): void {
         ...c514ComObjConnect(AhkFileData, displayFnErrList),
         ...c521banNameReservedWords(AhkFileData, displayFnErrList),
         ...c522banNameReservedWords(AhkFileData, displayFnErrList),
+        ...NeverUsedGVar(code508Max, displayFnErrList, AhkFileData),
     ]);
 }

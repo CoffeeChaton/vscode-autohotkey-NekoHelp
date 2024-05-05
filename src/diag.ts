@@ -20,6 +20,7 @@ export const enum EDiagCodeDA {
     code505 = 505, // param parsed Error -> unknown style
     code506 = 506, // base8 base2 diag of not support number formats
     code507 = 507, // avoid set `Number` as variable , exp: `0x001 := 9999`
+    code508 = 508, // global is assigned but never used.
     // ban name
     code511 = 511, // ban var/param name same function-name.
     code512 = 512, // ban global-var name same function-name.
@@ -66,6 +67,10 @@ export const DiagsDA: DeepReadonly<TDiagsDA> = {
     507: {
         msg: 'avoid set `Number` as variable , exp: `0x001 := 9999` or `0 := "AA"`',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code507.md',
+    },
+    508: {
+        msg: 'global-var is assigned but never used',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48',
     },
     511: {
         msg: 'var/param name same func-Name',

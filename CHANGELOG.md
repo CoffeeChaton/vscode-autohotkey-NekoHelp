@@ -14,6 +14,7 @@
 - feat: better Completion of `MsgBox`
 - feat: better gotoDef of `global var :=`
 - feat: ([#48](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) show var1 ref of `global var1 :=` (via CodeLens)
+- feat: ([#49](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) diag global `var1` is assigned but never used `global var1 :=`
 
 ## v0.0.55(2023-04-26)
 
