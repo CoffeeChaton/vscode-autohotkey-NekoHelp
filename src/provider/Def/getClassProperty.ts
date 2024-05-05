@@ -34,21 +34,6 @@ export function ClassProperty2Range(
     ];
 }
 
-export function ClassProperty2Md(property: readonly TWmThisPos[]): vscode.Hover {
-    const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-        .appendCodeblock(`this.${property[0].rawName}`)
-        .appendMarkdown('- <details><summary>ref</summary>\n');
-    md.supportHtml = true;
-
-    for (const v of property) {
-        const { line, col } = v;
-        md.appendMarkdown(`  - Ln ${line + 1}, Col ${col + 1}</br>\n`);
-    }
-    md.appendMarkdown('\n</details>');
-
-    return new vscode.Hover(md);
-}
-
 export function getClassProperty(
     document: vscode.TextDocument,
     position: vscode.Position,
@@ -67,4 +52,26 @@ export function getClassProperty(
 
     if (ahkClass === undefined) return null;
     return WmThisCore.up(ahkClass).get(wordUp) ?? null;
+}
+
+export function ClassProperty2Md(
+    document: vscode.TextDocument,
+    position: vscode.Position,
+    AhkFileData: TAhkFileData,
+): vscode.MarkdownString | null {
+    const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
+    if (property === null) return null;
+
+    const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
+        .appendCodeblock(`this.${property[0].rawName}`)
+        .appendMarkdown('- <details><summary>ref</summary>\n');
+    md.supportHtml = true;
+
+    for (const v of property) {
+        const { line, col } = v;
+        md.appendMarkdown(`  - Ln ${line + 1}, Col ${col + 1}</br>\n`);
+    }
+    md.appendMarkdown('\n</details>');
+
+    return md;
 }

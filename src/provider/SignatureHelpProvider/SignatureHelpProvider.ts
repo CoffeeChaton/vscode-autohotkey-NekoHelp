@@ -11,13 +11,8 @@ function SignatureHelpProviderCore(
     const AhkFileData: TAhkFileData | null = pm.getDocMap(document.uri.fsPath) ?? pm.updateDocDef(document);
     if (AhkFileData === null) return null;
 
-    const funSign: vscode.SignatureHelp | null = SignatureFunc(AhkFileData, position);
-    if (funSign !== null) return funSign;
-
-    const cmdSign: vscode.SignatureHelp | null = SignatureCmd(AhkFileData, position);
-    if (cmdSign !== null) return cmdSign;
-
-    return null;
+    return SignatureFunc(AhkFileData, position)
+        ?? SignatureCmd(AhkFileData, position);
 }
 
 // just of 1

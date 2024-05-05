@@ -20,8 +20,7 @@ import { HotStringsOptions } from '../../tools/Built-in/9_HotStrings_Options/Hot
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
-import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
-import { ClassProperty2Md, getClassProperty } from '../Def/getClassProperty';
+import { ClassProperty2Md } from '../Def/getClassProperty';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { hoverAhk2exe } from './tools/hoverAhk2exe';
 import { hoverClassName } from './tools/hoverClassName';
@@ -33,7 +32,6 @@ import { hoverFocEx } from './tools/hoverFocEx';
 import { hoverGlobalVar } from './tools/hoverGlobalVar';
 import { hoverGuiControlParam } from './tools/hoverGuiControlParam';
 import { hoverGuiParam } from './tools/hoverGuiParam';
-import { hoverIncludeStr } from './tools/hoverIncludeStr';
 import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
 import { hoverMenuParam } from './tools/hoverMenuParam';
@@ -46,7 +44,12 @@ import { hoverWinSetParam } from './tools/hoverWinSetParam';
 function HoverOfFunc(
     document: vscode.TextDocument,
     position: vscode.Position,
+    AhkFunc: CAhkFunc | null,
 ): vscode.MarkdownString | null {
+    if (AhkFunc !== null && AhkFunc.nameRange.contains(position)) {
+        return AhkFunc.md; // hover at func-def-range
+    }
+    //
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+(?=\()/u,
@@ -83,56 +86,31 @@ function HoverProviderCore(
     if (position.character > lStr.length) return hoverAhk2exe(AhkTokenLine, position);
 
     // ex: #Warn
-    const DirectivesMd: vscode.MarkdownString | null = hoverDirectives(position, AhkTokenLine);
-    if (DirectivesMd !== null) return new vscode.Hover(DirectivesMd);
-
-    const IncludeMayStr: vscode.Hover | null = hoverIncludeStr(AhkFileData, position);
-    if (IncludeMayStr !== null) return IncludeMayStr;
+    const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData);
+    if (DirectivesMd !== null) return DirectivesMd;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);
-    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
-    if (AhkFunc !== null && AhkFunc.nameRange.contains(position)) {
-        return new vscode.Hover(AhkFunc.md);
-    }
-
-    const haveFunc: vscode.MarkdownString | null = HoverOfFunc(document, position);
+    const haveFunc: vscode.MarkdownString | null = HoverOfFunc(document, position, AhkFunc)
+        ?? hoverMethod(document, position, AhkFileData)
+        ?? ClassProperty2Md(document, position, AhkFileData)
+        ?? HotStringsOptions(position, AhkFileData)
+        ?? HotKeyOpt(position, AhkFileData);
     if (haveFunc !== null) return new vscode.Hover(haveFunc);
-
-    const Method: vscode.MarkdownString | null = hoverMethod(document, position, AhkFileData);
-    if (Method !== null) return new vscode.Hover(Method);
-
-    const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
-    if (property !== null) return ClassProperty2Md(property);
-
-    //
-    const HotStringsMd: vscode.MarkdownString | null = HotStringsOptions(position, AhkFileData);
-    if (HotStringsMd !== null) return new vscode.Hover(HotStringsMd);
-
-    const HotKeyMd: vscode.MarkdownString | null = HotKeyOpt(position, AhkFileData);
-    if (HotKeyMd !== null) return new vscode.Hover(HotKeyMd);
 
     //
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+(?!\()/u,
-        //      without .` and #$@
+        //      without .` and #$@ .. and not ent with `(`
     );
     if (range === undefined) return null;
 
     const wordUp: string = ToUpCase(document.getText(range));
 
-    const ahkClassMd: vscode.MarkdownString | null = hoverClassName(AhkFileData, position, wordUp);
-    if (ahkClassMd !== null) return new vscode.Hover(ahkClassMd);
-
-    const labelMd: vscode.MarkdownString | null = hoverLabel(AhkFileData, position, wordUp);
+    const labelMd: vscode.MarkdownString | null = hoverClassName(AhkFileData, position, wordUp)
+        ?? hoverLabel(AhkFileData, position, wordUp)
+        ?? hoverLabelOrFunc(AhkFileData, AhkTokenLine, wordUp, position);
     if (labelMd !== null) return new vscode.Hover(labelMd);
-    const hoverLabelOrFuncMd: vscode.MarkdownString | null = hoverLabelOrFunc(
-        AhkFileData,
-        AhkTokenLine,
-        wordUp,
-        position,
-    );
-    if (hoverLabelOrFuncMd !== null) return new vscode.Hover(hoverLabelOrFuncMd);
 
     type TF0 = (AhkTokenLine: TAhkTokenLine, position: vscode.Position) => vscode.MarkdownString | null;
     const fnList: TF0[] = [
@@ -166,7 +144,6 @@ function HoverProviderCore(
     }
 
     type TFn = (wordUp: string) => vscode.MarkdownString | null | undefined;
-
     for (
         const fn of [
             getHoverCommand2,

@@ -24,8 +24,9 @@ function SymbolProviderCore(document: vscode.TextDocument): vscode.DocumentSymbo
     const { useSymbolProvider, showInclude } = getSymbolProviderConfig();
     if (!useSymbolProvider) return [];
 
-    if (showInclude) return [...AST];
-    return [...AST].filter((topSymbol: TTopSymbol): boolean => !(topSymbol instanceof CAhkInclude));
+    return showInclude
+        ? [...AST]
+        : [...AST].filter((topSymbol: TTopSymbol): boolean => !(topSymbol instanceof CAhkInclude));
 }
 
 export const SymbolProvider: vscode.DocumentSymbolProvider = {

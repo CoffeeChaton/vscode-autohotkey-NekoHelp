@@ -27,29 +27,13 @@ function ReferenceProviderCore(
     );
     if (range === undefined) return null;
     const wordUp: string = ToUpCase(document.getText(range));
-
-    const labelRef: vscode.Location[] | null = posAtLabelDef(AhkFileData, position, wordUp);
-    if (labelRef !== null) return labelRef;
-
-    const swLoc: vscode.Location[] | null = getRefSwitch(AhkFileData, position, wordUp);
-    if (swLoc !== null) return swLoc;
-
     const listAllUsing = true;
-    const userDefLink: vscode.Location[] | null = getFuncDef(AhkFileData, position, wordUp, listAllUsing);
-    if (userDefLink !== null) return userDefLink;
 
-    const classDef: vscode.Location[] | null = getClassDef(wordUp, listAllUsing);
-    if (classDef !== null) return classDef; // class name is variable name, should before function.variable name
-
-    const valInFunc: vscode.Location[] | null = getValDefInFunc(
-        AhkFileData,
-        document.uri,
-        position,
-        wordUp,
-        listAllUsing,
-    );
-    if (valInFunc !== null) return valInFunc;
-    return null;
+    return posAtLabelDef(AhkFileData, position, wordUp)
+        ?? getRefSwitch(AhkFileData, position, wordUp)
+        ?? getFuncDef(AhkFileData, position, wordUp, listAllUsing)
+        ?? getClassDef(wordUp, listAllUsing) // class name is variable name, should before function.variable name
+        ?? getValDefInFunc(AhkFileData, document.uri, position, wordUp, listAllUsing);
 }
 
 function just2Ref(
