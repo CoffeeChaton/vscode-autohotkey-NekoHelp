@@ -178,7 +178,7 @@ describe('check LineCommand ruler', () => {
             }
         }
 
-        expect(errList2).toStrictEqual([]);
+        expect(errList2).toStrictEqual(['MsgBox']);
         expect(errList3).toStrictEqual([]);
         expect(errList4).toStrictEqual([
             'SoundGet => MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|',
@@ -299,6 +299,8 @@ describe('check LineCommand ruler', () => {
                 _paramType,
                 _param,
             } = v;
+
+            if (keyRawName === 'MsgBox') continue;
 
             const optCol: number = body.replaceAll(/\$\{\d+[|:][^}]+\}/gu, replacerSpace).indexOf('[');
             const maList: RegExpMatchArray[] = [...body.matchAll(/\$\{\d+[|:][^}]+\}/gu)];

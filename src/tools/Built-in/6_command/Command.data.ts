@@ -4888,7 +4888,7 @@ export const LineCommand: TCommandElement[] = [
     {
         upName: 'MSGBOX',
         keyRawName: 'MsgBox',
-        body: 'MsgBox, % "${1:text}"',
+        body: 'MsgBox, % "${0}"',
         doc: [
             'Displays the specified text in a small window containing one or more buttons (such as Yes and No).',
             '- **Text** : type is string',
