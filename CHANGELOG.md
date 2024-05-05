@@ -12,6 +12,7 @@
 <!-- dprint 0.45.1 -->
 
 - feat: better Completion of `MsgBox`
+- feat: better gotoDef of `global var :=`
 
 ## v0.0.55(2023-04-26)
 

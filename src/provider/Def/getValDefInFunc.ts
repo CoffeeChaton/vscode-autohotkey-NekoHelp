@@ -10,10 +10,11 @@ import type {
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { getFucDefWordUpFix } from './getFucDefWordUpFix';
+import { searchAllGlobalVarDef } from './searchAllGlobalVarDef';
 import { searchAllGlobalVarRef } from './searchAllVarRef';
 
 function rangeList2LocList(rangeList: TVarData[], uri: vscode.Uri): vscode.Location[] {
-    return rangeList.map(({ range }: TVarData) => new vscode.Location(uri, range));
+    return rangeList.map(({ range }: TVarData): vscode.Location => new vscode.Location(uri, range));
 }
 
 function metaRangeList(
@@ -69,28 +70,18 @@ function getModuleVarDef(
 
     const valMeta: TValMetaOut | undefined = ModuleVar.ModuleValMap.get(wordUpFix);
     if (valMeta !== undefined) {
-        if (listAllUsing) {
-            return searchAllGlobalVarRef(wordUpFix);
-        }
-
-        const { defRangeList } = valMeta;
-        return defRangeList[0].range.contains(position)
-            ? [new vscode.Location(uri, position)]
-            : rangeList2LocList(defRangeList, uri);
+        return listAllUsing
+            ? searchAllGlobalVarRef(wordUpFix)
+            : searchAllGlobalVarDef(wordUpFix);
     }
 
-    const StringSplitDef: vscode.Location[] | null = getStringSplitDef(
+    return getStringSplitDef(
         position,
         wordUp,
         listAllUsing,
         uri,
         ModuleVar.ModuleValMap,
     );
-    if (StringSplitDef !== null) {
-        return StringSplitDef;
-    }
-
-    return null;
 }
 
 export function getValDefInFunc(
@@ -108,28 +99,12 @@ export function getValDefInFunc(
     if (DA.nameRange.contains(position)) return null; // fnName === val
 
     const { paramMap, valMap } = DA;
-    const argMeta: TParamMetaOut | undefined = paramMap.get(wordUp);
+    const argMeta: TParamMetaOut | TValMetaOut | undefined = paramMap.get(wordUp) ?? valMap.get(wordUp);
     if (argMeta !== undefined) {
         const { defRangeList, refRangeList } = argMeta;
         return metaRangeList(defRangeList, refRangeList, listAllUsing, position, uri);
     }
 
-    const valMeta: TValMetaOut | undefined = valMap.get(wordUp);
-    if (valMeta !== undefined) {
-        const { defRangeList, refRangeList } = valMeta;
-        return metaRangeList(defRangeList, refRangeList, listAllUsing, position, uri);
-    }
-
-    const StringSplitDef: vscode.Location[] | null = getStringSplitDef(
-        position,
-        wordUp,
-        listAllUsing,
-        uri,
-        valMap,
-    );
-    if (StringSplitDef !== null) {
-        return StringSplitDef;
-    }
-
-    return getModuleVarDef(position, wordUp, listAllUsing, uri, AhkFileData);
+    return getStringSplitDef(position, wordUp, listAllUsing, uri, valMap)
+        ?? getModuleVarDef(position, wordUp, listAllUsing, uri, AhkFileData);
 }
