@@ -9,8 +9,7 @@ export function fnRefLStrCore(lStr: string): TLineFnCallRaw[] {
 
     for (const ma of lStr.matchAll(/(?<=[@$#!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)\(/giu)) {
         // -----------------------------------^ without .`%                          ^funcName(      of lStr
-        const col: number | undefined = ma.index;
-        if (col === undefined) continue;
+        const col: number = ma.index;
 
         if ((/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(lStr.slice(0, col).trimEnd())) {
             // ^ all case mock \b

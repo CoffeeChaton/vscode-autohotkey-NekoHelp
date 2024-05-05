@@ -65,8 +65,7 @@ export function posAtFnRef(
             // // without .`% and #$@
         )
     ) {
-        const col: number | undefined = ma.index;
-        if (col === undefined) continue;
+        const col: number = ma.index;
 
         if (
             (/(?<=[.%!"/&'()*+,\-:;<=>?\u{5B}-\u{60}\u{7B}-\u{7E} \t]|^)new$/iu).test(

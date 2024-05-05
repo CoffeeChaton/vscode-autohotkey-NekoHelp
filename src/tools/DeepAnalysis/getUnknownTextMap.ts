@@ -63,10 +63,10 @@ export function getUnknownTextMap(
             const keyRawName: string = v[1];
             const wordUp: string = ToUpCase(keyRawName);
 
-            const character: number | undefined = v.index;
+            const character: number = v.index;
             const { input } = v;
 
-            if (character === undefined || input === undefined) {
+            if (input === undefined) {
                 void vscode.window.showErrorMessage(`getUnknown Error at line ${line} of ${name}()`);
                 continue;
             }

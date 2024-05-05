@@ -20,9 +20,6 @@ function getRefFuncMap(AhkTokenList: TTokenStream): TRefFuncInfoMap {
                 //       ^ with out .`% and #$@
             )
         ) {
-            const ch: number | undefined = ma.index;
-            if (ch === undefined) continue;
-
             const RawName: string = ma[1];
             const UpName: string = RawName.toUpperCase();
 

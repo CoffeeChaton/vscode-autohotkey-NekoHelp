@@ -29,8 +29,7 @@ function searchAllClassRefCore(wordUp: string, AhkFileData: TAhkFileData): reado
         }
 
         for (const ma of lStr.matchAll(reg)) {
-            const col: number | undefined = ma.index;
-            if (col === undefined) continue;
+            const col: number = ma.index;
 
             const start: vscode.Position = new vscode.Position(line, col);
 

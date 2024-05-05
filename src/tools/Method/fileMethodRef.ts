@@ -20,10 +20,7 @@ export const fileMethodRef = new CMemo<TAhkFileData, TMethodDefShell>((AhkFileDa
         const { line, lStr } = AhkTokenLine;
         for (const ma of lStr.matchAll(/(?<=\.)([#$@\w\u{A1}-\u{FFFF}]+)(?=\()/giu)) {
             //                                        .Name(
-            const col: number | undefined = ma.index;
-            if (col === undefined) {
-                continue;
-            }
+            const col: number = ma.index;
 
             const rawName: string = ma[1];
             const upName: string = ToUpCase(rawName);

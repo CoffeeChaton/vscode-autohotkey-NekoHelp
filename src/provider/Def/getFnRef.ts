@@ -34,14 +34,11 @@ export function fnRefTextRaw(AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[
         // text := "funcName"
         // Func(text)
 
-        const col: number | undefined = ma.index;
-        if (col === undefined) continue;
-
         const upName: string = ToUpCase(ma[1]);
 
         arr.push({
             by: EFnRefBy.wordWrap,
-            col,
+            col: ma.index,
             line,
             upName,
         });
@@ -112,8 +109,7 @@ export function fnRefTextRawReg(AhkTokenLine: TAhkTokenLine): readonly TLineFnCa
     for (const ma of textRaw.slice(0, lStr.length).matchAll(/"([^"]*)"/gu)) {
         // -----------------------------------------------------------match all "string"
         if (!ma[1].includes('(?')) continue;
-        const col: number | undefined = ma.index;
-        if (col === undefined) continue;
+        const col: number = ma.index;
         // RegExMatch(Haystack, "i)(The) (\w+)\b(?CCallout)")
         //                                      ^^^^^^^^^^^
         //                      "               (?CFuncName)

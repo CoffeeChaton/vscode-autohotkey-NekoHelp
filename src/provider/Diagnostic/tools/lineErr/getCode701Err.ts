@@ -33,9 +33,6 @@ function getCode702(AhkTokenLine: TAhkTokenLine, match: number): CDiagBase | nul
     if (aa === undefined) return null;
     const { RawNameNew, lPos } = aa;
     for (const ma of RawNameNew.matchAll(/(\w+)/giu)) {
-        const ch: number | undefined = ma.index;
-        if (ch === undefined) continue;
-
         const RawName: string = ma[1];
         const UpName: string = RawName.toUpperCase();
 

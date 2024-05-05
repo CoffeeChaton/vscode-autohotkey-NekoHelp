@@ -34,8 +34,6 @@ export function walrusOperator({
 
     for (const v of lStr.matchAll(/(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)([#$@\w\u{A1}-\u{FFFF}]+)[ \t]*:=/gu)) {
         //                                     // without .`% and #$@
-        const character: number | undefined = v.index;
-        if (character === undefined) continue;
 
         const RawName: string = v[1];
         const UpName: string = ToUpCase(RawName);
@@ -43,7 +41,7 @@ export function walrusOperator({
 
         const value: TValMetaIn = getValMeta({
             line,
-            character,
+            character: v.index,
             RawName,
             valMap,
             lineComment,
