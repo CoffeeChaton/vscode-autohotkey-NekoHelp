@@ -3,7 +3,7 @@ import { AnalyzeFuncMain } from './command/AnalyzeFunc/AnalyzeThisFunc';
 import { CmdCodeActionAddInclude } from './command/CmdCodeActionAddInclude';
 import { CmdCodeActionRenameInclude } from './command/CmdCodeActionRenameInclude';
 import { CmdFindClassRef } from './command/CmdFindClassRef';
-import { CmdFindComObjConnectRegister } from './command/CmdFindComObjConnectRegister';
+import { CmdJustGotoLoc } from './command/CmdFindComObjConnectRegister';
 import { CmdFindFuncRef } from './command/CmdFindFuncRef';
 import { CmdFindLabelRef } from './command/CmdFindLabelRef';
 import { CmdFindMethodRef } from './command/CmdFindMethodRef';
@@ -100,7 +100,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand(ECommand.CmdCodeActionAddInclude, CmdCodeActionAddInclude),
         vscode.commands.registerCommand(ECommand.CmdCodeActionRenameInclude, CmdCodeActionRenameInclude),
         vscode.commands.registerCommand(ECommand.CmdFindClassRef, CmdFindClassRef),
-        vscode.commands.registerCommand(ECommand.CmdFindComObjConnectRegister, CmdFindComObjConnectRegister),
+        vscode.commands.registerCommand(ECommand.CmdJustGotoLoc, CmdJustGotoLoc),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
         vscode.commands.registerCommand(ECommand.CmdFindLabelRef, CmdFindLabelRef),
         vscode.commands.registerCommand(ECommand.CmdFindMethodRef, CmdFindMethodRef),

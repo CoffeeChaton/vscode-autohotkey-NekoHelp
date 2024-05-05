@@ -55,6 +55,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showDevTool', 'boolean'],
                 ['AhkNekoHelp.CodeLens.showFileReport', 'boolean'],
+                ['AhkNekoHelp.CodeLens.showGlobalVarReference', 'boolean'],
                 // [1]
                 ['AhkNekoHelp.Diag.AMasterSwitch', 'string'],
                 ['AhkNekoHelp.Diag.code107LegacyAssignment', 'boolean'],

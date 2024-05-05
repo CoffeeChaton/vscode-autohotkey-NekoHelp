@@ -113,6 +113,12 @@
                         "type": "boolean",
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.CodeLens.showFileReport%"
+                    },
+                    "AhkNekoHelp.CodeLens.showGlobalVarReference": {
+                        "order": 7,
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "%AhkNekoHelp.CodeLens.showGlobalVarReference%"
                     }
                 }
             },

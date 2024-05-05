@@ -53,6 +53,7 @@ type TempConfigs = {
         showComObjConnectRegisterStrReference: boolean,
         showDevTool: boolean,
         showFileReport: boolean,
+        showGlobalVarReference: boolean,
     },
     method: TMethod,
     Diag: {

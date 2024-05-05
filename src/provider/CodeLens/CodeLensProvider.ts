@@ -13,6 +13,7 @@ import { getFuncRef } from '../Def/getFnRef';
 import { getMethodRef } from '../Def/getMethodRef';
 import { addClassReference } from './addClassReference';
 import { addComObjConnectRegisterStrReference } from './addComObjConnectRegisterStrReference';
+import { addGVarReference } from './addGVarReference';
 import { addLabelReference } from './addLabelReference';
 import { ECodeLensStr } from './ECodeLensStr';
 import type { showUnknownAnalyze } from './showUnknownAnalyze';
@@ -29,6 +30,7 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
         showFuncReference,
         showLabelReference,
         showComObjConnectRegisterStrReference,
+        showGlobalVarReference,
     } = getCodeLenConfig();
 
     const { CodeLens } = getMethodConfig();
@@ -106,6 +108,7 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
     if (showClassReference) addClassReference(need, AST);
     if (showLabelReference) addLabelReference(need, AST);
     if (showComObjConnectRegisterStrReference) addComObjConnectRegisterStrReference(need, AhkFileData);
+    if (showGlobalVarReference) addGVarReference(need, AhkFileData);
 
     return need;
 }

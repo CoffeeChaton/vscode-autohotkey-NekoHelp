@@ -7,6 +7,8 @@
     "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": "show Reference at `ComObjConnect(..., \"str\")` Register line ([#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14))",
     "AhkNekoHelp.CodeLens.showDevTool": "show Func and Method dev tools",
     "AhkNekoHelp.CodeLens.showFileReport": "show CodeLens at file top",
+    "AhkNekoHelp.CodeLens.showGlobalVarReference": "global var def using like `global var1 :=`, display the number of references",
+
     "_2": "",
     "AhkNekoHelp.title.2": "2. Diagnostics and Lint",
     "AhkNekoHelp.Diag.AMasterSwitch": "[Diagnostic](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts) Master Switch",

@@ -104,6 +104,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             ),
             showDevTool: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showDevTool'),
             showFileReport: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showFileReport'),
+            showGlobalVarReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showGlobalVarReference'),
         },
         event: getConfigs<EFileRenameEvent>(Configs, 'AhkNekoHelp.event.FileRenameEvent'),
         method: getConfigs<TMethod>(Configs, 'AhkNekoHelp.method'),

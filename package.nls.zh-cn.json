@@ -7,6 +7,8 @@
     "AhkNekoHelp.CodeLens.showComObjConnectRegisterStrReference": "在 `ComObjConnect(..., \"str\")` 行，显示引用次数 ([#14](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/14))",
     "AhkNekoHelp.CodeLens.showDevTool": "在函数和方法的定义处，显示开发工具",
     "AhkNekoHelp.CodeLens.showFileReport": "在文件顶部显示 CodeLens",
+    "AhkNekoHelp.CodeLens.showGlobalVarReference": "在使用 `global var1 :=` 方式定义的全局变数，显示引用次数",
+
     "_2": "",
     "AhkNekoHelp.title.2": "2. 代码诊断与代码风格限制",
     "AhkNekoHelp.Diag.AMasterSwitch": "[代码诊断](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/src/diag.ts) 总开关",

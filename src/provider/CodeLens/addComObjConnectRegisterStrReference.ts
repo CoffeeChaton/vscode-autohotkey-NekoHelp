@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { CmdFindComObjConnectRegister } from '../../command/CmdFindComObjConnectRegister';
+import type { CmdJustGotoLoc } from '../../command/CmdFindComObjConnectRegister';
 import { ECommand } from '../../command/ECommand';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TLineFnCall } from '../../globalEnum';
@@ -29,13 +29,13 @@ export function addComObjConnectRegisterStrReference(need: vscode.CodeLens[], Ah
 
         const cmd: vscode.Command = {
             title: `"${rawName}".Reference ${refList.length}`,
-            command: ECommand.CmdFindComObjConnectRegister,
+            command: ECommand.CmdJustGotoLoc,
             tooltip: ECodeLensStr.tooltip,
             arguments: [
                 uri,
                 position,
                 refList,
-            ] satisfies Parameters<typeof CmdFindComObjConnectRegister>,
+            ] satisfies Parameters<typeof CmdJustGotoLoc>,
         };
 
         need.push(

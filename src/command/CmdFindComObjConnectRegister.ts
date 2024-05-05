@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 // --------
 
-export async function CmdFindComObjConnectRegister(
+export async function CmdJustGotoLoc(
     uri: vscode.Uri,
     position: vscode.Position,
     locations: vscode.Location[],
