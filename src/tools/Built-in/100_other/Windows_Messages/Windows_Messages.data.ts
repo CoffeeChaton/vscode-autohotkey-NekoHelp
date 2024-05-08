@@ -15,6 +15,18 @@ export function base16toNumber(str0x: string): number {
 }
 
 /**
+ * @param base10
+ * @returns  0 -> '00', 255-> 'FF'
+ */
+export function toBase16(base10: number): string {
+    return `${
+        Math.round(base10).toString(16)
+            .toUpperCase()
+            .padStart(2, '0')
+    }`;
+}
+
+/**
  * @param base10 1000
  * @returns '0x03E8'
  */

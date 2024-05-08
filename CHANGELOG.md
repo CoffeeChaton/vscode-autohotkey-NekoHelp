@@ -15,6 +15,11 @@
 - feat: better gotoDef of `global var :=`
 - feat: ([#48](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) show var1 ref of `global var1 :=` (via CodeLens)
 - feat: ([#49](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) diag global `var1` is assigned but never used `global var1 :=`
+- feat: ([#50](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/50)) colorProvider (color-picker)
+
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-56--issuse-50--color-picker.jpg)
+>
+> <https://www.youtube.com/watch?v=Vi1AQxeKF2Y>
 
 ## v0.0.55(2023-04-26)
 

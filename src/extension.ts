@@ -23,6 +23,7 @@ import { pm } from './core/ProjectManager';
 import { CodeActionProvider } from './provider/CodeActionProvider/CodeActionProvider';
 import { CodeLensProvider } from './provider/CodeLens/CodeLensProvider';
 import { showUnknownAnalyze } from './provider/CodeLens/showUnknownAnalyze';
+import { ColorProvider } from './provider/ColorProvider/ColorProvider';
 import { CompletionItemProvider } from './provider/CompletionItem/CompletionItemProvider';
 import { DefProvider } from './provider/Def/DefProvider';
 import { onDidChangeActiveTab, onDidChangeTabs } from './provider/event/onDidChangeTabs';
@@ -78,6 +79,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
         vscode.languages.registerSignatureHelpProvider(selector, SignatureHelpProvider, metadata),
         vscode.languages.registerInlayHintsProvider(selector, InlayHintsProvider),
+        vscode.languages.registerColorProvider(selector, ColorProvider),
         // workspace-------------------
         // workspace.onDidOpenTextDocument(pm.OpenFile),
         // workspace.onDidSaveTextDocument(pm.OnDidSaveTextDocument),
