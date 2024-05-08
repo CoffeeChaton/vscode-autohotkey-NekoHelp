@@ -1,6 +1,6 @@
 /* eslint-disable max-depth */
 import type * as vscode from 'vscode';
-import { getInlayHintsConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
@@ -56,7 +56,7 @@ export const InlayHintsProvider: vscode.InlayHintsProvider = {
         range: vscode.Range,
         _token: vscode.CancellationToken,
     ): vscode.ProviderResult<vscode.InlayHint[]> {
-        const config: TConfigs['inlayHints'] = getInlayHintsConfig();
+        const config: TConfigs['inlayHints'] = getConfig().inlayHints;
 
         return config.AMainSwitch
             ? InlayHintsProviderCore(document, range, config)

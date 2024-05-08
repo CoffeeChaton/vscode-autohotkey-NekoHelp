@@ -13,12 +13,9 @@ import type {
     TTryParserIncludeLog,
 } from './configUI.data';
 import { EDiagMasterSwitch } from './configUI.data';
-import { log } from './provider/vscWindows/log';
 import { statusBarItem } from './provider/vscWindows/statusBarItem';
 import { arrDeepEQ } from './tools/arrDeepEQ';
 import { CMemo } from './tools/CMemo';
-import { CConfigError } from './tools/DevClass/CConfigError';
-import { enumLog } from './tools/enumErr';
 import { getWorkspaceRoot } from './tools/fsTools/getWorkspaceRoot';
 import { toNormalize } from './tools/fsTools/toNormalize';
 import { str2RegexListCheck } from './tools/str2RegexListCheck';
@@ -32,7 +29,7 @@ const enum EStrConfig {
 
 function getConfigs<T>(Configs: vscode.WorkspaceConfiguration, section: TConfigKey): T {
     const ed: T | undefined = Configs.get<T>(section.replace('AhkNekoHelp.', ''));
-    if (ed === undefined) throw new CConfigError(section);
+    if (ed === undefined) throw new Error(`"${section}", not found err code at configUI.ts`);
     return ed;
 }
 
@@ -92,7 +89,7 @@ function configEffectUp(ed: TConfigs): void {
     oldDocLanguage = ed.docLanguage;
 }
 
-function getConfigFromVsc(Configs: vscode.WorkspaceConfiguration): TConfigs {
+function upConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
         CodeLens: {
             showClassReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showClassReference'),
@@ -208,10 +205,10 @@ function getConfigFromVsc(Configs: vscode.WorkspaceConfiguration): TConfigs {
     return ed;
 }
 
-let config: TConfigs = getConfigFromVsc(vscode.workspace.getConfiguration(EStrConfig.Config));
+let config: TConfigs = upConfig(vscode.workspace.getConfiguration(EStrConfig.Config));
 
 export function configChangEvent(): void {
-    config = getConfigFromVsc(vscode.workspace.getConfiguration(EStrConfig.Config));
+    config = upConfig(vscode.workspace.getConfiguration(EStrConfig.Config));
 }
 
 /*
@@ -222,32 +219,8 @@ export function getConfig(): TConfigs {
     return config;
 }
 
-export function getInlayHintsConfig(): TConfigs['inlayHints'] {
-    return config.inlayHints;
-}
-
-export function getCodeLenConfig(): TConfigs['CodeLens'] {
-    return config.CodeLens;
-}
-
-export function getMethodConfig(): TConfigs['method'] {
-    return config.method;
-}
-
-export function getFormatConfig(): TConfigs['format'] {
-    return config.format;
-}
-
-export function getSymbolProviderConfig(): TConfigs['SymbolProvider'] {
-    return config.SymbolProvider;
-}
-
 export function getIgnoredList(): readonly RegExp[] {
     return str2RegexListCheck(config.files.exclude);
-}
-
-export function getTryParserInclude(): 'auto' | 'close' | 'open' {
-    return config.files.tryParserIncludeOpt;
 }
 
 const memoAlwaysIncludeFolder = new CMemo<readonly string[], readonly string[]>(
@@ -260,6 +233,7 @@ const memoAlwaysIncludeFolder = new CMemo<readonly string[], readonly string[]>(
         return pathList;
     },
 );
+
 export function getAlwaysIncludeFolder(): readonly string[] {
     return memoAlwaysIncludeFolder.up(config.files.alwaysIncludeFolder);
 }
@@ -279,55 +253,8 @@ export function setStatusBarText(showText: string, pmSize: number): void {
     statusBarItem.show();
 }
 
-export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[]): void {
-    const logOpt: TTryParserIncludeLog = config.files.tryParserIncludeLog;
-    for (const { type, msg } of byRefLogList) {
-        const msgF = `${type} , ${msg}`;
-        switch (type) {
-            case 'file_not_exists':
-                if (logOpt.file_not_exists === true) log.warn(msgF);
-                break;
-
-            case 'parser_OK':
-                if (logOpt.parser_OK === true) log.info(msgF);
-                break;
-
-            case 'parser_err':
-                if (logOpt.parser_err === true) log.error(msgF);
-                break;
-
-            case 'parser_duplicate':
-                if (logOpt.parser_duplicate === true) log.warn(msgF);
-                break;
-
-            case 'not_support_this_style':
-                if (logOpt.not_support_this_style === true) log.warn(msgF);
-                break;
-
-            default:
-                enumLog(type, 'tryParserInclude, UpdateCacheAsync');
-        }
-    }
-}
-
 export function getSnippetBlockFilesList(): readonly RegExp[] {
     return str2RegexListCheck(config.snippets.blockFilesList);
-}
-
-export function getDiagConfig(): TConfigs['Diag'] {
-    return config.Diag;
-}
-
-export function getCustomize(): TConfigs['customize'] {
-    return config.customize;
-}
-
-export function getSignatureHelp(): TConfigs['signatureHelp'] {
-    return config.signatureHelp;
-}
-
-export function geRenameConfig(): TConfigs['RenameFunctionInStr'] {
-    return config.RenameFunctionInStr;
 }
 
 export function needDiag(): boolean {
@@ -342,9 +269,6 @@ export function needDiag(): boolean {
     return true;
 }
 
-export function getEventConfig(): TConfigs['event'] {
-    return config.event;
-}
 // vscode.window.setStatusBarMessage(timeSpend);
 // vscode.window.showErrorMessage()
 // vscode.window.showInformationMessage()

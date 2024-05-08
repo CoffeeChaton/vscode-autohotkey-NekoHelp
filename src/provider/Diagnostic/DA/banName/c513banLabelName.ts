@@ -1,7 +1,7 @@
 // import { findLabel, findAllLabelMap } from "../../../labels";
 import type { CAhkFunc } from '../../../../AhkSymbol/CAhkFunc';
 import type { TAstRoot } from '../../../../AhkSymbol/TAhkSymbolIn';
-import { getDiagConfig } from '../../../../configUI';
+import { getConfig } from '../../../../configUI';
 import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
 import { findAllLabelMap } from '../../../../tools/labels';
@@ -12,7 +12,7 @@ export function c513banLabelName(
     AST: TAstRoot,
     displayFnErrList: readonly boolean[],
 ): readonly CDiagFn[] {
-    const { code513Max } = getDiagConfig();
+    const { code513Max } = getConfig().Diag;
     if (code513Max === 0) return [];
 
     /**

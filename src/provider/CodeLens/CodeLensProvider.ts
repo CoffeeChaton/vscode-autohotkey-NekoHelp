@@ -5,7 +5,7 @@ import type { CmdFindFuncRef } from '../../command/CmdFindFuncRef';
 import type { CmdFindMethodRef } from '../../command/CmdFindMethodRef';
 import { ECommand } from '../../command/ECommand';
 import type { getFileReport } from '../../command/getFileReport/getFileReport';
-import { getCodeLenConfig, getMethodConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
@@ -31,9 +31,9 @@ function CodeLensCore(document: vscode.TextDocument): vscode.CodeLens[] {
         showLabelReference,
         showComObjConnectRegisterStrReference,
         showGlobalVarReference,
-    } = getCodeLenConfig();
+    } = getConfig().CodeLens;
 
-    const { CodeLens } = getMethodConfig();
+    const { CodeLens } = getConfig().method;
 
     const { AST, DocStrMap, uri } = AhkFileData;
 

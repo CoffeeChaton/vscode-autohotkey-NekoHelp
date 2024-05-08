@@ -89,6 +89,6 @@
     "editor.unicodeHighlight.allowedLocales": {
         "zh-hans": true,
         "zh-hant": true
-    },
+    }
     // "markdown.extension.list.indentationSize": "inherit"
 }

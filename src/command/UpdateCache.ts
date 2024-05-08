@@ -1,17 +1,49 @@
 /* eslint-disable max-depth */
 import * as vscode from 'vscode';
-import { getAlwaysIncludeFolder, getTryParserInclude, LogParserInclude } from '../configUI';
+import { getAlwaysIncludeFolder, getConfig } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
 import { rmAllDiag } from '../core/diagColl';
 import { BaseScanMemo } from '../core/ParserTools/getFileAST';
 import type { TAhkFileData } from '../core/ProjectManager';
 import { pm } from '../core/ProjectManager';
 import { log } from '../provider/vscWindows/log';
+import { enumLog } from '../tools/enumErr';
 import { getUriList } from '../tools/fsTools/getUriList';
 import { getWorkspaceRoot } from '../tools/fsTools/getWorkspaceRoot';
 import type { TShowFileParam } from '../tools/fsTools/showFileList';
 import { showFileList } from '../tools/fsTools/showFileList';
 import { collectInclude } from './tools/collectInclude';
+
+function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[]): void {
+    const logOpt: TTryParserIncludeLog = getConfig().files.tryParserIncludeLog;
+    for (const { type, msg } of byRefLogList) {
+        const msgF = `${type} , ${msg}`;
+        switch (type) {
+            case 'file_not_exists':
+                if (logOpt.file_not_exists === true) log.warn(msgF);
+                break;
+
+            case 'parser_OK':
+                if (logOpt.parser_OK === true) log.info(msgF);
+                break;
+
+            case 'parser_err':
+                if (logOpt.parser_err === true) log.error(msgF);
+                break;
+
+            case 'parser_duplicate':
+                if (logOpt.parser_duplicate === true) log.warn(msgF);
+                break;
+
+            case 'not_support_this_style':
+                if (logOpt.not_support_this_style === true) log.warn(msgF);
+                break;
+
+            default:
+                enumLog(type, 'tryParserInclude, UpdateCacheAsync');
+        }
+    }
+}
 
 async function tryUpdateDocDef(uri: vscode.Uri): Promise<TAhkFileData | null> {
     try {
@@ -47,7 +79,7 @@ export async function UpdateCacheAsync(clearCache: boolean): Promise<readonly TA
         if (data !== null) FileListData.push(data);
     }
 
-    const TryParserInclude: 'auto' | 'close' | 'open' = getTryParserInclude();
+    const TryParserInclude: 'auto' | 'close' | 'open' = getConfig().files.tryParserIncludeOpt;
 
     if (
         TryParserInclude === 'open'

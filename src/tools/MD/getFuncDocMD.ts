@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { TFnMeta, TFnParamMeta, TFnReturnMeta } from '../../AhkSymbol/CAhkFunc';
-import { getCustomize } from '../../configUI';
+import { getConfig } from '../../configUI';
 import { EMode } from '../../Enum/EMode';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
@@ -197,11 +197,11 @@ export function getFuncDocMake(
         .appendMarkdown(`(${kindStr})     of     ${fileName}\n`)
         .appendMarkdown(classStackStr);
 
-    const { HoverFuncShowReturnBlock } = getCustomize();
+    const { HoverFuncShowReturnBlock } = getConfig().customize;
     const fnSign: string = HoverFuncShowReturnBlock === 'always'
             || (HoverFuncShowReturnBlock === 'auto' && ahkDocMeta.returnMeta.info.length === 0)
         ? `${selectionRangeText}${
-            getCustomize().HoverFunctionDocStyle === 1
+            getConfig().customize.HoverFunctionDocStyle === 1
                 ? ''
                 : '\n'
         }{\n${

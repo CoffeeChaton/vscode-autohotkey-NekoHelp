@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
-import { getDiagConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import { diagColl, getWithOutNekoDiag } from '../../core/diagColl';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine, TTokenStream } from '../../globalEnum';
@@ -48,7 +48,7 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
         code800Deprecated,
         code107,
         code300fnSize,
-    } = getDiagConfig();
+    } = getConfig().Diag;
 
     for (const diag of baseDiagSet) {
         const { value } = diag.code;

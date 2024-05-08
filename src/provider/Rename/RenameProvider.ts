@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import type { CAhkClass } from '../../AhkSymbol/CAhkClass';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { CAhkLabel } from '../../AhkSymbol/CAhkLine';
-import { geRenameConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { EFnRefBy } from '../../globalEnum';
@@ -34,7 +34,7 @@ function RenameProviderCore(
     const userDefLink: readonly TFnRefLike[] = getFuncRef(DA);
     if (userDefLink.length === 0) return null;
 
-    const replaceBy2: boolean = geRenameConfig();
+    const replaceBy2: boolean = getConfig().RenameFunctionInStr;
 
     const fnNameLen: number = DA.name.length;
     const { DocStrMap } = AhkFileData;

@@ -1,6 +1,6 @@
 // It is related to the whole pm, be careful not to use weakmap memory
 import type { CAhkFunc, TValMapOut } from '../../../../AhkSymbol/CAhkFunc';
-import { getDiagConfig } from '../../../../configUI';
+import { getConfig } from '../../../../configUI';
 import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
 import type { CDiagFn } from '../../tools/CDiagFn';
@@ -10,7 +10,7 @@ export function c512banGlobalVarName(
     ModuleValMap: TValMapOut,
     displayFnErrList: readonly boolean[],
 ): readonly CDiagFn[] {
-    const { code512Max } = getDiagConfig();
+    const { code512Max } = getConfig().Diag;
     if (code512Max === 0) return [];
 
     const fnMap: TFullFuncMap = getAllFunc();

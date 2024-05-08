@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getSignatureHelp } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
@@ -66,7 +66,7 @@ const CmdSignMemo = new CMemo<TCmdMsg, TCmdSign>(
 function getSignInfo(CmdSign: TCmdSign): vscode.SignatureInformation {
     const { cmdSignLabel, paramAList, paramBList } = CmdSign;
     const SignInfo = new vscode.SignatureInformation(cmdSignLabel);
-    SignInfo.parameters = getSignatureHelp().CmdShowParamInfo
+    SignInfo.parameters = getConfig().signatureHelp.CmdShowParamInfo
         ? paramBList
         : paramAList;
 

@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [0,-1] }] */
 
 import * as vscode from 'vscode';
-import { getFormatConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import { ErmFirstCommaCommand } from '../../configUI.data';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -11,7 +11,7 @@ export async function selectCmdTo1_or_2(): Promise<ErmFirstCommaCommand | null> 
         opt: ErmFirstCommaCommand,
         description: string,
     };
-    const Preset: ErmFirstCommaCommand = getFormatConfig().removeFirstCommaCommand;
+    const Preset: ErmFirstCommaCommand = getConfig().format.removeFirstCommaCommand;
     if (Preset === ErmFirstCommaCommand.notFmt) {
         return ErmFirstCommaCommand.notFmt;
     }

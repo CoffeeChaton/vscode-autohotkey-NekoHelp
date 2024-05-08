@@ -1,6 +1,6 @@
 import type { CAhkFunc } from '../../../../AhkSymbol/CAhkFunc';
 import type { TAstRoot } from '../../../../AhkSymbol/TAhkSymbolIn';
-import { getDiagConfig } from '../../../../configUI';
+import { getConfig } from '../../../../configUI';
 import { getDAListTop } from '../../../../tools/DeepAnalysis/getDAList';
 import type { TFullFuncMap } from '../../../../tools/Func/getAllFunc';
 import { getAllFunc } from '../../../../tools/Func/getAllFunc';
@@ -11,7 +11,7 @@ export function c511banVarNam(
     AST: TAstRoot,
     displayFnErrList: readonly boolean[],
 ): readonly CDiagFn[] {
-    const { code511Max } = getDiagConfig();
+    const { code511Max } = getConfig().Diag;
     // default size 20
     if (code511Max === 0) return [];
 

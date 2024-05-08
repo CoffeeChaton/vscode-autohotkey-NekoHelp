@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getCustomize } from '../configUI';
+import { getConfig } from '../configUI';
 
 /**
  * ctrl+alt+l
@@ -9,7 +9,7 @@ export function displayLogMessageFn(): void {
     if (editor === undefined) return;
 
     const { document, selections } = editor;
-    const { displayLogMessage } = getCustomize();
+    const { displayLogMessage } = getConfig().customize;
 
     for (const select of selections) {
         const rangeUnderCursor: vscode.Range | undefined = document.getWordRangeAtPosition(select.active);

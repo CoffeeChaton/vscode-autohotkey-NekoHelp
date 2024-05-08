@@ -1,6 +1,6 @@
 import type * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
-import { getDiagConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import { diagColl } from '../../core/diagColl';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
@@ -48,7 +48,7 @@ function diagDAFileCore(
         code502Max,
         code503Max,
         useModuleValDiag,
-    } = getDiagConfig();
+    } = getConfig().Diag;
 
     const { AST, ModuleVar } = AhkFileData;
     const DAList: readonly CAhkFunc[] = getDAListTop(AST);

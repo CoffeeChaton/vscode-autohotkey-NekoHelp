@@ -7,9 +7,8 @@ import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
 import { pathJoinMagic } from '../AhkSymbol/CAhkInclude';
 import { collectInclude } from '../command/tools/collectInclude';
 import {
-    getEventConfig,
+    getConfig,
     getIgnoredList,
-    getTryParserInclude,
     setStatusBarText,
 } from '../configUI';
 import type { TTryParserIncludeLog } from '../configUI.data';
@@ -88,7 +87,7 @@ export const pm = {
             ']',
         ].join('\n'));
 
-        const isAutoRename: EFileRenameEvent = getEventConfig(); // fo();
+        const isAutoRename: EFileRenameEvent = getConfig().event; // fo();
         if (isAutoRename === EFileRenameEvent.CTryRename) {
             const AhkFileDataList: TAhkFileData[] = pm.getDocMapValue();
             for (const { oldUri, newUri } of e.files) {
@@ -151,7 +150,7 @@ export const pm = {
 
             setStatusBarText(path.basename(AhkFileData.uri.fsPath), pm.DocMap.size);
 
-            const TryParserInclude: 'auto' | 'close' | 'open' = getTryParserInclude();
+            const TryParserInclude: 'auto' | 'close' | 'open' = getConfig().files.tryParserIncludeOpt;
 
             if (
                 TryParserInclude === 'open'

@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
-import { getMethodConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { getMethodRef2Def } from '../../tools/Method/Method';
 
@@ -19,7 +19,7 @@ export function getMethodDef(
         document,
         position,
         AhkFileData,
-        getMethodConfig().gotoDef,
+        getConfig().method.gotoDef,
     );
 
     return methodList === null

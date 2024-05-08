@@ -6,7 +6,7 @@ import type { CmdFindFuncRef } from '../../command/CmdFindFuncRef';
 import type { CmdFnAddAhkDoc } from '../../command/CmdFnAddAhkDoc';
 import type { CmdGotoFuncDef } from '../../command/CmdGotoFuncDef';
 import { ECommand } from '../../command/ECommand';
-import { getCustomize } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { EDetail, type TAhkTokenLine } from '../../globalEnum';
 import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
@@ -134,7 +134,7 @@ export function otherCodeAction(
 
     const need: vscode.CodeAction[] = [];
 
-    const { CodeAction2GotoDefRef } = getCustomize();
+    const { CodeAction2GotoDefRef } = getConfig().customize;
 
     if (ahkFn !== undefined) {
         need.push(...atFnHead(ahkFn, AhkFileData, active, CodeAction2GotoDefRef));

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getFormatConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import { EFormatChannel } from '../../globalEnum';
 import { FormatCore } from '../Format/FormatProvider';
 import type { TFmtCore, TFmtCoreMap } from '../Format/FormatType';
@@ -19,7 +19,7 @@ export const OnTypeFormattingEditProvider: vscode.OnTypeFormattingEditProvider =
                 fmtStart: position.line - 1,
                 fmtEnd: position.line,
                 from: EFormatChannel.byFormatOnType,
-                cmdTo1_or_2: getFormatConfig().removeFirstCommaCommand,
+                cmdTo1_or_2: getConfig().format.removeFirstCommaCommand,
             });
 
             const e: TFmtCore | undefined = map.get(position.line - 1);

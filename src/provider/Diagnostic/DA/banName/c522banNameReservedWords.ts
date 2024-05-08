@@ -1,6 +1,6 @@
 import type * as vscode from 'vscode';
 import type { CAhkFunc, TParamMapOut, TValMapOut } from '../../../../AhkSymbol/CAhkFunc';
-import { getDiagConfig } from '../../../../configUI';
+import { getConfig } from '../../../../configUI';
 import type { TAhkFileData } from '../../../../core/ProjectManager';
 import type { DeepReadonly } from '../../../../globalEnum';
 import { getDAListTop } from '../../../../tools/DeepAnalysis/getDAList';
@@ -43,7 +43,7 @@ export function c522banNameReservedWords(
     const { ModuleValMap } = ModuleVar;
     const fnMap: TFnMap = getFileAllFuncMap(AST);
 
-    const { code522 } = getDiagConfig(); // MEMO ? js -> json -> string -> weakMap<AhkFileData,Map<json,readonly CDiagFn[]>>
+    const { code522 } = getConfig().Diag; // MEMO ? js -> json -> string -> weakMap<AhkFileData,Map<json,readonly CDiagFn[]>>
     const arr: string[] = code522
         .toUpperCase()
         .split(',')

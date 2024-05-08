@@ -5,7 +5,7 @@ import type {
     TFnParamMeta,
     TParamMetaOut,
 } from '../../AhkSymbol/CAhkFunc';
-import { getCustomize, getSignatureHelp } from '../../configUI';
+import { getConfig } from '../../configUI';
 import { CMemo } from '../../tools/CMemo';
 import { enumLog } from '../../tools/enumErr';
 import { getLStr } from '../../tools/str/removeSpecialChar';
@@ -66,7 +66,7 @@ function getSignDataZero(
         meta,
     } = fnSymbol;
 
-    const { insertType, showParamInfo } = getSignatureHelp();
+    const { insertType, showParamInfo } = getConfig().signatureHelp;
 
     const { ahkDocMeta, returnList } = meta;
     const { paramMeta, returnMeta } = ahkDocMeta;
@@ -144,7 +144,7 @@ function addSignReturnBlock(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): voi
     const { returnList, ahkDocMeta } = meta;
     const { info, typeDef } = ahkDocMeta.returnMeta;
 
-    const { insertType, showReturnInfo, showReturnBlock } = getSignatureHelp();
+    const { insertType, showReturnInfo, showReturnBlock } = getConfig().signatureHelp;
 
     let needAddBlock = true;
 
@@ -178,7 +178,7 @@ function addSignReturnBlock(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): voi
     if (needAddBlock) {
         doc.appendCodeblock(
             `\n;return block\n${name}(...)${
-                getCustomize().HoverFunctionDocStyle === 1
+                getConfig().customize.HoverFunctionDocStyle === 1
                     ? ''
                     : '\n'
             }{\n${
@@ -191,7 +191,7 @@ function addSignReturnBlock(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): voi
 }
 
 function addSignOtherDoc(doc: vscode.MarkdownString, fnSymbol: CAhkFunc): void {
-    if (getSignatureHelp().showOtherDoc) {
+    if (getConfig().signatureHelp.showOtherDoc) {
         doc.appendMarkdown(
             fnSymbol.meta.ahkDocMeta.otherMeta
                 .map((v: string): string => {

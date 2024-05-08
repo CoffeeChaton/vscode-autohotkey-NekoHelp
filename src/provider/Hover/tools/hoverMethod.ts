@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
-import { getMethodConfig } from '../../../configUI';
+import { getConfig } from '../../../configUI';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import { getMethodRef2Def } from '../../../tools/Method/Method';
 
@@ -24,7 +24,7 @@ export function hoverMethod(
         document,
         position,
         AhkFileData,
-        getMethodConfig().hover,
+        getConfig().method.hover,
     );
 
     return methodList === null

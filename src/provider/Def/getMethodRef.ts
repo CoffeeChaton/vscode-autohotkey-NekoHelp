@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
-import { getMethodConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { enumLog } from '../../tools/enumErr';
@@ -38,7 +38,7 @@ function MethodRef2LocationPrecision(
 }
 
 export function getMethodRef(DA: CAhkFunc): vscode.Location[] | null {
-    const { findAllRef } = getMethodConfig();
+    const { findAllRef } = getConfig().method;
 
     const list: vscode.Location[] = [new vscode.Location(DA.uri, DA.selectionRange)];
 

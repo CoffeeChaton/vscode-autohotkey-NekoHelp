@@ -2,7 +2,7 @@ import * as path from 'node:path';
 import type * as vscode from 'vscode';
 import { CAhkInclude } from '../../AhkSymbol/CAhkInclude';
 import type { TTopSymbol } from '../../AhkSymbol/TAhkSymbolIn';
-import { getSymbolProviderConfig, needDiag, setStatusBarText } from '../../configUI';
+import { getConfig, needDiag, setStatusBarText } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { isAhkTab } from '../../tools/fsTools/isAhk';
@@ -21,7 +21,7 @@ function SymbolProviderCore(document: vscode.TextDocument): vscode.DocumentSymbo
 
     setStatusBarText(path.basename(document.uri.fsPath), pm.DocMap.size);
 
-    const { useSymbolProvider, showInclude } = getSymbolProviderConfig();
+    const { useSymbolProvider, showInclude } = getConfig().SymbolProvider;
     if (!useSymbolProvider) return [];
 
     return showInclude

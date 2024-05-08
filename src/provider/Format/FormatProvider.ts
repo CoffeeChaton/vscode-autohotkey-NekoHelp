@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 /* eslint no-magic-numbers: ["error", { "ignore": [0,1,2,-999] }] */
 import * as vscode from 'vscode';
-import { getFormatConfig } from '../../configUI';
+import { getConfig } from '../../configUI';
 import type { ErmFirstCommaCommand, TConfigs } from '../../configUI.data';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
@@ -84,7 +84,7 @@ export function FormatCore(
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return newFmtMap;
 
-    const userConfigs: TConfigs['format'] = getFormatConfig();
+    const userConfigs: TConfigs['format'] = getConfig().format;
     const {
         AMasterSwitchUseFormatProvider,
         formatTextReplace,
@@ -182,7 +182,7 @@ export const FormatProvider: vscode.DocumentFormattingEditProvider = {
             fmtStart: 0,
             fmtEnd: document.lineCount - 1,
             from: EFormatChannel.byFormatAllFile,
-            cmdTo1_or_2: getFormatConfig().removeFirstCommaCommand,
+            cmdTo1_or_2: getConfig().format.removeFirstCommaCommand,
         }));
     },
 };
