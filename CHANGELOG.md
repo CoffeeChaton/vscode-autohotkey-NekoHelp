@@ -8,7 +8,7 @@
 
 ## v0.0.56(2023-05-XX)
 
-<!-- pnpm 9.0.6 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - feat: better Completion of `MsgBox`

@@ -1,5 +1,5 @@
 import type * as vscode from 'vscode';
-import { getCommandOptions } from '../../../configUI';
+import { getConfig } from '../../../configUI';
 import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
@@ -28,7 +28,7 @@ function getSubStr2(subStr: string, fistWordUp: string, detail: readonly EDetail
 }
 
 export function getSnipSubCmd(subStr: string, AhkTokenLine: TAhkTokenLine): readonly vscode.CompletionItem[] {
-    const { CommandOption, subCmdPlus } = getCommandOptions();
+    const { CommandOption, subCmdPlus } = getConfig().snippets;
     if (CommandOption === ECommandOption.notProvided) return [];
 
     const { fistWordUp, detail } = AhkTokenLine;

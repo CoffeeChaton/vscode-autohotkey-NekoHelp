@@ -1,4 +1,4 @@
-import { getCommandOptions } from '../../../configUI';
+import { getConfig } from '../../../configUI';
 import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { enumLog } from '../../enumErr';
@@ -28,7 +28,7 @@ export function getSnipCmd(subStr: string, AhkTokenLine: TAhkTokenLine): readonl
     if (!isOK) return [];
 
     //
-    const opt: ECommandOption = getCommandOptions().CommandOption;
+    const opt: ECommandOption = getConfig().snippets.CommandOption;
 
     switch (opt) {
         case ECommandOption.All:

@@ -127,7 +127,6 @@ export function digDAFile(AhkFileData: TAhkFileData): void {
     const displayFnErrList: readonly boolean[] = DocStrMap
         .map(({ displayFnErr }: TAhkTokenLine): boolean => displayFnErr);
 
-    const code508Max = 20;
     diagColl.set(uri, [
         ...(diagColl.get(uri) ?? []).filter((diag: vscode.Diagnostic): boolean => !(diag instanceof CDiagFn)),
         ...diagDAFileCore(AhkFileData, displayFnErrList),
@@ -138,6 +137,6 @@ export function digDAFile(AhkFileData: TAhkFileData): void {
         ...c514ComObjConnect(AhkFileData, displayFnErrList),
         ...c521banNameReservedWords(AhkFileData, displayFnErrList),
         ...c522banNameReservedWords(AhkFileData, displayFnErrList),
-        ...NeverUsedGVar(code508Max, displayFnErrList, AhkFileData),
+        ...NeverUsedGVar(displayFnErrList, AhkFileData),
     ]);
 }

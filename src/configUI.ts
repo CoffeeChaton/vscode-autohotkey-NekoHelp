@@ -92,7 +92,7 @@ function configEffectUp(ed: TConfigs): void {
     oldDocLanguage = ed.docLanguage;
 }
 
-function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
+function getConfigFromVsc(Configs: vscode.WorkspaceConfiguration): TConfigs {
     const ed: TConfigs = {
         CodeLens: {
             showClassReference: getConfigs<boolean>(Configs, 'AhkNekoHelp.CodeLens.showClassReference'),
@@ -115,6 +115,7 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             code500Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code500'), // NeverUsedVar
             code502Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code502'), // of var
             code503Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code503'), // of param
+            code508Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code508'), // of param
             code511Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code511'), // ban var/parma name same fn-Name
             code512Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code512'), // ban global-var name same fn-name
             code513Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code513'), // ban label-name same fn-name
@@ -207,18 +208,18 @@ function getConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
     return ed;
 }
 
-let config: TConfigs = getConfig(vscode.workspace.getConfiguration(EStrConfig.Config));
+let config: TConfigs = getConfigFromVsc(vscode.workspace.getConfiguration(EStrConfig.Config));
 
 export function configChangEvent(): void {
-    config = getConfig(vscode.workspace.getConfiguration(EStrConfig.Config));
+    config = getConfigFromVsc(vscode.workspace.getConfiguration(EStrConfig.Config));
 }
 
 /*
     ---set end---
 */
 
-export function getDocLanguageConfig(): TConfigs['docLanguage'] {
-    return config.docLanguage;
+export function getConfig(): TConfigs {
+    return config;
 }
 
 export function getInlayHintsConfig(): TConfigs['inlayHints'] {
@@ -311,10 +312,6 @@ export function LogParserInclude(byRefLogList: { type: keyof TTryParserIncludeLo
 
 export function getSnippetBlockFilesList(): readonly RegExp[] {
     return str2RegexListCheck(config.snippets.blockFilesList);
-}
-
-export function getCommandOptions(): TConfigs['snippets'] {
-    return config.snippets;
 }
 
 export function getDiagConfig(): TConfigs['Diag'] {

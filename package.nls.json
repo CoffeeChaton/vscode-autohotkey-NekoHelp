@@ -20,6 +20,7 @@
     "AhkNekoHelp.Diag.code500": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md)) var is assigned but never used, a file max warn number. use ```0``` to close warn.",
     "AhkNekoHelp.Diag.code502": "(code502) case sensitivity check of variable, a file max warn number. use ```0``` to close warn.",
     "AhkNekoHelp.Diag.code503": "(code503) case sensitivity check of parameter, a file max checks number. use ```0``` to close warn.",
+    "AhkNekoHelp.Diag.code508": "(code508) diag `global var` is assigned but never used a file max checks number. use ```0``` to close info.",
     "AhkNekoHelp.Diag.code511": "(code511) ban var/param name same function-name. use ```0``` to close info.",
     "AhkNekoHelp.Diag.code512": "(code512) ban global-var-name same function-name. use ```0``` to close info.",
     "AhkNekoHelp.Diag.code513": "(code513) ban label-name same function-name.",

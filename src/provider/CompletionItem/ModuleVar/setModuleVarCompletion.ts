@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { CAhkFunc, TValMapOut, TValMetaOut } from '../../../AhkSymbol/CAhkFunc';
-import { getCommandOptions } from '../../../configUI';
+import { getConfig } from '../../../configUI';
 import { EPrefix, setMD } from '../../../tools/MD/setMD';
 import type { ESnippetRecBecause, TSnippetRecMap } from '../DA/ESnippetRecBecause';
 
@@ -23,7 +23,7 @@ export function setModuleVarCompletion(
         DA,
     }: { ModuleValMap: TValMapOut, fileName: string, recMap: TSnippetRecMap, DA: CAhkFunc | null },
 ): vscode.CompletionItem[] {
-    const insertGlobal: boolean = getCommandOptions().autoInsertGlobal;
+    const insertGlobal: boolean = getConfig().snippets.autoInsertGlobal;
     return [...ModuleValMap.values()].map((v: TValMetaOut): vscode.CompletionItem => {
         const {
             keyRawName,

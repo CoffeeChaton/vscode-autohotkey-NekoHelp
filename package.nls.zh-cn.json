@@ -20,6 +20,7 @@
     "AhkNekoHelp.Diag.code500": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md))提示var已分配但从未使用，这是文件的最大警告数量。使用 ```0``` 关闭警告。",
     "AhkNekoHelp.Diag.code502": "(code502)检查var的大小写敏感性,文件最大警告数。使用 ```0``` 关闭信息",
     "AhkNekoHelp.Diag.code503": "(code503)检查param大小写敏感性检查,文件最大检查数。使用 ```0``` 关闭信息",
+    "AhkNekoHelp.Diag.code508": "(code508)检查 `global var`已分配但从未使用,文件最大检查数。使用 ```0``` 关闭信息",
     "AhkNekoHelp.Diag.code511": "(code511)禁止var/param名称与函数名称相同。使用 ```0``` 关闭信息",
     "AhkNekoHelp.Diag.code512": "(code512)禁止使用与函数名相同的全局变量名，使用 ```0``` 关闭信息。",
     "AhkNekoHelp.Diag.code513": "(code513)禁止标签名称与函数名称相同。使用 ```0``` 关闭信息。",

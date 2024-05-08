@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { getDiagConfig } from '../../../../configUI';
 import type { TAhkFileData } from '../../../../core/ProjectManager';
 import { EDiagCodeDA } from '../../../../diag';
 import type { TGVarRefMeta } from '../../../CodeLens/addGVarReference';
@@ -21,10 +22,13 @@ export class C508Class extends CDiagFn {
 }
 
 export function NeverUsedGVar(
-    code508Max: number,
     displayFnErrList: readonly boolean[],
     AhkFileData: TAhkFileData,
 ): C508Class[] {
+    const { code508Max } = getDiagConfig();
+    // default size 20
+    if (code508Max === 0) return [];
+
     const code508List: C508Class[] = [];
     const GVarRefMeta: readonly TGVarRefMeta[] = GVarRefCore(AhkFileData);
 

@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import type { CAhkClass } from '../../../AhkSymbol/CAhkClass';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TAstRoot } from '../../../AhkSymbol/TAhkSymbolIn';
-import { getCommandOptions, getSnippetBlockFilesList } from '../../../configUI';
+import { getConfig, getSnippetBlockFilesList } from '../../../configUI';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import { pm } from '../../../core/ProjectManager';
 import { enumLog } from '../../../tools/enumErr';
@@ -103,7 +103,7 @@ function CompletionFixStartWithHash(subStr: string, item: CUserFnClassCompletion
 export function CompletionUserDefFuncClass(subStr: string, zeroAhkFileData: TAhkFileData): CUserFnClassCompletion[] {
     const filesBlockList: readonly RegExp[] = getSnippetBlockFilesList();
 
-    const { fromOtherFile } = getCommandOptions();
+    const { fromOtherFile } = getConfig().snippets;
 
     if (fromOtherFile === 0) {
         return [...partSnip(zeroAhkFileData)];
