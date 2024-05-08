@@ -2,6 +2,7 @@
 import * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import { EMultiline } from '../../globalEnum';
 import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.data';
 
 /**
@@ -97,14 +98,28 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
     const arr: vscode.ColorInformation[] = [];
     //
     for (const AhkTokenLine of DocStrMap) {
-        const { lStr, textRaw, line } = AhkTokenLine;
+        const {
+            lStr,
+            textRaw,
+            line,
+            multiline,
+        } = AhkTokenLine;
         const text: string = textRaw.slice(0, lStr.length);
-        if (text.length === 0) continue;
+        if (text.length === 0 || multiline !== EMultiline.none) continue;
 
         for (const ma of text.matchAll(colorRegex)) {
             const { index } = ma;
+
             const ma1: string = ma[1];
             const char: number = ma[0].length - ma1.length + index;
+
+            const b1: string | undefined = text.at(index - 1);
+            const b2: string | undefined = text.at(index - 2);
+            if (b1 === '"' || b2 === '"') {
+                // 3. lint "#0x00000" or "0x000000" if start with `" need and with`"
+                const b3: string | undefined = text.at(char + ma1.length);
+                if (b3 !== '"') continue;
+            }
 
             const color: vscode.Color = str2Color(ma1);
             const range: vscode.Range = new vscode.Range(
@@ -137,11 +152,6 @@ function provideColorPresentations(
         blue,
         alpha,
     } = color;
-
-    //
-    // TODO config toLowerCase toUp
-    //
-    //
 
     const rgb: string = `${toBase16(red * 255)}${toBase16(green * 255)}${toBase16(blue * 255)}`.toLowerCase();
     const a: string = toBase16(alpha * 255).toLowerCase();
