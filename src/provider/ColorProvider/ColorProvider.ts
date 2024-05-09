@@ -33,8 +33,8 @@ import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Window
  */
 
 // dprint-ignore
-const colorRegex = /(?<=[," \t=]|^)(?:c[btw]?|#)?((?:0x)?[\da-f]{6}(?:[\da-f]{2})?|black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
-//                               ^ma[0]             ^ma[1]  only 6 or 8
+const colorRegex = /(?<=[," \t=]|^)(?:c[btw]?|#)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)|(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
+//                               ^ma[0]                 ^ma[1]  only 6 or 8         ^ma[2]
 
 /**
  * https://www.autohotkey.com/docs/v1/lib/Progress.htm#Object_Colors
@@ -90,8 +90,7 @@ function str2Color(ma1: string): vscode.Color {
 }
 
 function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInformation[] {
-    const { fsPath } = document.uri;
-    const AhkFileData: TAhkFileData | undefined = pm.getDocMap(fsPath);
+    const AhkFileData: TAhkFileData | undefined = pm.getDocMap(document.uri.fsPath);
     if (AhkFileData === undefined) return [];
 
     const { DocStrMap } = AhkFileData;
@@ -110,7 +109,8 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
         for (const ma of text.matchAll(colorRegex)) {
             const { index } = ma;
 
-            const ma1: string = ma[1];
+            const ma1: string = ma[1] ?? ma[2];
+
             const char: number = ma[0].length - ma1.length + index;
 
             const b1: string | undefined = text.at(index - 1);
@@ -140,9 +140,7 @@ function provideColorPresentations(
         readonly range: vscode.Range,
     },
 ): vscode.ColorPresentation[] {
-    const { document } = context;
-    const { fsPath } = document.uri;
-    const AhkFileData: TAhkFileData | undefined = pm.getDocMap(fsPath);
+    const AhkFileData: TAhkFileData | undefined = pm.getDocMap(context.document.uri.fsPath);
     if (AhkFileData === undefined) return [];
 
     //
@@ -160,11 +158,17 @@ function provideColorPresentations(
         ? rgb
         : `${rgb}${a}`;
 
-    const arr: vscode.ColorPresentation[] = [new vscode.ColorPresentation(rgba)];
+    const arr: vscode.ColorPresentation[] = [
+        new vscode.ColorPresentation(rgba),
+        new vscode.ColorPresentation(rgba.toUpperCase()),
+    ];
     if (a === 'ff') {
         for (const [k, v] of colorMap) {
             if (v === rgb) {
-                arr.push(new vscode.ColorPresentation(k));
+                arr.push(
+                    new vscode.ColorPresentation(k),
+                    new vscode.ColorPresentation(k[0].toUpperCase() + k.slice(1)),
+                );
                 break;
             }
         }
