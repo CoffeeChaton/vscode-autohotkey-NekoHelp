@@ -11,6 +11,7 @@
 <!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- TODO: hover at `;@ahk-neko-format-inline-spacing-ignore-end`
 - feat: better Completion of `MsgBox`
 - feat: better gotoDef of `global var :=`
 - feat: ([#48](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) show var1 ref of `global var1 :=` (via CodeLens)

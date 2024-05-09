@@ -1,8 +1,5 @@
 {
-    "third_party_code": [
-        "the 'inline_tags', 'brackets', 'jsdoctype', 'docblock' code is from https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87",
-        ""
-    ],
+    "third_party_code": [ "the 'inline_tags', 'brackets', 'jsdoctype', 'docblock' code is from https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87" ],
     "fileTypes": [ "ahk" ],
     "name": "AutoHotkey",
     "patterns": [

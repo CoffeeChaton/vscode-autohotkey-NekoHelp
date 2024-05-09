@@ -4,6 +4,7 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { EMultiline } from '../../globalEnum';
 import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.data';
+import { getColorPickerIgnoreList } from './getColorPickerIgnore';
 
 /**
  * ```ahk
@@ -33,7 +34,7 @@ import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Window
  */
 
 // dprint-ignore
-const colorRegex = /(?<=[," \t=]|^)(?:c[btw]?|#)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)|(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
+const colorRegex = /(?<=[," \t:=]|^)(?:c[btw]?|#)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)|(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
 //                               ^ma[0]                 ^ma[1]  only 6 or 8         ^ma[2]
 
 /**
@@ -94,6 +95,7 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
     if (AhkFileData === undefined) return [];
 
     const { DocStrMap } = AhkFileData;
+    const ignoreArr: readonly boolean[] = getColorPickerIgnoreList(DocStrMap);
     const arr: vscode.ColorInformation[] = [];
     //
     for (const AhkTokenLine of DocStrMap) {
@@ -104,19 +106,22 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
             multiline,
         } = AhkTokenLine;
         const text: string = textRaw.slice(0, lStr.length);
-        if (text.length === 0 || multiline !== EMultiline.none) continue;
+
+        // 'red'.length === 3
+        if (text.length < 3 || multiline !== EMultiline.none) continue;
+        if (ignoreArr[line]) continue;
 
         for (const ma of text.matchAll(colorRegex)) {
             const { index } = ma;
-
             const ma1: string = ma[1] ?? ma[2];
-
             const char: number = ma[0].length - ma1.length + index;
 
-            const b1: string | undefined = text.at(index - 1);
-            const b2: string | undefined = text.at(index - 2);
-            if (b1 === '"' || b2 === '"') {
-                // 3. lint "#0x00000" or "0x000000" if start with `" need and with`"
+            if (text.at(char + ma1.length) === '(') continue;
+            if (text.at(index - 1) === '"') { // "Red"
+                // || text.at(index - 2) === '"' // "cRed"
+                // || text.at(index - 3) === '"' // "cbRed"
+
+                // 3. lint "0x00000" or "0x000000" if start with `" need and with`"
                 const b3: string | undefined = text.at(char + ma1.length);
                 if (b3 !== '"') continue;
             }

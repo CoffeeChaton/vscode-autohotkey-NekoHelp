@@ -19,6 +19,9 @@
 ;@ahk-neko-format-inline-spacing-ignore-start
 ;@ahk-neko-format-inline-spacing-ignore-end
 
+
+;@ahk-neko-color-picker-ignore 1 line
+
 /*@ahk-neko-format-ignore-block
 * something
 */

@@ -109,6 +109,16 @@
 #                 ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
 #                                        ^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
 >
+>
+>;@ahk-neko-color-picker-ignore 1 line
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^^^^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                       ^ source.ahk comment.line.semicolon.ahk
+#                        ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                              ^ source.ahk comment.line.semicolon.ahk
+#                               ^ source.ahk comment.line.semicolon.ahk constant.numeric.ahk
+#                                ^^^^^ source.ahk comment.line.semicolon.ahk
+>
 >/*@ahk-neko-format-ignore-block
 #^^^^^^^^^^^^^^^^^^^ source.ahk comment.block.ahk
 #                   ^^^^^^^^^^^^ source.ahk comment.block.ahk keyword.comment.format.ignore.block.ahk
