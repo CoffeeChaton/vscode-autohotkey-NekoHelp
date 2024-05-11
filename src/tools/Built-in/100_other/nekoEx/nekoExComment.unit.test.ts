@@ -19,7 +19,7 @@ describe('check nekoExComment ruler', (): void => {
             if (!exp.join('\n').includes(labelFix)) errList.push({ case: 1, label, value: exp.join('\n') });
         }
 
-        const max = 6;
+        const max = 7;
 
         expect(nekoExCommentData).toHaveLength(max);
         expect(errList).toStrictEqual([

@@ -77,4 +77,18 @@ export const nekoExCommentData: TData[] = [
             ';@ahk-neko-format-inline-spacing-ignore-end',
         ],
     },
+    // color
+    {
+        label: ';@ahk-neko-color-picker-ignore XX line',
+        insert: ';@ahk-neko-color-picker-ignore ${1|1,2,999,any number|} line',
+        doc: 'ignore color-picker',
+        exp: [
+            ';@ahk-neko-color-picker-ignore 1 line',
+            ';@ahk-neko-color-picker-ignore 2 line',
+            ';@ahk-neko-color-picker-ignore 999 line',
+            '',
+            ';use 0 to open color-picker',
+            ';@ahk-neko-color-picker-ignore 0 line',
+        ],
+    },
 ];
