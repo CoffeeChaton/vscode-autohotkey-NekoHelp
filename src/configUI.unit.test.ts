@@ -116,6 +116,7 @@ describe('check package ruler', () => {
                 // [8] misc
                 ['AhkNekoHelp.method', 'object'],
                 ['AhkNekoHelp.useSymbolProvider', 'boolean'],
+                ['AhkNekoHelp.useColorProvider', 'boolean'],
                 ['AhkNekoHelp.SymbolProvider.showInclude', 'boolean'],
                 ['AhkNekoHelp.Rename.functionInStr', 'boolean'],
                 ['AhkNekoHelp.event.FileRenameEvent', 'number'],

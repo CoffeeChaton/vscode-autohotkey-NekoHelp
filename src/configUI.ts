@@ -193,6 +193,7 @@ function upConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
         },
         RenameFunctionInStr: getConfigs<boolean>(Configs, 'AhkNekoHelp.Rename.functionInStr'),
         docLanguage: getConfigs<'auto' | 'en' | 'zh-cn'>(Configs, 'AhkNekoHelp.doc.language'),
+        useColorProvider: getConfigs<boolean>(Configs, 'AhkNekoHelp.useColorProvider'),
     } as const;
 
     statusBarItem.color = ed.customize.statusBarDisplayColor;

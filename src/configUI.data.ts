@@ -170,6 +170,7 @@ type TempConfigs = {
     },
     RenameFunctionInStr: boolean,
     docLanguage: 'auto' | 'en' | 'zh-cn',
+    useColorProvider: boolean,
 };
 
 /**

@@ -673,6 +673,11 @@
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.useSymbolProvider%"
                     },
+                    "AhkNekoHelp.useColorProvider": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "%AhkNekoHelp.useColorProvider%"
+                    },
                     "AhkNekoHelp.SymbolProvider.showInclude": {
                         "type": "boolean",
                         "default": true,

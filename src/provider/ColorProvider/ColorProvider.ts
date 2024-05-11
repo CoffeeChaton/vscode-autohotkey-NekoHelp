@@ -1,5 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import * as vscode from 'vscode';
+import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { EMultiline } from '../../globalEnum';
@@ -93,6 +94,7 @@ function str2Color(ma1: string): vscode.Color {
 function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInformation[] {
     const AhkFileData: TAhkFileData | undefined = pm.getDocMap(document.uri.fsPath);
     if (AhkFileData === undefined) return [];
+    if (!getConfig().useColorProvider) return [];
 
     const { DocStrMap } = AhkFileData;
     const ignoreArr: readonly boolean[] = getColorPickerIgnoreList(DocStrMap);
@@ -147,7 +149,7 @@ function provideColorPresentations(
 ): vscode.ColorPresentation[] {
     const AhkFileData: TAhkFileData | undefined = pm.getDocMap(context.document.uri.fsPath);
     if (AhkFileData === undefined) return [];
-
+    if (!getConfig().useColorProvider) return [];
     //
     const {
         red,

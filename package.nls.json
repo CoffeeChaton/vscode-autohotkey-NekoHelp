@@ -93,6 +93,7 @@
     "AhkNekoHelp.title.9": "9. misc",
     "AhkNekoHelp.method": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))",
     "AhkNekoHelp.useSymbolProvider": "use [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), if you like other plugins SymBolProvider, can close this.",
+    "AhkNekoHelp.useColorProvider": "use ColorProvider (color-picker) [#50](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/50), if you like other plugins ColorProvider, can close this.",
     "AhkNekoHelp.SymbolProvider.showInclude": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), at [outline](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) and [breadcrumbs](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) show [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm).",
     "AhkNekoHelp.Rename.functionInStr": "if function-name in string like `func(\"funcName\")` , default not replace it to new name [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.functionInStr.md)",
     "AhkNekoHelp.event.FileRenameEvent": "Moving or renaming event ([Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5))",

@@ -93,6 +93,7 @@
     "AhkNekoHelp.title.9": "9. misc(雜項)",
     "AhkNekoHelp.method": "([read doc](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/method.md))",
     "AhkNekoHelp.useSymbolProvider": "使用[大綱](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) 和[面包屑](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs), 如果你喜歡其他外掛SymBolProvider,可以關閉這個。如果你喜歡其他外掛SymBolProvider，可以關閉這個。",
+    "AhkNekoHelp.useColorProvider": "使用 ColorProvider (顏色選擇器) [#50](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/50), 如果你喜歡其他外掛 ColorProvider,可以關閉這個。如果你喜歡其他外掛SymBolProvider，可以關閉這個。",
     "AhkNekoHelp.SymbolProvider.showInclude": "([read more](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/12#issuecomment-1503682757)), 在[大綱](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view) 和 [面包屑](https://code.visualstudio.com/docs/getstarted/userinterface#_breadcrumbs) 展示 [#Include / #IncludeAgain](https://www.autohotkey.com/docs/v1/lib/_Include.htm).",
     "AhkNekoHelp.Rename.functionInStr": "if 函數名稱在字串中，例如 `func(\"funcName\")` , 默認不取代為新名稱 [[read more]](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/config/Rename.functionInStr.md)",
     "AhkNekoHelp.event.FileRenameEvent": "移動或重新命名事件 ([預覽](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5))",
