@@ -218,7 +218,7 @@ export const ahkSnippetsData: string[] = [
     'Ok',
     'Cancel',
     'Abort',
-    'Retry',
+    // 'Retry',
     'Ignore',
     'TryAgain',
     'On',

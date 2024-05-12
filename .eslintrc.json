@@ -86,6 +86,8 @@
     ],
     "root": true,
     "rules": {
+        "unicorn/throw-new-error": "off",
+        "unicorn/prefer-string-raw": "off",
         "unicorn/import-style": "off",
         "no-undef": "off",
         "import/no-unresolved": "off",

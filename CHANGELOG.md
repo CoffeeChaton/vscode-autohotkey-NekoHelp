@@ -14,6 +14,7 @@
 - TODO: hover at `;@ahk-neko-format-inline-spacing-ignore-end`
 - feat: better Completion of `MsgBox`
 - feat: better gotoDef of `global var :=`
+- feat: remove completion `Retry`
 - feat: ([#48](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) show var1 ref of `global var1 :=` (via CodeLens)
 - feat: ([#49](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/48)) diag global `var1` is assigned but never used `global var1 :=`
 - feat: ([#45](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/45)) goto `;@ahk2exe-set` def-json
