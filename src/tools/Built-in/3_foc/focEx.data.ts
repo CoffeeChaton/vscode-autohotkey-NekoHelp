@@ -16,7 +16,7 @@ type TFocExElement = Readonly<{
 }>;
 
 /**
- * after initialization clear
+ * Generate .json indirect reference, no longer direct reference
  * FlowOfControl
  * FOC
  */

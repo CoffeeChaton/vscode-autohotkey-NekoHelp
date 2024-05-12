@@ -1,0 +1,360 @@
+{
+    "headData": {
+        "note": "machine generated, Please do not manually modify this file!",
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress": "100%"
+    },
+    "body": [
+        {
+            "keyRawName": "IgnoreBegin",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep",
+            "doc": ["可以通过将代码段包装在指令中来从已编译的脚本中删除它们："],
+            "body": ";@Ahk2Exe-IgnoreBegin\n;@Ahk2Exe-IgnoreEnd",
+            "exp": [
+                "MsgBox 此消息出现在已编译和未编译的脚本中",
+                ";@Ahk2Exe-IgnoreBegin",
+                "MsgBox 此消息不会出现在编译的脚本中",
+                ";@Ahk2Exe-IgnoreEnd",
+                "MsgBox 此消息出现在已编译和未编译的脚本中"
+            ]
+        },
+        {
+            "keyRawName": "IgnoreEnd",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep",
+            "doc": ["可以通过将代码段包装在指令中来从已编译的脚本中删除它们："],
+            "body": ";@Ahk2Exe-IgnoreEnd",
+            "exp": [
+                "MsgBox 此消息出现在已编译和未编译的脚本中",
+                ";@Ahk2Exe-IgnoreBegin",
+                "MsgBox 此消息不会出现在编译的脚本中",
+                ";@Ahk2Exe-IgnoreEnd",
+                "MsgBox 此消息出现在已编译和未编译的脚本中"
+            ]
+        },
+        {
+            "keyRawName": "AddResource",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#AddResource",
+            "doc": ["将资源添加到已编译的可执行文件。（另请参阅下面的 [UseResourceLang](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#UseResourceLang)）"],
+            "body": ";@Ahk2Exe-AddResource ${1:FileName} [, ${2:ResourceName}]",
+            "exp": [
+                ";示例 1:要替换标准图标（主图标除外）：",
+                ";@Ahk2Exe-AddResource Icon1.ico, 160  ; Replaces 'H on blue'",
+                ";@Ahk2Exe-AddResource Icon2.ico, 206  ; Replaces 'S on green'",
+                ";@Ahk2Exe-AddResource Icon3.ico, 207  ; Replaces 'H on red'",
+                ";@Ahk2Exe-AddResource Icon4.ico, 208  ; Replaces 'S on red'",
+                "",
+                ";示例 2：[v1.1.34+] 要将另一个脚本作为单独的 RCDATA 资源包含在内（请参阅嵌入式脚本）：",
+                ";@Ahk2Exe-AddResource MyScript1.ahk, #2",
+                ";@Ahk2Exe-AddResource MyScript2.ahk, MYRESOURCE"
+            ]
+        },
+        {
+            "keyRawName": "Bin",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Bin",
+            "doc": ["指定用于生成.exe文件的 AutoHotkey 的基本版本。此指令可被 GUI 或 CLI 中指定的基本文件参数覆盖。如有必要，可以多次指定此指令，但只能在顶级脚本文件中（即不在 [#Include](https://www.autohotkey.com/docs/v1/lib/_Include.htm) 文件中）。对于找到的每个 Bin/Base 指令，编译器将至少运行一次。（如果实际注释附加到此指令，则它必须使用标志。要真正注释掉此指令，请在第一个注释标志后插入一个空格。 `;`"],
+            "body": ";@Ahk2Exe-Bin",
+            "exp": [
+                ";@Ahk2Exe-Bin  [Path]Name [, [Exe_path][Name], Codepage] ; 已弃用",
+                ";@Ahk2Exe-Base [Path]Name [, [Exe_path][Name], Codepage] ; [v1.1.33.10+]"
+            ]
+        },
+        {
+            "keyRawName": "Base",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Bin",
+            "doc": ["指定用于生成.exe文件的 AutoHotkey 的基本版本。此指令可被 GUI 或 CLI 中指定的基本文件参数覆盖。如有必要，可以多次指定此指令，但只能在顶级脚本文件中（即不在 [#Include](https://www.autohotkey.com/docs/v1/lib/_Include.htm) 文件中）。对于找到的每个 Bin/Base 指令，编译器将至少运行一次。（如果实际注释附加到此指令，则它必须使用标志。要真正注释掉此指令，请在第一个注释标志后插入一个空格。 `;`"],
+            "body": ";@Ahk2Exe-Base ${1:path_name} [,${2:Exe_path} ,${3:Codepage} ]",
+            "exp": [
+                ";@Ahk2Exe-Bin  [Path]Name [, [Exe_path][Name], Codepage] ; 已弃用",
+                ";@Ahk2Exe-Base [Path]Name [, [Exe_path][Name], Codepage] ; [v1.1.33.10+]"
+            ]
+        },
+        {
+            "keyRawName": "ConsoleApp",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#ConsoleApp",
+            "doc": ["将可执行子系统更改为控制台模式。"],
+            "body": ";@Ahk2Exe-ConsoleApp",
+            "exp": [
+                ";@Ahk2Exe-ConsoleApp"
+            ]
+        },
+        {
+            "keyRawName": "Cont",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Cont",
+            "doc": ["指定前面指令的延续行。这允许对长行指令进行格式化，以便于在源代码中读取。"],
+            "body": ";@Ahk2Exe-Cont ${1:text}",
+            "exp": [
+                ";@Ahk2Exe-Cont Text"
+            ]
+        },
+        {
+            "keyRawName": "Debug",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Debug",
+            "doc": ["显示一个消息框，其中包含提供的文本，以便进行调试。"],
+            "body": ";@Ahk2Exe-Debug",
+            "exp": [
+                ";@Ahk2Exe-Debug"
+            ]
+        },
+        {
+            "keyRawName": "ExeName",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#ExeName",
+            "doc": ["指定为生成的 .exe 文件指定的位置和名称。（另请参阅 [Base](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Bin) 指令。此指令可被 GUI 或 CLI 中指定的输出文件覆盖。"],
+            "body": ";@Ahk2Exe-ExeName ${1:Path\\name}",
+            "exp": [
+                ";@Ahk2Exe-Obey U_bits, = %A_PtrSize% * 8",
+                ";@Ahk2Exe-Obey U_type, = \"%A_IsUnicode%\" ? \"Unicode\" : \"ANSI\"",
+                ";@Ahk2Exe-ExeName %A_ScriptName~\\.[^\\.]+$%_%U_type%_%U_bits%"
+            ]
+        },
+        {
+            "keyRawName": "Let",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Let",
+            "doc": ["创建（或修改）一个或多个用户变量，这些变量可由 访问，类似于内置变量（见上文）。`%U__Name_%`"],
+            "body": ";@Ahk2Exe-Let ${1:Name} = ${2:Value} ,$0 ${3:[Name = Value]}",
+            "exp": [
+                ";@Ahk2Exe-Let Name = Value , Name = Value, ...",
+                ";@Ahk2Exe-Let U_company = %A_PriorLine~U)^(.+\"){3}(.+)\".*$~$2%",
+                ";@Ahk2Exe-Let U_version = %A_PriorLine~U)^(.+\"){1}(.+)\".*$~$2%"
+            ]
+        },
+        {
+            "keyRawName": "Nop",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Nop",
+            "doc": ["什么都不做。"],
+            "body": ";@Ahk2Exe-Nop ${1:Text}",
+            "exp": [
+                "Ver := A_AhkVersion \"\" ; If quoted literal not empty, do 'SetVersion'",
+                ";@Ahk2Exe-Obey U_V, = \"%A_PriorLine~U)^(.+\")(.*)\".*$~$2%\" ? \"SetVersion\" : \"Nop\"",
+                ";              ->                                        ->                 ^^^",
+                ";@Ahk2Exe-%U_V%        %A_AhkVersion%%A_PriorLine~U)^(.+\")(.*)\".*$~$2%",
+                ";           ^ \"Nop\" or \"SetVersion\""
+            ]
+        },
+        {
+            "keyRawName": "Obey",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Obey",
+            "doc": ["遵循隔离的 AutoHotkey 命令或表达式，结果为 . `U__Name_`"],
+            "body": ";@Ahk2Exe-Obey ${1:Name}, ${2:CmdOrExp} [, ${3:Extra}]",
+            "exp": [
+                ";@Ahk2Exe-Obey U_date, FormatTime U_date`, R D2 T2",
+                ";@Ahk2Exe-Obey U_type, = \"%A_IsUnicode%\" ? \"Unicode\" : \"ANSI\"",
+                ";@Ahk2Exe-Obey U_bits, U_bits := %A_PtrSize% * 8",
+                "",
+                ";@Ahk2Exe-Obey U_au, = \"%A_IsUnicode%\" ? 2 : 1    ; Script ANSI or Unicode?",
+                ";@Ahk2Exe-Obey U_bits, = %A_PtrSize% * 8",
+                ";@Ahk2Exe-Obey U_bits, U_bits := %A_PtrSize% * 8",
+                ";@Ahk2Exe-Obey U_date, FormatTime U_date`, R D2 T2",
+                ";@Ahk2Exe-Obey U_type, = \"%A_IsUnicode%\" ? \"Unicode\" : \"ANSI\"",
+                ";@Ahk2Exe-Obey U_V, = \"%A_PriorLine~U)^(.+\")(.*)\".*$~$2%\" ? \"SetVersion\" : \"Nop\""
+            ]
+        },
+        {
+            "keyRawName": "PostExec",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#PostExec",
+            "doc": ["指定在成功编译后，在对.exe应用任何[压缩](https://www.autohotkey.com/docs/v1/Scripts.htm#mpress)之前（或之后）要执行的程序。此指令可以多次出现，并将按照编译器遇到的顺序在 _When_ 参数指定的相应队列中执行。"],
+            "body": ";@Ahk2Exe-PostExec ${1:Program} ${2:[parameters]} [, ${3:When}, ${4:WorkingDir}, ${5:Hidden}, ${6:IgnoreErrors}]",
+            "exp": [
+                ";@Ahk2Exe-Obey U_au, = \"%A_IsUnicode%\" ? 2 : 1    ; Script ANSI or Unicode?",
+                ";@Ahk2Exe-PostExec \"BinMod.exe\" \"%A_WorkFileName%\"",
+                ";@Ahk2Exe-Cont  \"%U_au%2.>AUTOHOTKEY SCRIPT<. DATA      ",
+                "",
+                ";@Ahk2Exe-PostExec \"BinMod.exe\" \"%A_WorkFileName%\"",
+                ";@Ahk2Exe-Cont  \"11.UPX.\" \"1.UPX!.\", 2"
+            ]
+        },
+        {
+            "keyRawName": "ResourceID",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#ResourceID",
+            "doc": ["为使用[.exe基础文件](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Bin)的编译分配一个非标准资源 ID，用于主脚本（请参阅[嵌入式脚本](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts)）。此指令可被 GUI 或 CLI 中指定的资源 ID 覆盖。如果此指令出现在 [AddResource](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#AddResource) 指令插入的脚本中，则忽略该指令。"],
+            "body": ";@Ahk2Exe-ResourceID ${1:Name}",
+            "exp": [
+                ";@Ahk2Exe-ResourceID Name"
+            ]
+        },
+        {
+            "keyRawName": "SetMainIcon",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetMainIcon",
+            "doc": [
+                "覆盖用于编译的自定义 EXE 图标. (要更改其他图标，请参阅 [AddResource](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#AddResource) 例子.) ",
+                "该指令可能会被 GUI 或 CLI 中指定的图标文件覆盖。",
+                "如果编译的文件之前存在不同的图标，则新图标可能不会立即在 Windows 资源管理器中可见， 但是可以通过选择来显示新图标 `Refresh Windows Icons` from the Ahk2Exe `File` menu."
+            ],
+            "body": ";@Ahk2Exe-SetMainIcon ${1:IcoFile}",
+            "exp": [
+                ";@Ahk2Exe-SetMainIcon IcoFile",
+                ";@Ahk2Exe-SetMainIcon AhkXXX.ico",
+                ";@Ahk2Exe-SetMainIcon cat.ico"
+            ]
+        },
+        {
+            "keyRawName": "SetCompanyName",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改公司名称。"],
+            "body": ";@Ahk2Exe-SetCompanyName ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetCompanyName Value",
+                ";@Ahk2Exe-SetCompanyName neko-help"
+            ]
+        },
+        {
+            "keyRawName": "SetCopyright",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改合法版权信息。"],
+            "body": ";@Ahk2Exe-SetCopyright ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetCopyright Value",
+                ";@Ahk2Exe-SetCopyright Copyright (c) since 2022"
+            ]
+        },
+        {
+            "keyRawName": "SetDescription",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改合法版权信息。"],
+            "body": ";@Ahk2Exe-SetDescription ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetDescription Value",
+                ";@Ahk2Exe-SetDescription AutoHotkey Script Compiler"
+            ]
+        },
+        {
+            "keyRawName": "SetFileVersion",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改文本和原始二进制格式的文件版本。 （有关更多详细信息，请参阅下面的版本。）"],
+            "body": ";@Ahk2Exe-SetFileVersion ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetFileVersion Value",
+                ";@Ahk2Exe-SetFileVersion 0.0.18"
+            ]
+        },
+        {
+            "keyRawName": "SetInternalName",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改内部名称."],
+            "body": ";@Ahk2Exe-SetInternalName ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetInternalName Value"
+            ]
+        },
+        {
+            "keyRawName": "SetLanguage",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["改变 [语言代码](https://www.autohotkey.com/docs/v1/misc/Languages.htm). 请注意，十六进制数必须有一个 `0x` 字首."],
+            "body": ";@Ahk2Exe-SetLanguage ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetLanguage Value"
+            ]
+        },
+        {
+            "keyRawName": "SetLegalTrademarks",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改合法商标信息。"],
+            "body": ";@Ahk2Exe-SetLegalTrademarks ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetLegalTrademarks Value"
+            ]
+        },
+        {
+            "keyRawName": "SetName",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改产品名称和内部名称。"],
+            "body": ";@Ahk2Exe-SetName ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetName Value"
+            ]
+        },
+        {
+            "keyRawName": "SetOrigFilename",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改原始文件名信息。"],
+            "body": ";@Ahk2Exe-SetOrigFilename ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetOrigFilename Value",
+                ";@Ahk2Exe-SetOrigFilename XXX.ahk"
+            ]
+        },
+        {
+            "keyRawName": "SetProductName",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改产品名称。"],
+            "body": ";@Ahk2Exe-SetProductName ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetProductName Value",
+                ";@Ahk2Exe-SetProductName DllExportViewer"
+            ]
+        },
+        {
+            "keyRawName": "SetProductVersion",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": ["更改文本和原始二进制格式的产品版本。 （有关更多详细信息，请参阅下面的版本。）"],
+            "body": ";@Ahk2Exe-SetProductVersion ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetProductVersion Value",
+                ";@Ahk2Exe-SetProductVersion 1.1.36"
+            ]
+        },
+        {
+            "keyRawName": "SetVersion",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp",
+            "doc": [
+                "以文本和原始二进制格式更改文件版本和产品版本。",
+                "Ahk2Exe 使用可能出现在版本文本开头的句点分隔数字（最多四个）填充二进制版本字段。",
+                "未填充的字段设置为零.",
+                "例如， `1.3-alpha` 会产生一个二进制版本号`1.3.0.0`.",
+                "如果不修改此属性，则默认为用于编译脚本的 AutoHotkey 版本。"
+            ],
+            "body": ";@Ahk2Exe-SetVersion ${1:Value}",
+            "exp": [
+                ";@Ahk2Exe-SetVersion Value",
+                ";@Ahk2Exe-SetVersion     2022.12.17"
+            ]
+        },
+        {
+            "keyRawName": "Set",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#Set",
+            "doc": [
+                "更改已编译的可执行文件的版本信息中未涵盖的其他杂项属性 [SetProp](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#SetProp) 指示.",
+                "请注意，所有属性均按字母顺序处理，无论指定的顺序如何。",
+                "该指令仅供专门用途。"
+            ],
+            "body": ";@Ahk2Exe-Set ${1:Prop}, ${2:Value}",
+            "exp": [
+                ";@Ahk2Exe-Set Prop, Value"
+            ]
+        },
+        {
+            "keyRawName": "UpdateManifest",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#UpdateManifest",
+            "doc": ["更改 .exe 清单中的详细信息。 该指令仅供专门用途。"],
+            "body": ";@Ahk2Exe-UpdateManifest ${1:RequireAdmin} [, ${2:Name}, ${3:Version}, ${4:UIAccess}]",
+            "exp": [
+                ";@Ahk2Exe-UpdateManifest RequireAdmin , Name, Version, UIAccess"
+            ]
+        },
+        {
+            "keyRawName": "UseResourceLang",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#UpdateManifest",
+            "doc": [
+                "更改所使用的资源语言 [AddResource](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#AddResource).",
+                "该指令是位置性的，影响所有 [AddResource](https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#AddResource) 其后的指令。"
+            ],
+            "body": ";@Ahk2Exe-UseResourceLang LangCode",
+            "exp": [
+                ";@Ahk2Exe-UseResourceLang LangCode"
+            ]
+        },
+        {
+            "keyRawName": "Keep",
+            "link": "https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep",
+            "doc": [
+                "反之亦然，即将代码段标记为仅在已编译的脚本中执行："
+            ],
+            "body": "Ahk2Exe-Keep\n",
+            "exp": [
+                "/*@Ahk2Exe-Keep",
+                "MsgBox 此消息仅出现在编译的脚本中",
+                "*/",
+                "MsgBox 此消息出现在已编译和未编译的脚本中"
+            ]
+        }
+    ]
+}

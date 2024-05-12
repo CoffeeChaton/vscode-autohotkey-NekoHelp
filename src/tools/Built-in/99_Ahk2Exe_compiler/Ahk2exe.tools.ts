@@ -1,27 +1,18 @@
 import * as vscode from 'vscode';
-import { Ahk2exeData } from './Ahk2exe.data';
+import type { TAhkTokenLine } from '../../../globalEnum';
+import { EDetail } from '../../../globalEnum';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
+import type { TAhk2exeDataElement } from './Ahk2exe.data';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const { Ahk2exeMdMap, snippetAhk2exeLine, snippetAhk2exeKeep } = (() => {
+const ahk2Exe = (() => {
     const Ahk2exeMdMapRW = new Map<string, vscode.MarkdownString>();
     const snippetAhk2exeRW: vscode.CompletionItem[] = [];
     const snippetAhk2exeKeepRW: vscode.CompletionItem[] = [];
     //
-    // /*@Ahk2Exe-Keep\n$0\n*/
-    const Ahk2ExeKeep = {
-        keyRawName: 'Keep',
-        link: 'https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep',
-        doc: 'The reverse is also possible, i.e. marking a code section to only be executed in the compiled script:',
-        body: 'Ahk2Exe-Keep\n',
-        exp: [
-            '/*@Ahk2Exe-Keep',
-            'MsgBox This message appears only in the compiled script',
-            '*/',
-            'MsgBox This message appears in both the compiled and unCompiled script',
-        ],
-    };
+    const Ahk2exeData: TAhk2exeDataElement[] = readNlsJson('Ahk2exeData') as TAhk2exeDataElement[];
 
-    for (const v of [...Ahk2exeData, Ahk2ExeKeep]) {
+    for (const v of Ahk2exeData) {
         const {
             keyRawName,
             link,
@@ -37,7 +28,7 @@ export const { Ahk2exeMdMap, snippetAhk2exeLine, snippetAhk2exeKeep } = (() => {
             .appendCodeblock(msgName, 'ahk')
             .appendMarkdown(`Script Compiler Directives ([Read Doc](${link}))`)
             .appendMarkdown('\n\n')
-            .appendMarkdown(doc)
+            .appendMarkdown(doc.join('\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'), 'ahk');
@@ -64,11 +55,6 @@ export const { Ahk2exeMdMap, snippetAhk2exeLine, snippetAhk2exeKeep } = (() => {
         }
     }
 
-    /**
-     * after initialization clear
-     */
-    Ahk2exeData.length = 0;
-
     return {
         Ahk2exeMdMap: Ahk2exeMdMapRW as ReadonlyMap<string, vscode.MarkdownString>,
         snippetAhk2exeLine: snippetAhk2exeRW as readonly vscode.CompletionItem[],
@@ -76,6 +62,86 @@ export const { Ahk2exeMdMap, snippetAhk2exeLine, snippetAhk2exeKeep } = (() => {
     };
 })();
 
+export const { Ahk2exeMdMap, snippetAhk2exeLine, snippetAhk2exeKeep } = ahk2Exe;
+
+type TRangeAndKeyUp = {
+    upKey: string,
+    md: vscode.MarkdownString,
+    /**
+     * hover of position
+     */
+    range: vscode.Range,
+};
+
+function getAhk2exeMeta(AhkTokenLine: TAhkTokenLine, position: vscode.Position): TRangeAndKeyUp | null {
+    if (!AhkTokenLine.detail.includes(EDetail.inComment)) return null;
+
+    const { textRaw } = AhkTokenLine;
+    const commentStr: string = textRaw.trimStart();
+    const lStrLen: number = textRaw.length - commentStr.length;
+    const maAhk2exe: RegExpMatchArray | null = commentStr.match(/^;@ahk2exe-(\S+)/iu);
+    if (maAhk2exe !== null) {
+        const col: number = lStrLen + maAhk2exe[0].length;
+        const { character, line } = position;
+        if (character > lStrLen && character < col) {
+            const upKey: string = maAhk2exe[1].toUpperCase();
+            const md: vscode.MarkdownString | undefined = Ahk2exeMdMap.get(upKey);
+            if (md !== undefined) {
+                return {
+                    upKey,
+                    md,
+                    range: new vscode.Range(
+                        new vscode.Position(line, lStrLen),
+                        new vscode.Position(line, col),
+                    ),
+                };
+            }
+        }
+
+        return null;
+    }
+
+    //  `/*@Ahk2Exe-Keep`
+    const maAhk2exeKeep: RegExpMatchArray | null = commentStr.match(/\/\*@Ahk2Exe-Keep\b/iu);
+    if (maAhk2exeKeep !== null) {
+        const col = lStrLen + maAhk2exeKeep[0].length;
+        const { character, line } = position;
+        if (character > lStrLen && character < col) {
+            const upKey = 'KEEP';
+            const md: vscode.MarkdownString | undefined = Ahk2exeMdMap.get(upKey);
+            if (md !== undefined) {
+                return {
+                    upKey,
+                    md,
+                    range: new vscode.Range(
+                        new vscode.Position(line, lStrLen),
+                        new vscode.Position(line, col),
+                    ),
+                };
+            }
+        }
+
+        return null;
+    }
+
+    return null;
+}
+
+export function hoverAhk2exe(AhkTokenLine: TAhkTokenLine, position: vscode.Position): vscode.Hover | null {
+    const meta: TRangeAndKeyUp | null = getAhk2exeMeta(AhkTokenLine, position);
+    return meta === null
+        ? null
+        : new vscode.Hover(meta.md, meta.range);
+}
+
+const Ahk2ExeDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Ahk2exeData');
+
 /**
- * ; else
+ * goto `;@ahk2exe-set` def-json
  */
+export function gotoDefAhk2exe(AhkTokenLine: TAhkTokenLine, position: vscode.Position): [vscode.Location] | null {
+    const meta: TRangeAndKeyUp | null = getAhk2exeMeta(AhkTokenLine, position);
+    if (meta === null) return null;
+
+    return Ahk2ExeDefMap.get(meta.upKey) ?? null;
+}

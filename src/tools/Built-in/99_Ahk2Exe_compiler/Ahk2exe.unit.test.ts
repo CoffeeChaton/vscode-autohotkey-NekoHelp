@@ -11,7 +11,7 @@ describe('check Ahk2exeData ruler', () => {
     it('check : Ahk2exeData length .EQ. 30', () => {
         expect.hasAssertions();
 
-        const max = 30;
+        const max = 31;
 
         expect(Ahk2exeData).toHaveLength(max);
     });
@@ -58,6 +58,6 @@ describe('check Ahk2exeData ruler', () => {
             .map((v): string => v.keyRawName)
             .join('|');
 
-        expect(st1).toBe(arr);
+        expect(`${st1}|Keep`).toBe(arr);
     });
 });

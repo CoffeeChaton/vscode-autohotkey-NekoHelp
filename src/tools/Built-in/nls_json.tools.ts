@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import { localeLanguage } from '../../i18n';
 
 export type TSupportDoc =
+    | 'Ahk2exeData'
     | 'A_Variables'
     | 'BiVariables'
     | 'Command'

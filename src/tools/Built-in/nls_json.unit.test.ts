@@ -28,6 +28,7 @@ import { funcDataList } from './2_built_in_function/func.data';
 import { Statement } from './3_foc/foc.data';
 import { focExDataList } from './3_foc/focEx.data';
 import { LineCommand } from './6_command/Command.data';
+import { Ahk2exeData } from './99_Ahk2Exe_compiler/Ahk2exe.data';
 import { type TSupportDoc } from './nls_json.tools';
 
 const space = 4;
@@ -93,6 +94,7 @@ describe('generate .ahk.json', () => {
         updateJson(LineCommand, 'Command');
         updateJson(Statement, 'foc');
         updateJson(focExDataList, 'focEx');
+        updateJson(Ahk2exeData, 'Ahk2exeData');
 
         interface TV {
             keyRawName: string;

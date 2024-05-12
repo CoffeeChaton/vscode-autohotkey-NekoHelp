@@ -20,7 +20,7 @@ export type TFocExMeta = {
  *  Loop, Reg
  *  ```
  */
-export type TFocExMsgMap = ReadonlyMap<string, TFocExMeta>;
+type TFocExMsgMap = ReadonlyMap<string, TFocExMeta>;
 
 const { focExSnip, focExMap } = ((): { focExSnip: TSnipList, focExMap: TFocExMsgMap } => {
     const focExMapRw = new Map<string, TFocExMeta>();

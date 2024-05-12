@@ -7,6 +7,7 @@ import { biAVarDefMap } from '../../tools/Built-in/1_built_in_var/A_Variables.to
 import { biBVarDefMap } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { focDefMap } from '../../tools/Built-in/3_foc/foc.tools';
 import { cmdDefMap } from '../../tools/Built-in/6_command/Command.tools';
+import { gotoDefAhk2exe } from '../../tools/Built-in/99_Ahk2Exe_compiler/Ahk2exe.tools';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { gotoFocExDef } from '../Hover/tools/hoverFocEx';
@@ -31,7 +32,8 @@ function DefProviderCore(
     if (IncludeFile !== null) return [IncludeFile];
 
     const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[position.line];
-    const DirectivesDef: [vscode.Location] | null = gotoDirectivesDef(position, AhkTokenLine);
+    const DirectivesDef: [vscode.Location] | null = gotoDirectivesDef(position, AhkTokenLine)
+        ?? gotoDefAhk2exe(AhkTokenLine, position);
     if (DirectivesDef !== null) return DirectivesDef;
 
     const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);
