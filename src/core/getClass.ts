@@ -9,6 +9,7 @@ import { getRange } from '../tools/range/getRange';
 import type { TFuncInput } from './getChildren';
 import { getChildren } from './getChildren';
 import { getFunc } from './ParserTools/ParserFunc';
+import { ParserLine } from './ParserTools/ParserLine';
 
 function setClassInsertText(children: TAhkSymbolList): string {
     for (const ch of children) {
@@ -60,7 +61,7 @@ export function getClass(FuncInput: TFuncInput): CAhkClass | null {
     const name: string = ma[1];
 
     const ch: TClassChildren[] = getChildren<CAhkClass>(
-        [getClass, getFunc, getClassGetSet, getClassInstanceVar],
+        [getClass, getFunc, ParserLine, getClassGetSet, getClassInstanceVar],
         {
             DocStrMap,
             RangeStartLine: range.start.line + 1,

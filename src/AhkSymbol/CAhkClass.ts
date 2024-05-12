@@ -2,6 +2,8 @@
 import * as vscode from 'vscode';
 import { ToUpCase } from '../tools/str/ToUpCase';
 import type { CAhkFunc } from './CAhkFunc';
+import type { CAhkComment } from './CAhkLine';
+import type { TLineClass } from './TLineClass';
 
 type TCAhkClassInstanceVarParam = {
     name: string,
@@ -69,7 +71,13 @@ export class CAhkClassGetSet extends vscode.DocumentSymbol {
     }
 }
 
-export type TClassChildren = CAhkClass | CAhkClassGetSet | CAhkClassInstanceVar | CAhkFunc;
+export type TClassChildren =
+    | CAhkClass
+    | CAhkClassGetSet
+    | CAhkClassInstanceVar
+    | CAhkComment
+    | CAhkFunc
+    | TLineClass;
 
 // AhkSymbol instanceof CAhkClass
 export class CAhkClass extends vscode.DocumentSymbol {
