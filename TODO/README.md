@@ -1,9 +1,7 @@
 # TODO TODO list
 
 - [diag of `If Var op Value`](https://www.autohotkey.com/docs/v1/Language.htm#if-statement)
-- add `RegExMatch((Text := q.Read()), "OU)([^\x00-\x7F])", Found)` of `Found`...
 - add diag auto check of `catch{} ;null catch`
-- add diag of `%\w%\w`
 - add hover of `;@ahk-neko-ignore`
 
 - check this mean [A_EventInfo](https://www.autohotkey.com/docs/v1/Variables.htm#EventInfo)
@@ -19,7 +17,6 @@
 - [info magic of `,`](https://www.autohotkey.com/docs/v1/Variables.htm#comma) ex: `x:=1, y=2, a=b=c` or `x:=1, %y%=2`
 - Parser: -> AST
 - Scanner: -> Token
-- add: support of `user-def-.h.ahk`
 - test: add vscode.test
 - add diag of [The "is" operator is not supported in expressions.](https://www.autohotkey.com/boards/viewtopic.php?f=76&t=111131)
 - auto-fix of code107

@@ -1,22 +1,22 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-template-curly-in-string */
 
-type TData = {
+export type TNekoExData = {
     label: `;@ahk-neko-${string}`,
     insert: `;@ahk-neko-${string}`,
-    doc: string,
+    doc: string[],
     exp: readonly string[],
 };
 
 /**
  * after initialization clear
  */
-export const nekoExCommentData: TData[] = [
+export const nekoExCommentData: TNekoExData[] = [
     // diag
     {
-        label: ';@ahk-neko-ignore XX line',
+        label: ';@ahk-neko-ignore',
         insert: ';@ahk-neko-ignore ${1|1,2,999,any number|} line',
-        doc: 'ignore diagnosis',
+        doc: ['ignore diagnosis'],
         exp: [
             ';@ahk-neko-ignore 1 line',
             ';@ahk-neko-ignore 2 line',
@@ -27,9 +27,9 @@ export const nekoExCommentData: TData[] = [
         ],
     },
     {
-        label: ';@ahk-neko-ignore-fn XX line',
+        label: ';@ahk-neko-ignore-fn',
         insert: ';@ahk-neko-ignore-fn ${1|1,2,999,any number|} line',
-        doc: 'ignore diagnosis (5XX)',
+        doc: ['ignore diagnosis (5XX)'],
         exp: [
             ';@ahk-neko-ignore-fn 1 line',
             ';@ahk-neko-ignore-fn 2 line',
@@ -43,7 +43,7 @@ export const nekoExCommentData: TData[] = [
     {
         label: ';@ahk-neko-format-ignore-start',
         insert: ';@ahk-neko-format-ignore-start\n;@ahk-neko-format-ignore-end',
-        doc: 'ignore any format',
+        doc: ['ignore any format'],
         exp: [
             ';@ahk-neko-format-ignore-start',
             ';@ahk-neko-format-ignore-end',
@@ -53,7 +53,7 @@ export const nekoExCommentData: TData[] = [
         // eslint-disable-next-line sonarjs/no-duplicate-string
         label: ';@ahk-neko-format-ignore-end',
         insert: ';@ahk-neko-format-ignore-end',
-        doc: 'ignore any format',
+        doc: ['ignore any format'],
         exp: [
             ';@ahk-neko-format-ignore-start',
             ';@ahk-neko-format-ignore-end',
@@ -62,7 +62,7 @@ export const nekoExCommentData: TData[] = [
     {
         label: ';@ahk-neko-format-inline-spacing-ignore-start',
         insert: ';@ahk-neko-format-inline-spacing-ignore-start\n;@ahk-neko-format-inline-spacing-ignore-end',
-        doc: 'ignore `Alpha test options` format',
+        doc: ['ignore `Alpha test options` format'],
         exp: [
             ';@ahk-neko-format-inline-spacing-ignore-start',
             ';@ahk-neko-format-inline-spacing-ignore-end',
@@ -71,7 +71,7 @@ export const nekoExCommentData: TData[] = [
     {
         label: ';@ahk-neko-format-inline-spacing-ignore-end',
         insert: ';@ahk-neko-format-inline-spacing-ignore-end',
-        doc: 'ignore `Alpha test options` format',
+        doc: ['ignore `Alpha test options` format'],
         exp: [
             ';@ahk-neko-format-inline-spacing-ignore-start',
             ';@ahk-neko-format-inline-spacing-ignore-end',
@@ -79,9 +79,9 @@ export const nekoExCommentData: TData[] = [
     },
     // color
     {
-        label: ';@ahk-neko-color-picker-ignore XX line',
+        label: ';@ahk-neko-color-picker-ignore',
         insert: ';@ahk-neko-color-picker-ignore ${1|1,2,999,any number|} line',
-        doc: 'ignore color-picker',
+        doc: ['ignore color-picker'],
         exp: [
             ';@ahk-neko-color-picker-ignore 1 line',
             ';@ahk-neko-color-picker-ignore 2 line',

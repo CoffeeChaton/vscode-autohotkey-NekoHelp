@@ -11,7 +11,6 @@
 <!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
-- TODO: hover at `;@ahk-neko-format-inline-spacing-ignore-end`
 - feat: better Completion of `MsgBox`
 - feat: better gotoDef of `global var :=`
 - feat: remove completion `Retry`
