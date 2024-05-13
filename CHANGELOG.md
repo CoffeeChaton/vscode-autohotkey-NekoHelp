@@ -1,12 +1,18 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.56(2023-05-13)](#v00562023-05-13)
-  - [v0.0.55(2023-04-26)](#v00552023-04-26)
-  - [v0.0.54(2023-04-10)](#v00542023-04-10)
+  - [v0.0.56(2024-05-13)](#v00562024-05-13)
+  - [v0.0.55(2024-04-26)](#v00552024-04-26)
+  - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
 
-## v0.0.56(2023-05-13)
+## v0.0.57(2024-05-XX)
+
+- feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52))
+  diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
+  ![img](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/assets/63182963/d4999dd5-f8d0-43e4-86b3-ba676edc4932)
+
+## v0.0.56(2024-05-13)
 
 <!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
@@ -25,7 +31,7 @@
 >
 > <https://www.youtube.com/watch?v=Vi1AQxeKF2Y>
 
-## v0.0.55(2023-04-26)
+## v0.0.55(2024-04-26)
 
 <!-- pnpm 9.0.6  iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
@@ -47,7 +53,7 @@
   }
   ```
 
-## v0.0.54(2023-04-10)
+## v0.0.54(2024-04-10)
 
 <!-- pnpm 8.10.2 -->
 <!-- dprint 0.41.0 -->

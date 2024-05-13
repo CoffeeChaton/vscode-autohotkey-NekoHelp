@@ -1,4 +1,6 @@
 import * as vscode from 'vscode';
+import type { TScanData } from '../../DeepAnalysis/FnVar/def/spiltCommandAll';
+import { spiltCommandAll } from '../../DeepAnalysis/FnVar/def/spiltCommandAll';
 import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import type { TStatementElement } from './foc.data';
 
@@ -69,3 +71,59 @@ export function getSnipFocEx(subStr: string): TSnipList {
 
 export const focExMapOut: TFocExMsgMap = focExMap;
 export const focExDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('focEx');
+
+export type TFocExParser = {
+    FocUpName: 'IF' | 'LOOP',
+
+    /**
+     * `IN` of `ifIn`
+     */
+    exUpName: string,
+    /**
+     * pos of `in`
+     */
+    lPos: number,
+    strF: string,
+};
+
+export function getFocExLoopData(lStr: string, wordUpCol: number): TFocExParser | null {
+    const strF: string = lStr
+        .slice(wordUpCol)
+        .replace(/^\s*Loop\b\s*,?\s*/iu, 'Loop,')
+        .padStart(lStr.length, ' ');
+
+    const arr: TScanData[] = spiltCommandAll(strF);
+
+    // Loop, Files
+    //  a0   a1
+    const a1: TScanData | undefined = arr.at(1);
+    if (a1 === undefined) return null;
+    const { lPos, RawNameNew } = a1;
+
+    return {
+        FocUpName: 'LOOP',
+        exUpName: RawNameNew.trim().toUpperCase(),
+        lPos,
+        strF,
+    };
+}
+
+export function getFocExIfData(lStr: string, wordUpCol: number): TFocExParser | null {
+    const strF: string = lStr
+        .slice(wordUpCol)
+        .replace(/^\s*IF\b\s*,?\s*/iu, 'IF,')
+        .padStart(lStr.length, ' ');
+
+    const ma: RegExpMatchArray | null = strF.match(/(?<=[ \t])(between|contains|in|is)(?=[ \t])/iu);
+    if (ma === null) return null;
+
+    const name: string = ma[1];
+    const lPos: number = ma.index ?? strF.indexOf(name);
+
+    return {
+        FocUpName: 'IF',
+        exUpName: name.trim().toUpperCase(),
+        lPos,
+        strF,
+    };
+}

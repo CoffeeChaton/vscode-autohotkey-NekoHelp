@@ -746,7 +746,7 @@
                 "extensions": [
                     ".ahk"
                 ],
-                "configuration": "./config/ahk.configuration.json"
+                "configuration": "./ahk.configuration.json"
             }
         ],
         "menus": {

@@ -76,5 +76,3 @@
 - check OTB <https://www.autohotkey.com/boards/viewtopic.php?f=76&t=129753>
 
 > avoid the One True Brace (OTB, K&R style) because AHK 1.1 ignores such braces where not permitted.
-
-- `for (Expression)` and `for in` <https://www.autohotkey.com/boards/viewtopic.php?f=76&t=129310>

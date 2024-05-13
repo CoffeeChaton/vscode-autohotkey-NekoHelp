@@ -18,7 +18,6 @@
 - Parser: -> AST
 - Scanner: -> Token
 - test: add vscode.test
-- add diag of [The "is" operator is not supported in expressions.](https://www.autohotkey.com/boards/viewtopic.php?f=76&t=111131)
 - auto-fix of code107
 
 ```ahk

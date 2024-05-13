@@ -7,6 +7,7 @@ import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCo
 import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../../../tools/str/ToUpCase';
 import { CDiagBase } from '../CDiagBase';
+import { getIfInErr } from './getIfInErr';
 
 type TLoopData = { lPos: number, section: string };
 function getLoopErrData(lStr: string, wordUpCol: number): TLoopData | null {
@@ -30,6 +31,7 @@ function getLoopErrData(lStr: string, wordUpCol: number): TLoopData | null {
 
     return { lPos, section };
 }
+
 function getLoopErr(lStr: string, line: number, wordUpCol: number): CDiagBase | null {
     const data: TLoopData | null = getLoopErrData(lStr, wordUpCol);
     if (data === null) return null;
@@ -93,9 +95,8 @@ function getLoopErr(lStr: string, line: number, wordUpCol: number): CDiagBase | 
 function getCommandErrCore(params: TAhkTokenLine, keyWordUp: string, wordUpCol: number): CDiagBase | null {
     const { lStr, line } = params;
 
-    if (keyWordUp === 'LOOP') {
-        return getLoopErr(lStr, line, wordUpCol);
-    }
+    if (keyWordUp === 'LOOP') return getLoopErr(lStr, line, wordUpCol);
+    if (keyWordUp === 'IF') return getIfInErr(params, wordUpCol);
 
     const diag: EDiagCode | undefined = CommandErrMap.get(keyWordUp);
     if (diag !== undefined) {

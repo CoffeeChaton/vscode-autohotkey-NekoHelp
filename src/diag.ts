@@ -116,6 +116,15 @@ export const enum EDiagCode {
     code127 = 127, // 'Multiline just allow like `" VarName "` style, `"` need Need whitespace inside.',
 
     code201 = 201, // 200~299 is not expression // need use %
+    /**
+     * if in/contains // The operators "in" and "contains" are not supported in expressions.
+     * if between // The "between" operator is not supported in expressions.
+     * if is // The "is" operator is not supported in expressions.
+     */
+    code202 = 202,
+    code203 = 203,
+    code204 = 204,
+
     // 300~399 is func err
     code301 = 301, // user-config function size
 
@@ -226,6 +235,18 @@ export const Diags: DeepReadonly<TDiags> = {
     201: {
         msg: 'If Count is a variable reference such as `%varName%` or `% expression`',
         path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code201.md',
+    },
+    202: {
+        msg: 'The operators "in" and "contains" are not supported in expressions.',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfIn.htm#Remarks',
+    },
+    203: {
+        msg: 'The "between" operator is not supported in expressions. ',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfBetween.htm',
+    },
+    204: {
+        msg: 'The "is" operator is not supported in expressions. ',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfIs.htm',
     },
     301: {
         msg: 'function or Method is so big',
