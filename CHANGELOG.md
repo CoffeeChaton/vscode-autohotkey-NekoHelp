@@ -17,6 +17,7 @@
 - feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
   1. `3` of `3GuiClose:` highlight look like `3:` at `gui, 3:`
   2. add hover at `3GuiClose:` def pos.
+  3. gotoDef findAllRef
 - fix: ([#50](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/50)) add support `(0xFFFFFF` case
 
 ## v0.0.56(2024-05-13)

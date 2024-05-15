@@ -19,6 +19,7 @@ import { getDefWithLabelWrap } from './getDefWithLabel';
 import { getFuncDef } from './getFuncDef';
 import { getMethodDef } from './getMethodDef';
 import { getValDefInFunc } from './getValDefInFunc';
+import { gotoGuiNameDef } from './gotoGuiNameDef';
 import { gotoIncludeDef } from './gotoIncludeDef';
 
 function DefProviderCore(
@@ -36,7 +37,8 @@ function DefProviderCore(
         ?? gotoDefAhk2exe(AhkTokenLine, position);
     if (DirectivesDef !== null) return DirectivesDef;
 
-    const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData);
+    const methodDef: vscode.Location[] | null = getMethodDef(document, position, AhkFileData)
+        ?? gotoGuiNameDef(AhkTokenLine, position, document.uri, false);
     if (methodDef !== null) return methodDef;
 
     const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);

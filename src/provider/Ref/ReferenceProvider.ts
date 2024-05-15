@@ -1,6 +1,7 @@
 import type * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import type { TAhkTokenLine } from '../../globalEnum';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { getClassDef } from '../Def/getClassDef';
@@ -9,6 +10,7 @@ import { posAtLabelDef } from '../Def/getDefWithLabel';
 import { getFuncDef } from '../Def/getFuncDef';
 import { getRefSwitch } from '../Def/getRefSwitch';
 import { getValDefInFunc } from '../Def/getValDefInFunc';
+import { gotoGuiNameDef } from '../Def/gotoGuiNameDef';
 
 function ReferenceProviderCore(
     document: vscode.TextDocument,
@@ -29,7 +31,9 @@ function ReferenceProviderCore(
     const wordUp: string = ToUpCase(document.getText(range));
     const listAllUsing = true;
 
-    return posAtLabelDef(AhkFileData, position, wordUp)
+    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[position.line];
+    return gotoGuiNameDef(AhkTokenLine, position, document.uri, true)
+        ?? posAtLabelDef(AhkFileData, position, wordUp)
         ?? getRefSwitch(AhkFileData, position, wordUp)
         ?? getFuncDef(AhkFileData, position, wordUp, listAllUsing)
         ?? getClassDef(wordUp, listAllUsing) // class name is variable name, should before function.variable name
