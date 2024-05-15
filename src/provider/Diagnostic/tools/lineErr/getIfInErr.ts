@@ -55,14 +55,26 @@ export function getIfInErr(AhkTokenLine: TAhkTokenLine, WordUpCol: number): CDia
     const { exUpName, lPos, strF } = focExParser;
     for (const { ID, code } of IfInErrList) {
         if (ID === exUpName) {
-            const strF2: string = strF
+            // check left
+            // debris on the leftHasDebris
+            const checkLeft: boolean = strF
                 .slice(0, lPos)
-                .replace(/^\s*if,\s*\w+\s*/iu, '')
-                .replace(/^not\s*/iu, '');
-            if (strF2 === '') {
+                // eslint-disable-next-line regexp/no-unused-capturing-group
+                .replace(/^\s*IF,\s*([#$@\w\u{A1}-\u{FFFF}]+)\s*/iu, '')
+                .replace(/^not\s*/iu, '')
+                === ''; //
+            const RightStr: string = ID === 'BETWEEN'
+                ? strF.slice(lPos + ID.length).replace(/\s+And\s+/iu, '')
+                : strF.slice(lPos + ID.length);
+            const checkR1: boolean = RightStr.includes('='); // a = b or a==b
+            const checkR2: boolean = (/\s+(?:and|or|new)\s+/iu).test(RightStr);
+            const checkR3: boolean = RightStr.includes('||') || RightStr.includes('&&');
+
+            if (checkLeft && !checkR1 && !checkR2 && !checkR3) {
                 // not mixed with expression
                 return null;
             }
+
             const range: vscode.Range = new vscode.Range(
                 new vscode.Position(line, lPos),
                 new vscode.Position(line, lPos + exUpName.length),

@@ -8,9 +8,11 @@
 
 ## v0.0.57(2024-05-XX)
 
-- feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52))
-  diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
-  ![img](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/assets/63182963/d4999dd5-f8d0-43e4-86b3-ba676edc4932)
+<!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- dprint 0.45.1 -->
+
+- fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
+- feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52)) diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
 
 ## v0.0.56(2024-05-13)
 

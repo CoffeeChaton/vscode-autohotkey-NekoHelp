@@ -23,7 +23,7 @@ function ChapterArr2nameList(
             .slice(col + Head.length, lStr.length)
             .replace(/^\s*:=\s*/u, '');
 
-        const ahkNewClass: RegExpMatchArray | null = strPart.match(/^new[ \t]*([#$@\w\u{A1}-\u{FFFF}]+)/iu);
+        const ahkNewClass: RegExpMatchArray | null = strPart.match(/^new[ \t]+([#$@\w\u{A1}-\u{FFFF}]+)/iu);
         if (ahkNewClass !== null) {
             classNameList.push(ahkNewClass[1]);
         }
