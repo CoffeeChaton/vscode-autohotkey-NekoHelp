@@ -20,7 +20,7 @@ export function ParserLabel(FuncInput: TFuncInput): CAhkLabel {
         : ahkDoc;
 
     const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-        .appendMarkdown(`(label)     of     ${path.basename(uri.fsPath)}\n`)
+        .appendMarkdown(`(label) of ${path.basename(uri.fsPath)}\n`)
         .appendCodeblock(name);
 
     if (userDoc !== '') {

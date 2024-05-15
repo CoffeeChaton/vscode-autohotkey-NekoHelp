@@ -75,6 +75,16 @@ export class CAhkLabel extends vscode.DocumentSymbol {
 
     public readonly md: vscode.MarkdownString;
 
+    public readonly GuiEvent: {
+        GuiName: string,
+        EventName:
+            | 'GuiClose'
+            | 'GuiEscape'
+            | 'GuiSize'
+            | 'GuiContextMenu'
+            | 'GuiDropFiles',
+    } | undefined;
+
     declare public readonly kind: vscode.SymbolKind.Namespace;
 
     declare public readonly detail: 'label';
@@ -92,7 +102,22 @@ export class CAhkLabel extends vscode.DocumentSymbol {
     ) {
         super(name, 'label', vscode.SymbolKind.Namespace, range, selectionRange);
         this.uri = uri;
-        this.upName = ToUpCase(name.slice(0, -1));
+        const upName: string = ToUpCase(name.slice(0, -1));
+        const arr = [
+            'GuiClose',
+            'GuiEscape',
+            'GuiSize',
+            'GuiContextMenu',
+            'GuiDropFiles',
+        ] as const;
+        const EventName = arr.find((v: string) => upName.endsWith(v.toUpperCase()));
+        this.GuiEvent = EventName === undefined
+            ? undefined
+            : {
+                GuiName: upName.slice(0, upName.length - EventName.length),
+                EventName,
+            };
+        this.upName = upName;
         this.AfterString = '';
         this.md = md;
     }

@@ -14,7 +14,9 @@
 - TODO: find all guiName , exp: `Gui, guiName:color`
 - fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
 - feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52)) diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
-- feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) `3` of `3GuiClose:` color need look like `3:` at `gui, 3:`
+- feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
+  1. `3` of `3GuiClose:` highlight look like `3:` at `gui, 3:`
+  2. add hover at `3GuiClose:` def pos.
 - fix: ([#50](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/50)) add support `(0xFFFFFF` case
 
 ## v0.0.56(2024-05-13)

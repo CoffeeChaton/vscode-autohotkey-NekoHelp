@@ -211,7 +211,7 @@ export function getDefWithLabel(
     AhkFileData: TAhkFileData,
     position: vscode.Position,
     wordUpCase: string,
-): CAhkLabel[] | null {
+): readonly CAhkLabel[] | null {
     const { DocStrMap } = AhkFileData;
 
     const { line, character } = position;
@@ -266,7 +266,7 @@ export function getDefWithLabelWrap(
     position: vscode.Position,
     wordUpCase: string,
 ): vscode.Location[] | null {
-    const list: CAhkLabel[] | null = getDefWithLabel(
+    const list: readonly CAhkLabel[] | null = getDefWithLabel(
         AhkFileData,
         position,
         wordUpCase,

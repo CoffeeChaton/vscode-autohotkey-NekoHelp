@@ -148,7 +148,7 @@ export async function generateAhkNekoSnapshot(): Promise<void> {
 
     const AhkFileDataList: readonly TAhkFileData[] = await UpdateCacheAsync(false);
     const snapList: readonly string[] = generateSnapshot(AhkFileDataList, rootList)
-        .map((fsPath: string, i: number): string => `${i} -> '${fsPath}'`);
+        .map((fsPath: string, i: number): string => `${i} -> '${fsPath.replaceAll('\\', '/')}'`);
 
     log.info(
         'snapshot created at',
