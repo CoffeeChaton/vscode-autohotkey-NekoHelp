@@ -35,7 +35,7 @@ import { getColorPickerIgnoreList } from './getColorPickerIgnore';
  */
 
 // dprint-ignore
-const colorRegex = /(?<=[," \t:=]|^)(?:c[btw]?|#)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)|(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
+const colorRegex = /(?<=[," \t:=(]|^)(?:c[btw]?|#)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)|(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
 //                               ^ma[0]                 ^ma[1]  only 6 or 8         ^ma[2]
 
 /**

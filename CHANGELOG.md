@@ -13,6 +13,7 @@
 
 - fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
 - feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52)) diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
+- fix: #50 add support `(0xFFFFFF` case
 
 ## v0.0.56(2024-05-13)
 
