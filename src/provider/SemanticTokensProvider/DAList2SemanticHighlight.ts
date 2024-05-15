@@ -15,7 +15,9 @@ function DA2SemanticHighlight(fn: CAhkFunc): TSemanticTokensLeaf[] {
             });
         }
     }
-    for (const { defRangeList, refRangeList } of valMap.values()) {
+    for (const [k, { defRangeList, refRangeList }] of valMap) {
+        if (k === 'CLIPBOARD' || k === 'CLIPBOARDALL') continue;
+
         for (const { range } of [...defRangeList, ...refRangeList]) {
             Tokens.push({
                 range,

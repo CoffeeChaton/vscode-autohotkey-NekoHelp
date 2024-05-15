@@ -12,6 +12,7 @@
 <!-- dprint 0.45.1 -->
 
 - fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
+- feat: ([#55](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/55)) do not change `Clipboard` and `ClipboardAll` highlight
 - feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52)) diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
 - feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
   1. `3` of `3GuiClose:` highlight look like `3:` at `gui, 3:`
