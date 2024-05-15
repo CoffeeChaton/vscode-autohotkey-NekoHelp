@@ -298,3 +298,15 @@
 #        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
 #         ^ source.ahk meta.command.line.gui.ahk
 #          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+>
+>guiNameGuiClose:
+#^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk variable.other.constant.gui.name.ahk
+#       ^^^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>2GuiClose:
+#^ source.ahk labelline.ahk entity.name.function.label.ahk variable.other.constant.gui.name.ahk
+# ^^^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>*ESC::ExitApp
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+#      ^^^^^^^ source.ahk keyword.control.flow.ahk

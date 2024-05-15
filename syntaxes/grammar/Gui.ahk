@@ -44,3 +44,7 @@ Gui, add, Tab
 Gui, add, StatusBar
 Gui, add, ActiveX
 Gui, add, Custom
+
+guiNameGuiClose:
+2GuiClose:
+*ESC::ExitApp

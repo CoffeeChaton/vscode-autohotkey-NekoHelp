@@ -1,6 +1,5 @@
 # TODO TODO list
 
-- [diag of `If Var op Value`](https://www.autohotkey.com/docs/v1/Language.htm#if-statement)
 - add diag auto check of `catch{} ;null catch`
 - add hover of `;@ahk-neko-ignore`
 

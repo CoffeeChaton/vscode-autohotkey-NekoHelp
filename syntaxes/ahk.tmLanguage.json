@@ -966,10 +966,18 @@
                 },
                 {
                     "captures": {
-                        "1": { "name": "entity.name.function.label.ahk" },
+                        "1": {
+                            "name": "entity.name.function.label.ahk",
+                            "patterns": [
+                                {
+                                    "match": "([#$@\\w\\x{A1}-\\x{FFFF}]+)(?i:GuiClose|GuiEscape|GuiSize|GuiContextMenu|GuiDropFiles):",
+                                    "captures": { "1": { "name": "variable.other.constant.gui.name.ahk" } }
+                                }
+                            ]
+                        },
                         "2": { "name": "comment.line.semicolon.label.ahk" }
                     },
-                    "match": "^[ \\t]*(\\w+:)[ \\t]*([ \\t];.*)?$",
+                    "match": "^[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+:)[ \\t]*([ \\t];.*)?$",
                     "name": "labelline.ahk"
                 }
             ]
