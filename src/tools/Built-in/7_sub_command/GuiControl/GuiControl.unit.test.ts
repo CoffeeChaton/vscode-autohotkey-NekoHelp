@@ -87,8 +87,8 @@ describe('check GuiControl subCmd ruler', () => {
         expect.hasAssertions();
 
         const tmArr: string[] = repository.command_gui_control.begin
-            .replace('(?:^|[ \\t:])\\b(?i:(GuiControl)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?((?:', '')
-            .replace(')\\b)?[ \\t]*),', '')
+            .replace('(?:^|[ \\t:])\\b(?i:(guiControl)\\b[ \\t]*,?[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+:\\s*)?(', '')
+            .replace('|[ \t]*|(?:[ \t]*[+-][ \t]*\\w+)+)(\\b|\\s|,))', '')
             .split('|');
 
         const TsArr: string[] = GuiControlSubCmdList

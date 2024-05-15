@@ -11,7 +11,6 @@
 <!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
-- TODO: find all guiName , exp: `Gui, guiName:color`
 - fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
 - feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52)) diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
 - feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++

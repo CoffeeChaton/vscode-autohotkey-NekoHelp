@@ -141,7 +141,7 @@
         },
         "command_gui": {
             "name": "meta.command.line.gui.ahk",
-            "begin": "(?:^|[ \\t:])\\b(?i:(Gui)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?(New|Add|Show|Submit|Cancel|Hide|Destroy|Font|Color|Margin|Options|Menu|Minimize|Maximize|Restore|Flash|Default|-|\\+)(\\b|\\s))",
+            "begin": "(?:^|[ \\t:])\\b(?i:(Gui)\\b[ \\t]*,?[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+:\\s*)?(New|Add|Show|Submit|Cancel|Hide|Destroy|Font|Color|Margin|Options|Menu|Minimize|Maximize|Restore|Flash|Default|-|\\+)(\\b|\\s))",
             "end": "(\\n)",
             "beginCaptures": {
                 "1": { "name": "support.function.gui.command.ahk" },
@@ -260,7 +260,7 @@
         },
         "command_gui_control": {
             "name": "meta.command.line.gui_control.ahk",
-            "begin": "(?:^|[ \\t:])\\b(?i:(GuiControl)\\b[ \\t]*,?[ \\t]*(\\w+:\\s*)?((?:Text|Move|MoveDraw|Focus|Disable|Enable|Hide|Show|Choose|ChooseString|Font)\\b)?[ \\t]*),",
+            "begin": "(?:^|[ \\t:])\\b(?i:(guiControl)\\b[ \\t]*,?[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+:\\s*)?(Text|Move|MoveDraw|Focus|Disable|Enable|Hide|Show|Choose|ChooseString|Font|[ \t]*|(?:[ \t]*[+-][ \t]*\\w+)+)(\\b|\\s|,))",
             "end": "(\\n)",
             "beginCaptures": {
                 "1": { "name": "support.function.gui_control.command.ahk" },

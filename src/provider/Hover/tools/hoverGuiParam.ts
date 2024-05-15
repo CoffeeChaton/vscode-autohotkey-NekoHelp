@@ -7,7 +7,7 @@ import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltComm
 import { ToUpCase } from '../../../tools/str/ToUpCase';
 
 const GuiNameMd: vscode.MarkdownString = new vscode.MarkdownString(
-    'hover at [GuiName](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New)',
+    'hover at [GuiName](https://www.autohotkey.com/docs/v1/lib/Gui.htm#MultiWin)',
     true,
 );
 

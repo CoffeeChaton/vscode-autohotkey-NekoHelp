@@ -1,12 +1,19 @@
 >; https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>;@ahk-neko-format-ignore-start
+#^^^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#          ^ source.ahk comment.line.semicolon.ahk
+#           ^^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
+#                 ^^^^^^^^ source.ahk comment.line.semicolon.ahk
+#                         ^^^^^ source.ahk comment.line.semicolon.ahk keyword.other.ahk
 >
 >GuiControl , MyGui:Show , MyButton 
 #^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
 #          ^^^ source.ahk meta.command.line.gui_control.ahk
 #             ^^^^^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
 #                   ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
-#                       ^^ source.ahk meta.command.line.gui_control.ahk
+#                       ^ source.ahk meta.command.line.gui_control.ahk
+#                        ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
 #                         ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
 >GuiControl , MyGui: , MyListBox , Item1|Item2
 #^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
@@ -54,7 +61,7 @@
 #^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
 #          ^^ source.ahk meta.command.line.gui_control.ahk
 #            ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
-#                ^ source.ahk meta.command.line.gui_control.ahk
+#                ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
 #                 ^ source.ahk meta.command.line.gui_control.ahk
 #                  ^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.ahk
 #                    ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
@@ -63,15 +70,65 @@
 #^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
 #          ^^ source.ahk meta.command.line.gui_control.ahk
 #            ^^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
-#                 ^ source.ahk meta.command.line.gui_control.ahk
+#                 ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
 #                  ^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
 >GuiControl, Move, MyEdit, x10 y20 w200 h100
 #^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
 #          ^^ source.ahk meta.command.line.gui_control.ahk
 #            ^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
-#                ^ source.ahk meta.command.line.gui_control.ahk
+#                ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
 #                 ^^^^^^^ source.ahk meta.command.line.gui_control.ahk
 #                        ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
 #                         ^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
 >
+>GuiControl, 3: +AltSubmit -g +5 -0, MyListBox
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#               ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                                  ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                                   ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, 4: +Default, MyListBox
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#               ^^^^^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                       ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                        ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, 5: +g, ControlID, % FuncObj
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#               ^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                 ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                  ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                            ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                             ^ source.ahk meta.command.line.gui_control.ahk
+#                              ^ source.ahk meta.command.line.gui_control.ahk punctuation.definition.variable.percent.ahk
+#                               ^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
 >
+>GuiControl, 3:+AltSubmit -g +5 -0, MyListBox
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#              ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                                 ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                                  ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, 4:+Default, MyListBox
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#              ^^^^^^^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                      ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                       ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+>GuiControl, 5:+g, ControlID, % FuncObj
+#^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk support.function.gui_control.command.ahk
+#          ^^ source.ahk meta.command.line.gui_control.ahk
+#            ^^ source.ahk meta.command.line.gui_control.ahk variable.other.constant.gui_control.name.ahk
+#              ^^ source.ahk meta.command.line.gui_control.ahk keyword.command.option.gui_control.param.ahk
+#                ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                 ^^^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
+#                           ^ source.ahk meta.command.line.gui_control.ahk punctuation.ahk
+#                            ^ source.ahk meta.command.line.gui_control.ahk
+#                             ^ source.ahk meta.command.line.gui_control.ahk punctuation.definition.variable.percent.ahk
+#                              ^^^^^^^^ source.ahk meta.command.line.gui_control.ahk
