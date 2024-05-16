@@ -1,6 +1,7 @@
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail, EMultiline } from '../../globalEnum';
 import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
+import { lineReplaceCheckIfIn } from './tools/lineReplaceCheckIfIn';
 
 function textReplace(textElement: string): string {
     return textElement.replaceAll(/ *, */gu, ', ')
@@ -94,7 +95,8 @@ export function lineReplace(AhkTokenLine: TAhkTokenLine, text: string, lStrTrim:
             || detail.includes(EDetail.isHotKeyLine)
             || detail.includes(EDetail.isHotStrLine)
             || CommandMDMap.has(fistWordUp)
-            || CommandMDMap.has(SecondWordUp))
+            || CommandMDMap.has(SecondWordUp)
+            || lineReplaceCheckIfIn(AhkTokenLine) !== null)
         ? text
         : fnStrGroup(text);
 }

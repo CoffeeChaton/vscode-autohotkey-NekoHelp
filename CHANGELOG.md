@@ -12,6 +12,7 @@
 <!-- dprint 0.45.1 -->
 
 - fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
+- fix: ([#57](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/57)) not let `AhkNekoHelp.format.textReplace` work at `if in` case
 - feat: ([#55](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/55)) do not change `Clipboard` and `ClipboardAll` highlight
 - feat: ([#56](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/56)) `#include` support `A_ScriptDir`
 - feat: ([#52](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/52)) diag `if (Expression)` mix `if in` with `c202` `c203` `c204`
