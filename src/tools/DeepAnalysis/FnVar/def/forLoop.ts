@@ -5,7 +5,7 @@ import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { wrapFnValDef } from './wrapFnValDef';
 
-function wrap(arg: TGetFnDefNeed, character: number, RawName: string): void {
+export function wrap(arg: TGetFnDefNeed, character: number, RawName: string): void {
     const {
         line,
         valMap,

@@ -11,6 +11,7 @@ import { forLoop } from './def/forLoop';
 import type { TFnRefEx } from './def/getFileFnUsing';
 import { getFileFnUsing } from './def/getFileFnUsing';
 import { getValMeta } from './def/getValMeta';
+import { GuiAddHwndVal } from './def/GuiAddHwndVal';
 import { OutputVarCommandBase } from './def/OutputVarCommandBase';
 import { OutputVarCommandPlus } from './def/OutputVarCommandPlus';
 import { setVarByLegacyAssignment } from './def/setVarByLegacyAssignment';
@@ -159,10 +160,12 @@ export function getFnVarDef(
             OutputVarCommandBase(need, SecondWordUp, SecondWordUpCol);
             OutputVarCommandPlus(need, SecondWordUp, SecondWordUpCol);
             forLoop(need, SecondWordUp, SecondWordUpCol); // for var1 , var2 in
+            GuiAddHwndVal(need, SecondWordUp, SecondWordUpCol);
         } else if (fistWordUp !== '') {
             OutputVarCommandBase(need, fistWordUp, fistWordUpCol);
             OutputVarCommandPlus(need, fistWordUp, fistWordUpCol);
             forLoop(need, fistWordUp, fistWordUpCol);
+            GuiAddHwndVal(need, fistWordUp, fistWordUpCol);
         }
 
         if (detail.includes(EDetail.inSkipSign2)) {
