@@ -2,11 +2,11 @@ import * as vscode from 'vscode';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
+import type { TGui2ndParamEx } from '../../tools/Built-in/7_sub_command/GuiName/GuiName.tools';
+import { getGuiParam } from '../../tools/Built-in/7_sub_command/GuiName/GuiName.tools';
 import { CMemo } from '../../tools/CMemo';
 import { findAllLabelAllMap } from '../../tools/labelsAll';
 import { getFileAllFuncMap } from '../../tools/visitor/getFileAllFuncMap';
-import type { TGui2ndParamEx } from '../Hover/tools/hoverGuiParam';
-import { getGuiParam } from '../Hover/tools/hoverGuiParam';
 
 const memoFileGuiRef = new CMemo<TAhkFileData, readonly TGui2ndParamEx[]>(
     (AhkFileData: TAhkFileData): readonly TGui2ndParamEx[] => {
@@ -49,12 +49,12 @@ export function findAllRefGuiNameStr(searchGuiUpName: string): vscode.Location[]
             }
         }
 
+        // func
         for (const [k, AhkFunc] of getFileAllFuncMap(AST)) {
             if (GuiEventList.includes(k)) {
                 arr.push(new vscode.Location(uri, AhkFunc.selectionRange));
             }
         }
-        // TODO func gui event
     }
     return arr;
 }
