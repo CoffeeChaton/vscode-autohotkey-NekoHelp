@@ -6,9 +6,9 @@
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
 
-## v0.0.57(2024-05-XX)
+## v0.0.57(2024-05-16)
 
-<!-- pnpm 9.1.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - fix: `CHANGELOG.md` year (tks [marius-sucan](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/discussions/25#discussioncomment-9417365))
