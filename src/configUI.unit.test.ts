@@ -91,6 +91,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.customize.HoverFunctionDocStyle', 'number'],
                 ['AhkNekoHelp.customize.HoverFuncShowReturnBlock', 'string'],
                 ['AhkNekoHelp.customize.CodeAction2GotoDefRef', 'boolean'],
+                ['AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate', 'array'],
                 ['AhkNekoHelp.customize.displayLogMessage', 'string'],
 
                 // [5]

@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { AnalyzeFuncMain } from './command/AnalyzeFunc/AnalyzeThisFunc';
+import { CmdCodeActionAddErrorLevelTemplate } from './command/CmdCodeActionAddErrorLevelTemplate';
 import { CmdCodeActionAddGuiName } from './command/CmdCodeActionAddGuiName';
 import { CmdCodeActionAddInclude } from './command/CmdCodeActionAddInclude';
 import { CmdCodeActionRenameInclude } from './command/CmdCodeActionRenameInclude';
@@ -100,7 +101,11 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
         vscode.commands.registerCommand('ahk.nekoHelp.displayLogMessage', displayLogMessageFn), // ctrl+alt+l
-        // CmdCodeActionListAllGuiName
+        //
+        vscode.commands.registerCommand(
+            ECommand.CmdCodeActionAddErrorLevelTemplate,
+            CmdCodeActionAddErrorLevelTemplate,
+        ),
         vscode.commands.registerCommand(ECommand.CmdCodeActionAddGuiName, CmdCodeActionAddGuiName),
         vscode.commands.registerCommand(ECommand.CmdCodeActionAddInclude, CmdCodeActionAddInclude),
         vscode.commands.registerCommand(ECommand.CmdCodeActionRenameInclude, CmdCodeActionRenameInclude),

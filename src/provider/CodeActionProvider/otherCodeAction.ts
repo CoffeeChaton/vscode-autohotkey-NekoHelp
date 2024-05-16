@@ -16,6 +16,7 @@ import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { posAtFnRef } from '../Def/posAtFnRef';
 import { CodeActionAddGuiName } from './tools/CodeActionAddGuiName';
+import { CodeActionCmdGetErrorLevel } from './tools/CodeActionCmdGetErrorLevel';
 import { CodeActionIncludePath } from './tools/CodeActionIncludePath';
 
 function atFnHead(
@@ -149,7 +150,10 @@ export function otherCodeAction(
         need.push(...CodeActionIncludePath(active, AhkTokenLine, AhkFileData));
     }
 
-    need.push(...CodeActionAddGuiName(active, AhkTokenLine, AhkFileData));
+    need.push(
+        ...CodeActionAddGuiName(active, AhkTokenLine, AhkFileData),
+        ...CodeActionCmdGetErrorLevel(active, AhkTokenLine, AhkFileData),
+    );
 
     return need;
 }

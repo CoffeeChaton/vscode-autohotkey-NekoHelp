@@ -140,6 +140,7 @@ type TempConfigs = {
         HoverFuncShowReturnBlock: TShowReturnBlock,
         statusBarDisplayColor: string,
         CodeAction2GotoDefRef: boolean,
+        CodeActionAddErrorLevelTemplate: string[],
         HoverFunctionDocStyle: 1 | 2,
         displayLogMessage: string,
     },

@@ -167,6 +167,10 @@ function upConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             ),
             statusBarDisplayColor: getConfigs<string>(Configs, 'AhkNekoHelp.customize.statusBarDisplayColor'),
             CodeAction2GotoDefRef: getConfigs<boolean>(Configs, 'AhkNekoHelp.customize.CodeAction2GotoDefRef'),
+            CodeActionAddErrorLevelTemplate: getConfigs<string[]>(
+                Configs,
+                'AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate',
+            ),
             HoverFunctionDocStyle: getConfigs<1 | 2>(Configs, 'AhkNekoHelp.customize.HoverFunctionDocStyle'),
             displayLogMessage: getConfigs<string>(Configs, 'AhkNekoHelp.customize.displayLogMessage'),
         },

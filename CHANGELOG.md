@@ -16,6 +16,7 @@
 - fix: gotoDef with file Module Var
 - feat: ([#60](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/60)) `ErrorLevel`
   1. auto find may value
+  2. auto add ErrorLevel Template //TODO add config
 - feat: ([#54](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/54)) Identify var def with `Gui, +HwndVarName`
 - feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
   1. support `GuiControl` gotoDef/findAllRef

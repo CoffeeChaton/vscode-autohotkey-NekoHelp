@@ -62,6 +62,7 @@
     "AhkNekoHelp.customize.HoverFuncShowReturnBlock-2": "始終顯示返回塊",
     "AhkNekoHelp.customize.HoverFuncShowReturnBlock-3": "從不顯示返回塊",
     "AhkNekoHelp.customize.CodeAction2GotoDefRef": "使用 *燈泡* 轉到定義/尋找所有參考, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)",
+    "AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate": "ErrorLevel模板, [look exp at #60](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/60#issuecomment-2115691910)",
     "AhkNekoHelp.customize.displayLogMessage": "默認鍵是 ```ctrl+alt+l``` ,使用 ```{selectText}``` （區分大小寫）",
     "_6": "",
     "AhkNekoHelp.title.6": "6. 檔案和 `#include`",

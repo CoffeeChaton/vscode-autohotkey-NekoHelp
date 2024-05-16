@@ -434,8 +434,23 @@
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.customize.CodeAction2GotoDefRef%"
                     },
-                    "AhkNekoHelp.customize.displayLogMessage": {
+                    "AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate": {
                         "order": 5,
+                        "type": "array",
+                        "default": [
+                            "if ErrorLevel ;$1",
+                            "{",
+                            "    $0",
+                            "}",
+                            ""
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "markdownDescription": "%AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate%"
+                    },
+                    "AhkNekoHelp.customize.displayLogMessage": {
+                        "order": 6,
                         "type": "string",
                         "default": "MsgBox % \"♥ ~ {selectText} \" {selectText} \" at \" A_ThisFunc",
                         "markdownDescription": "%AhkNekoHelp.customize.displayLogMessage%"

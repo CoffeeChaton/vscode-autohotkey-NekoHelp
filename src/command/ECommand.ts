@@ -1,4 +1,6 @@
 export const enum ECommand {
+    //
+    CmdCodeActionAddErrorLevelTemplate = 'ahk.nekoHelp.CmdCodeActionAddErrorLevelTemplate',
     CmdCodeActionAddGuiName = 'ahk.nekoHelp.CmdCodeActionAddGuiName',
     CmdCodeActionAddInclude = 'ahk.nekoHelp.CmdCodeActionAddInclude',
     CmdCodeActionRenameInclude = 'ahk.nekoHelp.CmdCodeActionRenameInclude',

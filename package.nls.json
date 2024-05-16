@@ -62,6 +62,7 @@
     "AhkNekoHelp.customize.HoverFuncShowReturnBlock-2": "always show ReturnBlock",
     "AhkNekoHelp.customize.HoverFuncShowReturnBlock-3": "never show ReturnBlock",
     "AhkNekoHelp.customize.CodeAction2GotoDefRef": "use *light bulb* gotoDef / fundAllRef, [look Issues #10](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp-Old/issues/10)",
+    "AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate": "ErrorLevel Template, [look exp at #60](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/60#issuecomment-2115691910)",
     "AhkNekoHelp.customize.displayLogMessage": "default key is `ctrl+alt+l`, use `{selectText}` (case sensitive)",
     "_6": "",
     "AhkNekoHelp.title.6": "6. files and `#include`",

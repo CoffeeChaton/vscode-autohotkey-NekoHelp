@@ -6,7 +6,7 @@ import { Bi_VarMDMap } from '../../../tools/Built-in/1_built_in_var/BiVariables.
 import type { TCmdMsg } from '../../../tools/Built-in/6_command/Command.tools';
 import { CommandMDMap } from '../../../tools/Built-in/6_command/Command.tools';
 
-const ErrorLevelMap = new Map<string, string>(
+export const ErrorLevelMap = new Map<string, string>(
     [
         // ['Language element', 'ErrorLevel values'],
         // ['DllCall()', '0, -1, -2, -3, -4, n, An'],
