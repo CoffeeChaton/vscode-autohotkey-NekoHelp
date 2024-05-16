@@ -8,6 +8,7 @@ import { collectInclude } from '../../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { toNormalize } from '../../../tools/fsTools/toNormalize';
+import { CodeActionAddInclude } from './CodeActionAddInclude';
 
 function CodeActionTryRenameIncludePathCore(ahkInclude: CAhkInclude): string[] {
     const { uri, rawData } = ahkInclude;
@@ -65,7 +66,7 @@ function CodeActionTryRenameIncludePathCore(ahkInclude: CAhkInclude): string[] {
     return [];
 }
 
-export function CodeActionTryRenameIncludePath(
+function CodeActionTryRenameIncludePath(
     AhkFileData: TAhkFileData,
     active: vscode.Position,
     AhkTokenLine: TAhkTokenLine,
@@ -107,5 +108,27 @@ export function CodeActionTryRenameIncludePath(
         return arr;
     }
 
+    return [];
+}
+
+export function CodeActionIncludePath(
+    active: vscode.Position,
+    AhkTokenLine: TAhkTokenLine,
+    AhkFileData: TAhkFileData,
+): vscode.CodeAction[] {
+    const { lStr } = AhkTokenLine;
+    if ((/^\s*#Include(?:Again)?\s*$/iu).test(lStr)) {
+        const position = new vscode.Position(
+            active.line,
+            (/[ \t]$/u).test(lStr)
+                ? lStr.length - 1
+                : lStr.length,
+        );
+        return [CodeActionAddInclude(AhkFileData.uri, position)];
+    }
+
+    if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) {
+        return CodeActionTryRenameIncludePath(AhkFileData, active, AhkTokenLine);
+    }
     return [];
 }

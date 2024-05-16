@@ -15,8 +15,7 @@ import { getFileAllFunc } from '../../tools/visitor/getFileAllFuncList';
 import type { showUnknownAnalyze } from '../CodeLens/showUnknownAnalyze';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { posAtFnRef } from '../Def/posAtFnRef';
-import { CodeActionAddInclude } from './CodeActionAddInclude';
-import { CodeActionTryRenameIncludePath } from './tools/CodeActionTryRenameIncludePath';
+import { CodeActionIncludePath } from './tools/CodeActionIncludePath';
 
 function atFnHead(
     ahkFn: CAhkFunc,
@@ -145,19 +144,8 @@ export function otherCodeAction(
     }
 
     const AhkTokenLine: TAhkTokenLine = DocStrMap[active.line];
-    const { detail, lStr } = AhkTokenLine;
-    if (detail.includes(EDetail.isDirectivesLine)) {
-        if ((/^\s*#Include(?:Again)?\s*$/iu).test(lStr)) {
-            const position = new vscode.Position(
-                active.line,
-                (/[ \t]$/u).test(lStr)
-                    ? lStr.length - 1
-                    : lStr.length,
-            );
-            need.push(CodeActionAddInclude(document.uri, position));
-        } else if ((/^\s*#Include(?:Again)?\s/iu).test(lStr)) {
-            need.push(...CodeActionTryRenameIncludePath(AhkFileData, active, AhkTokenLine));
-        }
+    if (AhkTokenLine.detail.includes(EDetail.isDirectivesLine)) {
+        need.push(...CodeActionIncludePath(active, AhkTokenLine, AhkFileData));
     }
 
     return need;
