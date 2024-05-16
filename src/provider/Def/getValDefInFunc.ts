@@ -70,9 +70,14 @@ function getModuleVarDef(
 
     const valMeta: TValMetaOut | undefined = ModuleVar.ModuleValMap.get(wordUpFix);
     if (valMeta !== undefined) {
-        return listAllUsing
-            ? searchAllGlobalVarRef(wordUpFix)
-            : searchAllGlobalVarDef(wordUpFix);
+        if (listAllUsing) {
+            return searchAllGlobalVarRef(wordUpFix);
+        }
+        const Locations: vscode.Location[] = searchAllGlobalVarDef(wordUp);
+
+        return Locations.length === 0
+            ? rangeList2LocList(valMeta.defRangeList, uri)
+            : Locations;
     }
 
     return getStringSplitDef(

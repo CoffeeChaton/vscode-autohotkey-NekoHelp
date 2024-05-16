@@ -11,6 +11,7 @@
 <!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- fix: gotoDef with file Module Var
 - feat: ([#54](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/54)) Identify var def with `Gui, +HwndVarName`
 - feat: ([#58](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/58)) hover `MsgBox, 16 ,Title, Text` magic-number
 
