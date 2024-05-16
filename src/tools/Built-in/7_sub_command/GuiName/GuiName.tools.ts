@@ -19,6 +19,7 @@ const unknownGuiSubCmdMd: vscode.MarkdownString = new vscode.MarkdownString(
 );
 
 export type TGuiName = {
+    rawName: string,
     wordUp: string,
     md: vscode.MarkdownString,
     range: vscode.Range,
@@ -57,12 +58,14 @@ function getGuiParam2ndData(lStr: string, col: number, line: number): TGui2ndPar
      */
     const GuiNameCol: number = RawNameNew.indexOf(':');
 
-    const GuiNameWordUp: string = GuiNameCol > -1
-        ? ToUpCase(RawNameNew.replace(/:.*/u, '').trim())
+    const rawName: string = GuiNameCol > -1
+        ? RawNameNew.replace(/:.*/u, '').trim()
         : '';
+    const GuiNameWordUp: string = ToUpCase(rawName);
 
     const GuiName: TGuiName | null = GuiNameWordUp !== '' && !GuiNameWordUp.includes('%')
         ? {
+            rawName,
             wordUp: GuiNameWordUp,
             md: GuiNameMd,
             range: new vscode.Range(
@@ -147,12 +150,14 @@ function getGuiControlParam2ndData(lStr: string, col: number, line: number): TGu
      */
     const GuiNameCol: number = RawNameNew.indexOf(':');
 
-    const GuiNameWordUp: string = GuiNameCol > -1
-        ? ToUpCase(RawNameNew.replace(/:.*/u, '').trim())
+    const rawName: string = GuiNameCol > -1
+        ? RawNameNew.replace(/:.*/u, '').trim()
         : '';
+    const GuiNameWordUp: string = ToUpCase(rawName);
 
     const GuiName: TGuiName | null = GuiNameWordUp !== '' && !GuiNameWordUp.includes('%')
         ? {
+            rawName,
             wordUp: GuiNameWordUp,
             md: GuiNameMd,
             range: new vscode.Range(

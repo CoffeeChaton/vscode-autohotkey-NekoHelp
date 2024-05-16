@@ -13,12 +13,13 @@
 
 - fix: gotoDef with file Module Var
 - feat: ([#54](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/54)) Identify var def with `Gui, +HwndVarName`
+- feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
+  1. support `GuiControl` gotoDef/findAllRef
+  2. add select and add guiName at ([#59](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/59))
+
 - feat: ([#58](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/58)) hover `MsgBox, 16 ,Title, Text` magic-number
 
 > ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-58--issuse-58-hover-msgbox-magic-number.jpg)
-
-- feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
-  1. support `GuiControl` gotoDef/findAllRef
 
 ## v0.0.57(2024-05-16)
 
