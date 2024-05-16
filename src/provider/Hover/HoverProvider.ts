@@ -36,6 +36,7 @@ import { hoverLabel } from './tools/hoverLabel';
 import { hoverLabelOrFunc } from './tools/hoverLabelFn';
 import { hoverMenuParam } from './tools/hoverMenuParam';
 import { hoverMethod } from './tools/hoverMethod';
+import { hoverMsgBoxMagicNumber } from './tools/hoverMsgBoxMagicNumber';
 import { hoverMultiLine } from './tools/hoverMultiLine';
 import { hoverSysGetParam } from './tools/hoverSysGetParam';
 import { hoverWinGetParam } from './tools/hoverWinGetParam';
@@ -86,7 +87,8 @@ function HoverProviderCore(
     if (position.character > lStr.length) return hoverAhk2exe(AhkTokenLine, position);
 
     // ex: #Warn
-    const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData);
+    const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData)
+        ?? hoverMsgBoxMagicNumber(AhkTokenLine, position);
     if (DirectivesMd !== null) return DirectivesMd;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);

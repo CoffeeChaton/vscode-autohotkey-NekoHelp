@@ -24,6 +24,7 @@ function getIncludeMap(): TIncludeMap {
 function getSearchPath(docPath: string, { type, mayPath }: TRawData): string {
     switch (type) {
         case EInclude.Absolute:
+        case EInclude.A_ScriptDir:
         case EInclude.Relative: // -----
         case EInclude.A_AppData:
         case EInclude.A_AppDataCommon:

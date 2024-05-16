@@ -6,6 +6,15 @@
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
 
+## v0.0.58(2024-05-XX)
+
+<!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- dprint 0.45.1 -->
+
+- feat: ([#58](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/58)) hover `MsgBox, 16 ,Title, Text` magic-number
+
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-58--issuse-58-hover-msgbox-magic-number.jpg)
+
 ## v0.0.57(2024-05-16)
 
 <!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
