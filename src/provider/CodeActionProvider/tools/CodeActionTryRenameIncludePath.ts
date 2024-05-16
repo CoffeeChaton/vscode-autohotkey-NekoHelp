@@ -21,7 +21,7 @@ function CodeActionTryRenameIncludePathCore(ahkInclude: CAhkInclude): string[] {
         return []; // unknown
     }
 
-    if (type === EInclude.A_LineFile) {
+    if (type === EInclude.A_LineFile || type === EInclude.A_ScriptDir) {
         return [toNormalize(mayPath)];
     }
 
@@ -29,31 +29,36 @@ function CodeActionTryRenameIncludePathCore(ahkInclude: CAhkInclude): string[] {
         const normalize: string = toNormalize(mayPath);
         for (const { mayPathReplaceValue, name } of IncludeOsMap) {
             const may: string = toNormalize(mayPathReplaceValue);
-
             // C:\\
             // c:\\
+
+            const A_ScriptDirNeed: string = path.relative(`${uri.fsPath}/../`, normalize);
+
             if (normalize.startsWith(may)) {
                 return [
                     // to %A_Desktop%
                     // to %A_LineFile%
                     normalize.replace(may, name),
                     `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
+                    `%A_ScriptDir%\\${A_ScriptDirNeed}`,
                 ];
             }
         }
-        return [
-            `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
-        ];
+        // return [
+        //     `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
+        // ];
     }
 
     if (AIncludePathKnownList.includes(type)) {
         const normalize: string = toNormalize(mayPath);
+        const A_ScriptDirNeed: string = path.relative(`${uri.fsPath}/../`, normalize);
 
         return [
             // to Absolute
             // to %A_LineFile%
             normalize,
             `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
+            `%A_ScriptDir%\\${A_ScriptDirNeed}`,
         ];
     }
     // type: EInclude.A_LineFile,

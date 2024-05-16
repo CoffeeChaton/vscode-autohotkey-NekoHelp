@@ -21,6 +21,8 @@ export const enum EInclude {
     A_LineFile = 0, // happy
     Absolute = 1, // happy
 
+    // ...??
+    A_ScriptDir = 99,
     // bad
     Relative = 2,
     isUnknown = 3,
@@ -60,6 +62,9 @@ export const AIncludePathKnownList: readonly EInclude[] = [
     EInclude.A_ProgramsCommon,
     EInclude.A_Programs,
     EInclude.A_ComSpec,
+
+    //
+    EInclude.A_ScriptDir,
 ];
 
 export type TRawData = {
@@ -73,7 +78,7 @@ const setWarnMsgList: readonly Readonly<RegExp>[] = [
     /%A_IsCompiled%/iu,
     /%A_IsUnicode%/iu,
     /%A_ProgramFiles%/iu,
-    /%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+    // /%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
     /%A_ScriptFullPath%/iu,
     /%A_ScriptName%/iu,
     /%A_UserName%/iu,
@@ -190,6 +195,13 @@ export function getRawData(path1: string, fsPath: string): TRawData {
         return {
             type: EInclude.A_LineFile,
             mayPath: normalize(path1.replace(/^%A_LineFile%/iu, fsPath)),
+            warnMsg,
+        };
+    }
+    if ((/^%A_ScriptDir%/iu).test(path1)) {
+        return {
+            type: EInclude.A_ScriptDir,
+            mayPath: normalize(path1.replace(/^%A_ScriptDir%/iu, `${fsPath}/../`)),
             warnMsg,
         };
     }
