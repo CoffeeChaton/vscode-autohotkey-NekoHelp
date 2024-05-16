@@ -2,9 +2,9 @@
 /* eslint-disable no-magic-numbers */
 
 // start
-const reStart0 = /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)\w+/u; // without .` and #$@
+const zReStart0 = /(?<=[%!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)\w+/u; // without .` and #$@
 
-const reEnd = /\w+(?=[.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/u; // without ( and #$@
+const zReEnd = /\w+(?=[.`%!"/&')*+,\-:;<=>?[\\^\]{|}~ \t]|$)/u; // without ( and #$@
 
 // [#$@\w\x{A1}-\x{FFFF}]+
 // #$@

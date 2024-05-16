@@ -28,6 +28,7 @@ import { hoverControlGetParam } from './tools/hoverControlGetParam';
 import { hoverControlParam } from './tools/hoverControlParam';
 import { DeepAnalysisHover } from './tools/HoverDeepAnalysis';
 import { hoverDirectives } from './tools/hoverDirectives';
+import { hoverErrorLevel } from './tools/hoverErrorLevel';
 import { hoverFocEx } from './tools/hoverFocEx';
 import { hoverGlobalVar } from './tools/hoverGlobalVar';
 import { hoverGuiControlParam } from './tools/hoverGuiControlParam';
@@ -111,7 +112,8 @@ function HoverProviderCore(
 
     const labelMd: vscode.MarkdownString | null = hoverClassName(AhkFileData, position, wordUp)
         ?? hoverLabel(AhkFileData, position, wordUp)
-        ?? hoverLabelOrFunc(AhkFileData, AhkTokenLine, wordUp, position);
+        ?? hoverLabelOrFunc(AhkFileData, AhkTokenLine, wordUp, position)
+        ?? hoverErrorLevel(AhkFileData, position, wordUp);
     if (labelMd !== null) return new vscode.Hover(labelMd);
 
     type TF0 = (AhkTokenLine: TAhkTokenLine, position: vscode.Position) => vscode.MarkdownString | null;
