@@ -13,6 +13,7 @@
 <!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#62](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/62)) `DllCall()` Type Completion
 - fix: ([#61](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/61)) format error
 - fix: gotoDef with file Module Var
 - feat: ([#60](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/60)) `ErrorLevel`

@@ -30,6 +30,7 @@ import { wrapClass } from './classThis/wrapClass';
 import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
 import { CompletionUserDefFuncClass } from './CompletionUserDef/CompletionUserDefFuncClass';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
+import { getDllCallCompletion } from './DllCall/DllCall';
 import { getSnipGlobalVal } from './global/globalValCompletion';
 import { IncludeFsPath } from './IncludeFsPath/IncludeFsPath';
 import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
@@ -107,6 +108,7 @@ function CompletionItemCore(
             ...getSnipOtherKeyWord(subStr),
             ...getSnipMouseKeyboard(subStr),
             ...getSnipCLSID(AhkTokenLine, position, context),
+            ...getDllCallCompletion(AhkFileData, position),
         );
 
         if (PartStr !== null) {

@@ -15,7 +15,17 @@ const memoFnRefType1 = new CMemo<TAhkTokenLine, readonly TLineFnCall[]>(
     (AhkTokenLine: TAhkTokenLine): readonly TLineFnCall[] => fnRefLStr(AhkTokenLine),
 );
 
-export function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Position): vscode.SignatureHelp | null {
+export type TSignatureFuncMeta = {
+    isBiFunc: false,
+    ahkFunc: CAhkFunc,
+    comma: number,
+} | {
+    isBiFunc: true,
+    biFuncMsg: TBiFuncMsg,
+    comma: number,
+};
+
+export function SignatureFuncCore(AhkFileData: TAhkFileData, position: vscode.Position): TSignatureFuncMeta | null {
     const { line, character } = position;
     const { DocStrMap, AST } = AhkFileData;
     const AhkTokenLine: TAhkTokenLine = DocStrMap[line];
@@ -79,15 +89,36 @@ export function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Positi
         }
 
         if (brackets !== 0) {
-            const fnSymbol: CAhkFunc | null = getFuncWithName(upName);
-            if (fnSymbol !== null) return SignUserFn(fnSymbol, comma);
+            const ahkFunc: CAhkFunc | null = getFuncWithName(upName);
+            if (ahkFunc !== null) {
+                return {
+                    isBiFunc: false,
+                    ahkFunc,
+                    comma,
+                };
+            }
 
-            const buildInFn: TBiFuncMsg | undefined = getBuiltInFuncMD(upName);
-            if (buildInFn !== undefined) return SignBiFn(buildInFn, comma);
+            const biFuncMsg: TBiFuncMsg | undefined = getBuiltInFuncMD(upName);
+            if (biFuncMsg !== undefined) {
+                return {
+                    isBiFunc: true,
+                    biFuncMsg,
+                    comma,
+                };
+            }
 
             return null;
         }
     }
 
     return null;
+}
+
+export function SignatureFunc(AhkFileData: TAhkFileData, position: vscode.Position): vscode.SignatureHelp | null {
+    const need: TSignatureFuncMeta | null = SignatureFuncCore(AhkFileData, position);
+    if (need === null) return null;
+
+    return need.isBiFunc
+        ? SignBiFn(need.biFuncMsg, need.comma)
+        : SignUserFn(need.ahkFunc, need.comma);
 }
