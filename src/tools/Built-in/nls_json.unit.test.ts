@@ -8,6 +8,8 @@ import * as fs from 'node:fs';
 import path from 'node:path';
 import * as A_Variables_en from '../../../doc/A_Variables.en.ahk.json';
 import * as A_Variables_cn from '../../../doc/A_Variables.zh-cn.ahk.json';
+import * as Ahk2exeData_en from '../../../doc/Ahk2exeData.en.ahk.json';
+import * as Ahk2exeData_cn from '../../../doc/Ahk2exeData.zh-cn.ahk.json';
 import * as BiVariables_en from '../../../doc/BiVariables.en.ahk.json';
 import * as BiVariables_cn from '../../../doc/BiVariables.zh-cn.ahk.json';
 import * as cmd_en from '../../../doc/Command.en.ahk.json';
@@ -20,7 +22,6 @@ import * as focEx_en from '../../../doc/focEx.en.ahk.json';
 import * as focEx_cn from '../../../doc/focEx.zh-cn.ahk.json';
 import * as func_en from '../../../doc/func.en.ahk.json';
 import * as func_cn from '../../../doc/func.zh-cn.ahk.json';
-
 import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';
@@ -112,6 +113,7 @@ describe('generate .ahk.json', () => {
         expect(fn(func_en)).toStrictEqual(fn(func_cn));
         expect(fn(foc_en)).toStrictEqual(fn(foc_cn));
         expect(fn(focEx_en)).toStrictEqual(fn(focEx_cn));
+        expect(fn(Ahk2exeData_en)).toStrictEqual(fn(Ahk2exeData_cn));
     });
 
     it('confirmed as pure English', () => {
@@ -125,5 +127,6 @@ describe('generate .ahk.json', () => {
         expect(checkIsJustEn(LineCommand)).toBe('');
         expect(checkIsJustEn(Statement)).toBe('');
         expect(checkIsJustEn(focExDataList)).toBe('');
+        expect(checkIsJustEn(Ahk2exeData)).toBe('');
     });
 });
