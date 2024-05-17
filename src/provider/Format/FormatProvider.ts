@@ -94,8 +94,8 @@ export function FormatCore(
     if (!AMasterSwitchUseFormatProvider) return newFmtMap;
 
     const { DocStrMap, uri } = AhkFileData;
-    const matrixTopLabe: readonly (0 | 1)[] = getMatrixTopLabe(AhkFileData, useTopLabelIndent);
     const matrixBrackets: readonly TBrackets[] = getMatrixFileBrackets(DocStrMap);
+    const matrixTopLabe: readonly (0 | 1)[] = getMatrixTopLabe(AhkFileData, useTopLabelIndent, matrixBrackets);
     const matrixMultLine: readonly (-999 | 0 | 1)[] = getMatrixMultLine(DocStrMap);
     const matrixAhk2exeKeep: readonly boolean[] = getMatrixAhk2exeKeep(DocStrMap);
     const cmdSemanticList: readonly TCmdSemantic[] = getSemanticCmdShell(AhkFileData);

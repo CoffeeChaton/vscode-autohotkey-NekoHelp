@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 /* eslint-disable max-lines-per-function */
 /* eslint-disable max-depth */
 
@@ -13,6 +14,7 @@ import {
 import type { TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { DeepReadonly } from '../../../globalEnum';
+import type { TBrackets } from '../../../tools/Bracket';
 
 const lineIsIFRegexps: DeepReadonly<RegExp[]> = [
     /^if(?:MsgBox)?\b/iu,
@@ -33,7 +35,11 @@ function LineIsIFCase(lStr: string): boolean {
     return lineIsIFRegexps.some((reg: Readonly<RegExp>): boolean => reg.test(lStrTrimFix));
 }
 
-export function getMatrixTopLabe(AhkFileData: TAhkFileData, useTopLabelIndent: boolean): readonly (0 | 1)[] {
+export function getMatrixTopLabe(
+    AhkFileData: TAhkFileData,
+    useTopLabelIndent: boolean,
+    matrixBrackets: readonly TBrackets[],
+): readonly (0 | 1)[] {
     const { AST, DocStrMap } = AhkFileData;
 
     const list: (0 | 1)[] = [...DocStrMap].map((): 0 => 0);
@@ -63,6 +69,7 @@ export function getMatrixTopLabe(AhkFileData: TAhkFileData, useTopLabelIndent: b
 
         const start: number = TopSymbol.selectionRange.start.line;
 
+        const defaultDeep = matrixBrackets[TopSymbol.selectionRange.start.line][0];
         let isSolve = false;
         for (let line = start + 1; line < DocStrMapLen; line++) {
             const lnDef: TTopSymbol | undefined = topSymbolList.get(line);
@@ -148,13 +155,15 @@ export function getMatrixTopLabe(AhkFileData: TAhkFileData, useTopLabelIndent: b
                 }
             }
 
-            const { fistWordUp } = DocStrMap[line];
-            if (
-                ['RETURN', 'EXIT', 'EXITAPP', 'RELOAD'].includes(fistWordUp)
-                && !LineIsIFCase(DocStrMap.at(line - 1)?.lStr ?? '') // check line-1 //FIXME: use foc?
-            ) {
-                list[line] = 0;
-                break;
+            if (matrixBrackets[line][0] <= defaultDeep) {
+                const { fistWordUp } = DocStrMap[line];
+                if (
+                    ['RETURN', 'EXIT', 'EXITAPP', 'RELOAD'].includes(fistWordUp)
+                    && !LineIsIFCase(DocStrMap.at(line - 1)?.lStr ?? '') // check line-1 //FIXME: use foc?
+                ) {
+                    list[line] = 0;
+                    break;
+                }
             }
         }
     }
