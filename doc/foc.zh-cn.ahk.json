@@ -292,7 +292,7 @@
                 "检查文件或文件夹是否存在。"
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 827,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfExist.htm",
             "exp": [
                 "IfExist, FilePattern",
@@ -336,7 +336,7 @@
                 "检查[变量](https://www.autohotkey.com/docs/v1/Variables.htm)是否包含指定的字符串。"
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 828,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfInString.htm",
             "exp": [
                 "IfInString, Var, SearchString",
@@ -418,7 +418,7 @@
                 "检查文件或文件夹是否存在。"
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 827,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfExist.htm",
             "exp": [
                 "IfExist, FilePattern",
@@ -436,7 +436,7 @@
                 "检查[变量](https://www.autohotkey.com/docs/v1/Variables.htm)是否包含指定的字符串。"
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 828,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfInString.htm",
             "exp": [
                 "IfInString, Var, SearchString",
@@ -450,7 +450,7 @@
                 "检查指定的窗口是否存在并且当前是否处于活动状态 (foremost)."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 829,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm",
             "exp": [
                 "IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
@@ -464,7 +464,7 @@
                 "检查指定的窗口是否存在。"
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 826,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm",
             "exp": [
                 "IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
@@ -478,7 +478,7 @@
                 "检查指定的窗口是否存在并且当前是否处于活动状态 (foremost)."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 829,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm",
             "exp": [
                 "IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
@@ -492,7 +492,7 @@
                 "检查指定的窗口是否存在。"
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 826,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm",
             "exp": [
                 "IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]",

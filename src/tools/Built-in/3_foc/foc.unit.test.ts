@@ -1,6 +1,10 @@
+/* eslint-disable no-magic-numbers */
 /* eslint-disable @typescript-eslint/require-array-sort-compare */
 import { describe, expect, it } from '@jest/globals';
+import * as foc_en from '../../../../doc/foc.en.ahk.json';
+import * as foc_cn from '../../../../doc/foc.zh-cn.ahk.json';
 import { repository } from '../../../../syntaxes/ahk.tmLanguage.json';
+import type { TFocDiag, TStatementElement } from './foc.data';
 import { Statement } from './foc.data';
 
 /**
@@ -24,6 +28,23 @@ function isAllowList(keyRawName: string): boolean {
         return false;
     }
     return keyRawName !== CapitalizeLowercase(keyRawName.toUpperCase());
+}
+
+type TDiagSnapshot = [
+    string,
+    TFocDiag,
+];
+
+function checkDiag(foc: TStatementElement[]): TDiagSnapshot[] {
+    const snapshot: TDiagSnapshot[] = [];
+    for (const v of foc) {
+        const { diag, keyRawName } = v;
+
+        if (diag !== undefined) {
+            snapshot.push([keyRawName, diag]);
+        }
+    }
+    return snapshot;
 }
 
 type TErrObj = {
@@ -127,5 +148,34 @@ describe('check Statement ruler', () => {
                 ['IfWinNotExist', 'https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm'],
             ],
         );
+    });
+
+    it('check : diag', () => {
+        expect.hasAssertions();
+
+        const snapshot_ts: TDiagSnapshot[] = checkDiag(Statement);
+        const snapshot_en: TDiagSnapshot[] = checkDiag(foc_en.body as TStatementElement[]);
+        const snapshot_cn: TDiagSnapshot[] = checkDiag(foc_cn.body as TStatementElement[]);
+
+        const snapshot_old: TDiagSnapshot[] = [
+            ['IfEqual', 806],
+            ['IfExist', 827],
+            ['IfGreater', 806],
+            ['IfGreaterOrEqual', 806],
+            ['IfInString', 828],
+            ['IfLess', 806],
+            ['IfLessOrEqual', 806],
+            ['IfNotEqual', 806],
+            ['IfNotExist', 827],
+            ['IfNotInString', 828],
+            ['IfWinActive', 829],
+            ['IfWinExist', 826],
+            ['IfWinNotActive', 829],
+            ['IfWinNotExist', 826],
+        ];
+
+        expect(snapshot_ts).toStrictEqual(snapshot_old);
+        expect(snapshot_en).toStrictEqual(snapshot_old);
+        expect(snapshot_cn).toStrictEqual(snapshot_old);
     });
 });

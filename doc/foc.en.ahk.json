@@ -291,7 +291,7 @@
                 "Checks for the existence of a file or folder."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 827,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfExist.htm",
             "exp": [
                 "IfExist, FilePattern",
@@ -335,7 +335,7 @@
                 "Checks if a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contains the specified string."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 828,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfInString.htm",
             "exp": [
                 "IfInString, Var, SearchString",
@@ -407,7 +407,7 @@
                 "Checks for the existence of a file or folder."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 827,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfExist.htm",
             "exp": [
                 "IfExist, FilePattern",
@@ -425,7 +425,7 @@
                 "Checks if a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contains the specified string."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 828,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfInString.htm",
             "exp": [
                 "IfInString, Var, SearchString",
@@ -439,7 +439,7 @@
                 "Checks if the specified window exists and is currently active (foremost)."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 829,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm",
             "exp": [
                 "IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
@@ -453,7 +453,7 @@
                 "Checks if the specified window exists."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 826,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm",
             "exp": [
                 "IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
@@ -467,7 +467,7 @@
                 "Checks if the specified window exists and is currently active (foremost)."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 829,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm",
             "exp": [
                 "IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]",
@@ -481,7 +481,7 @@
                 "Checks if the specified window exists."
             ],
             "recommended": false,
-            "diag": 899,
+            "diag": 826,
             "link": "https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm",
             "exp": [
                 "IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]",

@@ -3,9 +3,12 @@
 
 import { EDiagCode } from '../../../diag';
 
-type TStatementDiag =
+export type TFocDiag =
     | EDiagCode.code806
-    | EDiagCode.code899;
+    | EDiagCode.code826
+    | EDiagCode.code827
+    | EDiagCode.code828
+    | EDiagCode.code829;
 
 export type TStatementElement = Readonly<{
     keyRawName: string,
@@ -15,7 +18,7 @@ export type TStatementElement = Readonly<{
     link: `https://www.autohotkey.com/docs/v1/lib/${string}.htm`,
     exp: readonly string[],
     //
-    diag?: TStatementDiag,
+    diag?: TFocDiag,
     _DevNote?: readonly string[],
     _paramType?: string[],
 }>;
@@ -299,7 +302,7 @@ export const Statement: TStatementElement[] = [
         body: 'IfExist, ${1:FilePattern}',
         doc: ['Checks for the existence of a file or folder.'],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code827,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfExist.htm',
         exp: [
             'IfExist, FilePattern',
@@ -339,7 +342,7 @@ export const Statement: TStatementElement[] = [
             'Checks if a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contains the specified string.',
         ],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code828,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfInString.htm',
         exp: [
             'IfInString, Var, SearchString',
@@ -403,7 +406,7 @@ export const Statement: TStatementElement[] = [
         body: 'IfNotExist, ${1:FilePattern}',
         doc: ['Checks for the existence of a file or folder.'],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code827,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfExist.htm',
         exp: [
             'IfExist, FilePattern',
@@ -421,7 +424,7 @@ export const Statement: TStatementElement[] = [
             'Checks if a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contains the specified string.',
         ],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code828,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfInString.htm',
         exp: [
             'IfInString, Var, SearchString',
@@ -433,7 +436,7 @@ export const Statement: TStatementElement[] = [
         body: 'IfWinActive [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Checks if the specified window exists and is currently active (foremost).'],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code829,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm',
         exp: [
             'IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]',
@@ -445,7 +448,7 @@ export const Statement: TStatementElement[] = [
         body: 'IfWinExist [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Checks if the specified window exists.'],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code826,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm',
         exp: [
             'IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]',
@@ -457,7 +460,7 @@ export const Statement: TStatementElement[] = [
         body: 'IfWinNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Checks if the specified window exists and is currently active (foremost).'],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code829,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm',
         exp: [
             'IfWinActive [, WinTitle, WinText, ExcludeTitle, ExcludeText]',
@@ -469,7 +472,7 @@ export const Statement: TStatementElement[] = [
         body: 'IfWinNotExist  [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Checks if the specified window exists.'],
         recommended: false,
-        diag: EDiagCode.code899,
+        diag: EDiagCode.code826,
         link: 'https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm',
         exp: [
             'IfWinExist [, WinTitle, WinText, ExcludeTitle, ExcludeText]',

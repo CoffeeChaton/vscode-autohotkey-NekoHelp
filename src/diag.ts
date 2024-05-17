@@ -157,7 +157,7 @@ export const enum EDiagCode {
     code802 = 802,
     code803 = 803,
     code804 = 804,
-    code806 = 806,
+    code806 = 806, // Use `If (expression)` instead.
     code811 = 811,
     code812 = 812,
     code813 = 813,
@@ -166,7 +166,10 @@ export const enum EDiagCode {
     code816 = 816,
     code824 = 824,
     code825 = 825,
-
+    code826 = 826, // Use the `WinExist()` function instead.
+    code827 = 827, // Use the `FileExist()` function instead.
+    code828 = 828, // Use the `InStr()` function instead.
+    code829 = 829, // Use the `WinActive()` function instead.
     /**
      * - TODO: move 899 -> 8xx
      * - 899 is Command -> func
@@ -295,15 +298,15 @@ export const Diags: DeepReadonly<TDiags> = {
         path: 'https://www.autohotkey.com/docs/v1/lib/IfEqual.htm',
     },
     811: {
-        msg: 'Deprecated: Use the `OnClipboardChange()` function instead.',
+        msg: 'Deprecated: Use `OnClipboardChange()` function instead.',
         path: 'https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label',
     },
     812: {
-        msg: 'Deprecated: Use the `OnExit()` function instead.',
+        msg: 'Deprecated: Use `OnExit()` function instead.',
         path: 'https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command',
     },
     813: {
-        msg: 'Deprecated: Use the `Gui,` command instead.',
+        msg: 'Deprecated: Use `Gui,` command instead.',
         path: 'https://www.autohotkey.com/docs/v1/lib/Progress.htm',
     },
     814: {
@@ -311,11 +314,11 @@ export const Diags: DeepReadonly<TDiags> = {
         path: 'https://www.autohotkey.com/docs/v1/lib/SetEnv.htm',
     },
     815: {
-        msg: 'Deprecated: Use the `Format()` function instead.',
+        msg: 'Deprecated: Use `Format()` function instead.',
         path: 'https://www.autohotkey.com/docs/v1/lib/SetFormat.htm',
     },
     816: {
-        msg: 'Deprecated: Use the `Gui` command instead.',
+        msg: 'Deprecated: Use `Gui` command instead.',
         path: 'https://www.autohotkey.com/docs/v1/lib/SplashTextOn.htm',
     },
     824: {
@@ -326,6 +329,22 @@ export const Diags: DeepReadonly<TDiags> = {
     825: {
         msg: 'Deprecated: #AllowSameLineComments was removed.',
         path: 'https://www.autohotkey.com/docs/v1/lib/_AllowSameLineComments.htm',
+    },
+    826: {
+        msg: 'Deprecated: Use `WinExist()` function instead.',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfWinExist.htm',
+    },
+    827: {
+        msg: 'Deprecated: Use `FileExist()` function instead.',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfExist.htm',
+    },
+    828: {
+        msg: 'Deprecated: Use `InStr()` function instead.',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfInString.htm',
+    },
+    829: {
+        msg: 'Deprecated: Use `WinActive()` function instead.',
+        path: 'https://www.autohotkey.com/docs/v1/lib/IfWinActive.htm',
     },
     899: {
         msg: 'Deprecated: try to use function replace Command(obsolete code)',

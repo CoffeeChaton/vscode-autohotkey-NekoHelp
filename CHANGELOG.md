@@ -13,6 +13,7 @@
 <!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#63](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/63)) diag 8xx is not work with Control Flow Statements
 - feat: ([#62](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/62)) `DllCall()` Type Completion
 - fix: ([#61](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/61)) format error
 - fix: gotoDef with file Module Var

@@ -3,14 +3,16 @@ import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
 import { CommandMDMap } from '../6_command/Command.tools';
 import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
-import type { TStatementElement } from './foc.data';
+import type { TFocDiag, TStatementElement } from './foc.data';
 
 type TStatementMDMap = ReadonlyMap<string, vscode.MarkdownString>;
 type TSnippetStatement = readonly vscode.CompletionItem[];
+type TForErrMap = ReadonlyMap<string, TFocDiag>;
 
-export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippetStatement] => {
+export const [StatementMDMap, snippetStatement, forErrMap] = ((): [TStatementMDMap, TSnippetStatement, TForErrMap] => {
     const map1: Map<string, vscode.MarkdownString> = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
+    const errMap = new Map<string, TFocDiag>();
 
     const Statement: TStatementElement[] = readNlsJson('foc') as TStatementElement[];
     for (const v of Statement) {
@@ -21,6 +23,7 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
             exp,
             body,
             recommended,
+            diag,
         } = v;
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendCodeblock(keyRawName, 'ahk')
@@ -34,7 +37,9 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
         md.supportHtml = true;
         map1.set(keyRawName.toUpperCase(), md);
 
+        if (diag !== undefined) errMap.set(keyRawName.toUpperCase(), diag);
         if (!recommended) continue;
+
         const item: vscode.CompletionItem = new vscode.CompletionItem({
             label: keyRawName,
             description: keyRawName,
@@ -55,7 +60,7 @@ export const [StatementMDMap, snippetStatement] = ((): [TStatementMDMap, TSnippe
         List2.push(item);
     }
 
-    return [map1, List2]; // [Map(19), Array(19)]
+    return [map1, List2, errMap]; // [Map(19), Array(19)]
 })();
 
 export function getSnippetStatement(
