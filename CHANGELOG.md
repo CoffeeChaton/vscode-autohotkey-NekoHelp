@@ -13,13 +13,20 @@
 <!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- fix: ([#65](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/65)) `HotStrings` without `T-flag/R-flag` highlight
+
+  ```ahk
+  :*b0:<em>::</em>{left 5}
+  ;               ^^^^^^^^special symbols, if not open T-flag
+  ```
+
 - feat: ([#63](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/63)) diag 8xx is not work with Control Flow Statements
 - feat: ([#62](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/62)) `DllCall()` Type Completion
 - fix: ([#61](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/61)) format error
 - fix: gotoDef with file Module Var
 - feat: ([#60](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/60)) `ErrorLevel`
   1. auto find may value
-  2. auto add ErrorLevel Template //TODO add config
+  2. auto add ErrorLevel Template
 - feat: ([#54](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/54)) Identify var def with `Gui, +HwndVarName`
 - feat: ([#53](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/53)) GuiName++
   1. support `GuiControl` gotoDef/findAllRef

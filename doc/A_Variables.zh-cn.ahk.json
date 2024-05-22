@@ -159,7 +159,14 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ComSpec",
             "group": "OS",
             "doc": [
-                "包含与 ComSpec 环境变量相同的字符串，该变量通常是命令提示符可执行文件 (cmd.exe) 的完整路径。通常与 [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm) 一起使用。例如： \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` "
+                "包含与 ComSpec 环境变量相同的字符串，该变量通常是命令提示符可执行文件 (cmd.exe) 的完整路径。通常与 [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm) 一起使用。例如： \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` ",
+                "",
+                "```ahk",
+                "; \"C:\\Windows\\system32\\cmd.exe\"",
+                "RunWait, % A_ComSpec \" /c dir C:\\  | clip \", , \"Min\"",
+                "MsgBox, % A_Clipboard",
+                "",
+                "```"
             ]
         },
         {

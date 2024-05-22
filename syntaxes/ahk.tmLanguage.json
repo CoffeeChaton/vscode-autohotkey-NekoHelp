@@ -884,6 +884,54 @@
                     "name": "hotstring.x.flag.ahk"
                 },
                 {
+                    "captures": {
+                        "1": { "name": "keyword.operator.hotstring.rt.flag.ahk" },
+                        "2": { "name": "entity.name.function.hotstring.rt.flag.ahk" },
+                        "3": { "name": "string.entity.name.function.hotstring.trigger.rt.flag.ahk" },
+                        "4": {
+                            "name": "string.hotstring.rt.flag.ahk",
+                            "patterns": [
+                                {
+                                    "name": "comment.line.hotstring.ahk",
+                                    "match": "(?<=[ \t]);.*"
+                                }
+                            ]
+                        }
+                    },
+                    "match": "^[ \\t]*(:(?i:([^:RrTt]*[RrTr][^:RrTt]*)):([^:]+)::)(.*)",
+                    "name": "hotstring.rt.flag.ahk"
+                },
+                {
+                    "captures": {
+                        "1": { "name": "keyword.operator.hotstring.with_rt.flag.ahk" },
+                        "2": { "name": "entity.name.function.hotstring.with_rt.flag.ahk" },
+                        "3": { "name": "string.entity.name.function.hotstring.trigger.with_rt.flag.ahk" },
+                        "4": {
+                            "name": "string.hotstring.with_rt.flag.ahk",
+                            "patterns": [
+                                {
+                                    "name": "comment.line.hotstring.ahk",
+                                    "match": "(?<=[ \t]);.*"
+                                },
+                                {
+                                    "name": "entity.name.function.hotstring.with_rt2.flag.ahk",
+                                    "match": "[{][}]{2}"
+                                },
+                                {
+                                    "name": "entity.name.function.hotstring.with_rt2.flag.ahk",
+                                    "match": "[{]{2}[}]"
+                                },
+                                {
+                                    "name": "entity.name.function.hotstring.with_rt.flag.ahk",
+                                    "match": "[{][^}]*[}]"
+                                }
+                            ]
+                        }
+                    },
+                    "match": "^[ \\t]*(:(?i:([^:RrTt]*)):([^:]+)::)(.*)",
+                    "name": "hotstring.rt.flag.ahk"
+                },
+                {
                     "name": "string.hotstring.ahk",
                     "begin": "^[ \\t]*(:([^:]*?):([^:]+)::)",
                     "beginCaptures": {

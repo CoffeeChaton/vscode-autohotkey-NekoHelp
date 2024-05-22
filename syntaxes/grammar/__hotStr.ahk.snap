@@ -1,15 +1,15 @@
 >; normal
 #^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >::ts,,::TypeScript
-#^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#  ^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
-#      ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#        ^^^^^^^^^^ source.ahk string.hotstring.ahk
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
 >::ts(::TypeScript()
-#^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#  ^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
-#     ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#       ^^^^^^^^^^^^ source.ahk string.hotstring.ahk
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#     ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#       ^^^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
 >;   ^Avoid vscode automatic bracket matching, here if it is Str
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
@@ -21,12 +21,11 @@
 >;-----------
 #^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >::case0,,::foo() ; "send foo()"
-#^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#  ^^^^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
-#         ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#           ^^^^^ source.ahk string.hotstring.ahk
-#                ^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk
-#                 ^^^^^^^^^^^^^^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#         ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#           ^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^^^^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
 >:X:case1,,::foo()  ; call foo() function
 #^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
 # ^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk entity.name.function.hotstring.x.flag.ahk
@@ -41,12 +40,11 @@
 #                   ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >::case2,,::  ; call foo() function
-#^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#  ^^^^^^^ source.ahk string.hotstring.ahk keyword.operator.ahk string.entity.name.function.hotstring.trigger.ahk
-#         ^^ source.ahk string.hotstring.ahk keyword.operator.ahk
-#           ^ source.ahk string.hotstring.ahk
-#            ^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk
-#             ^^^^^^^^^^^^^^^^^^^^^ source.ahk string.hotstring.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#         ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#             ^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
 >    foo()
 #^^^^ source.ahk
 #    ^^^ source.ahk entity.name.function.ahk
@@ -168,5 +166,181 @@
 # ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
 #    ^^ source.ahk meta.hotkey.line.ahk
 #      ^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>
+>
+>; not flag
+#^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::ahk,,::AutoHotkey
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+>::AHK,,::AutoHotkey
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+>::dx9,,::DirectX
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+>::ts,,::TypeScript
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+>::es,,::eslint
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+>::pr,,::prettier ; dddddddddd
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>;                ^^^^^^^^^^^^ comment
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>
+>; X-flag
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>:x:dd,,::MsgBox, % "dd" ;
+#^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+# ^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk entity.name.function.hotstring.x.flag.ahk
+#  ^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+#   ^^^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk string.entity.name.function.hotstring.trigger.x.flag.ahk.ahk
+#       ^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+#         ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#               ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                  ^ source.ahk meta.command.line.ahk
+#                   ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                    ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                       ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                        ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>
+>; with out r/t flag
+#^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>:*b0:<em1>::</em>{left 5} {Enter} ^t ;
+#^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+# ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#    ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#     ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#          ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#            ^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#                         ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                          ^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#                                 ^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                                     ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:*b0:<em2>::</em>{left 5} {}} </em5> {{}
+#^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+# ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#    ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#     ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#          ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#            ^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#                         ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                          ^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt2.flag.ahk
+#                             ^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                                     ^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt2.flag.ahk
+>:*b0:a1,::{{} ; send "{"
+#^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+# ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#    ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#     ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#        ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#          ^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt2.flag.ahk
+#             ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#              ^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>;            ^comment
+#^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>:*b0:a2,::{}} ; send "}"
+#^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+# ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#    ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#     ^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#        ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#          ^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt2.flag.ahk
+#             ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#              ^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>::a99,,:: </em>{left 5} {Enter} ^t ;
+#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#               ^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#                       ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                        ^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#                               ^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk
+#                                   ^ source.ahk hotstring.rt.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>
+>
+>; r/t flag
+#^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>:r:<em3>::</em>{left 5}
+#^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk
+# ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk entity.name.function.hotstring.rt.flag.ahk
+#  ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk
+#   ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk string.entity.name.function.hotstring.trigger.rt.flag.ahk
+#        ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk
+#          ^^^^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.rt.flag.ahk
+>;              ^^^^^^^ just string
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>:t:<em4>::</em>{left 5}
+#^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk
+# ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk entity.name.function.hotstring.rt.flag.ahk
+#  ^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk
+#   ^^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk string.entity.name.function.hotstring.trigger.rt.flag.ahk
+#        ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.rt.flag.ahk
+#          ^^^^^^^^^^^^^ source.ahk hotstring.rt.flag.ahk string.hotstring.rt.flag.ahk
+>;              ^^^^^^^ just string
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>
+>
+>; r/t + x ---> only x flag
+#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>:xr:dd5,,::MsgBox, % "dd" ; show MsgBox
+#^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+# ^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk entity.name.function.hotstring.x.flag.ahk
+#   ^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+#    ^^^^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk string.entity.name.function.hotstring.trigger.x.flag.ahk.ahk
+#         ^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+#           ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.line.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                    ^ source.ahk meta.command.line.ahk
+#                     ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                      ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                        ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                         ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                          ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>:xr:dd6,,::MsgBox, % "{left 5}" ; show MsgBox
+#^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+# ^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk entity.name.function.hotstring.x.flag.ahk
+#   ^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+#    ^^^^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk string.entity.name.function.hotstring.trigger.x.flag.ahk.ahk
+#         ^^ source.ahk hotstring.x.flag.ahk keyword.operator.hotstring.x.flag.ahk
+#           ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                 ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                  ^ source.ahk meta.command.line.ahk
+#                   ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                    ^ source.ahk meta.command.line.ahk
+#                     ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                      ^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                               ^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk
+#                                ^^^^^^^^^^^^^ source.ahk meta.command.line.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
 >
 >

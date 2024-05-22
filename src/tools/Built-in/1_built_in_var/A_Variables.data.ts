@@ -183,6 +183,13 @@ export const AVariablesList: TAElement[] = [
         group: 'OS',
         doc: [
             'Contains the same string as the environment\'s ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). \n\nFor example:        `C:\\Windows\\system32\\cmd.exe` ',
+            '',
+            '```ahk',
+            '; "C:\\Windows\\system32\\cmd.exe"',
+            'RunWait, % A_ComSpec " /c dir C:\\  | clip ", , "Min"',
+            'MsgBox, % A_Clipboard',
+            '',
+            '```',
         ],
     },
     {
