@@ -46,7 +46,7 @@ const ItemOfAhkObj: readonly vscode.CompletionItem[] = ((): vscode.CompletionIte
             ],
         },
         {
-            label: 'Push(Value, ...Value2,)',
+            label: 'Push()',
             documentation: [
                 'Appends values to the end of an array.',
                 'https://www.autohotkey.com/docs/v1/objects/Object.htm#Push',
@@ -204,7 +204,7 @@ const ItemOfAhkFile: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
             ],
         },
         {
-            label: 'Write(String)',
+            label: 'Write()',
             documentation: [
                 'Writes a string of characters to the file and advances the file pointer.',
                 '*String*: A string to write.',
