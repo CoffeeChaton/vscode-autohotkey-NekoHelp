@@ -68,6 +68,7 @@ export function activate(context: vscode.ExtensionContext): void {
         // languages.registerFoldingRangeProvider
         vscode.languages.registerCodeActionsProvider(selector, CodeActionProvider),
         vscode.languages.registerCodeLensProvider(selector, CodeLensProvider),
+        vscode.languages.registerColorProvider(selector, ColorProvider),
         vscode.languages.registerCompletionItemProvider(selector, CompletionItemProvider, ...triggerCharacters),
         vscode.languages.registerDefinitionProvider(selector, DefProvider),
         vscode.languages.registerDocumentFormattingEditProvider(selector, FormatProvider),
@@ -81,7 +82,6 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
         vscode.languages.registerSignatureHelpProvider(selector, SignatureHelpProvider, metadata),
         vscode.languages.registerInlayHintsProvider(selector, InlayHintsProvider),
-        vscode.languages.registerColorProvider(selector, ColorProvider),
         // workspace-------------------
         // workspace.onDidOpenTextDocument(pm.OpenFile),
         // workspace.onDidSaveTextDocument(pm.OnDidSaveTextDocument),

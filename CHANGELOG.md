@@ -20,6 +20,8 @@
   ;               ^^^^^^^^special symbols, if not open T-flag
   ```
 
+- TODO never use function highlight
+- fix: ([#66](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/66)) color-picker rm `label:` and `MsgBox` Options arg.
 - feat: ([#63](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/63)) diag 8xx is not work with Control Flow Statements
 - feat: ([#62](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/62)) `DllCall()` Type Completion
 - fix: ([#61](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/61)) format error

@@ -3,8 +3,9 @@ import * as vscode from 'vscode';
 import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
-import { EMultiline } from '../../globalEnum';
+import { EDetail, EMultiline } from '../../globalEnum';
 import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.data';
+import { hoverMsgBoxMagicNumber } from '../Hover/tools/hoverMsgBoxMagicNumber';
 import { getColorPickerIgnoreList } from './getColorPickerIgnore';
 
 /**
@@ -106,12 +107,17 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
             textRaw,
             line,
             multiline,
+            detail,
         } = AhkTokenLine;
         const text: string = textRaw.slice(0, lStr.length);
 
         // 'red'.length === 3
-        if (text.length < 3 || multiline !== EMultiline.none) continue;
-        if (ignoreArr[line]) continue;
+        if (
+            text.length < 3
+            || multiline !== EMultiline.none
+            || ignoreArr[line]
+            || detail.includes(EDetail.isLabelLine)
+        ) continue;
 
         for (const ma of text.matchAll(colorRegex)) {
             const { index } = ma;
@@ -133,6 +139,10 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
                 new vscode.Position(line, char),
                 new vscode.Position(line, char + ma1.length),
             );
+
+            const exMsgBox: vscode.Hover | null = hoverMsgBoxMagicNumber(AhkTokenLine, range.start);
+            if (exMsgBox !== null) continue;
+
             const colorInfo: vscode.ColorInformation = new vscode.ColorInformation(range, color);
             arr.push(colorInfo);
         }
