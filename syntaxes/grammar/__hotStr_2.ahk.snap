@@ -1,0 +1,89 @@
+>#Requires AutoHotkey v1.1.33.11
+#^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#         ^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>#SingleInstance Force
+#^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#               ^^^^^^ source.ahk string.parameter.directives.ahk
+>~F12::Reload
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+#      ^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>; about ctrl key
+#^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>; # win
+#^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>; ! Alt
+#^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>; ^ Ctrl
+#^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>; + Shift
+#^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::d4,,:: ^t ; ctrl + t
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#         ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.normal.flag.ahk
+#          ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#            ^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:t:t4,,:: ^t ; send text "^t"
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#             ^^^^^^^^^^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>:r:r4,,:: ^t ; send text "^t"
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#             ^^^^^^^^^^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>
+>::d5-1,,:: ^t ^+   ; ctrl + t
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#        ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#          ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.normal.flag.ahk
+#            ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#             ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#              ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.normal.flag.ahk
+#               ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                   ^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>::d5-2,,:: ^2 ^t  ;  ctrl + 2 ctrl + t
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#        ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#          ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.normal.flag.ahk
+#            ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#             ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#              ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk entity.name.function.hotstring.normal.flag.ahk
+#               ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                  ^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:t:t5,,:: ^t ^+ ; send text "^t ^+"
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>:r:r5,,:: ^t ^+ ; send text "^t ^+"
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>

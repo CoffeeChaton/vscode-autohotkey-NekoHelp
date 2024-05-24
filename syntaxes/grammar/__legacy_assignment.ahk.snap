@@ -219,9 +219,9 @@
 #^ source.ahk punctuation.bracket.ahk
 >
 >::el,,::
-#^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
-#  ^^^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
-#      ^^ source.ahk hotstring.rt.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
 >    fn_hot_strings_error_line()
 #^^^^ source.ahk
 #    ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk entity.name.function.ahk

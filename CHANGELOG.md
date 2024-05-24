@@ -10,7 +10,7 @@
 
 ## v0.0.58(2024-05-XX)
 
-<!-- pnpm 9.1.1 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.1.2 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - fix: ([#65](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/65)) `HotStrings` without `T-flag/R-flag` highlight
@@ -21,7 +21,7 @@
   ```
 
 - fix: ([#67](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/67)) `].` can not show completion
-- fix: ([#66](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/66)) color-picker rm `label:` and `MsgBox` Options arg.
+- fix: ([#66](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/66)) color-picker rm `label:` and `MsgBox` Options arg range.
 - feat: ([#63](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/63)) diag 8xx is not work with Control Flow Statements
 - feat: ([#62](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/62)) `DllCall()` Type Completion
 - fix: ([#61](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/61)) format error

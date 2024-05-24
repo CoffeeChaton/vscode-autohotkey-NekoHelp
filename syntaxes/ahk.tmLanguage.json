@@ -885,21 +885,55 @@
                 },
                 {
                     "captures": {
-                        "1": { "name": "keyword.operator.hotstring.rt.flag.ahk" },
-                        "2": { "name": "entity.name.function.hotstring.rt.flag.ahk" },
-                        "3": { "name": "string.entity.name.function.hotstring.trigger.rt.flag.ahk" },
+                        "1": { "name": "keyword.operator.hotstring.r.flag.ahk" },
+                        "2": { "name": "entity.name.function.hotstring.r.flag.ahk" },
+                        "3": { "name": "string.entity.name.function.hotstring.trigger.r.flag.ahk" },
                         "4": {
-                            "name": "string.hotstring.rt.flag.ahk",
+                            "name": "string.hotstring.r.flag.ahk",
                             "patterns": [
                                 {
                                     "name": "comment.line.hotstring.ahk",
                                     "match": "(?<=[ \t]);.*"
+                                },
+                                {
+                                    "match": "`[rntb`vaf]",
+                                    "name": "constant.character.escape.ahk"
+                                },
+                                {
+                                    "match": "`.",
+                                    "name": "invalid.illegal.unknown.character.escape.ahk"
                                 }
                             ]
                         }
                     },
-                    "match": "^[ \\t]*(:(?i:([^:RrTt]*[RrTr][^:RrTt]*)):([^:]+)::)(.*)",
-                    "name": "hotstring.rt.flag.ahk"
+                    "match": "^[ \\t]*(:(?i:([^:Rr]*[Rr][^:Rr]*)):([^:]+)::)(.*)",
+                    "name": "hotstring.r.flag.ahk"
+                },
+                {
+                    "captures": {
+                        "1": { "name": "keyword.operator.hotstring.t.flag.ahk" },
+                        "2": { "name": "entity.name.function.hotstring.t.flag.ahk" },
+                        "3": { "name": "string.entity.name.function.hotstring.trigger.t.flag.ahk" },
+                        "4": {
+                            "name": "string.hotstring.t.flag.ahk",
+                            "patterns": [
+                                {
+                                    "name": "comment.line.hotstring.ahk",
+                                    "match": "(?<=[ \t]);.*"
+                                },
+                                {
+                                    "match": "`[rntb`]",
+                                    "name": "constant.character.escape.ahk"
+                                },
+                                {
+                                    "match": "`.",
+                                    "name": "invalid.illegal.unknown.character.escape.ahk"
+                                }
+                            ]
+                        }
+                    },
+                    "match": "^[ \\t]*(:(?i:([^:Tt]*[Tt][^:Tt]*)):([^:]+)::)(.*)",
+                    "name": "hotstring.t.flag.ahk"
                 },
                 {
                     "captures": {
@@ -914,22 +948,34 @@
                                     "match": "(?<=[ \t]);.*"
                                 },
                                 {
-                                    "name": "entity.name.function.hotstring.with_rt2.flag.ahk",
+                                    "match": "`[rntb`vaf]",
+                                    "name": "constant.character.escape.ahk"
+                                },
+                                {
+                                    "match": "`.",
+                                    "name": "invalid.illegal.unknown.character.escape.ahk"
+                                },
+                                {
+                                    "name": "entity.name.function.hotstring.normal.flag.ahk",
                                     "match": "[{][}]{2}"
                                 },
                                 {
-                                    "name": "entity.name.function.hotstring.with_rt2.flag.ahk",
+                                    "name": "entity.name.function.hotstring.normal.flag.ahk",
                                     "match": "[{]{2}[}]"
                                 },
                                 {
-                                    "name": "entity.name.function.hotstring.with_rt.flag.ahk",
+                                    "name": "entity.name.function.hotstring.normal.flag.ahk",
                                     "match": "[{][^}]*[}]"
+                                },
+                                {
+                                    "captures": { "1": { "name": "entity.name.function.hotstring.normal.flag.ahk" } },
+                                    "match": "([#!^+])."
                                 }
                             ]
                         }
                     },
                     "match": "^[ \\t]*(:(?i:([^:RrTt]*)):([^:]+)::)(.*)",
-                    "name": "hotstring.rt.flag.ahk"
+                    "name": "hotstring.normal.flag.ahk"
                 },
                 {
                     "name": "string.hotstring.ahk",

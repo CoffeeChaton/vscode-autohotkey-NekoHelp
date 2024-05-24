@@ -1,0 +1,460 @@
+>#Requires AutoHotkey v1.1.33.11
+#^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#         ^^^^^^^^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>#SingleInstance Force
+#^^^^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#               ^^^^^^ source.ahk string.parameter.directives.ahk
+>#Warn All, MsgBox
+#^^^^^ source.ahk string.parameter.directives.ahk keyword.control.directives.ahk
+#     ^^^^^^^^^^^^ source.ahk string.parameter.directives.ahk
+>global var1 := "var1 is text"
+#^^^^^^ source.ahk keyword.other.operator.hasdoc.ahk
+#      ^^^^^^ source.ahk
+#            ^^ source.ahk keyword.operator.assignment.ahk
+#              ^ source.ahk
+#               ^ source.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                ^^^^^^^^^^^^ source.ahk string.quoted.double.ahk
+#                            ^ source.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>
+>~F12::Reload
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+#      ^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>; work `r`n`t`b ``======================================================================================================
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>; `r`n`t`b and ``
+#^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::d3,,:: ccccc`b`b`b ; send c*5 and Backspace*3 === "cc"
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#              ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#                ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#                  ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#                    ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r3,,:: ccccc`b`b`b ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#               ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#                 ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#                   ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#                     ^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                      ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t3,,:: ccccc`b`b`b ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#               ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#                 ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#                   ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#                     ^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                      ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>:*:d4,,:: cc`t ; send c*2 and Tab*1
+#^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+# ^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk entity.name.function.hotstring.with_rt.flag.ahk
+#  ^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#   ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#            ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#              ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#               ^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:*r:r4,,:: cc`t ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#   ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#    ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#        ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#          ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#             ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#               ^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:*t:t4,,:: cc`t ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#   ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#    ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#        ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#          ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#             ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#               ^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>::d5,,:: cc`ncc ; send c*2 `n and cc
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#             ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r5,,:: cc`ncc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                 ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t5,,:: cc`ncc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                 ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>::d6,,:: cc`rcc ; send c*2 `n and cc
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#             ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r6,,:: cc`rcc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                 ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t6,,:: cc`rcc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                 ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; ``
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::d11,,:: cc``cc ; just text cc`cc , the "`" is miss
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#            ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r11,,:: cc``cc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#        ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#          ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#             ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#               ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                  ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t11,,:: cc``cc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#        ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#          ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#             ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk constant.character.escape.ahk
+#               ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                  ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; diff `v `a `f ========================================================================================================
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>; `v
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::dv,,:: cc`vcc ;  send text cc -> in chrome it will call (ctrl+k) -> send text cc
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#             ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:rv,,:: cc`vcc ; send text cc -> in chrome it will call (ctrl+k) -> send text cc
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:tv,,:: cc`vcc ; **** send cccc and , the "`v" is miss *****************
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; `a
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::da,,:: cc`acc ;  send text cc -> in text-edit it will call jump to line (ctrl+g) -> send text cc
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#             ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:ra,,:: cc`acc ; send text cc -> in text-edit it will call jump to line (ctrl+g) -> send text cc
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:ta,,:: cc`acc ; **** send cccc and , the "`a" is miss *****************
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; `f
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::df,,:: cc`fcc ;  send text cc -> in chrome it will call (ctrl+L) -> send text cc
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk constant.character.escape.ahk
+#             ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:rf,,:: cc`fcc ; send text cc -> in chrome it will call (ctrl+L) -> send text cc
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk constant.character.escape.ahk
+#              ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:tf,,:: cc`fcc ; **** send cccc and , the "`f" is miss *****************
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; not work %;`,:========================================================================================================
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>; `%
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::d7,,:: cc%var1% ; just text cc%var1%
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                  ^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r7,,:: cc%var1% ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                   ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t7,,:: cc%var1% ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                   ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; `% percent -> p
+#^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::dp,,:: cc`%var1`% ; just text cc%var1% , the "`" is miss
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#             ^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#                   ^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:rp,,:: cc`%var1`% ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                  ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#                    ^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                     ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:tp,,:: cc`%var1`% ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                  ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#                    ^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                     ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; `;
+#^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::d9,,:: cc;cc ; just text cc;cc
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#               ^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r9,,:: cc;cc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t9,,:: cc;cc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>::d10,,:: cc`;cc ; just text cc;cc , the "`" is miss
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#            ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:r10,,:: cc`;cc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#        ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#          ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#             ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#               ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                  ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:t10,,:: cc`;cc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#        ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#          ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#             ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#               ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                  ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>; `, comma
+#^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::dc,,:: cc`,cc ; just text cc`cc , the "`" is miss
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#      ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#        ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#           ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#             ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:rc,,:: cc`,cc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#       ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#         ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#            ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                 ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:tc,,:: cc`,cc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#       ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#         ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#            ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                 ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk
+>
+>
+>; `:: (literal pair of colons)
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>::dc2,,:: cc`::cc ; just text cc::cc , the "`" is miss
+#^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#  ^^^^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk string.entity.name.function.hotstring.trigger.with_rt.flag.ahk
+#       ^^ source.ahk hotstring.normal.flag.ahk keyword.operator.hotstring.with_rt.flag.ahk
+#         ^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#            ^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#              ^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk hotstring.normal.flag.ahk string.hotstring.with_rt.flag.ahk comment.line.hotstring.ahk
+>:r:rc2,,:: cc`::cc ; also
+#^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+# ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk entity.name.function.hotstring.r.flag.ahk
+#  ^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#   ^^^^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk string.entity.name.function.hotstring.trigger.r.flag.ahk
+#        ^^ source.ahk hotstring.r.flag.ahk keyword.operator.hotstring.r.flag.ahk
+#          ^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#             ^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#               ^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk
+#                   ^^^^^^ source.ahk hotstring.r.flag.ahk string.hotstring.r.flag.ahk comment.line.hotstring.ahk
+>:t:tc2,,:: cc`::cc ; also
+#^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+# ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk entity.name.function.hotstring.t.flag.ahk
+#  ^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#   ^^^^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk string.entity.name.function.hotstring.trigger.t.flag.ahk
+#        ^^ source.ahk hotstring.t.flag.ahk keyword.operator.hotstring.t.flag.ahk
+#          ^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#             ^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk invalid.illegal.unknown.character.escape.ahk
+#               ^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk
+#                   ^^^^^^ source.ahk hotstring.t.flag.ahk string.hotstring.t.flag.ahk comment.line.hotstring.ahk

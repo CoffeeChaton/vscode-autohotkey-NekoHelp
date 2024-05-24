@@ -72,10 +72,8 @@ export function wrapClass(
     const col = position.character;
     if (col > lStr.length) return [];
 
-    // []. <-- case
-    // 321
-    const mayArray: string | undefined = lStr.at(position.character - 2);
-    if (mayArray === ']') {
+    // [     ]. <-- case
+    if (lStr.at(position.character - 2) === ']' && lStr.at(position.character - 1) === '.') {
         return ahkBaseWrap({
             ahkArray: true,
             ahkFileOpen: false,
