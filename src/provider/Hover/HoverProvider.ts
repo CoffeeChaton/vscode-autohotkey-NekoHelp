@@ -89,14 +89,14 @@ function HoverProviderCore(
 
     // ex: #Warn
     const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData)
-        ?? hoverMsgBoxMagicNumber(AhkTokenLine, position);
+        ?? hoverMsgBoxMagicNumber(AhkTokenLine, position)
+        ?? HotStringsOptions(position, AhkFileData, document);
     if (DirectivesMd !== null) return DirectivesMd;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);
     const haveFunc: vscode.MarkdownString | null = HoverOfFunc(document, position, AhkFunc)
         ?? hoverMethod(document, position, AhkFileData)
         ?? ClassProperty2Md(document, position, AhkFileData)
-        ?? HotStringsOptions(position, AhkFileData)
         ?? HotKeyOpt(position, AhkFileData);
     if (haveFunc !== null) return new vscode.Hover(haveFunc);
 

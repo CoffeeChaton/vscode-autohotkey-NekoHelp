@@ -13,12 +13,12 @@
 <!-- pnpm 9.1.2 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: hover at `HotStrings` Escape_Sequences show a uri to my-github to show preview.
 - fix: ([#65](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/65)) `HotStrings` without `T-flag/R-flag` highlight
 
-  ```ahk
-  :*b0:<em>::</em>{left 5}
-  ;               ^^^^^^^^special symbols, if not open T-flag
-  ```
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-58--issuse-65--HotStrings-highlight-1.jpg)
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-58--issuse-65--HotStrings-highlight-2.png)
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-58--issuse-65--HotStrings-highlight-3.png)
 
 - fix: ([#67](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/67)) `].` can not show completion
 - fix: ([#66](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/66)) color-picker rm `label:` and `MsgBox` Options arg range.

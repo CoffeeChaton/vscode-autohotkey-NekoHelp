@@ -22,6 +22,7 @@
         "| `UP`   | ```*LWin::Send {LCtrl down} and *LWin Up::Send {LCtrl up}```             |",
         ""
     ],
+    "AhkHotKeys.hover.HotString.Escape_Sequences.md": "about the Escape Sequences in HotString \n\n [Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/65#issuecomment-2129961029)",
     "MsgBoxFullTable": [
         "[Group #1: Buttons](https://www.autohotkey.com/docs/v1/lib/MsgBox.htm#Group_1_Buttons)",
         "",

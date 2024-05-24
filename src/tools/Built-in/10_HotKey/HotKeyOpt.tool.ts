@@ -10,10 +10,10 @@ export function HotKeyOpt(
     AhkFileData: TAhkFileData,
 ): vscode.MarkdownString | null {
     const { AST } = AhkFileData;
-    for (const cHotString of AST) {
-        if (!(cHotString instanceof CAhkHotKeys)) continue;
+    for (const ahkHotKeys of AST) {
+        if (!(ahkHotKeys instanceof CAhkHotKeys)) continue;
 
-        const { selectionRange, mdMeta } = cHotString;
+        const { selectionRange, mdMeta } = ahkHotKeys;
         if (selectionRange.contains(position)) {
             const { md, range } = mdMeta;
             if (range.contains(position)) {
