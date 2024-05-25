@@ -80,5 +80,7 @@
         "| Adds a Help button (see remarks below)        | 16384         | 0x4000    |",
         "| Make the text right-justified                 | 524288        | 0x80000   |",
         "| Right-to-left reading order for Hebrew/Arabic | 1048576       | 0x100000  |"
-    ]
+    ],
+    "VBA.md.search.it": "[search it in m$](https://learn.microsoft.com/en-us/search/?terms=",
+    "VBA.md.goto.doc": "[goto doc in m$](https://learn.microsoft.com/en-us/office/vba/api/"
 }

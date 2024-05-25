@@ -15,6 +15,9 @@
 <!-- dprint 0.45.1 -->
 
 - fix: ([#68](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/68)) core `Label:` identify with `} label_1:` case
+- feat: ([#69](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/69)) VBA++ with `ComObjActive()`
+
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/vbaCompletion.gif)
 
 ## v0.0.58(2024-05-25)
 

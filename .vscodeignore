@@ -38,6 +38,7 @@ out/
 pnpm-lock.yaml
 readonlyJsonAdd.js
 readonlyJsonRm.js
+script/
 src/
 syntaxes/grammar/
 syntaxes/README.md
