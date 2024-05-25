@@ -127,7 +127,10 @@ const getLabelRefCoreMemo = new CMemo<TAhkFileData, TFileLabelRefMap>((AhkFileDa
     for (const AhkTokenLine of DocStrMap) {
         const { detail, lStr, line } = AhkTokenLine;
         if (detail.includes(EDetail.isLabelLine)) {
-            const keyRawName: string = lStr.trim().replace(':', '');
+            const keyRawName: string = lStr
+                .replace(/^[ \t]*\}?/u, '')
+                .trim()
+                .replace(':', '');
             const upName: string = ToUpCase(keyRawName);
             const arr: TLabelRefMsg[] = map.get(upName) ?? [];
             const col: number = lStr.indexOf(':');
@@ -219,7 +222,10 @@ export function getDefWithLabel(
     const { lStr, detail } = AhkTokenLine;
     const lStrFix: string = lStr.slice(0, Math.max(0, character));
 
-    if (detail.includes(EDetail.isLabelLine) && (/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.trim())) {
+    if (
+        detail.includes(EDetail.isLabelLine)
+        && (/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStr.replace(/^[ \t]*\}?/u, '').trim())
+    ) {
         return findLabelAll(wordUpCase);
     }
 

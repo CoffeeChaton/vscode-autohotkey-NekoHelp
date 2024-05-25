@@ -1071,7 +1071,7 @@
                         },
                         "2": { "name": "comment.line.semicolon.label.ahk" }
                     },
-                    "match": "^[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+:)[ \\t]*([ \\t];.*)?$",
+                    "match": "^[ \\t]*\\}?[ \\t]*([#$@\\w\\x{A1}-\\x{FFFF}]+:)[ \\t]*([ \\t];.*)?$",
                     "name": "labelline.ahk"
                 }
             ]

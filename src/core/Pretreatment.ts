@@ -424,7 +424,7 @@ export function Pretreatment(
             }
         }
 
-        if ((/^[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStrTrim)) {
+        if ((/^\}?[ \t]*[#$@\w\u{A1}-\u{FFFF}]+:$/u).test(lStrTrim)) {
             const maDefault: boolean = (/^default:$/iu).test(lStrTrim);
             const fistWord: '' | 'DEFAULT' = maDefault
                 ? 'DEFAULT'

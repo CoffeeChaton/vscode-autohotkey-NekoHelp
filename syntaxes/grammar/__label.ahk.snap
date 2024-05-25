@@ -1,0 +1,145 @@
+>; #Warn All, MsgBox
+#^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>~F11:: foo(1)
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+#      ^ source.ahk
+#       ^^^ source.ahk entity.name.function.ahk
+#          ^ source.ahk punctuation.bracket.ahk
+#           ^ source.ahk constant.numeric.decimal.ahk
+#            ^ source.ahk punctuation.bracket.ahk
+>~F12:: Reload
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+#      ^ source.ahk
+#       ^^^^^^ source.ahk keyword.control.flow.ahk
+>~F10::
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^^^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#    ^^ source.ahk meta.hotkey.line.ahk
+>    GoSub, Label1
+#^^^^ source.ahk
+#    ^^^^^ source.ahk meta.goto.gosub.ahk keyword.control.flow.ahk
+#         ^^ source.ahk meta.goto.gosub.ahk
+#           ^^^^^^ source.ahk meta.goto.gosub.ahk entity.name.function.label.ahk
+>Return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>foo(key) {
+#^^^ source.ahk entity.name.function.ahk
+#   ^ source.ahk punctuation.bracket.ahk
+#    ^^^ source.ahk
+#       ^ source.ahk punctuation.bracket.ahk
+#        ^ source.ahk
+#         ^ source.ahk punctuation.bracket.ahk
+>    Switch key {
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk keyword.control.flow.ahk
+#          ^^^^^ source.ahk
+#               ^ source.ahk punctuation.bracket.ahk
+>        Case 1:
+#^^^^^^^^ source.ahk
+#        ^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk
+#             ^ source.ahk constant.numeric.decimal.ahk
+#              ^ source.ahk keyword.operator.ternary.ahk
+>            MsgBox, % "key is 1 `n" key
+#^^^^^^^^^^^^ source.ahk
+#            ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                     ^ source.ahk meta.command.line.ahk
+#                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                       ^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                  ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                   ^^^^ source.ahk meta.command.line.ahk
+>
+>        Case 2, 3:
+#^^^^^^^^ source.ahk
+#        ^^^^ source.ahk keyword.control.flow.ahk
+#            ^ source.ahk
+#             ^ source.ahk constant.numeric.decimal.ahk
+#              ^ source.ahk punctuation.ahk
+#               ^ source.ahk
+#                ^ source.ahk constant.numeric.decimal.ahk
+#                 ^ source.ahk keyword.operator.ternary.ahk
+>            MsgBox, % "key is 2/3 `n" key
+#^^^^^^^^^^^^ source.ahk
+#            ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                     ^ source.ahk meta.command.line.ahk
+#                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                       ^^^^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                                  ^^ source.ahk meta.command.line.ahk string.quoted.double.ahk constant.character.escape.ahk
+#                                    ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                     ^^^^ source.ahk meta.command.line.ahk
+>
+>        Default: ;< not label
+#^^^^^^^^ source.ahk labelline.ahk
+#        ^^^^^^^ source.ahk labelline.ahk keyword.control.ahk
+#               ^ source.ahk labelline.ahk
+#                ^ source.ahk meta.comment.line.semicolon.ahk
+#                 ^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>            MsgBox, % "Default:" key
+#^^^^^^^^^^^^ source.ahk
+#            ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#                  ^ source.ahk meta.command.line.ahk punctuation.ahk
+#                   ^ source.ahk meta.command.line.ahk
+#                    ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                     ^ source.ahk meta.command.line.ahk
+#                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#                       ^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                               ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+#                                ^^^^ source.ahk meta.command.line.ahk
+>    }
+#^^^^ source.ahk
+#    ^ source.ahk punctuation.bracket.ahk
+>    MsgBox, % "is fn 1"
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                      ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>} Label1:
+#^^ source.ahk labelline.ahk
+#  ^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>; ^^^^^^^ is label 1
+#^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>MsgBox, % "is lab 1"
+#^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#      ^ source.ahk meta.command.line.ahk punctuation.ahk
+#       ^ source.ahk meta.command.line.ahk
+#        ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#         ^ source.ahk meta.command.line.ahk
+#          ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#           ^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                   ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>Return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>Label2:
+#^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>    MsgBox, % "is lab 2"
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^ source.ahk meta.command.line.ahk punctuation.ahk
+#           ^ source.ahk meta.command.line.ahk
+#            ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#             ^ source.ahk meta.command.line.ahk
+#              ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.begin.ahk
+#               ^^^^^^^^ source.ahk meta.command.line.ahk string.quoted.double.ahk
+#                       ^ source.ahk meta.command.line.ahk string.quoted.double.ahk punctuation.definition.string.end.ahk
+>Return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>

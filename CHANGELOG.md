@@ -1,12 +1,20 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [v0.0.59(2024-05-XX)](#v00592024-05-xx)
   - [v0.0.58(2024-05-25)](#v00582024-05-25)
   - [v0.0.57(2024-05-16)](#v00572024-05-16)
   - [v0.0.56(2024-05-13)](#v00562024-05-13)
   - [v0.0.55(2024-04-26)](#v00552024-04-26)
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
+
+## v0.0.59(2024-05-XX)
+
+<!-- pnpm 9.1.2 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- dprint 0.45.1 -->
+
+- fix: ([#68](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/68)) core `Label:` identify with `} label_1:` case
 
 ## v0.0.58(2024-05-25)
 

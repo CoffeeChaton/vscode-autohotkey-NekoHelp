@@ -1,7 +1,7 @@
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { CAhkLabel } from '../../AhkSymbol/CAhkLine';
-import { getRangeOfLine } from '../../tools/range/getRangeOfLine';
+import { replacerSpace } from '../../tools/str/removeSpecialChar';
 import type { TFuncInput } from '../getChildren';
 
 export function ParserLabel(FuncInput: TFuncInput): CAhkLabel {
@@ -13,8 +13,8 @@ export function ParserLabel(FuncInput: TFuncInput): CAhkLabel {
     /**
      * Generally, aside from whitespace and comments, no other code can be written on the same line as a label.
      */
-    const name: string = lStr.trim();
-    const col: number = textRaw.search(/\S/u);
+    const name: string = lStr.replace(/^[ \t]*\}?/u, '').trim();
+    const col: number = textRaw.replace(/^[ \t]*\}?/u, replacerSpace).search(/\S/u);
     const userDoc: string = ahkDoc === '' && textRaw.length > (lStr.length + 1)
         ? textRaw.slice(lStr.length + 1)
         : ahkDoc;
@@ -32,7 +32,10 @@ export function ParserLabel(FuncInput: TFuncInput): CAhkLabel {
 
     return new CAhkLabel({
         name,
-        range: getRangeOfLine(line, lStr, lStr.length),
+        range: new vscode.Range(
+            new vscode.Position(line, col),
+            new vscode.Position(line, col + lStr.length),
+        ),
         selectionRange: new vscode.Range(
             new vscode.Position(line, col),
             new vscode.Position(line, col + name.length),
