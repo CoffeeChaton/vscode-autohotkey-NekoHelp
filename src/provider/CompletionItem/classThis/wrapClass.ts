@@ -11,7 +11,6 @@ import { ToUpCase } from '../../../tools/str/ToUpCase';
 import { headIsThis } from './headIsThis';
 import { RefClassWithName } from './RefClassWithName';
 import { valTrack } from './valTrack';
-import { valTrackFn } from './valTrackFn';
 
 export function setVarTrackRange(
     position: vscode.Position,
@@ -58,10 +57,7 @@ function findClassDef(
     // a := new ClassName
     // a.  ;<---
     const AhkTokenList: TTokenStream = setVarTrackRange(position, AhkFileData, DA);
-    return [
-        ...valTrack(ChapterArr, AhkTokenList),
-        ...valTrackFn(ChapterArr, AhkTokenList),
-    ];
+    return valTrack(ChapterArr, AhkTokenList);
 }
 
 // eslint-disable-next-line max-params

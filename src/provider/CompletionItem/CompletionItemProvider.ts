@@ -35,6 +35,7 @@ import { getSnipGlobalVal } from './global/globalValCompletion';
 import { IncludeFsPath } from './IncludeFsPath/IncludeFsPath';
 import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
 import { getSnipSubCmd } from './SubCommand/getSnipSubCmd';
+import { wrapVba } from './vba/wrapVba';
 
 function getPartStr(lStr: string, position: vscode.Position): string | null {
     const match: RegExpMatchArray | null = lStr
@@ -98,6 +99,7 @@ function CompletionItemCore(
     if (!detail.includes(EDetail.inComment)) {
         completions.push(
             ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
+            ...wrapVba(position, textRaw, lStr, AhkFileData, DA), // '.'
             ...getSnipAhkSend(AhkFileData, position), // '{'
             ...getSnipDirectives(subStr), // #warn
             ...getSnipDeclaration(lStr), // local

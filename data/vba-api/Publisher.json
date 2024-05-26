@@ -92,6 +92,7 @@
         "main": "Returns or sets a **[PbPrintGraphics](publisher.pbprintgraphics.md)** constant representing the resolution at which the inserted graphics are to be printed in the specified publication. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "PbPrintGraphics",
             "publisher.pbprintgraphics.md"
         ]
     },
@@ -4522,6 +4523,7 @@
         "main": "Replaces the specified field or **Fields** collection with their most recent results.\n",
         "Parameters": [],
         "Return_value": [
+            "Nothing",
             "Fields"
         ]
     },
@@ -11711,24 +11713,6 @@
             "Publisher.TextFrame.md",
             "Publisher.Shape.md"
         ]
-    },
-    {
-        "api_name": "Publisher.PrintablePlate",
-        "Events": [],
-        "file_name": "Publisher.PrintablePlate.md",
-        "kind": "object",
-        "main": "> [!NOTE] \n> This object is deprecated and is not intended to be used in your code.\n",
-        "Methods": [],
-        "Properties": []
-    },
-    {
-        "api_name": "Publisher.PrintablePlates",
-        "Events": [],
-        "file_name": "Publisher.PrintablePlates.md",
-        "kind": "object",
-        "main": "> [!NOTE] \n> This object is deprecated and is not intended to be used in your code.\n",
-        "Methods": [],
-        "Properties": []
     },
     {
         "api_name": "Publisher.PrintableRect.Application",

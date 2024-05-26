@@ -60,7 +60,9 @@ export function vbaObj2LikeMethod(
         if (CompletionItemKind !== null) {
             item.kind = CompletionItemKind;
         }
-        item.insertText = `${Method_name}(${data.Parameters.join(', ')})`;
+        item.insertText = vbaKind === 'property' && data.Parameters.length === 0
+            ? Method_name
+            : `${Method_name}(${data.Parameters.join(', ')})`;
         item.detail = 'by-neko-help (VBA-ex)';
         item.documentation = md;
 

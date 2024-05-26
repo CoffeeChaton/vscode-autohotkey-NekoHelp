@@ -46,13 +46,14 @@ export type TOther = TBase & {
 };
 
 export type TApiMeta = TMdDataBase | TObject | TEnum | TOther;
+export type TApiMetaKind = TApiMeta['kind'];
 
 type TObjCh = {
     need: string[],
     line: number,
 };
 
-function getObjCh(dataList: string[], startLine: number, regCase: 1 | 2): TObjCh {
+function getObjCh(dataList: string[], startLine: number): TObjCh {
     const { length } = dataList;
     const need: string[] = [];
     let line = startLine;
@@ -61,9 +62,10 @@ function getObjCh(dataList: string[], startLine: number, regCase: 1 | 2): TObjCh
         if (s2 === '') continue;
         if (s2.startsWith('##')) break;
 
-        const ma: RegExpMatchArray | null = regCase === 1
-            ? s2.match(/^-\s*\[([^\]]+)\]|^\|\s*\[([^\]]+)\]/u)
-            : s2.match(/^\|\s*_(\w+)_\s*\|/u);
+        const ma: RegExpMatchArray | null = s2.match(/^-\s*\[([^\]]+)\]|^\|\s*\[([^\]]+)\]/u)
+            ?? s2.match(/^\s*\|\s*[_*](\w+)[_*]\s*\|/u)
+            ?? s2.match(/^\s*\*\*(\w+)\*\*\s*/u);
+
         if (ma === null) continue;
         const maa: string = ma[1] ?? ma[2] ?? '';
         if (maa !== '') need.push(maa);
@@ -76,8 +78,11 @@ function getObjCh(dataList: string[], startLine: number, regCase: 1 | 2): TObjCh
     };
 }
 
-function getReturn_value(main: string): string[] {
-    const arr: string[] = [];
+function getReturn_value(main: string, Return_value: string[], Syntax_last: string): string[] {
+    const arr: string[] = [...Return_value];
+    if (Syntax_last !== '') {
+        arr.push(Syntax_last);
+    }
     for (const ma of main.matchAll(/\*{2}([\w.()[\]]+)\*{2}/gu)) {
         const ma1: string = ma[1].includes('(')
             ? ma[1].replace(/[^(]*\(/u, '') // "[Range](Excel.Range(object).md)" -> "Excel.Range(object).md)"
@@ -125,18 +130,23 @@ function getEnum_ch(main: string): string[] {
 }
 
 /**
- * @param source_path https://github.com/MicrosoftDocs/VBA-Docs/tree/main/api
+ * raw data is from https://github.com/MicrosoftDocs/VBA-Docs/tree/main/api
+ *
+ * @param source_path https://github.com/CoffeeChaton/VBA-Docs
  * @param export_path pleas check `Excel.json` ...etc exist
  */
 export function make_vba_json(source_path: string, export_path: string): void {
     const bigObj: Record<string, TApiMeta[]> = {
+        Access: [],
         Excel: [],
         Office: [],
         Outlook: [],
+        PowerPoint: [],
+        Project: [],
         Publisher: [],
+        unknown: [],
         Visio: [],
         Word: [],
-        unknown: [],
     };
     const fsPath: string = source_path;
 
@@ -148,7 +158,7 @@ export function make_vba_json(source_path: string, export_path: string): void {
 
         const dataList: string[] = fs.readFileSync(fullPath)
             .toString()
-            .split('\n');
+            .split(/\r?\n/u);
         const { length } = dataList;
 
         // ----
@@ -163,6 +173,9 @@ export function make_vba_json(source_path: string, export_path: string): void {
         const Methods: string[] = [];
         const Properties: string[] = [];
         const Parameters: string[] = [];
+        const Return_value: string[] = [];
+        const Syntax: string[] = [];
+        // ## Syntax
         for (let line = 0; line < length; line++) {
             const s: string = dataList[line];
             if (s === '---') {
@@ -190,28 +203,41 @@ export function make_vba_json(source_path: string, export_path: string): void {
             if (s.startsWith('## ')) {
                 inMain = false;
                 if (s.startsWith('## Events')) {
-                    const ch: TObjCh = getObjCh(dataList, line, 1);
+                    const ch: TObjCh = getObjCh(dataList, line);
                     line = ch.line;
                     Events.push(...ch.need);
                 } else if (s.startsWith('## Methods')) {
-                    const ch: TObjCh = getObjCh(dataList, line, 1);
+                    const ch: TObjCh = getObjCh(dataList, line);
                     line = ch.line;
                     Methods.push(...ch.need);
                 } else if (s.startsWith('## Properties')) {
-                    const ch: TObjCh = getObjCh(dataList, line, 1);
+                    const ch: TObjCh = getObjCh(dataList, line);
                     line = ch.line;
                     Properties.push(...ch.need);
                 } else if (s.startsWith('## Parameters')) {
-                    const ch: TObjCh = getObjCh(dataList, line, 2);
+                    const ch: TObjCh = getObjCh(dataList, line);
                     line = ch.line;
                     Parameters.push(...ch.need);
+                } else if (s.startsWith('## Return value')) {
+                    const ch: TObjCh = getObjCh(dataList, line);
+                    line = ch.line;
+                    Return_value.push(...ch.need);
+                } else if (s.startsWith('## Syntax')) {
+                    const ch: TObjCh = getObjCh(dataList, line);
+                    line = ch.line;
+                    Syntax.push(...ch.need);
                 }
             }
 
             if (inMain && s !== '') main += `${s}\n`;
         }
 
-        if (api_name === '') continue;
+        if (
+            api_name === ''
+            || main.includes('> [!NOTE] \n> This property should not be used.')
+            || main.includes('is no longer supported')
+            || main.includes('is deprecated')
+        ) continue;
 
         // eslint-disable-next-line dot-notation
         const need: TApiMeta[] = bigObj[api_name.replace(/\..*/u, '')] ?? bigObj['unknown'];
@@ -255,8 +281,9 @@ export function make_vba_json(source_path: string, export_path: string): void {
                     kind,
                     main,
                     Parameters,
-                    Return_value: getReturn_value(main),
+                    Return_value: getReturn_value(main, Return_value, Syntax.at(-1) ?? ''),
                 });
+
                 break;
             default:
                 break;

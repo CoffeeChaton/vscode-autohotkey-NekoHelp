@@ -1316,9 +1316,10 @@
         "api_name": "Excel.Application.ActiveSheet",
         "file_name": "Excel.Application.ActiveSheet.md",
         "kind": "property",
-        "main": "Returns an object that represents the active sheet (the sheet on top) in the active workbook or in the specified window or workbook. Returns **Nothing** if no sheet is active.\n",
+        "main": "Returns an object that represents the active sheet **[Worksheet](excel.worksheet.md)** (the sheet on top) in the active workbook or in the specified window or workbook. Returns **Nothing** if no sheet is active.\n",
         "Parameters": [],
         "Return_value": [
+            "excel.worksheet.md",
             "Nothing"
         ]
     },
@@ -1619,22 +1620,6 @@
         "Return_value": []
     },
     {
-        "api_name": "Excel.Application.CanPlaySounds",
-        "file_name": "Excel.Application.CanPlaySounds.md",
-        "kind": "property",
-        "main": "> [!NOTE] \n> This property should not be used. Sound notes have been removed from Microsoft Excel.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
-        "api_name": "Excel.Application.CanRecordSounds",
-        "file_name": "Excel.Application.CanRecordSounds.md",
-        "kind": "property",
-        "main": "> [!NOTE] \n> This property should not be used. Sound notes have been removed from Microsoft Excel.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
         "api_name": "Excel.Application.Caption",
         "file_name": "Excel.Application.Caption.md",
         "kind": "property",
@@ -1705,7 +1690,9 @@
             "CustomDictionary",
             "IgnoreUppercase"
         ],
-        "Return_value": []
+        "Return_value": [
+            "True"
+        ]
     },
     {
         "api_name": "Excel.Application.ClipboardFormats",
@@ -1725,7 +1712,9 @@
         "kind": "property",
         "main": "Returns or sets the name of the High Performance Computing (HPC) Cluster Connector that is used to run user-defined functions in XLL add-ins. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.Application.Columns",
@@ -2236,14 +2225,6 @@
         ]
     },
     {
-        "api_name": "Excel.Application.EnableAnimations",
-        "file_name": "Excel.Application.EnableAnimations.md",
-        "kind": "property",
-        "main": "> [!NOTE] \n> This object, member, or enumeration is deprecated and is not intended to be used in your code.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
         "api_name": "Excel.Application.EnableAutoComplete",
         "file_name": "Excel.Application.EnableAutoComplete.md",
         "kind": "property",
@@ -2717,6 +2698,7 @@
         "main": "Returns **True** if the specified workbook is open in a Protected View window. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "True"
         ]
     },
@@ -3153,6 +3135,7 @@
         "main": "Specifies whether communication with the printer is turned on. Read/write **Boolean**.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Boolean"
         ]
     },
@@ -3411,16 +3394,6 @@
         "Return_value": []
     },
     {
-        "api_name": "Excel.Application.SaveWorkspace",
-        "file_name": "Excel.Application.SaveWorkspace.md",
-        "kind": "method",
-        "main": "> [!NOTE] \n> This member is deprecated and is not intended to be used in your code.\n",
-        "Parameters": [
-            "FileName"
-        ],
-        "Return_value": []
-    },
-    {
         "api_name": "Excel.Application.ScreenUpdating",
         "file_name": "Excel.Application.ScreenUpdating.md",
         "kind": "property",
@@ -3562,7 +3535,9 @@
             "TargetPivotTable",
             "TargetRange"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Application.SheetPivotTableBeforeAllocateChanges",
@@ -3943,7 +3918,9 @@
         "kind": "property",
         "main": "Returns or sets whether Excel allows user-defined functions in XLL add-ins to be run on a compute cluster. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Application.UsedObjects",
@@ -4059,6 +4036,7 @@
             "Time"
         ],
         "Return_value": [
+            "Boolean",
             "True"
         ]
     },
@@ -6622,7 +6600,9 @@
         "kind": "property",
         "main": "Returns the display folder name for a named set. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.CalculatedMember.Dynamic",
@@ -8344,7 +8324,9 @@
         "kind": "property",
         "main": "Returns the number of comment pages that will be printed for the current chart. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.Chart.PrintOut",
@@ -8628,7 +8610,9 @@
         "kind": "property",
         "main": "Returns or sets whether to display all field buttons on a PivotChart. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Chart.ShowAxisFieldButtons",
@@ -8636,7 +8620,9 @@
         "kind": "property",
         "main": "Returns or sets whether to display axis field buttons on a PivotChart. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Chart.ShowDataLabelsOverMaximum",
@@ -8654,7 +8640,9 @@
         "kind": "property",
         "main": "Returns or sets whether to display legend field buttons on a PivotChart. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Chart.ShowReportFilterFieldButtons",
@@ -8662,7 +8650,9 @@
         "kind": "property",
         "main": "Returns or sets whether to display the report filter field buttons on a PivotChart. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Chart.ShowValueFieldButtons",
@@ -8670,7 +8660,9 @@
         "kind": "property",
         "main": "Returns or sets whether to display the value field buttons on a PivotChart. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Chart.SideWall",
@@ -9928,11 +9920,13 @@
         "api_name": "Excel.ChartObjects.Item",
         "file_name": "Excel.ChartObjects.Item.md",
         "kind": "method",
-        "main": "Returns a single object from a collection.\n",
+        "main": "Returns a single object from a collection. **[ChartObjects](Excel.ChartObjects.md)** object\n",
         "Parameters": [
             "Index"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Excel.ChartObjects.md"
+        ]
     },
     {
         "api_name": "Excel.ChartObjects.Left",
@@ -10677,7 +10671,9 @@
         "kind": "property",
         "main": "Returns or sets the luminosity of the specified object. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Single"
+        ]
     },
     {
         "api_name": "Excel.ColorFormat.Creator",
@@ -11380,7 +11376,9 @@
             "Start",
             "Overwrite"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.Comment.Visible",
@@ -11528,7 +11526,9 @@
         "Parameters": [
             "Text"
         ],
-        "Return_value": []
+        "Return_value": [
+            "CommentThreaded"
+        ]
     },
     {
         "api_name": "Excel.Comment.Application",
@@ -11648,7 +11648,9 @@
             "Start",
             "Overwrite"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ConditionValue.Application",
@@ -12681,7 +12683,9 @@
         "kind": "property",
         "main": "Returns or sets whether items from all levels of hierarchies in a named set cube field are displayed in the same field of a PivotTable report based on an OLAP cube. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.CubeField.HasMemberProperties",
@@ -12700,7 +12704,9 @@
         "kind": "property",
         "main": "Returns or sets whether to order and remove duplicates when displaying the specified named set in a PivotTable report based on an OLAP cube. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.CubeField.IncludeNewItemsInFilter",
@@ -13451,6 +13457,7 @@
         "main": "Returns the **[NegativeBarFormat](Excel.NegativeBarFormat.md)** object associated with a data bar conditional formatting rule. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "NegativeBarFormat",
             "Excel.NegativeBarFormat.md"
         ]
     },
@@ -16600,7 +16607,9 @@
         "kind": "property",
         "main": "Returns or sets the angle of the gradient fill for the specified fill format. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Single"
+        ]
     },
     {
         "api_name": "Excel.FillFormat.GradientColorType",
@@ -16744,6 +16753,7 @@
         "main": "Returns a **[PictureEffects](Office.PictureEffects.md)** object that represents the picture or texture fill for the specified fill format. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "PictureEffects",
             "Office.PictureEffects.md"
         ]
     },
@@ -17879,6 +17889,7 @@
         "main": "Returns a new **[AboveAverage](Excel.AboveAverage.md)** object representing a conditional formatting rule for the specified range.\n",
         "Parameters": [],
         "Return_value": [
+            "AboveAverage",
             "Excel.AboveAverage.md"
         ]
     },
@@ -17891,6 +17902,7 @@
             "ColorScaleType"
         ],
         "Return_value": [
+            "ColorScale",
             "Excel.ColorScale.md"
         ]
     },
@@ -17901,6 +17913,7 @@
         "main": "Returns a **[Databar](Excel.Databar.md)** object representing a data bar conditional formatting rule for the specified range.\n",
         "Parameters": [],
         "Return_value": [
+            "Databar",
             "Excel.Databar.md"
         ]
     },
@@ -17911,6 +17924,7 @@
         "main": "Returns a new **[IconSetCondition](Excel.IconSetCondition.md)** object that represents an icon set conditional formatting rule for the specified range.\n",
         "Parameters": [],
         "Return_value": [
+            "IconSetCondition",
             "Excel.IconSetCondition.md"
         ]
     },
@@ -17921,6 +17935,7 @@
         "main": "Returns a **[Top10](Excel.Top10.md)** object representing a conditional formatting rule for the specified range.\n",
         "Parameters": [],
         "Return_value": [
+            "Top10",
             "Excel.Top10.md"
         ]
     },
@@ -17931,6 +17946,7 @@
         "main": "Returns a new **[UniqueValues](Excel.UniqueValues.md)** object representing a conditional formatting rule for the specified range.\n",
         "Parameters": [],
         "Return_value": [
+            "UniqueValues",
             "Excel.UniqueValues.md"
         ]
     },
@@ -21897,7 +21913,9 @@
         "kind": "property",
         "main": "Returns or sets the descriptive (alternative) text string for the specified table. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ListObject.Application",
@@ -22272,7 +22290,9 @@
         "kind": "property",
         "main": "Returns or sets the description associated with the alternative text string for the specified table. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ListObject.TableStyle",
@@ -23601,6 +23621,7 @@
         "main": "Returns a **[FormatColor](Excel.FormatColor.md)** object that you can use to specify the border color for negative data bars. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "FormatColor",
             "Excel.FormatColor.md"
         ]
     },
@@ -24140,6 +24161,7 @@
         "main": "Returns the **[CalculatedMembers](Excel.CalculatedMembers.md)** collection for the specified connection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "CalculatedMembers",
             "Excel.CalculatedMembers.md"
         ]
     },
@@ -24232,7 +24254,9 @@
         "kind": "property",
         "main": "Returns or sets the locale identifier for the specified connection. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Excel.OLEDBConnection.MaintainConnection",
@@ -27975,7 +27999,9 @@
         "kind": "method",
         "main": "Performs a writeback operation on the specified cell in a PivotTable report based on an OLAP data source.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.PivotCell.Application",
@@ -28042,7 +28068,9 @@
         "kind": "property",
         "main": "Returns the value last retrieved from the data source for edited cells in a PivotTable report. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.PivotCell.DiscardChange",
@@ -28050,7 +28078,9 @@
         "kind": "method",
         "main": "Discards changes to the specified cell in a PivotTable report.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.PivotCell",
@@ -28089,7 +28119,9 @@
         "kind": "property",
         "main": "Returns a tuple that provides the full MDX coordinates of the specified value cell in a PivotTable with an OLAP data source. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.PivotCell.Parent",
@@ -29055,7 +29087,9 @@
         "kind": "property",
         "main": "Returns or sets whether item labels are repeated in the PivotTable for the specified PivotField. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.PivotField.ServerBased",
@@ -30483,7 +30517,9 @@
         "kind": "property",
         "main": "Returns or sets the descriptive (alternative) text string for the specified PivotTable. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.PivotTable.Application",
@@ -30531,7 +30567,9 @@
         "kind": "property",
         "main": "Returns or sets whether to evaluate calculated members from OLAP servers in filters. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.PivotTable.ChangeConnection",
@@ -30552,6 +30590,7 @@
         "main": "Returns the **[PivotTableChangeList](Excel.PivotTableChangeList.md)** collection that represents the list of changes that have been made to the specified PivotTable based on an OLAP data source. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "PivotTableChangeList",
             "Excel.PivotTableChangeList.md"
         ]
     },
@@ -30909,6 +30948,7 @@
         "main": "Returns or sets whether writing back to the data source is enabled for the specified PivotTable. The default value is **False**. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "False"
         ]
     },
@@ -31896,7 +31936,9 @@
         "kind": "property",
         "main": "Returns or sets whether to include filtered items in the totals of named sets for the specified PivotTable. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.PivotTableChangeList.Add",
@@ -32858,6 +32900,7 @@
         "main": "**True** if the Protected View window can be resized. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "True"
         ]
     },
@@ -32867,7 +32910,9 @@
         "kind": "property",
         "main": "Returns or sets a value that represents the height, in [points](../language/glossary/vbe-glossary.md#point), of the Protected View window. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.ProtectedViewWindow.Left",
@@ -32875,7 +32920,9 @@
         "kind": "property",
         "main": "Returns or sets a value that represents the distance, in [points](../language/glossary/vbe-glossary.md#point), from the left edge of the client area to the left edge of the Protected View window. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.ProtectedViewWindow",
@@ -32908,7 +32955,9 @@
         "kind": "property",
         "main": "Returns the name of the source file that is open in the specified Protected View window. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ProtectedViewWindow.SourcePath",
@@ -32916,7 +32965,9 @@
         "kind": "property",
         "main": "Returns the path of the source file that is open in the specified Protected View window. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ProtectedViewWindow.Top",
@@ -32924,7 +32975,9 @@
         "kind": "property",
         "main": "Returns or sets a value that represents the distance, in [points](../language/glossary/vbe-glossary.md#point), from the top edge of the specified Protected View window to the top edge of the usable area. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.ProtectedViewWindow.Visible",
@@ -32932,7 +32985,9 @@
         "kind": "property",
         "main": "Returns or sets a value that determines whether the specified Protected View window is visible. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.ProtectedViewWindow.Width",
@@ -34630,7 +34685,9 @@
         "Parameters": [
             "Text"
         ],
-        "Return_value": []
+        "Return_value": [
+            "CommentThreaded"
+        ]
     },
     {
         "api_name": "Excel.Range.AddIndent",
@@ -35431,25 +35488,31 @@
         "api_name": "Excel.Range.Formula2Local",
         "file_name": "Excel.Range.Formula2Local.md",
         "kind": "property",
-        "main": "This is the Formula2 Variant of Range.FormulaLocal. See Range.Formula2 for more detail.\n",
+        "main": "This is the Formula2 Variant of Range.FormulaLocal. See Range.Formula2 for more detail.\nReturns or sets a **Variant** value that represents the object's formula in A1-style array notation.    \n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Range.Formula2R1C1",
         "file_name": "Excel.Range.Formula2R1C1.md",
         "kind": "property",
-        "main": "This is the Formula2 Variant of Range.FormulaR1C1. See Range.Formula2 and Range.FormulaR1C1 for more detail.\n",
+        "main": "This is the Formula2 Variant of Range.FormulaR1C1. See Range.Formula2 and Range.FormulaR1C1 for more detail.\nReturns or sets a **Variant** value that represents the object's formula in A1-style array notation.    \n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Range.Formula2R1C1Local",
         "file_name": "Excel.Range.Formula2R1C1Local.md",
         "kind": "property",
-        "main": "This is the Formula2 Variant of Range.FormulaR1C1Local. See Range.Formula2 and Range.FormulaR1C1Local for more detail.\n",
+        "main": "This is the Formula2 Variant of Range.FormulaR1C1Local. See Range.Formula2 and Range.FormulaR1C1Local for more detail.\nReturns or sets a **Variant** value that represents the object's formula in A1-style array notation.    \n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Range.FormulaArray",
@@ -36380,20 +36443,13 @@
         "Return_value": []
     },
     {
-        "api_name": "Excel.Range.SoundNote",
-        "file_name": "Excel.Range.SoundNote.md",
-        "kind": "property",
-        "main": "> [!NOTE] \n> This property should not be used. Sound notes have been removed from Microsoft Excel.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
         "api_name": "Excel.Range.SparklineGroups",
         "file_name": "Excel.Range.SparklineGroups.md",
         "kind": "property",
         "main": "Returns a **[SparklineGroups](Excel.SparklineGroups.md)** object that represents an existing group of sparklines from the specified range. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparklineGroups",
             "Excel.SparklineGroups.md"
         ]
     },
@@ -38007,7 +38063,9 @@
         "kind": "property",
         "main": "Returns or sets the fill color for negative data points in a series. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Excel.Series.InvertColorIndex",
@@ -38015,7 +38073,9 @@
         "kind": "property",
         "main": "Returns or sets the fill color for negative data points in a series. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Excel.Series.InvertIfNegative",
@@ -38158,7 +38218,9 @@
         "kind": "property",
         "main": "Returns an index value that is used internally to associate series formatting with chart elements. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Excel.Series.PlotOrder",
@@ -38370,6 +38432,7 @@
         "main": "Creates a new series. Returns a **[Series](Excel.Series(object).md)** object that represents the new series.\n",
         "Parameters": [],
         "Return_value": [
+            "Series",
             "Excel.Series(object).md"
         ]
     },
@@ -39613,7 +39676,9 @@
         "kind": "property",
         "main": "Returns or sets the title of the alternative text associated with the specified shape. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.Shape.Top",
@@ -40609,7 +40674,9 @@
         "kind": "property",
         "main": "Returns or sets the title of the alternative text associated with the specified shape range. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ShapeRange.Top",
@@ -40749,6 +40816,7 @@
             "EndY"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md",
             "Excel.ConnectorFormat.BeginConnect.md",
             "Excel.ConnectorFormat.EndConnect.md"
@@ -40763,6 +40831,7 @@
             "SafeArrayOfPoints"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40779,6 +40848,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40795,6 +40865,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40810,6 +40881,7 @@
             "EndY"
         ],
         "Return_value": [
+            "Shape",
             "Shapes",
             "Excel.Shape.md"
         ]
@@ -40833,6 +40905,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40851,6 +40924,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40863,6 +40937,7 @@
             "SafeArrayOfPoints"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40879,6 +40954,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40894,7 +40970,9 @@
             "Width",
             "Height"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Shape"
+        ]
     },
     {
         "api_name": "Excel.Shapes.AddTextbox",
@@ -40909,6 +40987,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40928,6 +41007,7 @@
             "Top"
         ],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -40952,6 +41032,7 @@
             "Y1"
         ],
         "Return_value": [
+            "FreeformBuilder",
             "Excel.FreeformBuilder.md",
             "Excel.FreeformBuilder.AddNodes.md",
             "Excel.FreeformBuilder.ConvertToShape.md",
@@ -41438,6 +41519,7 @@
         "main": "Returns a **[SlicerItem](Excel.SlicerItem.md)** object that represents the slicer button that is currently in focus for the specified slicer. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerItem",
             "Excel.SlicerItem.md"
         ]
     },
@@ -41509,7 +41591,9 @@
         "kind": "property",
         "main": "Returns or sets whether the specified slicer can be moved or resized by using the user interface. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Slicer.DisplayHeader",
@@ -41518,6 +41602,7 @@
         "main": "Returns or sets whether the header that displays the slicer **[Caption](Excel.Slicer.Caption.md)** property is visible. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "Excel.Slicer.Caption.md"
         ]
     },
@@ -41543,7 +41628,9 @@
         "kind": "property",
         "main": "Returns or sets whether the specified slicer can be modified when the sheet that contains it is protected. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Slicer",
@@ -41587,7 +41674,9 @@
         "kind": "property",
         "main": "Returns or sets the name of the specified slicer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.Slicer.NumberOfColumns",
@@ -41595,7 +41684,9 @@
         "kind": "property",
         "main": "Returns or sets the number of columns in the specified slicer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.Slicer.Parent",
@@ -41622,6 +41713,7 @@
         "main": "Returns the **[Shape](Excel.Shape.md)** object associated with the specified slicer. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Shape",
             "Excel.Shape.md"
         ]
     },
@@ -41632,6 +41724,7 @@
         "main": "Returns the **[SlicerCache](Excel.SlicerCache.md)** object associated with the slicer. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerCache",
             "Excel.SlicerCache.md"
         ]
     },
@@ -41642,6 +41735,7 @@
         "main": "Returns the **[SlicerCacheLevel](Excel.SlicerCacheLevel.md)** object associated with the slicer. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerCacheLevel",
             "Excel.SlicerCacheLevel.md"
         ]
     },
@@ -41651,7 +41745,9 @@
         "kind": "property",
         "main": "Returns or sets the style currently applied to the specified slicer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Slicer.Top",
@@ -41762,7 +41858,9 @@
         "kind": "property",
         "main": "Returns or sets the name of the slicer cache.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.SlicerCache.OLAP",
@@ -41770,7 +41868,9 @@
         "kind": "property",
         "main": "Returns whether the slicer associated with the specified slicer cache is based on an OLAP data source. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SlicerCache.Parent",
@@ -41789,6 +41889,7 @@
         "main": "Returns a **[SlicerPivotTables](Excel.SlicerPivotTables.md)** collection that contains information about the PivotTables that the slicer cache is currently filtering. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "PivotTables",
             "Excel.SlicerPivotTables.md"
         ]
     },
@@ -41798,7 +41899,9 @@
         "kind": "property",
         "main": "Returns or sets whether slicers connected to the specified slicer cache display items that have been deleted from the corresponding PivotCache. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SlicerCache.SlicerCacheLevels",
@@ -41817,6 +41920,7 @@
         "main": "Returns a **[SlicerItems](Excel.SlicerItems.md)** collection that contains the collection of all items in the slicer cache. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerItems",
             "Excel.SlicerItems.md"
         ]
     },
@@ -41827,6 +41931,7 @@
         "main": "Returns a **[Slicers](Excel.Slicers.md)** collection that contains the collection of **[Slicer](Excel.Slicer.md)** objects associated with the specified **SlicerCache** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Slicers",
             "Excel.Slicers.md",
             "Excel.Slicer.md",
             "SlicerCache"
@@ -41839,6 +41944,7 @@
         "main": "Returns or sets the sort order of the items in the slicer. Read/write **[XlSlicerSort](Excel.XlSlicerSort.md)**.\n",
         "Parameters": [],
         "Return_value": [
+            "XlSlicerSort",
             "Excel.XlSlicerSort.md"
         ]
     },
@@ -41856,7 +41962,9 @@
         "kind": "property",
         "main": "Returns the name of the data source that the slicer is connected to. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.SlicerCache.SourceType",
@@ -41873,6 +41981,7 @@
         "main": "Returns a **[SlicerItems](Excel.SlicerItems.md)** collection that contains the collection of all the visible items in the specified slicer cache. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerItems",
             "Excel.SlicerItems.md"
         ]
     },
@@ -41882,7 +41991,9 @@
         "kind": "property",
         "main": "Returns or sets the list of MDX unique names for members at all levels of the hierarchy where manual filtering is applied. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.SlicerCache.WorkbookConnection",
@@ -41891,6 +42002,7 @@
         "main": "Gets or sets the **[WorkbookConnection](Excel.WorkbookConnection.md)** object that represents the data connection used by the specified slicer. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "WorkbookConnection",
             "Excel.WorkbookConnection.md"
         ]
     },
@@ -41911,6 +42023,7 @@
         "main": "Returns the number of **[SlicerItem](Excel.SlicerItem.md)** objects in the specified **SlicerCacheLevel** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Excel.SlicerItem.md",
             "SlicerCacheLevel"
         ]
@@ -41959,7 +42072,9 @@
         "kind": "property",
         "main": "Returns the MDX unique name of the OLAP hierarchy level represented by the object.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.SlicerCacheLevel.Ordinal",
@@ -41968,6 +42083,7 @@
         "main": "Returns the one-based ordinal value of the hierarchy level represented by the specified **SlicerCacheLevel** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "SlicerCacheLevel"
         ]
     },
@@ -41989,6 +42105,7 @@
         "main": "Returns a **[SlicerItems](Excel.SlicerItems.md)** collection that contains the collection of all slicer items for the specified level. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerItems",
             "Excel.SlicerItems.md"
         ]
     },
@@ -42006,7 +42123,9 @@
         "kind": "property",
         "main": "Returns the list of slicer items that are currently included in the slicer filter. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.SlicerCacheLevels.Application",
@@ -42025,6 +42144,7 @@
         "main": "Returns the number of levels in the specified **SlicerCacheLevels** collection, which represents the number of levels in the associated **[SlicerCache](Excel.SlicerCache.md)** object.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "SlicerCacheLevels",
             "Excel.SlicerCache.md"
         ]
@@ -42089,6 +42209,7 @@
             "SlicerCacheType"
         ],
         "Return_value": [
+            "SlicerCache",
             "Excel.SlicerCache.md"
         ]
     },
@@ -42099,6 +42220,7 @@
         "main": "When used without an object qualifier, this property returns an **[Application](Excel.Application(object).md)** object that represents the Microsoft Excel application. \nWhen used with an object qualifier, this property returns an **Application** object that represents the creator of the specified object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Application",
             "Excel.Application(object).md"
         ]
     },
@@ -42108,7 +42230,9 @@
         "kind": "property",
         "main": "Returns the number of objects in the collection.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.SlicerCaches.Creator",
@@ -42129,6 +42253,7 @@
             "Index"
         ],
         "Return_value": [
+            "SlicerCache",
             "Excel.SlicerCache.md"
         ]
     },
@@ -42156,6 +42281,7 @@
         "main": "Returns the parent **[Workbook](Excel.Workbook.md)** object for the collection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Workbook",
             "Excel.Workbook.md"
         ]
     },
@@ -42230,6 +42356,7 @@
         "main": "Returns the parent **[SlicerCache](Excel.SlicerCache.md)** object for the slicer item. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerCache",
             "Excel.SlicerCache.md"
         ]
     },
@@ -42281,7 +42408,9 @@
         "kind": "property",
         "main": "Returns the number of objects in the collection. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.SlicerItems.Creator",
@@ -42302,6 +42431,7 @@
             "Index"
         ],
         "Return_value": [
+            "SlicerItem",
             "Excel.SlicerItem.md"
         ]
     },
@@ -42327,6 +42457,7 @@
         "main": "Returns the parent **[SlicerCache](Excel.SlicerCache.md)** object for the specified object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerCache",
             "Excel.SlicerCache.md"
         ]
     },
@@ -42358,7 +42489,9 @@
         "kind": "property",
         "main": "Returns the number of objects in the collection.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.SlicerPivotTables.Creator",
@@ -42439,6 +42572,7 @@
             "Height"
         ],
         "Return_value": [
+            "Slicer",
             "Excel.Slicer.md"
         ]
     },
@@ -42458,7 +42592,9 @@
         "kind": "property",
         "main": "Returns the number of objects in the collection.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.Slicers.Creator",
@@ -42820,6 +42956,7 @@
             "DataOption"
         ],
         "Return_value": [
+            "SortField",
             "SortFields"
         ]
     },
@@ -42837,6 +42974,7 @@
             "SubField"
         ],
         "Return_value": [
+            "SortField",
             "SortFields"
         ]
     },
@@ -42946,6 +43084,7 @@
         "main": "Returns the **[SparkHorizontalAxis](Excel.SparkHorizontalAxis.md)** object for the specified **SparkAxes** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkHorizontalAxis",
             "Excel.SparkHorizontalAxis.md",
             "SparkAxes"
         ]
@@ -42972,6 +43111,7 @@
         "main": "Returns the parent **[SparklineGroup](Excel.SparklineGroup.md)** object for the specified **SparkAxes** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparklineGroup",
             "Excel.SparklineGroup.md",
             "SparkAxes"
         ]
@@ -42983,6 +43123,7 @@
         "main": "Returns the **[SparkVerticalAxis](Excel.SparkVerticalAxis.md)** object for the specified **SparkAxes** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkVerticalAxis",
             "Excel.SparkVerticalAxis.md",
             "SparkAxes"
         ]
@@ -43004,6 +43145,7 @@
         "main": "Returns a **[FormatColor](Excel.FormatColor.md)** object that you can use to set the color of the horizontal axis or the markers for points in a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "FormatColor",
             "Excel.FormatColor.md"
         ]
     },
@@ -43086,7 +43228,9 @@
         "kind": "property",
         "main": "Returns whether the horizontal axis of the sparkline is based on date values. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SparkHorizontalAxis",
@@ -43120,7 +43264,9 @@
         "kind": "property",
         "main": "Returns or sets whether the points on the horizontal axis are plotted in right-to-left order. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Sparkline.Application",
@@ -43204,7 +43350,9 @@
         "kind": "property",
         "main": "Returns or sets the range that contains the source data for a single sparkline. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.SparklineGroup.Application",
@@ -43223,6 +43371,7 @@
         "main": "Returns the associated **[SparkAxes](Excel.SparkAxes.md)** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkAxes",
             "Excel.SparkAxes.md"
         ]
     },
@@ -43277,6 +43426,7 @@
             "Index"
         ],
         "Return_value": [
+            "Sparkline",
             "Excel.Sparkline.md"
         ]
     },
@@ -43295,6 +43445,7 @@
         "main": "Gets or sets the **[Range](Excel.Range(object).md)** object that represents the location of the sparkline group. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Range",
             "Excel.Range(object).md"
         ]
     },
@@ -43388,6 +43539,7 @@
         "main": "Returns a **[FormatColor](Excel.FormatColor.md)** object that represents the main series color for the sparkline group. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "FormatColor",
             "Excel.FormatColor.md"
         ]
     },
@@ -43417,6 +43569,7 @@
             "SourceData"
         ],
         "Return_value": [
+            "SparklineGroup",
             "Excel.SparklineGroup.md"
         ]
     },
@@ -43485,6 +43638,7 @@
             "Index"
         ],
         "Return_value": [
+            "SparklineGroup",
             "Excel.SparklineGroup.md"
         ]
     },
@@ -43554,6 +43708,7 @@
         "main": "Returns a **[SparkColor](Excel.SparkColor.md)** object that represents the color and visibility of the marker for the first point of data on a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkColor",
             "Excel.SparkColor.md"
         ]
     },
@@ -43564,6 +43719,7 @@
         "main": "Returns a **[SparkColor](Excel.SparkColor.md)** object that represents the color and visibility of the marker for the highest point of data on a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkColor",
             "Excel.SparkColor.md"
         ]
     },
@@ -43574,6 +43730,7 @@
         "main": "Returns a **[SparkColor](Excel.SparkColor.md)** object that represents the color and visibility of the marker for the last point of data on a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkColor",
             "Excel.SparkColor.md"
         ]
     },
@@ -43584,6 +43741,7 @@
         "main": "Returns a **[SparkColor](Excel.SparkColor.md)** object that represents the color and visibility of the marker for the lowest point of data on a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkColor",
             "Excel.SparkColor.md"
         ]
     },
@@ -43594,6 +43752,7 @@
         "main": "Returns a **[SparkColor](Excel.SparkColor.md)** object that represents the color and visibility of markers for positive points of data on a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkColor",
             "Excel.SparkColor.md"
         ]
     },
@@ -43623,6 +43782,7 @@
         "main": "Returns a **[SparkColor](Excel.SparkColor.md)** object that represents the color and visibility of markers for negative points of data on a sparkline. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SparkColor",
             "Excel.SparkColor.md"
         ]
     },
@@ -43662,7 +43822,9 @@
         "kind": "property",
         "main": "Returns or sets the custom maximum value for the vertical axis of a sparkline. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.SparkVerticalAxis.CustomMinScaleValue",
@@ -43670,7 +43832,9 @@
         "kind": "property",
         "main": "Returns or sets the custom minimum value for the vertical axis of a sparkline. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.SparkVerticalAxis.MaxScaleType",
@@ -43782,7 +43946,9 @@
         "kind": "property",
         "main": "Returns or sets whether the spelling checker uses rules regarding Arabic words beginning with an alef hamza. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SpellingOptions.ArabicStrictFinalYaa",
@@ -43790,7 +43956,9 @@
         "kind": "property",
         "main": "Returns or sets whether the spelling checker uses rules regarding Arabic words ending with the letter yaa. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SpellingOptions.ArabicStrictTaaMarboota",
@@ -43798,7 +43966,9 @@
         "kind": "property",
         "main": "Returns or sets whether the spelling checker uses rules to flag Arabic words ending with haa instead of taa marboota. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SpellingOptions.BrazilReform",
@@ -43952,7 +44122,9 @@
         "kind": "property",
         "main": "Returns or sets whether the spelling checker uses rules regarding Russian words containing the character ë. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.SpellingOptions.SpanishModes",
@@ -44726,7 +44898,9 @@
         "kind": "property",
         "main": "Returns or sets whether the specified table style is shown as available in the slicer styles gallery. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.TableStyle.ShowAsAvailableTableStyle",
@@ -44928,6 +45102,7 @@
             "TableStyleName"
         ],
         "Return_value": [
+            "TableStyle",
             "Excel.TableStyle.md"
         ]
     },
@@ -44969,7 +45144,9 @@
         "Parameters": [
             "Index"
         ],
-        "Return_value": []
+        "Return_value": [
+            "TableStyle"
+        ]
     },
     {
         "api_name": "Excel.TableStyles",
@@ -45211,7 +45388,9 @@
         "kind": "property",
         "main": "Returns or sets whether Excel automatically calculates text frame margins. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.TextFrame.AutoSize",
@@ -45234,6 +45413,7 @@
             "Length"
         ],
         "Return_value": [
+            "Characters",
             "Excel.Characters.md"
         ]
     },
@@ -47434,6 +47614,102 @@
         "Return_value": []
     },
     {
+        "api_name": "Excel.UserAccess.AllowEdit",
+        "file_name": "Excel.UserAccess.AllowEdit.md",
+        "kind": "property",
+        "main": "Returns or sets a **Boolean** value that indicates if the user is allowed access to the specified range on a protected worksheet.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Boolean"
+        ]
+    },
+    {
+        "api_name": "Excel.UserAccess.Delete",
+        "file_name": "Excel.UserAccess.Delete.md",
+        "kind": "method",
+        "main": "Deletes the object.\n",
+        "Parameters": [],
+        "Return_value": []
+    },
+    {
+        "api_name": "Excel.UserAccess",
+        "Events": [],
+        "file_name": "Excel.UserAccess.md",
+        "kind": "object",
+        "main": "Represents the user access for a protected range.\n",
+        "Methods": [
+            "Delete"
+        ],
+        "Properties": [
+            "AllowEdit",
+            "Name"
+        ]
+    },
+    {
+        "api_name": "Excel.UserAccess.Name",
+        "file_name": "Excel.UserAccess.Name.md",
+        "kind": "property",
+        "main": "Returns or sets a **String** value that represents the name of the object.\n",
+        "Parameters": [],
+        "Return_value": [
+            "String"
+        ]
+    },
+    {
+        "api_name": "Excel.UserAccessList.Add",
+        "file_name": "Excel.UserAccessList.Add.md",
+        "kind": "method",
+        "main": "Adds a user access list.\n",
+        "Parameters": [
+            "Name",
+            "AllowEdit"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Excel.UserAccessList.Count",
+        "file_name": "Excel.UserAccessList.Count.md",
+        "kind": "property",
+        "main": "Returns a **Long** value that represents the number of objects in the collection.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Long"
+        ]
+    },
+    {
+        "api_name": "Excel.UserAccessList.DeleteAll",
+        "file_name": "Excel.UserAccessList.DeleteAll.md",
+        "kind": "method",
+        "main": "Removes all users who have access to a protected range on a worksheet.\n",
+        "Parameters": [],
+        "Return_value": []
+    },
+    {
+        "api_name": "Excel.UserAccessList.Item",
+        "file_name": "Excel.UserAccessList.Item.md",
+        "kind": "property",
+        "main": "Returns a single object from a collection.\n",
+        "Parameters": [
+            "Index"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Excel.UserAccessList",
+        "Events": [],
+        "file_name": "Excel.UserAccessList.md",
+        "kind": "object",
+        "main": "A collection of **[UserAccess](Excel.UserAccess.md)** objects that represents the user access for protected ranges.\n",
+        "Methods": [
+            "Add",
+            "DeleteAll"
+        ],
+        "Properties": [
+            "Count",
+            "Item"
+        ]
+    },
+    {
         "api_name": "Excel.UserPicture",
         "file_name": "Excel.UserPicture.md",
         "kind": "method",
@@ -47737,7 +48013,9 @@
         "kind": "property",
         "main": "Returns the MDX weight expression to use for this value when performing what-if analysis. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ValueChange.Application",
@@ -47800,6 +48078,7 @@
         "main": "Returns a value that indicates the order in which this change was performed relative to other changes in the **[PivotTableChangeList](Excel.PivotTableChangeList.md)** collection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Integer",
             "Excel.PivotTableChangeList.md"
         ]
     },
@@ -47818,6 +48097,7 @@
         "main": "Returns a **[PivotCell](Excel.PivotCell.md)** object that represents the cell (tuple) that was changed. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "PivotCell",
             "Excel.PivotCell.md"
         ]
     },
@@ -47827,7 +48107,9 @@
         "kind": "property",
         "main": "Returns the MDX tuple of the value that was changed in the OLAP data source. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.ValueChange.Value",
@@ -47835,7 +48117,9 @@
         "kind": "property",
         "main": "Returns the value that the user entered in the cell or that the formula in the cell was evaluated to when the **UPDATE CUBE** statement was last run against the OLAP data source. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.ValueChange.VisibleInPivotTable",
@@ -47843,7 +48127,9 @@
         "kind": "property",
         "main": "Returns whether the cell (tuple) is currently visible in the PivotTable report. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.VaryByCategories",
@@ -48618,9 +48904,10 @@
         "api_name": "Excel.Window.ActiveSheet",
         "file_name": "Excel.Window.ActiveSheet.md",
         "kind": "property",
-        "main": "Returns an object that represents the active sheet (the sheet on top) in the active workbook or in the specified window or workbook. Returns **Nothing** if no sheet is active.\n",
+        "main": "Returns an object that represents the active sheet **[Worksheet](excel.worksheet.md)** (the sheet on top) in the active workbook or in the specified window or workbook. Returns **Nothing** if no sheet is active.\n",
         "Parameters": [],
         "Return_value": [
+            "excel.worksheet.md",
             "Nothing"
         ]
     },
@@ -48673,7 +48960,9 @@
             "FileName",
             "RouteWorkbook"
         ],
-        "Return_value": []
+        "Return_value": [
+            "True"
+        ]
     },
     {
         "api_name": "Excel.Window.Creator",
@@ -48979,7 +49268,9 @@
         "kind": "method",
         "main": "Creates a new window or a copy of the specified window.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Window"
+        ]
     },
     {
         "api_name": "Excel.Window.OnWindow",
@@ -49495,7 +49786,9 @@
         "kind": "property",
         "main": "Specifies whether certain worksheet functions use the latest accuracy algorithms to calculate their results. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Excel.Workbook.Activate",
@@ -49503,7 +49796,9 @@
         "kind": "event",
         "main": "Occurs when a workbook, worksheet, chart sheet, or embedded chart is activated.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.Activate",
@@ -49542,6 +49837,7 @@
         "main": "Returns an object that represents the active slicer in the active workbook or in the specified workbook. Returns **Nothing** if no slicer is active. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Slicer",
             "Nothing"
         ]
     },
@@ -49551,7 +49847,9 @@
         "kind": "event",
         "main": "Occurs when the workbook is installed as an add-in.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.AddinUninstall",
@@ -49559,7 +49857,9 @@
         "kind": "event",
         "main": "Occurs when the workbook is uninstalled as an add-in.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.AddToFavorites",
@@ -49575,7 +49875,9 @@
         "kind": "event",
         "main": "Occurs after a remote user's edits to the workbook are merged.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.AfterSave",
@@ -49585,7 +49887,9 @@
         "Parameters": [
             "Success"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.AfterXmlExport",
@@ -49597,7 +49901,9 @@
             "Url",
             "Result"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.AfterXmlImport",
@@ -49609,7 +49915,9 @@
             "IsRefresh",
             "Result"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.Application",
@@ -49672,7 +49980,9 @@
         "Parameters": [
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.BeforePrint",
@@ -49682,7 +49992,9 @@
         "Parameters": [
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.BeforeRemoteChange",
@@ -49690,7 +50002,9 @@
         "kind": "event",
         "main": "Occurs before a remote user's edits to the workbook are merged.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.BeforeSave",
@@ -49701,7 +50015,9 @@
             "SaveAsUI",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.BeforeXmlExport",
@@ -49713,7 +50029,9 @@
             "Url",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.BeforeXmlImport",
@@ -49726,7 +50044,9 @@
             "IsRefresh",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.BreakLink",
@@ -49766,9 +50086,21 @@
         "main": "**True** if Microsoft Excel can check in a specified workbook to a server. Read/write **Boolean**.\n",
         "Parameters": [],
         "Return_value": [
-            "True",
-            "Boolean"
+            "Boolean",
+            "True"
         ]
+    },
+    {
+        "api_name": "Excel.Workbook.ChangeFileAccess",
+        "file_name": "Excel.Workbook.ChangeFileAccess.md",
+        "kind": "method",
+        "main": "Changes the access permissions for the workbook. This may require an updated version to be loaded from the disk.\n",
+        "Parameters": [
+            "Mode",
+            "WritePassword",
+            "Notify"
+        ],
+        "Return_value": []
     },
     {
         "api_name": "Excel.Workbook.ChangeHistoryDuration",
@@ -49835,7 +50167,9 @@
             "MakePublic",
             "VersionType"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.Close",
@@ -49905,7 +50239,9 @@
         "kind": "property",
         "main": "Disables the external connections or links in the workbook. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Workbook.Container",
@@ -50003,7 +50339,9 @@
         "kind": "event",
         "main": "Occurs when the chart, worksheet, or workbook is deactivated.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.DefaultPivotTableStyle",
@@ -50022,6 +50360,7 @@
         "main": "Specifies the style from the **[TableStyles](Excel.TableStyles.md)** object that is used as the default style for slicers. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Variant",
             "Excel.TableStyles.md"
         ]
     },
@@ -50178,6 +50517,16 @@
         ]
     },
     {
+        "api_name": "Excel.Workbook.ExclusiveAccess",
+        "file_name": "Excel.Workbook.ExclusiveAccess.md",
+        "kind": "method",
+        "main": "Assigns the current user exclusive access to the workbook that's open as a shared list.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Boolean"
+        ]
+    },
+    {
         "api_name": "Excel.Workbook.ExportAsFixedFormat",
         "file_name": "Excel.Workbook.ExportAsFixedFormat.md",
         "kind": "method",
@@ -50239,7 +50588,9 @@
         "kind": "property",
         "main": "Returns or sets the specified workbook to forced calculation mode. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Workbook.ForwardMailer",
@@ -50276,6 +50627,7 @@
         "main": "Returns the collection of **[WorkflowTask](Office.WorkflowTask.md)** objects for the specified workbook.\n",
         "Parameters": [],
         "Return_value": [
+            "WorkFlowTasks",
             "Office.WorkflowTask.md"
         ]
     },
@@ -50286,6 +50638,7 @@
         "main": "Returns the collection of **[WorkflowTemplate](Office.WorkflowTemplate.md)** objects for the specified workbook.\n",
         "Parameters": [],
         "Return_value": [
+            "WorkflowTemplates",
             "Office.WorkflowTemplate.md"
         ]
     },
@@ -50399,7 +50752,9 @@
             "Type",
             "EditionRef"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Workbook.LinkSources",
@@ -50410,6 +50765,7 @@
             "Type"
         ],
         "Return_value": [
+            "Variant",
             "Empty"
         ]
     },
@@ -50725,7 +51081,9 @@
         "Parameters": [
             "Ch"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.NewSheet",
@@ -50735,7 +51093,9 @@
         "Parameters": [
             "Sh"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.NewWindow",
@@ -50743,7 +51103,9 @@
         "kind": "method",
         "main": "Creates a new window or a copy of the specified window.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Window"
+        ]
     },
     {
         "api_name": "Excel.Workbook.Open",
@@ -50873,6 +51235,7 @@
         "main": "Returns a **[PivotCaches](Excel.PivotCaches.md)** collection that represents all the PivotTable caches in the specified workbook. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "PivotCaches",
             "Excel.PivotCaches.md"
         ]
     },
@@ -50913,7 +51276,9 @@
             "PrToFileName",
             "IgnorePrintAreas"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Workbook.PrintPreview",
@@ -51430,7 +51795,9 @@
             "TargetPivotTable",
             "TargetRange"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.SheetPivotTableBeforeAllocateChanges",
@@ -51444,7 +51811,9 @@
             "ValueChangeEnd",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.SheetPivotTableBeforeCommitChanges",
@@ -51458,7 +51827,9 @@
             "ValueChangeEnd",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.SheetPivotTableBeforeDiscardChanges",
@@ -51471,7 +51842,9 @@
             "ValueChangeStart",
             "ValueChangeEnd"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.SheetPivotTableChangeSync",
@@ -51482,7 +51855,9 @@
             "Sh",
             "Target"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Workbook.SheetPivotTableUpdate",
@@ -51563,6 +51938,7 @@
         "main": "Returns the **[SlicerCaches](Excel.SlicerCaches.md)** object associated with the workbook. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "SlicerCaches",
             "Excel.SlicerCaches.md"
         ]
     },
@@ -52149,6 +52525,7 @@
             "ImportDataAs"
         ],
         "Return_value": [
+            "Workbook",
             "Excel.Workbook.md"
         ]
     },
@@ -52207,7 +52584,9 @@
         "kind": "event",
         "main": "Occurs when a workbook, worksheet, chart sheet, or embedded chart is activated.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.Activate",
@@ -52278,6 +52657,7 @@
         "main": "Occurs after the worksheet is recalculated for the **Worksheet** object.\n",
         "Parameters": [],
         "Return_value": [
+            "Nothing",
             "Worksheet"
         ]
     },
@@ -52307,7 +52687,9 @@
         "Parameters": [
             "Target"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.ChartObjects",
@@ -52318,6 +52700,7 @@
             "Index"
         ],
         "Return_value": [
+            "Object",
             "Excel.ChartObject.md",
             "Excel.ChartObjects.md"
         ]
@@ -52480,7 +52863,9 @@
         "kind": "event",
         "main": "Occurs when the chart, worksheet, or workbook is deactivated.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.Delete",
@@ -52488,7 +52873,9 @@
         "kind": "method",
         "main": "Deletes the object.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.DisplayPageBreaks",
@@ -52586,7 +52973,9 @@
         "Parameters": [
             "Name"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.ExportAsFixedFormat",
@@ -52844,6 +53233,7 @@
             "Index"
         ],
         "Return_value": [
+            "Object",
             "Excel.OLEObject.md",
             "Excel.OLEObjects.md"
         ]
@@ -52912,7 +53302,9 @@
             "TargetPivotTable",
             "TargetRange"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PivotTableBeforeAllocateChanges",
@@ -52925,7 +53317,9 @@
             "ValueChangeEnd",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PivotTableBeforeCommitChanges",
@@ -52938,7 +53332,9 @@
             "ValueChangeEnd",
             "Cancel"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PivotTableBeforeDiscardChanges",
@@ -52950,7 +53346,9 @@
             "ValueChangeStart",
             "ValueChangeEnd"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PivotTableChangeSync",
@@ -52960,7 +53358,9 @@
         "Parameters": [
             "Target"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PivotTables",
@@ -52971,6 +53371,7 @@
             "Index"
         ],
         "Return_value": [
+            "Object",
             "Excel.PivotTable.md",
             "Excel.PivotTables.md"
         ]
@@ -52983,7 +53384,9 @@
         "Parameters": [
             "Target"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PivotTableWizard",
@@ -53028,7 +53431,9 @@
         "kind": "property",
         "main": "Returns the number of comment pages that will be printed for the current worksheet. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PrintOut",
@@ -53046,7 +53451,9 @@
             "PrToFileName",
             "IgnorePrintAreas"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.Worksheet.PrintPreview",
@@ -53209,6 +53616,7 @@
             "Index"
         ],
         "Return_value": [
+            "Object",
             "Excel.Scenario.md",
             "Excel.Scenarios.md"
         ]
@@ -53402,6 +53810,7 @@
             "Map"
         ],
         "Return_value": [
+            "Range",
             "Excel.Range(object).md",
             "Nothing"
         ]
@@ -53417,6 +53826,7 @@
             "Map"
         ],
         "Return_value": [
+            "Range",
             "Excel.Range(object).md",
             "Nothing"
         ]
@@ -53435,7 +53845,9 @@
             "Arg6",
             "Arg7"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.AccrIntM",
@@ -53449,7 +53861,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Acos",
@@ -53459,7 +53873,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Acosh",
@@ -53469,7 +53885,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Aggregate",
@@ -53481,7 +53899,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.AmorDegrc",
@@ -53497,7 +53917,9 @@
             "Arg6",
             "Arg7"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.AmorLinc",
@@ -53513,7 +53935,9 @@
             "Arg6",
             "Arg7"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.And",
@@ -53522,6 +53946,7 @@
         "main": "Returns **True** if all its arguments are **True**; returns **False** if one or more arguments is **False**.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -53544,7 +53969,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Asin",
@@ -53554,7 +53981,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Asinh",
@@ -53564,7 +53993,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Atan2",
@@ -53575,7 +54006,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Atanh",
@@ -53585,7 +54018,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.AveDev",
@@ -53594,6 +54029,7 @@
         "main": "Returns the average of the absolute deviations of data points from their mean. **AveDev** is a measure of the variability in a data set.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "AveDev"
         ]
     },
@@ -53603,7 +54039,9 @@
         "kind": "method",
         "main": "Returns the average (arithmetic mean) of the arguments.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.AverageIf",
@@ -53615,7 +54053,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.AverageIfs",
@@ -53623,7 +54063,9 @@
         "kind": "method",
         "main": "Returns the average (arithmetic mean) of all cells that meet multiple criteria.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BahtText",
@@ -53633,7 +54075,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BesselI",
@@ -53644,7 +54088,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BesselJ",
@@ -53655,7 +54101,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BesselK",
@@ -53666,7 +54114,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BesselY",
@@ -53677,7 +54127,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BetaDist",
@@ -53692,6 +54144,7 @@
             "Arg5"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Beta_Dist.md"
         ]
     },
@@ -53708,6 +54161,7 @@
             "Arg5"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Beta_Inv.md"
         ]
     },
@@ -53724,7 +54178,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Beta_Inv",
@@ -53738,7 +54194,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Bin2Dec",
@@ -53748,7 +54206,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Bin2Hex",
@@ -53759,7 +54219,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Bin2Oct",
@@ -53770,7 +54232,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.BinomDist",
@@ -53783,7 +54247,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Binom_Dist",
@@ -53796,7 +54262,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Binom_Inv",
@@ -53808,7 +54276,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Ceiling",
@@ -53820,6 +54290,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Ceiling_Precise.md"
         ]
     },
@@ -53832,7 +54303,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ChiDist",
@@ -53844,6 +54317,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.ChiSq_Dist_RT.md",
             "Excel.WorksheetFunction.ChiSq_Dist.md"
         ]
@@ -53858,6 +54332,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.ChiSq_Inv_RT.md",
             "Excel.WorksheetFunction.ChiSq_Inv.md"
         ]
@@ -53872,7 +54347,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ChiSq_Dist_RT",
@@ -53883,7 +54360,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ChiSq_Inv",
@@ -53894,7 +54373,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ChiSq_Inv_RT",
@@ -53905,7 +54386,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ChiSq_Test",
@@ -53916,7 +54399,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ChiTest",
@@ -53928,6 +54413,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.ChiSq_Test.md"
         ]
     },
@@ -53939,7 +54425,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Clean",
@@ -53949,7 +54437,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Combin",
@@ -53961,6 +54451,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Combin"
         ]
     },
@@ -53974,7 +54465,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Confidence",
@@ -53987,6 +54480,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Confidence_Norm.md",
             "Excel.WorksheetFunction.Confidence_T.md"
         ]
@@ -54001,7 +54495,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Confidence_T",
@@ -54013,7 +54509,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Convert",
@@ -54026,6 +54524,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Convert"
         ]
     },
@@ -54038,7 +54537,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Cosh",
@@ -54048,7 +54549,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Count",
@@ -54056,7 +54559,9 @@
         "kind": "method",
         "main": "Counts the number of cells that contain numbers and counts numbers within the list of arguments.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CountA",
@@ -54064,7 +54569,9 @@
         "kind": "method",
         "main": "Counts the number of cells that are not empty and the values within the list of arguments.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CountBlank",
@@ -54074,7 +54581,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CountIf",
@@ -54085,7 +54594,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CountIfs",
@@ -54095,7 +54606,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CoupDayBs",
@@ -54108,7 +54621,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CoupDays",
@@ -54121,7 +54636,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CoupDaysNc",
@@ -54134,7 +54651,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CoupNcd",
@@ -54147,7 +54666,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CoupNum",
@@ -54160,7 +54681,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CoupPcd",
@@ -54173,7 +54696,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Covar",
@@ -54185,6 +54710,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Covar.md",
             "Excel.WorksheetFunction.Covariance_S.md"
         ]
@@ -54198,7 +54724,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Covariance_S",
@@ -54209,7 +54737,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Creator",
@@ -54231,7 +54761,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CumIPmt",
@@ -54246,7 +54778,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.CumPrinc",
@@ -54261,7 +54795,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DAverage",
@@ -54273,7 +54809,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Days360",
@@ -54283,7 +54821,9 @@
         "Parameters": [
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Db",
@@ -54297,7 +54837,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Dbcs",
@@ -54321,7 +54863,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DCountA",
@@ -54333,7 +54877,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Ddb",
@@ -54347,7 +54893,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Dec2Bin",
@@ -54358,7 +54906,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Dec2Hex",
@@ -54369,7 +54919,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Dec2Oct",
@@ -54380,7 +54932,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Degrees",
@@ -54390,7 +54944,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Delta",
@@ -54401,7 +54957,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DevSq",
@@ -54409,7 +54967,9 @@
         "kind": "method",
         "main": "Returns the sum of squares of deviations of data points from their sample mean.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DGet",
@@ -54421,7 +54981,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Disc",
@@ -54435,7 +54997,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DMax",
@@ -54447,7 +55011,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DMin",
@@ -54459,7 +55025,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Dollar",
@@ -54470,7 +55038,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DollarDe",
@@ -54482,6 +55052,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "DollarDe"
         ]
     },
@@ -54495,6 +55066,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "DollarFr"
         ]
     },
@@ -54508,7 +55080,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DStDev",
@@ -54520,7 +55094,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DStDevP",
@@ -54532,7 +55108,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DSum",
@@ -54544,7 +55122,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Duration",
@@ -54560,6 +55140,7 @@
             "Arg6"
         ],
         "Return_value": [
+            "Double",
             "Duration"
         ]
     },
@@ -54573,7 +55154,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.DVarP",
@@ -54585,7 +55168,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.EDate",
@@ -54597,6 +55182,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "EDate"
         ]
     },
@@ -54609,7 +55195,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.EoMonth",
@@ -54621,6 +55209,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "EoMonth"
         ]
     },
@@ -54634,6 +55223,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Erf_Precise.md"
         ]
     },
@@ -54647,6 +55237,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Erf",
             "Excel.WorksheetFunction.ErfC_Precise.md"
         ]
@@ -54659,7 +55250,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Erf_Precise",
@@ -54669,7 +55262,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Even",
@@ -54679,7 +55274,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ExponDist",
@@ -54692,6 +55289,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "ExponDist",
             "Excel.WorksheetFunction.Expon_Dist.md"
         ]
@@ -54707,6 +55305,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Expon_Dist"
         ]
     },
@@ -54718,7 +55317,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.FactDouble",
@@ -54728,7 +55329,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.FDist",
@@ -54741,6 +55344,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.F_Dist_RT.md",
             "Excel.WorksheetFunction.F_Dist.md"
         ]
@@ -54755,7 +55359,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.FindB",
@@ -54768,6 +55374,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Find",
             "FindB"
         ]
@@ -54783,6 +55390,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.F_Inv_RT.md",
             "Excel.WorksheetFunction.F_Inv.md"
         ]
@@ -54796,6 +55404,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Double",
             "Fisher"
         ]
     },
@@ -54807,7 +55416,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Fixed",
@@ -54819,7 +55430,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Floor",
@@ -54831,6 +55444,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Floor_Precise.md"
         ]
     },
@@ -54843,19 +55457,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
-    },
-    {
-        "api_name": "Excel.WorksheetFunction.Forecast",
-        "file_name": "Excel.WorksheetFunction.Forecast.md",
-        "kind": "method",
-        "main": "Calculates, or predicts, a future value by using existing values. The predicted value is a y-value for a given x-value. The known values are existing x-values and y-values, and the new value is predicted by using linear regression. Use this function to predict future sales, inventory requirements, or consumer trends.\n> [!NOTE] \n> This member is deprecated in Office 2016 and later versions.\n",
-        "Parameters": [
-            "Arg1",
-            "Arg2",
-            "Arg3"
-        ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Frequency",
@@ -54867,6 +55471,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Variant",
             "Frequency"
         ]
     },
@@ -54880,6 +55485,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.F_Test.md"
         ]
     },
@@ -54895,7 +55501,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.FVSchedule",
@@ -54907,6 +55515,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "FVSchedule"
         ]
     },
@@ -54921,7 +55530,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.F_Dist_RT",
@@ -54933,7 +55544,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.F_Inv",
@@ -54945,7 +55558,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.F_Inv_RT",
@@ -54957,7 +55572,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.F_Test",
@@ -54968,7 +55585,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.GammaDist",
@@ -54982,6 +55601,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Gamma_Dist.md"
         ]
     },
@@ -54996,6 +55616,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.GammaInv.md"
         ]
     },
@@ -55008,6 +55629,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.GammaLn_Precise.md"
         ]
     },
@@ -55019,7 +55641,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Gamma_Dist",
@@ -55032,7 +55656,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Gamma_Inv",
@@ -55044,7 +55670,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Gcd",
@@ -55052,7 +55680,9 @@
         "kind": "method",
         "main": "Returns the greatest common divisor of two or more integers. The greatest common divisor is the largest integer that divides both number1 and number2 without a remainder.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.GeoMean",
@@ -55061,6 +55691,7 @@
         "main": "Returns the geometric mean of an array or range of positive data. For example, you can use **GeoMean** to calculate average growth rate given compound interest with variable rates.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "GeoMean"
         ]
     },
@@ -55074,6 +55705,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "GeStep"
         ]
     },
@@ -55089,6 +55721,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Variant",
             "Growth"
         ]
     },
@@ -55098,7 +55731,9 @@
         "kind": "method",
         "main": "Returns the harmonic mean of a data set. The harmonic mean is the reciprocal of the arithmetic mean of reciprocals.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Hex2Bin",
@@ -55109,7 +55744,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Hex2Dec",
@@ -55119,7 +55756,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Hex2Oct",
@@ -55130,7 +55769,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.HLookup",
@@ -55144,6 +55785,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Variant",
             "HLookup",
             "excel.worksheetfunction.vlookup.md"
         ]
@@ -55160,6 +55802,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "HypGeomDist",
             "Excel.WorksheetFunction.HypGeom_Dist.md"
         ]
@@ -55177,6 +55820,7 @@
             "Arg5"
         ],
         "Return_value": [
+            "Double",
             "HypGeom_Dist"
         ]
     },
@@ -55190,6 +55834,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Variant",
             "IfError"
         ]
     },
@@ -55201,7 +55846,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Imaginary",
@@ -55211,7 +55858,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImArgument",
@@ -55221,7 +55870,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImConjugate",
@@ -55231,7 +55882,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImCos",
@@ -55241,7 +55894,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImDiv",
@@ -55252,7 +55907,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImExp",
@@ -55262,7 +55919,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImLn",
@@ -55272,7 +55931,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImLog10",
@@ -55282,7 +55943,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImLog2",
@@ -55292,7 +55955,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImPower",
@@ -55303,7 +55968,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImProduct",
@@ -55311,7 +55978,9 @@
         "kind": "method",
         "main": "Returns the product of 2 to 29 complex numbers in x + yi or x + yj text format.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImReal",
@@ -55321,7 +55990,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImSin",
@@ -55331,7 +56002,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImSqrt",
@@ -55341,7 +56014,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImSub",
@@ -55352,7 +56027,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ImSum",
@@ -55360,7 +56037,9 @@
         "kind": "method",
         "main": "Returns the sum of two or more complex numbers in x + yi or x + yj text format.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Index",
@@ -55374,6 +56053,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Variant",
             "Index"
         ]
     },
@@ -55387,6 +56067,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Intercept"
         ]
     },
@@ -55402,7 +56083,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Ipmt",
@@ -55417,7 +56100,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Irr",
@@ -55428,7 +56113,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.IsErr",
@@ -55439,6 +56126,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55452,6 +56140,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55465,6 +56154,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55478,6 +56168,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55491,6 +56182,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55504,6 +56196,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55517,6 +56210,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55530,6 +56224,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55543,7 +56238,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Ispmt",
@@ -55556,7 +56253,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.IsText",
@@ -55567,6 +56266,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -55577,7 +56277,9 @@
         "kind": "method",
         "main": "Returns the kurtosis of a data set. Kurtosis characterizes the relative peakedness or flatness of a distribution compared with the normal distribution. Positive kurtosis indicates a relatively peaked distribution. Negative kurtosis indicates a relatively flat distribution.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Large",
@@ -55589,6 +56291,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Large"
         ]
     },
@@ -55601,6 +56304,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Double",
             "Lcm"
         ]
     },
@@ -55615,7 +56319,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Ln",
@@ -55625,7 +56331,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Log",
@@ -55636,7 +56344,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Log10",
@@ -55646,7 +56356,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.LogEst",
@@ -55659,7 +56371,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.LogInv",
@@ -55672,6 +56386,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.LogNorm_Inv.md"
         ]
     },
@@ -55686,6 +56401,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.LogNorm_Dist.md"
         ]
     },
@@ -55700,7 +56416,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.LogNorm_Inv",
@@ -55712,7 +56430,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Lookup",
@@ -55725,6 +56445,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Variant",
             "Lookup"
         ]
     },
@@ -55739,6 +56460,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Match",
             "Lookup"
         ]
@@ -55749,7 +56471,9 @@
         "kind": "method",
         "main": "Returns the largest value in a set of values.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction",
@@ -56160,7 +56884,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.MDuration",
@@ -56175,7 +56901,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Median",
@@ -56183,7 +56911,9 @@
         "kind": "method",
         "main": "Returns the median of the given numbers. The median is the number in the middle of a set of numbers.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Min",
@@ -56191,7 +56921,9 @@
         "kind": "method",
         "main": "Returns the smallest number in a set of values.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.MInverse",
@@ -56201,7 +56933,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.MIrr",
@@ -56214,6 +56948,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "MIrr"
         ]
     },
@@ -56223,7 +56958,9 @@
         "kind": "method",
         "main": "Returns the matrix product of two arrays. The result is an array with the same number of rows as array1 and the same number of columns as array2.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Mode",
@@ -56232,6 +56969,7 @@
         "main": "Returns the most frequently occurring, or repetitive, value in an array or range of data. \n> [!IMPORTANT] \n> This function has been replaced with one or more new functions that may provide improved accuracy and whose names better reflect their usage. This function is still available for compatibility with earlier versions of Excel. However, if backward compatibility is not required, you should consider using the new functions from now on, because they more accurately describe their functionality.\n> \n> For more information about the new functions, see the **[Mode_Sngl](Excel.WorksheetFunction.Mode_Sngl.md)** and **[Mode_Mult](Excel.WorksheetFunction.Mode_Mult.md)** methods.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Mode_Sngl.md",
             "Excel.WorksheetFunction.Mode_Mult.md"
         ]
@@ -56244,7 +56982,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Mode_Sngl",
@@ -56252,7 +56992,9 @@
         "kind": "method",
         "main": "Returns the most frequently occurring, or repetitive, value in an array or range of data.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.MRound",
@@ -56263,7 +57005,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.MultiNomial",
@@ -56271,7 +57015,9 @@
         "kind": "method",
         "main": "Returns the ratio of the factorial of a sum of values to the product of factorials.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.NegBinomDist",
@@ -56284,6 +57030,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "NegBinomDist",
             "Excel.WorksheetFunction.NegBinom_Dist.md"
         ]
@@ -56300,6 +57047,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "NegBinom_Dist"
         ]
     },
@@ -56314,6 +57062,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "NetworkDays"
         ]
     },
@@ -56328,7 +57077,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Nominal",
@@ -56339,7 +57090,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.NormDist",
@@ -56353,6 +57106,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Norm_Dist.md"
         ]
     },
@@ -56367,6 +57121,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Norm_Inv.md"
         ]
     },
@@ -56379,6 +57134,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Norm_S_Dist.md"
         ]
     },
@@ -56391,6 +57147,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Norm_S_Inv.md"
         ]
     },
@@ -56405,7 +57162,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Norm_Inv",
@@ -56417,7 +57176,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Norm_S_Dist",
@@ -56428,7 +57189,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Norm_S_Inv",
@@ -56438,7 +57201,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.NPer",
@@ -56452,7 +57217,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Npv",
@@ -56462,7 +57229,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Oct2Bin",
@@ -56473,7 +57242,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Oct2Dec",
@@ -56483,7 +57254,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Oct2Hex",
@@ -56494,7 +57267,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Odd",
@@ -56504,7 +57279,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.OddFPrice",
@@ -56522,7 +57299,9 @@
             "Arg8",
             "Arg9"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.OddFYield",
@@ -56540,7 +57319,9 @@
             "Arg8",
             "Arg9"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.OddLPrice",
@@ -56557,7 +57338,9 @@
             "Arg7",
             "Arg8"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.OddLYield",
@@ -56574,7 +57357,9 @@
             "Arg7",
             "Arg8"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Or",
@@ -56585,6 +57370,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -56606,7 +57392,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Percentile",
@@ -56618,6 +57406,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Percentile_Inc.md",
             "Excel.WorksheetFunction.Percentile_Exc.md"
         ]
@@ -56631,7 +57420,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Percentile_Inc",
@@ -56642,7 +57433,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.PercentRank",
@@ -56655,6 +57448,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "PercentRank",
             "Excel.WorksheetFunction.Percentile_Inc.md",
             "Excel.WorksheetFunction.Percentile_Exc.md"
@@ -56670,7 +57464,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.PercentRank_Inc",
@@ -56683,6 +57479,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "PercentRank_Inc"
         ]
     },
@@ -56695,7 +57492,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Phonetic",
@@ -56705,7 +57504,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Pi",
@@ -56713,7 +57514,9 @@
         "kind": "method",
         "main": "Returns the number 3.14159265358979, the mathematical constant pi, accurate to 15 digits.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Pmt",
@@ -56727,7 +57530,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Poisson",
@@ -56740,6 +57545,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Poisson_Dist.md"
         ]
     },
@@ -56753,7 +57559,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Power",
@@ -56764,7 +57572,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Ppmt",
@@ -56779,7 +57589,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Price",
@@ -56795,7 +57607,9 @@
             "Arg6",
             "Arg7"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.PriceDisc",
@@ -56809,7 +57623,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.PriceMat",
@@ -56824,7 +57640,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Prob",
@@ -56837,7 +57655,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Product",
@@ -56845,7 +57665,9 @@
         "kind": "method",
         "main": "Multiplies all the numbers given as arguments and returns the product.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Proper",
@@ -56855,7 +57677,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Pv",
@@ -56869,7 +57693,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Quartile",
@@ -56881,6 +57707,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Quartile",
             "Excel.WorksheetFunction.Quartile_Inc.md",
             "Excel.WorksheetFunction.Quartile_Exc.md"
@@ -56895,7 +57722,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Quartile_Inc",
@@ -56907,6 +57736,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Quartile_Inc"
         ]
     },
@@ -56919,7 +57749,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Radians",
@@ -56929,7 +57761,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.RandBetween",
@@ -56940,7 +57774,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Rank",
@@ -56953,6 +57789,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Rank_Eq.md",
             "Excel.WorksheetFunction.Rank_Avg.md"
         ]
@@ -56967,7 +57804,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Rank_Eq",
@@ -56979,7 +57818,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Rate",
@@ -56995,6 +57836,7 @@
             "Arg6"
         ],
         "Return_value": [
+            "Double",
             "Rate"
         ]
     },
@@ -57010,7 +57852,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Replace",
@@ -57036,7 +57880,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Rept",
@@ -57048,6 +57894,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "String",
             "Rept"
         ]
     },
@@ -57060,7 +57907,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Round",
@@ -57071,7 +57920,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.RoundDown",
@@ -57082,7 +57933,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.RoundUp",
@@ -57093,7 +57946,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.RSq",
@@ -57105,6 +57960,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "excel.worksheetfunction.pearson.md"
         ]
     },
@@ -57118,7 +57974,9 @@
             "server",
             "topic1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Search",
@@ -57131,6 +57989,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Search",
             "SearchB"
         ]
@@ -57146,6 +58005,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Search",
             "SearchB"
         ]
@@ -57161,7 +58021,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Sinh",
@@ -57171,7 +58033,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Skew",
@@ -57179,7 +58043,9 @@
         "kind": "method",
         "main": "Returns the skewness of a distribution. Skewness characterizes the degree of asymmetry of a distribution around its mean. \nPositive skewness indicates a distribution with an asymmetric tail extending toward more positive values. Negative skewness indicates a distribution with an asymmetric tail extending toward more negative values.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Sln",
@@ -57191,7 +58057,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Slope",
@@ -57202,7 +58070,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Small",
@@ -57213,7 +58083,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SqrtPi",
@@ -57223,7 +58095,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Standardize",
@@ -57235,7 +58109,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.StDev",
@@ -57244,6 +58120,7 @@
         "main": "Estimates standard deviation based on a sample. The standard deviation is a measure of how widely values are dispersed from the average value (the mean).\n> [!IMPORTANT] \n> This function has been replaced with one or more new functions that may provide improved accuracy and whose names better reflect their usage. This function is still available for compatibility with earlier versions of Excel. However, if backward compatibility is not required, you should consider using the new functions from now on, because they more accurately describe their functionality.\n> \n> For more information about the new function, see the **[StDev_S](Excel.WorksheetFunction.StDev_S.md)** method.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.StDev_S.md"
         ]
     },
@@ -57254,6 +58131,7 @@
         "main": "Calculates standard deviation based on the entire population given as arguments. The standard deviation is a measure of how widely values are dispersed from the average value (the mean).\n> [!IMPORTANT] \n> This function has been replaced with one or more new functions that may provide improved accuracy and whose names better reflect their usage. This function is still available for compatibility with earlier versions of Excel. However, if backward compatibility is not required, you should consider using the new functions from now on, because they more accurately describe their functionality.\n> \n> For more information about the new function, see the **[StDev_P](Excel.WorksheetFunction.StDev_P.md)** method.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.StDev_P.md"
         ]
     },
@@ -57263,7 +58141,9 @@
         "kind": "method",
         "main": "Calculates standard deviation based on the entire population given as arguments. The standard deviation is a measure of how widely values are dispersed from the average value (the mean).\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.StDev_S",
@@ -57271,7 +58151,9 @@
         "kind": "method",
         "main": "Estimates standard deviation based on a sample. The standard deviation is a measure of how widely values are dispersed from the average value (the mean).\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.StEyx",
@@ -57282,7 +58164,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Substitute",
@@ -57296,6 +58180,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "String",
             "Substitute",
             "Replace"
         ]
@@ -57317,7 +58202,9 @@
         "kind": "method",
         "main": "Adds all the numbers in a range of cells.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumIf",
@@ -57329,7 +58216,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumIfs",
@@ -57340,7 +58229,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumProduct",
@@ -57348,7 +58239,9 @@
         "kind": "method",
         "main": "Multiplies corresponding components in the given arrays, and returns the sum of those products.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumSq",
@@ -57358,7 +58251,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumX2MY2",
@@ -57369,7 +58264,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumX2PY2",
@@ -57380,7 +58277,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.SumXMY2",
@@ -57391,7 +58290,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Syd",
@@ -57404,7 +58305,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Tanh",
@@ -57414,7 +58317,9 @@
         "Parameters": [
             "Arg1"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.TBillEq",
@@ -57426,7 +58331,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.TBillPrice",
@@ -57438,7 +58345,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.TBillYield",
@@ -57450,7 +58359,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.TDist",
@@ -57463,6 +58374,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.T_Dist_RT.md",
             "Excel.WorksheetFunction.T_Dist.md",
             "Excel.WorksheetFunction.T_Dist_2T.md"
@@ -57477,7 +58389,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.TInv",
@@ -57489,6 +58403,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.T_Inv.md",
             "Excel.WorksheetFunction.T_Inv_2T.md"
         ]
@@ -57502,6 +58417,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "Variant",
             "Transpose"
         ]
     },
@@ -57516,7 +58432,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Trim",
@@ -57527,6 +58445,7 @@
             "Arg1"
         ],
         "Return_value": [
+            "String",
             "Trim"
         ]
     },
@@ -57540,6 +58459,7 @@
             "Arg2"
         ],
         "Return_value": [
+            "Double",
             "TrimMean"
         ]
     },
@@ -57555,6 +58475,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "TTest",
             "Excel.WorksheetFunction.T_Test.md"
         ]
@@ -57569,7 +58490,9 @@
             "Arg2",
             "Arg3"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.T_Dist_2T",
@@ -57580,7 +58503,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.T_Dist_RT",
@@ -57591,7 +58516,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.T_Inv",
@@ -57602,7 +58529,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.T_Inv_2T",
@@ -57613,7 +58542,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.T_Test",
@@ -57627,6 +58558,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "T_Test"
         ]
     },
@@ -57639,7 +58571,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Var",
@@ -57648,6 +58582,7 @@
         "main": "Estimates variance based on a sample.\n> [!IMPORTANT] \n> This function has been replaced with one or more new functions that may provide improved accuracy and whose names better reflect their usage. This function is still available for compatibility with earlier versions of Excel. However, if backward compatibility is not required, you should consider using the new functions from now on, because they more accurately describe their functionality.\n> \n> For more information about the new function, see the **[Var_S](Excel.WorksheetFunction.Var_S.md)** method.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Var_S.md"
         ]
     },
@@ -57658,6 +58593,7 @@
         "main": "Calculates variance based on the entire population.\n> [!IMPORTANT] \n> This function has been replaced with one or more new functions that may provide improved accuracy and whose names better reflect their usage. This function is still available for compatibility with earlier versions of Excel. However, if backward compatibility is not required, you should consider using the new functions from now on, because they more accurately describe their functionality.\n> \n> For more information about the new function, see the **[Var_P](Excel.WorksheetFunction.Var_P.md)** method.\n",
         "Parameters": [],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Var_P.md"
         ]
     },
@@ -57667,7 +58603,9 @@
         "kind": "method",
         "main": "Calculates variance based on the entire population.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Var_S",
@@ -57675,7 +58613,9 @@
         "kind": "method",
         "main": "Estimates variance based on a sample.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Vdb",
@@ -57692,6 +58632,7 @@
             "Arg7"
         ],
         "Return_value": [
+            "Double",
             "Vdb"
         ]
     },
@@ -57706,7 +58647,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Variant"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Weekday",
@@ -57717,7 +58660,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.WeekNum",
@@ -57728,7 +58673,9 @@
             "Arg1",
             "Arg2"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Weibull",
@@ -57742,6 +58689,7 @@
             "Arg4"
         ],
         "Return_value": [
+            "Double",
             "Excel.WorksheetFunction.Weibull_Dist.md"
         ]
     },
@@ -57756,7 +58704,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.WorkDay",
@@ -57769,6 +58719,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "WorkDay"
         ]
     },
@@ -57783,7 +58734,9 @@
             "Arg3",
             "Arg4"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.Xirr",
@@ -57796,6 +58749,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "excel.worksheetfunction.irr.md"
         ]
     },
@@ -57823,6 +58777,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "YearFrac"
         ]
     },
@@ -57838,7 +58793,9 @@
             "Arg4",
             "Arg5"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.YieldMat",
@@ -57853,7 +58810,9 @@
             "Arg5",
             "Arg6"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Excel.WorksheetFunction.ZTest",
@@ -57866,6 +58825,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "ZTest",
             "Excel.WorksheetFunction.Z_Test.md"
         ]
@@ -57881,6 +58841,7 @@
             "Arg3"
         ],
         "Return_value": [
+            "Double",
             "Z_Test"
         ]
     },
@@ -59715,6 +60676,16 @@
         "main": "Specifies the type of error object to be retrieved from the **Errors** collection.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **xlEmptyCellReferences**|7|The cell contains a formula referring to empty cells.|\n| **xlEvaluateToError**|1|The cell evaluates to an error value.|\n| **xlInconsistentFormula**|4|The cell contains an inconsistent formula for a region.|\n| **xlInconsistentListFormula**|9|The cell contains an inconsistent formula for a list.|\n| **xlListDataValidation**|8|Data in the list contains a validation error.|\n| **xlNumberAsText**|3|Number entered as text.|\n| **xlOmittedCells**|5|Cells omitted.|\n| **xlTextDate**|2|Date entered as text.|\n| **xlUnlockedFormulaCells**|6|Formula cells are unlocked.|\n[!include[Support and feedback](~/includes/feedback-boilerplate.md)]\n"
     },
     {
+        "api_name": "Excel.XlFileAccess",
+        "enum_ch": [
+            "xlReadOnly",
+            "xlReadWrite"
+        ],
+        "file_name": "Excel.XlFileAccess.md",
+        "kind": "enumeration",
+        "main": "Specifies the new access mode for the object.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **xlReadOnly**|3|Read-only|\n| **xlReadWrite**|2|Read/write|\n[!include[Support and feedback](~/includes/feedback-boilerplate.md)]\n"
+    },
+    {
         "api_name": "Excel.XlFileFormat",
         "enum_ch": [
             "xlAddIn",
@@ -61482,6 +62453,17 @@
         "file_name": "Excel.XlSaveAction.md",
         "kind": "enumeration",
         "main": "Specifies during file close if the file will be saved.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **xlDoNotSaveChanges**|2|Changes will not be saved.|\n| **xlSaveChanges**|1|Changes will be saved.|\n[!include[Support and feedback](~/includes/feedback-boilerplate.md)]\n"
+    },
+    {
+        "api_name": "Excel.XlSaveAsAccessMode",
+        "enum_ch": [
+            "xlExclusive",
+            "xlNoChange",
+            "xlShared"
+        ],
+        "file_name": "Excel.XlSaveAsAccessMode.md",
+        "kind": "enumeration",
+        "main": "Specifies the access mode for the Save As function.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **xlExclusive**|3|Exclusive mode|\n| **xlNoChange**|1|Default (does not change the access mode)|\n| **xlShared**|2|Share list|\n[!include[Support and feedback](~/includes/feedback-boilerplate.md)]\n"
     },
     {
         "api_name": "Excel.XlSaveConflictResolution",

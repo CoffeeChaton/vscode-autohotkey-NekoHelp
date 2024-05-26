@@ -1062,6 +1062,17 @@
         ]
     },
     {
+        "api_name": "Outlook.AddressEntry.PropertyAccessor",
+        "file_name": "Outlook.AddressEntry.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[AddressEntry](Outlook.AddressEntry.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.AddressEntry.md"
+        ]
+    },
+    {
         "api_name": "Outlook.AddressEntry.Session",
         "file_name": "Outlook.AddressEntry.Session.md",
         "kind": "property",
@@ -1231,6 +1242,17 @@
         "Parameters": [],
         "Return_value": [
             "Object"
+        ]
+    },
+    {
+        "api_name": "Outlook.AddressList.PropertyAccessor",
+        "file_name": "Outlook.AddressList.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[AddressList](Outlook.AddressList.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.AddressList.md"
         ]
     },
     {
@@ -1650,6 +1672,7 @@
             "LookInFolders"
         ],
         "Return_value": [
+            "True",
             "Boolean"
         ]
     },
@@ -2814,6 +2837,17 @@
         ]
     },
     {
+        "api_name": "Outlook.AppointmentItem.PropertyAccessor",
+        "file_name": "Outlook.AppointmentItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[AppointmentItem](Outlook.AppointmentItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.AppointmentItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.AppointmentItem.PropertyChange",
         "file_name": "Outlook.AppointmentItem.PropertyChange.md",
         "kind": "event",
@@ -3396,6 +3430,17 @@
         "Parameters": [],
         "Return_value": [
             "Long"
+        ]
+    },
+    {
+        "api_name": "Outlook.Attachment.PropertyAccessor",
+        "file_name": "Outlook.Attachment.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[Attachment](Outlook.Attachment.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.Attachment.md"
         ]
     },
     {
@@ -4332,6 +4377,7 @@
         "main": "Returns or sets a **Boolean** value that indicates whether attachments for calendar items should be included in the iCalendar (.ics) file created by the **[ForwardAsICal](Outlook.CalendarSharing.ForwardAsICal.md)** or **[SaveAsICal](Outlook.CalendarSharing.SaveAsICal.md)** methods of the **[CalendarSharing](Outlook.CalendarSharing.md)** object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Boolean",
             "Outlook.CalendarSharing.ForwardAsICal.md",
             "Outlook.CalendarSharing.SaveAsICal.md",
@@ -4345,6 +4391,7 @@
         "main": "Returns or sets a **Boolean** value that indicates whether private details for calendar items should be included in the iCalendar (.ics) file created by the **[ForwardAsICal](Outlook.CalendarSharing.ForwardAsICal.md)** or **[SaveAsICal](Outlook.CalendarSharing.SaveAsICal.md)** methods of the **[CalendarSharing](Outlook.CalendarSharing.md)** object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Boolean",
             "Outlook.CalendarSharing.ForwardAsICal.md",
             "Outlook.CalendarSharing.SaveAsICal.md",
@@ -4358,6 +4405,7 @@
         "main": "Returns or sets a **Boolean** value that indicates whether all calendar items in the folder should be included in the iCalendar (.ics) file created by the **[ForwardAsICal](Outlook.CalendarSharing.ForwardAsICal.md)** or **[SaveAsICal](Outlook.CalendarSharing.SaveAsICal.md)** methods of the **[CalendarSharing](Outlook.CalendarSharing.md)** object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Boolean",
             "Outlook.CalendarSharing.ForwardAsICal.md",
             "Outlook.CalendarSharing.SaveAsICal.md",
@@ -4406,6 +4454,7 @@
         "main": "Returns or sets a **Boolean** value that indicates whether calendar items that don't occur within working hours should be included in the iCalendar (.ics) file created by the **[ForwardAsICal](Outlook.CalendarSharing.ForwardAsICal.md)** or **[SaveAsICal](Outlook.CalendarSharing.SaveAsICal.md)** methods of the **[CalendarSharing](Outlook.CalendarSharing.md)** object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Boolean",
             "Outlook.CalendarSharing.ForwardAsICal.md",
             "Outlook.CalendarSharing.SaveAsICal.md",
@@ -7822,6 +7871,17 @@
         ]
     },
     {
+        "api_name": "Outlook.ContactItem.PropertyAccessor",
+        "file_name": "Outlook.ContactItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **ContactItem** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "ContactItem"
+        ]
+    },
+    {
         "api_name": "Outlook.ContactItem.PropertyChange",
         "file_name": "Outlook.ContactItem.PropertyChange.md",
         "kind": "event",
@@ -9532,6 +9592,17 @@
         ]
     },
     {
+        "api_name": "Outlook.DistListItem.PropertyAccessor",
+        "file_name": "Outlook.DistListItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[DistListItem](Outlook.DistListItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.DistListItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.DistListItem.PropertyChange",
         "file_name": "Outlook.DistListItem.PropertyChange.md",
         "kind": "event",
@@ -10453,6 +10524,17 @@
         ]
     },
     {
+        "api_name": "Outlook.DocumentItem.PropertyAccessor",
+        "file_name": "Outlook.DocumentItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[DocumentItem](Outlook.DocumentItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.DocumentItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.DocumentItem.PropertyChange",
         "file_name": "Outlook.DocumentItem.PropertyChange.md",
         "kind": "event",
@@ -11063,6 +11145,17 @@
         ]
     },
     {
+        "api_name": "Outlook.ExchangeDistributionList.PropertyAccessor",
+        "file_name": "Outlook.ExchangeDistributionList.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[ExchangeDistributionList](Outlook.ExchangeDistributionList.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.ExchangeDistributionList.md"
+        ]
+    },
+    {
         "api_name": "Outlook.ExchangeDistributionList.Session",
         "file_name": "Outlook.ExchangeDistributionList.Session.md",
         "kind": "property",
@@ -11510,6 +11603,17 @@
         ]
     },
     {
+        "api_name": "Outlook.ExchangeUser.PropertyAccessor",
+        "file_name": "Outlook.ExchangeUser.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[ExchangeUser](Outlook.ExchangeUser.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.ExchangeUser.md"
+        ]
+    },
+    {
         "api_name": "Outlook.ExchangeUser.Session",
         "file_name": "Outlook.ExchangeUser.Session.md",
         "kind": "property",
@@ -11924,6 +12028,7 @@
             "Pane"
         ],
         "Return_value": [
+            "True",
             "Boolean"
         ]
     },
@@ -12582,6 +12687,17 @@
         "Parameters": [],
         "Return_value": [
             "Object"
+        ]
+    },
+    {
+        "api_name": "Outlook.Folder.PropertyAccessor",
+        "file_name": "Outlook.Folder.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[Folder](Outlook.Folder.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.Folder.md"
         ]
     },
     {
@@ -14119,6 +14235,7 @@
         "main": "Determines whether the mail message associated with an inspector is displayed in an Outlook **[Inspector](Outlook.Inspector.md)** or in Microsoft Word.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Outlook.Inspector.md"
         ]
     },
@@ -15625,6 +15742,17 @@
         ]
     },
     {
+        "api_name": "Outlook.JournalItem.PropertyAccessor",
+        "file_name": "Outlook.JournalItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[JournalItem](Outlook.JournalItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.JournalItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.JournalItem.PropertyChange",
         "file_name": "Outlook.JournalItem.PropertyChange.md",
         "kind": "event",
@@ -16894,6 +17022,17 @@
         "Parameters": [],
         "Return_value": [
             "PrintOut"
+        ]
+    },
+    {
+        "api_name": "Outlook.MailItem.PropertyAccessor",
+        "file_name": "Outlook.MailItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[MailItem](Outlook.MailItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.MailItem.md"
         ]
     },
     {
@@ -18457,6 +18596,17 @@
         ]
     },
     {
+        "api_name": "Outlook.MeetingItem.PropertyAccessor",
+        "file_name": "Outlook.MeetingItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[MeetingItem](Outlook.MeetingItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.MeetingItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.MeetingItem.PropertyChange",
         "file_name": "Outlook.MeetingItem.PropertyChange.md",
         "kind": "event",
@@ -19021,6 +19171,7 @@
             "SecondEntryID"
         ],
         "Return_value": [
+            "True",
             "Boolean"
         ]
     },
@@ -20621,6 +20772,17 @@
         ]
     },
     {
+        "api_name": "Outlook.NoteItem.PropertyAccessor",
+        "file_name": "Outlook.NoteItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[NoteItem](Outlook.NoteItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.NoteItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.NoteItem.Save",
         "file_name": "Outlook.NoteItem.Save.md",
         "kind": "method",
@@ -20972,18 +21134,6 @@
         "file_name": "Outlook.OlAttachmentBlockLevel.md",
         "kind": "enumeration",
         "main": "Specifies whether there is any restriction on the type of attachments for an item.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **olAttachmentBlockLevelNone**|0|There is no restriction on the type of the attachment based on its file extension.|\n| **olAttachmentBlockLevelOpen**|1|There is a restriction on the type of the attachment based on its file extension such that users must first save the attachment to disk before opening it.|\n"
-    },
-    {
-        "api_name": "Outlook.OlAttachmentType",
-        "enum_ch": [
-            "olByReference",
-            "olByValue",
-            "olEmbeddeditem",
-            "olOLE"
-        ],
-        "file_name": "Outlook.OlAttachmentType.md",
-        "kind": "enumeration",
-        "main": "Specifies the attachment type.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **olByReference**|4|This value is no longer supported since Microsoft Outlook 2007. Use **olByValue** to attach a copy of a file in the file system.|\n| **olByValue**|1|The attachment is a copy of the original file and can be accessed even if the original file is removed.|\n| **olEmbeddeditem**|5|The attachment is an Outlook message format file (.msg) and is a copy of the original message.|\n| **olOLE**|6|The attachment is an OLE document.|\n"
     },
     {
         "api_name": "Outlook.OlAutoDiscoverConnectionMode",
@@ -29037,6 +29187,17 @@
         ]
     },
     {
+        "api_name": "Outlook.PostItem.PropertyAccessor",
+        "file_name": "Outlook.PostItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[PostItem](Outlook.PostItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.PostItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.PostItem.PropertyChange",
         "file_name": "Outlook.PostItem.PropertyChange.md",
         "kind": "event",
@@ -29389,6 +29550,178 @@
             "Outlook.PostItem.Save.md",
             "Outlook.PostItem.SaveAs.md"
         ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.Application",
+        "file_name": "Outlook.PropertyAccessor.Application.md",
+        "kind": "property",
+        "main": "Returns the **[Application](Outlook.Application.md)** object that represents the parent application (Outlook) for the **[PropertyAccessor](Outlook.PropertyAccessor.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.Application.md",
+            "Outlook.PropertyAccessor.md"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.BinaryToString",
+        "file_name": "Outlook.PropertyAccessor.BinaryToString.md",
+        "kind": "method",
+        "main": "Converts the array of bytes specified by  _Value_ to a **String**.\n",
+        "Parameters": [
+            "Value"
+        ],
+        "Return_value": [
+            "String"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.Class",
+        "file_name": "Outlook.PropertyAccessor.Class.md",
+        "kind": "property",
+        "main": "Returns a constant in the [OlObjectClass](Outlook.OlObjectClass.md) enumeration indicating the class of the **[PropertyAccessor](Outlook.PropertyAccessor.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.DeleteProperties",
+        "file_name": "Outlook.PropertyAccessor.DeleteProperties.md",
+        "kind": "method",
+        "main": "Deletes the properties specified in the array  _SchemaNames_.\n",
+        "Parameters": [
+            "SchemaNames"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.DeleteProperty",
+        "file_name": "Outlook.PropertyAccessor.DeleteProperty.md",
+        "kind": "method",
+        "main": "Deletes the property specified by  _SchemaName_.\n",
+        "Parameters": [
+            "SchemaName"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.GetProperties",
+        "file_name": "Outlook.PropertyAccessor.GetProperties.md",
+        "kind": "method",
+        "main": "Obtains the values of the properties specified by the one-dimensional array  _SchemaNames_.\n",
+        "Parameters": [
+            "SchemaNames"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.GetProperty",
+        "file_name": "Outlook.PropertyAccessor.GetProperty.md",
+        "kind": "method",
+        "main": "Returns an **Object** that represents the value of the property specified by _SchemaName_.\n",
+        "Parameters": [
+            "SchemaName"
+        ],
+        "Return_value": [
+            "Object"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.LocalTimeToUTC",
+        "file_name": "Outlook.PropertyAccessor.LocalTimeToUTC.md",
+        "kind": "method",
+        "main": "Converts a date-time value specified by  _Value_ from the local time format to Coordinated Universal Time (UTC) format.\n",
+        "Parameters": [
+            "Value"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor",
+        "Events": [],
+        "file_name": "Outlook.PropertyAccessor.md",
+        "kind": "object",
+        "main": "Provides the ability to create, get, set, and delete properties on objects.\n",
+        "Methods": [
+            "BinaryToString",
+            "DeleteProperties",
+            "DeleteProperty",
+            "GetProperties",
+            "GetProperty",
+            "LocalTimeToUTC",
+            "SetProperties",
+            "SetProperty",
+            "StringToBinary",
+            "UTCToLocalTime"
+        ],
+        "Properties": [
+            "Application",
+            "Class",
+            "Parent",
+            "Session"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.Parent",
+        "file_name": "Outlook.PropertyAccessor.Parent.md",
+        "kind": "property",
+        "main": "Returns the parent object of the **[PropertyAccessor](Outlook.PropertyAccessor.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.Session",
+        "file_name": "Outlook.PropertyAccessor.Session.md",
+        "kind": "property",
+        "main": "Returns the **[NameSpace](Outlook.NameSpace.md)** object for the current session. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.NameSpace.md"
+        ]
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.SetProperties",
+        "file_name": "Outlook.PropertyAccessor.SetProperties.md",
+        "kind": "method",
+        "main": "Sets the properties specified by the array  _SchemaNames_ to the values specified by the array _Values_.\n",
+        "Parameters": [
+            "SchemaNames",
+            "Values"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.SetProperty",
+        "file_name": "Outlook.PropertyAccessor.SetProperty.md",
+        "kind": "method",
+        "main": "Sets the property specified by  _SchemaName_ to the value specified by _Value_.\n",
+        "Parameters": [
+            "SchemaName",
+            "Value"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.StringToBinary",
+        "file_name": "Outlook.PropertyAccessor.StringToBinary.md",
+        "kind": "method",
+        "main": "Converts a string specified by  _Value_ to an array of bytes.\n",
+        "Parameters": [
+            "Value"
+        ],
+        "Return_value": []
+    },
+    {
+        "api_name": "Outlook.PropertyAccessor.UTCToLocalTime",
+        "file_name": "Outlook.PropertyAccessor.UTCToLocalTime.md",
+        "kind": "method",
+        "main": "Converts the date-time value that is specified by  _Value_ and expressed in Coordinated Universal Time (UTC) to a value in local time.\n",
+        "Parameters": [
+            "Value"
+        ],
+        "Return_value": []
     },
     {
         "api_name": "Outlook.PropertyPage.Apply",
@@ -29770,12 +30103,24 @@
         ]
     },
     {
+        "api_name": "Outlook.Recipient.PropertyAccessor",
+        "file_name": "Outlook.Recipient.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[Recipient](Outlook.Recipient.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.Recipient.md"
+        ]
+    },
+    {
         "api_name": "Outlook.Recipient.Resolve",
         "file_name": "Outlook.Recipient.Resolve.md",
         "kind": "method",
         "main": "Attempts to resolve a **[Recipient](Outlook.Recipient.md)** object against the Address Book.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Outlook.Recipient.md"
         ]
     },
@@ -29942,6 +30287,7 @@
         "main": "Attempts to resolve all the **[Recipient](Outlook.Recipient.md)** objects in the **[Recipients](Outlook.Recipients.md)** collection against the Address Book.\n",
         "Parameters": [],
         "Return_value": [
+            "True",
             "Outlook.Recipient.md",
             "Outlook.Recipients.md"
         ]
@@ -31135,6 +31481,17 @@
         ]
     },
     {
+        "api_name": "Outlook.RemoteItem.PropertyAccessor",
+        "file_name": "Outlook.RemoteItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[RemoteItem](Outlook.RemoteItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.RemoteItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.RemoteItem.PropertyChange",
         "file_name": "Outlook.RemoteItem.PropertyChange.md",
         "kind": "event",
@@ -31979,6 +32336,17 @@
         "Parameters": [],
         "Return_value": [
             "PrintOut"
+        ]
+    },
+    {
+        "api_name": "Outlook.ReportItem.PropertyAccessor",
+        "file_name": "Outlook.ReportItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[ReportItem](Outlook.ReportItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.ReportItem.md"
         ]
     },
     {
@@ -34315,6 +34683,17 @@
         ]
     },
     {
+        "api_name": "Outlook.SharingItem.AllowWriteAccess",
+        "file_name": "Outlook.SharingItem.AllowWriteAccess.md",
+        "kind": "property",
+        "main": "Returns or sets a **Boolean** value that indicates whether a sharing invitation should include write access to the folder. Read/write.\n",
+        "Parameters": [],
+        "Return_value": [
+            "True",
+            "Boolean"
+        ]
+    },
+    {
         "api_name": "Outlook.SharingItem.AlternateRecipientAllowed",
         "file_name": "Outlook.SharingItem.AlternateRecipientAllowed.md",
         "kind": "property",
@@ -35259,6 +35638,17 @@
         "main": "Prints the **[SharingItem](Outlook.SharingItem.md)** using all default settings.\n",
         "Parameters": [],
         "Return_value": [
+            "Outlook.SharingItem.md"
+        ]
+    },
+    {
+        "api_name": "Outlook.SharingItem.PropertyAccessor",
+        "file_name": "Outlook.SharingItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[SharingItem](Outlook.SharingItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
             "Outlook.SharingItem.md"
         ]
     },
@@ -36267,6 +36657,17 @@
         ]
     },
     {
+        "api_name": "Outlook.StorageItem.PropertyAccessor",
+        "file_name": "Outlook.StorageItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[StorageItem](Outlook.StorageItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.StorageItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.StorageItem.Save",
         "file_name": "Outlook.StorageItem.Save.md",
         "kind": "method",
@@ -36532,6 +36933,17 @@
         "Parameters": [],
         "Return_value": [
             "Object"
+        ]
+    },
+    {
+        "api_name": "Outlook.Store.PropertyAccessor",
+        "file_name": "Outlook.Store.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[Store](Outlook.Store.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.Store.md"
         ]
     },
     {
@@ -38437,6 +38849,17 @@
         ]
     },
     {
+        "api_name": "Outlook.TaskItem.PropertyAccessor",
+        "file_name": "Outlook.TaskItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[TaskItem](Outlook.TaskItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.TaskItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.TaskItem.PropertyChange",
         "file_name": "Outlook.TaskItem.PropertyChange.md",
         "kind": "event",
@@ -38702,7 +39125,9 @@
         "kind": "method",
         "main": "Clears the current instance of a recurring task and sets the recurrence to the next instance of that task.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "False"
+        ]
     },
     {
         "api_name": "Outlook.TaskItem.StartDate",
@@ -39489,6 +39914,17 @@
         "Parameters": [],
         "Return_value": [
             "PrintOut"
+        ]
+    },
+    {
+        "api_name": "Outlook.TaskRequestAcceptItem.PropertyAccessor",
+        "file_name": "Outlook.TaskRequestAcceptItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[TaskRequestAcceptItem](Outlook.TaskRequestAcceptItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.TaskRequestAcceptItem.md"
         ]
     },
     {
@@ -40331,6 +40767,17 @@
         ]
     },
     {
+        "api_name": "Outlook.TaskRequestDeclineItem.PropertyAccessor",
+        "file_name": "Outlook.TaskRequestDeclineItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[TaskRequestDeclineItem](Outlook.TaskRequestDeclineItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.TaskRequestDeclineItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.TaskRequestDeclineItem.PropertyChange",
         "file_name": "Outlook.TaskRequestDeclineItem.PropertyChange.md",
         "kind": "event",
@@ -41170,6 +41617,17 @@
         ]
     },
     {
+        "api_name": "Outlook.TaskRequestItem.PropertyAccessor",
+        "file_name": "Outlook.TaskRequestItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[TaskRequestItem](Outlook.TaskRequestItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.TaskRequestItem.md"
+        ]
+    },
+    {
         "api_name": "Outlook.TaskRequestItem.PropertyChange",
         "file_name": "Outlook.TaskRequestItem.PropertyChange.md",
         "kind": "event",
@@ -42006,6 +42464,17 @@
         "Parameters": [],
         "Return_value": [
             "PrintOut"
+        ]
+    },
+    {
+        "api_name": "Outlook.TaskRequestUpdateItem.PropertyAccessor",
+        "file_name": "Outlook.TaskRequestUpdateItem.PropertyAccessor.md",
+        "kind": "property",
+        "main": "Returns a **[PropertyAccessor](Outlook.PropertyAccessor.md)** object that supports creating, getting, setting, and deleting properties of the parent **[TaskRequestUpdateItem](Outlook.TaskRequestUpdateItem.md)** object. Read-only.\n",
+        "Parameters": [],
+        "Return_value": [
+            "Outlook.PropertyAccessor.md",
+            "Outlook.TaskRequestUpdateItem.md"
         ]
     },
     {

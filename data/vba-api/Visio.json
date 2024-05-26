@@ -586,7 +586,9 @@
         "Parameters": [
             "app"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Application.AlertResponse",
@@ -622,7 +624,9 @@
         "kind": "property",
         "main": "Returns the instance of Microsoft Visio that is associated with an object. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Application"
+        ]
     },
     {
         "api_name": "Visio.Application.AppObjActivated",
@@ -819,7 +823,9 @@
         "Parameters": [
             "app"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Application.BeforeWindowClosed",
@@ -1187,7 +1193,9 @@
         "kind": "property",
         "main": "Determines whether Microsoft Visio defers recalculating shape sizes and relationships when a member of the relationship pair is moved or resized. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Application.DesignModeEntered",
@@ -1432,7 +1440,9 @@
             "StencilType",
             "MeasurementSystem"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Application.GetCustomStencilFile",
@@ -1442,7 +1452,9 @@
         "Parameters": [
             "StencilType"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Application.GetPreviewEnabled",
@@ -1452,7 +1464,9 @@
         "Parameters": [
             "GalleryName"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Application.GroupCanceled",
@@ -1500,6 +1514,7 @@
         "main": "Gets the instance handle of the **Application** object for a 64-bit version of Microsoft Visio. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Int64",
             "Application"
         ]
     },
@@ -2075,7 +2090,9 @@
         "kind": "property",
         "main": "Returns the unique identity of the current Microsoft Visio process. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Application.PromptForSummary",
@@ -2210,6 +2227,7 @@
             "app"
         ],
         "Return_value": [
+            "Nothing",
             "True"
         ]
     },
@@ -2290,6 +2308,7 @@
             "FriendlyName"
         ],
         "Return_value": [
+            "Nothing",
             "Office.IRibbonExtensibility.md"
         ]
     },
@@ -2404,7 +2423,9 @@
             "GalleryName",
             "OnOrOff"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Application.Settings",
@@ -2601,6 +2622,7 @@
             "app"
         ],
         "Return_value": [
+            "Nothing",
             "True",
             "QueryCancelSuspendEvents"
         ]
@@ -2611,7 +2633,9 @@
         "kind": "property",
         "main": "Gets or sets the paths where Microsoft Visio looks for templates. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Application.TextChanged",
@@ -2686,6 +2710,7 @@
             "TargetDocument"
         ],
         "Return_value": [
+            "Nothing",
             "IRibbonExtensibility"
         ]
     },
@@ -2705,7 +2730,9 @@
         "kind": "property",
         "main": "Specifies whether Microsoft Visual Basic for Applications (VBA) is enabled in the application. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Application.VBE",
@@ -2845,6 +2872,7 @@
         "main": "Determines whether the selected background or border is applied to all pages in the document (**True**) or only to the current page (**False**). Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "True",
             "False"
         ]
@@ -2969,7 +2997,9 @@
         "kind": "property",
         "main": "Indicates whether ShapeSheet formula AutoComplete is enabled. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.ApplicationSettings.FreeformDrawingPrecision",
@@ -3105,6 +3135,7 @@
         "main": "Determines the background color that is applied to the exported image when you call the **Export** method of the **[Master](Visio.Master.md)**, **[Page](Visio.Page.md)**, **[Selection](Visio.Selection.md)**, or **[Shape](Visio.Shape.md)** object to export the specified object to a BMP, GIF, JPG, PNG, or TIFF file. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "OLE_COLOR",
             "Export",
             "Visio.Master.md",
             "Visio.Page.md",
@@ -3203,6 +3234,7 @@
         "main": "Determines the export quality that is applied to the exported image when you call the **Export** method of the **[Master](Visio.Master.md)**, **[Page](Visio.Page.md)**, **[Selection](Visio.Selection.md)**, or **[Shape](Visio.Shape.md)** object to export the specified object to a JPG file. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Export",
             "Visio.Master.md",
             "Visio.Page.md",
@@ -3231,6 +3263,7 @@
         "main": "Determines the transparency color that is applied to the exported image when you call the **Export** method of the **[Master](Visio.Master.md)**, **[Page](Visio.Page.md)**, **[Selection](Visio.Selection.md)**, or **[Shape](Visio.Shape.md)** object to export the specified object to a GIF or PNG file. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "OLE_COLOR",
             "Export",
             "Visio.Master.md",
             "Visio.Page.md",
@@ -3245,6 +3278,7 @@
         "main": "Determines whether Microsoft Visio applies, to the exported image, the transparency color that is specified in the **RasterExportTransparencyColor** property when you call the **Export** method of the **[Master](Visio.Master.md)**, **[Page](Visio.Page.md)**, **[Selection](Visio.Selection.md)**, or **[Shape](Visio.Shape.md)** object to export the specified object to a GIF or PNG file. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "RasterExportTransparencyColor",
             "Visio.Master.md",
             "Visio.Page.md",
@@ -3266,7 +3300,9 @@
         "kind": "property",
         "main": "Determines the number of entries in the **Recent Templates** list in the Microsoft Visio user interface. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.ApplicationSettings.SATextUI",
@@ -3460,7 +3496,9 @@
         "kind": "property",
         "main": "For shapes on stencils in Microsoft Visio, determines how many lines of text of each shape's name can appear below the shape before the text is truncated and \"...\" is appended. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.ApplicationSettings.StencilTextColor",
@@ -3476,7 +3514,9 @@
         "kind": "property",
         "main": "Determines whether Microsoft Visio uses an animated transition to show certain shape movements, such as re-layout of shapes. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.ApplicationSettings.UndoLevels",
@@ -3484,7 +3524,9 @@
         "kind": "property",
         "main": "Determines the number of consecutive actions the user can undo in Microsoft Visio. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.ApplicationSettings.UserInitials",
@@ -3492,7 +3534,9 @@
         "kind": "property",
         "main": "Determines the user initials associated with the Microsoft Visio file. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.ApplicationSettings.UserName",
@@ -3510,7 +3554,9 @@
         "kind": "property",
         "main": "Determines whether zooming in to and out from a Microsoft Visio drawing by rolling the wheel of the mouse is enabled. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Cell.Application",
@@ -4844,7 +4890,9 @@
             "pObjectToAdd",
             "addOptions"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.Application",
@@ -4860,7 +4908,9 @@
         "kind": "property",
         "main": "Determines the visual appearance of the container. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.ContainerType",
@@ -4876,7 +4926,9 @@
         "kind": "method",
         "main": "Removes all member shapes from the container and deletes the container shape.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.FitToContents",
@@ -4884,7 +4936,9 @@
         "kind": "method",
         "main": "Forces the container to resize so as to tightly include all member shapes, including any applicable margins between the container and the shapes.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.GetListMemberPosition",
@@ -4894,7 +4948,9 @@
         "Parameters": [
             "ShapeMember"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.GetListMembers",
@@ -4912,7 +4968,9 @@
         "Parameters": [
             "SpacingUnits"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.GetMargin",
@@ -4922,7 +4980,9 @@
         "Parameters": [
             "MarginUnits"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.GetMemberShapes",
@@ -4950,7 +5010,9 @@
         "kind": "property",
         "main": "Determines the appearance and position of the heading of the container. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Integer"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.InsertListMember",
@@ -4961,7 +5023,9 @@
             "ObjectToInsert",
             "Position"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.ListAlignment",
@@ -4985,7 +5049,9 @@
         "kind": "property",
         "main": "Gets or sets a value that determines whether container members can be added, removed, or deleted. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties",
@@ -5052,7 +5118,9 @@
         "Parameters": [
             "ObjectToRemove"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.ReorderListMember",
@@ -5063,7 +5131,9 @@
             "ObjectToReorder",
             "Position"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.ResizeAsNeeded",
@@ -5081,7 +5151,9 @@
         "Parameters": [
             "Direction"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.SetListSpacing",
@@ -5092,7 +5164,9 @@
             "SpacingUnits",
             "SpacingSize"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.SetMargin",
@@ -5103,7 +5177,9 @@
             "MarginUnits",
             "MarginSize"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ContainerProperties.Shape",
@@ -5112,6 +5188,7 @@
         "main": "Returns the Microsoft Visio **[Shape](Visio.Shape.md)** object that is associated with the container. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md"
         ]
     },
@@ -6537,7 +6614,9 @@
         "kind": "property",
         "main": "Gets or sets the Ribbon XML string that is passed to the document to customize the Microsoft Office Fluent user interface. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Document.DataRecordsetAdded",
@@ -6644,7 +6723,9 @@
         "kind": "property",
         "main": "Determines which, if any, diagram services are enabled for the document. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Document.DocumentChanged",
@@ -7842,6 +7923,7 @@
         "main": "Returns a **[ServerPublishOptions](Visio.ServerPublishOptions.md)** object that you can use to specify the settings to apply when you save a document as a Web drawing (as a .vdw file), then publish and use it on a Microsoft SharePoint site in conjunction with Visio Services. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "ServerPublishOptions",
             "Visio.ServerPublishOptions.md"
         ]
     },
@@ -8111,6 +8193,7 @@
         "main": "Gets or sets the value of the **Title** field in a document's properties. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "Title"
         ]
     },
@@ -8178,6 +8261,7 @@
         "main": "Returns the **[Validation](Visio.Validation.md)** object that is associated with the document. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Validation",
             "Visio.Validation.md"
         ]
     },
@@ -9807,8 +9891,8 @@
         "main": "Determines how the Visio Drawing Control unloads the Visio application when the **DrawingControl** object is released. Read/write **Integer**.\n",
         "Parameters": [],
         "Return_value": [
-            "DrawingControl",
-            "Integer"
+            "Integer",
+            "DrawingControl"
         ]
     },
     {
@@ -10631,6 +10715,7 @@
         "main": "Gets or sets the horizontal position of the **GraphicItem** object relative to the shape to which it is applied. Read/write.\n> [!NOTE] \n> his Visio object or member is available only to licensed users of Visio Professional 2013.\n",
         "Parameters": [],
         "Return_value": [
+            "VisGraphicPositionHorizontal",
             "GraphicItem"
         ]
     },
@@ -11298,7 +11383,9 @@
         "Parameters": [
             "app"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.AlertResponse",
@@ -11531,7 +11618,9 @@
         "Parameters": [
             "app"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.BeforeWindowClosed",
@@ -11899,7 +11988,9 @@
         "kind": "property",
         "main": "Determines whether Microsoft Visio defers recalculating shape sizes and relationships when a member of a relationship pair is moved or resized. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.DesignModeEntered",
@@ -11927,7 +12018,9 @@
         "Parameters": [
             "CommandID"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.DocumentChanged",
@@ -12144,7 +12237,9 @@
             "StencilType",
             "MeasurementSystem"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.GetCustomStencilFile",
@@ -12154,7 +12249,9 @@
         "Parameters": [
             "StencilType"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.GetPreviewEnabled",
@@ -12164,7 +12261,9 @@
         "Parameters": [
             "GalleryName"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.GroupCanceled",
@@ -12212,6 +12311,7 @@
         "main": "Gets the instance handle of the **InvisibleApp** object for a 64-bit version of Microsoft Visio. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Int64",
             "InvisibleApp"
         ]
     },
@@ -12699,7 +12799,9 @@
             "uStateID",
             "bEnter"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.OnDataChangeDelay",
@@ -12776,7 +12878,9 @@
         "kind": "property",
         "main": "Returns the unique identity of the current Microsoft Visio process. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.PromptForSummary",
@@ -12911,6 +13015,7 @@
             "app"
         ],
         "Return_value": [
+            "Nothing",
             "True"
         ]
     },
@@ -12956,7 +13061,9 @@
         "kind": "method",
         "main": "Closes the indicated instance of Microsoft Visio.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.QuitCanceled",
@@ -12977,7 +13084,9 @@
         "kind": "method",
         "main": "Reverses the most recent undo unit.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.RegisterRibbonX",
@@ -12991,6 +13100,7 @@
             "FriendlyName"
         ],
         "Return_value": [
+            "HRESULT",
             "Office.IRibbonExtensibility.md"
         ]
     },
@@ -13002,7 +13112,9 @@
         "Parameters": [
             "bstrScopeName"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.RuleSetValidated",
@@ -13105,7 +13217,9 @@
             "GalleryName",
             "OnOrOff"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.Settings",
@@ -13245,7 +13359,9 @@
         "kind": "property",
         "main": "Gets or sets the paths where Microsoft Visio looks for stencils. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.StyleAdded",
@@ -13302,6 +13418,7 @@
             "app"
         ],
         "Return_value": [
+            "Nothing",
             "True",
             "QueryCancelSuspendEvents"
         ]
@@ -13312,7 +13429,9 @@
         "kind": "property",
         "main": "Gets or sets the paths where Microsoft Visio looks for templates. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.InvisibleApp.TextChanged",
@@ -13387,6 +13506,7 @@
             "TargetDocument"
         ],
         "Return_value": [
+            "HRESULT",
             "IRibbonExtensibility"
         ]
     },
@@ -14959,7 +15079,9 @@
             "yPos",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Master.PatternFlags",
@@ -17090,6 +17212,7 @@
         "main": "Returns a **[Shape](Visio.Shape.md)** object that represents the shape that is in the source page and that replaces the source-page shapes or selection being moved to a sub-process page. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md"
         ]
     },
@@ -17100,6 +17223,7 @@
         "main": "Returns a **[Selection](Visio.Selection.md)** object that represents the set of selected shapes before they are moved to a sub-process page. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Selection",
             "Visio.Selection.md"
         ]
     },
@@ -17110,6 +17234,7 @@
         "main": "Returns a **[Selection](Visio.Selection.md)** object that represents the set of selected shapes after they are moved to a new sub-process page. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Selection",
             "Visio.Selection.md"
         ]
     },
@@ -17425,7 +17550,9 @@
         "Parameters": [
             "Connector"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.AutoSizeDrawing",
@@ -17441,7 +17568,9 @@
         "kind": "method",
         "main": "Makes small adjustments to shapes to move them off page breaks.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Page.Background",
@@ -17806,6 +17935,7 @@
             "TargetShape"
         ],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md"
         ]
     },
@@ -17821,6 +17951,7 @@
             "Connector"
         ],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md"
         ]
     },
@@ -17834,6 +17965,7 @@
             "TargetShapes"
         ],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md"
         ]
     },
@@ -17847,7 +17979,9 @@
             "TargetList",
             "lPosition"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Shape"
+        ]
     },
     {
         "api_name": "Visio.Page.DropLegend",
@@ -18033,7 +18167,9 @@
         "Parameters": [
             "FileName"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Shape"
+        ]
     },
     {
         "api_name": "Visio.Page.Index",
@@ -18093,7 +18229,9 @@
         "Parameters": [
             "Direction"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Page.LayoutIncremental",
@@ -18108,7 +18246,9 @@
             "SpaceVertical",
             "UnitsNameOrCode"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Page.LayoutRoutePassive",
@@ -18116,7 +18256,9 @@
         "kind": "property",
         "main": "Determines whether to enable advanced connector routing logic on the page. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Page.LinkShapesToDataRows",
@@ -18386,7 +18528,9 @@
             "yPos",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Page.PersistsEvents",
@@ -18670,7 +18814,9 @@
             "ConnectorToSplit",
             "Shape"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Shape"
+        ]
     },
     {
         "api_name": "Visio.Page.Stat",
@@ -19417,6 +19563,7 @@
         "main": "Returns the **[Page](Visio.Page.md)** object that is associated with the **RelatedShapePairEvent** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Page",
             "Visio.Page.md",
             "RelatedShapePairEvent"
         ]
@@ -19428,6 +19575,7 @@
         "main": "Returns the identifier of the **[Page](Visio.Page.md)** object that is associated with the **[RelatedShapePairEvent](Visio.RelatedShapePairEvent.md)** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Visio.Page.md",
             "Visio.RelatedShapePairEvent.md"
         ]
@@ -19439,6 +19587,7 @@
         "main": "Gets the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -19448,7 +19597,9 @@
         "kind": "property",
         "main": "Returns the identifier of the first (container or callout) shape in the related shape pair. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.RelatedShapePairEvent",
@@ -19491,7 +19642,9 @@
         "kind": "property",
         "main": "Returns the identifier of the second (member) shape in the related shape pair. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Row.Application",
@@ -19871,7 +20024,9 @@
         "kind": "method",
         "main": "Adds the selection of shapes to all underlying containers that allow it as a member.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.AddToGroup",
@@ -19918,7 +20073,9 @@
         "kind": "method",
         "main": "Makes small adjustments to selected shapes to move them off page breaks.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.BoundingBox",
@@ -20087,7 +20244,9 @@
         "Parameters": [
             "DelFlags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.DeselectAll",
@@ -20332,7 +20491,9 @@
         "Parameters": [
             "Direction"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.LayoutIncremental",
@@ -20347,7 +20508,9 @@
             "SpaceVertical",
             "UnitCode"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.LineStyle",
@@ -20514,7 +20677,9 @@
             "ObjectToDrop",
             "NewShape"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Selection"
+        ]
     },
     {
         "api_name": "Visio.Selection.ObjectType",
@@ -20569,7 +20734,9 @@
         "kind": "method",
         "main": "Removes the selection of shapes from all lists and containers of which the selection is a member.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.RemoveFromGroup",
@@ -20589,7 +20756,9 @@
             "Distance",
             "UnitCode"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Selection.ReverseEnds",
@@ -20649,6 +20818,7 @@
         "main": "Returns the **[Selection](Visio.Selection.md)** object that represents the collection of shapes that will participate in drag or copy operations, based on the current selection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Selection",
             "Visio.Selection.md"
         ]
     },
@@ -20784,6 +20954,7 @@
         "main": "Gets the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n> [!NOTE] \n> This Visio object or member is available only to licensed users of Visio Professional 2013.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -20796,7 +20967,9 @@
             "PageName",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ServerPublishOptions.GetPagesToPublish",
@@ -20807,7 +20980,9 @@
             "Flags",
             "PublishPages"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ServerPublishOptions.GetRecordsetsToPublish",
@@ -20817,7 +20992,9 @@
         "Parameters": [
             "PublishDataRecordsets"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ServerPublishOptions.IncludePage",
@@ -20828,7 +21005,9 @@
             "PageName",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ServerPublishOptions.IsPublishedPage",
@@ -20840,6 +21019,7 @@
             "Flags"
         ],
         "Return_value": [
+            "Boolean",
             "True"
         ]
     },
@@ -20884,7 +21064,9 @@
             "PublishPages",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ServerPublishOptions.SetRecordsetsToPublish",
@@ -20894,7 +21076,9 @@
         "Parameters": [
             "PublishDataRecordsets"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ServerPublishOptions.Stat",
@@ -20979,7 +21163,9 @@
         "kind": "method",
         "main": "Adds the shape to all underlying containers that allow it as a member.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Shape.AlternativeText",
@@ -21107,7 +21293,9 @@
         "kind": "property",
         "main": "Gets or sets the target shape that is associated with the callout shape by a callout relationship. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Shape"
+        ]
     },
     {
         "api_name": "Visio.Shape.CellChanged",
@@ -21274,6 +21462,7 @@
         "main": "Returns the **[ContainerProperties](Visio.ContainerProperties.md)** object associated with the shape. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "ContainerProperties",
             "Visio.ContainerProperties.md"
         ]
     },
@@ -21446,7 +21635,9 @@
         "Parameters": [
             "DelFlags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Shape.DeleteRow",
@@ -21480,7 +21671,9 @@
             "OffsetY",
             "Units"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Shape.DistanceFrom",
@@ -21908,6 +22101,7 @@
             "Category"
         ],
         "Return_value": [
+            "Boolean",
             "True"
         ]
     },
@@ -21999,7 +22193,9 @@
         "kind": "property",
         "main": "Indicates whether the shape is a callout shape. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Shape.IsCustomPropertyLinked",
@@ -22578,7 +22774,9 @@
         "kind": "method",
         "main": "Removes the shape from all lists and containers of which it is a member.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Shape.Resize",
@@ -22590,7 +22788,9 @@
             "Distance",
             "UnitCode"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Shape.ReverseEnds",
@@ -23194,6 +23394,7 @@
             "UniqueID"
         ],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md",
             "Visio.Shape.UniqueID.md"
         ]
@@ -24680,6 +24881,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -24744,6 +24946,7 @@
         "main": "Determines whether ignored validation issues appear in the **Issues** window. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "Boolean",
             "Issues"
         ]
     },
@@ -24764,7 +24967,9 @@
             "RuleSet",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.ValidationIssue.Application",
@@ -24781,6 +24986,7 @@
         "main": "Deletes the **[ValidationIssue](Visio.ValidationIssue.md)** object from the document.\n",
         "Parameters": [],
         "Return_value": [
+            "Nothing",
             "Visio.ValidationIssue.md"
         ]
     },
@@ -24791,6 +24997,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -24801,6 +25008,7 @@
         "main": "Gets the identifier of the **[ValidationIssue](Visio.ValidationIssue.md)** object assigned by Microsoft Visio. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Visio.ValidationIssue.md"
         ]
     },
@@ -24810,7 +25018,9 @@
         "kind": "property",
         "main": "Determines whether the validation issue is currently ignored. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.ValidationIssue",
@@ -24851,6 +25061,7 @@
         "main": "Returns the **[ValidationRule](Visio.ValidationRule.md)** object that generated the validation issue. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "ValidationRule",
             "Visio.ValidationRule.md"
         ]
     },
@@ -24869,6 +25080,7 @@
         "main": "Returns the **[Page](Visio.Page.md)** object that is associated with the validation issue. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Page",
             "Visio.Page.md"
         ]
     },
@@ -24878,7 +25090,9 @@
         "kind": "property",
         "main": "Returns the ID of the page that is associated with the validation issue. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.ValidationIssue.TargetShape",
@@ -24887,6 +25101,7 @@
         "main": "Returns the **[Shape](Visio.Shape.md)** object that is associated with the validation issue. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Shape",
             "Visio.Shape.md"
         ]
     },
@@ -24905,6 +25120,7 @@
         "main": "Removes all **[ValidationIssue](Visio.ValidationIssue.md)** objects from the **[ValidationRules](Visio.ValidationRules.md)** collection of the document.\n",
         "Parameters": [],
         "Return_value": [
+            "Nothing",
             "Visio.ValidationIssue.md",
             "Visio.ValidationRules.md"
         ]
@@ -24916,6 +25132,7 @@
         "main": "Returns the number of **[ValidationIssue](Visio.ValidationIssue.md)** objects in the collection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Visio.ValidationIssue.md"
         ]
     },
@@ -24926,6 +25143,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -24938,6 +25156,7 @@
             "Index"
         ],
         "Return_value": [
+            "ValidationIssue",
             "Visio.ValidationIssue.md",
             "Item"
         ]
@@ -24951,6 +25170,7 @@
             "IssueID"
         ],
         "Return_value": [
+            "ValidationIssue",
             "Visio.ValidationIssue.md"
         ]
     },
@@ -25009,6 +25229,7 @@
         "main": "Represents the text displayed in the **Category** column of the **Issues** window. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "Category",
             "Issues"
         ]
@@ -25020,6 +25241,7 @@
         "main": "Deletes the **ValidationRule** object from the document.\n",
         "Parameters": [],
         "Return_value": [
+            "Nothing",
             "ValidationRule"
         ]
     },
@@ -25030,6 +25252,7 @@
         "main": "Specifies the description of the **ValidationRule** object that appears in the user interface. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "ValidationRule"
         ]
     },
@@ -25040,6 +25263,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -25049,7 +25273,9 @@
         "kind": "property",
         "main": "Gets or sets the logical expression that determines whether the validation rule should be applied to a target object. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.ValidationRule.ID",
@@ -25058,6 +25284,7 @@
         "main": "Gets the unique identifier of the **ValidationRule** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "ValidationRule"
         ]
     },
@@ -25067,7 +25294,9 @@
         "kind": "property",
         "main": "Determines whether the validation rule is currently ignored. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.ValidationRule",
@@ -25102,6 +25331,7 @@
         "main": "Specifies the universal name of the **ValidationRule** object. This is the default property of the object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "ValidationRule"
         ]
     },
@@ -25122,6 +25352,7 @@
         "main": "Returns the **[ValidationRuleSet](Visio.ValidationRuleSet.md)** object that contains the specified validation rule. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "ValidationRuleSet",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25147,7 +25378,9 @@
         "kind": "property",
         "main": "Gets or sets the logical expression that determines whether the target object satisfies the validation rule. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.ValidationRules.Add",
@@ -25158,6 +25391,7 @@
             "NameU"
         ],
         "Return_value": [
+            "ValidationRule",
             "Visio.ValidationRule.md",
             "ValidationRules"
         ]
@@ -25177,6 +25411,7 @@
         "main": "Returns the number of **[ValidationRule](Visio.ValidationRule.md)** objects in the collection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Visio.ValidationRule.md"
         ]
     },
@@ -25187,6 +25422,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -25199,6 +25435,7 @@
             "NameUOrIndex"
         ],
         "Return_value": [
+            "ValidationRule",
             "Visio.ValidationRule.md",
             "Item"
         ]
@@ -25212,6 +25449,7 @@
             "RuleID"
         ],
         "Return_value": [
+            "ValidationRule",
             "Visio.ValidationRule.md"
         ]
     },
@@ -25267,6 +25505,7 @@
         "main": "Deletes the **ValidationRuleSet** object from the document.\n",
         "Parameters": [],
         "Return_value": [
+            "Nothing",
             "ValidationRuleSet"
         ]
     },
@@ -25277,6 +25516,7 @@
         "main": "Specifies the description of the **[ValidationRuleSet](Visio.ValidationRuleSet.md)** object that appears in the user interface. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25287,6 +25527,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -25296,7 +25537,9 @@
         "kind": "property",
         "main": "Determines whether the rules in the specified validation rule set are checked when validation is triggered for the current document. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.ValidationRuleSet.ID",
@@ -25305,6 +25548,7 @@
         "main": "Gets the unique identifier of the **ValidationRuleSet** object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "ValidationRuleSet"
         ]
     },
@@ -25338,6 +25582,7 @@
         "main": "Specifies the name of the **[ValidationRuleSet](Visio.ValidationRuleSet.md)** object that appears in the user interface. The default property of the object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25348,6 +25593,7 @@
         "main": "Specifies the universal name of the **[ValidationRuleSet](Visio.ValidationRuleSet.md)** object. This is the default property of the object. Read/write.\n",
         "Parameters": [],
         "Return_value": [
+            "String",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25394,6 +25640,7 @@
             "NameU"
         ],
         "Return_value": [
+            "ValidationRuleSet",
             "Visio.ValidationRuleSet.md",
             "Visio.ValidationRuleSets.md"
         ]
@@ -25408,6 +25655,7 @@
             "NameU"
         ],
         "Return_value": [
+            "ValidationRuleSet",
             "Visio.ValidationRuleSet.md",
             "Visio.ValidationRuleSets.md"
         ]
@@ -25427,6 +25675,7 @@
         "main": "Returns the number of **[ValidationRuleSet](Visio.ValidationRuleSet.md)** objects in the collection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Long",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25437,6 +25686,7 @@
         "main": "Returns the **[Document](Visio.Document.md)** object that is associated with an object. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Document",
             "Visio.Document.md"
         ]
     },
@@ -25449,6 +25699,7 @@
             "NameUOrIndex"
         ],
         "Return_value": [
+            "ValidationRuleSet",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25461,6 +25712,7 @@
             "RuleID"
         ],
         "Return_value": [
+            "ValidationRuleSet",
             "Visio.ValidationRuleSet.md"
         ]
     },
@@ -25508,7 +25760,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether warnings and alerts appear when an error occurs in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.BackColor",
@@ -25516,7 +25770,9 @@
         "kind": "property",
         "main": "Gets or sets the background color of Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "OLE_COLOR"
+        ]
     },
     {
         "api_name": "Visio.Viewer.BuildNumber",
@@ -25524,7 +25780,9 @@
         "kind": "property",
         "main": "Gets the build number of Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ContextMenuEnabled",
@@ -25532,7 +25790,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether the shortcut (right-click) menu is enabled in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.CurrentPageIndex",
@@ -25540,7 +25800,9 @@
         "kind": "property",
         "main": "Gets or sets the index of the page displayed when a drawing opens in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.CustomPropertyCount",
@@ -25550,7 +25812,9 @@
         "Parameters": [
             "ShapeIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.CustomPropertyName",
@@ -25561,7 +25825,9 @@
             "ShapeIndex",
             "PropertyIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.CustomPropertyValue",
@@ -25572,7 +25838,9 @@
             "ShapeIndex",
             "PropertyIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.DisplayAbout",
@@ -25620,7 +25888,9 @@
         "kind": "property",
         "main": "Gets a value that indicates whether a document is loaded in Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.FollowHyperlink",
@@ -25661,7 +25931,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether the page grid is visible in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.HighQualityRender",
@@ -25669,7 +25941,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether high-quality rendering is enabled in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.HyperlinkAddress",
@@ -25680,7 +25954,9 @@
             "ShapeIndex",
             "HyperlinkIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.HyperlinkCount",
@@ -25690,7 +25966,9 @@
         "Parameters": [
             "ShapeIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LastErrorCode",
@@ -25698,7 +25976,9 @@
         "kind": "property",
         "main": "Gets the last error code returned by Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerColor",
@@ -25708,7 +25988,9 @@
         "Parameters": [
             "LayerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "OLE_COLOR"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerColorOverride",
@@ -25718,7 +26000,9 @@
         "Parameters": [
             "LayerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerColorTrans",
@@ -25728,7 +26012,9 @@
         "Parameters": [
             "LayerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerCount",
@@ -25736,7 +26022,9 @@
         "kind": "property",
         "main": "Gets the number of layers in the current drawing open in Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerDeleted",
@@ -25746,7 +26034,9 @@
         "Parameters": [
             "LayerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerName",
@@ -25756,7 +26046,9 @@
         "Parameters": [
             "LayerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.LayerVisible",
@@ -25766,7 +26058,9 @@
         "Parameters": [
             "LayerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.Load",
@@ -25776,7 +26070,9 @@
         "Parameters": [
             "UrlOrFileName"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.MajorVersionNumber",
@@ -25784,7 +26080,9 @@
         "kind": "property",
         "main": "Gets the major version number of Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.MarkupOverlaysVisible",
@@ -25792,7 +26090,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether markup overlays are visible in the current document open in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.MinorVersionNumber",
@@ -25800,7 +26100,9 @@
         "kind": "property",
         "main": "Gets the minor version number of Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.OnDocumentLoaded",
@@ -25899,7 +26201,9 @@
         "kind": "property",
         "main": "Gets or sets the color of the page in the current drawing that is open in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "OLE_COLOR"
+        ]
     },
     {
         "api_name": "Visio.Viewer.PageCount",
@@ -25907,7 +26211,9 @@
         "kind": "property",
         "main": "Gets the number of pages in the current document that is open in Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.PageIDToIndex",
@@ -25917,7 +26223,9 @@
         "Parameters": [
             "PageID"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.PageIndexToID",
@@ -25927,7 +26235,9 @@
         "Parameters": [
             "PageIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.PageName",
@@ -25945,7 +26255,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether page tabs are visible in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.PageVisible",
@@ -25953,7 +26265,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether the drawing page is visible in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.Pan",
@@ -25974,7 +26288,9 @@
         "Parameters": [
             "ShapeIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.PropertyDialogEnabled",
@@ -25982,7 +26298,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether the **Properties and Settings** dialog box is available in the user interface for Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ReviewerColor",
@@ -25992,7 +26310,9 @@
         "Parameters": [
             "ReviewerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "OLE_COLOR"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ReviewerCount",
@@ -26000,7 +26320,9 @@
         "kind": "property",
         "main": "Gets the count of reviewers in the current document open in Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ReviewerID",
@@ -26010,7 +26332,9 @@
         "Parameters": [
             "ReviewerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ReviewerInitial",
@@ -26020,7 +26344,9 @@
         "Parameters": [
             "ReviewerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ReviewerMarkupVisible",
@@ -26030,7 +26356,9 @@
         "Parameters": [
             "ReviewerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ReviewerName",
@@ -26040,7 +26368,9 @@
         "Parameters": [
             "ReviewerIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ScrollbarsVisible",
@@ -26048,7 +26378,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether the scroll bars are visible in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.SelectedShapeIndex",
@@ -26056,7 +26388,9 @@
         "kind": "property",
         "main": "Gets the index in the collection of shapes of the selected shape in the drawing that is open in Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.SelectShape",
@@ -26089,7 +26423,9 @@
             "X",
             "Y"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ShapeCount",
@@ -26097,7 +26433,9 @@
         "kind": "property",
         "main": "Gets the count of shapes in the drawing that is open in Microsoft Visio Viewer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ShapeIDToIndex",
@@ -26107,7 +26445,9 @@
         "Parameters": [
             "ShapeID"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ShapeIndexToID",
@@ -26117,7 +26457,9 @@
         "Parameters": [
             "ShapeIndex"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ShapeName",
@@ -26135,7 +26477,9 @@
         "kind": "property",
         "main": "Gets or sets the path to the source file for the drawing in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.SubShapeAtPoint",
@@ -26146,7 +26490,9 @@
             "X",
             "Y"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ToolbarButtons",
@@ -26154,7 +26500,9 @@
         "kind": "property",
         "main": "Gets or sets the buttons that are available on the toolbar in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ToolbarCustomizable",
@@ -26162,7 +26510,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether it is possible to customize the toolbar in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ToolbarVisible",
@@ -26170,7 +26520,9 @@
         "kind": "property",
         "main": "Gets or sets a value that indicates whether the toolbar is visible in Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Boolean"
+        ]
     },
     {
         "api_name": "Visio.Viewer.Unload",
@@ -26186,7 +26538,9 @@
         "kind": "property",
         "main": "Gets or sets the percentage of zoom for Microsoft Visio Viewer. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Double"
+        ]
     },
     {
         "api_name": "Visio.Viewer.ZoomToPoint",
@@ -26796,7 +27150,9 @@
         "Parameters": [
             "docObj"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisSaveAsWeb.CreatePages",
@@ -26804,7 +27160,9 @@
         "kind": "method",
         "main": "Initiates webpage creation.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisSaveAsWeb.WebPageSettings",
@@ -26832,7 +27190,9 @@
         "kind": "property",
         "main": "Determines whether a secondary output format for the webpage is defined. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.DispScreenRes",
@@ -26848,7 +27208,9 @@
         "kind": "property",
         "main": "Specifies the page number of the last page in the range when you save a range of pages as a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.FormatCount",
@@ -26856,7 +27218,9 @@
         "kind": "property",
         "main": "Indicates the number of output formats that are installed on the user's computer. Read-only.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.GetFormatName",
@@ -26867,7 +27231,9 @@
             "nIndex",
             "pVal"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.GetPhysicalDimensions",
@@ -26879,7 +27245,9 @@
             "pnWidth",
             "pnHeight"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.InitSettings",
@@ -26887,7 +27255,9 @@
         "kind": "method",
         "main": "Loads the webpage settings that were saved in the registry in an earlier instance of Microsoft Visio.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.ListFormats",
@@ -26895,7 +27265,9 @@
         "kind": "method",
         "main": "Displays a message box in the user interface that lists the output format types and their associated numeric IDs.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.NavBar",
@@ -26903,7 +27275,9 @@
         "kind": "property",
         "main": "Determines whether the **Go to Page** navigation control is displayed on a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.OpenBrowser",
@@ -26911,7 +27285,9 @@
         "kind": "property",
         "main": "Determines whether the webpage opens in the browser after the drawing is exported to a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.PageTitle",
@@ -26919,7 +27295,9 @@
         "kind": "property",
         "main": "Specifies the name of the webpage as it appears in the browser's title bar. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.PanAndZoom",
@@ -26927,7 +27305,9 @@
         "kind": "property",
         "main": "Determines whether the **Pan and Zoom** control for zooming in and out of the page is displayed on a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.PriFormat",
@@ -26935,7 +27315,9 @@
         "kind": "property",
         "main": "Specifies the primary output format for the webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.PropControl",
@@ -26943,7 +27325,9 @@
         "kind": "property",
         "main": "Determines whether a shape's custom properties (shape data) are displayed on the webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.QuietMode",
@@ -26951,7 +27335,9 @@
         "kind": "property",
         "main": "Determines whether dialog boxes are displayed in the Visio user interface when you save a drawing as a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.SaveSettings",
@@ -26959,7 +27345,9 @@
         "kind": "method",
         "main": "Saves the current webpage settings to the registry.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.Search",
@@ -26967,7 +27355,9 @@
         "kind": "property",
         "main": "Determines whether the **Search Pages** control for searching for shapes in a drawing is displayed on a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.SecFormat",
@@ -26975,7 +27365,9 @@
         "kind": "property",
         "main": "Specifies the secondary output format for the webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.SilentMode",
@@ -26991,7 +27383,9 @@
         "kind": "property",
         "main": "Specifies the page number of the first page in the range when you save a range of document pages as a webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.StoreInFolder",
@@ -26999,7 +27393,9 @@
         "kind": "property",
         "main": "Determines whether supporting files for the webpage to be created are placed into a subfolder that has the same name as the root HTML file. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "Long"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.Stylesheet",
@@ -27007,7 +27403,9 @@
         "kind": "property",
         "main": "Specifies a cascading stylesheet (CSS) provided by Microsoft Visio, or one that you have created, that is applied to the webpage. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.TargetPath",
@@ -27015,7 +27413,9 @@
         "kind": "property",
         "main": "Specifies the path where the webpage and its supporting files are placed. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.VisWebPageSettings.ThemeName",
@@ -27023,7 +27423,9 @@
         "kind": "property",
         "main": "Assigns a webpage theme to the page that you are creating. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "String"
+        ]
     },
     {
         "api_name": "Visio.Window.Activate",
@@ -27112,7 +27514,9 @@
             "SheetObject",
             "Flags"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Nothing"
+        ]
     },
     {
         "api_name": "Visio.Window.Close",
@@ -27182,14 +27586,6 @@
             "pnWidth",
             "pnHeight"
         ],
-        "Return_value": []
-    },
-    {
-        "api_name": "Visio.Window.Group",
-        "file_name": "Visio.Window.Group.md",
-        "kind": "method",
-        "main": "This object, member, or enumeration is deprecated and is not intended to be used in your code. Groups the objects that are selected in a selection.\n",
-        "Parameters": [],
         "Return_value": []
     },
     {
@@ -27520,14 +27916,6 @@
         ]
     },
     {
-        "api_name": "Visio.Window.Paste",
-        "file_name": "Visio.Window.Paste.md",
-        "kind": "method",
-        "main": "This object, member, or enumeration is deprecated and is not intended to be used in your code. Pastes the contents of the Clipboard into an object.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
         "api_name": "Visio.Window.PersistsEvents",
         "file_name": "Visio.Window.PersistsEvents.md",
         "kind": "property",
@@ -27688,6 +28076,7 @@
         "main": "Returns the **[Selection](Visio.Selection.md)** object that represents the collection of shapes that will participate in drag or copy operations, based on the current selection. Read-only.\n",
         "Parameters": [],
         "Return_value": [
+            "Selection",
             "Visio.Selection.md"
         ]
     },

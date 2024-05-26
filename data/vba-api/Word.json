@@ -1203,14 +1203,6 @@
         "Return_value": []
     },
     {
-        "api_name": "Word.Application.HelpTool",
-        "file_name": "Word.Application.HelpTool.md",
-        "kind": "method",
-        "main": "> [!CAUTION] \n> This object, member, or enumeration is deprecated and is not intended to be used in your code.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
         "api_name": "Word.Application.InchesToPoints",
         "file_name": "Word.Application.InchesToPoints.md",
         "kind": "method",
@@ -2439,14 +2431,6 @@
         ]
     },
     {
-        "api_name": "Word.Application.ShowMe",
-        "file_name": "Word.Application.ShowMe.md",
-        "kind": "method",
-        "main": "> [!CAUTION] \n> This object, member, or enumeration is deprecated and is not intended to be used in your code.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
         "api_name": "Word.Application.ShowStartupDialog",
         "file_name": "Word.Application.ShowStartupDialog.md",
         "kind": "property",
@@ -2523,14 +2507,6 @@
         "Return_value": [
             "String"
         ]
-    },
-    {
-        "api_name": "Word.Application.StatusBar",
-        "file_name": "Word.Application.StatusBar.md",
-        "kind": "property",
-        "main": "This property is no longer supported in Microsoft Word Visual Basic for Applications.\n",
-        "Parameters": [],
-        "Return_value": []
     },
     {
         "api_name": "Word.Application.SubstituteFont",
@@ -2844,16 +2820,6 @@
         "main": "Occurs when there is a validation error in the document.\n",
         "Parameters": [
             "XMLNode"
-        ],
-        "Return_value": []
-    },
-    {
-        "api_name": "Word.ApplyDocumentTheme",
-        "file_name": "Word.ApplyDocumentTheme.md",
-        "kind": "method",
-        "main": "Applies a document theme to a document.\n",
-        "Parameters": [
-            "FileName"
         ],
         "Return_value": []
     },
@@ -9763,6 +9729,7 @@
             "Type"
         ],
         "Return_value": [
+            "CoAuthLock",
             "Word.CoAuthLock.md"
         ]
     },
@@ -20268,7 +20235,9 @@
         "kind": "property",
         "main": "Returns or sets the alignment (the origin of the coordinate grid) for the tiling of the texture fill. Read/write.\n",
         "Parameters": [],
-        "Return_value": []
+        "Return_value": [
+            "MsoTextureAlignment"
+        ]
     },
     {
         "api_name": "Word.FillFormat.TextureHorizontalScale",
@@ -23838,14 +23807,6 @@
             "True",
             "Boolean"
         ]
-    },
-    {
-        "api_name": "Word.Global.StatusBar",
-        "file_name": "Word.Global.StatusBar.md",
-        "kind": "property",
-        "main": "This property is no longer supported in Microsoft Word Visual Basic for Applications.\n",
-        "Parameters": [],
-        "Return_value": []
     },
     {
         "api_name": "Word.Global.SynonymInfo",
@@ -51128,7 +51089,9 @@
             "Width",
             "Height"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Shapes"
+        ]
     },
     {
         "api_name": "Word.Shapes.AddLine",
@@ -51221,6 +51184,7 @@
             "Height"
         ],
         "Return_value": [
+            "Shape",
             "Word.Shape.md",
             "Word.shapes.md"
         ]
@@ -51252,7 +51216,9 @@
             "Width",
             "Height"
         ],
-        "Return_value": []
+        "Return_value": [
+            "Shape"
+        ]
     },
     {
         "api_name": "Word.Shapes.AddTextEffect",
@@ -52096,6 +52062,7 @@
             "Type"
         ],
         "Return_value": [
+            "Style",
             "Styles"
         ]
     },
@@ -56080,14 +56047,6 @@
         "file_name": "Word.TextFrame.BreakForwardLink.md",
         "kind": "method",
         "main": "Breaks the forward link for the specified text frame, if such a link exists.\n",
-        "Parameters": [],
-        "Return_value": []
-    },
-    {
-        "api_name": "Word.TextFrame.Column",
-        "file_name": "Word.TextFrame.Column.md",
-        "kind": "property",
-        "main": "This object, member, or enumeration is deprecated and is not intended to be used in your code.\n",
         "Parameters": [],
         "Return_value": []
     },
@@ -62901,36 +62860,6 @@
         "file_name": "Word.WdRevisionsWrap.md",
         "kind": "enumeration",
         "main": "Specifies how revision marks are displayed in the document.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **wdWrapAlways**|1|Revisions are wrapped.|\n| **wdWrapAsk**|2|Ask the user if revisions should be wrapped.|\n| **wdWrapNever**|0|Never wrap revisions.|\n[!include[Support and feedback](~/includes/feedback-boilerplate.md)]\n"
-    },
-    {
-        "api_name": "Word.WdRevisionType",
-        "enum_ch": [
-            "wdNoRevision",
-            "wdRevisionCellDeletion",
-            "wdRevisionCellInsertion",
-            "wdRevisionCellMerge",
-            "wdRevisionCellSplit",
-            "wdRevisionConflict",
-            "wdRevisionConflictDelete",
-            "wdRevisionConflictInsert",
-            "wdRevisionDelete",
-            "wdRevisionDisplayField",
-            "wdRevisionInsert",
-            "wdRevisionMovedFrom",
-            "wdRevisionMovedTo",
-            "wdRevisionParagraphNumber",
-            "wdRevisionParagraphProperty",
-            "wdRevisionProperty",
-            "wdRevisionReconcile",
-            "wdRevisionReplace",
-            "wdRevisionSectionProperty",
-            "wdRevisionStyle",
-            "wdRevisionStyleDefinition",
-            "wdRevisionTableProperty"
-        ],
-        "file_name": "Word.WdRevisionType.md",
-        "kind": "enumeration",
-        "main": "Specifies the type of a change that is marked with a revision mark.\n|Name|Value|Description|\n|:-----|:-----|:-----|\n| **wdNoRevision**|0|No revision.|\n| **wdRevisionCellDeletion**|17|Table cell deleted.|\n| **wdRevisionCellInsertion**|16|Table cell inserted.|\n| **wdRevisionCellMerge**|18|Table cells merged.|\n| **wdRevisionCellSplit**|19|This object, member, or enumeration is deprecated and is not intended to be used in your code.|\n| **wdRevisionConflict**|7|Revision marked as a conflict.|\n| **wdRevisionConflictDelete**|21|Deletion revision conflict in a coauthored document.|\n| **wdRevisionConflictInsert**|20|Insertion revision conflict in a coauthored document|\n| **wdRevisionDelete**|2|Deletion.|\n| **wdRevisionDisplayField**|5|Field display changed.|\n| **wdRevisionInsert**|1|Insertion.|\n| **wdRevisionMovedFrom**|14|Content moved from.|\n| **wdRevisionMovedTo**|15|Content moved to.|\n| **wdRevisionParagraphNumber**|4|Paragraph number changed.|\n| **wdRevisionParagraphProperty**|10|Paragraph property changed.|\n| **wdRevisionProperty**|3|Property changed.|\n| **wdRevisionReconcile**|6|Revision marked as reconciled conflict.|\n| **wdRevisionReplace**|9|Replaced.|\n| **wdRevisionSectionProperty**|12|Section property changed.|\n| **wdRevisionStyle**|8|Style changed.|\n| **wdRevisionStyleDefinition**|13|Style definition changed.|\n| **wdRevisionTableProperty**|11|Table property changed.|\n[!include[Support and feedback](~/includes/feedback-boilerplate.md)]\n"
     },
     {
         "api_name": "Word.WdRowAlignment",

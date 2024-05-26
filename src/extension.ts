@@ -131,6 +131,8 @@ export function activate(context: vscode.ExtensionContext): void {
 
     void vscode.commands.executeCommand('setContext', 'AhkNekoHelpExtension.showMyCommand', true);
     void UpdateCacheAsync(true); // not await
+
+    // make_vba_json('C:/DEV/VBA-Docs-NEKO/api', 'C:/DEV/nekoHelp3/data/vba-api');
 }
 
 // this method is called when your extension is deactivated
