@@ -1,25 +1,43 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable max-depth */
-import type * as vscode from 'vscode';
 import type { TApiMeta, TObject, TOther } from '../../../../script/make_vba_json';
+import { enumLog } from '../../../tools/enumErr';
+import type { TVbaDataLast } from '../classThis/valTrackFn';
+import type { CVbaCompletionItem } from './2Completion/CVbaCompletionItem';
+import { vbaEnum2Completion } from './2Completion/vbaEnum';
+import { vbaObj2Completion } from './2Completion/vbaObj';
 import { getVbaData } from './getVbaData';
 import type { TVba2Map } from './type';
-import { vbaObj2LikeMethod } from './vbaObj';
 
 export function vbaCompletionDeep1(
-    api_list: TApiMeta[],
-    Vba2Map: TVba2Map,
-): vscode.CompletionItem[] {
-    const list: vscode.CompletionItem[] = [];
+    data: TVbaDataLast,
+): CVbaCompletionItem[] {
+    const { api_list, Vba2Map, filePath } = data;
+    const list: CVbaCompletionItem[] = [];
 
     for (const api_e of api_list) {
         if (api_e.kind === 'object') {
             list.push(
-                ...vbaObj2LikeMethod('method', api_e.Methods, api_e, Vba2Map),
-                ...vbaObj2LikeMethod('event', api_e.Events, api_e, Vba2Map),
-                ...vbaObj2LikeMethod('property', api_e.Properties, api_e, Vba2Map),
+                ...vbaObj2Completion('method', api_e.Methods, api_e, Vba2Map, filePath),
+                ...vbaObj2Completion('event', api_e.Events, api_e, Vba2Map, filePath),
+                ...vbaObj2Completion('property', api_e.Properties, api_e, Vba2Map, filePath),
             );
+            continue;
         }
+        if (api_e.kind === 'enumeration') {
+            list.push(...vbaEnum2Completion(api_e, filePath));
+            continue;
+        }
+        if (api_e.kind === 'method' || api_e.kind === 'property' || api_e.kind === 'event') {
+            //
+            continue;
+        }
+        if (api_e.kind === 'collection') {
+            //
+            continue;
+        }
+        enumLog(api_e.kind, 'vbaCompletionDeep1');
+
         // TODO
     }
     return list;
@@ -101,17 +119,18 @@ export function vbaCompletion(
                 /**
                  * i know is eval
                  */
-                // eslint-disable-next-line no-param-reassign
                 need[deep] = needDeep;
                 continue;
             }
-            // TODO
             if (api_e.kind === 'enumeration') {
+                // not return ch...just enum.ch
                 continue;
             }
             if (api_e.kind === 'collection') {
-                //
+                // not return ch
+                continue;
             }
+            enumLog(api_e.kind, 'vbaCompletion');
         }
     }
     return need;

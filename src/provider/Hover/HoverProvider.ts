@@ -40,6 +40,7 @@ import { hoverMethod } from './tools/hoverMethod';
 import { hoverMsgBoxMagicNumber } from './tools/hoverMsgBoxMagicNumber';
 import { hoverMultiLine } from './tools/hoverMultiLine';
 import { hoverSysGetParam } from './tools/hoverSysGetParam';
+import { hoverVba } from './tools/hoverVba';
 import { hoverWinGetParam } from './tools/hoverWinGetParam';
 import { hoverWinSetParam } from './tools/hoverWinSetParam';
 
@@ -90,7 +91,8 @@ function HoverProviderCore(
     // ex: #Warn
     const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData)
         ?? hoverMsgBoxMagicNumber(AhkTokenLine, position)
-        ?? HotStringsOptions(position, AhkFileData, document);
+        ?? HotStringsOptions(position, AhkFileData, document)
+        ?? hoverVba(document, AhkFileData, position);
     if (DirectivesMd !== null) return DirectivesMd;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);

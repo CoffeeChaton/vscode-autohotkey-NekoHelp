@@ -2,10 +2,13 @@ import type * as vscode from 'vscode';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TTokenStream } from '../../../globalEnum';
+import type { TVbaDataLast } from '../classThis/valTrackFn';
 import { valTrackAllowFnCall } from '../classThis/valTrackFn';
 import { setVarTrackRange } from '../classThis/wrapClass';
+import type { CVbaCompletionItem } from './2Completion/CVbaCompletionItem';
+import { vbaCompletionDeep1 } from './vbaCompletion';
 
-function getObjChapterArrAllowFnCall(textRaw: string, character: number): readonly string[] | null {
+export function getObjChapterArrAllowFnCall(textRaw: string, character: number): readonly string[] | null {
     if (character === 0) return null;
 
     const ma: RegExpMatchArray | null = textRaw
@@ -31,15 +34,27 @@ export function wrapVba(
     lStr: string,
     AhkFileData: TAhkFileData,
     DA: CAhkFunc | null,
-): vscode.CompletionItem[] {
-    const col = position.character;
-    if (col > lStr.length) return [];
+): TVbaDataLast | null {
+    const col: number = position.character;
+    if (col > lStr.length) return null;
 
     // a.b().c.d. ;<---
     // ['a', 'b', 'c', 'd']
     const ChapterArr: readonly string[] | null = getObjChapterArrAllowFnCall(textRaw, col);
-    if (ChapterArr === null) return [];
+    if (ChapterArr === null) return null;
 
     const AhkTokenList: TTokenStream = setVarTrackRange(position, AhkFileData, DA);
     return valTrackAllowFnCall(ChapterArr, AhkTokenList);
+}
+
+export function wrapVba2Completion(
+    position: vscode.Position,
+    textRaw: string,
+    lStr: string,
+    AhkFileData: TAhkFileData,
+    DA: CAhkFunc | null,
+): CVbaCompletionItem[] {
+    const data: TVbaDataLast | null = wrapVba(position, textRaw, lStr, AhkFileData, DA);
+    if (data === null) return [];
+    return vbaCompletionDeep1(data);
 }

@@ -81,6 +81,8 @@
         "| 使文本正确对齐                                   | 524288        | 0x80000   |",
         "| 希伯来语/阿拉伯语的从右到左阅读顺序                  | 1048576       | 0x100000  |"
     ],
-    "VBA.md.search.it": "[搜寻微软文档](https://learn.microsoft.com/zh-cn/search/?terms=",
-    "VBA.md.goto.doc": "[阅读微软文档](https://learn.microsoft.com/zh-cn/office/vba/api/"
+    "VBA.md.search.it.txt": "搜寻微软文档",
+    "VBA.md.search.it.uri": "https://learn.microsoft.com/zh-cn/search/?terms=",
+    "VBA.md.goto.doc.txt": "阅读微软文档",
+    "VBA.md.goto.doc.uri": "https://learn.microsoft.com/zh-cn/office/vba/api/"
 }

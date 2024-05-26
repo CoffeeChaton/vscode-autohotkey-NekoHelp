@@ -1,11 +1,10 @@
-import type * as vscode from 'vscode';
 import type { TApiMeta } from '../../../../script/make_vba_json';
 import type { TTokenStream } from '../../../globalEnum';
 import { ahkValDefRegex } from '../../../tools/regexTools';
 import { getVbaData } from '../vba/getVbaData';
 import type { TVba2Map } from '../vba/type';
 import { vbaApiFileMap } from '../vba/vbaApiFileMap';
-import { vbaCompletion, vbaCompletionDeep1 } from '../vba/vbaCompletion';
+import { vbaCompletion } from '../vba/vbaCompletion';
 
 function valTrackFnCore(
     ChapterArr: readonly string[],
@@ -36,13 +35,17 @@ function valTrackFnCore(
     return classNameList;
 }
 
+export type TVbaDataLast = {
+    filePath: string,
+    Vba2Map: TVba2Map,
+    api_list: TApiMeta[],
+};
+
 export function valTrackAllowFnCall(
     ChapterArr: readonly string[],
     AhkTokenList: TTokenStream,
-): vscode.CompletionItem[] {
+): TVbaDataLast | null {
     const nameList: string[] = valTrackFnCore(ChapterArr, AhkTokenList);
-
-    const itemS: vscode.CompletionItem[] = [];
 
     for (const name of nameList) {
         const fileUpName: string = name.replace(/\..*/u, '').toUpperCase();
@@ -51,9 +54,13 @@ export function valTrackAllowFnCall(
             const api_list_F2: TApiMeta[][] = vbaCompletion(filePath, name.toUpperCase(), ChapterArr);
             const Vba2Map: TVba2Map = getVbaData(filePath);
             const last: TApiMeta[] = api_list_F2.at(-1) ?? [];
-            itemS.push(...vbaCompletionDeep1(last, Vba2Map));
+            // itemS.push(...vbaCompletionDeep1(last, Vba2Map));
+            return {
+                filePath,
+                Vba2Map,
+                api_list: last,
+            };
         }
     }
-
-    return itemS;
+    return null;
 }
