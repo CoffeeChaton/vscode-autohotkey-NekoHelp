@@ -14,6 +14,7 @@
 <!-- pnpm 9.1.2 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- fix: ([#64](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/64)) `Hotkey` ref func, can not use gotoDef jump
 - fix: ([#68](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/68)) core `Label:` identify with `} label_1:` case
 - feat: ([#69](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/69)) VBA++ with `ComObjActive()`
 

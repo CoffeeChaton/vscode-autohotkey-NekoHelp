@@ -277,7 +277,7 @@ export function getDefWithLabelWrap(
         position,
         wordUpCase,
     );
-    if (list === null) return null;
+    if (list === null || list.length === 0) return null;
     return list.map((l: CAhkLabel): vscode.Location => new vscode.Location(l.uri, l.selectionRange));
 }
 // unknown...
