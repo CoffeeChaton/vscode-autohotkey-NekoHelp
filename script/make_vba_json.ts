@@ -241,6 +241,7 @@ export function make_vba_json(source_path: string, export_path: string): void {
 
         // eslint-disable-next-line dot-notation
         const need: TApiMeta[] = bigObj[api_name.replace(/\..*/u, '')] ?? bigObj['unknown'];
+        // TODO Refactored as Obj group by?
         switch (kind) {
             case 'collection':
                 need.push({

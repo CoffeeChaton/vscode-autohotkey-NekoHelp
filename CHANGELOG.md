@@ -16,9 +16,12 @@
 
 - fix: ([#64](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/64)) `Hotkey` ref func, can not use gotoDef jump
 - fix: ([#68](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/68)) core `Label:` identify with `} label_1:` case
-- feat: ([#69](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/69)) VBA++ with `ComObjActive()`
+- feat: ([#69](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/69)) `VBA++` with `ComObjActive()`
 
 > ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/vbaCompletion.gif)
+
+- other: because `VBA++` pack size , 487 KB -> 2205 KB+
+  ...But I think it's worth it, because just open a website and a few pictures will be 1MB.
 
 ## v0.0.58(2024-05-25)
 
