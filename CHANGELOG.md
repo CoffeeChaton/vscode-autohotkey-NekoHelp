@@ -11,7 +11,7 @@
 
 ## v0.0.59(2024-05-XX)
 
-<!-- pnpm 9.1.2 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.1.4 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - feat: ([#71](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/71)) CallHierarchyProvider (default with `shift + alt + h`)

@@ -43,6 +43,7 @@
         "ahk.configuration.json": "jsonc",
         "dprint.json": "jsonc",
         "extensions.json": "jsonc",
+        "oxlintrc.json": "jsonc",
         "settings.json": "jsonc",
         "tsconfig.json": "jsonc"
     },

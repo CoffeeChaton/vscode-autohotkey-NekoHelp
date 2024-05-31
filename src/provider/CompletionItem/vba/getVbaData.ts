@@ -1,6 +1,6 @@
-/* eslint-disable no-magic-numbers */
 import * as fs from 'node:fs';
 import type { TApiMeta } from '../../../../script/make_vba_json';
+import { debounce } from '../../../tools/debounce';
 import type { TVba2Map } from './type';
 
 /**
@@ -10,26 +10,12 @@ import type { TVba2Map } from './type';
  */
 const VbaMemo = new Map<string, TVba2Map>();
 
-// -------------
-function debounce<Params extends any[]>(
-    func: (...args: Params) => any,
-    timeout: number,
-): (...args: Params) => void {
-    // eslint-disable-next-line init-declarations
-    let timer: NodeJS.Timeout;
-    return (...args: Params) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            func(...args);
-        }, timeout);
-    };
-}
-
 // ---
 export function getVbaData(filePath: string): TVba2Map {
     const cache: TVba2Map | undefined = VbaMemo.get(filePath);
     debounce(
         (): void => VbaMemo.clear(),
+        // eslint-disable-next-line no-magic-numbers
         15_000, // 15 sec
     )();
     if (cache !== undefined) return cache;
