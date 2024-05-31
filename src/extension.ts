@@ -22,6 +22,7 @@ import { UpdateCacheAsync, UpdateCacheUi } from './command/UpdateCache';
 import { configChangEvent } from './configUI';
 import { diagColl, rmAllDiag } from './core/diagColl';
 import { pm } from './core/ProjectManager';
+import { CallHierarchyProvider } from './provider/CallHierarchyProvider/CallHierarchyProvider';
 import { CodeActionProvider } from './provider/CodeActionProvider/CodeActionProvider';
 import { CodeLensProvider } from './provider/CodeLens/CodeLensProvider';
 import { showUnknownAnalyze } from './provider/CodeLens/showUnknownAnalyze';
@@ -66,6 +67,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
         // languages-------------------
         // languages.registerFoldingRangeProvider
+        vscode.languages.registerCallHierarchyProvider(selector, CallHierarchyProvider),
         vscode.languages.registerCodeActionsProvider(selector, CodeActionProvider),
         vscode.languages.registerCodeLensProvider(selector, CodeLensProvider),
         vscode.languages.registerColorProvider(selector, ColorProvider),
@@ -76,12 +78,12 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerDocumentSemanticTokensProvider(selector, AhkFullSemanticHighlight, legend),
         vscode.languages.registerDocumentSymbolProvider(selector, SymbolProvider),
         vscode.languages.registerHoverProvider(selector, HoverProvider),
+        vscode.languages.registerInlayHintsProvider(selector, InlayHintsProvider),
         vscode.languages.registerOnTypeFormattingEditProvider(selector, OnTypeFormattingEditProvider, '\n', '\r\n'),
         vscode.languages.registerReferenceProvider(selector, ReferenceProvider),
         vscode.languages.registerRenameProvider(selector, RenameProvider),
-        vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
         vscode.languages.registerSignatureHelpProvider(selector, SignatureHelpProvider, metadata),
-        vscode.languages.registerInlayHintsProvider(selector, InlayHintsProvider),
+        vscode.languages.registerWorkspaceSymbolProvider(WorkspaceSymbolProvider),
         // workspace-------------------
         // workspace.onDidOpenTextDocument(pm.OpenFile),
         // workspace.onDidSaveTextDocument(pm.OnDidSaveTextDocument),
