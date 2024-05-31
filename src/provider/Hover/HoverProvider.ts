@@ -24,6 +24,7 @@ import { ToUpCase } from '../../tools/str/ToUpCase';
 import { ClassProperty2Md } from '../Def/getClassProperty';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
 import { hoverClassName } from './tools/hoverClassName';
+import { hoverComObjActive } from './tools/hoverComObjActive';
 import { hoverControlGetParam } from './tools/hoverControlGetParam';
 import { hoverControlParam } from './tools/hoverControlParam';
 import { DeepAnalysisHover } from './tools/HoverDeepAnalysis';
@@ -92,7 +93,8 @@ function HoverProviderCore(
     const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData)
         ?? hoverMsgBoxMagicNumber(AhkTokenLine, position)
         ?? HotStringsOptions(position, AhkFileData, document)
-        ?? hoverVba(document, AhkFileData, position);
+        ?? hoverVba(document, AhkFileData, position)
+        ?? hoverComObjActive(document, position);
     if (DirectivesMd !== null) return DirectivesMd;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);

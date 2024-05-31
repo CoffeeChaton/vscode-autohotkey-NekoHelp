@@ -101,7 +101,7 @@ function vbaComObjActiveFirstParamSet(
 
 //
 export function getComObjActiveCompletion(
-    AhkFileData: TAhkFileData,
+    _AhkFileData: TAhkFileData,
     position: vscode.Position,
     document: vscode.TextDocument,
     context: vscode.CompletionContext,
