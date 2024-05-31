@@ -13,17 +13,13 @@ export class CVbaCompletionItem extends vscode.CompletionItem {
 
     public constructor(
         label: string,
-        description: 'VBA',
         kind: vscode.CompletionItemKind,
         md: vscode.MarkdownString,
     ) {
-        super({
-            label,
-            description,
-        }, kind);
+        super({ label, description: 'VBA' }, kind);
+        // this.label = label;
+        // this.description = 'VBA';
 
-        this.label = label;
-        this.description = description;
         this.kind = kind;
         this.documentation = md;
         this.detail = 'by-neko-help (VBA-ex)';

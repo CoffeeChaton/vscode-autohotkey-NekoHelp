@@ -1,10 +1,10 @@
 import type { TApiMeta } from '../../../../script/make_vba_json';
 import type { TTokenStream } from '../../../globalEnum';
 import { ahkValDefRegex } from '../../../tools/regexTools';
-import { getVbaData } from '../vba/getVbaData';
-import type { TVba2Map } from '../vba/type';
-import { vbaApiFileMap } from '../vba/vbaApiFileMap';
-import { vbaCompletion } from '../vba/vbaCompletion';
+import { getVbaData } from './getVbaData';
+import type { TVba2Map } from './type';
+import { vbaApiFileMap } from './vbaApiFileMap';
+import { vbaCompletion } from './vbaCompletion';
 
 function valTrackFnCore(
     ChapterArr: readonly string[],
@@ -14,13 +14,7 @@ function valTrackFnCore(
 
     const reg: RegExp = ahkValDefRegex(Head);
     const classNameList: string[] = []; // value name
-    for (
-        const {
-            lStr,
-
-            textRaw,
-        } of AhkTokenList
-    ) {
+    for (const { lStr, textRaw } of AhkTokenList) {
         const col: number = lStr.search(reg);
         if (col === -1) continue;
 

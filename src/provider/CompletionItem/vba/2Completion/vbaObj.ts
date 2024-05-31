@@ -63,7 +63,6 @@ export function vbaObj2Completion(
 
         const item: CVbaCompletionItem = new CVbaCompletionItem(
             Method_name,
-            'VBA',
             CompletionItemKind,
             md,
         );

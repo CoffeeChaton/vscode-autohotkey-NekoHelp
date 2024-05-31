@@ -2,10 +2,10 @@ import type * as vscode from 'vscode';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TTokenStream } from '../../../globalEnum';
-import type { TVbaDataLast } from '../classThis/valTrackFn';
-import { valTrackAllowFnCall } from '../classThis/valTrackFn';
 import { setVarTrackRange } from '../classThis/wrapClass';
 import type { CVbaCompletionItem } from './2Completion/CVbaCompletionItem';
+import type { TVbaDataLast } from './valTrackFn';
+import { valTrackAllowFnCall } from './valTrackFn';
 import { vbaCompletionDeep1 } from './vbaCompletion';
 
 export function getObjChapterArrAllowFnCall(textRaw: string, character: number): readonly string[] | null {
@@ -22,7 +22,13 @@ export function getObjChapterArrAllowFnCall(textRaw: string, character: number):
 
     if (ChapterList.length === 0) return null;
 
-    return (/^\d+$/u).test(ChapterList[0]) // ex: 0.5
+    // ex: 0.5
+    //     ^0   -> [0] ^\d+$ to check it
+    //       ^5 -> [1]
+
+    // ex: ComObjActive(Excel.
+    //     ^^^^^^^^^^^^^^^^^^ -> [0] -> .includes('(') to check it
+    return (/^\d+$/u).test(ChapterList[0]) || ChapterList[0].includes('(')
         ? null
         : ChapterList.map((s: string): string => s.replace(/\([ \t^]*\)/u, '').toUpperCase());
 }

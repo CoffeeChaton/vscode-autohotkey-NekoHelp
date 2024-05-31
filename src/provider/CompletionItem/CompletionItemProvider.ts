@@ -35,6 +35,7 @@ import { getSnipGlobalVal } from './global/globalValCompletion';
 import { IncludeFsPath } from './IncludeFsPath/IncludeFsPath';
 import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
 import { getSnipSubCmd } from './SubCommand/getSnipSubCmd';
+import { getComObjActiveCompletion } from './vba/2Completion/getComObjActiveCompletion';
 import { wrapVba2Completion } from './vba/wrapVba';
 
 function getPartStr(lStr: string, position: vscode.Position): string | null {
@@ -111,6 +112,7 @@ function CompletionItemCore(
             ...getSnipMouseKeyboard(subStr),
             ...getSnipCLSID(AhkTokenLine, position, context),
             ...getDllCallCompletion(AhkFileData, position),
+            ...getComObjActiveCompletion(AhkFileData, position, document, context),
         );
 
         if (PartStr !== null) {

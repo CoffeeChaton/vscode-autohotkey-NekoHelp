@@ -3,9 +3,9 @@ import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
 import { getDAWithPos } from '../../../tools/DeepAnalysis/getDAWithPos';
-import type { TVbaDataLast } from '../../CompletionItem/classThis/valTrackFn';
-import { valTrackAllowFnCall } from '../../CompletionItem/classThis/valTrackFn';
 import { setVarTrackRange } from '../../CompletionItem/classThis/wrapClass';
+import type { TVbaDataLast } from '../../CompletionItem/vba/valTrackFn';
+import { valTrackAllowFnCall } from '../../CompletionItem/vba/valTrackFn';
 import { vbaCompletionDeep1 } from '../../CompletionItem/vba/vbaCompletion';
 import { getObjChapterArrAllowFnCall } from '../../CompletionItem/vba/wrapVba';
 

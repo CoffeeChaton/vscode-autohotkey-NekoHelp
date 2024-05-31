@@ -29,7 +29,6 @@ export function vbaEnum2Completion(api_e: TEnum, filePath: string): CVbaCompleti
 
         const item: CVbaCompletionItem = new CVbaCompletionItem(
             enum_chs,
-            'VBA',
             vscode.CompletionItemKind.EnumMember,
             md,
         );

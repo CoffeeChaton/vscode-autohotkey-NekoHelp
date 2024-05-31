@@ -2,12 +2,12 @@
 /* eslint-disable max-depth */
 import type { TApiMeta, TObject, TOther } from '../../../../script/make_vba_json';
 import { enumLog } from '../../../tools/enumErr';
-import type { TVbaDataLast } from '../classThis/valTrackFn';
 import type { CVbaCompletionItem } from './2Completion/CVbaCompletionItem';
 import { vbaEnum2Completion } from './2Completion/vbaEnum';
 import { vbaObj2Completion } from './2Completion/vbaObj';
 import { getVbaData } from './getVbaData';
 import type { TVba2Map } from './type';
+import type { TVbaDataLast } from './valTrackFn';
 
 export function vbaCompletionDeep1(
     data: TVbaDataLast,
