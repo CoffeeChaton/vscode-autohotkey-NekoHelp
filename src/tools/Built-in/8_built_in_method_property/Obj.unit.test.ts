@@ -3,6 +3,7 @@ import { describe, expect, it } from '@jest/globals';
 import { ObjBase } from './ObjBase.data';
 import { ObjFile } from './ObjFile.data';
 import { ObjFunc } from './ObjFunc.data';
+import { ObjInputHook } from './ObjInputHook.data';
 
 describe('check ahk-Object ruler', () => {
     it('check ObjBase', () => {
@@ -20,12 +21,12 @@ describe('check ahk-Object ruler', () => {
             const key: string = isMethod
                 ? keyRawName.replace('()', '')
                 : keyRawName;
-            const v1 = uri === `https://www.autohotkey.com/docs/v1/lib/Object.htm#${key}`;
+            const v1: boolean = uri === `https://www.autohotkey.com/docs/v1/lib/Object.htm#${key}`;
             if (!v1) {
                 errList.push([keyRawName, uri]);
             }
 
-            const v2 = isMethod
+            const v2: boolean = isMethod
                 ? insert.startsWith(`${key}(`)
                 : insert === key;
             if (!v2) {
@@ -57,12 +58,12 @@ describe('check ahk-Object ruler', () => {
             const key: string = isMethod
                 ? keyRawName.replace('()', '')
                 : keyRawName;
-            const v1 = uri === `https://www.autohotkey.com/docs/v1/lib/File.htm#${key}`;
+            const v1: boolean = uri === `https://www.autohotkey.com/docs/v1/lib/File.htm#${key}`;
             if (!v1) {
                 errList.push([keyRawName, uri]);
             }
 
-            const v2 = isMethod
+            const v2: boolean = isMethod
                 ? insert.startsWith(`${key}(`)
                 : insert === key;
             if (!v2) {
@@ -93,17 +94,53 @@ describe('check ahk-Object ruler', () => {
             const key: string = isMethod
                 ? keyRawName.replace('()', '')
                 : keyRawName;
-            const v1 = uri === `https://www.autohotkey.com/docs/v1/lib/Func.htm#${key}`;
+            const v1: boolean = uri === `https://www.autohotkey.com/docs/v1/lib/Func.htm#${key}`;
             if (!v1) {
                 errList.push([keyRawName, uri]);
             }
 
-            const searchKey = isMethod
+            const searchKey: string = isMethod
                 ? keyRawName.replace(')', '')
                 : keyRawName;
-            const v2 = exp.join('\n').includes(`.${searchKey}`);
+            const v2: boolean = exp.join('\n').includes(`.${searchKey}`);
             if (!v2) {
                 errList.push([keyRawName, keyRawName]);
+            }
+        }
+
+        expect(errList).toStrictEqual([]);
+    });
+
+    it('check ObjInputHook', () => {
+        expect.hasAssertions();
+
+        const errList: [ID: string, value: string][] = [];
+        for (const v of ObjInputHook) {
+            const {
+                exp,
+                insert,
+                keyRawName,
+                uri,
+            } = v;
+
+            const isMethod: boolean = keyRawName.includes('(');
+            const key: string = isMethod
+                ? keyRawName.replace('()', '')
+                : keyRawName;
+            if (uri !== `https://www.autohotkey.com/docs/v1/lib/InputHook.htm#${key}`) {
+                errList.push([keyRawName, uri]);
+            }
+
+            const searchKey: string = isMethod
+                ? keyRawName.replace(')', '')
+                : keyRawName;
+            const v2: boolean = exp.join('\n').includes(`.${searchKey}`);
+            if (!v2) {
+                errList.push([keyRawName, keyRawName]);
+            }
+
+            if (!insert.startsWith(insert)) {
+                errList.push([keyRawName, insert]);
             }
         }
 

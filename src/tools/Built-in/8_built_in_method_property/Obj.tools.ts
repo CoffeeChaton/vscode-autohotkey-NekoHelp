@@ -5,6 +5,7 @@ import { ObjBase } from './ObjBase.data';
 import { ObjException } from './ObjException.data';
 import { ObjFile } from './ObjFile.data';
 import { ObjFunc } from './ObjFunc.data';
+import { ObjInputHook } from './ObjInputHook.data';
 
 const ItemOfAhkObj: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     const itemS: vscode.CompletionItem[] = [];
@@ -156,9 +157,8 @@ const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
 
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown(`(Func) ${st}`)
+            .appendMarkdown(`\n\n[(Read Doc)](${uri})`)
             .appendMarkdown(doc.join('\n\n'))
-            .appendMarkdown('\n')
-            .appendMarkdown(`[(Read Doc)](${uri})`)
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'));
@@ -174,8 +174,9 @@ const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
 const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     const itemS: vscode.CompletionItem[] = [];
     for (const { insert, doc, uri } of ObjException) {
-        const md = new vscode.MarkdownString(doc.join('\n\n'), true)
+        const md = new vscode.MarkdownString('', true)
             .appendMarkdown(`\n[(read doc)](${uri})`)
+            .appendMarkdown(doc.join('\n\n'))
             .appendCodeblock([
                 'Key1 := "F11"',
                 'Try, Hotkey, %Key1%, label1',
@@ -188,6 +189,8 @@ const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.Complet
                 '    MsgBox, % "What : " err.What ;Hotkey',
                 '}',
             ].join('\n'));
+        md.supportHtml = true;
+
         const item: vscode.CompletionItem = new vscode.CompletionItem({
             label: insert,
             description: 'catch err',
@@ -197,6 +200,47 @@ const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.Complet
         itemS.push(item);
     }
 
+    return itemS;
+})();
+
+const ItemOfAhkInputHook: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
+    const itemS: vscode.CompletionItem[] = [];
+    for (
+        const {
+            doc,
+            exp,
+            insert,
+            keyRawName,
+            uri,
+        } of ObjInputHook
+    ) {
+        const isMethod: boolean = insert.includes('(');
+
+        const item = new vscode.CompletionItem(
+            {
+                label: keyRawName,
+                description: 'InputHook()',
+            },
+            isMethod
+                ? vscode.CompletionItemKind.Method
+                : vscode.CompletionItemKind.Property,
+        );
+        item.detail = isMethod
+            ? 'neko help : InputHook() Methods'
+            : 'neko help : InputHook() Property';
+        item.insertText = new vscode.SnippetString(insert);
+        const md = new vscode.MarkdownString('', true)
+            .appendMarkdown(`[(Read Doc)](${uri})`)
+            .appendMarkdown(doc.join('\n\n'))
+            .appendMarkdown('\n\n***')
+            .appendMarkdown('\n\n*exp:*')
+            .appendCodeblock(exp.join('\n'));
+        md.supportHtml = true;
+
+        item.documentation = md;
+
+        itemS.push(item);
+    }
     return itemS;
 })();
 
@@ -216,7 +260,7 @@ export function ahkBaseWrap(Obj: TAhkBaseObj): vscode.CompletionItem[] {
     if (Obj.ahkFuncObject) itemS.push(...ItemOfAhkFunc);
     if (Obj.ahkBase) itemS.push(...ItemOfAhkObj);
     if (Obj.ahkCatch) itemS.push(...ItemOfAhkException);
-    // TODO ahkInputHook
+    if (Obj.ahkInputHook) itemS.push(...ItemOfAhkInputHook);
     return itemS;
 }
 
