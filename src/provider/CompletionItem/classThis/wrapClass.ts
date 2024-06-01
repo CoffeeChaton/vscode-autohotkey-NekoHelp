@@ -4,7 +4,7 @@ import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TTokenStream } from '../../../globalEnum';
-import { ahkBaseWrap } from '../../../tools/Built-in/8_built_in_method_property/ahkBase';
+import { ahkBaseWrap } from '../../../tools/Built-in/8_built_in_method_property/Obj.tools';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { getObjChapterArr } from '../../../tools/Obj/getObjChapterArr';
 import { ToUpCase } from '../../../tools/str/ToUpCase';
@@ -80,6 +80,7 @@ export function wrapClass(
             ahkFuncObject: false,
             ahkBase: true,
             ahkCatch: false,
+            ahkInputHook: false,
         });
     }
 

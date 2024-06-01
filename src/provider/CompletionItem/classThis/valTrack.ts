@@ -1,9 +1,8 @@
 import type * as vscode from 'vscode';
 import type { CAhkClass } from '../../../AhkSymbol/CAhkClass';
 import type { TTokenStream } from '../../../globalEnum';
-import { ahkBaseWrap } from '../../../tools/Built-in/8_built_in_method_property/ahkBase';
-import type { TAhkBaseObj } from '../../../tools/Built-in/8_built_in_method_property/ahkBase_tools';
-import { ahkBaseUp } from '../../../tools/Built-in/8_built_in_method_property/ahkBase_tools';
+import type { TAhkBaseObj } from '../../../tools/Built-in/8_built_in_method_property/Obj.tools';
+import { ahkBaseUp, ahkBaseWrap } from '../../../tools/Built-in/8_built_in_method_property/Obj.tools';
 import { getUserDefTopClassSymbol } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
 import { ahkValDefRegex } from '../../../tools/regexTools';
 import { ToUpCase } from '../../../tools/str/ToUpCase';
@@ -79,6 +78,7 @@ export function valTrack(ChapterArr: readonly string[], AhkTokenList: TTokenStre
         ahkFuncObject: false,
         ahkBase: false,
         ahkCatch: false,
+        ahkInputHook: false,
     };
     const itemS: vscode.CompletionItem[] = [];
 
