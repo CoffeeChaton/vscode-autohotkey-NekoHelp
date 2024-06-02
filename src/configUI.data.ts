@@ -10,7 +10,7 @@ export const enum ECommandOption {
 }
 
 export const enum EFileRenameEvent {
-    AJustLog = 0,
+    // AJustLog = 0,
     BLogAndShow = 1,
     CTryRename = 2,
 }
@@ -18,7 +18,6 @@ export const enum EFileRenameEvent {
 export const enum EDiagMasterSwitch {
     never = 'never',
     auto = 'auto',
-    alway = 'alway',
 }
 
 export const enum ErmFirstCommaCommand {

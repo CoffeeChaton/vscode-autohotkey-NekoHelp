@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-export type TMenuCmdElement = Readonly<{
+type TMenuCmdElement = Readonly<{
     SubCommand: string,
     body: `Menu, ${string}`,
     doc: string,

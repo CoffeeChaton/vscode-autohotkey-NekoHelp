@@ -3,7 +3,7 @@ import type { TAssociated, TValMapIn, TValMetaIn } from '../../../../AhkSymbol/C
 import type { EFnMode } from '../EFnMode';
 import { wrapFnValDef } from './wrapFnValDef';
 
-export type TValMeta = {
+type TValMeta = {
     line: number,
     character: number,
     RawName: string,

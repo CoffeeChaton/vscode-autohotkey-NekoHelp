@@ -99,7 +99,6 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.window.onDidChangeActiveTextEditor(onDidChangeActiveTab),
         vscode.window.tabGroups.onDidChangeTabs(onDidChangeTabs),
         // commands--------------------
-        // commands.registerCommand(ECommand.CompletionMsgBox, CompletionMsgBox),
         vscode.commands.registerCommand('ahk.nekoHelp.bar', statusBarClick),
         vscode.commands.registerCommand('ahk.nekoHelp.refreshResource', UpdateCacheUi),
         vscode.commands.registerCommand('ahk.nekoHelp.displayLogMessage', displayLogMessageFn), // ctrl+alt+l

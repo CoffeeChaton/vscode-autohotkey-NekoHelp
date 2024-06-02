@@ -34,7 +34,7 @@ export function getObjChapterArrAllowFnCall(textRaw: string, character: number):
 }
 
 // eslint-disable-next-line max-params
-export function wrapVba(
+function wrapVba(
     position: vscode.Position,
     textRaw: string,
     lStr: string,

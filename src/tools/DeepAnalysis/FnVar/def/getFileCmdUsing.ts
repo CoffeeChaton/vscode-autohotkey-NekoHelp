@@ -20,7 +20,7 @@ type TSearchData = {
     comma: number,
 };
 
-export type TArgs = {
+type TArgs = {
     StrPart: string,
     ln: number,
     col: number,
@@ -29,7 +29,7 @@ export type TArgs = {
     comma: number,
 };
 
-export type TCmdRefSplit = {
+type TCmdRefSplit = {
     CmdUpName: string,
     args: readonly TArgs[],
 };

@@ -7,7 +7,6 @@ export const enum EPrefix {
     Param = 'Param',
     ByRefVariadicParam = 'ByRef Variadic Param',
     ByRefParam = 'ByRef Param',
-    VariadicParam = 'Variadic Param',
     unKnownText = 'unKnownText',
 }
 

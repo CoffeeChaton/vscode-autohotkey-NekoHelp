@@ -97,7 +97,7 @@ export function getDirectivesMeta(
     return null;
 }
 
-export const DirectivesDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Directives');
+const DirectivesDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Directives');
 
 /**
  * goto `#warn` def-json

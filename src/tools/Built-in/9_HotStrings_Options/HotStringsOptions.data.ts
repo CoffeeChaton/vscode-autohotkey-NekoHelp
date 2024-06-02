@@ -24,7 +24,7 @@ export type THotStringsOptions =
     | 'Z'
     | 'Z0';
 
-export type THotStringsOptionsList = Readonly<{
+type THotStringsOptionsList = Readonly<{
     humanName: string,
     link: `https://www.autohotkey.com/docs/v1/Hotstrings.htm#${string}`,
     doc: string,

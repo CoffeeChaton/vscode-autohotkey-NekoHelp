@@ -30,7 +30,6 @@ const arr8_file: TIndexData[] = [
     ['WriteNumType method (File)', 'lib/File.htm#WriteNum', 8],
 ];
 
-// TODO
 const arr8_InputHook: TIndexData[] = [
     [
         'BackspaceIsUndo property (InputHook)',

@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable max-lines */
-export type TObjInputHook = {
+type TObjInputHook = {
     keyRawName: string,
     insert: string,
     uri: `https://www.autohotkey.com/docs/v1/lib/InputHook.htm#${string}`,

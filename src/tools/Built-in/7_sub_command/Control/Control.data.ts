@@ -27,7 +27,7 @@ type TFirstParam =
 /**
  * <https://www.autohotkey.com/docs/v1/lib/Control.htm>
  */
-export type TControlCmdElement = Readonly<{
+type TControlCmdElement = Readonly<{
     SubCommand: TSubCmdList,
     // Control, SubCommand , Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText
     // Control, SubCommand [, Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]

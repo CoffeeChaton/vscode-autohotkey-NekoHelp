@@ -18,7 +18,7 @@ const unknownGuiSubCmdMd: vscode.MarkdownString = new vscode.MarkdownString(
     true,
 );
 
-export type TGuiName = {
+type TGuiName = {
     rawName: string,
     wordUp: string,
     md: vscode.MarkdownString,

@@ -20,7 +20,7 @@ function FocEx2Md(focExParser: TFocExParser | null, character: number): TFocExMe
     return null;
 }
 
-export function PosGetFocExMeta(
+function PosGetFocExMeta(
     AhkTokenLine: TAhkTokenLine,
     position: vscode.Position,
 ): TFocExMeta | null {

@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { $t } from '../i18n';
 import type { TBaseLineParam } from './CAhkLine';
 
-export type THotKeyData = {
+type THotKeyData = {
     /**
      * and `unknown option`
      */

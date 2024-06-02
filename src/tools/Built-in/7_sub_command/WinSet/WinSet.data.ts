@@ -3,7 +3,7 @@
 /**
  * <https://www.autohotkey.com/docs/v1/lib/WinSet.htm>
  */
-export type TWinSetCmdElement = Readonly<{
+type TWinSetCmdElement = Readonly<{
     SubCommand: string,
     // WinSet, SubCommand, Value , WinTitle, WinText, ExcludeTitle, ExcludeText
     body: `WinSet, ${string}`,

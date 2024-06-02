@@ -85,7 +85,7 @@ function getMultilineLStrStyle1(
 /**
  * just allow `EMultiline.mid`
  */
-export function getMultilineLStrStyle2(
+function getMultilineLStrStyle2(
     { textRaw, CFlag }: { textRaw: string, CFlag: boolean },
 ): string {
     /**

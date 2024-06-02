@@ -25,7 +25,7 @@ export type TArgs = {
     comma: number,
 };
 
-export type TFnRefSplit = {
+type TFnRefSplit = {
     fnUpName: string,
     args: readonly TArgs[],
 };

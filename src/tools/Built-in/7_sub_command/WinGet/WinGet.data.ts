@@ -19,7 +19,7 @@ type TSubCmdList =
 /**
  * <https://www.autohotkey.com/docs/v1/lib/WinGet.htm>
  */
-export type TWinGetCmdElement = Readonly<{
+type TWinGetCmdElement = Readonly<{
     SubCommand: TSubCmdList,
     // WinGet, OutputVar, SubCommand, WinTitle, WinText, ExcludeTitle, ExcludeText
     // WinGet, OutputVar [, SubCommand, WinTitle, WinText, ExcludeTitle, ExcludeText]

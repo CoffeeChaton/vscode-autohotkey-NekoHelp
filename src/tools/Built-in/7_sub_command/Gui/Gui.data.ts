@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-export type TGuiCmdElement = Readonly<{
+type TGuiCmdElement = Readonly<{
     SubCommand: string,
     body: string,
     doc: string,

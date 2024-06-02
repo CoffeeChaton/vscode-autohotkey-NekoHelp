@@ -6,7 +6,7 @@ import type { TGVarRefMeta } from '../../../CodeLens/addGVarReference';
 import { GVarRefCore } from '../../../CodeLens/addGVarReference';
 import { CDiagFn } from '../../tools/CDiagFn';
 
-export class C508Class extends CDiagFn {
+class C508Class extends CDiagFn {
     //
     declare public readonly value: EDiagCodeDA.code508;
 

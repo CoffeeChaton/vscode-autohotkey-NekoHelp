@@ -3,9 +3,11 @@
 import * as vscode from 'vscode';
 import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import { CAhkBiObjCompletionItem } from './CAhkBiObjCompletionItem';
-import type { TBiObj } from './ObjBase.data';
-import type { TFuncCompletion } from './ObjFunc.data';
-import type { TObjInputHook } from './ObjInputHook.data';
+import type { ObjBase } from './ObjBase.data';
+import type { ObjException } from './ObjException.data';
+import type { ObjFile } from './ObjFile.data';
+import type { ObjFunc } from './ObjFunc.data';
+import type { ObjInputHook } from './ObjInputHook.data';
 
 type TMdMapValue = { md: vscode.MarkdownString, keyRawName: string };
 
@@ -38,7 +40,7 @@ const a: TA = ((): TA => {
                 doc,
                 uri,
                 keyRawName,
-            } of readNlsJson('ObjBase') as TBiObj[]
+            } of readNlsJson('ObjBase') as typeof ObjBase
         ) {
             const isMethod: boolean = insert.includes('(');
             const kind = isMethod
@@ -84,7 +86,7 @@ const a: TA = ((): TA => {
                 keyRawName,
                 doc,
                 uri,
-            } of readNlsJson('ObjFile') as TBiObj[]
+            } of readNlsJson('ObjFile') as typeof ObjFile
         ) {
             const isMethod: boolean = keyRawName.includes('(');
             const kind = isMethod
@@ -124,7 +126,7 @@ const a: TA = ((): TA => {
         const MdMap = new Map<string, TMdMapValue>();
         const itemS: CAhkBiObjCompletionItem[] = [];
 
-        for (const v of readNlsJson('ObjFunc') as TFuncCompletion[]) {
+        for (const v of readNlsJson('ObjFunc') as typeof ObjFunc) {
             const {
                 keyRawName,
                 exp,
@@ -183,7 +185,7 @@ const a: TA = ((): TA => {
                 insert,
                 keyRawName,
                 uri,
-            } of readNlsJson('ObjException') as TBiObj[]
+            } of readNlsJson('ObjException') as typeof ObjException
         ) {
             const md = new vscode.MarkdownString('', true)
                 .appendCodeblock(`Exception().${keyRawName}`, 'ahk')
@@ -232,7 +234,7 @@ const a: TA = ((): TA => {
                 insert,
                 keyRawName,
                 uri,
-            } of readNlsJson('ObjInputHook') as TObjInputHook[]
+            } of readNlsJson('ObjInputHook') as typeof ObjInputHook
         ) {
             const isMethod: boolean = insert.includes('(');
 

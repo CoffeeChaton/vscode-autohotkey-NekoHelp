@@ -1,4 +1,4 @@
-export type TFuncCompletion = {
+type TFuncCompletion = {
     keyRawName: string,
     uri: `https://www.autohotkey.com/docs/v1/lib/Func.htm#${string}`,
     doc: readonly string[],

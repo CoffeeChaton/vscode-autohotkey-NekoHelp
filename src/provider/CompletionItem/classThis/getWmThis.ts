@@ -12,7 +12,7 @@ export type TWmThisPos = Readonly<{
     line: number,
     col: number,
 }>;
-export type TWmThisMap = ReadonlyMap<string, readonly TWmThisPos[]>;
+type TWmThisMap = ReadonlyMap<string, readonly TWmThisPos[]>;
 
 export const WmThisCore = new CMemo<CAhkClass, TWmThisMap>(
     (AhkClassSymbol: CAhkClass): TWmThisMap => {

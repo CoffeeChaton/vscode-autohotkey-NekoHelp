@@ -21,7 +21,7 @@ export const memoFileGuiRef = new CMemo<TAhkFileData, readonly TGui2ndParamEx[]>
     },
 );
 
-export function findAllRefGuiNameStr(searchGuiUpName: string): vscode.Location[] {
+function findAllRefGuiNameStr(searchGuiUpName: string): vscode.Location[] {
     const arr: vscode.Location[] = [];
     const GuiEventList: readonly string[] = [
         'GuiClose',

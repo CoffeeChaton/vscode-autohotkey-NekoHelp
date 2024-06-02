@@ -3,7 +3,7 @@ import * as en from '../i18n/en.json';
 import * as cn from '../i18n/zh-cn.json';
 import { getConfig } from './configUI';
 
-export type TLanguage = 'en' | 'zh-cn';
+type TLanguage = 'en' | 'zh-cn';
 export const localeLanguage: TLanguage = ((): TLanguage => {
     const mode: 'en' | 'zh-cn' | 'auto' = getConfig().docLanguage;
     if (mode === 'en') return 'en';

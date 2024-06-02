@@ -1,4 +1,4 @@
-export type TWindowsClassIdentifiers = `::{${string}}`;
+type TWindowsClassIdentifiers = `::{${string}}`;
 
 /**
  * after initialization clear

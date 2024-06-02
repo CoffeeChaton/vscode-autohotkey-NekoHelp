@@ -1,5 +1,4 @@
 import * as path from 'node:path';
-import { EVersion } from '../../../Enum/EVersion';
 import type { EFormatChannel } from '../../../globalEnum';
 import { fmtLog } from '../../vscWindows/log';
 import type { TFmtCore } from '../FormatType';
@@ -35,7 +34,7 @@ export function fmtDiffInfo(
         fmtLog.info([
             '\n',
             '-----------Format Diff Start--------------------------------',
-            `${from} ${EVersion.formatRange} "${path.basename(fsPath)}", ${Date.now() - timeStart} ms`,
+            `${from} "${path.basename(fsPath)}", ${Date.now() - timeStart} ms`,
             ...msg,
             '-----------Format Diff End----------------------------------',
         ].join('\n'));

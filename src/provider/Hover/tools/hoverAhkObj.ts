@@ -8,7 +8,7 @@ import { valTrackCore } from '../../CompletionItem/classThis/valTrack';
 import { setVarTrackRange } from '../../CompletionItem/classThis/wrapClass';
 import { getObjChapterArrAllowFnCall } from '../../CompletionItem/vba/wrapVba';
 
-export function valTrackJustObj(ChapterArr: readonly string[], AhkTokenList: TTokenStream): TAhkBaseObj {
+function valTrackJustObj(ChapterArr: readonly string[], AhkTokenList: TTokenStream): TAhkBaseObj {
     const ahkBaseObj: TAhkBaseObj = {
         // ahkArray: false,
         ahkFileOpen: false,

@@ -21,7 +21,7 @@ type TControlGetSubCmd =
  * <https://www.autohotkey.com/docs/v1/lib/ControlGet.htm>
  * ControlGet, OutputVar, SubCommand
  */
-export type TControlGetCmdElement = Readonly<{
+type TControlGetCmdElement = Readonly<{
     SubCommand: TControlGetSubCmd,
     body:
         `ControlGet, \${1:OutputVar}, ${TControlGetSubCmd} [, \${2:Value}, \${3:Control}, \${4:WinTitle}, \${5:WinText}, \${6:ExcludeTitle}, \${7:ExcludeText}]`,

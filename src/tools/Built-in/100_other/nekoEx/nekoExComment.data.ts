@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-template-curly-in-string */
 
-export type TNekoExData = {
+type TNekoExData = {
     label: `;@ahk-neko-${string}`,
     insert: `;@ahk-neko-${string}`,
     doc: string[],
