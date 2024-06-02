@@ -23,6 +23,7 @@ import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { ClassProperty2Md } from '../Def/getClassProperty';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
+import { hoverAhkObj } from './tools/hoverAhkObj';
 import { hoverClassName } from './tools/hoverClassName';
 import { hoverComObjActive } from './tools/hoverComObjActive';
 import { hoverControlGetParam } from './tools/hoverControlGetParam';
@@ -94,7 +95,8 @@ function HoverProviderCore(
         ?? hoverMsgBoxMagicNumber(AhkTokenLine, position)
         ?? HotStringsOptions(position, AhkFileData, document)
         ?? hoverVba(document, AhkFileData, position)
-        ?? hoverComObjActive(document, position);
+        ?? hoverComObjActive(document, position)
+        ?? hoverAhkObj(document, AhkFileData, position);
     if (DirectivesMd !== null) return DirectivesMd;
 
     const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);

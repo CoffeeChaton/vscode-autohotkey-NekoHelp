@@ -164,6 +164,47 @@
                 "BaseObject must be an object or an empty string.",
                 "Properties and methods defined by a base object are accessible only while that base object is in use. Therefore, changing Object's base also changes the set of available properties and methods."
             ]
+        },
+        {
+            "keyRawName": "Insert()",
+            "insert": "Insert(Value)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Insert",
+            "doc": [
+                "**Deprecated:** Insert is not recommended for use in new scripts. Use [InsertAt](https://www.autohotkey.com/docs/v1/lib/Object.htm#InsertAt), [Push](https://www.autohotkey.com/docs/v1/lib/Object.htm#Push), [ObjRawSet](https://www.autohotkey.com/docs/v1/lib/Object.htm#RawSet) or a simple assignment instead.",
+                "```ahk",
+                "Object.Insert(Pos, Value1 [, Value2, ... ValueN])",
+                "Object.Insert(Value)",
+                "Object.Insert(StringOrObjectKey, Value)",
+                "```",
+                "The behaviour of Insert depends on the number and type of its parameters:",
+                "",
+                "- If there are multiple parameters and the first parameter is an integer, Insert behaves like [InsertAt](https://www.autohotkey.com/docs/v1/lib/Object.htm#InsertAt).",
+                "- If there are multiple parameters and the first parameter is not an integer, Insert behaves like [ObjRawSet](https://www.autohotkey.com/docs/v1/lib/Object.htm#RawSet).",
+                "- If there is only one parameter, Insert behaves like [Push](https://www.autohotkey.com/docs/v1/lib/Object.htm#Push).",
+                "",
+                "Insert returns 1 (true). In [\\[v1.1.21+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.21.00 \"Applies to AutoHotkey v1.1.21 and later\"), an exception is thrown if a memory allocation fails. Earlier versions returned an empty string in that case."
+            ]
+        },
+        {
+            "keyRawName": "Remove()",
+            "insert": "Remove(FirstKey, LastKey)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Remove",
+            "doc": [
+                "**Deprecated:** Remove is not recommended for use in new scripts. Use [RemoveAt](https://www.autohotkey.com/docs/v1/lib/Object.htm#RemoveAt), [Delete](https://www.autohotkey.com/docs/v1/lib/Object.htm#Delete) or [Pop](https://www.autohotkey.com/docs/v1/lib/Object.htm#Pop) instead.",
+                "Removes key-value pairs from an object.",
+                "",
+                "```ahk",
+                "Object.Remove(FirstKey, LastKey)",
+                "```",
+                "",
+                "The behaviour of Remove depends on the number and type of its parameters:",
+                "",
+                "- `Object.Remove(Integer)` behaves like `Object.RemoveAt(Integer)`.",
+                "- `Object.Remove(Integer, \"\")` behaves like `Object.Delete(Integer)`.",
+                "- `Object.Remove(Integer1, Integer2)` behaves like `Object.RemoveAt(Integer1, Integer2 - Integer1 + 1)`.",
+                "- `Object.Remove()` behaves like `Object.Pop()`.",
+                "- Any other valid combination of parameters behaves like [Delete](https://www.autohotkey.com/docs/v1/lib/Object.htm#Delete)."
+            ]
         }
     ]
 }

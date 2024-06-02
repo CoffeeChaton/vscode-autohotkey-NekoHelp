@@ -43,7 +43,7 @@ function valTrackWithErr(lStr: string, fistWordUpCol: number): string {
     );
 }
 
-function valTrackCore(
+export function valTrackCore(
     ChapterArr: readonly string[],
     ahkBaseObj: TAhkBaseObj,
     AhkTokenList: TTokenStream,

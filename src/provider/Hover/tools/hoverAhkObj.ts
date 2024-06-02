@@ -2,14 +2,29 @@ import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
+import { ahkBaseGetMd, type TAhkBaseObj } from '../../../tools/Built-in/8_built_in_method_property/Obj.tools';
 import { getDAWithPos } from '../../../tools/DeepAnalysis/getDAWithPos';
+import { valTrackCore } from '../../CompletionItem/classThis/valTrack';
 import { setVarTrackRange } from '../../CompletionItem/classThis/wrapClass';
-import type { TVbaDataLast } from '../../CompletionItem/vba/valTrackFn';
-import { valTrackAllowFnCall } from '../../CompletionItem/vba/valTrackFn';
-import { vbaCompletionDeep1 } from '../../CompletionItem/vba/vbaCompletion';
 import { getObjChapterArrAllowFnCall } from '../../CompletionItem/vba/wrapVba';
 
-export function hoverVba(
+export function valTrackJustObj(ChapterArr: readonly string[], AhkTokenList: TTokenStream): TAhkBaseObj {
+    const ahkBaseObj: TAhkBaseObj = {
+        ahkArray: false,
+        ahkFileOpen: false,
+        ahkFuncObject: false,
+        ahkBase: false,
+        ahkCatch: false,
+        ahkInputHook: false,
+    };
+
+    // not need it now...
+    void valTrackCore(ChapterArr, ahkBaseObj, AhkTokenList);
+
+    return ahkBaseObj;
+}
+
+export function hoverAhkObj(
     document: vscode.TextDocument,
     AhkFileData: TAhkFileData,
     position_raw: vscode.Position,
@@ -32,16 +47,10 @@ export function hoverVba(
     if (ChapterArr === null) return null;
 
     const AhkTokenList: TTokenStream = setVarTrackRange(position, AhkFileData, DA);
-    const data: TVbaDataLast | null = valTrackAllowFnCall(ChapterArr, AhkTokenList);
+    const Obj: TAhkBaseObj = valTrackJustObj(ChapterArr, AhkTokenList);
 
-    if (data === null) return null;
+    const strList: string[] = ahkBaseGetMd(Obj, wordLast);
+    if (strList.length === 0) return null;
 
-    let s = '';
-    for (const v of vbaCompletionDeep1(data)) {
-        if (wordLast === v.label.toUpperCase()) {
-            s += v.documentation.value;
-        }
-    }
-
-    return new vscode.Hover(new vscode.MarkdownString(s), range);
+    return new vscode.Hover(new vscode.MarkdownString(strList.join('\n')), range);
 }

@@ -1,35 +1,68 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-param-reassign */
 import * as vscode from 'vscode';
-import { readNlsJson } from '../nls_json.tools';
+import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
+import { CAhkBiObjCompletionItem } from './CAhkBiObjCompletionItem';
 import type { TBiObj } from './ObjBase.data';
 import type { TFuncCompletion } from './ObjFunc.data';
 import type { TObjInputHook } from './ObjInputHook.data';
 
-const ItemOfAhkObj: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
-    const itemS: vscode.CompletionItem[] = [];
-    for (const { insert, doc, uri } of readNlsJson('ObjBase') as TBiObj[]) {
+type TAhkObj = {
+    snip: readonly CAhkBiObjCompletionItem[],
+    MdMap: ReadonlyMap<string, vscode.MarkdownString>,
+    DefMap: ReadonlyMap<string, [vscode.Location]>,
+};
+
+const AhkObjData: TAhkObj = ((): TAhkObj => {
+    const MdMap = new Map<string, vscode.MarkdownString>();
+    const itemS: CAhkBiObjCompletionItem[] = [];
+    for (
+        const {
+            insert,
+            doc,
+            uri,
+            keyRawName,
+        } of readNlsJson('ObjBase') as TBiObj[]
+    ) {
         const isMethod: boolean = insert.includes('(');
         const kind = isMethod
             ? vscode.CompletionItemKind.Method
             : vscode.CompletionItemKind.Property;
 
-        const item = new vscode.CompletionItem({
-            label: insert,
-            description: 'BaseObj',
-        }, kind);
-        item.detail = isMethod
+        const detail = isMethod
             ? 'neko help : AhkObj Methods'
             : 'neko help : AhkObj Property';
-        item.documentation = new vscode.MarkdownString(`\n[(Read Doc)](${uri})\n${doc.join('\n\n')}`, true);
-        itemS.push(item);
+
+        const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
+            .appendCodeblock(`{}.${keyRawName} or [].${keyRawName}`, 'ahk')
+            .appendMarkdown(`\n\n[(Read Doc)](${uri})\n\n`)
+            .appendMarkdown(doc.join('\n'));
+        md.supportHtml = true;
+
+        const item2 = new CAhkBiObjCompletionItem(
+            keyRawName,
+            kind,
+            detail,
+            'BaseObj',
+            md,
+            new vscode.SnippetString(insert),
+        );
+        itemS.push(item2);
+        MdMap.set(keyRawName.toUpperCase().replace('()', ''), md);
     }
-    return itemS;
+
+    const DefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('ObjBase');
+
+    return {
+        snip: itemS,
+        MdMap,
+        DefMap,
+    };
 })();
 
-const ItemOfAhkFile: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
-    // File := FileOpen()
-    const itemS: vscode.CompletionItem[] = [];
+const AhkFileData: TAhkObj = ((): TAhkObj => {
+    const MdMap = new Map<string, vscode.MarkdownString>();
+    const itemS: CAhkBiObjCompletionItem[] = [];
 
     for (
         const {
@@ -44,23 +77,40 @@ const ItemOfAhkFile: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
             ? vscode.CompletionItemKind.Method
             : vscode.CompletionItemKind.Property;
 
-        const item = new vscode.CompletionItem({
-            label: keyRawName, // Left
-            description: 'File := FileOpen()', // Right
-        }, kind);
-        item.insertText = new vscode.SnippetString(insert);
-        item.detail = isMethod
+        const detail = isMethod
             ? 'neko help : FileOpen() -> Method'
             : 'neko help : FileOpen() -> Properties';
-        item.documentation = new vscode.MarkdownString(`\n[(Read Doc)](${uri})\n${doc.join('\n\n')}`, true);
-        itemS.push(item);
+
+        const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
+            .appendCodeblock(`FileOpen().${keyRawName}`, 'ahk')
+            .appendMarkdown(`\n\n[(Read Doc)](${uri})\n\n`)
+            .appendMarkdown(doc.join('\n'));
+        md.supportHtml = true;
+
+        const item2 = new CAhkBiObjCompletionItem(
+            keyRawName,
+            kind,
+            detail,
+            'File := FileOpen()',
+            md,
+            new vscode.SnippetString(insert),
+        );
+        itemS.push(item2);
+        MdMap.set(keyRawName.toUpperCase().replace('()', ''), md);
     }
 
-    return itemS;
+    const DefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('ObjFile');
+
+    return {
+        snip: itemS,
+        MdMap,
+        DefMap,
+    };
 })();
 
-const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
-    const itemS: vscode.CompletionItem[] = [];
+const AhkFuncData: TAhkObj = ((): TAhkObj => {
+    const MdMap = new Map<string, vscode.MarkdownString>();
+    const itemS: CAhkBiObjCompletionItem[] = [];
 
     for (const v of readNlsJson('ObjFunc') as TFuncCompletion[]) {
         const {
@@ -74,40 +124,60 @@ const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
         const kind = isMethod
             ? vscode.CompletionItemKind.Method
             : vscode.CompletionItemKind.Property;
+
         const st = isMethod
             ? 'Method'
             : 'property';
-        const item = new vscode.CompletionItem({
-            label: keyRawName,
-            description: 'fn := Func()',
-        }, kind);
-        item.detail = `neko help : Func() ${st}`;
 
-        if (isMethod) {
-            item.insertText = new vscode.SnippetString(keyRawName.replace('()', '($0)'));
-        }
+        const insertText: vscode.SnippetString = isMethod
+            ? new vscode.SnippetString(keyRawName.replace('()', '($0)'))
+            : new vscode.SnippetString(keyRawName);
 
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
-            .appendMarkdown(`(Func) ${st}`)
+            .appendCodeblock(`Func().${keyRawName}`, 'ahk')
             .appendMarkdown(`\n[(Read Doc)](${uri})\n`)
             .appendMarkdown(doc.join('\n\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'));
+        md.supportHtml = true;
 
         md.supportHtml = true;
-        item.documentation = md;
-        itemS.push(item);
+        const item2 = new CAhkBiObjCompletionItem(
+            keyRawName,
+            kind,
+            `neko help : Func() ${st}`,
+            'fn := Func()',
+            md,
+            insertText,
+        );
+        itemS.push(item2);
+        MdMap.set(keyRawName.toUpperCase().replace('()', ''), md);
     }
 
-    return itemS;
+    const DefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('ObjFunc');
+
+    return {
+        snip: itemS,
+        MdMap,
+        DefMap,
+    };
 })();
 
-const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
-    const itemS: vscode.CompletionItem[] = [];
-    for (const { insert, doc, uri } of readNlsJson('ObjException') as TBiObj[]) {
+const AhkCatchData: TAhkObj = ((): TAhkObj => {
+    const MdMap = new Map<string, vscode.MarkdownString>();
+    const itemS: CAhkBiObjCompletionItem[] = [];
+    for (
+        const {
+            doc,
+            insert,
+            keyRawName,
+            uri,
+        } of readNlsJson('ObjException') as TBiObj[]
+    ) {
         const md = new vscode.MarkdownString('', true)
-            .appendMarkdown(`[(Read Doc)](${uri})\n`)
+            .appendCodeblock(`Exception().${keyRawName}`, 'ahk')
+            .appendMarkdown(`\n\n[(Read Doc)](${uri})\n\n`)
             .appendMarkdown(doc.join('\n\n'))
             .appendCodeblock([
                 'Key1 := "F11"',
@@ -123,20 +193,30 @@ const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.Complet
             ].join('\n'));
         md.supportHtml = true;
 
-        const item: vscode.CompletionItem = new vscode.CompletionItem({
-            label: insert,
-            description: 'catch err',
-        }, vscode.CompletionItemKind.Property);
-        item.detail = 'neko help: error -> Exception()';
-        item.documentation = md;
-        itemS.push(item);
+        const item2 = new CAhkBiObjCompletionItem(
+            keyRawName,
+            vscode.CompletionItemKind.Property,
+            'neko help: error -> Exception()',
+            'catch err',
+            md,
+            new vscode.SnippetString(insert),
+        );
+        itemS.push(item2);
+        MdMap.set(keyRawName.toUpperCase().replace('()', ''), md);
     }
 
-    return itemS;
+    const DefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('ObjException');
+
+    return {
+        snip: itemS,
+        MdMap,
+        DefMap,
+    };
 })();
 
-const ItemOfAhkInputHook: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
-    const itemS: vscode.CompletionItem[] = [];
+const AhkInputHookData: TAhkObj = ((): TAhkObj => {
+    const MdMap = new Map<string, vscode.MarkdownString>();
+    const itemS: CAhkBiObjCompletionItem[] = [];
     for (
         const {
             doc,
@@ -148,32 +228,39 @@ const ItemOfAhkInputHook: readonly vscode.CompletionItem[] = ((): vscode.Complet
     ) {
         const isMethod: boolean = insert.includes('(');
 
-        const item = new vscode.CompletionItem(
-            {
-                label: keyRawName,
-                description: 'InputHook()',
-            },
-            isMethod
-                ? vscode.CompletionItemKind.Method
-                : vscode.CompletionItemKind.Property,
-        );
-        item.detail = isMethod
-            ? 'neko help : InputHook() Methods'
-            : 'neko help : InputHook() Property';
-        item.insertText = new vscode.SnippetString(insert);
         const md = new vscode.MarkdownString('', true)
-            .appendMarkdown(`[(Read Doc)](${uri})\n`)
+            .appendCodeblock(`InputHook().${keyRawName}`, 'ahk')
+            .appendMarkdown(`\n\n[(Read Doc)](${uri})\n\n`)
             .appendMarkdown(doc.join('\n\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
             .appendCodeblock(exp.join('\n'));
+
         md.supportHtml = true;
 
-        item.documentation = md;
+        const item2 = new CAhkBiObjCompletionItem(
+            keyRawName,
+            isMethod
+                ? vscode.CompletionItemKind.Method
+                : vscode.CompletionItemKind.Property,
+            isMethod
+                ? 'neko help : InputHook() Methods'
+                : 'neko help : InputHook() Property',
+            'InputHook()',
+            md,
+            new vscode.SnippetString(insert),
+        );
 
-        itemS.push(item);
+        itemS.push(item2);
+        MdMap.set(keyRawName.toUpperCase().replace('()', ''), md);
     }
-    return itemS;
+    const DefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('ObjException');
+
+    return {
+        snip: itemS,
+        MdMap,
+        DefMap,
+    };
 })();
 
 export type TAhkBaseObj = {
@@ -188,11 +275,37 @@ export type TAhkBaseObj = {
 export function ahkBaseWrap(Obj: TAhkBaseObj): vscode.CompletionItem[] {
     const itemS: vscode.CompletionItem[] = [];
     // if (Obj.ahkArray) itemS.push(...ItemOfAhkArray);
-    if (Obj.ahkFileOpen) itemS.push(...ItemOfAhkFile);
-    if (Obj.ahkFuncObject) itemS.push(...ItemOfAhkFunc);
-    if (Obj.ahkBase) itemS.push(...ItemOfAhkObj);
-    if (Obj.ahkCatch) itemS.push(...ItemOfAhkException);
-    if (Obj.ahkInputHook) itemS.push(...ItemOfAhkInputHook);
+    if (Obj.ahkBase) itemS.push(...AhkObjData.snip);
+    if (Obj.ahkCatch) itemS.push(...AhkCatchData.snip);
+    if (Obj.ahkFileOpen) itemS.push(...AhkFileData.snip);
+    if (Obj.ahkFuncObject) itemS.push(...AhkFuncData.snip);
+    if (Obj.ahkInputHook) itemS.push(...AhkInputHookData.snip);
+    return itemS;
+}
+
+export function ahkBaseGetMd(Obj: TAhkBaseObj, wordLast: string): string[] {
+    const itemS: string[] = [];
+    // if (Obj.ahkArray) itemS.push(...ItemOfAhkArray);
+    if (Obj.ahkBase) {
+        const d1: vscode.MarkdownString | undefined = AhkObjData.MdMap.get(wordLast);
+        if (d1 !== undefined) itemS.push(d1.value);
+    }
+    if (Obj.ahkCatch) {
+        const d1: vscode.MarkdownString | undefined = AhkCatchData.MdMap.get(wordLast);
+        if (d1 !== undefined) itemS.push(d1.value);
+    }
+    if (Obj.ahkFileOpen) {
+        const d1: vscode.MarkdownString | undefined = AhkFileData.MdMap.get(wordLast);
+        if (d1 !== undefined) itemS.push(d1.value);
+    }
+    if (Obj.ahkFuncObject) {
+        const d1: vscode.MarkdownString | undefined = AhkFuncData.MdMap.get(wordLast);
+        if (d1 !== undefined) itemS.push(d1.value);
+    }
+    if (Obj.ahkInputHook) {
+        const d1: vscode.MarkdownString | undefined = AhkInputHookData.MdMap.get(wordLast);
+        if (d1 !== undefined) itemS.push(d1.value);
+    }
     return itemS;
 }
 

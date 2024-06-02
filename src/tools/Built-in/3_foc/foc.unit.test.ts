@@ -153,7 +153,7 @@ describe('check Statement ruler', () => {
     it('check : diag', () => {
         expect.hasAssertions();
 
-        const snapshot_ts: TDiagSnapshot[] = checkDiag(Statement);
+        const snapshot_ts: TDiagSnapshot[] = checkDiag([...Statement]);
         const snapshot_en: TDiagSnapshot[] = checkDiag(foc_en.body as TStatementElement[]);
         const snapshot_cn: TDiagSnapshot[] = checkDiag(foc_cn.body as TStatementElement[]);
 

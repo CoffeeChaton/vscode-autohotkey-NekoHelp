@@ -165,6 +165,48 @@
                 "BaseObject 必须是一个对象或一个空字符串。",
                 "基对象定义的属性和方法仅在该基对象正在使用时才可访问。因此，更改对象的基类也会更改可用属性和方法的集合。"
             ]
+        },
+        {
+            "keyRawName": "Insert()",
+            "insert": "Insert(Value)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Insert",
+            "doc": [
+                "**荒废的：**不建议在新脚本中使用插入。请改用 [InsertAt](https://www.autohotkey.com/docs/v1/lib/Object.htm#InsertAt)、[Push](https://www.autohotkey.com/docs/v1/lib/Object.htm#Push)、[ObjRawSet](https://www.autohotkey.com/docs/v1/lib/Object.htm#RawSet) 或简单赋值。",
+                "将键值对插入到对象中，如果给定整数键，则自动调整现有键。",
+                "```ahk",
+                "Object.Insert(Pos, Value1 [, Value2, ... ValueN])",
+                "Object.Insert(Value)",
+                "Object.Insert(StringOrObjectKey, Value)",
+                "```",
+                "Insert 的行为取决于其参数的数量和类型：",
+                "",
+                "- 如果有多个参数并且第一个参数是整数，则 Insert 的行为类似于 [InsertAt](https://www.autohotkey.com/docs/v1/lib/Object.htm#InsertAt)。",
+                "- 如果有多个参数，并且第一个参数不是整数，则 Insert 的行为类似于 [ObjRawSet](https://www.autohotkey.com/docs/v1/lib/Object.htm#RawSet)。",
+                "- 如果只有一个参数，则 Insert 的行为类似于 [Push](https://www.autohotkey.com/docs/v1/lib/Object.htm#Push)。",
+                "",
+                "Insert 返回 1 （true）。在 [\\[v1.1.21+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.21.00 \"Applies to AutoHotkey v1.1.21 and later\") 中，如果内存分配失败，则会引发异常。在这种情况下，早期版本返回一个空字符串。"
+            ]
+        },
+        {
+            "keyRawName": "Remove()",
+            "insert": "(FirstKey, LastKey)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Remove",
+            "doc": [
+                "**荒废的：**不建议在新脚本中使用 Remove。请改用 [RemoveAt](https://www.autohotkey.com/docs/v1/lib/Object.htm#RemoveAt)、[Delete](https://www.autohotkey.com/docs/v1/lib/Object.htm#Delete) 或 [Pop](https://www.autohotkey.com/docs/v1/lib/Object.htm#Pop)。",
+                "从对象中删除键值对。",
+                "",
+                "```ahk",
+                "Object.Remove(FirstKey, LastKey)",
+                "```",
+                "",
+                "Remove 的行为取决于其参数的数量和类型：",
+                "",
+                "- `Object.Remove(Integer)`行为类似于 .`Object.RemoveAt(Integer)`",
+                "- `Object.Remove(Integer, \"\")`行为类似于 .`Object.Delete(Integer)`",
+                "- `Object.Remove(Integer1, Integer2)`行为类似于 .`Object.RemoveAt(Integer1, Integer2 - Integer1 + 1)`",
+                "- `Object.Remove()`行为类似于 .`Object.Pop()`",
+                "- 任何其他有效的参数组合的行为都类似于 [Delete](https://www.autohotkey.com/docs/v1/lib/Object.htm#Delete)。"
+            ]
         }
     ]
 }
