@@ -14,6 +14,7 @@
 <!-- pnpm 9.1.4 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#73](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/73)) `MsgBox` option add support part2
 - feat: ([#72](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/72)) support hover/gotoDef at `Object Types`
 - feat: use `.` to completion `InputHook()` Method/Property
 - feat: ([#71](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/71)) CallHierarchyProvider (default with `shift + alt + h`)

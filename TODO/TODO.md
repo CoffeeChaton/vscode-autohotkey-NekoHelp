@@ -69,7 +69,5 @@
   - [Menu, MenuName](https://www.autohotkey.com/docs/v1/lib/Menu.htm)
   - [GuiControl , MyGui:Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Remarks)
 
-- `arr8_InputHook: TIndexData[]`
-
 - <https://eslint.org/docs/latest/rules/>
 - check OTB <https://www.autohotkey.com/boards/viewtopic.php?f=76&t=129753> , avoid the One True Brace (OTB, K&R style) because AHK 1.1 ignores such braces where not permitted.

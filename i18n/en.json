@@ -23,6 +23,7 @@
         ""
     ],
     "AhkHotKeys.hover.HotString.Escape_Sequences.md": "about the Escape Sequences in HotString \n\n [Preview](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/65#issuecomment-2129961029)",
+    "MsgBox.Param.isNaN": "NaN , This parameter must be either a literal number or in [\\[v1.1.06+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00 \"Applies to AutoHotkey v1.1.06 and later\") a forced expression such as `% Options`. Any other non-blank value will not be recognized as this parameter, but instead as part of _Text_ in the 1-parameter mode.",
     "MsgBoxFullTable": [
         "[Group #1: Buttons](https://www.autohotkey.com/docs/v1/lib/MsgBox.htm#Group_1_Buttons)",
         "",
