@@ -11,7 +11,12 @@ export type TSupportDoc =
     | 'Directives'
     | 'foc'
     | 'focEx'
-    | 'func';
+    | 'func'
+    | 'ObjBase'
+    | 'ObjException'
+    | 'ObjFile'
+    | 'ObjFunc'
+    | 'ObjInputHook';
 
 const rootDir: string = path.resolve(__dirname, '../doc');
 

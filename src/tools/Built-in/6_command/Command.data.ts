@@ -60,7 +60,7 @@ export type TCommandElement = Readonly<{
 /**
  * Generate .json indirect reference, no longer direct reference
  */
-export const LineCommand: TCommandElement[] = [
+export const LineCommand: readonly TCommandElement[] = [
     {
         upName: 'AUTOTRIM',
         keyRawName: 'AutoTrim',

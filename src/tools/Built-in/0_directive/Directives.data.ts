@@ -20,7 +20,7 @@ export type TDirectivesList = Readonly<{
 /**
  * Generate .json indirect reference, no longer direct reference
  */
-export const DirectivesList: TDirectivesList[] = [
+export const DirectivesList: readonly TDirectivesList[] = [
     {
         keyRawName: '#AllowSameLineComments',
         insert: '#AllowSameLineComments',

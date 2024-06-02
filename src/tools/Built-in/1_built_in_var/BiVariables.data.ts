@@ -10,7 +10,7 @@ export type TBiVElement = {
  *
  * Generate .json indirect reference, no longer direct reference
  */
-export const BiVariables: TBiVElement[] = [
+export const BiVariables: readonly TBiVElement[] = [
     {
         keyRawName: 'Clipboard',
         link: 'https://www.autohotkey.com/docs/v1/misc/Clipboard.htm',

@@ -1,0 +1,465 @@
+{
+    "headData": {
+        "note": "machine generated, Please do not manually modify this file!",
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress": "100%"
+    },
+    "body": [
+        {
+            "keyRawName": "Read()",
+            "insert": "Read(...Characters)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Read",
+            "doc": [
+                "从文件中读取一串字符，并推进文件指针。",
+                "*Characters*:要读的最大字符数。如果省略，则将文件的其余部分读取并返回为一个字符串。如果文件对象是从句柄到非寻求设备（例如控制台缓冲区或管道）创建的，则省略此参数可能会导致该方法失败或仅返回当前可用的数据。"
+            ]
+        },
+        {
+            "keyRawName": "Write()",
+            "insert": "Write()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Write",
+            "doc": [
+                "将一串字符串写入文件并推进文件指针。",
+                "*String*: A string to write.",
+                "*Returns* 编写的字节数（不是字符）。"
+            ]
+        },
+        {
+            "keyRawName": "ReadLine()",
+            "insert": "ReadLine()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadLine",
+            "doc": [
+                "从文件中读取一行文本，并推进文件指针。",
+                "*返回文字行。* 这可能包括`n, `r`n or `r，具体取决于用于打开文件的文件和EOL标志。",
+                "可以读取长达65,534个字符的排列。如果一条线的长度超过此，则将通过后续调用此方法返回该行的其余部分。"
+            ]
+        },
+        {
+            "keyRawName": "WriteLine()",
+            "insert": "WriteLine(...String)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteLine",
+            "doc": [
+                "根据用于打开文件的标志，写下一串字符，然后是`n, `r`n or `r。推进文件指针。",
+                "*String*: 一个可选的字符串。",
+                "*Returns* 编写的字节数（不是字符）。"
+            ]
+        },
+        {
+            "keyRawName": "RawRead()",
+            "insert": "RawRead(VarOrAddress, Bytes)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#RawRead",
+            "doc": [
+                "*VarOrAddress*:将复制数据的变量或内存地址。用法类似于 NumGet()。如果指定变量，则在必要时会自动扩展。",
+                "*Bytes*:要读取的最大字节数。",
+                "*Returns* 读取的字节数。",
+                "如果尝试语句是活动性的，并且字节为非零，但没有读取字节，则会引发例外。如果需要，可以使用Ateof来避免这种情况。"
+            ]
+        },
+        {
+            "keyRawName": "RawWrite()",
+            "insert": "RawWrite(VarOrAddress, Bytes)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#RawWrite",
+            "doc": [
+                "*VarOrAddress*: 一个包含数据或数据地址的变量。 用法类似于 ```NumPut().```",
+                "*Bytes*: 要写字节的数量。",
+                "*Returns* 写的字节数。"
+            ]
+        },
+        {
+            "keyRawName": "Seek()",
+            "insert": "Seek(Distance , ...Origin := 0)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Seek",
+            "doc": [
+                "移动文件指针。",
+                "*Distance*:移动的距离，以字节为单位。较低的值更接近文件的开头。",
+                "*Origin*:文件指针移动的起点。必须是以下之一：",
+                "> * 0 (SEEK_SET): 文件的开始。距离必须为零或更大。",
+                "> * 1 (SEEK_CUR): 文件指针的当前位置。",
+                "> * 2 (SEEK_END): 文件的结尾。距离通常应该为负。",
+                "> 如果省略，距离为负距离时将默认为seek_end，否则seek_set。",
+                "*Returns* 如果成功，则非零值，否则为零。"
+            ]
+        },
+        {
+            "keyRawName": "Tell()",
+            "insert": "Tell()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Tell",
+            "doc": [
+                "返回文件指针的当前位置，其中0是文件的开始。"
+            ]
+        },
+        {
+            "keyRawName": "Close()",
+            "insert": "Close()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Close",
+            "doc": [
+                "关闭文件，将缓存中的所有数据汇总到磁盘中并发布共享锁。",
+                "尽管在释放对象时会自动关闭文件，但建议尽快关闭文件。"
+            ]
+        },
+        {
+            "keyRawName": "Position",
+            "insert": "Position",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Pos",
+            "doc": [
+                "检索或设置文件指针的位置。 相当于 ```Pos := File.Tell()``` or ```File.Seek(Distance)```."
+            ]
+        },
+        {
+            "keyRawName": "Pos",
+            "insert": "Pos",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Pos",
+            "doc": [
+                "检索或设置文件指针的位置。 相当于 ```Pos := File.Tell()``` or ```File.Seek(Distance)```."
+            ]
+        },
+        {
+            "keyRawName": "Length",
+            "insert": "Length",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Length",
+            "doc": [
+                "检索或设置文件的大小。",
+                "> FileSize := File.Length",
+                "> File.Length := NewSize",
+                "*FileSize* and *NewSize* 是文件的大小，字节。",
+                "此属性仅应与实际文件一起使用。如果文件对象是从句柄到管道创建的，则可能会返回管道内部缓冲区中当前可用的数据量，但不能保证此行为。"
+            ]
+        },
+        {
+            "keyRawName": "AtEOF",
+            "insert": "AtEOF",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#AtEOF",
+            "doc": [
+                "如果文件指针到达文件末尾，则检索非零值，否则为零。",
+                "> IsAtEOF := File.AtEOF",
+                "此属性仅应与实际文件一起使用。如果文件对象是从句柄到非寻求设备（例如控制台缓冲区或管道）创建的，则返回的值可能不是有意义的，因为此类设备在逻辑上没有一个 \"end of file\"."
+            ]
+        },
+        {
+            "keyRawName": "Encoding",
+            "insert": "Encoding",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Encoding",
+            "doc": [
+                "检索或设置此文件对象使用的文本编码。",
+                "> RetrievedEncoding := File.Encoding",
+                "> File.Encoding := NewEncoding",
+                "检索编码和newEncoding是数字代码页标识符 (see [MSDN](https://docs.microsoft.com/zh-tw/windows/win32/intl/code-page-identifiers?redirectedfrom=MSDN)) 或以下字符串之一：",
+                "* UTF-8: Unicode UTF-8，相当于CP65001.",
+                "* UTF-16: UNICODE UTF-16带有小endian字节订单，相当于CP1200。",
+                "* CPnnn: 带有数字标识符NNN的代码页。",
+                "检索编码绝不是 ```-RAW``` 后缀，无论文件是如何打开的，还是包含字节订单标记（BOM）。设置newencoding永远不会导致添加或删除BOM，因为首次创建时BOM通常将其写入文件。",
+                "*[v1.1.15.04+]*:将NewCoding设置为UTF-8-RAW或UTF-16-RAW是有效的，但是-RAW后缀被忽略。在早期版本中，UTF-8-RAW和UTF-16-RAW的表现就像是无效的8位编码，导致所有非ASCII字符被丢弃。这仅适用于文件编码，而不是 ```FileOpen()```."
+            ]
+        },
+        {
+            "keyRawName": "Handle",
+            "insert": "Handle",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Handle",
+            "doc": [
+                "别名 [__Handle](https://www.autohotkey.com/docs/v1/lib/File.htm#__Handle).",
+                "*Returns* 系统文件 ```handle```, 旨在与 ```DllCall()```. See [CreateFile](https://docs.microsoft.com/zh-tw/windows/win32/api/fileapi/nf-fileapi-createfilea?redirectedfrom=MSDN).",
+                "> File.__Handle",
+                "文件对象内部缓冲区读取或写入。如果将数据写入对象的内部缓冲区中，则在返回手柄之前将其授予磁盘。如果缓冲区包含从文件读取的数据，则将其丢弃，实际文件指针将其重置为逻辑位置 ```File.Pos```."
+            ]
+        },
+        {
+            "keyRawName": "__Handle",
+            "insert": "__Handle",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#Handle",
+            "doc": [
+                "别名 [__Handle](https://www.autohotkey.com/docs/v1/lib/File.htm#__Handle).",
+                "*Returns* 系统文件 ```handle```, 旨在与 ```DllCall()```. See [CreateFile](https://docs.microsoft.com/zh-tw/windows/win32/api/fileapi/nf-fileapi-createfilea?redirectedfrom=MSDN).",
+                "> File.__Handle",
+                "文件对象内部缓冲区读取或写入。如果将数据写入对象的内部缓冲区中，则在返回手柄之前将其授予磁盘。如果缓冲区包含从文件读取的数据，则将其丢弃，实际文件指针将其重置为逻辑位置 ```File.Pos```."
+            ]
+        },
+        {
+            "keyRawName": "ReadUInt()",
+            "insert": "ReadUInt()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadInt()",
+            "insert": "ReadInt()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadInt64()",
+            "insert": "ReadInt64()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadShort()",
+            "insert": "ReadShort()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadUShort()",
+            "insert": "ReadUShort()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadChar()",
+            "insert": "ReadChar()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadUChar()",
+            "insert": "ReadUChar()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadDouble()",
+            "insert": "ReadDouble()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "ReadFloat()",
+            "insert": "ReadFloat()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteUInt()",
+            "insert": "WriteUInt(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteInt()",
+            "insert": "WriteInt(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteInt64()",
+            "insert": "WriteInt64(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteShort()",
+            "insert": "WriteShort(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteUShort()",
+            "insert": "WriteUShort(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteChar()",
+            "insert": "WriteChar(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteUChar()",
+            "insert": "WriteUChar(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteDouble()",
+            "insert": "WriteDouble(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        },
+        {
+            "keyRawName": "WriteFloat()",
+            "insert": "WriteFloat(${1:Num})",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum",
+            "doc": [
+                "从文件中读取一个数字并前进文件指针。",
+                "",
+                "_NumType_ 为 UInt、Int、Int64、Short、UShort、Char、UChar、Double 或 Float。这些类型名称与 [DllCall（）](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#types) 具有相同的含义。",
+                "",
+                "- Return Value",
+                "成功后，此方法返回一个数字。失败时，它将返回一个空字符串。",
+                "",
+                "- Remarks",
+                "如果 [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm) 语句处于活动状态且未读取任何字节，则会引发异常。但是，如果至少读取了一个字节，则不会引发异常，即使给定 _NumType_ 的大小大于读取的字节数也是如此。相反，假定丢失的字节为零。"
+            ]
+        }
+    ]
+}

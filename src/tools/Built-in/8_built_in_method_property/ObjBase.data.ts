@@ -1,7 +1,7 @@
 export type TBiObj = Readonly<{
     keyRawName: string,
     insert: string,
-    doc: string[],
+    doc: readonly string[],
     uri: `https://www.autohotkey.com/docs/v1/lib/${string}`,
 }>;
 
@@ -182,7 +182,6 @@ export const ObjBase: readonly TBiObj[] = [
             'BaseObject must be an object or an empty string.',
 
             'Properties and methods defined by a base object are accessible only while that base object is in use. Therefore, changing Object\'s base also changes the set of available properties and methods.',
-            'https://www.autohotkey.com/docs/v1/objects/Object.htm#Base',
         ],
     },
 ];

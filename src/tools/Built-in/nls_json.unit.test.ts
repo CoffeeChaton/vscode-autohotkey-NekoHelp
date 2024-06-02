@@ -6,22 +6,7 @@ import {
 } from '@jest/globals';
 import * as fs from 'node:fs';
 import path from 'node:path';
-import * as A_Variables_en from '../../../doc/A_Variables.en.ahk.json';
-import * as A_Variables_cn from '../../../doc/A_Variables.zh-cn.ahk.json';
-import * as Ahk2exeData_en from '../../../doc/Ahk2exeData.en.ahk.json';
-import * as Ahk2exeData_cn from '../../../doc/Ahk2exeData.zh-cn.ahk.json';
-import * as BiVariables_en from '../../../doc/BiVariables.en.ahk.json';
-import * as BiVariables_cn from '../../../doc/BiVariables.zh-cn.ahk.json';
-import * as cmd_en from '../../../doc/Command.en.ahk.json';
-import * as cmd_cn from '../../../doc/Command.zh-cn.ahk.json';
-import * as Directives_en from '../../../doc/Directives.en.ahk.json';
-import * as Directives_cn from '../../../doc/Directives.zh-cn.ahk.json';
-import * as foc_en from '../../../doc/foc.en.ahk.json';
-import * as foc_cn from '../../../doc/foc.zh-cn.ahk.json';
-import * as focEx_en from '../../../doc/focEx.en.ahk.json';
-import * as focEx_cn from '../../../doc/focEx.zh-cn.ahk.json';
-import * as func_en from '../../../doc/func.en.ahk.json';
-import * as func_cn from '../../../doc/func.zh-cn.ahk.json';
+
 import { DirectivesList } from './0_directive/Directives.data';
 import { AVariablesList } from './1_built_in_var/A_Variables.data';
 import { BiVariables } from './1_built_in_var/BiVariables.data';
@@ -29,8 +14,18 @@ import { funcDataList } from './2_built_in_function/func.data';
 import { Statement } from './3_foc/foc.data';
 import { focExDataList } from './3_foc/focEx.data';
 import { LineCommand } from './6_command/Command.data';
+import { ObjBase } from './8_built_in_method_property/ObjBase.data';
+import { ObjException } from './8_built_in_method_property/ObjException.data';
+import { ObjFile } from './8_built_in_method_property/ObjFile.data';
+import { ObjFunc } from './8_built_in_method_property/ObjFunc.data';
+import { ObjInputHook } from './8_built_in_method_property/ObjInputHook.data';
 import { Ahk2exeData } from './99_Ahk2Exe_compiler/Ahk2exe.data';
 import { type TSupportDoc } from './nls_json.tools';
+
+interface TV {
+    keyRawName: string;
+    doc: readonly string[];
+}
 
 const space = 4;
 const mainPath: string = path.join(__dirname, '../../../doc');
@@ -64,7 +59,7 @@ function readJsonData(filename: string): string {
     }
 }
 
-function updateJson(param: unknown, filename: TSupportDoc): void {
+function updateJson(param: readonly TV[], filename: TSupportDoc): void {
     const file = `${filename}.en.ahk.json`;
     if (readJsonData(file) !== fmtRawData(param)) {
         makeEnJson(param, file);
@@ -97,23 +92,47 @@ describe('generate .ahk.json', () => {
         updateJson(focExDataList, 'focEx');
         updateJson(Ahk2exeData, 'Ahk2exeData');
 
-        interface TV {
-            keyRawName: string;
-            doc: string[];
+        updateJson(ObjBase, 'ObjBase');
+        updateJson(ObjException, 'ObjException');
+        updateJson(ObjFile, 'ObjFile');
+        updateJson(ObjFunc, 'ObjFunc');
+        updateJson(ObjInputHook, 'ObjInputHook');
+
+        type TNlsFile = {
+            name: string,
+            fullPath: string,
+        };
+        const allEn: TNlsFile[] = [];
+        const allCn: TNlsFile[] = [];
+        const files: string[] = fs.readdirSync(mainPath);
+        for (const file of files) {
+            if (!file.endsWith('.json')) continue;
+            const name = file.replace(/\..*/u, '');
+            const fullPath: string = mainPath + path.sep + file;
+            if (file.endsWith('.zh-cn.ahk.json')) {
+                allCn.push({ name, fullPath });
+            } else {
+                allEn.push({ name, fullPath });
+            }
         }
+
+        expect(allEn).toHaveLength(allCn.length);
+        expect(allEn.map((v: TNlsFile): string => v.name)).toStrictEqual(allCn.map((v: TNlsFile): string => v.name));
+
         interface TK {
             body: TV[];
         }
-        const fn = (k: TK): string[] => k.body.map(({ keyRawName }: TV): string => keyRawName);
 
-        expect(fn(A_Variables_en)).toStrictEqual(fn(A_Variables_cn));
-        expect(fn(BiVariables_en)).toStrictEqual(fn(BiVariables_cn));
-        expect(fn(cmd_en)).toStrictEqual(fn(cmd_cn));
-        expect(fn(Directives_en)).toStrictEqual(fn(Directives_cn));
-        expect(fn(func_en)).toStrictEqual(fn(func_cn));
-        expect(fn(foc_en)).toStrictEqual(fn(foc_cn));
-        expect(fn(focEx_en)).toStrictEqual(fn(focEx_cn));
-        expect(fn(Ahk2exeData_en)).toStrictEqual(fn(Ahk2exeData_cn));
+        const fn = (k: TK): string[] => k.body.map(({ keyRawName }: TV): string => keyRawName);
+        const fn_json2data = (fullPath: string): TK => JSON.parse(fs.readFileSync(fullPath).toString()) as TK;
+
+        for (const [i, en] of allEn.entries()) {
+            const enJson: TK = fn_json2data(en.fullPath);
+            const cnJson: TK = fn_json2data(allCn[i].fullPath);
+
+            expect(fn(enJson)).toStrictEqual(fn(cnJson));
+        }
+        //
     });
 
     it('confirmed as pure English', () => {
@@ -128,5 +147,11 @@ describe('generate .ahk.json', () => {
         expect(checkIsJustEn(Statement)).toBe('');
         expect(checkIsJustEn(focExDataList)).toBe('');
         expect(checkIsJustEn(Ahk2exeData)).toBe('');
+
+        expect(checkIsJustEn(ObjBase)).toBe('');
+        expect(checkIsJustEn(ObjException)).toBe('');
+        expect(checkIsJustEn(ObjFile)).toBe('');
+        expect(checkIsJustEn(ObjFunc)).toBe('');
+        expect(checkIsJustEn(ObjInputHook)).toBe('');
     });
 });

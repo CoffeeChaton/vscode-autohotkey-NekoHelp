@@ -31,7 +31,7 @@ export type TAElement = {
 /**
  * Generate .json indirect reference, no longer direct reference
  */
-export const AVariablesList: TAElement[] = [
+export const AVariablesList: readonly TAElement[] = [
     {
         keyRawName: 'A_AhkPath',
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#AhkPath',

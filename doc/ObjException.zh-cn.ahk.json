@@ -1,0 +1,49 @@
+{
+    "headData": {
+        "note": "machine generated, Please do not manually modify this file!",
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress": "100%"
+    },
+    "body": [
+        {
+            "keyRawName": "Message",
+            "insert": "Message",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Throw.htm#Exception",
+            "doc": [
+                "错误消息 或 [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) value."
+            ]
+        },
+        {
+            "keyRawName": "What",
+            "insert": "What",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Throw.htm#Exception",
+            "doc": [
+                "发生错误时正在执行或即将执行的命令，函数或标签的名称。"
+            ]
+        },
+        {
+            "keyRawName": "Extra",
+            "insert": "Extra",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Throw.htm#Exception",
+            "doc": [
+                "有关错误的其他信息（如果有）。"
+            ]
+        },
+        {
+            "keyRawName": "File",
+            "insert": "File",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Throw.htm#Exception",
+            "doc": [
+                "将自动设置为脚本文件的完整路径，其中包含发生错误的行。"
+            ]
+        },
+        {
+            "keyRawName": "Line",
+            "insert": "Line",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Throw.htm#Exception",
+            "doc": [
+                "将自动设置为发生错误的行号。"
+            ]
+        }
+    ]
+}

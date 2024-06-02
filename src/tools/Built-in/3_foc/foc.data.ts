@@ -28,7 +28,7 @@ export type TStatementElement = Readonly<{
  * FlowOfControl
  * FOC
  */
-export const Statement: TStatementElement[] = [
+export const Statement: readonly TStatementElement[] = [
     {
         keyRawName: 'Break',
         body: 'Break',

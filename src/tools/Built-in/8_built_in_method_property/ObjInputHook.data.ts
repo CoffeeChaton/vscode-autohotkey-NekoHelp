@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 /* eslint-disable max-lines */
 export type TObjInputHook = {
     keyRawName: string,
@@ -41,7 +42,7 @@ export const ObjInputHook: readonly TObjInputHook[] = [
     // https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Methods
     {
         keyRawName: 'KeyOpt()',
-        insert: 'KeyOpt(Keys, KeyOptions)',
+        insert: 'KeyOpt("${1:Keys}", "${2:+E +I +N +S +V}")',
         uri: 'https://www.autohotkey.com/docs/v1/lib/InputHook.htm#KeyOpt',
         doc: [
             'Sets options for a key or list of keys.',
@@ -184,7 +185,8 @@ export const ObjInputHook: readonly TObjInputHook[] = [
             '| Max     | The Input reached the maximum allowed length and it does not match any of the items in [_MatchList_](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MatchList).                                                                                       |',
             '| Timeout | The Input timed out.                                                                                                                                                                                                                                        |',
             '| Match   | The Input matches one of the items in [_MatchList_](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MatchList). The [Match](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Match) property contains the matched item.                            |',
-            '| EndKey  | One of the _EndKeys_ was pressed to terminate the Input. The [EndKey](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndKey) property contains the terminating key name or character without braces. If the Input is in progress, EndReason is blank. |',
+            '| EndKey  | One of the _EndKeys_ was pressed to terminate the Input. The [EndKey](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndKey) property contains the terminating key name or character without braces.                                                  |',
+            '| (space) | If the Input is in progress, EndReason is blank.                                                                                                                                                                                                            |',
         ],
         exp: [
             'Reason := InputHook.EndReason',

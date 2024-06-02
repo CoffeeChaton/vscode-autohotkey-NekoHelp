@@ -42,7 +42,7 @@ export type TBuiltInFuncElement = Readonly<{
 /**
  * Generate .json indirect reference, no longer direct reference
  */
-export const funcDataList: TBuiltInFuncElement[] = [
+export const funcDataList: readonly TBuiltInFuncElement[] = [
     {
         upName: 'ABS',
         group: 'Math',

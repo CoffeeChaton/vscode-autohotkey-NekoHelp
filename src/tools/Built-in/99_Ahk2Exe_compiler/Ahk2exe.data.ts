@@ -11,7 +11,7 @@ export type TAhk2exeDataElement = {
 /**
  * Generate .json indirect reference, no longer direct reference
  */
-export const Ahk2exeData: TAhk2exeDataElement[] = [
+export const Ahk2exeData: readonly TAhk2exeDataElement[] = [
     {
         keyRawName: 'IgnoreBegin',
         link: 'https://www.autohotkey.com/docs/v1/misc/Ahk2ExeDirectives.htm#IgnoreKeep',

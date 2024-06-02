@@ -20,7 +20,7 @@ type TFocExElement = Readonly<{
  * FlowOfControl
  * FOC
  */
-export const focExDataList: TFocExElement[] = [
+export const focExDataList: readonly TFocExElement[] = [
     {
         keyRawName: 'IfBetween',
         body: 'If ${1:Var} ${2|not, |} between ${3:Low} and ${4:High}',

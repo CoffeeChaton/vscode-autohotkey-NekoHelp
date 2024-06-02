@@ -1,0 +1,487 @@
+{
+    "headData": {
+        "note": "machine generated, Please do not manually modify this file!",
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress": "never"
+    },
+    "body": [
+        {
+            "keyRawName": "KeyOpt()",
+            "insert": "KeyOpt(\"${1:Keys}\", \"${2:+E +I +N +S +V}\")",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#KeyOpt",
+            "doc": [
+                "设置KEY或KEY列表的选项。",
+                "",
+                "",
+                "- Keys",
+                "",
+                "钥匙列表。括号用于封闭关键名称，虚拟键代码或扫描代码，类似于 [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) 命令. ",
+                "",
+                "例如, `{Enter}.{{}` 将适用 <kbd>Enter</kbd>, <kbd>.</kbd> and <kbd>{</kbd>. 按名称指定键, by `{vkNN}` or by `{scNNN}` 可能会产生三种不同的结果；有关详细信息，请参见下文。",
+                "",
+                "指定字符串 `{All}` (不区分大小写) 自行将 _KeyOptions_ 应用于所有VK和All SC。 然后，可以将KeyOpt第二次称为从特定密钥中删除选项。",
+                "",
+                "- KeyOptions",
+                "",
+                "以下一个或多个单字符选项（忽略了空格和标签）。",
+                "",
+                "**\\-** (minus): 删除以下任何选项 `-`, 直到下一个 `+`.",
+                "",
+                "**+** (plus): 取消任何以前的 `-`,否则没有效果。",
+                "",
+                "**E:** End key. 如果启用，请按键终止输入，设置 [EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason) 到 endKey 和 [EndKey](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndKey) 到钥匙的归一化名称。不像 _EndKeys_ 参数, 的状态 <kbd>Shift</kbd> or <kbd>AltGr</kbd> 被忽略。",
+                "例如, `@` and `2` 都等同于 `{vk32}` 在美国键盘布局上。",
+                "",
+                "**I:** Ignore text. 该键通常产生的任何文本都被忽略，并且该密钥被视为非文本键 (see [VisibleNonText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleNonText)). 如果关键通常不产生文本，则没有影响。",
+                "",
+                "**N:** Notify. 导致 [OnKeyDown](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyDown) and [OnKeyUp](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyUp) 每次按下键时要调用回调。",
+                "",
+                "**S:** Suppresses （块） 处理后的密钥。 这覆盖了 [VisibleText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleText) or [VisibleNonText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleNonText) 直到 `-S` is used. `+S` 暗示 `-V`.",
+                "",
+                "**V:** Visible. 防止钥匙被抑制（阻塞）。这覆盖了 [VisibleText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleText) or [VisibleNonText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleNonText) 直到 `-V` is used. `+V` 暗示 `-S`."
+            ],
+            "exp": [
+                "InputHook.KeyOpt(Keys, KeyOptions)"
+            ]
+        },
+        {
+            "keyRawName": "Start()",
+            "insert": "Start()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Start",
+            "doc": [
+                "开始收集输入。",
+                "",
+                "如果输入已经进行了，则没有影响。",
+                "",
+                "新启动输入放在 [InputHook stack](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#stack), 这使其可以覆盖任何先前启动的输入。",
+                "",
+                "此方法安装 [keyboard hook](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) (如果还没有)."
+            ],
+            "exp": [
+                "InputHook.Start()"
+            ]
+        },
+        {
+            "keyRawName": "Stop()",
+            "insert": "Stop()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Stop",
+            "doc": [
+                "终止输入并设置 [EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason) to the word Stopped.",
+                "",
+                "如果未进行输入，则没有效果."
+            ],
+            "exp": [
+                "InputHook.Stop()"
+            ]
+        },
+        {
+            "keyRawName": "Wait()",
+            "insert": "Wait([MaxTime])",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Wait",
+            "doc": [
+                "等到输入终止 ([InProgress](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#InProgress) is false).",
+                "",
+                "- MaxTime",
+                "",
+                "如果省略，等待是无限期的。否则，指定最多等待的秒数。如果 _MaxTime_ 秒后仍在进行输入，则该方法返回并且不会终止输入。"
+            ],
+            "exp": [
+                "EndReason := InputHook.Wait(MaxTime)",
+                "; ^ [EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason)"
+            ]
+        },
+        {
+            "keyRawName": "EndKey",
+            "insert": "EndKey",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndKey",
+            "doc": [
+                "返回名称 [end key](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndKeys) 按下以终止输入。",
+                "",
+                "请注意，EndKey返回 \"normalized\" 键的名称，无论其在_ENDKEYS_参数中的编写如何。",
+                "例如， `{Esc}` and `{vk1B}` 两者都会产生 `Escape`. [GetKeyName()](https://www.autohotkey.com/docs/v1/lib/GetKey.htm) 可用于检索 normalized 名称。",
+                "",
+                "If the [E option](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#E) was used, endKey返回键入的实际字符 (如果适用). 否则，键名是根据脚本的活动键盘布局确定的。",
+                "",
+                "EndKey returns an 空的 string if [EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason) is not \"EndKey\"."
+            ],
+            "exp": [
+                "KeyName := InputHook.EndKey"
+            ]
+        },
+        {
+            "keyRawName": "EndMods",
+            "insert": "EndMods",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndMods",
+            "doc": [
+                "返回一个修饰符的字符串，这些修饰符在终止输入时在逻辑上向下返回。",
+                "",
+                "如果所有修饰符在逻辑上都向下（按下），则完整的字符串为：",
+                "",
+                "```",
+                "<^>^<!>!<+>+<#>#",
+                "```",
+                "",
+                "这些修饰符具有与 [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm). 每个修饰符总是有资格 < (left) or > (right). 相应的关键名称是: LCtrl, RCtrl, LAlt, RAlt, LShift, RShift, LWin, RWin.",
+                "",
+                "[InStr()](https://www.autohotkey.com/docs/v1/lib/InStr.htm) 可用于检查给定的修饰符是否 (such as `>!` or `^`) 存在。 以下行可用于将 _mods_ 转换为一串中性修饰符, 例如 `^!+#`:",
+                "",
+                "```ahk",
+                "Mods := RegExReplace(Mods, \"[<>](.)(?:>\\1)?\", \"$1\")",
+                "```",
+                "",
+                "由于瞬间计时，此属性可能比 [GetKeyState](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm) 即使输入终止后立即使用，或在 [OnEnd](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnEnd) callback."
+            ],
+            "exp": [
+                "Mods := InputHook.EndMods"
+            ]
+        },
+        {
+            "keyRawName": "EndReason",
+            "insert": "EndReason",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason",
+            "doc": [
+                "返回一个 [EndReason 字符串](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReasons)，该字符串指示 Input 是如何终止的。",
+                "",
+                "如果 Input 仍在进行中，则返回一个空字符串。",
+                "",
+                "",
+                "[EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason) 属性返回下列字符串之一：",
+                "",
+                "| 字符串 | 描述                                                                                                                                                                                        |",
+                "| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |",
+                "| Stopped   | 调用了 [Stop](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Stop) 方法，或者尚未首次调用 [Start](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Start) 方法。                  |",
+                "| Max | 输入已达到允许的最大长度，并且与 [_MatchList_](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MatchList) 中的任何项都不匹配。                                                         |",
+                "| Timeout   | 输入超时。                                                                                                                                                                                  |",
+                "| Match   | Input 匹配 [_MatchList_](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MatchList) 中的项之一。[Match](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Match) 属性包含匹配的项。 |",
+                "| EndKey   | 按下其中一个 _EndKey_ 以终止 Input。[EndKey](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndKey) 属性包含不带大括号的终止键名称或字符。                                            |",
+                "| (空白)  | 如果 Input 正在进行中，则 EndReason 为空。   |"
+            ],
+            "exp": [
+                "Reason := InputHook.EndReason"
+            ]
+        },
+        {
+            "keyRawName": "InProgress",
+            "insert": "InProgress",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#InProgress",
+            "doc": [
+                "如果输入正在进行，则返回1（true），否则为0（false）。"
+            ],
+            "exp": [
+                "Boolean := InputHook.InProgress"
+            ]
+        },
+        {
+            "keyRawName": "Input",
+            "insert": "Input",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Input",
+            "doc": [
+                "返回自上次输入以来收集的任何文本。",
+                "",
+                "该属性可以在输入进行时或结束后使用。"
+            ],
+            "exp": [
+                "String := InputHook.Input"
+            ]
+        },
+        {
+            "keyRawName": "Match",
+            "insert": "Match",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Match",
+            "doc": [
+                "返回 _[MatchList](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MatchList)_ 导致输入终止的项目。",
+                "",
+                "此属性以其原始情况返回匹配的项目，这可能与用户在 [C option](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#option-c) 省略了，或一个空字符串 [EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason) is not \"Match\"."
+            ],
+            "exp": [
+                "String := InputHook.Match"
+            ]
+        },
+        {
+            "keyRawName": "OnEnd",
+            "insert": "OnEnd",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnEnd",
+            "doc": [
+                "检索或设置在 Input 终止时调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)。",
+                "",
+                "_如果分配了 CurrentFunc_，则为 _NewFunc_，否则为空字符串。",
+                "",
+                "_NewFunc_ 是要调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)，例如 .空字符串表示没有函数对象。`[Func](https://www.autohotkey.com/docs/v1/lib/Func.htm#Func)(\"MyCallback\")`",
+                "",
+                "回调接受一个参数，[可以定义如下](https://www.autohotkey.com/docs/v1/Functions.htm#intro)：",
+                "",
+                "```ahk",
+                "MyCallback(InputHook) { ...",
+                "```",
+                "",
+                "尽管您为参数指定的名称无关紧要，但会为其分配对 InputHook 对象的引用。",
+                "",
+                "如果不需要相应的信息，可以省略回调的参数。",
+                "",
+                "该函数作为新[线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)调用，因此使用 [SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) 和 [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm) 等设置的默认值重新开始。"
+            ],
+            "exp": [
+                "CurrentFunc := InputHook.OnEnd",
+                "InputHook.OnEnd := NewFunc"
+            ]
+        },
+        {
+            "keyRawName": "OnChar",
+            "insert": "OnChar",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnChar",
+            "doc": [
+                "检索或设置在将字符添加到输入缓冲区后调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)。",
+                "",
+                "_如果分配了 CurrentFunc_，则为 _NewFunc_，否则为空字符串。",
+                "",
+                "_NewFunc_ 是要调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)，例如 .空字符串表示没有函数对象。`[Func](https://www.autohotkey.com/docs/v1/lib/Func.htm#Func)(\"MyCallback\")`",
+                "",
+                "回调接受两个参数，[可以定义如下](https://www.autohotkey.com/docs/v1/Functions.htm#intro)：",
+                "",
+                "```ahk",
+                "MyCallback(InputHook, Char) { ...",
+                "```",
+                "",
+                "尽管您为参数指定的名称无关紧要，但会按顺序为它们分配以下值：",
+                "",
+                "1. 对 InputHook 对象的引用。",
+                "2. 包含字符（或多个字符，有关详细信息，请参见下文）的字符串。",
+                "",
+                "如果不需要相应的信息，可以从回调的参数列表末尾省略一个或多个参数。",
+                "",
+                "存在多个字符表示在最后一次按键之前使用了死键，但这两个键不能音译为单个字符。例如，在某些键盘布局上产生，而产生 .<kbd>`</kbd><kbd>e</kbd>`è`<kbd>`</kbd><kbd>z</kbd>`` `z``",
+                "",
+                "按下结束键时，从不调用该函数。"
+            ],
+            "exp": [
+                "CurrentFunc := InputHook.OnChar",
+                "InputHook.OnChar := NewFunc"
+            ]
+        },
+        {
+            "keyRawName": "OnKeyDown",
+            "insert": "OnKeyDown",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyDown",
+            "doc": [
+                "检索或设置在按下启用通知的键时调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)。",
+                "",
+                "必须首先通过 KeyOpt 或 NotifyNonText 启用键控通知。",
+                "",
+                "如果分配了 CurrentFunc，则为 NewFunc，否则为空字符串。",
+                "",
+                "NewFunc 是要调用的函数对象，例如 .空字符串表示没有函数对象。Func(\"MyCallback\")",
+                "",
+                "回调接受三个参数，可以定义如下：",
+                "",
+                "```ahk",
+                "MyCallback(InputHook, VK, SC) { ...",
+                "```",
+                "",
+                "尽管您为参数指定的名称无关紧要，但会按顺序为它们分配以下值：",
+                "",
+                "对 InputHook 对象的引用。",
+                "一个整数，表示密钥的虚拟密钥代码。",
+                "表示密钥扫描代码的整数。",
+                "如果不需要相应的信息，可以从回调的参数列表末尾省略一个或多个参数。",
+                "",
+                "若要检索密钥名称（如果有），请使用 。GetKeyName(Format(\"vk{:x}sc{:x}\", VK, SC))",
+                "",
+                "该函数作为新线程调用，因此使用 SendMode 和 DetectHiddenWindows 等设置的默认值重新开始。",
+                "",
+                "按下结束键时，从不调用该函数。"
+            ],
+            "exp": [
+                "CurrentFunc := InputHook.OnKeyDown",
+                "InputHook.OnKeyDown := NewFunc"
+            ]
+        },
+        {
+            "keyRawName": "OnKeyUp",
+            "insert": "OnKeyUp",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyUp",
+            "doc": [
+                "检索或设置在释放启用通知的密钥时调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)。",
+                "",
+                "键入通知必须首先通过 [KeyOpt](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#KeyOpt) 或 [NotifyNonText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#NotifyNonText) 启用。按下某个键时，将确定该键是否被视为文本或非文本。如果 InputHook 检测到键起而未检测到键下，则将其视为非文本。",
+                "",
+                "_如果分配了 CurrentFunc_，则为 _NewFunc_，否则为空字符串。",
+                "",
+                "_NewFunc_ 是要调用的[函数对象](https://www.autohotkey.com/docs/v1/misc/Functor.htm)，例如 .空字符串表示没有函数对象。`[Func](https://www.autohotkey.com/docs/v1/lib/Func.htm#Func)(\"MyCallback\")`",
+                "",
+                "回调接受三个参数，[可以定义如下](https://www.autohotkey.com/docs/v1/Functions.htm#intro)：",
+                "",
+                "```ahk",
+                "MyCallback(InputHook, VK, SC) { ...",
+                "```",
+                "",
+                "尽管您为参数指定的名称无关紧要，但会按顺序为它们分配以下值：",
+                "",
+                "1. 对 InputHook 对象的引用。",
+                "2. 一个整数，表示密钥的虚拟密钥代码。",
+                "3. 表示密钥扫描代码的整数。",
+                "",
+                "如果不需要相应的信息，可以从回调的参数列表末尾省略一个或多个参数。",
+                "",
+                "若要检索密钥名称（如果有），请使用 。`[GetKeyName](https://www.autohotkey.com/docs/v1/lib/GetKey.htm)([Format](https://www.autohotkey.com/docs/v1/lib/Format.htm)(\"vk{:x}sc{:x}\", VK, SC))`",
+                "",
+                "该函数作为新[线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)调用，因此使用 [SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) 和 [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm) 等设置的默认值重新开始。"
+            ],
+            "exp": [
+                "CurrentFunc := InputHook.OnKeyUp",
+                "InputHook.OnKeyUp := NewFunc"
+            ]
+        },
+        {
+            "keyRawName": "BackspaceIsUndo",
+            "insert": "BackspaceIsUndo",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#BackspaceIsUndo",
+            "doc": [
+                "控制是否从输入缓冲区的末尾删除最近按下的字符。<kbd>Backspace</kbd>",
+                "",
+                "如果分配了 _CurrentSetting_，则为 _NewSetting_，否则默认为 1 （true），除非被 [B 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#option-b)覆盖。",
+                "",
+                "_NewSetting_ 是启用或禁用此设置的[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。",
+                "",
+                "当充当撤消时，它被视为文本输入键。具体而言，是否禁止显示键取决于 [VisibleText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleText) 而不是 [VisibleNonText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleNonText)。<kbd>Backspace</kbd>",
+                "",
+                "<kbd>Backspace</kbd>如果与修饰符键（例如（检查逻辑修饰符状态而不是物理状态））一起按下，则始终被忽略。<kbd>Ctrl</kbd>",
+                "",
+                "**注意：**如果输入文本可见（例如在编辑器中），并且使用箭头键或其他方式在其中导航，则仍将删除最后一个字符，而不是插入符号后面的字符（插入点）。<kbd>Backspace</kbd>"
+            ],
+            "exp": [
+                "CurrentSetting := InputHook.BackspaceIsUndo",
+                "InputHook.BackspaceIsUndo := NewSetting"
+            ]
+        },
+        {
+            "keyRawName": "CaseSensitive",
+            "insert": "CaseSensitive",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#CaseSensitive",
+            "doc": [
+                "控制 [_MatchList_](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MatchList) 是否区分大小写。",
+                "",
+                "如果分配了 _CurrentSetting_，则为 _NewSetting_，否则默认为 0 （false），除非[被 C 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#option-c)覆盖。",
+                "",
+                "_NewSetting_ 是启用或禁用此设置的[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。"
+            ],
+            "exp": [
+                "CurrentSetting := InputHook.CaseSensitive",
+                "InputHook.CaseSensitive := NewSetting"
+            ]
+        },
+        {
+            "keyRawName": "FindAnywhere",
+            "insert": "FindAnywhere",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#FindAnywhere",
+            "doc": [
+                "控制每个匹配项是否可以是输入文本的子字符串。",
+                "",
+                "如果分配了 _CurrentSetting_，则为 _NewSetting_，否则默认为 0 （false），除非被 [\\* 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#asterisk)覆盖。",
+                "",
+                "_NewSetting_ 是启用或禁用此设置的[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。如果为 true，则可以在用户键入的任何位置找到匹配项（匹配项可以是输入文本的子字符串）。如果为 false，则用户键入的全部内容必须与其中一个 _MatchList_ 短语匹配。在这两种情况下，都必须完整键入其中一个 _MatchList_ 短语。"
+            ],
+            "exp": [
+                "CurrentSetting := InputHook.FindAnywhere",
+                "InputHook.FindAnywhere := NewSetting"
+            ]
+        },
+        {
+            "keyRawName": "MinSendLevel",
+            "insert": "MinSendLevel",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#MinSendLevel",
+            "doc": [
+                "检索或设置要收集的输入的最小[发送级别](https://www.autohotkey.com/docs/v1/lib/SendLevel.htm)。",
+                "",
+                "如果分配了 _CurrentLevel_，则为 _NewLevel_，否则默认为 0，除非被 [I 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#option-i)覆盖。",
+                "",
+                "_NewLevel_ 应是介于 0 和 101 之间的[整数](https://www.autohotkey.com/docs/v1/Concepts.htm#numbers)。发送级别低于此值的事件将被忽略。例如，值 101 会导致忽略 [SendEvent](https://www.autohotkey.com/docs/v1/lib/Send.htm) 生成的所有输入，而值 1 仅忽略默认发送级别（零）的输入。",
+                "",
+                "无论此设置如何，始终忽略 [SendInput](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendInput) 和 [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlay) 方法。由于此设置，永远不会忽略由AutoHotkey以外的任何源生成的输入。"
+            ],
+            "exp": [
+                "CurrentLevel := InputHook.MinSendLevel",
+                "InputHook.MinSendLevel := NewLevel"
+            ]
+        },
+        {
+            "keyRawName": "NotifyNonText",
+            "insert": "NotifyNonText",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#NotifyNonText",
+            "doc": [
+                "控制是否在按下非文本键时调用 [OnKeyDown](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyDown) 和 [OnKeyUp](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyUp) 回调。",
+                "",
+                "如果分配_了 CurrentSetting_，则为 _NewSetting_，否则默认为 0 （false）。",
+                "",
+                "_NewSetting_ 是启用或禁用此设置的[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。如果为 true，则为所有不生成文本的按键启用通知，例如按 或 + 时。设置此属性不会影响键[的选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#KeyOpt)，因为文本的生成取决于按下键时活动窗口的键盘布局。<kbd>←</kbd><kbd>Alt</kbd><kbd>F</kbd>",
+                "",
+                "NotifyNonText 通过考虑具有匹配 VK 代码的先前键控是分类为文本还是非文本来应用于键控事件。例如，如果 NotifyNonText 为 true，则按 + 将生成对 和 的 [OnKeyDown](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyDown) 和 [OnKeyUp](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#OnKeyUp) 调用，而单独按 不会调用 OnKeyDown 或 OnKeyUp，除非已使用 [KeyOpt](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#KeyOpt) 启用该键的通知。<kbd>Ctrl</kbd><kbd>A</kbd><kbd>Ctrl</kbd><kbd>A</kbd><kbd>A</kbd>",
+                "",
+                "有关哪些键计为生成文本的详细信息，请参阅 [VisibleText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleText)。"
+            ],
+            "exp": [
+                "CurrentSetting := InputHook.NotifyNonText",
+                "InputHook.NotifyNonText := NewSetting"
+            ]
+        },
+        {
+            "keyRawName": "Timeout",
+            "insert": "Timeout",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Timeout",
+            "doc": [
+                "检索或设置超时值（以秒为单位）。",
+                "",
+                "如果分配了 _CurrentSeconds_，则为 _NewSeconds_，否则默认为 0，除非被 [T 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#option-t)覆盖。",
+                "",
+                "_NewSeconds_ 是表示超时的[浮点数](https://www.autohotkey.com/docs/v1/Concepts.htm#numbers)。0 表示无超时。",
+                "",
+                "超时期限通常在调用 [Start](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#Start) 时开始，但如果在 Input 正在进行时为此属性分配值，则超时期将重新启动。如果超时期限过后 Input 仍在进行中，则终止该超时，并将 [EndReason](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#EndReason) 设置为单词 Timeout。"
+            ],
+            "exp": [
+                "CurrentSeconds := InputHook.Timeout",
+                "InputHook.Timeout := NewSeconds"
+            ]
+        },
+        {
+            "keyRawName": "VisibleNonText",
+            "insert": "VisibleNonText",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleNonText",
+            "doc": [
+                "控制不生成文本的键或组合键是否可见（不被阻止）。",
+                "",
+                "如果分配了 _CurrentSetting_，则为 _NewSetting_，否则默认为 1 （true）。[V 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#vis)将此值设置为 1 （true）。",
+                "",
+                "_NewSetting_ 是启用或禁用此设置的[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。如果为 true，则不生成文本的键和组合键可能会触发热键或传递到活动窗口。如果为 false，则会阻止它们。",
+                "",
+                "有关哪些键计为生成文本的详细信息，请参阅 [VisibleText](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleText)。"
+            ],
+            "exp": [
+                "CurrentSetting := InputHook.VisibleNonText",
+                "InputHook.VisibleNonText := NewSetting"
+            ]
+        },
+        {
+            "keyRawName": "VisibleText",
+            "insert": "VisibleText",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/InputHook.htm#VisibleText",
+            "doc": [
+                "控制生成文本的键或组合键是否可见（不被阻止）。",
+                "",
+                "如果分配了 _CurrentSetting_，则为 _NewSetting_，否则默认为 0 （false），除非被 [V 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#vis)覆盖。",
+                "",
+                "_NewSetting_ 是启用或禁用此设置的[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。如果为 true，则生成文本的键和组合键可能会触发热键或传递到活动窗口。如果为 false，则会阻止它们。",
+                "",
+                "任何导致将文本追加到输入缓冲区的击键都被视为生成文本，即使它们在其他应用程序中通常不会这样做。例如，如果使用 [M 选项](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#option-m)，+ 将生成文本，并生成控制字符 。<kbd>Ctrl</kbd><kbd>A</kbd><kbd>Esc</kbd>`[Chr](https://www.autohotkey.com/docs/v1/lib/Chr.htm)(27)`",
+                "",
+                "死键被计为生成文本，尽管它们通常不会立即产生效果。按死键也可能导致以下键生成文本（如果只是死键的字符）。",
+                "",
+                "<kbd>Backspace</kbd>仅当它[充当撤消](https://www.autohotkey.com/docs/v1/lib/InputHook.htm#BackspaceIsUndo)时，才计为生成文本。",
+                "",
+                "[标准修饰键](https://www.autohotkey.com/docs/v1/KeyList.htm#modifier) 和 和 始终可见（未被阻止）。<kbd>CapsLock</kbd><kbd>NumLock</kbd><kbd>ScrollLock</kbd>"
+            ],
+            "exp": [
+                "CurrentSetting := InputHook.VisibleText",
+                "InputHook.VisibleText := NewSetting"
+            ]
+        }
+    ]
+}

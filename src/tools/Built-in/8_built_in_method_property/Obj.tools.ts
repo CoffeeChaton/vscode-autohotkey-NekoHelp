@@ -1,15 +1,14 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-param-reassign */
 import * as vscode from 'vscode';
-import { ObjBase } from './ObjBase.data';
-import { ObjException } from './ObjException.data';
-import { ObjFile } from './ObjFile.data';
-import { ObjFunc } from './ObjFunc.data';
-import { ObjInputHook } from './ObjInputHook.data';
+import { readNlsJson } from '../nls_json.tools';
+import type { TBiObj } from './ObjBase.data';
+import type { TFuncCompletion } from './ObjFunc.data';
+import type { TObjInputHook } from './ObjInputHook.data';
 
 const ItemOfAhkObj: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     const itemS: vscode.CompletionItem[] = [];
-    for (const { insert, doc } of ObjBase) {
+    for (const { insert, doc, uri } of readNlsJson('ObjBase') as TBiObj[]) {
         const isMethod: boolean = insert.includes('(');
         const kind = isMethod
             ? vscode.CompletionItemKind.Method
@@ -22,7 +21,7 @@ const ItemOfAhkObj: readonly vscode.CompletionItem[] = ((): vscode.CompletionIte
         item.detail = isMethod
             ? 'neko help : AhkObj Methods'
             : 'neko help : AhkObj Property';
-        item.documentation = new vscode.MarkdownString(doc.join('\n\n'), true);
+        item.documentation = new vscode.MarkdownString(`\n[(Read Doc)](${uri})\n${doc.join('\n\n')}`, true);
         itemS.push(item);
     }
     return itemS;
@@ -32,105 +31,38 @@ const ItemOfAhkFile: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
     // File := FileOpen()
     const itemS: vscode.CompletionItem[] = [];
 
-    for (const { insert, keyRawName, doc } of ObjFile) {
-        // TODO    if (keyRawName.startsWith('Read') || keyRawName.startsWith('Write')) continue;
-
+    for (
+        const {
+            insert,
+            keyRawName,
+            doc,
+            uri,
+        } of readNlsJson('ObjFile') as TBiObj[]
+    ) {
         const isMethod: boolean = keyRawName.includes('(');
         const kind = isMethod
             ? vscode.CompletionItemKind.Method
             : vscode.CompletionItemKind.Property;
 
         const item = new vscode.CompletionItem({
-            label: insert, // Left
+            label: keyRawName, // Left
             description: 'File := FileOpen()', // Right
         }, kind);
+        item.insertText = new vscode.SnippetString(insert);
         item.detail = isMethod
             ? 'neko help : FileOpen() -> Method'
             : 'neko help : FileOpen() -> Properties';
-        item.documentation = new vscode.MarkdownString(doc.join('\n\n'), true);
+        item.documentation = new vscode.MarkdownString(`\n[(Read Doc)](${uri})\n${doc.join('\n\n')}`, true);
         itemS.push(item);
     }
 
-    // for (
-    //     const v of [
-    //         'ReadUInt()',
-    //         'ReadInt()',
-    //         'ReadInt64()',
-    //         'ReadShort()',
-    //         'ReadUShort()',
-    //         'ReadChar()',
-    //         'ReadUChar()',
-    //         'ReadDouble()',
-    //         'ReadFloat()',
-    //     ]
-    // ) {
-
-    const itemReadNumType = new vscode.CompletionItem({
-        label: 'ReadNumType(Num)',
-        description: 'File := FileOpen()',
-    }, vscode.CompletionItemKind.Method);
-    itemReadNumType.detail = 'neko help : FileOpen() -> ReadNumType';
-    itemReadNumType.documentation = new vscode.MarkdownString(
-        [
-            'Reads a number from the file and advances the file pointer.',
-            '```NumType``` is either UInt, Int, Int64, Short, UShort, Char, UChar, Double, or Float. These type names have the same meanings as with ```DllCall()```.',
-            '*Returns* a number if successful, otherwise an empty string.',
-            'If a Try statement is active and no bytes were read, an exception is thrown. However, no exception is thrown if at least one byte was read, even if the size of the given NumType is greater than the number of bytes read. Instead, the missing bytes are assumed to be zero.',
-            'https://www.autohotkey.com/docs/v1/lib/File.htm#ReadNum',
-        ].join('\n\n'),
-        true,
-    );
-    itemReadNumType.insertText = new vscode.SnippetString(
-        // eslint-disable-next-line no-template-curly-in-string
-        'Read${1|UInt,Int,Int64,Short,UShort,Char,UChar,Double,Float|}($0)',
-    );
-
-    itemS.push(itemReadNumType);
-    //
-
-    // for (
-    //     const v of [
-    //         'WriteUInt(Num)',
-    //         'WriteInt(Num)',
-    //         'WriteInt64(Num)',
-    //         'WriteShort(Num)',
-    //         'WriteUShort(Num)',
-    //         'WriteChar(Num)',
-    //         'WriteUChar(Num)',
-    //         'WriteDouble(Num)',
-    //         'WriteFloat(Num)',
-    //     ]
-    // ) {}
-
-    const itemWriteNumType = new vscode.CompletionItem({
-        label: 'WriteNumType(Num)',
-        description: 'File := FileOpen()',
-    }, vscode.CompletionItemKind.Method);
-    itemWriteNumType.detail = 'neko help : FileOpen() -> WriteNumType';
-    itemWriteNumType.documentation = new vscode.MarkdownString(
-        [
-            'Writes a number to the file and advances the file pointer.',
-            '```Num```:A number to write.',
-            '```NumType``` is either UInt, Int, Int64, Short, UShort, Char, UChar, Double, or Float. These type names have the same meanings as with ```DllCall()```.',
-            '*Returns* the number of bytes that were written. For instance, WriteUInt returns 4 if successful.',
-            'https://www.autohotkey.com/docs/v1/lib/File.htm#WriteNum',
-        ].join('\n\n'),
-        true,
-    );
-
-    itemWriteNumType.insertText = new vscode.SnippetString(
-        // eslint-disable-next-line no-template-curly-in-string
-        'Write${1|UInt,Int,Int64,Short,UShort,Char,UChar,Double,Float|}($0)',
-    );
-
-    itemS.push(itemWriteNumType);
     return itemS;
 })();
 
 const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     const itemS: vscode.CompletionItem[] = [];
 
-    for (const v of ObjFunc) {
+    for (const v of readNlsJson('ObjFunc') as TFuncCompletion[]) {
         const {
             keyRawName,
             exp,
@@ -157,7 +89,7 @@ const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
 
         const md: vscode.MarkdownString = new vscode.MarkdownString('', true)
             .appendMarkdown(`(Func) ${st}`)
-            .appendMarkdown(`\n\n[(Read Doc)](${uri})`)
+            .appendMarkdown(`\n[(Read Doc)](${uri})\n`)
             .appendMarkdown(doc.join('\n\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')
@@ -173,9 +105,9 @@ const ItemOfAhkFunc: readonly vscode.CompletionItem[] = ((): vscode.CompletionIt
 
 const ItemOfAhkException: readonly vscode.CompletionItem[] = ((): vscode.CompletionItem[] => {
     const itemS: vscode.CompletionItem[] = [];
-    for (const { insert, doc, uri } of ObjException) {
+    for (const { insert, doc, uri } of readNlsJson('ObjException') as TBiObj[]) {
         const md = new vscode.MarkdownString('', true)
-            .appendMarkdown(`\n[(read doc)](${uri})`)
+            .appendMarkdown(`[(Read Doc)](${uri})\n`)
             .appendMarkdown(doc.join('\n\n'))
             .appendCodeblock([
                 'Key1 := "F11"',
@@ -212,7 +144,7 @@ const ItemOfAhkInputHook: readonly vscode.CompletionItem[] = ((): vscode.Complet
             insert,
             keyRawName,
             uri,
-        } of ObjInputHook
+        } of readNlsJson('ObjInputHook') as TObjInputHook[]
     ) {
         const isMethod: boolean = insert.includes('(');
 
@@ -230,7 +162,7 @@ const ItemOfAhkInputHook: readonly vscode.CompletionItem[] = ((): vscode.Complet
             : 'neko help : InputHook() Property';
         item.insertText = new vscode.SnippetString(insert);
         const md = new vscode.MarkdownString('', true)
-            .appendMarkdown(`[(Read Doc)](${uri})`)
+            .appendMarkdown(`[(Read Doc)](${uri})\n`)
             .appendMarkdown(doc.join('\n\n'))
             .appendMarkdown('\n\n***')
             .appendMarkdown('\n\n*exp:*')

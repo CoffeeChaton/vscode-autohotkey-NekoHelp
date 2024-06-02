@@ -1,0 +1,170 @@
+{
+    "headData": {
+        "note": "machine generated, Please do not manually modify this file!",
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress": "100%"
+    },
+    "body": [
+        {
+            "keyRawName": "InsertAt()",
+            "insert": "InsertAt(Pos, Value1, ...ValueN)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#InsertAt",
+            "doc": [
+                "在线性数组中的给定位置插入一个或多个值。",
+                "*Pos* : 插入 Value1 的位置。后续值插入 Pos+1、Pos+2 等处。",
+                "*Value1 ...*: 要插入的一个或多个值。若要插入值数组，请将 theArray* 作为最后一个参数传递。"
+            ]
+        },
+        {
+            "keyRawName": "RemoveAt()",
+            "insert": "RemoveAt(Pos, ...Length)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#RemoveAt",
+            "doc": [
+                "从线性数组中的给定位置删除项目。",
+                "*Pos* : 要删除的一个或多个值的位置.",
+                "*Length*: 要删除的值范围的长度。从 Pos 到 Pos+Length-1 的项目被删除。如果省略，则删除一项。",
+                "*Return Value*: 如果省略 Length，则传回从 Pos 中删除的值（如果没有则传回空白）。否则，传回值是已删除的具有值的项目的数量，该值可能与稀疏数组中的 Length 不同，但始终在 0 和 Length 之间（包括 0 和 Length）。"
+            ]
+        },
+        {
+            "keyRawName": "Push()",
+            "insert": "Push()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Push",
+            "doc": [
+                "将值附加到数组末尾。"
+            ]
+        },
+        {
+            "keyRawName": "Pop()",
+            "insert": "Pop()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Pop",
+            "doc": [
+                "删除并传回最后一个数组元素。"
+            ]
+        },
+        {
+            "keyRawName": "Delete()",
+            "insert": "Delete(Key)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Delete",
+            "doc": [
+                "从物件中删除键值对。",
+                "*Key*: 任意key."
+            ]
+        },
+        {
+            "keyRawName": "Delete()",
+            "insert": "Delete(FirstKey, LastKey)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Delete",
+            "doc": [
+                "从物件中删除键值对。",
+                "*FirstKey*, *LastKey* : 整数或字符串键的任何有效范围，其中 FirstKey <= LastKey。两个密钥必须是同一类型。"
+            ]
+        },
+        {
+            "keyRawName": "MinIndex()",
+            "insert": "MinIndex()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#MinMaxIndex",
+            "doc": [
+                "如果存在任何整数键，MinIndex 传回最低值，MaxIndex 传回最高值。否则返回空字符串。"
+            ]
+        },
+        {
+            "keyRawName": "MaxIndex()",
+            "insert": "MaxIndex()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#MinMaxIndex",
+            "doc": [
+                "如果存在任何整数键，MinIndex 传回最低值，MaxIndex 传回最高值。否则返回空字符串。"
+            ]
+        },
+        {
+            "keyRawName": "Length()",
+            "insert": "Length()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Length",
+            "doc": [
+                "*返回* 从位置 1 开始的线性数组的长度；也就是说，物件包含的最大正整数键，如果没有则为 0。"
+            ]
+        },
+        {
+            "keyRawName": "Count()",
+            "insert": "Count()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Count",
+            "doc": [
+                "*传回* 物件中存在的键值对的数量。"
+            ]
+        },
+        {
+            "keyRawName": "SetCapacity()",
+            "insert": "SetCapacity(MaxItems)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#SetCapacity",
+            "doc": [
+                "调整物件或其字段之一的容量。",
+                "*MaxItems*: 物件在必须自动扩展之前应能够包含的键值对的最大数量。如果小于目前键值对的数量，则使用该数量，并释放任何未使用的空间。",
+                "*Returns*: 若成功则为新容量，否则为空字符串。"
+            ]
+        },
+        {
+            "keyRawName": "SetCapacity()",
+            "insert": "SetCapacity(Key, ByteSize)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#SetCapacity",
+            "doc": [
+                "调整物件或其字段之一的容量。",
+                "*Key*: 任何有效的Key。",
+                "*ByteSize*: 字段字符串缓冲区的新大小（以字节为单位），不包括空终止符。如果该字段不存在，则会创建该字段。如果 ByteSize 为零，则释放缓冲区，但不会删除空白字段。如果ByteSize小于目前大小，则多余的数据被截断；否则所有现有数据都会被保留。",
+                "*Returns*: 若成功则为新容量，否则为空字符串。"
+            ]
+        },
+        {
+            "keyRawName": "GetCapacity()",
+            "insert": "GetCapacity(...Key)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#GetCapacity",
+            "doc": [
+                "*Returns* 物件或其字段之一的目前容量。",
+                "*Returns* 如果字段不存在或不包含字符串，则为空字符串."
+            ]
+        },
+        {
+            "keyRawName": "GetAddress()",
+            "insert": "GetAddress(Key)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#GetAddress",
+            "doc": [
+                "*Returns* 字段字符串缓冲区的当前地址（如果有）。"
+            ]
+        },
+        {
+            "keyRawName": "_NewEnum()",
+            "insert": "_NewEnum()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#NewEnum",
+            "doc": [
+                "*Returns* 一个新的枚举器，用于枚举此对象的键值对。此方法通常不直接调用，而是由 for 循环调用。"
+            ]
+        },
+        {
+            "keyRawName": "HasKey()",
+            "insert": "HasKey(Key)",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#HasKey",
+            "doc": [
+                "*Returns* 如果 Key 与 Object 内的值（甚至是 \"\"）相关联，则为 true，否则为 false。"
+            ]
+        },
+        {
+            "keyRawName": "Clone()",
+            "insert": "Clone()",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Clone",
+            "doc": [
+                "*Returns* 对象的浅表副本。"
+            ]
+        },
+        {
+            "keyRawName": "Base",
+            "insert": "Base",
+            "uri": "https://www.autohotkey.com/docs/v1/lib/Object.htm#Base",
+            "doc": [
+                "*Returns* 对象的浅表副本。",
+                "> BaseObject := Object.Base",
+                "> Object.Base := BaseObject",
+                "BaseObject 必须是一个对象或一个空字符串。",
+                "基对象定义的属性和方法仅在该基对象正在使用时才可访问。因此，更改对象的基类也会更改可用属性和方法的集合。"
+            ]
+        }
+    ]
+}
