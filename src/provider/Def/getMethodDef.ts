@@ -22,7 +22,7 @@ export function getMethodDef(
         getConfig().method.gotoDef,
     );
 
-    return methodList === null
+    return methodList === null || methodList.length === 0
         ? null
         : method2Location(methodList);
 }

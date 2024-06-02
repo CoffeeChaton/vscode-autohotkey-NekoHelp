@@ -11,6 +11,7 @@ import { gotoDefAhk2exe } from '../../tools/Built-in/99_Ahk2Exe_compiler/Ahk2exe
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import type { TWmThisPos } from '../CompletionItem/classThis/getWmThis';
 import { gotoFocExDef } from '../Hover/tools/hoverFocEx';
+import { getAhkBaseObjDef } from './getAhkBaseObjDef';
 import { getClassDef } from './getClassDef';
 import { ClassProperty2Range, getClassProperty } from './getClassProperty';
 import { getDefReturn2Func } from './getDefReturn2Func';
@@ -43,6 +44,9 @@ function DefProviderCore(
 
     const property: readonly TWmThisPos[] | null = getClassProperty(document, position, AhkFileData);
     if (property !== null) return ClassProperty2Range(property, document.uri, false);
+
+    const def0: vscode.LocationLink[] | null = getAhkBaseObjDef(document, AhkFileData, position);
+    if (def0 !== null) return def0;
 
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,

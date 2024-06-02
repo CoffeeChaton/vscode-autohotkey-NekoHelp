@@ -73,9 +73,14 @@ export function wrapClass(
     if (col > lStr.length) return [];
 
     // [     ]. <-- case
-    if (lStr.at(position.character - 2) === ']' && lStr.at(position.character - 1) === '.') {
+    if (
+        lStr.at(position.character - 1) === '.'
+        && (
+            lStr.at(position.character - 2) === ']' || lStr.at(position.character - 2) === '}'
+        )
+    ) {
         return ahkBaseWrap({
-            ahkArray: true,
+            // ahkArray: true,
             ahkFileOpen: false,
             ahkFuncObject: false,
             ahkBase: true,

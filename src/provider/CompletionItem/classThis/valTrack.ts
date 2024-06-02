@@ -73,7 +73,7 @@ export function valTrackCore(
 
 export function valTrack(ChapterArr: readonly string[], AhkTokenList: TTokenStream): vscode.CompletionItem[] {
     const ahkBaseObj: TAhkBaseObj = {
-        ahkArray: false,
+        // ahkArray: false,
         ahkFileOpen: false,
         ahkFuncObject: false,
         ahkBase: false,

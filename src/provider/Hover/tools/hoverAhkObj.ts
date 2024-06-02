@@ -10,7 +10,7 @@ import { getObjChapterArrAllowFnCall } from '../../CompletionItem/vba/wrapVba';
 
 export function valTrackJustObj(ChapterArr: readonly string[], AhkTokenList: TTokenStream): TAhkBaseObj {
     const ahkBaseObj: TAhkBaseObj = {
-        ahkArray: false,
+        // ahkArray: false,
         ahkFileOpen: false,
         ahkFuncObject: false,
         ahkBase: false,
@@ -24,11 +24,17 @@ export function valTrackJustObj(ChapterArr: readonly string[], AhkTokenList: TTo
     return ahkBaseObj;
 }
 
-export function hoverAhkObj(
+export type TAhkObjData = {
+    obj: TAhkBaseObj,
+    range: vscode.Range,
+    wordLast: string,
+};
+
+export function posGetAhkObjData(
     document: vscode.TextDocument,
     AhkFileData: TAhkFileData,
     position_raw: vscode.Position,
-): vscode.Hover | null {
+): TAhkObjData | null {
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(position_raw);
     if (range === undefined) return null;
     const wordLast: string = document.getText(range).toUpperCase();
@@ -47,10 +53,24 @@ export function hoverAhkObj(
     if (ChapterArr === null) return null;
 
     const AhkTokenList: TTokenStream = setVarTrackRange(position, AhkFileData, DA);
-    const Obj: TAhkBaseObj = valTrackJustObj(ChapterArr, AhkTokenList);
+    const obj: TAhkBaseObj = valTrackJustObj(ChapterArr, AhkTokenList);
+    return {
+        obj,
+        range,
+        wordLast,
+    };
+}
 
-    const strList: string[] = ahkBaseGetMd(Obj, wordLast);
+export function hoverAhkObj(
+    document: vscode.TextDocument,
+    AhkFileData: TAhkFileData,
+    position_raw: vscode.Position,
+): vscode.Hover | null {
+    const data: TAhkObjData | null = posGetAhkObjData(document, AhkFileData, position_raw);
+    if (data === null) return null;
+
+    const strList: string[] = ahkBaseGetMd(data.obj, data.wordLast);
     if (strList.length === 0) return null;
 
-    return new vscode.Hover(new vscode.MarkdownString(strList.join('\n')), range);
+    return new vscode.Hover(new vscode.MarkdownString(strList.join('\n')), data.range);
 }
