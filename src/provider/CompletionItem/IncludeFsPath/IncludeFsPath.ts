@@ -24,7 +24,7 @@ function CompletionAbsolutePathLogErr(error: unknown): void {
     }
 }
 
-function CompletionAbsolutePath(
+export function CompletionAbsolutePath(
     mayPath: string,
 ): vscode.CompletionItem[] {
     // folders before files
@@ -71,7 +71,7 @@ function CompletionAbsolutePath(
 export function IncludeFsPath(
     document: vscode.TextDocument,
     position: vscode.Position,
-    AhkFileData: TAhkFileData,
+    _AhkFileData: TAhkFileData,
     AhkTokenLine: TAhkTokenLine,
 ): vscode.CompletionItem[] {
     const { textRaw } = AhkTokenLine;

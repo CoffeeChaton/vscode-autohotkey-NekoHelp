@@ -42,6 +42,7 @@ export const enum EInclude {
     A_ProgramsCommon = 16,
     A_Programs = 17,
     A_ComSpec = 18,
+    A_WorkingDir = 19,
 }
 
 export const AIncludePathKnownList: readonly EInclude[] = [
@@ -62,6 +63,7 @@ export const AIncludePathKnownList: readonly EInclude[] = [
     EInclude.A_ProgramsCommon,
     EInclude.A_Programs,
     EInclude.A_ComSpec,
+    EInclude.A_WorkingDir,
 
     //
     EInclude.A_ScriptDir,
@@ -183,6 +185,7 @@ export const IncludeOsMap: readonly TIncludeOsMap[] = [
         name: '%A_ComSpec%',
         mayPathReplaceValue: process.env['ComSpec'] ?? 'C:/Windows/system32/cmd.exe',
     },
+    // A_WorkingDir
     // A_ProgramFiles
 ];
 
@@ -205,7 +208,14 @@ export function getRawData(path1: string, fsPath: string): TRawData {
             warnMsg,
         };
     }
-
+    if ((/^%A_WorkingDir%/iu).test(path1)) {
+        return {
+            type: EInclude.A_WorkingDir,
+            mayPath: normalize(path1.replace(/^%A_WorkingDir%/iu, `${fsPath}/../`)),
+            warnMsg,
+        };
+    }
+    // A_WorkingDir
     if (isAbsolute(path1)) {
         return {
             type: EInclude.Absolute,
