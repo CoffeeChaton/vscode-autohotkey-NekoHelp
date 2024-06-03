@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [v0.0.60(2024-06-XX)](#v00602024-06-xx)
   - [v0.0.59(2024-06-03)](#v00592024-06-03)
   - [v0.0.58(2024-05-25)](#v00582024-05-25)
   - [v0.0.57(2024-05-16)](#v00572024-05-16)
@@ -8,6 +9,14 @@
   - [v0.0.55(2024-04-26)](#v00552024-04-26)
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
+
+## v0.0.60(2024-06-XX)
+
+<!-- pnpm 9.1.4 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- dprint 0.45.1 -->
+
+- feat: `#include` support `%A_WorkingDir%`
+- feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion
 
 ## v0.0.59(2024-06-03)
 

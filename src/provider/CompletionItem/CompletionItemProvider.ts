@@ -32,6 +32,7 @@ import { CompletionUserDefFuncClass } from './CompletionUserDef/CompletionUserDe
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
 import { getDllCallCompletion } from './DllCall/DllCall';
 import { getSnipGlobalVal } from './global/globalValCompletion';
+import { getNormalPathCompletion } from './IncludeFsPath/getNormalPathCompletion';
 import { IncludeFsPath } from './IncludeFsPath/IncludeFsPath';
 import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
 import { getSnipSubCmd } from './SubCommand/getSnipSubCmd';
@@ -113,6 +114,7 @@ function CompletionItemCore(
             ...getSnipCLSID(AhkTokenLine, position, context),
             ...getDllCallCompletion(AhkFileData, position),
             ...getComObjActiveCompletion(AhkFileData, position, document, context),
+            ...getNormalPathCompletion(document.uri, position, AhkTokenLine, context),
         );
 
         if (PartStr !== null) {

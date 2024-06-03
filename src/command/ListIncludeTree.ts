@@ -41,6 +41,7 @@ function getSearchPath(docPath: string, { type, mayPath }: TRawData): string {
         case EInclude.A_StartupCommon:
         case EInclude.A_Temp:
         case EInclude.A_WinDir:
+        case EInclude.A_WorkingDir:
             return mayPath;
 
         case EInclude.isUnknown:

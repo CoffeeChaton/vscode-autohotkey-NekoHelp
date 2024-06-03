@@ -5,6 +5,7 @@ import { EInclude, getRawData } from '../../../AhkSymbol/CAhkInclude';
 import { type TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { isAhk } from '../../../tools/fsTools/isAhk';
+import { isImg } from '../../../tools/fsTools/isImg';
 import { getAhkFileOutline } from '../../../tools/MD/getAhkFileOutline';
 import { log } from '../../vscWindows/log';
 
@@ -26,6 +27,7 @@ function CompletionAbsolutePathLogErr(error: unknown): void {
 
 export function CompletionAbsolutePath(
     mayPath: string,
+    justSupportAhk: boolean,
 ): vscode.CompletionItem[] {
     // folders before files
     // sort a b
@@ -44,19 +46,31 @@ export function CompletionAbsolutePath(
             const Stats: fs.Stats = fs.statSync(normalize);
             if (Stats.isDirectory()) {
                 const item: vscode.CompletionItem = new vscode.CompletionItem(file, vscode.CompletionItemKind.Folder);
-                item.detail = 'neko help; (#include Folder)';
+                item.detail = 'neko help; (Path Completion)';
                 item.documentation = normalize;
-                item.sortText = `a${file}`;
+                item.sortText = `a${file}`; // <- skip fold before file
                 FolderList.push(item);
-            } else if (isAhk(file)) {
-                const item: vscode.CompletionItem = new vscode.CompletionItem(file, vscode.CompletionItemKind.File);
-                item.detail = 'neko help; (#include File)';
-                if (isAhk(normalize)) {
-                    item.documentation = getAhkFileOutline(normalize);
-                }
-                item.sortText = `b${file}`;
-                FileList.push(item);
+                continue;
             }
+            if (justSupportAhk && !isAhk(file)) {
+                continue;
+            }
+
+            const item: vscode.CompletionItem = new vscode.CompletionItem(file, vscode.CompletionItemKind.File);
+            item.detail = 'neko help; (Path Completion)';
+            if (isAhk(normalize)) {
+                item.documentation = getAhkFileOutline(normalize);
+            } else if (isImg(normalize)) {
+                const imgData: string = vscode.Uri.file(normalize).toString();
+                const image = `![image](${imgData}|width=400)`;
+                const md = new vscode.MarkdownString(`${normalize}\n\n${image}`);
+                item.documentation = md;
+            } else {
+                item.documentation = new vscode.MarkdownString(normalize);
+            }
+
+            item.sortText = `b${file}`; // <- skip fold before file
+            FileList.push(item);
         } catch (error: unknown) {
             CompletionAbsolutePathLogErr(error);
         }
@@ -93,5 +107,5 @@ export function IncludeFsPath(
     }
 
     // if (type === EInclude.Absolute || type === EInclude.A_LineFile) {
-    return CompletionAbsolutePath(path.normalize(mayPath));
+    return CompletionAbsolutePath(path.normalize(mayPath), true);
 }
