@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable dot-notation */
-/* eslint-disable max-lines-per-function */
 /* eslint-disable no-magic-numbers */
 import * as os from 'node:os';
 import {
@@ -80,7 +78,7 @@ const setWarnMsgList: readonly Readonly<RegExp>[] = [
     /%A_IsCompiled%/iu,
     /%A_IsUnicode%/iu,
     /%A_ProgramFiles%/iu,
-    // /%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+    // /^%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
     /%A_ScriptFullPath%/iu,
     /%A_ScriptName%/iu,
     /%A_UserName%/iu,
@@ -189,33 +187,67 @@ export const IncludeOsMap: readonly TIncludeOsMap[] = [
     // A_ProgramFiles
 ];
 
-export function getRawData(path1: string, fsPath: string): TRawData {
-    const warnMsg: string = setWarnMsg(path1);
-    if ((/^%A_LineFile%/iu).test(path1)) {
-        // [v1.1.11+]: Use %A_LineFile%\.. to refer to the directory which contains the current file
-        //    , even if it is not the main script file. For example, #Include %A_LineFile%\..\other.ahk.
+type TIncludeOsMap2 = {
+    reg: Readonly<RegExp>,
+    type: EInclude,
+    name: `%A_${string}%`,
+    getMayPath: (path1: string, fsPath: string) => string,
+};
 
-        return {
-            type: EInclude.A_LineFile,
-            mayPath: normalize(path1.replace(/^%A_LineFile%/iu, fsPath)),
-            warnMsg,
-        };
+export const IncludeOsMap2: readonly TIncludeOsMap2[] = [
+    {
+        reg: /^%A_LineFile%/iu,
+        type: EInclude.A_LineFile,
+        name: '%A_LineFile%',
+        getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_LineFile%/iu, fsPath)),
+    },
+    {
+        reg: /^%A_ScriptDir%/iu,
+        type: EInclude.A_ScriptDir,
+        name: '%A_ScriptDir%',
+        // dprint-ignore
+        getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_ScriptDir%/iu, `${fsPath}/../`)),
+    },
+    {
+        reg: /^%A_WorkingDir%/iu,
+        type: EInclude.A_WorkingDir,
+        name: '%A_WorkingDir%',
+        // dprint-ignore
+        getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_WorkingDir%/iu, `${fsPath}/../`)),
+    },
+];
+
+export function getRawData(path1: string, fsPath: string): TRawData {
+    // const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '')
+    //     .trim()
+    //     .replaceAll(/^%A_Tab%/giu, '\t')
+    //     .replaceAll(/^%A_Space%/giu, ' ');
+
+    const warnMsg: string = setWarnMsg(path1);
+    // %A_
+    if (path1.startsWith('%')) {
+        for (const { reg, type, getMayPath } of IncludeOsMap2) {
+            if (reg.test(path1)) {
+                return {
+                    type,
+                    mayPath: getMayPath(path1, fsPath),
+                    warnMsg,
+                };
+            }
+        }
+        //
+        for (const { reg, type, mayPathReplaceValue } of IncludeOsMap) {
+            if (reg.test(path1)) {
+                return {
+                    type,
+                    mayPath: normalize(path1
+                        .replace(reg, mayPathReplaceValue)),
+                    warnMsg,
+                };
+            }
+        }
     }
-    if ((/^%A_ScriptDir%/iu).test(path1)) {
-        return {
-            type: EInclude.A_ScriptDir,
-            mayPath: normalize(path1.replace(/^%A_ScriptDir%/iu, `${fsPath}/../`)),
-            warnMsg,
-        };
-    }
-    if ((/^%A_WorkingDir%/iu).test(path1)) {
-        return {
-            type: EInclude.A_WorkingDir,
-            mayPath: normalize(path1.replace(/^%A_WorkingDir%/iu, `${fsPath}/../`)),
-            warnMsg,
-        };
-    }
-    // A_WorkingDir
+
     if (isAbsolute(path1)) {
         return {
             type: EInclude.Absolute,
@@ -238,19 +270,6 @@ export function getRawData(path1: string, fsPath: string): TRawData {
             mayPath: normalize(path1),
             warnMsg,
         };
-    }
-
-    if (path1.startsWith('%')) { // %A_
-        for (const { reg, type, mayPathReplaceValue } of IncludeOsMap) {
-            if (reg.test(path1)) {
-                return {
-                    type,
-                    mayPath: normalize(path1
-                        .replace(reg, mayPathReplaceValue)),
-                    warnMsg,
-                };
-            }
-        }
     }
 
     return {
