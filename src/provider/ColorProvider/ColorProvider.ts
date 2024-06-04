@@ -4,6 +4,7 @@ import type { TVarData } from '../../AhkSymbol/CAhkFunc';
 import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
+import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail, EMultiline } from '../../globalEnum';
 import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.data';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
@@ -212,6 +213,9 @@ function provideColorPresentations(
     if (AhkFileData === undefined) return [];
     if (!getConfig().useColorProvider) return [];
     //
+    const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[context.range.start.line];
+    const isRGB = !checkBGR(AhkTokenLine);
+
     const {
         red,
         green,
@@ -219,23 +223,28 @@ function provideColorPresentations(
         alpha,
     } = color;
 
-    const rgb: string = `${toBase16(red * 255)}${toBase16(green * 255)}${toBase16(blue * 255)}`.toLowerCase();
+    const rgbRaw: string = `${toBase16(red * 255)}${toBase16(green * 255)}${toBase16(blue * 255)}`.toLowerCase();
+    const rgb: string = isRGB
+        ? `${toBase16(red * 255)}${toBase16(green * 255)}${toBase16(blue * 255)}`.toLowerCase()
+        : `${toBase16(blue * 255)}${toBase16(green * 255)}${toBase16(red * 255)}`.toLowerCase(); // BGR
     const a: string = toBase16(alpha * 255).toLowerCase();
 
     const rgba: string = a === 'ff'
         ? rgb
         : `${rgb}${a}`;
 
-    const arr: vscode.ColorPresentation[] = [
-        new vscode.ColorPresentation(rgba),
-        new vscode.ColorPresentation(rgba.toUpperCase()),
-    ];
+    const arr: vscode.ColorPresentation[] = [new vscode.ColorPresentation(rgba)];
+
+    if (rgba !== rgba.toUpperCase()) {
+        arr.push(new vscode.ColorPresentation(rgba.toUpperCase()));
+    }
+
     if (a === 'ff') {
         for (const [k, v] of colorMap) {
-            if (v === rgb) {
+            if (v === rgbRaw) {
                 arr.push(
-                    new vscode.ColorPresentation(k),
                     new vscode.ColorPresentation(k[0].toUpperCase() + k.slice(1)),
+                    new vscode.ColorPresentation(k),
                 );
                 break;
             }
