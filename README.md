@@ -19,12 +19,17 @@ AutoHotKey v1 edit-support for VS Code
   - [Diagnostic and lint](#diagnostic-and-lint)
   - [Format](#format)
   - [SignatureHelp](#signaturehelp)
+  - [ColorProvider](#colorprovider)
   - [IntelliSense](#intellisense)
     - [1. Snippets of your function](#1-snippets-of-your-function)
     - [2. Completion of function variables](#2-completion-of-function-variables)
     - [3. Completion of `#Include`](#3-completion-of-include)
     - [4. Completion of `class`](#4-completion-of-class)
     - [5. Snippet Completions for `@param` Doc Tags](#5-snippet-completions-for-param-doc-tags)
+    - [6. `VBA++` with `ComObjActive()`](#6-vba-with-comobjactive)
+  - [Targeted assistance](#targeted-assistance)
+    - [1. `ErrorLevel` quick add Template and hover](#1-errorlevel-quick-add-template-and-hover)
+    - [2. hover `MsgBox` magic number](#2-hover-msgbox-magic-number)
   - [ListAllFunctions](#listallfunctions)
   - [Better highlight](#better-highlight)
     - [of Legacy assignment](#of-legacy-assignment)
@@ -61,13 +66,10 @@ AutoHotKey v1 edit-support for VS Code
 
 1. Detect source Function as symbol
 2. support [continuation](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation) at Outline.
-   ![FunctionSymbol](image/FunctionSymbol.png)
 
 ## CodeSymbol
 
 1. You can add two semicolon `;;` at line first.
-   ![codeSymbol](image/codeSymbol4.png)
-
 2. You can see Leveled outline
 
 - class
@@ -207,9 +209,6 @@ support to find like
 - Over 200 [Command and Function](https://www.autohotkey.com/docs/v1/lib/) documenting built-in
 
 1. Hover function to show return value or comment
-
-   ![hover2](image/hover2.jpg)
-
 2. add comment of function
 
    ```ahk
@@ -309,6 +308,12 @@ support to find like
 - calc `[]` and `{}` , at function arguments.
   ![img](image/sign.gif)
 
+## ColorProvider
+
+![img](image/Changelog/v0-0-56--issuse-50--color-picker.jpg)
+
+[ColorProvider.md](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/Provider/ColorProvider.md)
+
 ## IntelliSense
 
 ### 1. Snippets of your function
@@ -331,9 +336,45 @@ support to find like
 
 ![Completion of @param](image/snippet_completions_for_@param_doc_tags.gif)
 
+### 6. `VBA++` with `ComObjActive()`
+
+> ![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/vbaCompletion.gif)
+> <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/69>
+
+## Targeted assistance
+
+### 1. `ErrorLevel` quick add Template and hover
+
+```jsonc
+{ // settings.json
+    "AhkNekoHelp.customize.CodeActionAddErrorLevelTemplate": [
+        "if ErrorLevel ;$1",
+        "{",
+        "    $0",
+        "}",
+        ""
+    ]
+}
+```
+
+![ERROR](image/ERROR.gif)
+
+![ERROR hover](image/ERROR-hover.png)
+
+> <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/60>
+
+### 2. hover `MsgBox` magic number
+
+![MsgBox-hover.png](image/msgbox-hover.png)
+
+> <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/73>
+> <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/58>
+
 ## ListAllFunctions
 
-![ListAllFunctions](image/ListAllFunctions.png)
+1. click the button bar XXX.ahk
+2. list all func
+   ![ListAllFunctions](image/list-all-func.gif)
 
 ## Better highlight
 
