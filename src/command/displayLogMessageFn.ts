@@ -27,7 +27,9 @@ export function displayLogMessageFn(): void {
             const nextText: string = displayLogMessage.replaceAll('{selectText}', selectVar);
 
             void editor.edit((editBuilder: vscode.TextEditorEdit): void => {
-                editBuilder.insert(new vscode.Position(line + 1, 0), `${space0}${nextText}\n`);
+                // not use new vscode.Position(line + 1, 0),
+                // because it will has error , if position at doc end line
+                editBuilder.insert(new vscode.Position(line, text.length), `\n${space0}${nextText}\n`);
             });
             // https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables
         }

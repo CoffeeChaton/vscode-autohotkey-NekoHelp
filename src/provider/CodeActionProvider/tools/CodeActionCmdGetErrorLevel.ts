@@ -14,6 +14,7 @@ export function CodeActionCmdGetErrorLevel(
         fistWordUp,
         line,
         fistWordUpCol,
+        textRaw,
     } = AhkTokenLine;
 
     if (fistWordUp === '') return [];
@@ -34,7 +35,10 @@ export function CodeActionCmdGetErrorLevel(
         tooltip: 'by neko-help',
         arguments: [
             AhkFileData.uri,
-            new vscode.Position(line + 1, 0),
+
+            // not use new vscode.Position(line + 1, 0),
+            // because it will has error , if position at doc end line
+            new vscode.Position(line, textRaw.length),
             e2,
         ] satisfies Parameters<typeof CmdCodeActionAddErrorLevelTemplate>,
     };

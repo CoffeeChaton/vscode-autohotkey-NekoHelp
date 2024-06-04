@@ -19,7 +19,7 @@ export async function CmdCodeActionAddErrorLevelTemplate(
     const newText: string = getConfig().customize.CodeActionAddErrorLevelTemplate
         .join('\n').replace('$1', e2);
 
-    const snippet: vscode.SnippetString = new vscode.SnippetString(newText);
+    const snippet: vscode.SnippetString = new vscode.SnippetString(`\n${newText}`);
     const WorkspaceEdit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
     WorkspaceEdit.set(
         editIri,
