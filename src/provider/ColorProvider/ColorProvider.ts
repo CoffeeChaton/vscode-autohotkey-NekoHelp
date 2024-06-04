@@ -10,6 +10,7 @@ import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { hoverMsgBoxMagicNumber } from '../Hover/tools/hoverMsgBoxMagicNumber';
 import { getColorPickerIgnoreList } from './getColorPickerIgnore';
+import { checkBGR } from './isBGR';
 
 /**
  * ```ahk
@@ -70,30 +71,47 @@ const colorMap: ReadonlyMap<string, string> = new Map(
     ],
 );
 
-function str2Color(ma1: string): vscode.Color {
+function bgr2Rgb(s1: string): string {
+    const rgba: string | undefined = colorMap.get(s1);
+    if (rgba !== undefined) return rgba;
+
+    // BGR case
+    //  '#' (BB GG RR) (AA)
+    //       01 23 45   67
+
+    const bb = `${s1[0]}${s1[1]}`;
+    const gg = `${s1[2]}${s1[3]}`;
+    const rr = `${s1[4]}${s1[5]}`;
+    const aa: string = s1.length === 8
+        ? `${s1[6]}${s1[7]}`
+        : 'ff';
+
+    return `${rr}${gg}${bb}${aa}`;
+}
+
+function str2Color(ma1: string, isRGB: boolean): vscode.Color {
     const s1: string = ma1.toLowerCase(); // all need toLowerCase
     const s2: string = colorMap.get(s1) ?? s1; // now all is toLowerCase
-
+    const s3: string = isRGB
+        ? s2
+        : bgr2Rgb(s1);
     // has #RR GG BB  or #RR GG BB AA
     //  '#' (RR GG BB) (AA)
     //       01 23 45   67
 
     // not has #RGB or #RGBA
 
-    const rs = `${s2[0]}${s2[1]}`;
-    const r: number = Number.parseInt(rs, 16);
-
-    const gs = `${s2[2]}${s2[3]}`;
-    const g: number = Number.parseInt(gs, 16);
-
-    const bs = `${s2[4]}${s2[5]}`;
-    const b: number = Number.parseInt(bs, 16);
-
-    const len8 = 8;
-    const as: string = s2.length === len8
-        ? `${s2[6]}${s2[7]}`
+    const rr = `${s3[0]}${s3[1]}`;
+    const gg = `${s3[2]}${s3[3]}`;
+    const bb = `${s3[4]}${s3[5]}`;
+    const aa: string = s3.length === 8
+        ? `${s3[6]}${s3[7]}`
         : 'ff';
-    const a: number = Number.parseInt(as, 16);
+
+    const r: number = Number.parseInt(rr, 16);
+    const g: number = Number.parseInt(gg, 16);
+    const b: number = Number.parseInt(bb, 16);
+    const a: number = Number.parseInt(aa, 16);
 
     return new vscode.Color(r / 255, g / 255, b / 255, a / 255);
 }
@@ -158,7 +176,8 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
                 if (b3 !== '"') continue;
             }
 
-            const color: vscode.Color = str2Color(ma1);
+            const isRGB = !checkBGR(AhkTokenLine);
+            const color: vscode.Color = str2Color(ma1, isRGB);
             const range: vscode.Range = new vscode.Range(
                 new vscode.Position(line, char),
                 new vscode.Position(line, char + ma1.length),

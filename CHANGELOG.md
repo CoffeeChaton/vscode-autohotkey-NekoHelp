@@ -15,9 +15,11 @@
 <!-- pnpm 9.1.4 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- TODO hover path -> show may path
 - feat: `#include` support `%A_WorkingDir%`
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion
 - fix: ([#75](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/75)) ColorProvider (color-picker) lint with varName
+- fix: ([#76](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/76)) ColorProvider (color-picker) with BGR case
 
 ## v0.0.59(2024-06-03)
 
