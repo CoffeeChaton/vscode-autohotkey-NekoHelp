@@ -1,10 +1,13 @@
 /* eslint-disable no-magic-numbers */
 import * as vscode from 'vscode';
+import type { TVarData } from '../../AhkSymbol/CAhkFunc';
 import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { EDetail, EMultiline } from '../../globalEnum';
 import { toBase16 } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.data';
+import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { hoverMsgBoxMagicNumber } from '../Hover/tools/hoverMsgBoxMagicNumber';
 import { getColorPickerIgnoreList } from './getColorPickerIgnore';
 
@@ -20,24 +23,27 @@ import { getColorPickerIgnoreList } from './getColorPickerIgnore';
  * WinSet, TransColor, Color
  * WinSet, TransColor, EEAA99
  *
- * PixelSearch, OutputVarX, OutputVarY, X1, Y1, X2, Y2, ColorID , Variation, Mode ;https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm
- * PixelSearch,.........................................0x444444
+ * PixelSearch, OutputVarX, OutputVarY, X1, Y1, X2, Y2, 0x444444 , Variation, Mode ;https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm
+ * PixelSearch, ........................................^^^^^^^^
  *
  * Menu, MenuName, Color, ColorValue , Single ;https://www.autohotkey.com/docs/v1/lib/Menu.htm#Color
- * ;                      ^^^^^^^^^
+ * Menu, MenuName, Color, 0x444444 , Single ;https://www.autohotkey.com/docs/v1/lib/Menu.htm#Color
+ * ;                      ^^^^^^^^
  *
  * Gui, Add, ListView, cEEAA99, ; https://www.autohotkey.com/docs/v1/lib/ListView.htm
  *
+ * GuiControl, +BackgroundFF9977, MyListView ;https://www.autohotkey.com/docs/v1/lib/Gui.htm#Color
+ * ;                      ^^^^^^
  * ```
  * ---
  * Add a space after each color option if there are any more options that follow it.
  *
- * For example: `cbRed` `ct900000` `cwBlue`.
+ * For example: `cbRed` `ct900000` `cwBlue` `+BackgroundFF9977`
  */
-
-// dprint-ignore
-const colorRegex = /(?<=[," \t:=]|^)(?:(?:c[btw]?|#)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)|(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua))\b/giu;
-//                               ^ma[0]                 ^ma[1]  only 6 or 8         ^ma[2]
+const colorRegex1 = /(?<=[," \t:=+-]|^)(?:c[btw]?|#|Background)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)\b/giu;
+// dprint-ignore //                                            ^ split
+const colorRegex2 = /(?<=[," \t:=+-]|^)(?:c[btw]?|#|Background)?(?:0x)?(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
+//                                   ^ma[0]                    ^ma[1]
 
 /**
  * https://www.autohotkey.com/docs/v1/lib/Progress.htm#Object_Colors
@@ -92,6 +98,24 @@ function str2Color(ma1: string): vscode.Color {
     return new vscode.Color(r / 255, g / 255, b / 255, a / 255);
 }
 
+function varNameEQcolorName(AhkFileData: TAhkFileData, range: vscode.Range, nameUp: string): boolean {
+    const { AST, ModuleVar } = AhkFileData;
+
+    const eqName3 = getDAWithPos(AST, range.start)?.paramMap.get(nameUp)
+        ?? getDAWithPos(AST, range.start)?.valMap.get(nameUp)
+        ?? ModuleVar.ModuleValMap.get(nameUp);
+    // eslint-disable-next-line sonarjs/prefer-single-boolean-return
+    if (
+        eqName3 !== undefined
+        && [...eqName3.defRangeList, ...eqName3.refRangeList]
+            .some((value: TVarData): boolean => value.range.contains(range))
+    ) {
+        return true;
+    }
+
+    return false;
+}
+
 function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInformation[] {
     const AhkFileData: TAhkFileData | undefined = pm.getDocMap(document.uri.fsPath);
     if (AhkFileData === undefined) return [];
@@ -119,9 +143,9 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
             || detail.includes(EDetail.isLabelLine)
         ) continue;
 
-        for (const ma of text.matchAll(colorRegex)) {
+        for (const ma of [...text.matchAll(colorRegex1), ...text.matchAll(colorRegex2)]) {
             const { index } = ma;
-            const ma1: string = ma[1] ?? ma[2];
+            const ma1: string = ma[1];
             const char: number = ma[0].length - ma1.length + index;
 
             if (text.at(char + ma1.length) === '(') continue;
@@ -139,6 +163,14 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
                 new vscode.Position(line, char),
                 new vscode.Position(line, char + ma1.length),
             );
+
+            if (
+                varNameEQcolorName(AhkFileData, range, ToUpCase(ma1))
+                || varNameEQcolorName(AhkFileData, range, ToUpCase(ma[0]))
+                //
+            ) {
+                continue; // check val/param def
+            }
 
             const exMsgBox: vscode.Hover | null = hoverMsgBoxMagicNumber(AhkTokenLine, range.start);
             if (exMsgBox !== null) continue;

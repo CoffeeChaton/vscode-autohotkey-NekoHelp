@@ -17,6 +17,7 @@
 
 - feat: `#include` support `%A_WorkingDir%`
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion
+- fix: ([#75](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/75)) ColorProvider (color-picker) lint with varName
 
 ## v0.0.59(2024-06-03)
 
