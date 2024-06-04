@@ -52,6 +52,7 @@ describe('check diag-md uri', () => {
             'not md: ahk', // Too lazy to distinguish whether it is a folder
             'not md: config',
             'not md: img',
+            'not md: Provider',
         ]);
 
         expect(fileList).toStrictEqual([
@@ -71,6 +72,7 @@ describe('check diag-md uri', () => {
             'code601.md',
             'config',
             'img',
+            'Provider',
             'README.md',
         ]);
     });
