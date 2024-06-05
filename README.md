@@ -498,6 +498,7 @@ default via `ctrl+alt+l`
 - [helsmy/AutoHotKey Simple Support](https://github.com/helsmy/vscode-autohotkey) : [hotkey/hotstring regexp](https://github.com/helsmy/vscode-autohotkey/issues/17)
 - [microsoft/TypeScript-TmLanguage](https://github.com/microsoft/TypeScript-TmLanguage/commit/644389aef914fc6fbc97a4dd799cc2d1431ffc87) : `jsdoc` syntax-highlight like the 'inline-tags', 'brackets', 'jsdoctype', 'docblock' code.
 - [MicrosoftDocs/VBA-Docs](https://github.com/MicrosoftDocs/VBA-Docs/tree/main/api) at [#69](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/69)
+- icon <https://www.autohotkey.com/boards/viewtopic.php?t=68147>
 
 ## otherSuggest
 
