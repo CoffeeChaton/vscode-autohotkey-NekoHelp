@@ -42,9 +42,9 @@ import { checkBGR } from './isBGR';
  *
  * For example: `cbRed` `ct900000` `cwBlue` `+BackgroundFF9977`
  */
-const colorRegex1 = /(?<=[," \t:=+-]|^)(?:c[btw]?|#|Background)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)\b/giu;
+const colorRegex1 = /\b(?:c[btw]?|#|Background)?(?:0x)?([\da-f]{6}(?:[\da-f]{2})?)\b/giu;
 // dprint-ignore //                                            ^ split
-const colorRegex2 = /(?<=[," \t:=+-]|^)(?:c[btw]?|#|Background)?(?:0x)?(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
+const colorRegex2 = /\b(?:c[btw]?|#|Background)?(?:0x)?(black|silver|gray|white|maroon|red|purple|fuchsia|green|lime|olive|yellow|navy|blue|teal|aqua)\b/giu;
 //                                   ^ma[0]                    ^ma[1]
 
 /**
