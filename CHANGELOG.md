@@ -16,6 +16,7 @@
 <!-- dprint 0.45.1 -->
 
 - TODO hover path -> show may path
+- feat: change default ahk-icon
 - feat: `#include` support `%A_WorkingDir%`
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion
 - fix: ([#75](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/75)) ColorProvider (color-picker) lint with varName
