@@ -3,7 +3,7 @@ import type { TClassChildren } from '../AhkSymbol/CAhkClass';
 import { CAhkClass } from '../AhkSymbol/CAhkClass';
 import { CAhkFunc } from '../AhkSymbol/CAhkFunc';
 import type { TAhkSymbolList } from '../AhkSymbol/TAhkSymbolIn';
-import { getClassGetSet } from '../tools/ahkClass/getClassGetSet';
+import { getClassPropertyDef } from '../tools/ahkClass/getClassGetSet';
 import { getClassInstanceVar } from '../tools/ahkClass/getClassInstanceVar';
 import { getRange } from '../tools/range/getRange';
 import type { TFuncInput } from './getChildren';
@@ -61,7 +61,7 @@ export function getClass(FuncInput: TFuncInput): CAhkClass | null {
     const name: string = ma[1];
 
     const ch: TClassChildren[] = getChildren<CAhkClass>(
-        [getClass, getFunc, ParserLine, getClassGetSet, getClassInstanceVar],
+        [getClass, getFunc, ParserLine, getClassPropertyDef, getClassInstanceVar],
         {
             DocStrMap,
             RangeStartLine: range.start.line + 1,

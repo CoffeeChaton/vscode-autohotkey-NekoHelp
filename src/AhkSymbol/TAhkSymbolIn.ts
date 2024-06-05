@@ -1,4 +1,9 @@
-import type { CAhkClass, CAhkClassGetSet, CAhkClassInstanceVar } from './CAhkClass';
+import type {
+    CAhkClass,
+    CAhkClassInstanceVar,
+    CAhkClassPropertyDef,
+    CAhkClassPropertyGetSet,
+} from './CAhkClass';
 import type { CAhkFunc } from './CAhkFunc';
 import type { CAhkHotKeys } from './CAhkHotKeys';
 import type { CAhkHotString } from './CAhkHotString';
@@ -7,9 +12,10 @@ import type { CAhkCase, CAhkDefault, CAhkSwitch } from './CAhkSwitch';
 import type { TLineClass } from './TLineClass';
 
 export type TAhkSymbol =
+    | CAhkClassPropertyGetSet
     | CAhkCase
     | CAhkClass
-    | CAhkClassGetSet
+    | CAhkClassPropertyDef
     | CAhkClassInstanceVar
     | CAhkDefault
     | CAhkFunc

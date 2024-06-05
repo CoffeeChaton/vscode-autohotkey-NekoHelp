@@ -42,14 +42,18 @@ export class CAhkClassInstanceVar extends vscode.DocumentSymbol {
     }
 }
 
-export class CAhkClassGetSet extends vscode.DocumentSymbol {
-    // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_Classes_property
+export class CAhkClassPropertyGetSet extends vscode.DocumentSymbol {
+    // property[] {
+    // get {  ;<------- this
+    //
+    // }
+    // }
 
     public readonly uri: vscode.Uri;
 
-    declare public readonly kind: vscode.SymbolKind.Property;
+    declare public readonly kind: vscode.SymbolKind.Method;
 
-    declare public readonly detail: 'Property';
+    declare public readonly detail: string;
 
     declare public readonly children: [];
 
@@ -59,21 +63,55 @@ export class CAhkClassGetSet extends vscode.DocumentSymbol {
             range,
             selectionRange,
             uri,
+            detail,
         }: {
             name: string,
             range: vscode.Range,
             selectionRange: vscode.Range,
             uri: vscode.Uri,
+            detail: string,
         },
     ) {
-        super(name, 'Property', vscode.SymbolKind.Property, range, selectionRange);
+        super(name, detail, vscode.SymbolKind.Method, range, selectionRange);
         this.uri = uri;
+    }
+}
+
+export class CAhkClassPropertyDef extends vscode.DocumentSymbol {
+    // https://www.autohotkey.com/docs/v1/Objects.htm#Custom_Classes_property
+
+    public readonly uri: vscode.Uri;
+
+    declare public readonly kind: vscode.SymbolKind.Property;
+
+    declare public readonly detail: '';
+
+    declare public readonly children: CAhkClassPropertyGetSet[];
+
+    public constructor(
+        {
+            name,
+            range,
+            selectionRange,
+            uri,
+            ch,
+        }: {
+            name: string,
+            range: vscode.Range,
+            selectionRange: vscode.Range,
+            uri: vscode.Uri,
+            ch: CAhkClassPropertyGetSet[],
+        },
+    ) {
+        super(name, '', vscode.SymbolKind.Property, range, selectionRange);
+        this.uri = uri;
+        this.children = ch;
     }
 }
 
 export type TClassChildren =
     | CAhkClass
-    | CAhkClassGetSet
+    | CAhkClassPropertyDef
     | CAhkClassInstanceVar
     | CAhkComment
     | CAhkFunc

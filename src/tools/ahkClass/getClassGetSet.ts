@@ -1,9 +1,51 @@
 import * as vscode from 'vscode';
-import { CAhkClassGetSet } from '../../AhkSymbol/CAhkClass';
-import type { TFuncInput } from '../../core/getChildren';
+import { CAhkClassPropertyDef, CAhkClassPropertyGetSet } from '../../AhkSymbol/CAhkClass';
+
+import { getChildren, type TFuncInput } from '../../core/getChildren';
 import { getRange } from '../range/getRange';
 
-export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
+function getCAhkClassGet(FuncInput: TFuncInput): CAhkClassPropertyGetSet | null {
+    const {
+        AhkTokenLine,
+        uri,
+        DocStrMap,
+        RangeEndLine,
+        defStack,
+    } = FuncInput;
+
+    const {
+        lStr,
+        line,
+        fistWordUp,
+    } = AhkTokenLine;
+
+    if (fistWordUp === '') return null;
+
+    const ma: RegExpMatchArray | null = lStr.match(/\b(get|set)\b/iu);
+    if (ma === null) return null;
+    const col: number | undefined = ma.index;
+    if (col === undefined) return null;
+
+    const name: string = ma[1];
+
+    const searchLine = !lStr.endsWith('{')
+            && lStr.replace(name, '').trim() !== ''
+        ? line + 1
+        : line;
+
+    return new CAhkClassPropertyGetSet({
+        name,
+        range: getRange(DocStrMap, line, searchLine, RangeEndLine, col),
+        selectionRange: new vscode.Range(
+            new vscode.Position(line, col),
+            new vscode.Position(line, col + name.length),
+        ),
+        uri,
+        detail: defStack[0],
+    });
+}
+
+export function getClassPropertyDef(FuncInput: TFuncInput): CAhkClassPropertyDef | null {
     const { lStr } = FuncInput.AhkTokenLine;
 
     const lStrTrim = lStr.trim();
@@ -17,6 +59,7 @@ export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
         uri,
         DocStrMap,
         RangeEndLine,
+        GValMap,
     } = FuncInput;
     const { line, textRaw } = AhkTokenLine;
 
@@ -27,11 +70,26 @@ export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
         new vscode.Position(line, col + name.length),
     );
 
-    return new CAhkClassGetSet({
+    const range = getRange(DocStrMap, line, line, RangeEndLine, col);
+
+    const ch: CAhkClassPropertyGetSet[] = getChildren<CAhkClassPropertyDef>(
+        [getCAhkClassGet],
+        {
+            DocStrMap,
+            RangeStartLine: range.start.line + 1,
+            RangeEndLine: range.end.line,
+            defStack: [name],
+            uri,
+            GValMap,
+        },
+    );
+
+    return new CAhkClassPropertyDef({
         name,
-        range: getRange(DocStrMap, line, line, RangeEndLine, col),
+        range,
         selectionRange,
         uri,
+        ch,
     });
 }
 

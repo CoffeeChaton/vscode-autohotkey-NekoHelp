@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { CAhkClass, CAhkClassGetSet, CAhkClassInstanceVar } from '../../../AhkSymbol/CAhkClass';
+import { CAhkClass, CAhkClassInstanceVar, CAhkClassPropertyDef } from '../../../AhkSymbol/CAhkClass';
 import { CAhkFunc } from '../../../AhkSymbol/CAhkFunc';
 import type { TAstRoot, TTopSymbol } from '../../../AhkSymbol/TAhkSymbolIn';
 import type { TAhkFileData } from '../../../core/ProjectManager';
@@ -29,7 +29,7 @@ function makeClassMD(ahkClass: CAhkClass, firstLineStr: string): vscode.Markdown
         //  CAhkClass | CAhkClassGetSet | CAhkClassInstanceVar | CAhkFunc;
         if (ch instanceof CAhkClass) {
             md.appendCodeblock(`    class ${ch.name} ;`);
-        } else if (ch instanceof CAhkClassGetSet) {
+        } else if (ch instanceof CAhkClassPropertyDef) {
             md.appendCodeblock(`    ${ch.name}[] ; Properties`);
         } else if (ch instanceof CAhkClassInstanceVar) {
             if (ch.detail === 'static ClassVar') {

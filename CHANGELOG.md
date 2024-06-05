@@ -20,6 +20,9 @@
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion
 - fix: ([#75](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/75)) ColorProvider (color-picker) lint with varName
 - fix: ([#76](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/76)) ColorProvider (color-picker) with BGR case
+- feat: ([#77](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/77)) core ahk-class Property get/set method parser
+
+![alt text](https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/image/Changelog/v0-0-60--issuse-77--get-set-parser.jpg)
 
 ## v0.0.59(2024-06-03)
 
