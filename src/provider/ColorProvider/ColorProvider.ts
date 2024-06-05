@@ -192,6 +192,7 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
                 continue; // check val/param def
             }
 
+            // is MsgBox Opt number
             const exMsgBox: vscode.Hover | null = hoverMsgBoxMagicNumber(AhkTokenLine, range.start);
             if (exMsgBox !== null) continue;
 

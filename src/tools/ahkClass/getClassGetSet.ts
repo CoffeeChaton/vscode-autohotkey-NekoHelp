@@ -1,7 +1,7 @@
+import * as vscode from 'vscode';
 import { CAhkClassGetSet } from '../../AhkSymbol/CAhkClass';
 import type { TFuncInput } from '../../core/getChildren';
 import { getRange } from '../range/getRange';
-import { getRangeOfLine } from '../range/getRangeOfLine';
 
 export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
     const { lStr } = FuncInput.AhkTokenLine;
@@ -9,7 +9,7 @@ export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
     const lStrTrim = lStr.trim();
     if (lStrTrim.includes('(') || lStrTrim.includes('=')) return null;
 
-    const ma: RegExpMatchArray | null = lStrTrim.match(/^([#$@\w\u{A1}-\u{FFFF}]+)(?:\[\])?[ \t]*\{?$/u);
+    const ma: RegExpMatchArray | null = lStrTrim.match(/^([#$@\w\u{A1}-\u{FFFF}]+)(?:\[\s*\])?[ \t]*\{?$/u);
     if (ma === null) return null;
 
     const {
@@ -20,11 +20,17 @@ export function getClassGetSet(FuncInput: TFuncInput): CAhkClassGetSet | null {
     } = FuncInput;
     const { line, textRaw } = AhkTokenLine;
 
-    return new CAhkClassGetSet({
-        name: ma[1],
+    const name: string = ma[1];
+    const col: number = textRaw.search(/[#$@\w\u{A1}-\u{FFFF}]/u);
+    const selectionRange: vscode.Range = new vscode.Range(
+        new vscode.Position(line, col),
+        new vscode.Position(line, col + name.length),
+    );
 
-        range: getRange(DocStrMap, line, line, RangeEndLine, textRaw.search(/[#$@\w\u{A1}-\u{FFFF}]/u)),
-        selectionRange: getRangeOfLine(line, lStr, textRaw.length),
+    return new CAhkClassGetSet({
+        name,
+        range: getRange(DocStrMap, line, line, RangeEndLine, col),
+        selectionRange,
         uri,
     });
 }

@@ -67,7 +67,22 @@ GuiControl, +BackgroundFF9977, MyListView ;https://www.autohotkey.com/docs/v1/li
 
 - auto ignore case
   - varName = color name like `red := setColor()` ... <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/76>
+  - ignore the number of `MsgBox, 16 ,` Options
+
+  ```ahk
+  Gui, Color, 262144
+  ;           ^^^^^^
+
+  midnight_blue := 0x262144
+  ;                ^^^^^^ color
+
+  MsgBox, 262144,Title,Text
+  ;       ^^^^^^ ignore color
+  ```
 
 ## other
 
 My current plan is to actively display color-picker on all occasions as long as the value looks like a color.
+
+```
+```

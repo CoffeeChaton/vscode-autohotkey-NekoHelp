@@ -3,6 +3,7 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { pm } from '../../core/ProjectManager';
 import { CMemo } from '../../tools/CMemo';
 import { ClassHighlight } from './ClassHighlight';
+import { classPropertyHighlight } from './classPropertyHighlight';
 import { DAList2SemanticHighlight } from './DAList2SemanticHighlight';
 import { funcHighlight } from './funcHighlight';
 import { HotKeysRemapSemanticHighlight } from './HotKeysRemapSemanticHighlight';
@@ -28,7 +29,8 @@ const Semantic = new CMemo<TAhkFileData, readonly TSemanticTokensLeaf[]>(
             ...funcHighlight(DocStrMap),
             ...MultilineHighlight(DocStrMap),
             ...legacyAssignmentHighlight(DocStrMap),
-            ...HotKeysRemapSemanticHighlight(AhkFileData),
+            ...HotKeysRemapSemanticHighlight(AST),
+            ...classPropertyHighlight(AST),
         ];
     },
 );
