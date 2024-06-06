@@ -17,8 +17,7 @@ function textReplace(textElement: string): string {
         .replaceAll(/ *\|\| */gu, ' || ')
         .replaceAll(/ *&& */gu, ' && ')
         .replaceAll(/ *<> */gu, ' <> ')
-        .replaceAll(/\breturn\s+/gu, 'return ')
-        .replaceAll(/\bReturn\s+/gu, 'Return ')
+        .replaceAll(/\breturn\s+/giu, (m: string): string => `${m.trim()} `)
         // .replaceAll(/ *\? */g, ' ? ')
         .replaceAll(/\( */gu, '(')
         .replaceAll(/ *\)/gu, ')')
@@ -28,12 +27,10 @@ function textReplace(textElement: string): string {
         // .replaceAll(/ *\}/ug, '}')
         // .replaceAll(/\}\s+/ug, '} ')
         .replaceAll(/\)\s*\{ */gu, ') {')
-        .replaceAll(/\bif\s*\(/gu, 'if (')
-        .replaceAll(/\bIf\s*\(/gu, 'If (')
-        .replaceAll(/\bIF\s*\(/gu, 'IF (')
-        .replaceAll(/\bwhile\s*\(/gu, 'while (')
-        .replaceAll(/\bWhile\s*\(/gu, 'While (')
-        .replaceAll(/\bWHILE\s*\(/gu, 'WHILE (')
+        .replaceAll(/\bif\s*(?=\()/giu, (m: string): string => `${m.trim()} `)
+        .replaceAll(/\bwhile\s*(?=\()/giu, (m: string): string => `${m.trim()} `)
+        .replaceAll(/\belse\s*(?=\{)/giu, (m: string): string => `${m.trim()} `)
+        .replaceAll(/(?<=\})\s*else\b/giu, (m: string): string => ` ${m.trim()}`)
         .replaceAll(/ *;/gu, ' ;');
 
     // \s === [ \f\n\r\t\v]
