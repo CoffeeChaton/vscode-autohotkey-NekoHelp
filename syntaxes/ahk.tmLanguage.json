@@ -85,6 +85,7 @@
                     ]
                 },
                 { "include": "#command_gui" },
+                { "include": "#command_menu" },
                 { "include": "#command_sysget" },
                 { "include": "#command_winset" },
                 { "include": "#command_winget" },
@@ -206,6 +207,27 @@
                     "match": "\\b(?i:x|y)\\b\\+",
                     "name": "keyword.string.gui.other.options.ahk"
                 }
+            ]
+        },
+        "command_menu": {
+            "name": "meta.command.line.menu.ahk",
+            "begin": "(?:^|[ \\t:])\\b(?i:(menu)\\b[ \\t]*(?:,[ \\t]*)?([#$@\\w\\x{A1}-\\x{FFFF}]+)[ \\t]*,[ \\t]*(Add|Insert|Delete|DeleteAll|Rename|Check|Uncheck|ToggleCheck|Enable|Disable|ToggleEnable|Default|NoDefault|Standard|NoStandard|Icon|NoIcon|Tip|Show|Color|Click|MainWindow|NoMainWindow|UseErrorLevel)\\b)",
+            "end": "(\\n)",
+            "beginCaptures": {
+                "1": { "name": "support.function.menu.command.ahk" },
+                "2": { "name": "variable.other.constant.menu.name.ahk" },
+                "3": { "name": "keyword.command.option.menu.param.ahk" }
+            },
+            "patterns": [
+                {
+                    "match": "[+-]?(?i:P\\d+|Radio|Right|Break|BarBreak)\\b",
+                    "name": "keyword.string.menu.add.option.ahk"
+                },
+                {
+                    "match": "\\b(?i:HICON|HBITMAP):\\*",
+                    "name": "keyword.string.menu.trayicon.option.ahk"
+                },
+                { "include": "#expression" }
             ]
         },
         "command_sysget": {

@@ -1,0 +1,597 @@
+>﻿
+>Menu, Tray, Add  ; Creates a separator line.
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk
+#                ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, Tray, Add, Item1, MenuHandler  ; Creates a new menu item.
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                      ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                       ^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                    ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>; Create the popup menu by adding some items to it.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, MyMenu, Add, Item1, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#            ^^ source.ahk meta.command.line.menu.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                  ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                        ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                         ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, MyMenu, Add, Item2, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#            ^^ source.ahk meta.command.line.menu.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                  ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                        ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                         ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, MyMenu, Add  ; Add a separator line.
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#            ^^ source.ahk meta.command.line.menu.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                 ^ source.ahk meta.command.line.menu.ahk
+#                  ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                   ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>; Create another menu destined to become a submenu of the above menu.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, Submenu1, Add, Item1, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                          ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                           ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Submenu1, Add, Item2, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                          ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                           ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>
+>; Create a submenu in the first menu (a right-arrow indicator). When the user selects it, the second menu is displayed.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, MyMenu, Add, My Submenu, :Submenu1
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#            ^^ source.ahk meta.command.line.menu.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                  ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                             ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                              ^ source.ahk meta.command.line.menu.ahk
+#                               ^ source.ahk meta.command.line.menu.ahk keyword.operator.ternary.ahk
+#                                ^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>
+>Menu, MyMenu, Add  ; Add a separator line below the submenu.
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#            ^^ source.ahk meta.command.line.menu.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                 ^ source.ahk meta.command.line.menu.ahk
+#                  ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, MyMenu, Add, Item3, MenuHandler  ; Add another menu item beneath the submenu.
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#            ^^ source.ahk meta.command.line.menu.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                  ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                        ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                         ^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                      ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>return ; End of script's auto-execute section.
+#^^^^^^ source.ahk keyword.control.flow.ahk
+#      ^ source.ahk meta.comment.line.semicolon.ahk
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>MenuHandler:
+#^^^^^^^^^^^^ source.ahk labelline.ahk entity.name.function.label.ahk
+>    MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+#^^^^ source.ahk
+#    ^^^^^^ source.ahk meta.command.line.ahk support.function.ahk
+#          ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                        ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                         ^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                        ^^^^^^^^^^^^^^^ source.ahk meta.command.line.ahk
+#                                                       ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                                        ^^^^^^^^^^ source.ahk meta.command.line.ahk variable.other.constant.builtin.ahk
+#                                                                  ^ source.ahk meta.command.line.ahk punctuation.definition.variable.percent.ahk
+#                                                                   ^ source.ahk meta.command.line.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>#z::  Menu, MyMenu, Show  ; i.e. press the Win-Z hotkey to show the menu.
+#^ source.ahk meta.hotkey.line.ahk storage.modifier.hotkey.ahk
+# ^ source.ahk meta.hotkey.line.ahk meta.2.hotkey.line.ahk markup.bold.hotkey.ahk
+#  ^^ source.ahk meta.hotkey.line.ahk
+#    ^ source.ahk
+#     ^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#                  ^^ source.ahk meta.command.line.menu.ahk
+#                    ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                        ^ source.ahk meta.command.line.menu.ahk
+#                         ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>
+>Menu, Tray, Add ; separator
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, Tray, Add, TestToggle&Check
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                           ^ source.ahk meta.command.line.menu.ahk keyword.operator.arithmetic.ahk
+#                            ^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, TestToggleEnable
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, TestDefault
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, TestStandard
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, TestDelete
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, TestDeleteAll
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, TestRename
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, Test
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^^^^^ source.ahk meta.command.line.menu.ahk
+>
+>
+>TestToggle&Check:
+#^^^^^^^^^^ source.ahk
+#          ^ source.ahk keyword.operator.arithmetic.ahk
+#           ^^^^^ source.ahk
+#                ^ source.ahk keyword.operator.ternary.ahk
+>{
+#^ source.ahk punctuation.bracket.ahk
+>    Menu, Tray, ToggleCheck, TestToggle&Check
+#^^^ source.ahk
+#   ^ source.ahk meta.command.line.menu.ahk
+#    ^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#        ^^ source.ahk meta.command.line.menu.ahk
+#          ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                           ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                            ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                       ^ source.ahk meta.command.line.menu.ahk keyword.operator.arithmetic.ahk
+#                                        ^^^^^ source.ahk meta.command.line.menu.ahk
+>    Menu, Tray, Enable, TestToggleEnable ; Also enables the next test since it can't undo the disabling of itself.
+#^^^ source.ahk
+#   ^ source.ahk meta.command.line.menu.ahk
+#    ^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#        ^^ source.ahk meta.command.line.menu.ahk
+#          ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                      ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                       ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                        ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>    Menu, Tray, Add, TestDelete ; Similar to above.
+#^^^ source.ahk
+#   ^ source.ahk meta.command.line.menu.ahk
+#    ^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#        ^^ source.ahk meta.command.line.menu.ahk
+#          ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                               ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                ^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>}
+#^ source.ahk punctuation.bracket.ahk
+>return
+#^^^^^^ source.ahk keyword.control.flow.ahk
+>
+>
+>Menu, Tray, ToggleEnable, TestToggleEnable
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                        ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                         ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, NoDefault
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+>Menu, Tray, Default, TestDefault
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, NoStandard
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+>Menu, Tray, Standard
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+>Menu, Tray, Delete, TestDelete
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                  ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                   ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, DeleteAll
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+>Menu, Tray, Rename, %OldName%, %NewName%
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                  ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                     ^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                            ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                             ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                              ^ source.ahk meta.command.line.menu.ahk
+#                               ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                ^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                       ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+>Menu, FileMenu, Add, Script Icon, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                 ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, FileMenu, Add, Suspend Icon, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                  ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, FileMenu, Add, Pause Icon, MenuHandler
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                   ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                    ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, FileMenu, Icon, Script Icon, %A_AhkPath%, 2 ; Use the 2nd icon group from the file
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                     ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                  ^ source.ahk meta.command.line.menu.ahk
+#                                   ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                    ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.builtin.ahk
+#                                             ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                              ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                               ^ source.ahk meta.command.line.menu.ahk
+#                                                ^ source.ahk meta.command.line.menu.ahk constant.numeric.decimal.ahk
+#                                                 ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, FileMenu, Icon, Suspend Icon, %A_AhkPath%, -206 ; Use icon with resource identifier 206
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                     ^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                  ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                   ^ source.ahk meta.command.line.menu.ahk
+#                                    ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                     ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.builtin.ahk
+#                                              ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                                ^ source.ahk meta.command.line.menu.ahk
+#                                                 ^ source.ahk meta.command.line.menu.ahk keyword.operator.arithmetic.ahk
+#                                                  ^^^ source.ahk meta.command.line.menu.ahk constant.numeric.decimal.ahk
+#                                                     ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, FileMenu, Icon, Pause Icon, %A_AhkPath%, -207 ; Use icon with resource identifier 207
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^ source.ahk meta.command.line.menu.ahk
+#                ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                     ^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                 ^ source.ahk meta.command.line.menu.ahk
+#                                  ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                   ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.builtin.ahk
+#                                            ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                             ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                              ^ source.ahk meta.command.line.menu.ahk
+#                                               ^ source.ahk meta.command.line.menu.ahk keyword.operator.arithmetic.ahk
+#                                                ^^^ source.ahk meta.command.line.menu.ahk constant.numeric.decimal.ahk
+#                                                   ^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk
+#                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk meta.comment.line.semicolon.ahk comment.line.semicolon.ahk
+>Menu, MyMenuBar, Add, &File, :FileMenu
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#               ^^ source.ahk meta.command.line.menu.ahk
+#                 ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                     ^ source.ahk meta.command.line.menu.ahk
+#                      ^ source.ahk meta.command.line.menu.ahk keyword.operator.arithmetic.ahk
+#                       ^^^^ source.ahk meta.command.line.menu.ahk
+#                           ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                            ^ source.ahk meta.command.line.menu.ahk
+#                             ^ source.ahk meta.command.line.menu.ahk keyword.operator.ternary.ahk
+#                              ^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Gui, Menu, MyMenuBar
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#         ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#          ^^^^^^^^^^ source.ahk meta.command.line.gui.ahk
+>Gui, Add, Button, gExit, Exit This Example
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+#        ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#         ^ source.ahk meta.command.line.gui.ahk
+#          ^^^^^^ source.ahk meta.command.line.gui.ahk meta.keyword.string.gui.other.options.ahk keyword.gui.ahk
+#                ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                 ^^^^^^ source.ahk meta.command.line.gui.ahk
+#                       ^ source.ahk meta.command.line.gui.ahk punctuation.ahk
+#                        ^^^^^^ source.ahk meta.command.line.gui.ahk
+#                              ^^^^ source.ahk meta.command.line.gui.ahk variable.other.constant.builtin.ahk
+#                                  ^^^^^^^^ source.ahk meta.command.line.gui.ahk
+>Gui, Show
+#^^^ source.ahk meta.command.line.gui.ahk support.function.gui.command.ahk
+#   ^^ source.ahk meta.command.line.gui.ahk
+#     ^^^^ source.ahk meta.command.line.gui.ahk keyword.command.option.gui.param.ahk
+>
+>
+>
+>Menu MyMenu, Add, Give parameters, % BoundGivePar
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^ source.ahk meta.command.line.menu.ahk
+#     ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#           ^^ source.ahk meta.command.line.menu.ahk
+#             ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                 ^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                 ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                  ^ source.ahk meta.command.line.menu.ahk
+#                                   ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                    ^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu MyMenu, Add, Give parameters2, % BoundGivePar2
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^ source.ahk meta.command.line.menu.ahk
+#     ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#           ^^ source.ahk meta.command.line.menu.ahk
+#             ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                 ^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                  ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                   ^ source.ahk meta.command.line.menu.ahk
+#                                    ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                                     ^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu MyMenu, Show
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^ source.ahk meta.command.line.menu.ahk
+#     ^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#           ^^ source.ahk meta.command.line.menu.ahk
+#             ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+>
+>Menu, MySubmenu, Add, Item1
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#               ^^ source.ahk meta.command.line.menu.ahk
+#                 ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                     ^^^^^^ source.ahk meta.command.line.menu.ahk
+>Menu, Tray, Add, This menu item is a submenu, :MySubmenu
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.menu.ahk
+#                 ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.builtin.ahk
+#                     ^^^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                            ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                             ^ source.ahk meta.command.line.menu.ahk
+#                                              ^ source.ahk meta.command.line.menu.ahk keyword.operator.ternary.ahk
+#                                               ^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+>
+>Menu,                    MySubmenu, Add, Item1,LabelOrSubmenu, +P1 +Radio +Right +Break +BarBreak
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^^^^^^^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                         ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#                                  ^^ source.ahk meta.command.line.menu.ahk
+#                                    ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                                       ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                        ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                              ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                               ^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                                             ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                                              ^ source.ahk meta.command.line.menu.ahk
+#                                                               ^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                                  ^ source.ahk meta.command.line.menu.ahk
+#                                                                   ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                                         ^ source.ahk meta.command.line.menu.ahk
+#                                                                          ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                                                ^ source.ahk meta.command.line.menu.ahk
+#                                                                                 ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                                                       ^ source.ahk meta.command.line.menu.ahk
+#                                                                                        ^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+>Menu MySubmenu  ,Add, Item1,LabelOrSubmenu, -P2-Radio -Right -Break -BarBreak
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^ source.ahk meta.command.line.menu.ahk
+#     ^^^^^^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#              ^^^ source.ahk meta.command.line.menu.ahk
+#                 ^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                    ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                     ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                           ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                            ^^^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                          ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                                           ^ source.ahk meta.command.line.menu.ahk
+#                                            ^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                               ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                     ^ source.ahk meta.command.line.menu.ahk
+#                                                      ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                            ^ source.ahk meta.command.line.menu.ahk
+#                                                             ^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+#                                                                   ^ source.ahk meta.command.line.menu.ahk
+#                                                                    ^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.add.option.ahk
+>
+>Menu Tray, Icon, HICON:*%handle%
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^ source.ahk meta.command.line.menu.ahk
+#     ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#         ^^ source.ahk meta.command.line.menu.ahk
+#           ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.menu.ahk
+#                 ^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.trayicon.option.ahk
+#                        ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                         ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                               ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+>Menu Tray, Icon, HBITMAP:*%handle%
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^ source.ahk meta.command.line.menu.ahk
+#     ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#         ^^ source.ahk meta.command.line.menu.ahk
+#           ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#               ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                ^ source.ahk meta.command.line.menu.ahk
+#                 ^^^^^^^^^ source.ahk meta.command.line.menu.ahk keyword.string.menu.trayicon.option.ahk
+#                          ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+#                           ^^^^^^ source.ahk meta.command.line.menu.ahk
+#                                 ^ source.ahk meta.command.line.menu.ahk punctuation.definition.variable.percent.ahk
+>Menu, Tray, Icon, Shell32.dll, 174
+#^^^^ source.ahk meta.command.line.menu.ahk support.function.menu.command.ahk
+#    ^^ source.ahk meta.command.line.menu.ahk
+#      ^^^^ source.ahk meta.command.line.menu.ahk variable.other.constant.menu.name.ahk
+#          ^^ source.ahk meta.command.line.menu.ahk
+#            ^^^^ source.ahk meta.command.line.menu.ahk keyword.command.option.menu.param.ahk
+#                ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                 ^^^^^^^^^^^^ source.ahk meta.command.line.menu.ahk
+#                             ^ source.ahk meta.command.line.menu.ahk punctuation.ahk
+#                              ^ source.ahk meta.command.line.menu.ahk
+#                               ^^^ source.ahk meta.command.line.menu.ahk constant.numeric.decimal.ahk

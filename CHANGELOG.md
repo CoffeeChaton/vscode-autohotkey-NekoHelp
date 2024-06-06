@@ -12,10 +12,11 @@
 
 ## v0.0.60(2024-06-XX)
 
-<!-- pnpm 9.1.4 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.2.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - TODO hover path -> show may path
+- fix: `Menu` syntax-highlight
 - feat: change default ahk-icon
 - feat: `#include` support `%A_WorkingDir%`
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion

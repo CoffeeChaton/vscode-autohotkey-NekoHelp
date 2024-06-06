@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+import { repository } from '../../../../../syntaxes/ahk.tmLanguage.json';
 import { MenuSubCmdList } from './Menu.data';
 
 describe('check Menu subCmd ruler', () => {
@@ -55,5 +56,22 @@ describe('check Menu subCmd ruler', () => {
             'NoMainWindow',
             'UseErrorLevel',
         ]);
+    });
+
+    it('check : tmLanguage', () => {
+        expect.hasAssertions();
+
+        const arr1: string[] = MenuSubCmdList
+            .map((v): string => v.SubCommand.replace('#', ''));
+
+        const st1 = repository.command_menu.begin
+            .replace(
+                '(?:^|[ \\t:])\\b(?i:(menu)\\b[ \\t]*(?:,[ \\t]*)?([#$@\\w\\x{A1}-\\x{FFFF}]+)[ \\t]*,[ \\t]*(',
+                '',
+            )
+            .replace(')\\b)', '')
+            .split('|');
+
+        expect(st1).toStrictEqual(arr1);
     });
 });

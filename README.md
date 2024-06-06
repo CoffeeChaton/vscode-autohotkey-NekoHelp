@@ -30,6 +30,7 @@ AutoHotKey v1 edit-support for VS Code
   - [Targeted assistance](#targeted-assistance)
     - [1. `ErrorLevel` quick add Template and hover](#1-errorlevel-quick-add-template-and-hover)
     - [2. hover `MsgBox` magic number](#2-hover-msgbox-magic-number)
+    - [3. add `Gui` name](#3-add-gui-name)
   - [ListAllFunctions](#listallfunctions)
   - [Better highlight](#better-highlight)
     - [of Legacy assignment](#of-legacy-assignment)
@@ -369,6 +370,10 @@ support to find like
 
 > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/73>
 > <https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/58>
+
+### 3. add `Gui` name
+
+![alt text](image/gui_name_add.gif)
 
 ## ListAllFunctions
 
