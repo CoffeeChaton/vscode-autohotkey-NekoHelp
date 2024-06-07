@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
 import type { CAhkFunc } from '../../AhkSymbol/CAhkFunc';
 import type { TTopSymbol } from '../../AhkSymbol/TAhkSymbolIn';
@@ -34,6 +35,7 @@ import { getDllCallCompletion } from './DllCall/DllCall';
 import { getSnipGlobalVal } from './global/globalValCompletion';
 import { getNormalPathCompletion } from './IncludeFsPath/getNormalPathCompletion';
 import { IncludeFsPath } from './IncludeFsPath/IncludeFsPath';
+import { getMenuNameCompletion } from './MenuName/getMenuNameCompletion';
 import { getSnipModuleVar } from './ModuleVar/ModuleVar2Completion';
 import { getSnipSubCmd } from './SubCommand/getSnipSubCmd';
 import { getComObjActiveCompletion } from './vba/2Completion/getComObjActiveCompletion';
@@ -57,7 +59,12 @@ function CompletionItemCore(
 ): vscode.CompletionItem[] {
     const AhkFileData: TAhkFileData | null = pm.updateDocDef(document);
     if (AhkFileData === null) return [];
-    const { AST, DocStrMap, ModuleVar } = AhkFileData;
+    const {
+        AST,
+        DocStrMap,
+        ModuleVar,
+        uri,
+    } = AhkFileData;
 
     const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
     const {
@@ -99,6 +106,9 @@ function CompletionItemCore(
     }
 
     if (!detail.includes(EDetail.inComment)) {
+        const justMenuName: vscode.CompletionItem[] = getMenuNameCompletion(uri, AhkTokenLine, position);
+        if (justMenuName.length > 0) return justMenuName;
+
         completions.push(
             ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
             ...wrapVba2Completion(position, textRaw, lStr, AhkFileData, DA), // '.'
