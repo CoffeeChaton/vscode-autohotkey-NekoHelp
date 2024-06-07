@@ -1,8 +1,8 @@
 /* eslint-disable max-lines-per-function */
 import * as vscode from 'vscode';
-import { EFnRefBy, type TAhkTokenLine, type TLineFnCall } from '../../globalEnum';
-import { fnRefTextRawReg } from '../Def/getFnRef';
-import type { TSemanticTokensLeaf } from './tools';
+import { EFnRefBy, type TAhkTokenLine, type TLineFnCall } from '../../../globalEnum';
+import { fnRefTextRawReg } from '../../Def/getFnRef';
+import type { TSemanticTokensLeaf } from '../tools';
 
 export function regFnHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): 0 | 1 {
     // I need to check San = =||

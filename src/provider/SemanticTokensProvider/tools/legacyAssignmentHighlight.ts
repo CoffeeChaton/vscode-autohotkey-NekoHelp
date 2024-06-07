@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
-import type { TTokenStream } from '../../globalEnum';
-import { EDetail } from '../../globalEnum';
-import type { TokenTypes, TSemanticTokensLeaf } from './tools';
+import type { TTokenStream } from '../../../globalEnum';
+import { EDetail } from '../../../globalEnum';
+import type { TokenTypes, TSemanticTokensLeaf } from '../tools';
 
 function setHighlight(
     line: number,

@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
-import type { TAhkTokenLine, TTokenStream } from '../../globalEnum';
-import { getGuiFunc } from '../../tools/Command/GuiTools';
-import { getHotkeyWrap } from '../../tools/Command/HotkeyTools';
-import { getMenuFunc } from '../../tools/Command/MenuTools';
-import { getSetTimerWrap } from '../../tools/Command/SetTimerTools';
-import { getSortFunc } from '../../tools/Command/sotrTools';
-import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
+import { getGuiFunc } from '../../../tools/Command/GuiTools';
+import { getHotkeyWrap } from '../../../tools/Command/HotkeyTools';
+import { getMenuFunc } from '../../../tools/Command/MenuTools';
+import { getSetTimerWrap } from '../../../tools/Command/SetTimerTools';
+import { getSortFunc } from '../../../tools/Command/sotrTools';
+import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
+import type { TSemanticTokensLeaf } from '../tools';
 import { regFnHighlight } from './regFnHighlight';
-import type { TSemanticTokensLeaf } from './tools';
 
 function GuiFuncHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf[]): 0 | 1 {
     // Menu, MenuName, Add , MenuItemName, LabelOrSubmenu, Options

@@ -1,7 +1,7 @@
-import { CAhkClassPropertyDef } from '../../AhkSymbol/CAhkClass';
-import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
-import { getFileAllClass } from '../../tools/visitor/getFileAllClassList';
-import type { TSemanticTokensLeaf } from './tools';
+import { CAhkClassPropertyDef } from '../../../AhkSymbol/CAhkClass';
+import type { TAstRoot } from '../../../AhkSymbol/TAhkSymbolIn';
+import { getFileAllClass } from '../../../tools/visitor/getFileAllClassList';
+import type { TSemanticTokensLeaf } from '../tools';
 
 export function classPropertyHighlight(AST: TAstRoot): TSemanticTokensLeaf[] {
     const Tokens: TSemanticTokensLeaf[] = [];

@@ -1,9 +1,9 @@
 import type * as vscode from 'vscode';
-import type { TAhkFileData } from '../../core/ProjectManager';
-import { CMemo } from '../../tools/CMemo';
-import { getAllClass } from '../../tools/DeepAnalysis/getUserDefTopClassSymbol';
-import { classRefOnePage } from '../Def/searchAllClassRef';
-import type { TSemanticTokensLeaf } from './tools';
+import type { TAhkFileData } from '../../../core/ProjectManager';
+import { CMemo } from '../../../tools/CMemo';
+import { getAllClass } from '../../../tools/DeepAnalysis/getUserDefTopClassSymbol';
+import { classRefOnePage } from '../../Def/searchAllClassRef';
+import type { TSemanticTokensLeaf } from '../tools';
 
 const memoClassHighlight = new CMemo<readonly vscode.Location[], readonly TSemanticTokensLeaf[]>(
     (locList: readonly vscode.Location[]): readonly TSemanticTokensLeaf[] => {

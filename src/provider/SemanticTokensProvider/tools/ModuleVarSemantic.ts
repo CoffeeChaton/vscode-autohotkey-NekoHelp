@@ -1,5 +1,5 @@
-import type { TModuleVar } from '../../tools/DeepAnalysis/getModuleVarMap';
-import type { TSemanticTokensLeaf } from './tools';
+import type { TModuleVar } from '../../../tools/DeepAnalysis/getModuleVarMap';
+import type { TSemanticTokensLeaf } from '../tools';
 
 export function ModuleVarSemantic(ModuleVar: TModuleVar): TSemanticTokensLeaf[] {
     const Tokens: TSemanticTokensLeaf[] = [];

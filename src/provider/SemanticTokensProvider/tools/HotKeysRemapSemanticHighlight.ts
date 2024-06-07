@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
-import { CAhkHotKeys } from '../../AhkSymbol/CAhkHotKeys';
-import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
-import type { TSemanticTokensLeaf } from './tools';
+import { CAhkHotKeys } from '../../../AhkSymbol/CAhkHotKeys';
+import type { TAstRoot } from '../../../AhkSymbol/TAhkSymbolIn';
+import type { TSemanticTokensLeaf } from '../tools';
 
 export function HotKeysRemapSemanticHighlight(AST: TAstRoot): TSemanticTokensLeaf[] {
     const Tokens: TSemanticTokensLeaf[] = [];
