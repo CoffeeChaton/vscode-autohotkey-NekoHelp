@@ -16,8 +16,8 @@
 <!-- dprint 0.45.1 -->
 
 - TODO hover path -> show may path
-- TODO `Menu` gotoDef/findAllRef
-- fix: `Menu` syntax-highlight
+- TODO `Menu` findAllRef
+- feat: `Menu` syntax-highlight / gotoDef
 - feat: `Menu` Completion
 - feat: change default ahk-icon
 - feat: `#include` support `%A_WorkingDir%`

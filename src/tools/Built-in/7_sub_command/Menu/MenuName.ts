@@ -9,12 +9,13 @@ import { ToUpCase } from '../../../str/ToUpCase';
 export type TMenuParam1stData = {
     rawName: string,
     range: vscode.Range,
+    nextSubCmd: string,
 };
 
 function getMenuParam1stData(lStr: string, col: number, line: number): TMenuParam1stData | null {
     const strF: string = lStr
         .slice(col)
-        .replace(/^\s*Menu\b\s*,?\s*/iu, 'Menu,')
+        .replace(/^\s*Menu\b\s*(?:,\s*)?/iu, 'Menu,')
         .padStart(lStr.length, ' ')
         .replace(/\[.*/u, '');
     //  .padEnd(lStr.length, ' ');
@@ -28,13 +29,13 @@ function getMenuParam1stData(lStr: string, col: number, line: number): TMenuPara
     if (atA1 === undefined) return null;
     const { lPos, RawNameNew } = atA1;
 
-    const range: vscode.Range = new vscode.Range(
-        new vscode.Position(line, lPos),
-        new vscode.Position(line, lPos + RawNameNew.length),
-    );
     return {
-        rawName: RawNameNew.trim(),
-        range,
+        rawName: RawNameNew,
+        range: new vscode.Range(
+            new vscode.Position(line, lPos),
+            new vscode.Position(line, lPos + RawNameNew.length),
+        ),
+        nextSubCmd: arr.at(2)?.RawNameNew.toUpperCase() ?? '',
     };
 }
 

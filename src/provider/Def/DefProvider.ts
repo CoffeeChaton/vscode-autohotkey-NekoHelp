@@ -18,6 +18,7 @@ import { getDefReturn2Func } from './getDefReturn2Func';
 import { getDefSwitch } from './getDefSwitch';
 import { getDefWithLabelWrap } from './getDefWithLabel';
 import { getFuncDef } from './getFuncDef';
+import { getMenuNameDef } from './getMenuNameDef';
 import { getMethodDef } from './getMethodDef';
 import { getValDefInFunc } from './getValDefInFunc';
 import { gotoGuiNameDef } from './gotoGuiNameDef';
@@ -66,7 +67,8 @@ function DefProviderCore(
         ?? getDefWithLabelWrap(AhkFileData, position, wordUp)
         ?? getFuncDef(AhkFileData, position, wordUp, listAllUsing)
         ?? getClassDef(wordUp, listAllUsing)
-        ?? getValDefInFunc(AhkFileData, document.uri, position, wordUp, listAllUsing);
+        ?? getValDefInFunc(AhkFileData, document.uri, position, wordUp, listAllUsing)
+        ?? getMenuNameDef(AhkTokenLine, position);
     if (userDefLoc !== null) return userDefLoc;
 
     const biDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp)
