@@ -29,6 +29,7 @@ function getMenuParam1stData(lStr: string, col: number, line: number): TMenuPara
     if (atA1 === undefined) return null;
     const { lPos, RawNameNew } = atA1;
 
+    if (RawNameNew.includes('%')) return null;
     return {
         rawName: RawNameNew,
         range: new vscode.Range(

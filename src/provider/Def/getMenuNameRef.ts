@@ -50,6 +50,7 @@ export const memGuiMenuRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonl
             const a1: TScanData | undefined = arr.at(1);
             if (a1 !== undefined) {
                 const { RawNameNew, lPos } = a1;
+                if (RawNameNew.includes('%')) continue;
                 need.push({
                     RawNameNew,
                     range: new vscode.Range(
