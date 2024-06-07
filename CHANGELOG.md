@@ -17,7 +17,7 @@
 
 - TODO hover path -> show may path
 - TODO `Menu` findAllRef
-- feat: `Menu` syntax-highlight / gotoDef
+- feat: `Menu` syntax-highlight / gotoDef / findAllRef
 - feat: `Menu` Completion
 - feat: change default ahk-icon
 - feat: `#include` support `%A_WorkingDir%`
