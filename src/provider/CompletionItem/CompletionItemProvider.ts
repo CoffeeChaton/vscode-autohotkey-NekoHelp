@@ -63,7 +63,6 @@ function CompletionItemCore(
         AST,
         DocStrMap,
         ModuleVar,
-        uri,
     } = AhkFileData;
 
     const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
@@ -106,7 +105,7 @@ function CompletionItemCore(
     }
 
     if (!detail.includes(EDetail.inComment)) {
-        const justMenuName: vscode.CompletionItem[] = getMenuNameCompletion(uri, AhkTokenLine, position);
+        const justMenuName: vscode.CompletionItem[] = getMenuNameCompletion(AhkFileData, AhkTokenLine, position);
         if (justMenuName.length > 0) return justMenuName;
 
         completions.push(
