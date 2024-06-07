@@ -16,9 +16,7 @@
 <!-- dprint 0.45.1 -->
 
 - TODO hover path -> show may path
-- TODO `Menu` findAllRef
-- feat: `Menu` syntax-highlight / gotoDef / findAllRef
-- feat: `Menu` Completion
+- feat: `Menu` syntax-highlight / semantic-highlight / gotoDef / findAllRef / Completion
 - feat: change default ahk-icon
 - feat: `#include` support `%A_WorkingDir%`
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion

@@ -8,6 +8,7 @@ import { ClassHighlight } from './tools/ClassHighlight';
 import { classPropertyHighlight } from './tools/classPropertyHighlight';
 import { DAList2SemanticHighlight } from './tools/DAList2SemanticHighlight';
 import { funcHighlight } from './tools/funcHighlight';
+import { GuiMenuHighlight } from './tools/GuiMenuHighlight';
 import { HotKeysRemapSemanticHighlight } from './tools/HotKeysRemapSemanticHighlight';
 import { legacyAssignmentHighlight } from './tools/legacyAssignmentHighlight';
 import { ModuleVarSemantic } from './tools/ModuleVarSemantic';
@@ -31,6 +32,7 @@ const Semantic = new CMemo<TAhkFileData, readonly TSemanticTokensLeaf[]>(
             ...legacyAssignmentHighlight(DocStrMap),
             ...HotKeysRemapSemanticHighlight(AST),
             ...classPropertyHighlight(AST),
+            ...GuiMenuHighlight(AhkFileData),
         ];
     },
 );
