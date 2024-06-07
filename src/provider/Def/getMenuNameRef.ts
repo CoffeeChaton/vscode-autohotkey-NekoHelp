@@ -5,13 +5,13 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import type { TGui2ndParamEx } from '../../tools/Built-in/7_sub_command/GuiName/GuiName.tools';
 import { getGuiParam } from '../../tools/Built-in/7_sub_command/GuiName/GuiName.tools';
 import type { TMenuParam1stData } from '../../tools/Built-in/7_sub_command/Menu/MenuName';
-import { getMenuParam_Line, memoFileMenuRefMap } from '../../tools/Built-in/7_sub_command/Menu/MenuName';
+import { memoFileMenuRefMap } from '../../tools/Built-in/7_sub_command/Menu/MenuName';
 import { CMemo } from '../../tools/CMemo';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 
-type TGuiMenuRefData = {
+export type TGuiMenuRefData = {
     readonly RawNameNew: string,
     readonly range: vscode.Range,
 };
@@ -22,7 +22,7 @@ type TGuiMenuRefData = {
  * ;          ^^^^^^^^ find it
  * ```
  */
-const memGuiMenuRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TGuiMenuRefData[]>>(
+export const memGuiMenuRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TGuiMenuRefData[]>>(
     (AhkFileData: TAhkFileData): ReadonlyMap<string, readonly TGuiMenuRefData[]> => {
         const { DocStrMap } = AhkFileData;
         const guiFull: TGui2ndParamEx[] = [];
@@ -63,18 +63,11 @@ const memGuiMenuRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TGuiM
     },
 );
 
-export function getMenuNameRef(
-    AhkTokenLine: TAhkTokenLine,
-    position: vscode.Position,
-): null | vscode.Location[] {
-    const m: TMenuParam1stData | null = getMenuParam_Line(AhkTokenLine);
-    if (!(m !== null && m.range.contains(position))) return null;
-
-    const rawStrUp: string = ToUpCase(m.rawName);
+export function getMenuNameRefCore(upStr: string): null | vscode.Location[] {
     const need: vscode.Location[] = [];
     for (const AhkFileData of pm.getDocMapValue()) {
         const { uri } = AhkFileData;
-        const vv: readonly TMenuParam1stData[] | undefined = memoFileMenuRefMap.up(AhkFileData).get(rawStrUp);
+        const vv: readonly TMenuParam1stData[] | undefined = memoFileMenuRefMap.up(AhkFileData).get(upStr);
         if (vv === undefined) continue;
         for (const v of vv) {
             const { range } = v;
@@ -82,7 +75,7 @@ export function getMenuNameRef(
             need.push(item);
         }
 
-        const refList: readonly TGuiMenuRefData[] = memGuiMenuRef.up(AhkFileData).get(rawStrUp) ?? [];
+        const refList: readonly TGuiMenuRefData[] = memGuiMenuRef.up(AhkFileData).get(upStr) ?? [];
         for (const ref of refList) {
             need.push(new vscode.Location(uri, ref.range));
         }

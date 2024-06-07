@@ -68,7 +68,7 @@ function DefProviderCore(
         ?? getFuncDef(AhkFileData, position, wordUp, listAllUsing)
         ?? getClassDef(wordUp, listAllUsing)
         ?? getValDefInFunc(AhkFileData, document.uri, position, wordUp, listAllUsing)
-        ?? getMenuNameDef(AhkTokenLine, position);
+        ?? getMenuNameDef(AhkFileData, AhkTokenLine, position, wordUp, false);
     if (userDefLoc !== null) return userDefLoc;
 
     const biDef: [vscode.Location] | undefined = biAVarDefMap.get(wordUp)

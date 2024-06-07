@@ -8,7 +8,7 @@ import { getClassDef } from '../Def/getClassDef';
 import { ClassProperty2Range, getClassProperty } from '../Def/getClassProperty';
 import { posAtLabelDef } from '../Def/getDefWithLabel';
 import { getFuncDef } from '../Def/getFuncDef';
-import { getMenuNameRef } from '../Def/getMenuNameRef';
+import { getMenuNameDef } from '../Def/getMenuNameDef';
 import { getRefSwitch } from '../Def/getRefSwitch';
 import { getValDefInFunc } from '../Def/getValDefInFunc';
 import { gotoGuiNameDef } from '../Def/gotoGuiNameDef';
@@ -39,7 +39,7 @@ function ReferenceProviderCore(
         ?? getFuncDef(AhkFileData, position, wordUp, listAllUsing)
         ?? getClassDef(wordUp, listAllUsing) // class name is variable name, should before function.variable name
         ?? getValDefInFunc(AhkFileData, document.uri, position, wordUp, listAllUsing)
-        ?? getMenuNameRef(AhkTokenLine, position);
+        ?? getMenuNameDef(AhkFileData, AhkTokenLine, position, wordUp, true);
 }
 
 function just2Ref(
