@@ -1094,7 +1094,7 @@ export const funcDataList: readonly TBuiltInFuncElement[] = [
         doc: [
             'Registers a [function](https://www.autohotkey.com/docs/v1/Functions.htm) or [function object](https://www.autohotkey.com/docs/v1/objects/Functor.htm) to run whenever the clipboard\'s content changes.',
         ],
-        insert: 'OnClipboardChange(${1:element})',
+        insert: 'OnClipboardChange(${1:Callback} [, ${2:AddRemove}])',
         exp: [
             '#Persistent',
             'OnClipboardChange("ClipChanged")',

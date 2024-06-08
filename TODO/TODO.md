@@ -57,14 +57,7 @@
   MsgBox, % obj.a ; show 0 ^_^
   ```
 
-- fix: `HotStrings` without [T-flag/R-flag](https://www.autohotkey.com/docs/v1/Hotstrings.htm#Options)
-
-  ```ahk
-  :*b0:<em>::</em>{left 5}
-  ;               ^^^^^^^^special symbols, if not open T-flag
-  ```
-
-- more information
+- [x] more information
   - [Gui GuiName](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New)
   - [Menu, MenuName](https://www.autohotkey.com/docs/v1/lib/Menu.htm)
   - [GuiControl , MyGui:Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Remarks)

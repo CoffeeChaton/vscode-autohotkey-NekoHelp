@@ -1,7 +1,8 @@
 {
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
-        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp"
+        "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
+        "google Translation progress": "100%"
     },
     "body": [
         {
@@ -22,23 +23,23 @@
             "keyRawName": "ClipboardAll",
             "link": "https://www.autohotkey.com/docs/v1/misc/Clipboard.htm#ClipboardAll",
             "doc": [
-                "_ClipboardAll_ contains everything on the clipboard (such as pictures and formatting). It is most commonly used to save the clipboard's contents so that the script can temporarily use the clipboard for an operation."
+                "_ClipboardAll_ 包含剪贴板上的所有内容（例如图片和格式）。它最常用于保存剪贴板的内容，以便脚本可以临时使用剪贴板进行操作。操作完成后，脚本将恢复原始剪贴板内容，如下所示："
             ],
             "exp": [
-                "ClipSaved := ClipboardAll   ; Save the entire clipboard to a variable of your choice.",
-                "; ... here make temporary use of the clipboard, such as for pasting Unicode text via Transform Unicode ...",
-                "Clipboard := ClipSaved   ; Restore the original clipboard. Note the use of Clipboard (not ClipboardAll).",
-                "ClipSaved := \"\"   ; Free the memory in case the clipboard was very large."
+                "ClipSaved := ClipboardAll   ; 将整个剪贴板保存到您选择的变量中。",
+                "; ... 在这里临时使用剪贴板，例如通过 Transform Unicode 粘贴 Unicode 文本...",
+                "Clipboard := ClipSaved   ; 恢复原始剪贴板。请注意使用 Clipboard（而不是 ClipboardAll）。",
+                "ClipSaved := \"\"   ; 如果剪贴板很大，则释放内存。"
             ]
         },
         {
             "keyRawName": "ComSpec",
             "link": "https://www.autohotkey.com/docs/v1/Variables.htm#ComSpec",
             "doc": [
-                "Contains the same string as the environment's ComSpec variable. Often used with [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm). For example: `C:\\Windows\\system32\\cmd.exe`"
+                "`A_ComSpec`，包含与 ComSpec 环境变量相同的字符串，该变量通常是命令提示符可执行文件 （cmd.exe） 的完整路径。通常与 [Run/RunWait](https://www.autohotkey.com/docs/v1/lib/Run.htm) 一起使用。例如： For example: `C:\\Windows\\system32\\cmd.exe`"
             ],
             "exp": [
-                ";Runs the dir command in minimized state and stores the output in a text file. After that, the text file and its properties dialog will be opened.",
+                ";在最小化状态下运行 dir 命令并将输出存储在文本文件中。之后，将打开文本文件及其属性对话框.",
                 "",
                 "#Persistent",
                 "RunWait, %ComSpec% /c dir C:\\ >>C:\\DirTest.txt, , Min",
@@ -140,7 +141,7 @@
                 "| WinWaitClose                            | 0, 1                                             |"
             ],
             "exp": [
-                "; Waits a maximum of 1 second until MyWindow exists. If WinWait times out, ErrorLevel is set to 1, otherwise to 0.",
+                "; 最多等待 1 秒，直到 MyWindow 存在。如果 WinWait 超时，则将 ErrorLevel 设置为 1，否则设置为 0.",
                 "",
                 "WinWait, MyWindow,, 1",
                 "if (ErrorLevel != 0)   ; i.e. it's not blank or zero.",
@@ -152,7 +153,7 @@
         {
             "keyRawName": "False",
             "doc": [
-                "`0` to represent `false`. They can be used to make a script more readable. For details, see [Boolean Values](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)."
+                "`false` 代表 `0`. 它们可用于使脚本更具可读性。有关详细信息，请参阅[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。"
             ],
             "link": "https://www.autohotkey.com/docs/v1/Variables.htm#misc",
             "exp": [
@@ -164,12 +165,13 @@
             "keyRawName": "ProgramFiles",
             "link": "https://www.autohotkey.com/docs/v1/Variables.htm#ProgramFiles",
             "doc": [
-                "The Program Files directory (e.g. `C:\\Program Files` or `C:\\Program Files (x86)`). This is usually the same as the _ProgramFiles_ [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables).\n\nOn [64-bit systems](https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS) (and not 32-bit systems), the following applies:\n\n- If the executable (EXE) that is running the script is 32-bit, A_ProgramFiles returns the path of the \"Program Files (x86)\" directory.\n- For 32-bit processes, the _ProgramW6432_ environment variable contains the path of the 64-bit Program Files directory. On Windows 7 and later, it is also set for 64-bit processes.\n- The _ProgramFiles(x86)_ environment variable contains the path of the 32-bit Program Files directory.\n\n[[v1.0.43.08+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes \"Applies to AutoHotkey v1.0.43.08 and later\"): The A_ prefix may be omitted, which helps ease the transition to [#NoEnv](https://www.autohotkey.com/docs/v1/lib/_NoEnv.htm)."
+                "`A_ProgramFiles` Program Files 目录 (e.g. `C:\\Program Files` or `C:\\Program Files (x86)`). ",
+                "This is usually the same as the _ProgramFiles_ [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables).\n\nOn [64-bit systems](https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS) (and not 32-bit systems), the following applies:\n\n- If the executable (EXE) that is running the script is 32-bit, A_ProgramFiles returns the path of the \"Program Files (x86)\" directory.\n- For 32-bit processes, the _ProgramW6432_ environment variable contains the path of the 64-bit Program Files directory. On Windows 7 and later, it is also set for 64-bit processes.\n- The _ProgramFiles(x86)_ environment variable contains the path of the 32-bit Program Files directory.\n\n[[v1.0.43.08+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes \"Applies to AutoHotkey v1.0.43.08 and later\"): The A_ prefix may be omitted, which helps ease the transition to [#NoEnv](https://www.autohotkey.com/docs/v1/lib/_NoEnv.htm)."
             ],
             "exp": [
                 "ProgramFiles or A_ProgramFiles",
                 "",
-                "; Retrieves the version of the file \"AutoHotkey.exe\" located in AutoHotkey's installation directory and stores it in Version.",
+                "; 检索文件的版本 \"AutoHotkey.exe\" 位于 AutoHotkey 的安装目录中并将其存储在 Version 中。",
                 "",
                 "FileGetVersion, Version, % A_ProgramFiles \"\\AutoHotkey\\AutoHotkey.exe\"",
                 "MsgBox % \"ahk Version is \" Version"
@@ -178,7 +180,7 @@
         {
             "keyRawName": "True",
             "doc": [
-                "`1` to represent `true`. They can be used to make a script more readable. For details, see [Boolean Values](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)."
+                "`true` 代表 `1`. 它们可用于使脚本更具可读性。有关详细信息，请参阅[布尔值](https://www.autohotkey.com/docs/v1/Concepts.htm#boolean)。"
             ],
             "link": "https://www.autohotkey.com/docs/v1/Variables.htm#misc",
             "exp": [

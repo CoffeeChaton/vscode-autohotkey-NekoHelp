@@ -2,7 +2,7 @@
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "A_DetectHiddenText"
+        "google Translation progress": "A_IsCritical"
     },
     "body": [
         {
@@ -328,7 +328,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DetectHiddenText",
             "group": "Setting",
             "doc": [
-                "The current mode (`On or Off`) set by [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm)."
+                "当前模式 (`On or Off`) set by [DetectHiddenText](https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm)."
             ]
         },
         {
@@ -336,7 +336,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#DetectHiddenWindows",
             "group": "Setting",
             "doc": [
-                "The current mode (`On or Off`) set by [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm)."
+                "当前模式 (`On or Off`) set by [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm)."
             ]
         },
         {
@@ -344,7 +344,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#EndChar",
             "group": "Hotkeys",
             "doc": [
-                "The [ending character](https://www.autohotkey.com/docs/v1/Hotstrings.htm#EndChars) that was pressed by the user to trigger the most recent [non-auto-replace hotstring](https://www.autohotkey.com/docs/v1/Hotstrings.htm). If no ending character was required (due to the \\* option), this variable will be blank."
+                "用户按下以触发最近的[非自动替换热字符串](https://www.autohotkey.com/docs/v1/Hotstrings.htm)的[结束字符](https://www.autohotkey.com/docs/v1/Hotstrings.htm#EndChars)。如果不需要结束字符（由于 \\* 选项），则此变量将为空。"
             ]
         },
         {
@@ -352,13 +352,14 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#EventInfo",
             "group": "GUI",
             "doc": [
-                "Contains additional information about the following events:",
-                "> - The [OnClipboardChange label](https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label \"Deprecated. New scripts should use OnClipboardChange() instead.\")",
-                "> - [Mouse wheel hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm#Wheel) (WheelDown/Up/Left/Right)",
-                "> - [OnMessage()](https://www.autohotkey.com/docs/v1/lib/OnMessage.htm)",
-                "> - [RegisterCallback()](https://www.autohotkey.com/docs/v1/lib/RegisterCallback.htm)",
-                "> - [Regular Expression Callouts](https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm)",
-                "> - [GUI events](https://www.autohotkey.com/docs/v1/lib/Gui.htm#label), namely [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles), [ListBox](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#ListBox), [ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm), [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm), and [StatusBar](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#StatusBar). If there is no additional information for an event, A_EventInfo contains 0."
+                "包含有关以下事件的其他信息：",
+                "",
+                "- [OnClipboardChange 标签](https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label \"Deprecated. New scripts should use OnClipboardChange() instead.\")",
+                "- [鼠标滚轮热键](https://www.autohotkey.com/docs/v1/Hotkeys.htm#Wheel)（WheelDown/Up/Left/Right）",
+                "- [OnMessage（）](https://www.autohotkey.com/docs/v1/lib/OnMessage.htm)",
+                "- [注册回调（）](https://www.autohotkey.com/docs/v1/lib/RegisterCallback.htm)",
+                "- [正则表达式标注](https://www.autohotkey.com/docs/v1/misc/RegExCallout.htm)",
+                "- [GUI 事件](https://www.autohotkey.com/docs/v1/lib/Gui.htm#label)，即 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu)、[GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles)、[ListBox](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#ListBox)、[ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm)、[TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) 和 [StatusBar](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#StatusBar)。如果某个事件没有附加信息，则A\\_EventInfo包含 0。"
             ]
         },
         {
@@ -366,7 +367,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ExitReason",
             "group": "Script",
             "doc": [
-                "The most recent reason the script was asked to terminate. This variable is blank unless the script has an [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command \"Deprecated. New scripts should use OnExit() instead.\") subroutine and that subroutine is currently running or has been called at least once by an exit attempt. See [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command \"Deprecated. New scripts should use OnExit() instead.\") for details."
+                "要求终止脚本的最新原因。除非脚本具有 [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command \"Deprecated. New scripts should use OnExit() instead.\") 子例程，并且该子例程当前正在运行或已通过退出尝试至少调用过一次，否则此变量为空。有关详细信息，请参阅 [OnExit](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command \"Deprecated. New scripts should use OnExit() instead.\")。"
             ]
         },
         {
@@ -374,7 +375,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#FileEncoding",
             "group": "Setting",
             "doc": [
-                "[[v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L46 \"Applies to: AutoHotkey_L Revision 46 and later AutoHotkey v1.0.90.00 and later\"): Contains the default encoding for various commands; see [FileEncoding](https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm)."
+                "[\\[v1.0.90+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L46 \"Applies to:AutoHotkey_L Revision 46 and later AutoHotkey v1.0.90.00 and later\")：包含各种命令的默认编码;请参阅 [FileEncoding](https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm)。"
             ]
         },
         {
@@ -382,7 +383,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#FormatFloat",
             "group": "Setting",
             "doc": [
-                "The current floating point number format set by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm \"Deprecated. New scripts should use Format() instead.\")."
+                "[SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm \"Deprecated. New scripts should use Format() instead.\") 设置的当前浮点数格式。"
             ]
         },
         {
@@ -390,7 +391,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#FormatInteger",
             "group": "Setting",
             "doc": [
-                "The current integer format (H or D) set by [SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm \"Deprecated. New scripts should use Format() instead.\"). [[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \"Applies to: AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later\") This may also contain lower-case h."
+                "[SetFormat](https://www.autohotkey.com/docs/v1/lib/SetFormat.htm \"Deprecated. New scripts should use Format() instead.\") 设置的当前整数格式（H 或 D）。[\\[v1.0.90+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \"Applies to: AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later)：这也可能包含小写的 h。"
             ]
         },
         {
@@ -398,7 +399,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Gui",
             "group": "GUI",
             "doc": [
-                "The name or number of the [GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm) that launched the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). This variable is blank unless a Gui control, menu bar item, or event such as GuiClose/GuiEscape launched the current thread."
+                "启动[当前线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)的 [GUI](https://www.autohotkey.com/docs/v1/lib/Gui.htm) 的名称或编号。除非 Gui 控件、菜单栏项或事件（如 GuiClose/GuiEscape）启动了当前线程，否则此变量为空。"
             ]
         },
         {
@@ -406,11 +407,12 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiControl",
             "group": "GUI",
             "doc": [
-                "The name of the variable associated with the GUI control that launched the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). If that control lacks an [associated variable](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events), A_GuiControl instead contains the first 63 characters of the control's text/caption (this is most often used to avoid giving each button a variable name). A_GuiControl is blank whenever:",
-                "1. `A_Gui` is blank",
-                "2. a GUI menu bar item or event such as GuiClose/GuiEscape launched the current thread;",
-                "3. the control lacks an associated variable and has no caption;",
-                "4. The control that originally launched the current thread no longer exists (perhaps due to [Gui Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy))."
+                "与启动[当前线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)的 GUI 控件关联的变量的名称。",
+                "如果该控件缺少[关联的变量](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Events)，则A\\_GuiControl包含控件的文本/标题的前 63 个字符（这通常用于避免为每个按钮提供变量名称）。A\\_GuiControl在任何时候都是空白的：",
+                "- 1 A\\_Gui是空白的;",
+                "- 2 GUI 菜单栏项或事件（如 GuiClose/GuiEscape）启动了当前线程;",
+                "- 3 控件缺少关联变量，并且没有标题;",
+                "- 4 最初启动当前线程的控件不再存在（可能是由于 [Gui Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy)）。"
             ]
         },
         {
@@ -418,15 +420,15 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiControlEvent",
             "group": "GUI",
             "doc": [
-                "The type of event that launched the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). If the thread was not launched via [GUI action](https://www.autohotkey.com/docs/v1/lib/Gui.htm), this variable is blank. Otherwise, it contains one of the following strings:",
+                "启动[当前线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)的事件类型。如果线程不是通过 [GUI 操作](https://www.autohotkey.com/docs/v1/lib/Gui.htm)启动的，则此变量为空。否则，它包含以下字符串之一：",
                 "",
-                "> **Normal**: The event was triggered by a single left-click or via keystrokes (<kbd>↑</kbd>, <kbd>→</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>, <kbd>Tab</kbd>, <kbd>Space</kbd>, underlined shortcut key, etc.). This value is also used for menu bar items and the special events such as GuiClose and GuiEscape.",
+                "**Normal：**该事件由单击鼠标左键或击键（<kbd>↑</kbd>、<kbd>→</kbd>、<kbd>↓</kbd>、<kbd>←</kbd> <kbd>Tab</kbd> <kbd>Space</kbd> 带下划线的快捷键等）触发。此值还用于菜单栏项和特殊事件，例如 GuiClose 和 GuiEscape。",
                 "",
-                "> **DoubleClick**: The event was triggered by a double-click. Note: The first click of the click-pair will still cause a _Normal_ event to be received first. In other words, the subroutine will be launched twice: once for the first click and again for the second.",
+                "**DoubleClick：**该事件由双击触发。注意：点击对的第一次点击仍会首先收到_正常_事件。换句话说，子例程将启动两次：一次是第一次点击，另一次是第二次点击。",
                 "",
-                "> **RightClick**: Occurs only for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [ListViews](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeViews](https://www.autohotkey.com/docs/v1/lib/TreeView.htm).",
+                "**RightClick：**仅对 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu)、[ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm) 和 [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) 发生。",
                 "",
-                "> **Context-sensitive values:** For details see [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles), [Slider](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Slider), [MonthCal](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#MonthCal), [ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm)."
+                "**Context-sensitive values：**有关详细信息，请参阅 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu)、[GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles)、[Slider](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Slider)、[MonthCal](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#MonthCal)、[ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm) 和 [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm)。"
             ]
         },
         {
@@ -434,15 +436,15 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiEvent",
             "group": "GUI",
             "doc": [
-                "The type of event that launched the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). If the thread was not launched via [GUI action](https://www.autohotkey.com/docs/v1/lib/Gui.htm), this variable is blank. Otherwise, it contains one of the following strings:",
+                "启动[当前线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)的事件类型。如果线程不是通过 [GUI 操作](https://www.autohotkey.com/docs/v1/lib/Gui.htm)启动的，则此变量为空。否则，它包含以下字符串之一：",
                 "",
-                "> **Normal**: The event was triggered by a single left-click or via keystrokes (<kbd>↑</kbd>, <kbd>→</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>, <kbd>Tab</kbd>, <kbd>Space</kbd>, underlined shortcut key, etc.). This value is also used for menu bar items and the special events such as GuiClose and GuiEscape.",
+                "**Normal：**该事件由单击鼠标左键或击键（<kbd>↑</kbd>、<kbd>→</kbd>、<kbd>↓</kbd>、<kbd>←</kbd> <kbd>Tab</kbd> <kbd>Space</kbd> 带下划线的快捷键等）触发。此值还用于菜单栏项和特殊事件，例如 GuiClose 和 GuiEscape。",
                 "",
-                "> **DoubleClick**: The event was triggered by a double-click. Note: The first click of the click-pair will still cause a _Normal_ event to be received first. In other words, the subroutine will be launched twice: once for the first click and again for the second.",
+                "**DoubleClick：**该事件由双击触发。注意：点击对的第一次点击仍会首先收到_正常_事件。换句话说，子例程将启动两次：一次是第一次点击，另一次是第二次点击。",
                 "",
-                "> **RightClick**: Occurs only for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [ListViews](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeViews](https://www.autohotkey.com/docs/v1/lib/TreeView.htm).",
+                "**RightClick：**仅对 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu)、[ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm) 和 [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm) 发生。",
                 "",
-                "> **Context-sensitive values:** For details see [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu), [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles), [Slider](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Slider), [MonthCal](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#MonthCal), [ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm), and [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm)."
+                "**Context-sensitive values：**有关详细信息，请参阅 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu)、[GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles)、[Slider](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#Slider)、[MonthCal](https://www.autohotkey.com/docs/v1/lib/GuiControls.htm#MonthCal)、[ListView](https://www.autohotkey.com/docs/v1/lib/ListView.htm) 和 [TreeView](https://www.autohotkey.com/docs/v1/lib/TreeView.htm)。"
             ]
         },
         {
@@ -450,7 +452,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiWidth",
             "group": "GUI",
             "doc": [
-                "These contain the GUI window's width and height when referenced in a [GuiSize subroutine](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize). They apply to the window's client area, which is the area excluding title bar, menu bar, and borders. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)."
+                "它们包含在 [GuiSize 子例程](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize)中引用时 GUI 窗口的宽度和高度。它们适用于窗口的工作区，即不包括标题栏、菜单栏和边框的区域。[\\[v1.1.11+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\")：这些值受 [DPI 缩放](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)的影响。"
             ]
         },
         {
@@ -458,15 +460,15 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiWidth",
             "group": "GUI",
             "doc": [
-                "These contain the GUI window's width and height when referenced in a [GuiSize subroutine](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize). They apply to the window's client area, which is the area excluding title bar, menu bar, and borders. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)."
-            ]
+                        "它们包含在 [GuiSize 子例程](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiSize)中引用时 GUI 窗口的宽度和高度。它们适用于窗口的工作区，即不包括标题栏、菜单栏和边框的区域。[\\[v1.1.11+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\")：这些值受 [DPI 缩放](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)的影响。"
+  ]
         },
         {
             "keyRawName": "A_GuiX",
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiX",
             "group": "GUI",
             "doc": [
-                "These contain the X and Y coordinates for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) and [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) events. Coordinates are relative to the upper-left corner of the window. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)."
+                "它们包含 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) 和 [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) 事件的 X 和 Y 坐标。坐标相对于窗口的左上角。[\\[v1.1.11+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\")：这些值受 [DPI 缩放](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)的影响。"
             ]
         },
         {
@@ -474,15 +476,15 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#GuiY",
             "group": "GUI",
             "doc": [
-                "These contain the X and Y coordinates for [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) and [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) events. Coordinates are relative to the upper-left corner of the window. [[v1.1.11+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\") These values are affected by [DPI scaling](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)."
-            ]
+                          "它们包含 [GuiContextMenu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiContextMenu) 和 [GuiDropFiles](https://www.autohotkey.com/docs/v1/lib/Gui.htm#GuiDropFiles) 事件的 X 和 Y 坐标。坐标相对于窗口的左上角。[\\[v1.1.11+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.11.00 \"Applies to AutoHotkey v1.1.11 and later\")：这些值受 [DPI 缩放](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)的影响。"
+ ]
         },
         {
             "keyRawName": "A_Hour",
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Hour",
             "group": "Date",
             "doc": [
-                "Current 2-digit hour (00-23) in 24-hour time (for example, 17 is 5pm). To retrieve 12-hour time as well as an AM/PM indicator, follow this example:",
+                "24 小时制中的当前 2 位小时 （00-23）（例如，17 是下午 5 点）。要检索 12 小时时间以及 AM/PM 指示器，请执行以下示例：",
                 "",
                 "```ahk",
                 "    MsgBox % A_Hour",
@@ -496,7 +498,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress",
             "group": "OS",
             "doc": [
-                "The IP addresses of the first 4 network adapters in the computer."
+                "计算机中前 4 个网络适配器的 IP 地址。"
             ]
         },
         {
@@ -504,7 +506,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress",
             "group": "OS",
             "doc": [
-                "The IP addresses of the first 4 network adapters in the computer."
+                "计算机中前 4 个网络适配器的 IP 地址。"
             ]
         },
         {
@@ -512,7 +514,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress",
             "group": "OS",
             "doc": [
-                "The IP addresses of the first 4 network adapters in the computer."
+                "计算机中前 4 个网络适配器的 IP 地址。"
             ]
         },
         {
@@ -520,7 +522,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IPAddress",
             "group": "OS",
             "doc": [
-                "The IP addresses of the first 4 network adapters in the computer."
+                "计算机中前 4 个网络适配器的 IP 地址。"
             ]
         },
         {
@@ -528,7 +530,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IconFile",
             "group": "Setting",
             "doc": [
-                "Blank unless a custom [tray icon](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon) has been specified via",
+                "除非已通过以下方式指定了自定义[托盘图标](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon)，否则为空白 - 在这种情况下，它是图标文件的完整路径和名称。",
                 "",
                 "```ahk",
                 "    Menu, tray, icon ;-- in which case it's the full path and name of the icon's file.",
@@ -540,7 +542,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IconHidden",
             "group": "Setting",
             "doc": [
-                "Contains 1 if the [tray icon](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon) is currently hidden or 0 otherwise. The icon can be hidden via [#NoTrayIcon](https://www.autohotkey.com/docs/v1/lib/_NoTrayIcon.htm) or the [Menu](https://www.autohotkey.com/docs/v1/lib/Menu.htm) command."
+                "如果[托盘图标](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon)当前处于隐藏状态，则包含 1，否则为 0。可以通过 [#NoTrayIcon](https://www.autohotkey.com/docs/v1/lib/_NoTrayIcon.htm) 或[菜单](https://www.autohotkey.com/docs/v1/lib/Menu.htm)命令隐藏该图标。"
             ]
         },
         {
@@ -548,7 +550,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IconNumber",
             "group": "Setting",
             "doc": [
-                "Blank if A_IconFile is blank. Otherwise, it's the number of the icon in A_IconFile (typically 1)."
+                "如果A\\_IconFile为空，则为空。否则，它是A\\_IconFile图标的编号（通常为 1）。"
             ]
         },
         {
@@ -556,10 +558,10 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IconTip",
             "group": "Setting",
             "doc": [
-                "Blank unless a custom tooltip for the tray icon has been specified via",
+                "除非已通过以下方式指定[了托盘图标](https://www.autohotkey.com/docs/v1/Program.htm#tray-icon)的自定义工具提示，否则为空白 - 在这种情况下，它是提示的文本。",
                 "",
                 "```ahk",
-                "    Menu, Tray, Tip ;-- in which case it's the text of the tip.",
+                "    Menu, Tray, Tip ; 在这种情况下，它是提示的文本。",
                 "```"
             ]
         },
@@ -568,7 +570,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Index",
             "group": "Loop",
             "doc": [
-                "This is the number of the current loop iteration (a 64-bit integer). For example, the first time the script executes the body of a loop, this variable will contain the number 1. For details see [Loop](https://www.autohotkey.com/docs/v1/lib/Loop.htm) or [While-loop](https://www.autohotkey.com/docs/v1/lib/While.htm)."
+                "这是当前循环迭代的编号（64 位整数）。它包含 1 第一次执行循环的主体。第二次，它包含 2;等等。如果内部环路被外部环路包围，则内部环路优先。A\\_Index[在所有类型的循环](https://www.autohotkey.com/docs/v1/Language.htm#loop-statement)中工作，但在循环之外包含 0。"
             ]
         },
         {
@@ -576,7 +578,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS",
             "group": "OS",
             "doc": [
-                "[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 \"Applies to AutoHotkey v1.1.08 and later\") Contains 1 (true) if the OS is 64-bit or 0 (false) if it is 32-bit."
+                "[\\[v1.1.08+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 \"Applies to AutoHotkey v1.1.08 and later\")：如果操作系统是 64 位，则包含 1 （true），如果操作系统是 32 位，则包含 0 （false）。"
             ]
         },
         {
@@ -594,9 +596,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IsCompiled",
             "group": "Script",
             "doc": [
-                "Contains 1 if the script is running as a [compiled EXE](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) and an empty string (which is considered [false](https://www.autohotkey.com/docs/v1/Variables.htm#Boolean)) if it is not.",
+                "如果当前用户具有管理员权限，则包含 1，否则为 0。",
                 "",
-                "For non-compiled scripts prior to [[v1.1.06]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00), A_IsCompiled was left undefined; that is, the script could assign to it, and attempting to read it could trigger a [UseUnsetGlobal warning](https://www.autohotkey.com/docs/v1/lib/_Warn.htm). In later versions it is always defined and is read-only."
+                "若要让脚本以 admin 身份重启脚本（或向请求 admin 的用户显示提示），请使用[运行 \\*RunAs](https://www.autohotkey.com/docs/v1/lib/Run.htm#RunAs)。但是，请注意，以 admin 身份运行脚本会导致脚本启动的所有程序也以 admin 身份运行。有关可能的替代方法，请参阅[常见问题解答](https://www.autohotkey.com/docs/v1/FAQ.htm#uac)。"
             ]
         },
         {
@@ -604,13 +606,13 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#IsCritical",
             "group": "Setting",
             "doc": [
-                "Contains 0 if [Critical](https://www.autohotkey.com/docs/v1/lib/Critical.htm) is off for the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm). Otherwise it contains an integer greater than zero, namely the [message-check frequency](https://www.autohotkey.com/docs/v1/lib/Critical.htm#Interval) being used by Critical. Since",
+                "如果 [Critical](https://www.autohotkey.com/docs/v1/lib/Critical.htm) 对于 [当前线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm) 关闭，则包含 0。否则它包含一个大于零的整数，即 Critical 正在使用的 [消息检查频率](https://www.autohotkey.com/docs/v1/lib/Critical.htm#Interval)。由于",
                 "",
                 "```ahk",
                 "    Critical 0 ",
-                "    ; urns off critical, the current state of Critical can be saved and restored via:",
+                "    ; 关闭关键状态后，可以通过以下方式保存和恢复当前的关键状态：",
                 "    Old_IsCritical := A_IsCritical",
-                "    ; followed later by",
+                "    ; 随后",
                 "    Critical %Old_IsCritical%",
                 "```"
             ]
