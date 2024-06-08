@@ -17,7 +17,7 @@
 
 - TODO hover path -> show may path
 - feat: `Menu` syntax-highlight / semantic-highlight / gotoDef / findAllRef / Completion
-- feat: change default ahk-icon
+- feat: ([#78](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/78)) do not change built-in variables highlight
 - feat: `#include` support `%A_WorkingDir%`
 - feat: ([#74](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/74)) Path Completion
 - fix: ([#75](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/75)) ColorProvider (color-picker) lint with varName

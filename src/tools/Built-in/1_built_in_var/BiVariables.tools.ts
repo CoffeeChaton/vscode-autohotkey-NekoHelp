@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
-import type { TBiVElement } from './BiVariables.data';
+import type { BiVariables } from './BiVariables.data';
 
 /**
  * built-in variables
@@ -15,8 +15,8 @@ export const [Bi_VarMDMap, snippetBiVar] = ((): [TBi_VarMDMap, TBi_snippet_list]
     const map1 = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     //
-    const BiVariables = readNlsJson('BiVariables') as TBiVElement[];
-    for (const v of BiVariables) {
+    const BiVariablesData = readNlsJson('BiVariables') as typeof BiVariables;
+    for (const v of BiVariablesData) {
         const {
             keyRawName,
             link,
