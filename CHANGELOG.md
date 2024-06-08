@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.60(2024-06-XX)](#v00602024-06-xx)
+  - [v0.0.60(2024-06-09)](#v00602024-06-09)
   - [v0.0.59(2024-06-03)](#v00592024-06-03)
   - [v0.0.58(2024-05-25)](#v00582024-05-25)
   - [v0.0.57(2024-05-16)](#v00572024-05-16)
@@ -10,12 +10,11 @@
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
 
-## v0.0.60(2024-06-XX)
+## v0.0.60(2024-06-09)
 
 <!-- pnpm 9.2.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
-- TODO hover path -> show may path
 - feat: `Menu` syntax-highlight / semantic-highlight / gotoDef / findAllRef / Completion
 - feat: ([#78](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/78)) do not change built-in variables highlight
 - feat: `#include` support `%A_WorkingDir%`

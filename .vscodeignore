@@ -35,6 +35,7 @@ knip.json
 node_modules/
 note/
 out/
+oxlintrc.json
 pnpm-lock.yaml
 readonlyJsonAdd.js
 readonlyJsonRm.js
