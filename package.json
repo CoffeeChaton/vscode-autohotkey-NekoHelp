@@ -759,6 +759,7 @@
                     "ahk"
                 ],
                 "extensions": [
+                    ".ah1",
                     ".ahk"
                 ],
                 "configuration": "./ahk.configuration.json"

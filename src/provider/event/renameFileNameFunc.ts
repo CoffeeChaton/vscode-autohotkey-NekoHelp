@@ -10,17 +10,18 @@ export async function renameFileNameFunc(
     newUri: vscode.Uri,
     AhkFileDataList: TAhkFileData[],
 ): Promise<null> {
-    const oldFileName: string = path.basename(oldUri.fsPath, '.ahk');
-    const newFileName: string = path.basename(newUri.fsPath, '.ahk');
+    const oldFile: string = path.basename(oldUri.fsPath);
+    const newFile: string = path.basename(newUri.fsPath);
 
-    const logList: string[] = [`"${oldFileName}" -> "${newFileName}" ("AhkNekoHelp.event.FileRenameEvent" : 2)`];
+    const logList: string[] = [`"${oldFile}" -> "${newFile}" ("AhkNekoHelp.event.FileRenameEvent" : 2)`];
 
-    if (oldFileName === newFileName) {
+    if (oldFile === newFile) {
         // just move file...how show i do?
         log.info(logList.join('\n'));
         return null;
     }
 
+    const oldFileName: string = oldFile.replace(/.ah[k1]$/iu, '');
     const re = new RegExp(`(?<=^|[/\\\\<])${oldFileName}$`, 'iu');
 
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
@@ -31,16 +32,16 @@ export async function renameFileNameFunc(
             const tryRemoveComment: string = path1
                 .replace(/[ \t];.*$/u, '')
                 .trim()
-                .replace(/\.ahk>?$/iu, '')
+                .replace(/\.ah[k1]>?$/iu, '')
                 .trim();
 
             if (re.test(tryRemoveComment)) {
                 const { line } = range.start;
                 const { textRaw } = DocStrMap[line];
 
-                const Remarks = `    ;; ${oldFileName} -> ${newFileName} ;; at ${new Date().toISOString()} ;;    `;
+                const Remarks = `    ;; ${oldFile} -> ${newFile} ;; at ${new Date().toISOString()} ;;    `;
                 const head: string = textRaw.replace(path1, '');
-                const newText: string = head + path1.replace(oldFileName, newFileName) + Remarks;
+                const newText: string = head + path1.replace(oldFile, newFile) + Remarks;
                 //
                 const newPos: vscode.Position = new vscode.Position(line, 0);
                 edit.insert(uri, newPos, newText);

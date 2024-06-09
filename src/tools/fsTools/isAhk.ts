@@ -1,6 +1,6 @@
 import type * as vscode from 'vscode';
 
-const isAhkReg: Readonly<RegExp> = /\.ahk$/iu;
+const isAhkReg: Readonly<RegExp> = /\.ah[k1]$/iu;
 export function isAhk(fsPath: string): boolean {
     return isAhkReg.test(fsPath);
 }

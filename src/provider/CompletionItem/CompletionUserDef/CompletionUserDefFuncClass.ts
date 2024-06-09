@@ -75,7 +75,7 @@ const wm = new WeakMap<TAstRoot, readonly CUserFnClassCompletion[]>();
 function partSnip(AhkFileData: TAhkFileData): readonly CUserFnClassCompletion[] {
     const { AST, uri } = AhkFileData;
     const fileName: string = path.basename(uri.fsPath);
-    const base0: string = ToUpCase(fileName.replace(/\.ahk/iu, ''));
+    const base0: string = ToUpCase(fileName.replace(/\.ah[1k]$/iu, ''));
     const cache: readonly CUserFnClassCompletion[] | undefined = wm.get(AST);
     if (cache !== undefined) {
         return cache;
