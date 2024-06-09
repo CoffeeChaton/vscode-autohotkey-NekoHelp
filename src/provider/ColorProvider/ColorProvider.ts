@@ -168,12 +168,14 @@ function provideDocumentColors(document: vscode.TextDocument): vscode.ColorInfor
             const char: number = ma[0].length - ma1.length + index;
 
             if (text.at(char + ma1.length) === '(') continue;
-            if (text.at(index - 1) === '"') { // "Red"
-                // || text.at(index - 2) === '"' // "cRed"
-                // || text.at(index - 3) === '"' // "cbRed"
+            if (lStr.at(index - 1) === '^') {
+                // "Red" OK
+                // friendly := "BLACK/WHITE DITHERED"
+                //              BLACK   X
+                //              WHITE   X
 
                 // 3. lint "0x00000" or "0x000000" if start with `" need and with`"
-                const b3: string | undefined = text.at(char + ma1.length);
+                const b3: string | undefined = text.at(index + ma[0].length);
                 if (b3 !== '"') continue;
             }
 

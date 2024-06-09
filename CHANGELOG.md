@@ -17,7 +17,14 @@
 <!-- dprint 0.45.1 -->
 
 - feat: ([#80](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/80)) Supports `.ah1` file extension.
+- feat: ColorProvider (color-picker) lint
 
+  ```ahk
+  a := "Red" ; OK start and end with ""
+  friendly := "BLACK/WHITE DITHERED"
+  ;            BLACK X is start with ", but not and with "
+  ;            WHITE X is in string , but not start and end with ""
+  ```
 
 ## v0.0.60(2024-06-09)
 
