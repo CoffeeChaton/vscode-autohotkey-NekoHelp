@@ -112,7 +112,7 @@ function LabelRefKeyWordWrap(
         SecondWordUpCol,
     } = AhkTokenLine;
 
-    const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER'];
+    const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER', 'ONEXIT'];
     if (list.includes(fistWordUp)) {
         LabelRefKeyWord(fistWordUpCol + fistWordUp.length, AhkTokenLine, map);
     } else if (list.includes(SecondWordUp)) {
@@ -235,7 +235,7 @@ export function getDefWithLabel(
         SecondWordUp,
         SecondWordUpCol,
     } = AhkTokenLine;
-    const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER'];
+    const list: readonly string[] = ['GOTO', 'GOSUB', 'BREAK', 'CONTINUE', 'SETTIMER', 'ONEXIT'];
     if (
         list.includes(fistWordUp)
         && character > fistWordUp.length + fistWordUpCol

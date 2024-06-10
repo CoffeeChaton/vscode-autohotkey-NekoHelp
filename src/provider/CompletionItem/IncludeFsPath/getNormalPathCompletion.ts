@@ -157,7 +157,6 @@ type TMayPathData = {
  */
 export function getRawData2(path1: string, fsPath: string): TMayPathData {
     // const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '')
-    //     .trim()
     //     .replaceAll(/%A_Tab%/giu, '\t')
     //     .replaceAll(/%A_Space%/giu, ' ');
 
@@ -186,7 +185,7 @@ export function getRawData2(path1: string, fsPath: string): TMayPathData {
         }
     }
 
-    // %A_
+    // C:\Windows
     const c2: number = path1.search(/[a-z]:\\/iu);
     if (c2 > -1) {
         const path2 = path1.slice(c2, path1.length);
@@ -199,7 +198,7 @@ export function getRawData2(path1: string, fsPath: string): TMayPathData {
         }
     }
 
-    // %A_
+    // ./
     const c3: number = path1.search(/\.[/\\]/u);
     if (c3 > -1) {
         const path2 = path1.slice(c3, path1.length);
@@ -233,7 +232,7 @@ export function getNormalPathCompletion(
     const path1: string = textRaw
         .slice(0, position.character) // hover mode not need this line
         .replace(/[ \t]+;.*$/u, '')
-        .trim()
+        // .trim()
         .replaceAll(/%A_Tab%/giu, '\t')
         .replaceAll(/%A_Space%/giu, ' ');
 

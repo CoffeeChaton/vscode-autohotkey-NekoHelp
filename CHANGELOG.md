@@ -13,9 +13,10 @@
 
 ## v0.0.61(2024-06-XX)
 
-<!-- pnpm 9.2.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- fix: ([#81](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/81)) `OnExit, Label` syntax-highlight / gotoDef/ findAllRef / hover
 - feat: ([#80](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/80)) Supports `.ah1` file extension.
 - feat: ColorProvider (color-picker) lint
 
