@@ -4,7 +4,7 @@ import type { DeepReadonly } from './globalEnum';
 type TLink =
     | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/ahk/diag${number}.ahk`
     | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code${number}.md`
-    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/${number}`
+    | `https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/${number}${string}`
     | `https://www.autohotkey.com/docs/v1/${string}`;
 
 // ScriptError(_T("Global variables must not be declared in this function."), aLineText);
@@ -124,6 +124,20 @@ export const enum EDiagCode {
     code202 = 202,
     code203 = 203,
     code204 = 204,
+    /**
+     * ```ahk
+     * if a != b
+     * ; is
+     * if (a != "b")
+     *
+     * ; also
+     * if a != b and 1 >0
+     * ; is
+     * if (a != "b and 1 >0")
+     *
+     * ```
+     */
+    code210 = 210,
 
     // 300~399 is func err
     code301 = 301, // user-config function size
@@ -250,6 +264,10 @@ export const Diags: DeepReadonly<TDiags> = {
     204: {
         msg: 'The "is" operator is not supported in expressions. ',
         path: 'https://www.autohotkey.com/docs/v1/lib/IfIs.htm',
+    },
+    210: {
+        msg: '`if xx` should use `if ()` , because the `if a != b and 1 >0` , this means `if (a != "b and 1 >0")`',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82#issuecomment-2161225375',
     },
     301: {
         msg: 'function or Method is so big',

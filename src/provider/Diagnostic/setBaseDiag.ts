@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
-import type { TAstRoot } from '../../AhkSymbol/TAhkSymbolIn';
 import { getConfig } from '../../configUI';
 import { diagColl, getWithOutNekoDiag } from '../../core/diagColl';
 import type { TAhkFileData } from '../../core/ProjectManager';
-import type { TAhkTokenLine, TTokenStream } from '../../globalEnum';
+import type { TAhkTokenLine } from '../../globalEnum';
+import { CMemo } from '../../tools/CMemo';
 import { getDAListTop } from '../../tools/DeepAnalysis/getDAList';
 import type { CDiagBase } from './tools/CDiagBase';
 import { getFuncSizeErr } from './tools/getFuncErr';
@@ -13,24 +13,31 @@ import { getTreeErr } from './tools/getTreeErr';
 import { getAssignErr } from './tools/lineErr/assignErr';
 import { getCode601Err } from './tools/lineErr/getCode601Err';
 import { getCode701Err } from './tools/lineErr/getCode701Err';
+import { cIf_legacyErrList } from './tools/lineErr/getIf_legacyErr';
 
-const wm = new WeakMap<TTokenStream, readonly CDiagBase[]>();
+const wmBaseDiagnostic = new CMemo(
+    (AhkFileData: TAhkFileData): ReadonlySet<CDiagBase> => {
+        const {
+            AST,
+            DocStrMap,
+        } = AhkFileData;
 
-// TODO use CMemo
-function baseDiagnostic(DocStrMap: TTokenStream, AST: TAstRoot): readonly CDiagBase[] {
-    const cache: readonly CDiagBase[] | undefined = wm.get(DocStrMap);
-    if (cache !== undefined) return cache;
+        const displayErrList: readonly boolean[] = DocStrMap
+            .map(({ displayErr }: TAhkTokenLine): boolean => displayErr);
 
-    const displayErrList: readonly boolean[] = DocStrMap.map(({ displayErr }: TAhkTokenLine): boolean => displayErr);
+        const oldIf: readonly CDiagBase[] = cIf_legacyErrList.up(DocStrMap)
+            .filter((v: CDiagBase | null): v is CDiagBase => v !== null)
+            .filter((_v: CDiagBase, index: number): boolean => displayErrList[index]);
 
-    const diagList: readonly CDiagBase[] = [
-        ...getLineErr(DocStrMap),
-        ...getTreeErr(AST, displayErrList, DocStrMap),
-        ...getMultilineDiag(DocStrMap),
-    ];
-    wm.set(DocStrMap, diagList);
-    return diagList;
-}
+        const diagList: readonly CDiagBase[] = [
+            ...getLineErr(DocStrMap),
+            ...getTreeErr(AST, displayErrList, DocStrMap),
+            ...getMultilineDiag(DocStrMap),
+            ...oldIf,
+        ];
+        return new Set(diagList);
+    },
+);
 
 export function setBaseDiag(AhkFileData: TAhkFileData): void {
     const {
@@ -38,12 +45,13 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
         AST,
         DocStrMap,
     } = AhkFileData;
-    const baseDiagSet = new Set<CDiagBase>(baseDiagnostic(DocStrMap, AST));
+    const baseDiagSet: ReadonlySet<CDiagBase> = wmBaseDiagnostic.up(AhkFileData);
 
     const DiagShow: CDiagBase[] = [
         ...getCode601Err(AhkFileData),
         ...getCode701Err(AhkFileData),
     ];
+
     const {
         code800Deprecated,
         code107,

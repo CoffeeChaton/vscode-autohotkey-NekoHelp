@@ -16,6 +16,7 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82)) `if legacy` diagnosis `code210`
 - fix: core parser like `Else if ()` , lStr end has space case
 - fix: ([#81](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/81)) `OnExit, Label` syntax-highlight / gotoDef/ findAllRef / hover
 - feat: ([#80](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/80)) Supports `.ah1` file extension.
