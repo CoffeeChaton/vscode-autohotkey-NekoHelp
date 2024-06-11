@@ -18,7 +18,7 @@ import { CDiagBase } from '../CDiagBase';
 // if a != b ; <------------ diag this...
 // if (a != "b") ; is .EQ. this , thanks ...
 
-function getIf_legacyErr(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
+function getIf_legacy210Err(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
     const {
         lStr,
         line,
@@ -41,7 +41,6 @@ function getIf_legacyErr(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
         .replace(/^\s*IF\b\s*(?:,\s*)?/iu, '')
         .trimStart();
 
-    // .padStart(lStr.length, ' ');
     if (
         strF0.startsWith('(')
         || strF0.startsWith('!')
@@ -54,7 +53,6 @@ function getIf_legacyErr(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
     const strF1: string = strF0
         .replace(/^[#$@\w\u{A1}-\u{FFFF}]+(?:\.[#$@\w\u{A1}-\u{FFFF}]+(?:\([^)]*\))?)?[ \t]*/iu, '');
     //                                                 ^ v1                        ^2
-    // .replace(/^[#$@\w\u{A1}-\u{FFFF}]+[ \t]*/iu, '');
 
     if (
         strF1 === '' // if true
@@ -97,7 +95,7 @@ function getIf_legacyErr(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
         .replace(/^(?:<=|>=|<>|==|[><=]|!=|!==|[~:+\-*/.|&^]=\/\/=|>>=|<<=|>>>=)[ \t]*/u, '')
         .trimStart();
 
-    const lPos = lStr.indexOf(strF2);
+    const lPos: number = lStr.indexOf(strF2);
     if (lPos === -1) return null;
 
     const range: vscode.Range = new vscode.Range(
@@ -113,12 +111,12 @@ function getIf_legacyErr(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
     });
 }
 
-export const cIf_legacyErrList = new CMemo(
+export const memoIf_legacyErrCode210 = new CMemo(
     (DocStrMap: TTokenStream): readonly (CDiagBase | null)[] => {
         const need: (CDiagBase | null)[] = [];
 
         for (const AhkTokenLine of DocStrMap) {
-            need.push(getIf_legacyErr(AhkTokenLine));
+            need.push(getIf_legacy210Err(AhkTokenLine));
         }
 
         return need;

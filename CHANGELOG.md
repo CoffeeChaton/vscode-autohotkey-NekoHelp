@@ -16,7 +16,22 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
-- feat: ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82)) `if legacy` diagnosis `code210`
+- feat: ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82))
+  1. add diag `code210` to avoid `if legacy` like `if a != b and 1 >0`
+  2. use to fix `if a != b and 1 >0` semantic-highlight
+  3. add diag `code209`, [info] always use `if ()` or `if !()` style, not allow If (Expression) variants
+
+  ```ahk
+  if a != b ;if legacy
+  ; is
+  if (a != "b")
+
+  ; also
+  if a != b and 1 >0 ;if legacy
+  ; is
+  if (a != "b and 1 >0")
+  ```
+
 - fix: core parser like `Else if ()` , lStr end has space case
 - fix: ([#81](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/81)) `OnExit, Label` syntax-highlight / gotoDef/ findAllRef / hover
 - feat: ([#80](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/80)) Supports `.ah1` file extension.

@@ -125,6 +125,10 @@ export const enum EDiagCode {
     code203 = 203,
     code204 = 204,
     /**
+     * `always use `if ()` or `if !()` style`
+     */
+    code209 = 209,
+    /**
      * ```ahk
      * if a != b
      * ; is
@@ -264,6 +268,10 @@ export const Diags: DeepReadonly<TDiags> = {
     204: {
         msg: 'The "is" operator is not supported in expressions. ',
         path: 'https://www.autohotkey.com/docs/v1/lib/IfIs.htm',
+    },
+    209: {
+        msg: 'always use `if ()` or `if !()` style',
+        path: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82',
     },
     210: {
         msg: '`if xx` should use `if ()` , because the `if a != b and 1 >0` , this means `if (a != "b and 1 >0")`',

@@ -67,6 +67,7 @@ type TempConfigs = {
          * ```
          */
         code107: boolean,
+        code209: boolean,
         code300fnSize: number,
         code500Max: number, // NeverUsedVar
         code502Max: number, // of var

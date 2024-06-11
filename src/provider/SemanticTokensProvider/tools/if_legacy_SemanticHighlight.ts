@@ -1,10 +1,10 @@
 import type { TTokenStream } from '../../../globalEnum';
 import type { CDiagBase } from '../../Diagnostic/tools/CDiagBase';
-import { cIf_legacyErrList } from '../../Diagnostic/tools/lineErr/getIf_legacyErr';
+import { memoIf_legacyErrCode210 } from '../../Diagnostic/tools/lineErr/getIf_legacy210Err';
 import type { TSemanticTokensLeaf } from '../tools';
 
 export function if_legacy_SemanticHighlight(DocStrMap: TTokenStream): readonly TSemanticTokensLeaf[] {
-    const oldIf: readonly CDiagBase[] = cIf_legacyErrList.up(DocStrMap)
+    const oldIf: readonly CDiagBase[] = memoIf_legacyErrCode210.up(DocStrMap)
         .filter((v: CDiagBase | null): v is CDiagBase => v !== null);
 
     return oldIf

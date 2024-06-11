@@ -13,7 +13,8 @@ import { getTreeErr } from './tools/getTreeErr';
 import { getAssignErr } from './tools/lineErr/assignErr';
 import { getCode601Err } from './tools/lineErr/getCode601Err';
 import { getCode701Err } from './tools/lineErr/getCode701Err';
-import { cIf_legacyErrList } from './tools/lineErr/getIf_legacyErr';
+import { memoIf_legacyErrCode210 } from './tools/lineErr/getIf_legacy210Err';
+import { memoIf_style } from './tools/lineErr/getIf_style_209info';
 
 const wmBaseDiagnostic = new CMemo(
     (AhkFileData: TAhkFileData): ReadonlySet<CDiagBase> => {
@@ -25,7 +26,7 @@ const wmBaseDiagnostic = new CMemo(
         const displayErrList: readonly boolean[] = DocStrMap
             .map(({ displayErr }: TAhkTokenLine): boolean => displayErr);
 
-        const oldIf: readonly CDiagBase[] = cIf_legacyErrList.up(DocStrMap)
+        const oldIf: readonly CDiagBase[] = memoIf_legacyErrCode210.up(DocStrMap)
             .filter((v: CDiagBase | null): v is CDiagBase => v !== null)
             .filter((_v: CDiagBase, index: number): boolean => displayErrList[index]);
 
@@ -55,6 +56,7 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
     const {
         code800Deprecated,
         code107,
+        code209,
         code300fnSize,
     } = getConfig().Diag;
 
@@ -67,6 +69,9 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
     }
     if (code107) {
         DiagShow.push(...getAssignErr(DocStrMap));
+    }
+    if (code209) {
+        DiagShow.push(...memoIf_style.up(DocStrMap));
     }
 
     diagColl.set(uri, [

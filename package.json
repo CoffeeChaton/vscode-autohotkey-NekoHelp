@@ -146,6 +146,11 @@
                         "default": true,
                         "markdownDescription": "%AhkNekoHelp.Diag.code107LegacyAssignment%"
                     },
+                    "AhkNekoHelp.Diag.code209": {
+                        "type": "boolean",
+                        "default": false,
+                        "markdownDescription": "%AhkNekoHelp.Diag.code209%"
+                    },
                     "AhkNekoHelp.Diag.code300FuncSize": {
                         "type": "number",
                         "default": 100,
