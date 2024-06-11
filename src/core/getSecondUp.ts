@@ -12,11 +12,11 @@ type TSecondUpData = {
 const patternMatch = [
     {
         name: 'CASE',
-        fn: (lStr: string): string => lStr.slice(lStr.indexOf(':') + 1).trim(),
+        fn: (lStr: string): string => lStr.slice(lStr.indexOf(':') + 1).trimStart(),
     },
     {
         name: 'DEFAULT',
-        fn: (lStr: string): string => lStr.slice(lStr.indexOf(':') + 1).trim(),
+        fn: (lStr: string): string => lStr.slice(lStr.indexOf(':') + 1).trimStart(),
     },
     {
         // // Try Hotkey, %Key1%, Copy
@@ -40,7 +40,7 @@ const patternMatch = [
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 3)
             .replace(/^\s*,/u, '')
             .replace(/^\s*\{/u, '')
-            .trim(),
+            .trimStart(),
     },
     {
         name: 'ELSE',
@@ -67,7 +67,7 @@ const patternMatch = [
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 4)
             .replace(/^\s*,/u, '')
             .replace(/^\s*\{/u, '')
-            .trim(),
+            .trimStart(),
     },
     {
         // Try Throw, Exception("Message--152", "What", "Extra")
@@ -81,7 +81,7 @@ const patternMatch = [
         fn: (lStr: string, fistWordUpCol: number): string => lStr.slice(fistWordUpCol + 'FINALLY'.length)
             .replace(/^\s*,/u, '')
             .replace(/^\s*\{/u, '')
-            .trim(),
+            .trimStart(),
     },
     ...getSecondUpIfEx,
 ] as const satisfies readonly TPatternMatch[];

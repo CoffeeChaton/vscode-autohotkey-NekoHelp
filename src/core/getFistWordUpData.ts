@@ -1,5 +1,5 @@
 export function getFistWordCore(lStrTrimFix: string): string {
-    const str: string = lStrTrimFix.trim();
+    const str: string = lStrTrimFix.trimStart();
     const ma1: string | undefined = str.match(/^(default)[ \t]*:/iu)?.[1];
     if (ma1 !== undefined) return ma1;
 
