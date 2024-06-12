@@ -26,6 +26,7 @@ const Semantic = new CMemo<TAhkFileData, readonly TSemanticTokensLeaf[]>(
         const { AST, ModuleVar, DocStrMap } = AhkFileData;
 
         return [
+            ...if_legacy_SemanticHighlight(DocStrMap),
             ...DAList2SemanticHighlight(AST),
             ...ModuleVarSemantic(ModuleVar),
             ...funcHighlight(DocStrMap),
@@ -34,7 +35,6 @@ const Semantic = new CMemo<TAhkFileData, readonly TSemanticTokensLeaf[]>(
             ...HotKeysRemapSemanticHighlight(AST),
             ...classPropertyHighlight(AST),
             ...GuiMenuHighlight(AhkFileData),
-            ...if_legacy_SemanticHighlight(DocStrMap),
         ];
     },
 );
