@@ -25,6 +25,7 @@ import { getSnippetOperator } from '../../tools/Built-in/4_operator/operator.too
 import { getSnipDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
 import { getSnipCmd } from '../../tools/Built-in/6_command/Command.tools.completion';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
+import { ahk_group_completion } from './ahk_group/ahk_group';
 import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
 import { completionsJsDocTag } from './ahkDoc/jsDocTagNames';
 import { wrapClass } from './classThis/wrapClass';
@@ -107,6 +108,8 @@ function CompletionItemCore(
     if (!detail.includes(EDetail.inComment)) {
         const justMenuName: vscode.CompletionItem[] = getMenuNameCompletion(AhkFileData, AhkTokenLine, position);
         if (justMenuName.length > 0) return justMenuName;
+        const ahk_group: vscode.CompletionItem[] | null = ahk_group_completion(AhkTokenLine, position);
+        if (ahk_group !== null) return ahk_group;
 
         completions.push(
             ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'

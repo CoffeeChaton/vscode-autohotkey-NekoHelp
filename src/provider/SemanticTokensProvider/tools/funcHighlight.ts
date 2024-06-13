@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
-import { getGroupAddFunc } from '../../../tools/Command/GroupAddTools';
+import { getGroupAddData } from '../../../tools/Command/GroupAddTools';
 import { getGuiFunc } from '../../../tools/Command/GuiTools';
 import { getHotkeyWrap } from '../../../tools/Command/HotkeyTools';
 import { getMenuFunc } from '../../../tools/Command/MenuTools';
@@ -44,7 +44,7 @@ function cmdFnHighlight(AhkTokenLine: TAhkTokenLine, Tokens: TSemanticTokensLeaf
 
     const Data: TScanData | null = getSetTimerWrap(AhkTokenLine)
         ?? getMenuFunc(AhkTokenLine)
-        ?? getGroupAddFunc(AhkTokenLine)
+        ?? getGroupAddData(AhkTokenLine, true)
         ?? getSortFunc(AhkTokenLine);
     if (Data === null) return 0;
 

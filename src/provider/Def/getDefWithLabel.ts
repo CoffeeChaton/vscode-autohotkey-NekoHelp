@@ -5,7 +5,7 @@ import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
 import { CMemo } from '../../tools/CMemo';
-import { getGroupAddFunc } from '../../tools/Command/GroupAddTools';
+import { getGroupAddData } from '../../tools/Command/GroupAddTools';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
 import { getHotkeyWrap } from '../../tools/Command/HotkeyTools';
 import { getMenuFunc } from '../../tools/Command/MenuTools';
@@ -22,7 +22,7 @@ type TLabelRefMsg = {
 function LabelRef_Hotkey_Menu_or_GroupAdd(AhkTokenLine: TAhkTokenLine): TLabelRefMsg | null {
     const Data: TScanData | null = getMenuFunc(AhkTokenLine)
         ?? getHotkeyWrap(AhkTokenLine)
-        ?? getGroupAddFunc(AhkTokenLine);
+        ?? getGroupAddData(AhkTokenLine, true);
     if (Data === null) return null;
 
     const { RawNameNew, lPos } = Data;
@@ -230,7 +230,7 @@ export function getDefWithLabel(
     const Data: TScanData | null = getHotkeyWrap(AhkTokenLine)
         ?? getMenuFunc(AhkTokenLine)
         ?? getSetTimerWrap(AhkTokenLine)
-        ?? getGroupAddFunc(AhkTokenLine); // don't find `Sort`
+        ?? getGroupAddData(AhkTokenLine, true); // don't find `Sort`
 
     if (ToUpCase(Data?.RawNameNew ?? '') === wordUpCase) return findLabelAll(wordUpCase);
 

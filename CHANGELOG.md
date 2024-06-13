@@ -16,6 +16,7 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#86](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/86)) `GroupName` completion
 - feat: ([#85](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/85)) `GroupAdd` has `label`
   1. gotoDef
   2. findAllRef
