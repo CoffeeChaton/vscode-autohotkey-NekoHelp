@@ -16,6 +16,12 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#85](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/85)) `GroupAdd` has `label`
+  1. gotoDef
+  2. findAllRef
+  3. hover
+  4. semantic-highlight
+
 - feat: ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82))
   1. add diag `code210` to avoid `if legacy` like `if a != b and 1 >0`
   2. use to fix `if a != b and 1 >0` semantic-highlight

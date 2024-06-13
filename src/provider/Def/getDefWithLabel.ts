@@ -5,6 +5,7 @@ import { pm } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
 import { CMemo } from '../../tools/CMemo';
+import { getGroupAddFunc } from '../../tools/Command/GroupAddTools';
 import { getGuiFunc } from '../../tools/Command/GuiTools';
 import { getHotkeyWrap } from '../../tools/Command/HotkeyTools';
 import { getMenuFunc } from '../../tools/Command/MenuTools';
@@ -18,24 +19,10 @@ type TLabelRefMsg = {
     range: vscode.Range,
 };
 
-function LabelRefHotkey(AhkTokenLine: TAhkTokenLine): TLabelRefMsg | null {
-    const HotkeyData: TScanData | null = getHotkeyWrap(AhkTokenLine);
-    if (HotkeyData === null) return null;
-
-    const { RawNameNew, lPos } = HotkeyData;
-    const { line } = AhkTokenLine;
-
-    return {
-        keyRawName: RawNameNew,
-        range: new vscode.Range(
-            new vscode.Position(line, lPos),
-            new vscode.Position(line, lPos + RawNameNew.length),
-        ),
-    };
-}
-
-function LabelRefMenu(AhkTokenLine: TAhkTokenLine): TLabelRefMsg | null {
-    const Data: TScanData | null = getMenuFunc(AhkTokenLine);
+function LabelRef_Hotkey_Menu_or_GroupAdd(AhkTokenLine: TAhkTokenLine): TLabelRefMsg | null {
+    const Data: TScanData | null = getMenuFunc(AhkTokenLine)
+        ?? getHotkeyWrap(AhkTokenLine)
+        ?? getGroupAddFunc(AhkTokenLine);
     if (Data === null) return null;
 
     const { RawNameNew, lPos } = Data;
@@ -144,7 +131,8 @@ const getLabelRefCoreMemo = new CMemo<TAhkFileData, TFileLabelRefMap>((AhkFileDa
             map.set(upName, arr);
             continue;
         }
-        const msg1: TLabelRefMsg | null = LabelRefHotkey(AhkTokenLine) ?? LabelRefMenu(AhkTokenLine);
+
+        const msg1: TLabelRefMsg | null = LabelRef_Hotkey_Menu_or_GroupAdd(AhkTokenLine);
         if (msg1 !== null) {
             const { keyRawName, range } = msg1;
             const upName: string = ToUpCase(keyRawName);
@@ -201,15 +189,6 @@ export function posAtLabelDef(
         : null;
 }
 
-/**
- * //TODO goto label
- *
- * ```ahk
- * GroupAdd, GroupName , WinTitle, WinText, Label, ExcludeTitle, ExcludeText
- *                                          ^
- * ;            ... The label is jumped to as though a Gosub had been used.
- * ```
- */
 export function getDefWithLabel(
     AhkFileData: TAhkFileData,
     position: vscode.Position,
@@ -250,7 +229,8 @@ export function getDefWithLabel(
 
     const Data: TScanData | null = getHotkeyWrap(AhkTokenLine)
         ?? getMenuFunc(AhkTokenLine)
-        ?? getSetTimerWrap(AhkTokenLine); // don't find `Sort`
+        ?? getSetTimerWrap(AhkTokenLine)
+        ?? getGroupAddFunc(AhkTokenLine); // don't find `Sort`
 
     if (ToUpCase(Data?.RawNameNew ?? '') === wordUpCase) return findLabelAll(wordUpCase);
 

@@ -141,8 +141,3 @@ export function deactive(): void {
     rmAllDiag();
     statusBarItem.hide(); // just .hide() not .dispose()
 }
-
-/*
-nls -> l10n https://code.visualstudio.com/updates/v1_72#_localization-as-part-of-the-api
-i18n https://github.com/microsoft/vscode-extension-samples/tree/main/i18n-sample
-*/
