@@ -741,6 +741,17 @@
                 }
             }
         ],
+        "configurationDefaults": {
+            "[ahk]": {
+                "editor.defaultFormatter": "cat1122.vscode-autohotkey-neko-help",
+                "files.encoding": "utf8bom",
+                "editor.quickSuggestions": {
+                    "other": "on",
+                    "comments": "off",
+                    "strings": "on"
+                }
+            }
+        },
         "grammars": [
             {
                 "language": "ahk",
