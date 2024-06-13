@@ -2,7 +2,7 @@
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "A_LoopRegType"
+        "google Translation progress": "A_Tab"
     },
     "body": [
         {
@@ -1362,7 +1362,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MM",
             "group": "Date",
             "doc": [
-                "Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`."
+                "当前 2 位数月份 （01-12）。 `A_Mon` or `A\\_Mon`."
             ]
         },
         {
@@ -1370,7 +1370,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MM",
             "group": "Date",
             "doc": [
-                "Current 2-digit month (01-12). Synonymous with `A_Mon` or `A_MM`."
+                "当前 2 位数月份 （01-12）。 `A_Mon` or `A\\_Mon`."
             ]
         },
         {
@@ -1378,7 +1378,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MMM",
             "group": "Date",
             "doc": [
-                "Current month's abbreviation in the current user's language, e.g. `Jul`"
+                "当前用户语言的当月缩写，例如 `Jul`"
             ]
         },
         {
@@ -1386,7 +1386,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MMMM",
             "group": "Date",
             "doc": [
-                "Current month's full name in the current user's language, e.g. `July`"
+                "当前用户语言的当月全名，例如 `July`"
             ]
         },
         {
@@ -1394,7 +1394,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MSec",
             "group": "Date",
             "doc": [
-                "Current 3-digit millisecond (000-999). To remove the leading zeros, follow this example:",
+                "当前 3 位毫秒 （000-999）。若要删除前导零，请按照以下示例操作：",
                 "",
                 "```ahk",
                 "    Milliseconds := A_MSec + 0.",
@@ -1406,7 +1406,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Min",
             "group": "Date",
             "doc": [
-                "Current 2-digit minute (00-59). "
+                "当前 2 位分钟 （00-59）。"
             ]
         },
         {
@@ -1414,7 +1414,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MouseDelay",
             "group": "Setting",
             "doc": [
-                "The current delay set by [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) (always decimal, not hex). A_MouseDelay is for the traditional SendEvent mode, whereas A_MouseDelayPlay is for [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail). A_MouseDelayPlay requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\")."
+                "[SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) 设置的当前延迟（始终为十进制，而不是十六进制）。A\\_MouseDelay 用于传统的 SendEvent 模式，而 A\\_MouseDelayPlay 用于 [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail)。A\\_MouseDelayPlay需要 [\\[v1.1.23+\\]。](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\")"
             ]
         },
         {
@@ -1422,7 +1422,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MouseDelay",
             "group": "Setting",
             "doc": [
-                "The current delay set by [SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) (always decimal, not hex). A_MouseDelay is for the traditional SendEvent mode, whereas A_MouseDelayPlay is for [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail). A_MouseDelayPlay requires [[v1.1.23+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\")."
+                "[SetMouseDelay](https://www.autohotkey.com/docs/v1/lib/SetMouseDelay.htm) 设置的当前延迟（始终为十进制，而不是十六进制）。A\\_MouseDelay 用于传统的 SendEvent 模式，而 A\\_MouseDelayPlay 用于 [SendPlay](https://www.autohotkey.com/docs/v1/lib/Send.htm#SendPlayDetail)。A\\_MouseDelayPlay需要 [\\[v1.1.23+\\]。](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\")"
             ]
         },
         {
@@ -1430,7 +1430,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#MyDocuments",
             "group": "OS",
             "doc": [
-                "The full path and name of the current user's \"My Documents\" folder. Unlike most of the similar variables, if the folder is the root of a drive, the final backslash is not included (e.g. it would contain `M:` rather than `M:\\`). For example:",
+                "当前用户的“我的文档”文件夹的完整路径和名称。与大多数类似的变量不同，如果文件夹是驱动器的根目录，则不包括最终的反斜杠 (is `M:` not `M:\\`). 例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_MyDocuments",
@@ -1443,9 +1443,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Now",
             "group": "Date",
             "doc": [
-                "The current local time in [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format.",
+                "[YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD)格式的当前本地时间。",
                 "",
-                "**Note**: Date and time math can be performed with [EnvAdd](https://www.autohotkey.com/docs/v1/lib/EnvAdd.htm) and [EnvSub](https://www.autohotkey.com/docs/v1/lib/EnvSub.htm). Also, [FormatTime](https://www.autohotkey.com/docs/v1/lib/FormatTime.htm) can format the date and/or time according to your locale or preferences."
+                "**注意：**可以使用 [EnvAdd](https://www.autohotkey.com/docs/v1/lib/EnvAdd.htm) 和 [EnvSub](https://www.autohotkey.com/docs/v1/lib/EnvSub.htm) 执行日期和时间数学运算。此外，[FormatTime](https://www.autohotkey.com/docs/v1/lib/FormatTime.htm) 可以根据您的区域设置或首选项设置日期和/或时间的格式。"
             ]
         },
         {
@@ -1453,7 +1453,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#NowUTC",
             "group": "Date",
             "doc": [
-                "The current Coordinated Universal Time (UTC) in [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) format. UTC is essentially the same as Greenwich Mean Time (GMT)."
+                "当前协调世界时 （UTC） 格式[YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD)。UTC 与格林威治标准时间 （GMT） 基本相同。"
             ]
         },
         {
@@ -1461,7 +1461,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#OSType",
             "group": "OS",
             "doc": [
-                "The type of operating system being run. Since AutoHotkey 1.1 only supports NT-based operating systems, this is always WIN32_NT. Older versions of AutoHotkey return WIN32_WINDOWS when run on Windows 95/98/ME."
+                "正在运行的操作系统的类型。由于 AutoHotkey 1.1 仅支持基于 NT 的操作系统，因此始终WIN32\\_NT。 在 Windows 95/98/ME 上运行时，旧版本的 AutoHotkey 返回WIN32\\_WINDOWS。"
             ]
         },
         {
@@ -1469,19 +1469,21 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#OSVersion",
             "group": "OS",
             "doc": [
-                "One of the following strings, if appropriate: WIN_7 [[requires v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \"Applies to:",
+                "以下字符串之一（如果适用）, WIN_7 [[requires v1.0.90+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \"Applies to:",
                 "AutoHotkey_L Revision 42 and later",
                 "AutoHotkey v1.0.90.00 and later\"), WIN_8 [[requires v1.1.08+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 \"Applies to AutoHotkey v1.1.08 and later\"), WIN_8.1 [[requires v1.1.15+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.15.00 \"Applies to AutoHotkey v1.1.15 and later\"), WIN_VISTA, WIN_2003, WIN_XP, WIN_2000.",
                 "",
-                "Applying compatibility settings in the AutoHotkey executable or compiled script's properties causes the OS to report a different version number, which is reflected by A_OSVersion.",
+                "在 AutoHotkey 可执行文件或已编译脚本的属性中应用兼容性设置会导致操作系统报告不同的版本号，这由 A_OSVersion 反映。",
                 "",
-                "[[v1.1.20+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 \"Applies to AutoHotkey v1.1.20 and later\") If the OS version is not recognized as one of those listed above, a string in the format \"major.minor.build\" is returned. For example, `10.0.14393` is Windows 10 build 14393, also known as version 1607.",
+                "[[v1.1.20+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.20.00 \"Applies to AutoHotkey v1.1.20 and later\") 如果操作系统版本未被识别为上面列出的版本之一，则格式为 \"major.minor.build\". ",
+                "例如， `10.0.14393` is Windows 10 build 14393, 也称为版本 1607.",
+                "`major.minor.build` -> `10.0.14393`",
                 "",
                 "```ahk",
-                "    ; This example is obsolete as these operating systems are no longer supported.",
-                "    if A_OSVersion in WIN_NT4,WIN_95,WIN_98,WIN_ME  ; Note: No spaces around commas.",
+                "    ; 由于这些操作系统不再受支持，因此此示例已过时。",
+                "    if A_OSVersion in WIN_NT4,WIN_95,WIN_98,WIN_ME  ; 注意：逗号周围没有空格。",
                 "    {",
-                "        MsgBox % \"This script requires Windows 2000/XP or later.\"",
+                "        MsgBox % \"该脚本需要Windows 2000/XP或更高版本。\"",
                 "        ExitApp",
                 "    }",
                 "```"
@@ -1492,7 +1494,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#PriorHotkey",
             "group": "Hotkeys",
             "doc": [
-                "Same as above except for the previous hotkey. It will be blank if none."
+                "与上述相同，除了前面的热键。如果没有，它将是空白的。"
             ]
         },
         {
@@ -1500,7 +1502,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#PriorKey",
             "group": "Hotkeys",
             "doc": [
-                "[[v1.1.01+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 \"Applies to AutoHotkey v1.1.01 and later\") The name of the last key which was pressed prior to the most recent key-press or key-release, or blank if no applicable key-press can be found in the key history. All input generated by AutoHotkey scripts is excluded. For this variable to be of use, the [keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) must be installed and [key history](https://www.autohotkey.com/docs/v1/lib/KeyHistory.htm) must be enabled."
+                "[\\[v1.1.01+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.01.00 \"Applies to AutoHotkey v1.1.01 and later\")：在最近一次按键或松开键之前按下的最后一个键的名称，如果在按键历史记录中找不到适用的按键，则为空。自动热键脚本生成的所有输入都将被排除在外。要使用此变量，必须安装[键盘](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm)或[鼠标钩](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)，并且必须启用[键历史记录](https://www.autohotkey.com/docs/v1/lib/KeyHistory.htm)。"
             ]
         },
         {
@@ -1508,15 +1510,15 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ProgramFiles",
             "group": "OS",
             "doc": [
-                "The Program Files directory (e.g. `C:\\Program Files` or `C:\\Program Files (x86)`). This is usually the same as the _ProgramFiles_ [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables).",
+                "Program Files 目录（例如 `C:\\Program Files` 或 `C:\\Program Files (x86)` ）。这通常与 _ProgramFiles_ [环境变量](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables)相同。",
                 "",
-                "- On [64-bit systems](https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS) (and not 32-bit systems), the following applies:",
+                "- 在 [64 位系统](https://www.autohotkey.com/docs/v1/Variables.htm#Is64bitOS)（而不是 32 位系统）上，以下情况适用：",
                 "",
-                "> - If the executable (EXE) that is running the script is 32-bit, A_ProgramFiles returns the path of the \"Program Files (x86)\" directory.",
-                "> - For 32-bit processes, the _ProgramW6432_ environment variable contains the path of the 64-bit Program Files directory. On Windows 7 and later, it is also set for 64-bit processes.",
-                "> - The _ProgramFiles(x86)_ environment variable contains the path of the 32-bit Program Files directory.",
+                "> - 如果运行脚本的可执行文件 （EXE） 是 32 位，则A\\_ProgramFiles返回“Program Files （x86）”目录的路径。",
+                "> - 对于 32 位进程，_ProgramW6432_ 环境变量包含 64 位 Program Files 目录的路径。在 Windows 7 及更高版本上，它还设置为 64 位进程。",
+                "> - _ProgramFiles（x86）_ 环境变量包含 32 位 Program Files 目录的路径。",
                 "",
-                "- [[v1.0.43.08+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes \"Applies to AutoHotkey v1.0.43.08 and later\"): The A_prefix may be omitted, which helps ease the transition to [#NoEnv](https://www.autohotkey.com/docs/v1/lib/_NoEnv.htm)."
+                "- [[v1.0.43.08+]](https://www.autohotkey.com/docs/v1/ChangeLogHelp.htm#Older_Changes \"Applies to AutoHotkey v1.0.43.08 and later\"): 可以省略A\\_前缀，这有助于轻松过渡到 [#NoEnv](https://www.autohotkey.com/docs/v1/lib/_NoEnv.htm)。"
             ]
         },
         {
@@ -1524,7 +1526,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Programs",
             "group": "OS",
             "doc": [
-                "The full path and name of the Programs folder in the current user's Start Menu. For example:",
+                "当前用户的“开始”菜单中“程序”文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_Programs",
@@ -1537,7 +1539,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ProgramsCommon",
             "group": "OS",
             "doc": [
-                "The full path and name of the Programs folder in the all-users Start Menu. For example:",
+                "所有用户的“开始”菜单中“程序”文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_ProgramsCommon",
@@ -1550,7 +1552,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#PtrSize",
             "group": "OS",
             "doc": [
-                "[[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \" Applies to:AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later\") Contains the size of a pointer, in bytes. This is either 4 (32-bit) or 8 (64-bit), depending on what type of executable (EXE) is running the script."
+                "[[v1.0.90+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \" Applies to:AutoHotkey_L Revision 42 and later AutoHotkey v1.0.90.00 and later\") 包含指针的大小（以字节为单位）。这是 4（32 位）或 8（64 位），具体取决于运行脚本的可执行文件 （EXE） 类型。"
             ]
         },
         {
@@ -1558,7 +1560,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#RegView",
             "group": "Setting",
             "doc": [
-                "[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 \"Applies to AutoHotkey v1.1.08 and later\") The current registry view as set by [SetRegView](https://www.autohotkey.com/docs/v1/lib/SetRegView.htm)."
+                "[[v1.1.08+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.08.00 \"Applies to AutoHotkey v1.1.08 and later\") [由 SetRegView](https://www.autohotkey.com/docs/v1/lib/SetRegView.htm) 设置的当前注册表视图。"
             ]
         },
         {
@@ -1566,7 +1568,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ScreenDPI",
             "group": "OS",
             "doc": [
-                "Number of pixels per logical inch along the screen width. In a system with multiple display monitors, this value is the same for all monitors. On most systems this is 96; it depends on the system's text size (DPI) setting. See also [Gui -DPIScale](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)."
+                "沿屏幕宽度的每逻辑英寸像素数。在具有多个显示监视器的系统中，此值对于所有监视器都是相同的。在大多数系统上，这是 96;这取决于系统的文本大小 （DPI） 设置。另请参阅 [Gui -DPIScale](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DPIScale)。"
             ]
         },
         {
@@ -1574,16 +1576,18 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Screen",
             "group": "OS",
             "doc": [
-                "The width and height of the primary monitor, in pixels (e.g. 1024 and 768).",
+                "主显示器的宽度和高度，以像素为单位（例如 1024 和 768）。",
                 "",
-                "To discover the dimensions of other monitors in a multi-monitor system, use [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm).",
+                "要发现多显示器系统中其他显示器的尺寸，请使用 [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm)。",
                 "",
-                "To instead discover the width and height of the entire desktop (even if it spans multiple monitors), use the following example:",
+                "若要改为发现整个桌面的宽度和高度（即使它跨越多个显示器），请使用以下示例：",
                 "",
-                "[SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm), VirtualWidth, 78",
-                "[SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm), VirtualHeight, 79",
+                "```ahk",
+                "SysGet, VirtualWidth, 78",
+                "SysGet, VirtualHeight, 79",
+                "```",
                 "",
-                "In addition, use [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) to discover the work area of a monitor, which can be smaller than the monitor's total area because the taskbar and other registered desktop toolbars are excluded."
+                "此外，使用 [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) 发现监视器的工作区域，该工作区域可能小于监视器的总区域，因为任务栏和其他已注册的桌面工具栏被排除在外。"
             ]
         },
         {
@@ -1591,16 +1595,18 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Screen",
             "group": "OS",
             "doc": [
-                "The width and height of the primary monitor, in pixels (e.g. 1024 and 768).",
+                "主显示器的宽度和高度，以像素为单位（例如 1024 和 768）。",
                 "",
-                "To discover the dimensions of other monitors in a multi-monitor system, use [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm).",
+                "要发现多显示器系统中其他显示器的尺寸，请使用 [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm)。",
                 "",
-                "To instead discover the width and height of the entire desktop (even if it spans multiple monitors), use the following example:",
+                "若要改为发现整个桌面的宽度和高度（即使它跨越多个显示器），请使用以下示例：",
                 "",
-                "[SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm), VirtualWidth, 78",
-                "[SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm), VirtualHeight, 79",
+                "```ahk",
+                "SysGet, VirtualWidth, 78",
+                "SysGet, VirtualHeight, 79",
+                "```",
                 "",
-                "In addition, use [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) to discover the work area of a monitor, which can be smaller than the monitor's total area because the taskbar and other registered desktop toolbars are excluded."
+                "此外，使用 [SysGet](https://www.autohotkey.com/docs/v1/lib/SysGet.htm) 发现监视器的工作区域，该工作区域可能小于监视器的总区域，因为任务栏和其他已注册的桌面工具栏被排除在外。"
             ]
         },
         {
@@ -1608,7 +1614,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ScriptDir",
             "group": "Script",
             "doc": [
-                "The full path of the directory where the current script is located. The final backslash is omitted (even for root directories)."
+                "当前脚本所在目录的完整路径。省略了最后一个反斜杠（即使对于根目录也是如此）。"
             ]
         },
         {
@@ -1616,8 +1622,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ScriptFullPath",
             "group": "Script",
             "doc": [
-                "The full path of the current script, e.g. `C:\\Scripts\\My Script.ahk`",
-                "- If the script is [compiled](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) or [embedded](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts), this is the full path of the current executable file."
+                "当前脚本的完整路径，例如 `C:\\Scripts\\My Script.ahk`",
+                "",
+                "如果脚本已[编译](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe)或[嵌入](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts)，则这是当前可执行文件的完整路径。"
             ]
         },
         {
@@ -1625,7 +1632,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ScriptHwnd",
             "group": "Script",
             "doc": [
-                "The unique ID (HWND/handle) of the script's hidden [main window](https://www.autohotkey.com/docs/v1/Program.htm#main-window)."
+                "脚本隐藏[主窗口](https://www.autohotkey.com/docs/v1/Program.htm#main-window)的唯一 ID （HWND/句柄）。"
             ]
         },
         {
@@ -1633,8 +1640,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ScriptName",
             "group": "Script",
             "doc": [
-                "The file name of the current script, without its path, e.g. `MyScript.ahk`",
-                "- If the script is [compiled](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) or [embedded](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts), this is the name of the current executable file."
+                "当前脚本的文件名，不带其路径，例如 `MyScript.ahk`",
+                "",
+                "如果脚本已[编译](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe)或[嵌入](https://www.autohotkey.com/docs/v1/Program.htm#embedded-scripts)，则这是当前可执行文件的名称。"
             ]
         },
         {
@@ -1642,7 +1650,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Sec",
             "group": "Date",
             "doc": [
-                "Current 2-digit second (00-59)."
+                "当前 2 位秒 （00-59）。"
             ]
         },
         {
@@ -1650,7 +1658,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#SendLevel",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current [SendLevel](https://www.autohotkey.com/docs/v1/lib/SendLevel.htm) setting (an integer between 0 and 100, inclusive)."
+                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") 当前 [SendLevel](https://www.autohotkey.com/docs/v1/lib/SendLevel.htm) 设置（包括 0 和 100 之间的整数）。"
             ]
         },
         {
@@ -1658,7 +1666,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#SendMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (Event, Input, Play or InputThenPlay) set by [SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm)."
+                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\")[SendMode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) 设置的当前模式（Event、Input、Play 或 InputThenPlay）。"
             ]
         },
         {
@@ -1666,7 +1674,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Space",
             "group": "Spec",
             "doc": [
-                "This variable contains a single space character. See [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) for details."
+                "此变量包含单个空格字符。有关详细信息，请参阅 [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm)。"
             ]
         },
         {
@@ -1674,7 +1682,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#StartMenu",
             "group": "OS",
             "doc": [
-                "The full path and name of the current user's Start Menu folder. For example:",
+                "当前用户的“开始”菜单文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_StartMenu",
@@ -1687,7 +1695,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#StartMenuCommon",
             "group": "OS",
             "doc": [
-                "The full path and name of the all-users Start Menu folder. For example:",
+                "所有用户的“开始”菜单文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_StartMenuCommon",
@@ -1700,7 +1708,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Startup",
             "group": "OS",
             "doc": [
-                "The full path and name of the Startup folder in the current user's Start Menu. For example:",
+                "当前用户的“开始”菜单中“启动”文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_Startup",
@@ -1713,7 +1721,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#StartupCommon",
             "group": "OS",
             "doc": [
-                "The full path and name of the Startup folder in the all-users Start Menu. For example:",
+                "所有用户的“开始”菜单中“启动”文件夹的完整路径和名称。例如：",
                 "",
                 "```ahk",
                 "    MsgBox % A_StartupCommon",
@@ -1726,7 +1734,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#StoreCapslockMode",
             "group": "Setting",
             "doc": [
-                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") The current mode (On or Off) set by [SetStoreCapsLockMode](https://www.autohotkey.com/docs/v1/lib/SetStoreCapslockMode.htm)."
+                "[[v1.1.23+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.23.00 \"Applies to AutoHotkey v1.1.23 and later\") [SetStoreCapsLockMode](https://www.autohotkey.com/docs/v1/lib/SetStoreCapsLockMode.htm) 设置的当前模式（开或关）。"
             ]
         },
         {
@@ -1734,7 +1742,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#StringCaseSense",
             "group": "Setting",
             "doc": [
-                "The current mode (`On, Off, or Locale`) set by [StringCaseSense](https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm)."
+                "设置的当前模式 (`On, Off, or Locale`) set by [StringCaseSense](https://www.autohotkey.com/docs/v1/lib/StringCaseSense.htm)."
             ]
         },
         {
@@ -1742,7 +1750,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Tab",
             "group": "Spec",
             "doc": [
-                "This variable contains a single tab character. See [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm) for details."
+                "此变量包含单个制表符。有关详细信息，请参阅 [AutoTrim](https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm)。"
             ]
         },
         {
