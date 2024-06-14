@@ -16,6 +16,7 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- fix: hover `VBA++`
 - feat: ([#88](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/88)) add new folding pairs
 
   | Language              | Start region            | End region                    |

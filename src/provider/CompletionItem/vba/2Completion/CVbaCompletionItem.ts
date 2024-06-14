@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 export class CVbaCompletionItem extends vscode.CompletionItem {
     declare public readonly detail: 'by-neko-help (VBA-ex)';
 
-    declare public readonly label: string;
+    declare public readonly label: vscode.CompletionItemLabel;
 
     declare public readonly description: 'VBA';
 

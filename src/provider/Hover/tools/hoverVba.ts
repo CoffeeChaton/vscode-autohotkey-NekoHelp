@@ -4,6 +4,7 @@ import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine, TTokenStream } from '../../../globalEnum';
 import { getDAWithPos } from '../../../tools/DeepAnalysis/getDAWithPos';
 import { setVarTrackRange } from '../../CompletionItem/classThis/wrapClass';
+import type { CVbaCompletionItem } from '../../CompletionItem/vba/2Completion/CVbaCompletionItem';
 import type { TVbaDataLast } from '../../CompletionItem/vba/valTrackFn';
 import { valTrackAllowFnCall } from '../../CompletionItem/vba/valTrackFn';
 import { vbaCompletionDeep1 } from '../../CompletionItem/vba/vbaCompletion';
@@ -37,8 +38,9 @@ export function hoverVba(
     if (data === null) return null;
 
     let s = '';
-    for (const v of vbaCompletionDeep1(data)) {
-        if (wordLast === v.label.toUpperCase()) {
+    const list: CVbaCompletionItem[] = vbaCompletionDeep1(data);
+    for (const v of list) {
+        if (wordLast === v.label.label.toUpperCase()) {
             s += v.documentation.value;
         }
     }
