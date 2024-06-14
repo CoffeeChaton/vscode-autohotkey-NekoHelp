@@ -85,5 +85,18 @@
     "VBA.md.search.it.txt": "search it in m$",
     "VBA.md.search.it.uri": "https://learn.microsoft.com/en-us/search/?terms=",
     "VBA.md.goto.doc.txt": "goto doc in m$",
-    "VBA.md.goto.doc.uri": "https://learn.microsoft.com/en-us/office/vba/api/"
+    "VBA.md.goto.doc.uri": "https://learn.microsoft.com/en-us/office/vba/api/",
+    "about.code.folding": [
+        "- [about code folding](https://code.visualstudio.com/docs/editor/codebasics#_folding)",
+        "- [neko help #88](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/88)",
+        "```ahk",
+        ";#MARK: text",
+        "",
+        ";#region",
+        ";#endregion",
+        "",
+        ";[region]",
+        ";[endregion]",
+        "```"
+    ]
 }

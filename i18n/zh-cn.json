@@ -85,5 +85,18 @@
     "VBA.md.search.it.txt": "搜寻微软文档",
     "VBA.md.search.it.uri": "https://learn.microsoft.com/zh-cn/search/?terms=",
     "VBA.md.goto.doc.txt": "阅读微软文档",
-    "VBA.md.goto.doc.uri": "https://learn.microsoft.com/zh-cn/office/vba/api/"
+    "VBA.md.goto.doc.uri": "https://learn.microsoft.com/zh-cn/office/vba/api/",
+    "about.code.folding": [
+        "- [关于代码折叠](https://code.visualstudio.com/docs/editor/codebasics#_folding)",
+        "- [neko help #88](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/88)",
+        "```ahk",
+        ";#MARK: text",
+        "",
+        ";#region",
+        ";#endregion",
+        "",
+        ";[region]",
+        ";[endregion]",
+        "```"
+    ]
 }

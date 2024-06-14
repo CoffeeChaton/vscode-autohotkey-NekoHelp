@@ -41,6 +41,7 @@ import { hoverMenuParam } from './tools/hoverMenuParam';
 import { hoverMethod } from './tools/hoverMethod';
 import { hoverMsgBoxMagicNumber } from './tools/hoverMsgBoxMagicNumber';
 import { hoverMultiLine } from './tools/hoverMultiLine';
+import { hoverRegion } from './tools/hoverRegion';
 import { hoverSysGetParam } from './tools/hoverSysGetParam';
 import { hoverVba } from './tools/hoverVba';
 import { hoverWinGetParam } from './tools/hoverWinGetParam';
@@ -88,7 +89,9 @@ function HoverProviderCore(
     // pos at Comment range...
     const AhkTokenLine: TAhkTokenLine = DocStrMap[position.line];
     const { lStr } = AhkTokenLine;
-    if (position.character > lStr.length) return hoverAhk2exe(AhkTokenLine, position);
+    if (position.character > lStr.length) {
+        return hoverAhk2exe(AhkTokenLine, position) ?? hoverRegion(AhkTokenLine, position);
+    }
 
     // ex: #Warn
     const DirectivesMd: vscode.Hover | null = hoverDirectives(position, AhkTokenLine, AhkFileData)

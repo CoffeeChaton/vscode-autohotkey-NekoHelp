@@ -30,6 +30,7 @@ import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
 import { completionsJsDocTag } from './ahkDoc/jsDocTagNames';
 import { wrapClass } from './classThis/wrapClass';
 import { getCommentCompletion } from './commentCompletion/getCommentCompletion';
+import { getRegionCompletion } from './commentCompletion/getRegionCompletion';
 import { CompletionUserDefFuncClass } from './CompletionUserDef/CompletionUserDefFuncClass';
 import { DeepAnalysisToCompletionItem } from './DA/DeepAnalysisToCompletionItem';
 import { getDllCallCompletion } from './DllCall/DllCall';
@@ -105,55 +106,59 @@ function CompletionItemCore(
         return completions; //
     }
 
-    if (!detail.includes(EDetail.inComment)) {
-        const justMenuName: vscode.CompletionItem[] = getMenuNameCompletion(AhkFileData, AhkTokenLine, position);
-        if (justMenuName.length > 0) return justMenuName;
-        const ahk_group: vscode.CompletionItem[] | null = ahk_group_completion(AhkTokenLine, position);
-        if (ahk_group !== null) return ahk_group;
+    if (detail.includes(EDetail.inComment)) {
+        return [...getRegionCompletion(document, position)];
+    }
 
+    // ----
+    const justMenuName: vscode.CompletionItem[] = getMenuNameCompletion(AhkFileData, AhkTokenLine, position);
+    if (justMenuName.length > 0) return justMenuName;
+    const ahk_group: vscode.CompletionItem[] | null = ahk_group_completion(AhkTokenLine, position);
+    if (ahk_group !== null) return ahk_group;
+    // ---
+
+    completions.push(
+        ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
+        ...wrapVba2Completion(position, textRaw, lStr, AhkFileData, DA), // '.'
+        ...getSnipAhkSend(AhkFileData, position), // '{'
+        ...getSnipDirectives(subStr), // #warn
+        ...getSnipDeclaration(lStr), // local
+        ...getSnipCmd(subStr, AhkTokenLine), // MsgBox
+        ...getSnipSubCmd(subStr, AhkTokenLine), // Gui..
+        ...getSnipGlobalVal(AhkTokenLine, position),
+        ...getSnipFocEx(subStr),
+        ...getSnipOtherKeyWord(subStr),
+        ...getSnipMouseKeyboard(subStr),
+        ...getSnipCLSID(AhkTokenLine, position, context),
+        ...getDllCallCompletion(AhkFileData, position),
+        ...getComObjActiveCompletion(AhkFileData, position, document, context),
+        ...getNormalPathCompletion(document.uri, position, AhkTokenLine, context),
+    );
+
+    if (PartStr !== null) {
         completions.push(
-            ...wrapClass(position, textRaw, lStr, topSymbol, AhkFileData, DA), // '.'
-            ...wrapVba2Completion(position, textRaw, lStr, AhkFileData, DA), // '.'
-            ...getSnipAhkSend(AhkFileData, position), // '{'
-            ...getSnipDirectives(subStr), // #warn
-            ...getSnipDeclaration(lStr), // local
-            ...getSnipCmd(subStr, AhkTokenLine), // MsgBox
-            ...getSnipSubCmd(subStr, AhkTokenLine), // Gui..
-            ...getSnipGlobalVal(AhkTokenLine, position),
-            ...getSnipFocEx(subStr),
-            ...getSnipOtherKeyWord(subStr),
-            ...getSnipMouseKeyboard(subStr),
-            ...getSnipCLSID(AhkTokenLine, position, context),
-            ...getDllCallCompletion(AhkFileData, position),
-            ...getComObjActiveCompletion(AhkFileData, position, document, context),
-            ...getNormalPathCompletion(document.uri, position, AhkTokenLine, context),
+            ...getSnipModuleVar(ModuleVar, DA, PartStr, document.uri.fsPath),
+            ...CompletionUserDefFuncClass(subStr, AhkFileData),
         );
 
-        if (PartStr !== null) {
+        if (DA !== null) {
+            completions.push(...DeepAnalysisToCompletionItem(DA, PartStr));
+        }
+
+        if ((/^\w+$/u).test(PartStr)) {
+            // built in just has ascii
             completions.push(
-                ...getSnipModuleVar(ModuleVar, DA, PartStr, document.uri.fsPath),
-                ...CompletionUserDefFuncClass(subStr, AhkFileData),
+                ...getSnippetStartWihA(PartStr),
+                ...getSnippetWinTitleParam(PartStr),
+                ...getSnippetFoc(PartStr, fistWordUp, AhkTokenLine),
+                ...getSnippetWinMsg(PartStr),
+                ...getSnipBiVar(PartStr),
+                ...BuiltInFunc2Completion(PartStr),
+                ...getSnipStartJoy(PartStr),
+                ...getSnipStartNum(PartStr), // Numpad6
+                ...getSnipStartF(PartStr), // F1 - F24
+                ...getSnippetOperator(PartStr), // AND or
             );
-
-            if (DA !== null) {
-                completions.push(...DeepAnalysisToCompletionItem(DA, PartStr));
-            }
-
-            if ((/^\w+$/u).test(PartStr)) {
-                // built in just has ascii
-                completions.push(
-                    ...getSnippetStartWihA(PartStr),
-                    ...getSnippetWinTitleParam(PartStr),
-                    ...getSnippetFoc(PartStr, fistWordUp, AhkTokenLine),
-                    ...getSnippetWinMsg(PartStr),
-                    ...getSnipBiVar(PartStr),
-                    ...BuiltInFunc2Completion(PartStr),
-                    ...getSnipStartJoy(PartStr),
-                    ...getSnipStartNum(PartStr), // Numpad6
-                    ...getSnipStartF(PartStr), // F1 - F24
-                    ...getSnippetOperator(PartStr), // AND or
-                );
-            }
         }
     }
 
@@ -171,6 +176,10 @@ export const CompletionItemProvider: vscode.CompletionItemProvider = {
         if (context.triggerCharacter === '@') {
             const commentCompletion: vscode.CompletionItem[] | null = getCommentCompletion(document, position);
             if (commentCompletion !== null) return commentCompletion;
+        }
+        if (context.triggerCharacter === '#') {
+            const commentCompletion: vscode.CompletionItem[] = getRegionCompletion(document, position);
+            if (commentCompletion.length > 0) return commentCompletion;
         }
         return CompletionItemCore(document, position, context);
     },

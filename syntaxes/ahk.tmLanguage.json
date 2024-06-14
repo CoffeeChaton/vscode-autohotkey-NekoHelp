@@ -362,7 +362,7 @@
         },
         "comment_region": {
             "name": "comment.line.region.ahk",
-            "match": "^[ \\t]*;\\s*(\\[(?:end|End)?(?:region|Region)\\]|#(?:end|End)?(?:region|Region)\\b|MARK:)\\s*(.*)?",
+            "match": "^[ \\t]*;\\s*(\\[(?:end|End)?(?:region|Region)\\]|#(?:end|End)?(?:region|Region)\\b|(?:#\\s*)?MARK:)\\s*(.*)?",
             "captures": {
                 "1": { "name": "comment.line.region.head.ahk" },
                 "2": { "name": "comment.line.region.text.ahk" }
