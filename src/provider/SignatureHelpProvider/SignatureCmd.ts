@@ -5,16 +5,20 @@ import type { TAhkTokenLine } from '../../globalEnum';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
 import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
 import { CMemo } from '../../tools/CMemo';
+import { enumLog } from '../../tools/enumErr';
 import { SignatureCmdOverloadMap } from './SignatureCmdOverload';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function signToText(sign: 'E' | 'I' | 'O' | 'S') {
-    if (sign === 'S') return '[**Text**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
-    if (sign === 'E') return '[**Number**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
-    if (sign === 'O') {
-        return '[**OutputVar**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+function signToText(sign: 'E' | 'I' | 'O' | 'S'): `[**${string}` {
+    // dprint-ignore
+    switch (sign) {
+        case 'E': return '[**Number**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+        case 'I': return '[**InputVar**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+        case 'O': return '[**OutputVar**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+        case 'S': return '[**Text**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
+        default:
+            enumLog(sign, 'signToText');
+            return '[**Text**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
     }
-    return '[**InputVar**](https://www.autohotkey.com/docs/v1/Language.htm#commands)\n';
 }
 
 type TCmdSign = Readonly<{

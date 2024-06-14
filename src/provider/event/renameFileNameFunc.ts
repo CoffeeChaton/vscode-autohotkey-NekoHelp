@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
-import * as path from 'node:path';
 import * as vscode from 'vscode';
 import { collectInclude } from '../../command/tools/collectInclude';
 import type { TAhkFileData } from '../../core/ProjectManager';
+import { ToUpCase } from '../../tools/str/ToUpCase';
 import { log } from '../vscWindows/log';
 
 export async function renameFileNameFunc(
@@ -10,43 +10,45 @@ export async function renameFileNameFunc(
     newUri: vscode.Uri,
     AhkFileDataList: TAhkFileData[],
 ): Promise<null> {
-    const oldFile: string = path.basename(oldUri.fsPath);
-    const newFile: string = path.basename(newUri.fsPath);
+    const logList: string[] = [`"${oldUri.fsPath}" -> "${newUri.fsPath}" ("AhkNekoHelp.event.FileRenameEvent" : 2)`];
 
-    const logList: string[] = [`"${oldFile}" -> "${newFile}" ("AhkNekoHelp.event.FileRenameEvent" : 2)`];
-
-    if (oldFile === newFile) {
+    if (oldUri.fsPath === newUri.fsPath) {
         // just move file...how show i do?
         log.info(logList.join('\n'));
         return null;
     }
 
-    const oldFileName: string = oldFile.replace(/.ah[k1]$/iu, '');
-    const re = new RegExp(`(?<=^|[/\\\\<])${oldFileName}$`, 'iu');
+    const oldPath: string = ToUpCase(oldUri.fsPath.replaceAll('/', '\\'));
 
+    const uriList: vscode.Uri[] = [];
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
-    for (const { DocStrMap, uri, AST } of AhkFileDataList) {
+    for (const { uri, AST } of AhkFileDataList) {
         for (const ahkInclude of collectInclude(AST)) {
-            //
-            const { path1, range } = ahkInclude;
-            const tryRemoveComment: string = path1
-                .replace(/[ \t];.*$/u, '')
-                .trim()
-                .replace(/\.ah[k1]>?$/iu, '')
-                .trim();
+            const {
+                range,
+                rawData,
+                isIncludeAgain,
+                IgnoreErrors,
+            } = ahkInclude;
+            const { mayPath } = rawData;
 
-            if (re.test(tryRemoveComment)) {
-                const { line } = range.start;
-                const { textRaw } = DocStrMap[line];
+            if (oldPath !== ToUpCase(mayPath)) continue;
 
-                const Remarks = `    ;; ${oldFile} -> ${newFile} ;; at ${new Date().toISOString()} ;;    `;
-                const head: string = textRaw.replace(path1, '');
-                const newText: string = head + path1.replace(oldFile, newFile) + Remarks;
-                //
-                const newPos: vscode.Position = new vscode.Position(line, 0);
-                edit.insert(uri, newPos, newText);
-                logList.push(`    auto edit "${uri.fsPath}" line ${line + 1}`);
-            }
+            const { line, character } = range.start;
+            const Remarks = `"${oldUri.fsPath}" -> "${newUri.fsPath}" ;; at ${new Date().toISOString()}`;
+
+            const head = isIncludeAgain
+                ? '#IncludeAgain'
+                : '#Include';
+            const i_flag = IgnoreErrors
+                ? ' *i'
+                : '';
+            const a_space = ' ';
+            const newText = `${head}${i_flag}${a_space}${newUri.fsPath} ; ${Remarks} ;`;
+            const newPos: vscode.Position = new vscode.Position(line, character);
+            edit.insert(uri, newPos, newText);
+            logList.push(`    auto edit "${uri.fsPath}" line ${line + 1}`);
+            uriList.push(uri);
         }
     }
 
@@ -57,5 +59,6 @@ export async function renameFileNameFunc(
 
     log.info(logList.join('\n'));
     await vscode.workspace.applyEdit(edit);
+    await Promise.all(uriList.map((uri: vscode.Uri) => vscode.window.showTextDocument(uri)));
     return null;
 }

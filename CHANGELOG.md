@@ -16,6 +16,18 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
+  > youtube <https://youtu.be/mV6ziP7Vt_M>
+
+  ```jsonc
+  // settings.json
+  {
+      "AhkNekoHelp.event.FileRenameEvent": 2 // Alpha test options
+  }
+  ```
+
+  support one file move event, and auto fix `#Include`
+
 - feat: ([#87](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/87)) auto `utf8bom` and `quickSuggestions` in string.
 - feat: ([#86](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/86)) `GroupName` completion
 - feat: ([#85](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/85)) `GroupAdd` has `label`
@@ -26,7 +38,7 @@
 
 - feat: ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82))
   1. add diag `code210` to avoid `if legacy` like `if a != b and 1 >0`
-  2. use to fix `if a != b and 1 >0` semantic-highlight
+  2. fix `if a != b and 1 >0` semantic-highlight
   3. add diag `code209`, [info] always use `if ()` or `if !()` style, not allow If (Expression) variants
 
   ```ahk

@@ -291,7 +291,9 @@ export class CAhkInclude extends vscode.DocumentSymbol {
 
     public readonly hashtag = 'INCLUDE'; //
 
-    public readonly IgnoreErrors: boolean;
+    public readonly isIncludeAgain: boolean; // #include / or #includeAgain
+
+    public readonly IgnoreErrors: boolean; // has "*i" of "#Include *i SpecialOptions.ahk"
 
     public readonly uri: vscode.Uri;
 
@@ -317,6 +319,7 @@ export class CAhkInclude extends vscode.DocumentSymbol {
         super(name, '', vscode.SymbolKind.Module, range, selectionRange);
         this.uri = uri;
 
+        this.isIncludeAgain = (/^\s*#includeAgain\s/iu).test(name);
         const path0: string = name.replace(/^\s*#include(?:Again)?\s/iu, '').trim();
         this.IgnoreErrors = (/^\*i\s/iu).test(path0); //  For example: #Include *i SpecialOptions.ahk
         const path1: string = textRaw
