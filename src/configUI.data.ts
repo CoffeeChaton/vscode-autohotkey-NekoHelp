@@ -10,7 +10,7 @@ export const enum ECommandOption {
 }
 
 export const enum EFileRenameEvent {
-    // AJustLog = 0,
+    AJustLog = 0,
     BLogAndShow = 1,
     CTryRename = 2,
 }

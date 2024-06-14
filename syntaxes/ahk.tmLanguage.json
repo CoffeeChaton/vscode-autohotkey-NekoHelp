@@ -360,6 +360,14 @@
                 }
             ]
         },
+        "comment_region": {
+            "name": "comment.line.region.ahk",
+            "match": "^[ \\t]*;\\s*(\\[(?:end|End)?(?:region|Region)\\]|#(?:end|End)?(?:region|Region)\\b|MARK:)\\s*(.*)?",
+            "captures": {
+                "1": { "name": "comment.line.region.head.ahk" },
+                "2": { "name": "comment.line.region.text.ahk" }
+            }
+        },
         "inline_tags": {
             "patterns": [
                 {
@@ -641,6 +649,7 @@
             "patterns": [
                 { "include": "#comment_neko_help_ignore" },
                 { "include": "#comment_ahk2exe" },
+                { "include": "#comment_region" },
                 {
                     "captures": {
                         "1": { "name": "other.customize.keyword.comment.ahk2exe.ahk" },
@@ -666,7 +675,8 @@
                     "patterns": [
                         { "include": "#docblock" },
                         { "include": "#comment_neko_help_ignore" },
-                        { "include": "#comment_ahk2exe" }
+                        { "include": "#comment_ahk2exe" },
+                        { "include": "#comment_region" }
                     ]
                 },
                 {
@@ -676,7 +686,8 @@
                     "name": "comment.block.ahk",
                     "patterns": [
                         { "include": "#comment_neko_help_ignore" },
-                        { "include": "#comment_ahk2exe" }
+                        { "include": "#comment_ahk2exe" },
+                        { "include": "#comment_region" }
                     ]
                 },
                 {
@@ -689,7 +700,8 @@
                     "name": "comment.block.ahk",
                     "patterns": [
                         { "include": "#comment_neko_help_ignore" },
-                        { "include": "#comment_ahk2exe" }
+                        { "include": "#comment_ahk2exe" },
+                        { "include": "#comment_region" }
                     ]
                 },
                 {
@@ -698,7 +710,8 @@
                     "name": "comment.block.ahk",
                     "patterns": [
                         { "include": "#comment_neko_help_ignore" },
-                        { "include": "#comment_ahk2exe" }
+                        { "include": "#comment_ahk2exe" },
+                        { "include": "#comment_region" }
                     ]
                 }
             ]

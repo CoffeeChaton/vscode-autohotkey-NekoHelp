@@ -75,8 +75,8 @@
     ],
     "folding": {
         "markers": {
-            "start": "^\\s*;\\s*\\[(?:Region|region)\\]", // /*
-            "end": "^\\s*;\\s*\\[(?:end|End)(?:Region|region)\\]" // */
+            "start": "^\\s*;\\s*(?:\\[(?:region|Region)\\]|#(?:region|Region)\\b)", // ;#region or ;[region]
+            "end": "^\\s*;\\s*(?:\\[(?:end|End)(?:region|Region)\\]|#(?:end|End)(?:region|Region)\\b)" // ;#endregion or ;[endregion]
         }
     },
     "onEnterRules": [

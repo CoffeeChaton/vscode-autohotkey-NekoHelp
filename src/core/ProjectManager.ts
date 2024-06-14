@@ -1,5 +1,3 @@
-/* eslint-disable max-lines-per-function */
-/* eslint-disable max-depth */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as vscode from 'vscode';
@@ -69,7 +67,7 @@ export const pm = {
     },
 
     async renameFiles(e: vscode.FileRenameEvent): Promise<void> {
-        const eventMsg: string[] = e.files
+        const eventMsg: readonly string[] = e.files
             .filter(({ oldUri, newUri }): boolean => isAhk(oldUri.fsPath) || isAhk(newUri.fsPath))
             .map((
                 { oldUri, newUri },
@@ -78,8 +76,6 @@ export const pm = {
 
         if (eventMsg.length === 0) return;
 
-        for (const doc of await Promise.all(renameFileNameBefore(e))) pm.updateDocDef(doc);
-
         log.info([
             '> ["FileRenameEvent"] -> "please check #Include"',
             '[',
@@ -87,18 +83,32 @@ export const pm = {
             ']',
         ].join('\n'));
 
-        const isAutoRename: EFileRenameEvent = getConfig().event; // fo();
-        if (isAutoRename === EFileRenameEvent.CTryRename) {
-            const AhkFileDataList: TAhkFileData[] = pm.getDocMapValue();
+        const eventConfig: EFileRenameEvent = getConfig().event; // fo();
+        if (eventConfig === EFileRenameEvent.AJustLog || eventConfig === EFileRenameEvent.BLogAndShow) {
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
+            for (const doc of await Promise.all(renameFileNameBefore(e))) pm.updateDocDef(doc);
+            if (eventConfig === EFileRenameEvent.BLogAndShow) {
+                log.show();
+            }
+        }
+
+        if (eventConfig === EFileRenameEvent.CTryRename) {
             for (const { oldUri, newUri } of e.files) {
-                if (isAhk(oldUri.fsPath) && isAhk(newUri.fsPath)) { // else EXP : let a.ahk -> a.ahk0 or a.0ahk
+                // eslint-disable-next-line @typescript-eslint/no-use-before-define
+                if (isAhk(oldUri.fsPath)) delOldCache(oldUri);
+
+                // eslint-disable-next-line no-await-in-loop
+                if (isAhk(newUri.fsPath)) pm.updateDocDef(await vscode.workspace.openTextDocument(newUri));
+
+                // else EXP : let a.ahk -> a.ahk0 or a.0ahk
+                if (isAhk(oldUri.fsPath) && isAhk(newUri.fsPath)) {
+                    const AhkFileDataList: TAhkFileData[] = pm.getDocMapValue();
+
                     // eslint-disable-next-line no-await-in-loop
                     await renameFileNameFunc(oldUri, newUri, AhkFileDataList);
                 }
             }
 
-            log.show();
-        } else if (isAutoRename === EFileRenameEvent.BLogAndShow) {
             log.show();
         }
     },

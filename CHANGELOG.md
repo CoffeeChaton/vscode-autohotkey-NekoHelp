@@ -16,6 +16,24 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: ([#88](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/88)) add new folding pairs
+
+  | Language              | Start region            | End region                    |
+  | --------------------- | ----------------------- | ----------------------------- |
+  | C#                    | `#region`               | `#endregion`                  |
+  | Coffeescript          | `#region`               | `#endregion`                  |
+  | PHP                   | `#region`               | `#endregion`                  |
+  | PowerShell            | `#region`               | `#endregion`                  |
+  | Python                | `#region` or `# region` | `#endregion` or `# endregion` |
+  | TypeScript/JavaScript | `//#region`             | `//#endregion`                |
+  | ---                   | ---                     | ---                           |
+  | ahk (old)             | `;[region]`             | `;[endregion]`                |
+  | ahk (new)             | `;#region`              | `;#endregion`                 |
+
+  > <https://code.visualstudio.com/docs/editor/codebasics#_folding>
+
+  Added new folding pairs, more like other common languages, to reduce the cost of switching to ahk
+
 - feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
   > youtube <https://youtu.be/mV6ziP7Vt_M>
 
