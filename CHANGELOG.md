@@ -35,7 +35,7 @@
   Added new folding pairs, more like other common languages, to reduce the cost of switching to ahk
 
   1. add hover
-  2. add completion
+  2. add completion of `;#region` / `;#endregion` / `;#MARK:`
 
 - feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
   > youtube <https://youtu.be/mV6ziP7Vt_M>

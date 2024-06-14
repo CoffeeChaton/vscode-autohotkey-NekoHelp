@@ -9,9 +9,10 @@ export function hoverRegion(AhkTokenLine: TAhkTokenLine, position: vscode.Positi
     const { textRaw } = AhkTokenLine;
     const commentStr: string = textRaw.trimStart();
     const lStrLen: number = textRaw.length - commentStr.length;
-    const ma: RegExpMatchArray | null = commentStr.match(
-        /^;\s*((\[(?:end|End)?(?:region|Region)\])|(#(?:end|End)?(?:region|Region)\b)|((?:#\s*)?MARK:))/u,
-    );
+
+    const ma: RegExpMatchArray | null = commentStr.match(/^;\s*\[(?:end)?region\]/iu)
+        ?? commentStr.match(/^;\s*#(?:end)?region\b/iu)
+        ?? commentStr.match(/^;\s*(?:#\s*)?MARK:/u); // `MARK:` not i-flag vscode 1.88 not support it
     if (ma === null) return null;
 
     const col: number = lStrLen + ma[0].length;

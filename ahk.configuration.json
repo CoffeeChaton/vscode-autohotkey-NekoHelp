@@ -75,8 +75,8 @@
     ],
     "folding": {
         "markers": {
-            "start": "^\\s*;\\s*(?:\\[(?:region|Region)\\]|#(?:region|Region)\\b)", // ;#region or ;[region]
-            "end": "^\\s*;\\s*(?:\\[(?:end|End)(?:region|Region)\\]|#(?:end|End)(?:region|Region)\\b)" // ;#endregion or ;[endregion]
+            "start": "^\\s*;\\s*(?:\\[(?:[rR][eE][gG][iI][oO][nN])\\]|#(?:[rR][eE][gG][iI][oO][nN])\\b)", // ;#region or ;[region]
+            "end": "^\\s*;\\s*(?:\\[(?:[eE][nN][dD])(?:[rR][eE][gG][iI][oO][nN])\\]|#(?:[eE][nN][dD])(?:[rR][eE][gG][iI][oO][nN])\\b)" // ;#endregion or ;[endregion]
         }
     },
     "onEnterRules": [

@@ -362,10 +362,11 @@
         },
         "comment_region": {
             "name": "comment.line.region.ahk",
-            "match": "^[ \\t]*;\\s*(\\[(?:end|End)?(?:region|Region)\\]|#(?:end|End)?(?:region|Region)\\b|(?:#\\s*)?MARK:)\\s*(.*)?",
+            "match": "^[ \\t]*;\\s*(?:((?i:\\[(?:end)?region\\]|#(?:end)?region\\b))|((?:#\\s*)?MARK:))\\s*(.*)?\\n",
             "captures": {
                 "1": { "name": "comment.line.region.head.ahk" },
-                "2": { "name": "comment.line.region.text.ahk" }
+                "2": { "name": "comment.line.region.head.ahk" },
+                "3": { "name": "comment.line.region.text.ahk" }
             }
         },
         "inline_tags": {

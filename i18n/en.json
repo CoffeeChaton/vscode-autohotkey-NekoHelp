@@ -88,6 +88,7 @@
     "VBA.md.goto.doc.uri": "https://learn.microsoft.com/en-us/office/vba/api/",
     "about.code.folding": [
         "- [about code folding](https://code.visualstudio.com/docs/editor/codebasics#_folding)",
+        "- [about #MARK](https://code.visualstudio.com/updates/v1_88#_minimap-section-headers)",
         "- [neko help #88](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/88)",
         "```ahk",
         ";#MARK: text",
