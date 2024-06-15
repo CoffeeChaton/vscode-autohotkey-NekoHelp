@@ -155,7 +155,7 @@ type TMayPathData = {
  *
  * Try to match possible values from a long list of random strings
  */
-export function getRawData2(path1: string, fsPath: string): TMayPathData {
+function getRawData2(path1: string, fsPath: string): TMayPathData {
     // const tryRemoveComment: string = path1.replace(/[ \t];.*$/u, '')
     //     .replaceAll(/%A_Tab%/giu, '\t')
     //     .replaceAll(/%A_Space%/giu, ' ');

@@ -63,7 +63,7 @@ export function getMenuParam_Line(AhkTokenLine: TAhkTokenLine): TMenuParam1stDat
     return memoMenuParam.up(AhkTokenLine);
 }
 
-export const memoFileMenuRef = new CMemo<TAhkFileData, readonly TMenuParam1stData[]>(
+const memoFileMenuRef = new CMemo<TAhkFileData, readonly TMenuParam1stData[]>(
     (AhkFileData: TAhkFileData): readonly TMenuParam1stData[] => {
         const arr: TMenuParam1stData[] = [];
         for (const AhkTokenLine of AhkFileData.DocStrMap) {

@@ -32,7 +32,7 @@ export const enum EDiagCodeDA {
     code522 = 522, // ban name with like goto , #28 https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/28
 }
 
-export type TDiagsDA = {
+type TDiagsDA = {
     [k in EDiagCodeDA]: {
         msg: string,
         path: TLink,
@@ -201,7 +201,7 @@ export const enum EDiagCode {
     code903 = 903,
 }
 
-export type TDiags = {
+type TDiags = {
     [k in EDiagCode]: {
         msg: string,
         path: TLink,

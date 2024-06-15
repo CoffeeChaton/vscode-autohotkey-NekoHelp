@@ -1,4 +1,4 @@
-export type TBiVElement = {
+type TBiVElement = {
     keyRawName: string,
     link: `https://www.autohotkey.com/docs/v1/${string}`,
     doc: string[],

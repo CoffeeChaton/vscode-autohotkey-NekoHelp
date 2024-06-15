@@ -75,22 +75,3 @@ export function getSemanticCmdShell(AhkFileData: TAhkFileData): readonly TCmdSem
 
     return result;
 }
-
-export function getCmdCll(cmdSemanticList: readonly TCmdSemantic[]): readonly (0 | 1)[] {
-    const result: (0 | 1)[] = [];
-
-    for (const cmdSemantic of cmdSemanticList) {
-        if (cmdSemantic === 0) {
-            result.push(0);
-            continue;
-        }
-
-        result.push(
-            cmdSemantic.isFirstLine
-                ? 0
-                : 1,
-        );
-    }
-
-    return result;
-}

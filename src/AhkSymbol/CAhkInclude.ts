@@ -194,7 +194,7 @@ type TIncludeOsMap2 = {
     getMayPath: (path1: string, fsPath: string) => string,
 };
 
-export const IncludeOsMap2: readonly TIncludeOsMap2[] = [
+const IncludeOsMap2: readonly TIncludeOsMap2[] = [
     {
         reg: /^%A_LineFile%/iu,
         type: EInclude.A_LineFile,

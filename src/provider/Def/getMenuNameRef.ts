@@ -11,7 +11,7 @@ import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandA
 import { spiltCommandAll } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 
-export type TGuiMenuRefData = {
+type TGuiMenuRefData = {
     readonly RawNameNew: string,
     readonly range: vscode.Range,
 };
