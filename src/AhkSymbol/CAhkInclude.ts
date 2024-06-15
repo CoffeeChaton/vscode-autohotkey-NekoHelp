@@ -20,7 +20,7 @@ export const enum EInclude {
     Absolute = 1, // happy
 
     // ...??
-    A_ScriptDir = 99,
+    A_ScriptDir = 99, // eval
     // bad
     Relative = 2,
     isUnknown = 3,
@@ -64,7 +64,7 @@ export const AIncludePathKnownList: readonly EInclude[] = [
     EInclude.A_WorkingDir,
 
     //
-    EInclude.A_ScriptDir,
+    EInclude.A_ScriptDir, // eval
 ];
 
 export type TRawData = {

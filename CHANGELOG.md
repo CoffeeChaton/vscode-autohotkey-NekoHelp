@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [v0.0.62(2024-06-XX)](#v00622024-06-xx)
   - [v0.0.61(2024-06-15)](#v00612024-06-15)
   - [v0.0.60(2024-06-09)](#v00602024-06-09)
   - [v0.0.59(2024-06-03)](#v00592024-06-03)
@@ -10,6 +11,21 @@
   - [v0.0.55(2024-04-26)](#v00552024-04-26)
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
+
+## v0.0.62(2024-06-XX)
+
+<!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- dprint 0.45.1 -->
+
+- feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
+  try support multiple files move event, and auto fix `#Include`
+
+  ```jsonc
+  // settings.json
+  {
+      "AhkNekoHelp.event.FileRenameEvent": 2 // Alpha test options
+  }
+  ```
 
 ## v0.0.61(2024-06-15)
 

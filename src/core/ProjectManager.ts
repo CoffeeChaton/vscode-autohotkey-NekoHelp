@@ -2,7 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
-import { pathJoinMagic } from '../AhkSymbol/CAhkInclude';
+import { EInclude, pathJoinMagic } from '../AhkSymbol/CAhkInclude';
 import { collectInclude } from '../command/tools/collectInclude';
 import {
     getConfig,
@@ -12,7 +12,7 @@ import {
 import type { TTryParserIncludeLog } from '../configUI.data';
 import { EFileRenameEvent } from '../configUI.data';
 import type { TFsPath } from '../globalEnum';
-import { renameFileNameFunc } from '../provider/event/renameFileNameFunc';
+import { getFileMap, type TIncludeMap } from '../provider/event/renameFileEvent';
 import { log } from '../provider/vscWindows/log';
 import { fsPathIsAllow } from '../tools/fsTools/getUriList';
 import { isAhk } from '../tools/fsTools/isAhk';
@@ -93,22 +93,7 @@ export const pm = {
         }
 
         if (eventConfig === EFileRenameEvent.CTryRename) {
-            for (const { oldUri, newUri } of e.files) {
-                // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                if (isAhk(oldUri.fsPath)) delOldCache(oldUri);
-
-                // eslint-disable-next-line no-await-in-loop
-                if (isAhk(newUri.fsPath)) pm.updateDocDef(await vscode.workspace.openTextDocument(newUri));
-
-                // else EXP : let a.ahk -> a.ahk0 or a.0ahk
-                if (isAhk(oldUri.fsPath) && isAhk(newUri.fsPath)) {
-                    const AhkFileDataList: TAhkFileData[] = pm.getDocMapValue();
-
-                    // eslint-disable-next-line no-await-in-loop
-                    await renameFileNameFunc(oldUri, newUri, AhkFileDataList);
-                }
-            }
-
+            await renameFileEvent(e);
             log.show();
         }
     },
@@ -277,4 +262,79 @@ function renameFileNameBefore(e: vscode.FileRenameEvent): Thenable<vscode.TextDo
         }
     }
     return docList0;
+}
+
+export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> {
+    const oldAhkFileDataList: readonly TIncludeMap[] = getFileMap(pm.getDocMapValue());
+    // old -> new
+    for (const { oldUri, newUri } of e.files) {
+        if (isAhk(oldUri.fsPath)) delOldCache(oldUri);
+        if (isAhk(newUri.fsPath)) {
+            // eslint-disable-next-line no-await-in-loop
+            pm.updateDocDef(await vscode.workspace.openTextDocument(newUri));
+        }
+    }
+    //
+    const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
+    const uriList: vscode.Uri[] = [];
+
+    //
+    for (const AhkFileData of pm.getDocMapValue()) {
+        const { AST, uri } = AhkFileData;
+        for (const ahkInclude of collectInclude(AST)) {
+            const {
+                name,
+                range,
+                rawData,
+            } = ahkInclude;
+            const { mayPath, type } = rawData;
+            if (
+                type !== EInclude.isUnknown
+                && type !== EInclude.A_ScriptDir
+                && type !== EInclude.A_WorkingDir
+                && fs.existsSync(mayPath)
+            ) {
+                continue;
+            }
+
+            // log.warn(`"${name}" is not exists`);
+
+            // try auto rewrite
+            const find: TIncludeMap | undefined = oldAhkFileDataList.find((v: TIncludeMap): boolean => v.name === name);
+            if (find === undefined) {
+                log.error(`"${uri.fsPath}:${range.start.line + 1}" unknown error-1-308`);
+                continue;
+            }
+            const find2 = e.files.find(({ oldUri }) => oldUri.fsPath === find.uriFsPath);
+            if (find2 === undefined) {
+                log.warn(`"${uri.fsPath}:${range.start.line + 1}" is unknown case`);
+                continue;
+            }
+            const { oldUri, newUri } = find2;
+
+            const { line, character } = range.start;
+            const Remarks = `"${oldUri.fsPath}" -> "${newUri.fsPath}" ;; at ${new Date().toISOString()}`;
+
+            const {
+                isIncludeAgain,
+                IgnoreErrors,
+            } = ahkInclude;
+            const head = isIncludeAgain
+                ? '#IncludeAgain'
+                : '#Include';
+            const i_flag = IgnoreErrors
+                ? ' *i'
+                : '';
+            const a_space = ' ';
+            const newText = `${head}${i_flag}${a_space}${newUri.fsPath} ; ${Remarks} ;`;
+            const newPos: vscode.Position = new vscode.Position(line, character);
+            edit.insert(uri, newPos, newText);
+            log.info(`auto edit "${uri.fsPath}:${line + 1}"`);
+            uriList.push(uri);
+        }
+    }
+
+    await vscode.workspace.applyEdit(edit);
+    await Promise.all(uriList.map((uri: vscode.Uri) => vscode.window.showTextDocument(uri)));
+    log.show();
 }
