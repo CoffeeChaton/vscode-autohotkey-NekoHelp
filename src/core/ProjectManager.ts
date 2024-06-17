@@ -1,8 +1,10 @@
+/* eslint-disable max-lines-per-function */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import type { CAhkInclude } from '../AhkSymbol/CAhkInclude';
 import { EInclude, pathJoinMagic } from '../AhkSymbol/CAhkInclude';
+import { ECommand } from '../command/ECommand';
 import { collectInclude } from '../command/tools/collectInclude';
 import {
     getConfig,
@@ -266,7 +268,9 @@ function renameFileNameBefore(e: vscode.FileRenameEvent): Thenable<vscode.TextDo
 
 export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> {
     const oldAhkFileDataList: readonly TIncludeMap[] = getFileMap(pm.getDocMapValue());
-    // old -> new
+
+    // Rebuild Index
+    await vscode.commands.executeCommand(ECommand.UpdateCacheAsync, false);
     for (const { oldUri, newUri } of e.files) {
         if (isAhk(oldUri.fsPath)) delOldCache(oldUri);
         if (isAhk(newUri.fsPath)) {
@@ -274,11 +278,16 @@ export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> 
             pm.updateDocDef(await vscode.workspace.openTextDocument(newUri));
         }
     }
+    const _tempArr = [...pm.DocMap.keys()];
+    for (const fsPath of _tempArr) {
+        if (!fs.existsSync(fsPath)) {
+            pm.DocMap.delete(fsPath);
+        }
+    }
     //
+
     const edit: vscode.WorkspaceEdit = new vscode.WorkspaceEdit();
     const uriList: vscode.Uri[] = [];
-
-    //
     for (const AhkFileData of pm.getDocMapValue()) {
         const { AST, uri, DocStrMap } = AhkFileData;
         for (const ahkInclude of collectInclude(AST)) {
@@ -297,34 +306,45 @@ export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> 
                 continue;
             }
 
+            const { line, character } = range.start;
+            const { textRaw, lStr } = DocStrMap[line];
             // log.warn(`"${name}" is not exists`);
 
             // try auto rewrite
-            const find: TIncludeMap | undefined = oldAhkFileDataList.find((v: TIncludeMap): boolean => v.name === name);
-            if (find === undefined) {
-                log.error(`"${uri.fsPath}:${range.start.line + 1}" unknown error-1-308`);
-                continue;
-            }
+            const find: string = oldAhkFileDataList
+                .find((v: TIncludeMap): boolean => v.name === name)
+                ?.uriFsPath
+                ?? '';
+
             type TEventCh = {
                 readonly oldUri: vscode.Uri,
                 readonly newUri: vscode.Uri,
             };
-            const find2: TEventCh | null = e.files.find(({ oldUri }) => oldUri.fsPath === find.uriFsPath)
+            const find2: TEventCh | null = e.files
+                .find(({ oldUri }: TEventCh): boolean => oldUri.fsPath === find)
                 ?? ((): null | TEventCh => {
-                    const uriR0: vscode.Uri | undefined = pm.DocMap.get(find.uriFsPath)?.uri;
+                    const uriR0: vscode.Uri | undefined = pm.DocMap.get(find)?.uri;
                     return uriR0 === undefined
                         ? null
                         : { oldUri: uriR0, newUri: uriR0 };
                 })();
 
             if (find2 === null) {
-                log.warn(`"${uri.fsPath}:${range.start.line + 1}" has unknown error`);
+                log.warn(`"${uri.fsPath}:${line + 1}" has unknown error case 1, "${textRaw.trim()}", did you mean`);
+                // eslint-disable-next-line no-await-in-loop
+                const LocationList: vscode.LocationLink[] = await vscode.commands.executeCommand<vscode.LocationLink[]>(
+                    ECommand.gotoIncludeDefWithTry,
+                    mayPath,
+                    lStr,
+                    line,
+                );
+                for (const v of LocationList) {
+                    const p1 = v.targetUri.fsPath.replace('//', '/');
+                    log.warn(`    -> "${p1}"`);
+                }
                 continue;
             }
             const { oldUri, newUri } = find2;
-
-            const { line, character } = range.start;
-            const { textRaw } = DocStrMap[line];
             const spaceHead: string = textRaw.slice(0, character);
             const spilt = `\n${spaceHead};-> `;
             const { isIncludeAgain, IgnoreErrors } = ahkInclude;

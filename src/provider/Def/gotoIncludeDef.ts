@@ -19,12 +19,12 @@ function gotoIncludeDefShowInfo(): void {
     }
 }
 
-function gotoIncludeDefWithTry(
+export function gotoIncludeDefWithTry(
     mayPath: string,
     lStr: string,
     line: number,
-): vscode.LocationLink[] | null {
-    const mayPath2 = mayPath.replace(/.*[ \\/]/u, '').toUpperCase();
+): vscode.LocationLink[] {
+    const mayPath2: string = mayPath.replace(/.*[ \\/]/u, '').toUpperCase();
     const col0: number = lStr.length - lStr
         .replace(/^\s*#Include(?:Again)?\s+/iu, '')
         .replace(/\*i\s+/iu, '')
@@ -35,14 +35,14 @@ function gotoIncludeDefWithTry(
     );
 
     const need: vscode.LocationLink[] = [];
-    for (const pathUp of pm.DocMap.keys()) {
-        const p0: string = pathUp.replace(/.*[ \\/]/u, '').toUpperCase();
+    for (const fsPath of pm.DocMap.keys()) {
+        const p0: string = fsPath.replace(/.*[ \\/]/u, '').toUpperCase();
         if (p0 === mayPath2) {
             const start = new vscode.Position(0, 0);
             need.push(
                 {
                     originSelectionRange,
-                    targetUri: vscode.Uri.file(pathUp),
+                    targetUri: vscode.Uri.file(fsPath),
                     targetRange: new vscode.Range(start, start),
                 },
             );

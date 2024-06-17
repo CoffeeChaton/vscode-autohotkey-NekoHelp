@@ -29,6 +29,7 @@ import { showUnknownAnalyze } from './provider/CodeLens/showUnknownAnalyze';
 import { ColorProvider } from './provider/ColorProvider/ColorProvider';
 import { CompletionItemProvider } from './provider/CompletionItem/CompletionItemProvider';
 import { DefProvider } from './provider/Def/DefProvider';
+import { gotoIncludeDefWithTry } from './provider/Def/gotoIncludeDef';
 import { onDidChangeActiveTab, onDidChangeTabs } from './provider/event/onDidChangeTabs';
 import { FormatProvider } from './provider/Format/FormatProvider';
 import { RangeFormatProvider } from './provider/FormatRange/RangeFormatProvider';
@@ -111,12 +112,13 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand(ECommand.CmdCodeActionAddInclude, CmdCodeActionAddInclude),
         vscode.commands.registerCommand(ECommand.CmdCodeActionRenameInclude, CmdCodeActionRenameInclude),
         vscode.commands.registerCommand(ECommand.CmdFindClassRef, CmdFindClassRef),
-        vscode.commands.registerCommand(ECommand.CmdJustGotoLoc, CmdJustGotoLoc),
         vscode.commands.registerCommand(ECommand.CmdFindFuncRef, CmdFindFuncRef),
         vscode.commands.registerCommand(ECommand.CmdFindLabelRef, CmdFindLabelRef),
         vscode.commands.registerCommand(ECommand.CmdFindMethodRef, CmdFindMethodRef),
         vscode.commands.registerCommand(ECommand.CmdFnAddAhkDoc, CmdFnAddAhkDoc),
         vscode.commands.registerCommand(ECommand.CmdGotoFuncDef, CmdGotoFuncDef),
+        vscode.commands.registerCommand(ECommand.CmdJustGotoLoc, CmdJustGotoLoc),
+        vscode.commands.registerCommand(ECommand.gotoIncludeDefWithTry, gotoIncludeDefWithTry),
         vscode.commands.registerCommand(ECommand.ListAllFunc, ListAllFuncMain),
         vscode.commands.registerCommand(ECommand.ListAllInclude, ListAllInclude),
         vscode.commands.registerCommand(ECommand.ListIncludeTree, ListIncludeTree),
