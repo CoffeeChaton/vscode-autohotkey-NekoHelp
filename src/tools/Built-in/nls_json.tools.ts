@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import path from 'node:path';
 import * as vscode from 'vscode';
-import { localeLanguage } from '../../i18n';
+import { localeLanguage } from '../../localeLanguage';
 
 export type TSupportDoc =
     | 'Ahk2exeData'

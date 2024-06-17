@@ -99,5 +99,7 @@
         ";[region]",
         ";[endregion]",
         "```"
-    ]
+    ],
+    "hover.Include.unknown-1": "文件不存在（或无法静态解析）",
+    "hover.Include.did_you_mean": "你的意思是?"
 }

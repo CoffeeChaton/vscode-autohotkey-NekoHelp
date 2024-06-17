@@ -99,5 +99,7 @@
         ";[region]",
         ";[endregion]",
         "```"
-    ]
+    ],
+    "hover.Include.unknown-1": "file is not exists (or unable to statically parse)",
+    "hover.Include.did_you_mean": "did you mean"
 }
