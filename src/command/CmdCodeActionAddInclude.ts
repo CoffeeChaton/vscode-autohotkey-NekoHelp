@@ -33,7 +33,6 @@ export async function CmdCodeActionAddInclude(uri: vscode.Uri, position: vscode.
         return undefined;
     }
     //
-    const A_ScriptDirNeed: string = path.relative(`${uri.fsPath}.//`, label);
     const style: vscode.QuickPickItem | undefined = await vscode.window.showQuickPick<vscode.QuickPickItem>(
         [
             {
@@ -42,10 +41,6 @@ export async function CmdCodeActionAddInclude(uri: vscode.Uri, position: vscode.
             },
             {
                 label: `%A_LineFile%\\${path.relative(uri.fsPath, label)}`,
-                description: 'relative path (win style)',
-            },
-            {
-                label: `%A_ScriptDir%\\${A_ScriptDirNeed}`,
                 description: 'relative path (win style)',
             },
             {

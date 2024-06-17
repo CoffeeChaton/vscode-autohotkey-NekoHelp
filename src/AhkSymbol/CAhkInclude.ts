@@ -61,10 +61,6 @@ export const AIncludePathKnownList: readonly EInclude[] = [
     EInclude.A_ProgramsCommon,
     EInclude.A_Programs,
     EInclude.A_ComSpec,
-    EInclude.A_WorkingDir,
-
-    //
-    EInclude.A_ScriptDir, // eval
 ];
 
 export type TRawData = {
@@ -78,10 +74,11 @@ const setWarnMsgList: readonly Readonly<RegExp>[] = [
     /%A_IsCompiled%/iu,
     /%A_IsUnicode%/iu,
     /%A_ProgramFiles%/iu,
-    // /^%A_ScriptDir%/iu, // WTF ? Changes the working directory for subsequent #Includes and FileInstalls. #Include %A_ScriptDir%
+    /%A_ScriptDir%/iu,
     /%A_ScriptFullPath%/iu,
     /%A_ScriptName%/iu,
     /%A_UserName%/iu,
+    /%A_WorkingDir%/iu,
 ];
 
 function setWarnMsg(path1: string): string {
@@ -201,20 +198,20 @@ const IncludeOsMap2: readonly TIncludeOsMap2[] = [
         name: '%A_LineFile%',
         getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_LineFile%/iu, fsPath)),
     },
-    {
-        reg: /^%A_ScriptDir%/iu,
-        type: EInclude.A_ScriptDir,
-        name: '%A_ScriptDir%',
-        // dprint-ignore
-        getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_ScriptDir%/iu, `${fsPath}/../`)),
-    },
-    {
-        reg: /^%A_WorkingDir%/iu,
-        type: EInclude.A_WorkingDir,
-        name: '%A_WorkingDir%',
-        // dprint-ignore
-        getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_WorkingDir%/iu, `${fsPath}/../`)),
-    },
+    // {
+    //     reg: /^%A_ScriptDir%/iu,
+    //     type: EInclude.A_ScriptDir,
+    //     name: '%A_ScriptDir%',
+    //     // dprint-ignore
+    //     getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_ScriptDir%/iu, `${fsPath}/../`)),
+    // },
+    // {
+    //     reg: /^%A_WorkingDir%/iu,
+    //     type: EInclude.A_WorkingDir,
+    //     name: '%A_WorkingDir%',
+    //     // dprint-ignore
+    //     getMayPath: (path1: string, fsPath: string): string => normalize(path1.replace(/^%A_WorkingDir%/iu, `${fsPath}/../`)),
+    // },
 ];
 
 export function getRawData(path1: string, fsPath: string): TRawData {

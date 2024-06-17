@@ -107,8 +107,6 @@ const IncludeOsMap: readonly TIncludeOsMap[] = [
         name: '%A_ComSpec%',
         mayPathReplaceValue: process.env['ComSpec'] ?? 'C:/Windows/system32/cmd.exe',
     },
-    // A_WorkingDir
-    // A_ProgramFiles
 ];
 
 type TIncludeOsMap2 = {
