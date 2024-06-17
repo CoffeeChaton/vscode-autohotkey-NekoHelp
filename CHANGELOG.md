@@ -17,6 +17,8 @@
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
+- feat: `#Include` gotoDef with Unknown case
+- fix: rm `A_ScriptDir`/`A_WorkingDir` fake support.
 - feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
   try support multiple files move event, and auto fix `#Include`
 

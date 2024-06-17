@@ -31,8 +31,8 @@ function DefProviderCore(
     const AhkFileData: TAhkFileData | null = pm.getDocMap(document.uri.fsPath) ?? pm.updateDocDef(document);
     if (AhkFileData === null) return null;
 
-    const IncludeFile: vscode.LocationLink | null = gotoIncludeDef(AhkFileData, position);
-    if (IncludeFile !== null) return [IncludeFile];
+    const IncludeFile: vscode.LocationLink[] | null = gotoIncludeDef(AhkFileData, position);
+    if (IncludeFile !== null) return IncludeFile;
 
     const AhkTokenLine: TAhkTokenLine = AhkFileData.DocStrMap[position.line];
     const DirectivesDef: [vscode.Location] | null = gotoDirectivesDef(position, AhkTokenLine)
