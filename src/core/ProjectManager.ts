@@ -280,7 +280,7 @@ export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> 
 
     //
     for (const AhkFileData of pm.getDocMapValue()) {
-        const { AST, uri } = AhkFileData;
+        const { AST, uri, DocStrMap } = AhkFileData;
         for (const ahkInclude of collectInclude(AST)) {
             const {
                 name,
@@ -305,30 +305,47 @@ export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> 
                 log.error(`"${uri.fsPath}:${range.start.line + 1}" unknown error-1-308`);
                 continue;
             }
-            const find2 = e.files.find(({ oldUri }) => oldUri.fsPath === find.uriFsPath);
-            if (find2 === undefined) {
-                log.warn(`"${uri.fsPath}:${range.start.line + 1}" is unknown case`);
+            type TEventCh = {
+                readonly oldUri: vscode.Uri,
+                readonly newUri: vscode.Uri,
+            };
+            const find2: TEventCh | null = e.files.find(({ oldUri }) => oldUri.fsPath === find.uriFsPath)
+                ?? ((): null | TEventCh => {
+                    const uriR0: vscode.Uri | undefined = pm.DocMap.get(find.uriFsPath)?.uri;
+                    return uriR0 === undefined
+                        ? null
+                        : { oldUri: uriR0, newUri: uriR0 };
+                })();
+
+            if (find2 === null) {
+                log.warn(`"${uri.fsPath}:${range.start.line + 1}" has unknown error`);
                 continue;
             }
             const { oldUri, newUri } = find2;
 
             const { line, character } = range.start;
-            const Remarks = `"${oldUri.fsPath}" -> "${newUri.fsPath}" ;; at ${new Date().toISOString()}`;
-
-            const {
-                isIncludeAgain,
-                IgnoreErrors,
-            } = ahkInclude;
+            const { textRaw } = DocStrMap[line];
+            const spaceHead: string = textRaw.slice(0, character);
+            const spilt = `\n${spaceHead};-> `;
+            const { isIncludeAgain, IgnoreErrors } = ahkInclude;
             const head = isIncludeAgain
                 ? '#IncludeAgain'
                 : '#Include';
             const i_flag = IgnoreErrors
                 ? ' *i'
                 : '';
-            const a_space = ' ';
-            const newText = `${head}${i_flag}${a_space}${newUri.fsPath} ; ${Remarks} ;`;
-            const newPos: vscode.Position = new vscode.Position(line, character);
-            edit.insert(uri, newPos, newText);
+            const newText0: string = [
+                //               V space
+                `${head}${i_flag} ${newUri.fsPath}`,
+                `"${oldUri.fsPath}" -> "${newUri.fsPath}"`, // Remarks
+                `at ${new Date().toISOString()}`,
+                '',
+            ].join(spilt);
+            edit.replace(
+                uri,
+                new vscode.Range(new vscode.Position(line, character), new vscode.Position(line, textRaw.length)),
+                `${newText0}${textRaw.trim()}\n`,
+            );
             log.info(`auto edit "${uri.fsPath}:${line + 1}"`);
             uriList.push(uri);
         }
