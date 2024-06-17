@@ -1,3 +1,4 @@
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 import type { CAhkInclude } from '../../../AhkSymbol/CAhkInclude';
@@ -22,12 +23,16 @@ function CodeActionTryRenameIncludePathCore(ahkInclude: CAhkInclude): string[] {
         return []; // unknown
     }
 
+    if (!fs.existsSync(mayPath)) {
+        return [];
+    }
+
+    const normalize: string = toNormalize(mayPath);
     if (type === EInclude.A_LineFile) {
-        return [toNormalize(mayPath)];
+        return [normalize];
     }
 
     if (type === EInclude.Absolute) {
-        const normalize: string = toNormalize(mayPath);
         for (const { mayPathReplaceValue, name } of IncludeOsMap) {
             const may: string = toNormalize(mayPathReplaceValue);
             // C:\\
@@ -36,28 +41,20 @@ function CodeActionTryRenameIncludePathCore(ahkInclude: CAhkInclude): string[] {
             if (normalize.startsWith(may)) {
                 return [
                     // to %A_Desktop%
-                    // to %A_LineFile%
+                    normalize,
                     normalize.replace(may, name),
                     `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
                 ];
             }
         }
-        // return [
-        //     `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
-        // ];
     }
 
     if (AIncludePathKnownList.includes(type)) {
-        const normalize: string = toNormalize(mayPath);
-
         return [
-            // to Absolute
-            // to %A_LineFile%
             normalize,
             `%A_LineFile%\\${path.relative(uri.fsPath, normalize)}`,
         ];
     }
-    // type: EInclude.A_LineFile,
     return [];
 }
 
@@ -71,7 +68,6 @@ function CodeActionTryRenameIncludePath(
         if (!ahkInclude.range.contains(active)) continue;
 
         const newPathList: string[] = CodeActionTryRenameIncludePathCore(ahkInclude);
-
         if (newPathList.length === 0) return [];
 
         //
