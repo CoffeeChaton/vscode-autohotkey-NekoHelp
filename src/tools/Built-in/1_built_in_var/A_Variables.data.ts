@@ -1708,7 +1708,9 @@ export const AVariablesList: readonly TAElement[] = [
         uri: 'https://www.autohotkey.com/docs/v1/Variables.htm#Temp',
         group: 'OS',
         doc: [
-            'The full path and name of the folder designated to hold temporary files. It is retrieved from one of the following locations (in order): 1) the [environment variables](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) TMP, TEMP, or USERPROFILE; 2) the Windows directory.',
+            'The full path and name of the folder designated to hold temporary files. It is retrieved from one of the following locations (in order):',
+            '- 1 the [environment variables](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) TMP, TEMP, or USERPROFILE;',
+            '- 2 the Windows directory.',
             '',
             '- For example::  `C:\\Users\\<UserName>\\AppData\\Local\\Temp`',
         ],

@@ -2,7 +2,7 @@
     "headData": {
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "A_Tab"
+        "google Translation progress": "100%"
     },
     "body": [
         {
@@ -1758,9 +1758,11 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#Temp",
             "group": "OS",
             "doc": [
-                "The full path and name of the folder designated to hold temporary files. It is retrieved from one of the following locations (in order): 1) the [environment variables](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) TMP, TEMP, or USERPROFILE; 2) the Windows directory.",
+                "指定用于保存临时文件的文件夹的完整路径和名称。它是从以下位置之一检索的（按顺序）：",
+                "- 1 环境变量 TMP、TEMP 或 USERPROFILE;",
+                "- 2 Windows 目录。",
                 "",
-                "- For example::  `C:\\Users\\<UserName>\\AppData\\Local\\Temp`"
+                "- 例如：`C:\\Users\\<UserName>\\AppData\\Local\\Temp`"
             ]
         },
         {
@@ -1768,7 +1770,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ThisFunc",
             "group": "Script",
             "doc": [
-                "The name of the [user-defined function](https://www.autohotkey.com/docs/v1/Functions.htm) that is currently executing (blank if none); for example: MyFunction. See also: [IsFunc()](https://www.autohotkey.com/docs/v1/lib/IsFunc.htm)"
+                "当前正在执行[的用户定义函数](https://www.autohotkey.com/docs/v1/Functions.htm)的名称（如果没有，则为空）;例如：MyFunction。参见：[IsFunc()](https://www.autohotkey.com/docs/v1/lib/IsFunc.htm)"
             ]
         },
         {
@@ -1776,13 +1778,14 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ThisHotkey",
             "group": "Hotkeys",
             "doc": [
-                "The most recently executed [hotkey](https://www.autohotkey.com/docs/v1/Hotkeys.htm) or [non-auto-replace hotstring](https://www.autohotkey.com/docs/v1/Hotstrings.htm) (blank if none), e.g. #z. This value will change if the [current thread](https://www.autohotkey.com/docs/v1/misc/Threads.htm) is interrupted by another hotkey, so be sure to copy it into another variable immediately if you need the original value for later use in a subroutine.",
+                "最近执行的[热键](https://www.autohotkey.com/docs/v1/Hotkeys.htm)或[非自动替换热字符串](https://www.autohotkey.com/docs/v1/Hotstrings.htm)（如果没有，则为空），例如 #z。",
+                "如果[当前线程](https://www.autohotkey.com/docs/v1/misc/Threads.htm)被另一个热键或热字符串中断，则此值将更改，因此，如果您需要原始值以供以后在子例程中使用，请务必立即将其复制到另一个变量中。",
                 "",
-                "- When a hotkey is first created -- either by the [Hotkey command](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) or a [double-colon label](https://www.autohotkey.com/docs/v1/Hotkeys.htm) in the script -- its key name and the ordering of its modifier symbols becomes the permanent name of that hotkey, shared by all [variants](https://www.autohotkey.com/docs/v1/lib/_IfWinActive.htm#variant) of the hotkey.",
+                "- 当热键首次创建时（通过 [Hotkey 命令](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm)或脚本中的[双冒号标签](https://www.autohotkey.com/docs/v1/Hotkeys.htm)），其键名称及其修饰符符号的顺序将成为该热键的永久名称，由热键[的所有变体](https://www.autohotkey.com/docs/v1/lib/_IfWinActive.htm#variant)共享。",
                 "",
-                "- When a hotstring is first created, the exact text used to create it becomes the permanent name of the hotstring.",
+                "- 当热字符串首次创建时（通过[热字符串函数](https://www.autohotkey.com/docs/v1/lib/Hotstring.htm)或脚本中的[双冒号标签](https://www.autohotkey.com/docs/v1/Hotstrings.htm)），其触发字符串和选项字符序列将成为该热字符串的永久名称。",
                 "",
-                "- See also: [A_ThisLabel](https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel)"
+                "- 另请参阅：[A\\_ThisLabel](https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel)"
             ]
         },
         {
@@ -1790,7 +1793,15 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ThisLabel",
             "group": "Script",
             "doc": [
-                "The name of the [label](https://www.autohotkey.com/docs/v1/misc/Labels.htm) (subroutine) that is currently executing (blank if none); for example: MyLabel. It is updated whenever the script executes [Gosub](https://www.autohotkey.com/docs/v1/lib/Gosub.htm)/[Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) or [Goto](https://www.autohotkey.com/docs/v1/lib/Goto.htm). It is also updated for automatically-called labels such as [timers](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm), [GUI threads](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DefaultWin), [menu items](https://www.autohotkey.com/docs/v1/lib/Menu.htm), [hotkeys](https://www.autohotkey.com/docs/v1/Hotkeys.htm), [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm), [OnClipboardChange labels](https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label \"Deprecated. New scripts should use OnClipboardChange() instead.\"), and [OnExit labels](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command \"Deprecated. New scripts should use OnExit() instead.\"). However, A_ThisLabel is not updated when execution \"falls into\" a label from above; when that happens, A_ThisLabel retains its previous value. See also: [A_ThisHotkey](https://www.autohotkey.com/docs/v1/Variables.htm#ThisHotkey) and [IsLabel()](https://www.autohotkey.com/docs/v1/lib/IsLabel.htm)"
+                "当前正在执行的[标签](https://www.autohotkey.com/docs/v1/misc/Labels.htm)（子例程）的名称（如果没有，则为空）;例如：MyLabel。",
+                "",
+                "每当脚本执行 [Gosub](https://www.autohotkey.com/docs/v1/lib/Gosub.htm)/[Return](https://www.autohotkey.com/docs/v1/lib/Return.htm) 或 [Goto](https://www.autohotkey.com/docs/v1/lib/Goto.htm) 时，它就会更新。",
+                "",
+                "它还针对自动调用的标签进行了更新，例如[计时器](https://www.autohotkey.com/docs/v1/lib/SetTimer.htm)、[GUI 线程](https://www.autohotkey.com/docs/v1/lib/Gui.htm#DefaultWin)、[菜单项](https://www.autohotkey.com/docs/v1/lib/Menu.htm)、[热键](https://www.autohotkey.com/docs/v1/Hotkeys.htm)、[热字符串](https://www.autohotkey.com/docs/v1/Hotstrings.htm)、[OnClipboardChange 标签](https://www.autohotkey.com/docs/v1/lib/OnClipboardChange.htm#label \"Deprecated. New scripts should use OnClipboardChange() instead.\")和 [OnExit 标签](https://www.autohotkey.com/docs/v1/lib/OnExit.htm#command \"Deprecated. New scripts should use OnExit() instead.\")。",
+                "",
+                "但是，当执行从上面 “falls into(落入)” 标签时，A\\_ThisLabel不会更新;",
+                "",
+                "发生这种情况时，A\\_ThisLabel 将保留其以前的值。参见：[A\\_ThisHotkey](https://www.autohotkey.com/docs/v1/Variables.htm#ThisHotkey) 和 [IsLabel（）](https://www.autohotkey.com/docs/v1/lib/IsLabel.htm)"
             ]
         },
         {
@@ -1798,7 +1809,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenu",
             "group": "Hotkeys",
             "doc": [
-                "The name of the menu from which A_ThisMenuItem was selected."
+                "从中选择A\\_ThisMenuItem的菜单的名称。"
             ]
         },
         {
@@ -1806,7 +1817,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenuItem",
             "group": "Hotkeys",
             "doc": [
-                "The name of the most recently selected [custom menu item](https://www.autohotkey.com/docs/v1/lib/Menu.htm) (blank if none)."
+                "最近选择的[自定义菜单项](https://www.autohotkey.com/docs/v1/lib/Menu.htm)的名称（如果没有，则为空）。"
             ]
         },
         {
@@ -1814,7 +1825,13 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#ThisMenuItemPos",
             "group": "Hotkeys",
             "doc": [
-                "A number indicating the current position of A_ThisMenuItem within A_ThisMenu. The first item in the menu is 1, the second is 2, and so on. Menu separator lines are counted. This variable is blank if A_ThisMenuItem is blank or no longer exists within A_ThisMenu. It is also blank if A_ThisMenu itself no longer exists."
+                "表示A\\_ThisMenuItem在A\\_ThisMenu内的当前位置的数字。",
+                "",
+                "菜单中的第一项是 1，第二项是 2，依此类推。",
+                "",
+                "对菜单分隔符行进行计数。",
+                "",
+                "如果A\\_ThisMenuItem变量为空或A\\_ThisMenu中不再存在，则此变量为空。如果A\\_ThisMenu本身不再存在，它也是空白的。"
             ]
         },
         {
@@ -1822,7 +1839,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TickCount",
             "group": "Date",
             "doc": [
-                "The number of milliseconds that have elapsed since the system was started, up to 49.7 days. By storing A_TickCount in a variable, elapsed time can later be measured by subtracting that variable from the latest A_TickCount value. For example:",
+                "自系统启动以来经过的毫秒数，最多 49.7 天。通过将A\\_TickCount存储在变量中，以后可以通过从最新的A\\_TickCount值中减去该变量来测量经过的时间。 例如：",
                 "",
                 "```ahk",
                 "    StartTime := A_TickCount",
@@ -1831,7 +1848,7 @@
                 "    MsgBox,  %ElapsedTime% milliseconds have elapsed.",
                 "```",
                 "",
-                "If you need more precision than A_TickCount's 10ms, use [QueryPerformanceCounter()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#QPC)."
+                "如果您需要比 A\\_TickCount 的 10 毫秒更高的精度，请使用 [QueryPerformanceCounter()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm#QPC)"
             ]
         },
         {
@@ -1839,7 +1856,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdle",
             "group": "User Idle Time",
             "doc": [
-                "The number of milliseconds that have elapsed since the system last received keyboard, mouse, or other input. This is useful for determining whether the user is away. Physical input from the user as well as artificial input generated by **any** program or script (such as the [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm) commands) will reset this value back to zero. Since this value tends to increase by increments of 10, do not check whether it is equal to another value. Instead, check whether it is greater or less than another value. For example:",
+                "自系统上次接收键盘、鼠标或其他输入以来经过的毫秒数。这对于确定用户是否不在状态非常有用。来自用户的物理输入以及任何程序或脚本（如 [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) 或 [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm) 命令）生成的人工输入会将此值重置为零。由于此值倾向于以 10 的增量增加，因此不要检查它是否等于另一个值。相反，请检查它是大于还是小于另一个值。例如：",
                 "",
                 "```ahk",
                 "IfGreater, A_TimeIdle, 600000",
@@ -1852,7 +1869,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdleKeyboard",
             "group": "User Idle Time",
             "doc": [
-                "If the [keyboard hook](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) is installed, this is the number of milliseconds that have elapsed since the system last received physical keyboard input. Otherwise, this variable is equivalent to A_TimeIdle."
+                "如果安装了[键盘挂钩](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm)，则这是自系统上次接收物理键盘输入以来经过的毫秒数。否则，此变量等效于 A\\_TimeIdle。"
             ]
         },
         {
@@ -1860,7 +1877,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdleMouse",
             "group": "User Idle Time",
             "doc": [
-                "If the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed, this is the number of milliseconds that have elapsed since the system last received physical mouse input. Otherwise, this variable is equivalent to A_TimeIdle."
+                "如果安装了[鼠标钩](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)，则这是自系统上次接收物理鼠标输入以来经过的毫秒数。否则，此变量等效于 A\\_TimeIdle。"
             ]
         },
         {
@@ -1868,7 +1885,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TimeIdlePhysical",
             "group": "User Idle Time",
             "doc": [
-                "Similar to above but ignores artificial keystrokes and/or mouse clicks whenever the corresponding hook ([keyboard](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm) or [mouse](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)) is installed; that is, it responds only to physical events. (This prevents simulated keystrokes and mouse clicks from falsely indicating that a user is present.) If neither hook is installed, this variable is equivalent to A_TimeIdle. If only one hook is installed, only its type of physical input affects A_TimeIdlePhysical (the other/non-installed hook's input, both physical and artificial, has no effect)."
+                "与A_TimeIdle类似(自系统上次接收键盘、鼠标或其他输入以来经过的毫秒数)，但每当安装相应的钩子（[键盘](https://www.autohotkey.com/docs/v1/lib/_InstallKeybdHook.htm)或[鼠标](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)）时，都会忽略人工击键和/或鼠标点击;也就是说，它只对物理事件做出反应。（这样可以防止模拟击键和鼠标单击错误地指示用户在场。如果两个钩子都没有安装，则此变量等效于 A\\_TimeIdle。如果只安装了一个钩子，则只有其物理输入类型会影响A\\_TimeIdlePhysical（另一个/未安装的钩子的输入，无论是物理的还是人工的，都没有影响）。"
             ]
         },
         {
@@ -1876,7 +1893,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TimeSincePriorHotkey",
             "group": "Hotkeys",
             "doc": [
-                "The number of milliseconds that have elapsed since A_PriorHotkey was pressed. It will be -1 whenever A_PriorHotkey is blank."
+                "自按下 A\\_PriorHotkey 以来经过的毫秒数。每当A\\_PriorHotkey为空时，它将是 -1。"
             ]
         },
         {
@@ -1884,7 +1901,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TimeSinceThisHotkey",
             "group": "Hotkeys",
             "doc": [
-                "The number of milliseconds that have elapsed since A_ThisHotkey was pressed. It will be -1 whenever A_ThisHotkey is blank."
+                "自按下 A\\_ThisHotkey 以来经过的毫秒数。每当A\\_ThisHotkey为空时，它将是 -1。"
             ]
         },
         {
@@ -1892,7 +1909,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TitleMatchMode",
             "group": "Setting",
             "doc": [
-                "The current mode set by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm): `1, 2, 3, or RegEx`"
+                "[SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm) 设置的当前模式（`1、2、3 or RegEx`）"
             ]
         },
         {
@@ -1900,7 +1917,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#TitleMatchModeSpeed",
             "group": "Setting",
             "doc": [
-                "The current match speed (fast or slow) set by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm)."
+                "[SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm) 设置的当前匹配速度 (fast or slow)。"
             ]
         },
         {
@@ -1908,7 +1925,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#UserName",
             "group": "OS",
             "doc": [
-                "The logon name of the user who launched this script."
+                "启动此脚本的用户的登录名。"
             ]
         },
         {
@@ -1916,7 +1933,9 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#WDay",
             "group": "Date",
             "doc": [
-                "Current 1-digit day of the week (1-7). 1 is Sunday in all locales."
+                "当前一周中的 1 位数字 （1-7）。",
+                "",
+                "1 在所有区域设置中都是星期日。"
             ]
         },
         {
@@ -1924,7 +1943,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#WinDelay",
             "group": "Setting",
             "doc": [
-                "The current delay set by [SetWinDelay](https://www.autohotkey.com/docs/v1/lib/SetWinDelay.htm) (always decimal, not hex)."
+                "[SetWinDelay](https://www.autohotkey.com/docs/v1/lib/SetWinDelay.htm) 设置的当前延迟（始终为十进制，而不是十六进制）。"
             ]
         },
         {
@@ -1932,7 +1951,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#WinDir",
             "group": "OS",
             "doc": [
-                "the Windows directory. For example:",
+                "Windows 目录。",
                 "",
                 "```ahk",
                 "    MsgBox % A_WinDir",
@@ -1945,7 +1964,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir",
             "group": "Script",
             "doc": [
-                "The script's current working directory, which is where files will be accessed by default. The final backslash is not included unless it is the root directory. Two examples: C:\\ and C:\\My Documents. Use [SetWorkingDir](https://www.autohotkey.com/docs/v1/lib/SetWorkingDir.htm) to change the working directory."
+                "脚本的当前工作目录，默认情况下将访问文件。除非是根目录，否则不包括最后一个反斜杠。两个示例：`C:\\\\` 和 `C:\\\\My Documents`。使用 [SetWorkingDir](https://www.autohotkey.com/docs/v1/lib/SetWorkingDir.htm) 更改工作目录。"
             ]
         },
         {
@@ -1953,7 +1972,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#InitialWorkingDir",
             "group": "Script",
             "doc": [
-                "The script's initial working directory, which is determined by how it was launched. For example, if it was run via shortcut -- such as on the Start Menu -- its initial working directory is determined by the \"Start in\" field within the shortcut's properties."
+                "脚本的初始工作目录，由脚本的启动方式决定。例如，如果它是通过快捷方式（例如在“开始”菜单上）运行的，则其初始工作目录由快捷方式属性中的“开始位置”字段确定。"
             ]
         },
         {
@@ -1961,7 +1980,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#YDay",
             "group": "Date",
             "doc": [
-                "Current day of the year (1-366). The value is not zero-padded, e.g. 9 is retrieved, not 009. To retrieve a zero-padded value, use the following:",
+                "一年中的当前日期 （1-366）。该值不是零填充的，例如检索 9，而不是 009。若要检索零填充值，请使用以下命令：。",
                 "",
                 "```ahk",
                 "    FormatTime, OutputVar,, YDay0",
@@ -1973,7 +1992,7 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#YWeek",
             "group": "Date",
             "doc": [
-                "Current year and week number (e.g. 200453) according to ISO 8601. To separate the year from the week, use",
+                "根據 ISO 8601 的當前年份和週數（例如 200453）。 若要將年份與星期分開，請使用",
                 "",
                 "```ahk",
                 "    Year := SubStr(A_YWeek, 1, 4)",
@@ -1983,7 +2002,7 @@
                 "    MsgBox % A_YWeek",
                 "```",
                 "",
-                "Precise definition of A_YWeek: If the week containing January 1st has four or more days in the new year, it is considered week 1. Otherwise, it is the last week of the previous year, and the next week is week 1."
+                "A_YWeek 的精確定義: 如果包含 1 月 1 日的一周在新的一年中有四天或更多天，則被視為第 1 週。"
             ]
         },
         {
@@ -1991,13 +2010,13 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#YYYY",
             "group": "Date",
             "doc": [
-                "Current 4-digit year (e.g. 2004). Synonymous with `A_Year` or `A_YYYY`.",
+                "當前 4 位數年份（例如 2004 年）。同義於 `A_Year` or `A_YYYY`.",
                 "",
-                "**Note**: To retrieve a formatted time or date appropriate for your locale and language, use",
+                "**Note**: 若要擷取適合您的區域設定和語言的格式化時間或日期，請使用",
                 "",
                 "```ahk",
-                "    FormatTime, OutputVar1            ; (time and long date)",
-                "    FormatTime, OutputVar2,, LongDate ; (retrieves long-format date).",
+                "    FormatTime, OutputVar1            ; (時間和長日期)",
+                "    FormatTime, OutputVar2,, LongDate ; (檢索長格式日期).",
                 "    MsgBox % OutputVar1",
                 "    MsgBox % OutputVar2",
                 "    MsgBox % A_YYYY",
@@ -2009,16 +2028,16 @@
             "uri": "https://www.autohotkey.com/docs/v1/Variables.htm#YYYY",
             "group": "Date",
             "doc": [
-                "Current 4-digit year (e.g. 2004). Synonymous with `A_Year` or `A_YYYY`.",
+                "當前 4 位數年份（例如 2004 年）。同義於 `A_Year` or `A_YYYY`.",
                 "",
-                "**Note**: To retrieve a formatted time or date appropriate for your locale and language, use",
+                "**Note**: 若要擷取適合您的區域設定和語言的格式化時間或日期，請使用",
                 "",
                 "```ahk",
-                "    FormatTime, OutputVar1            ; (time and long date)",
-                "    FormatTime, OutputVar2,, LongDate ; (retrieves long-format date).",
+                "    FormatTime, OutputVar1            ; (時間和長日期)",
+                "    FormatTime, OutputVar2,, LongDate ; (檢索長格式日期).",
                 "    MsgBox % OutputVar1",
                 "    MsgBox % OutputVar2",
-                "    MsgBox % A_Year",
+                "    MsgBox % A_YYYY",
                 "```"
             ]
         }

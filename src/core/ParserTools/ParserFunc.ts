@@ -42,7 +42,6 @@ function getAllowsListOfFunc(DocStrMap: TTokenStream, startLine: number, endLine
     return allowList;
 }
 
-// TODO spilt this func
 export function getFunc(FuncInput: TFuncInput): CAhkFunc | null {
     const {
         line,

@@ -84,11 +84,3 @@ export function getClass(FuncInput: TFuncInput): CAhkClass | null {
         ch,
     });
 }
-
-// TODO use isClassDefinition replace... regex
-
-// inline LPTSTR IsClassDefinition(LPTSTR aBuf, bool &aHasOTB)
-// {
-//     if (_tcsnicmp(aBuf, _T("Class"), 5) || !IS_SPACE_OR_TAB(aBuf[5])) // i.e. it's not "Class" followed by a space or tab.
-//         return NULL;
-// ...

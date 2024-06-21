@@ -31,7 +31,6 @@ function diagEMultilineStart(multilineFlag: NonNull<TMultilineFlag>, line: numbe
     const {
         Join,
         unknownFlag,
-        isExpress,
         PercentFlag, // Percent: TPos[]; // %
         commaFlag, // ,-flag
         // accentFlag, // `
@@ -53,9 +52,9 @@ function diagEMultilineStart(multilineFlag: NonNull<TMultilineFlag>, line: numbe
         diagList.push(fnMakeDiag(PercentFlag[0], EDiagCode.code122, line, vscode.DiagnosticSeverity.Information));
     }
 
-    if (isExpress) {
-        // FIXME: check this line is open by `"`.
-    }
+    // if (isExpress) {
+    //     // FIXME: check this line is open by `"`.
+    // }
 
     return diagList;
 }

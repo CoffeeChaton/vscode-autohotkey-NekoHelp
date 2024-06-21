@@ -19,8 +19,11 @@
 
 - feat: `#Include` gotoDef with Unknown case
 - fix: rm `A_ScriptDir`/`A_WorkingDir` fake support.
+- feat: hover `#Include` list may file
+- feat: CA `#Include` check file exist
 - feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
-  try support multiple files move event, and auto fix `#Include`
+  - try support multiple files move event, and auto fix `#Include`
+  - list all may file
 
   ```jsonc
   // settings.json
