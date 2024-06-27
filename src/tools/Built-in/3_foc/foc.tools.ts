@@ -64,7 +64,7 @@ const temp_foc = ((): [TStatementMDMap, TSnippetStatement, TForErrMap] => {
 })();
 
 export const foc_MDMap: TStatementMDMap = temp_foc[0];
-export const foc_snip: TSnippetStatement = temp_foc[1];
+const foc_snip: TSnippetStatement = temp_foc[1];
 export const foc_ErrMap: TForErrMap = temp_foc[2];
 
 export function getSnippetStatement(

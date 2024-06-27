@@ -283,7 +283,7 @@ function renameFileNameBefore(e: vscode.FileRenameEvent): Thenable<vscode.TextDo
     return docList0;
 }
 
-export async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> {
+async function renameFileEvent(e: vscode.FileRenameEvent): Promise<void> {
     const oldAhkFileDataList: readonly TIncludeMap[] = getFileMap(pm.getDocMapValue());
 
     // Rebuild Index

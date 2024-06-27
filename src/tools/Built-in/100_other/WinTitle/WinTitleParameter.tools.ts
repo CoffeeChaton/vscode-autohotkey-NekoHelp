@@ -48,7 +48,7 @@ const temp_WinTitleParam: [TWinTitle_MDMap, TWinTitle_snip] = ((): [TWinTitle_MD
 })();
 
 export const WinTitle_MDMap: TWinTitle_MDMap = temp_WinTitleParam[0];
-export const WinTitle_snip: TWinTitle_snip = temp_WinTitleParam[1];
+const WinTitle_snip: TWinTitle_snip = temp_WinTitleParam[1];
 
 export function getSnippetWinTitleParam(PartStr: string): readonly vscode.CompletionItem[] {
     return PartStr.startsWith('a')

@@ -51,7 +51,7 @@ const temp_bi = ((): [TBi_VarMDMap, TBi_snippet_list] => {
 })();
 
 export const BiVar_MDMap: TBi_VarMDMap = temp_bi[0];
-export const BiVar_snip: TBi_snippet_list = temp_bi[1];
+const BiVar_snip: TBi_snippet_list = temp_bi[1];
 
 export function hoverBiVar(wordUp: string): vscode.MarkdownString | undefined {
     return BiVar_MDMap.get(wordUp);

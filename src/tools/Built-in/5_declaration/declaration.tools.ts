@@ -40,8 +40,8 @@ const temp_Declaration: [TDeclaration_snip, TDeclaration_MDMap] = (
     }
 )();
 
-export const Declaration_snip: TDeclaration_snip = temp_Declaration[0];
-export const Declaration_MDMap: TDeclaration_MDMap = temp_Declaration[1];
+const Declaration_snip: TDeclaration_snip = temp_Declaration[0];
+const Declaration_MDMap: TDeclaration_MDMap = temp_Declaration[1];
 
 export function getHoverDeclaration(wordUp: string): vscode.MarkdownString | undefined {
     return Declaration_MDMap.get(wordUp);

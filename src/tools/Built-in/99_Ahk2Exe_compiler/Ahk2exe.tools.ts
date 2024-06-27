@@ -62,7 +62,7 @@ const ahk2Exe = (() => {
     };
 })();
 
-export const Ahk2exe_MdMap: ReadonlyMap<string, vscode.MarkdownString> = ahk2Exe.Ahk2exeMdMapRW;
+const Ahk2exe_MdMap: ReadonlyMap<string, vscode.MarkdownString> = ahk2Exe.Ahk2exeMdMapRW;
 export const Ahk2exe_snip_Line: readonly vscode.CompletionItem[] = ahk2Exe.snippetAhk2exeRW;
 export const Ahk2exe_snip_Keep: readonly vscode.CompletionItem[] = ahk2Exe.snippetAhk2exeKeepRW;
 
