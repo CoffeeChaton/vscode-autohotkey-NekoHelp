@@ -30,10 +30,9 @@ describe('check LineCommand ruler', () => {
                 exp,
                 diag,
                 recommended,
-                upName,
             } = v;
-            const v1 = upName.toUpperCase() !== upName;
-            const v2 = keyRawName.toUpperCase() !== upName;
+            // const v1 = upName.toUpperCase() !== upName;
+            // const v2 = keyRawName.toUpperCase() !== upName;
             const v3 = !body.toUpperCase().includes(keyRawName.toUpperCase());
             const v4 = !exp.join('\n').includes(keyRawName);
             const v5 = diag !== undefined && recommended;
@@ -47,16 +46,14 @@ describe('check LineCommand ruler', () => {
                 || body.startsWith(`${keyRawName} [, `)
                 || body === keyRawName
             );
-            if (v1 || v2 || v3 || v4 || v5 || v6 || v7) {
+            if (v3 || v4 || v5 || v6 || v7) {
                 errList.push({
                     msg: '--86--32--51--78--64',
                     value: {
-                        v1,
-                        v2,
                         v3,
                         v4,
                         v5,
-                        upName,
+                        keyRawName,
                         // v,
                     },
                 });

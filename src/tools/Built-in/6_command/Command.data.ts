@@ -24,7 +24,6 @@ export type TCommandParams = {
 };
 
 export type TCommandElement = Readonly<{
-    upName: string,
     keyRawName: string,
     body: string,
     doc: string[],
@@ -62,7 +61,6 @@ export type TCommandElement = Readonly<{
  */
 export const LineCommand: readonly TCommandElement[] = [
     {
-        upName: 'AUTOTRIM',
         keyRawName: 'AutoTrim',
         body: 'AutoTrim, ${1|On,Off|}',
         doc: [
@@ -98,7 +96,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'BLOCKINPUT',
         keyRawName: 'BlockInput',
         body: 'BlockInput, ${1|On,Off,Send,Mouse,SendAndMouse,Default,MouseMove,MouseMoveOff|}',
         doc: ['Disables or enables the user\'s ability to interact with the computer via keyboard and mouse.'],
@@ -126,22 +123,21 @@ export const LineCommand: readonly TCommandElement[] = [
                 name: 'On|Off|Send|Mouse|SendAndMouse|Default|MouseMove|MouseMoveOff',
                 isOpt: false,
                 paramDoc: [
-                    '| option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |',
-                    '| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |',
-                    '| On           | The user is prevented from interacting with the computer (mouse and keyboard input has no effect).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | , |',
-                    '| Off          | Input is re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |',
-                    '| Send         | The user\'s keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                                                                                                                                           | , |',
-                    '| Mouse        | The user\'s keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                            | , |',
-                    '| SendAndMouse | A combination of the above two modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | , |',
-                    '| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `BlockInput On` is currently in effect, using `BlockInput Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |',
-                    '| MouseMove    | The mouse cursor will not move in response to the user\'s physical movement of the mouse (DirectInput applications are a possible exception). When a script first uses this command, the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed (if it is not already). In addition, the script becomes [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm), meaning that [ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm) rather than [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) should be used to terminate it. The mouse hook will stay installed until the next use of the [Suspend](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) or [Hotkey](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) command, at which time it is removed if not required by any hotkeys or hotstrings (see [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)). | , |',
-                    '| MouseMoveOff | Allows the user to move the mouse cursor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | , |',
+                    '| option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |',
+                    '| :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |',
+                    '| On           | The user is prevented from interacting with the computer (mouse and keyboard input has no effect).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |',
+                    '| Off          | Input is re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |',
+                    '| Send         | The user\'s keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |',
+                    '| Mouse        | The user\'s keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user\'s mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                   |',
+                    '| SendAndMouse | A combination of the above two modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |',
+                    '| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `BlockInput On` is currently in effect, using `BlockInput Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |',
+                    '| MouseMove    | The mouse cursor will not move in response to the user\'s physical movement of the mouse (DirectInput applications are a possible exception). When a script first uses this command, the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed (if it is not already). In addition, the script becomes [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm), meaning that [ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm) rather than [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) should be used to terminate it. The mouse hook will stay installed until the next use of the [Suspend](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) or [Hotkey](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) command, at which time it is removed if not required by any hotkeys or hotstrings (see [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)). |',
+                    '| MouseMoveOff | Allows the user to move the mouse cursor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |',
                 ],
             },
         ],
     },
     {
-        upName: 'CLICK',
         keyRawName: 'Click',
         body: 'Click [, ${1:Options}]',
         doc: [
@@ -190,17 +186,16 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CLIPWAIT',
         keyRawName: 'ClipWait',
         body: 'ClipWait [, ${1:Timeout_Sec}, ${2|False,True|}]',
         doc: ['Waits until the [clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm) contains data.'],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/ClipWait.htm',
         exp: [
-            'ClipWait, Timeout, WaitForAnyData',
+            'ClipWait, Timeout, WaitFor',
             ';  Timeout : If omitted, the command will wait indefinitely.',
             ';            Else wait sec',
-            ';  WaitForAnyData : ',
+            ';  WaitFor : ',
             '',
         ],
         _paramType: [
@@ -213,24 +208,25 @@ export const LineCommand: readonly TCommandElement[] = [
                 sign: 'E',
                 isOpt: true,
                 paramDoc: [
-                    'It\'s `seconds`, not `ms`.\nIf this parameter is omitted or 0 (false), the command is more selective, waiting specifically for text or files to appear ("text" includes anything that would produce text when you paste into Notepad). If this parameter is 1 (true) (can be an expression), the command waits for data of any kind to appear on the clipboard.',
+                    'It\'s `seconds`, not `ms`.\nIf blank or omitted, the command will wait indefinitely.',
                 ],
             },
             {
-                name: 'WaitForAnyData',
+                name: 'WaitFor',
                 sign: 'E',
                 isOpt: true,
                 paramDoc: [
                     '```ahk',
                     '0|1',
                     '```',
-                    'If this parameter is omitted or 0 (false), the command is more selective, waiting specifically for text or files to appear ("text" includes anything that would produce text when you paste into Notepad). If this parameter is 1 (true) (can be an expression), the command waits for data of any kind to appear on the clipboard.',
+                    '**0:** The command is more selective, waiting specifically for text or files to appear ("text" includes anything that would produce text when you paste into Notepad).',
+                    '',
+                    '**1:** The command waits for data of any kind to appear on the clipboard.',
                 ],
             },
         ],
     },
     {
-        upName: 'CONTROL',
         keyRawName: 'Control',
         body:
             'Control, ${1|Check,Uncheck,Enable,Disable,Show,Hide,Style,ExStyle,ShowDropDown,HideDropDown,TabLeft,TabRight,Add,Delete,Choose,ChooseString,EditPaste|}, [${2:Value}, ${3:Control}, ${4:WinTitle}, ${5:WinText}, ${6:ExcludeTitle}, ${7:ExcludeText}]',
@@ -350,7 +346,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLCLICK',
         keyRawName: 'ControlClick',
         body:
             'ControlClick, [${1:Control_or_Pos}, ${2:WinTitle}, ${3:WinText}, ${4:WhichButton}, ${5:ClickCount}, ${6:Options}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
@@ -465,7 +460,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLFOCUS',
         keyRawName: 'ControlFocus',
         body: 'ControlFocus [, ${1:Control}, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Sets input focus to a given control on a window.'],
@@ -523,7 +517,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLGET',
         keyRawName: 'ControlGet',
         body:
             'ControlGet, ${1:OutputVar}, ${2|List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd|}, [${3:Value}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
@@ -645,7 +638,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLGETFOCUS',
         keyRawName: 'ControlGetFocus',
         body: 'ControlGetFocus, ${1:OutputVar}, [${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Retrieves which control of the target window has input focus, if any.'],
@@ -707,7 +699,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLGETPOS',
         keyRawName: 'ControlGetPos',
         body:
             'ControlGetPos, [${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:Control}, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]',
@@ -816,7 +807,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLGETTEXT',
         keyRawName: 'ControlGetText',
         body:
             'ControlGetText, ${1:OutputVar} [, ${2:Control}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -895,7 +885,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLMOVE',
         keyRawName: 'ControlMove',
         body:
             'ControlMove, ${1:Control}, ${2:X}, ${3:Y}, ${4:Width}, ${5:Height} [, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]',
@@ -1004,7 +993,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLSEND',
         keyRawName: 'ControlSend',
         body:
             'ControlSend, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -1074,7 +1062,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLSENDRAW',
         keyRawName: 'ControlSendRaw',
         body:
             'ControlSendRaw, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -1144,7 +1131,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'CONTROLSETTEXT',
         keyRawName: 'ControlSetText',
         body:
             'ControlSetText, [${1:Control}, ${2:NewText}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -1210,7 +1196,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'COORDMODE',
         keyRawName: 'CoordMode',
         body: 'CoordMode, ${1|ToolTip,Pixel,Mouse,Caret,Menu|} [, ${2|Screen,Relative,Window,Client|}]',
         doc: [
@@ -1269,7 +1254,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'DETECTHIDDENTEXT',
         keyRawName: 'DetectHiddenText',
         body: 'DetectHiddenText, ${1|On,Off|}',
         doc: [
@@ -1301,7 +1285,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'DETECTHIDDENWINDOWS',
         keyRawName: 'DetectHiddenWindows',
         body: 'DetectHiddenWindows, ${1|On,Off|}',
         doc: ['Determines whether invisible windows are "seen" by the script.'],
@@ -1331,7 +1314,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'DRIVE',
         keyRawName: 'Drive',
         body: 'Drive, ${1|Label,Lock,Unlock,Eject|} [, ${2:D:}, ${3:Value}]',
         doc: [
@@ -1396,12 +1378,23 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'DRIVEGET',
         keyRawName: 'DriveGet',
         body:
             'DriveGet, ${1:OutputVar}, ${2|List,Capacity,FileSystem,Label,Serial,Type,Status,StatusCD|} [, ${3:Value}]',
         doc: [
-            'Retrieves various types of information about the computer\'s drive(s).\n*SubCommand*\n* List:        Retrieves a string of letters, one character for each drive letter in the system.\n* Capacity:    Retrieves the total capacity of the specified path in megabytes.\n* FileSystem:  Retrieves the type of the specified drive\'s file system.\n* Label:       Retrieves the volume label of the specified drive.\n* Serial:      Retrieves the volume serial number of the specified drive.\n* Type:        Retrieves the drive type of the specified path.\n* Status:      Retrieves the status of the specified path.\n* StatusCD:    Retrieves the media status of a CD or DVD drive.',
+            'Retrieves various types of information about the computer\'s drive(s).',
+            '',
+            '| option                                                                       | description                                                                       |',
+            '| ---------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |',
+            '| [List](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#List)             | Retrieves a string of letters, one character for each drive letter in the system. |',
+            '| [Capacity](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Capacity)     | Retrieves the total capacity of a drive.                                          |',
+            '| [FileSystem](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#FileSystem) | Retrieves the type of a drive\'s file system.                                      |',
+            '| [Label](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Label)           | Retrieves the volume label of a drive.                                            |',
+            '| [Serial](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Serial)         | Retrieves the volume serial number of a drive.                                    |',
+            '| [Type](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Type)             | Retrieves the type of a drive.                                                    |',
+            '| [Status](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Status)         | Retrieves the status of a drive.                                                  |',
+            '| [StatusCD](https:www.autohotkey.com/docs/v1/lib/DriveGet.htm#StatusCD)       | Retrieves the media status of a CD or DVD drive.                                  |',
+            '',
         ],
         recommended: true,
         link: 'https://www.autohotkey.com/docs/v1/lib/DriveGet.htm',
@@ -1463,7 +1456,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'DRIVESPACEFREE',
         keyRawName: 'DriveSpaceFree',
         body: 'DriveSpaceFree, ${1:OutputVar_MBSize}, ${2:C:\\\\}',
         doc: ['Retrieves the free disk space of a drive, in Megabytes.'],
@@ -1511,7 +1503,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'EDIT',
         keyRawName: 'Edit',
         body: 'Edit',
         doc: ['Opens the current script for editing in the associated editor.'],
@@ -1524,7 +1515,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'ENVADD',
         keyRawName: 'EnvAdd',
         body: 'EnvAdd, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]',
         doc: [
@@ -1581,7 +1571,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ENVDIV',
         keyRawName: 'EnvDiv',
         body: 'EnvDiv, ${1:OutVar}, ${2:Value}',
         doc: [
@@ -1619,7 +1608,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ENVGET',
         keyRawName: 'EnvGet',
         body: 'EnvGet, ${1:OutputVar}, ${2:EnvVarName}',
         doc: [
@@ -1658,7 +1646,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ENVMULT',
         keyRawName: 'EnvMult',
         body: 'EnvMult, ${1:OutVar}, ${2:Value}',
         doc: [
@@ -1696,7 +1683,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ENVSET',
         keyRawName: 'EnvSet',
         body: 'EnvSet, ${1:EnvVar}, ${2:Value}',
         doc: [
@@ -1731,7 +1717,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ENVSUB',
         keyRawName: 'EnvSub',
         body: 'EnvSub, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]',
         doc: [
@@ -1789,7 +1774,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ENVUPDATE',
         keyRawName: 'EnvUpdate',
         body: 'EnvUpdate',
         doc: [
@@ -1804,7 +1788,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'FILEAPPEND',
         keyRawName: 'FileAppend',
         body: 'FileAppend [, ${1:Text} , ${2:Filename}, ${3:Encoding}]',
         doc: ['Writes text to the end of a file (first creating the file, if necessary).'],
@@ -1872,7 +1855,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILECOPY',
         keyRawName: 'FileCopy',
         body: 'FileCopy, ${1:SourcePattern}, ${2:DestPattern} [, ${3|0,1|}]',
         doc: [
@@ -1936,7 +1918,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILECOPYDIR',
         keyRawName: 'FileCopyDir',
         body: 'FileCopyDir, ${1:Source}, ${2:Dest} [, ${3|0,1|}]',
         doc: [
@@ -1993,7 +1974,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILECREATEDIR',
         keyRawName: 'FileCreateDir',
         body: 'FileCreateDir, ${1:Path}',
         doc: ['Creates a folder.'],
@@ -2026,7 +2006,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILECREATESHORTCUT',
         keyRawName: 'FileCreateShortcut',
         body:
             'FileCreateShortcut, ${1:Target}, ${2:C:\\My Shortcut.lnk} [, ${3:WorkingDir}, ${4:Args}, ${5:Description}, ${6:IconFile}, ${7:ShortcutKey}, ${8:IconNumber}, ${9|1,3,7|} ]',
@@ -2132,7 +2111,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEDELETE',
         keyRawName: 'FileDelete',
         body: 'FileDelete, ${1:FilePattern}',
         doc: [
@@ -2163,7 +2141,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEENCODING',
         keyRawName: 'FileEncoding',
         body: 'FileEncoding, [${1|ANSI,UTF-8,UTF-8-RAW,UTF-16,UTF-16-RAW,CPnnn|}]',
         doc: [
@@ -2202,7 +2179,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEGETATTRIB',
         keyRawName: 'FileGetAttrib',
         body: 'FileGetAttrib, ${1:OutputVar} , [${2:Filename}]',
         doc: [
@@ -2242,7 +2218,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEGETSHORTCUT',
         keyRawName: 'FileGetShortcut',
         body:
             'FileGetShortcut, ${1:LinkFile} [, ${2:OutTarget}, ${3:OutDir}, ${4:OutArgs}, ${5:OutDescription}, ${6:OutIcon}, ${7:OutIconNum}, ${8:OutRunState}]',
@@ -2340,7 +2315,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEGETSIZE',
         keyRawName: 'FileGetSize',
         body: 'FileGetSize, ${1:OutputVar} [, % "${2:Filename}", ${3|K,M|}]',
         doc: ['Retrieves the size of a file.'],
@@ -2390,7 +2364,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEGETTIME',
         keyRawName: 'FileGetTime',
         body: 'FileGetTime, ${1:OutputVar} [, % "${2:Filename}", ${3|M,C,A|} ]',
         doc: [
@@ -2447,7 +2420,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEGETVERSION',
         keyRawName: 'FileGetVersion',
         body: 'FileGetVersion, ${1:OutputVar} [, % "${2:Filename}"]',
         doc: [
@@ -2484,7 +2456,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEINSTALL',
         keyRawName: 'FileInstall',
         body: 'FileInstall, ${1:Source}, % "${2:Dest}" [, ${3|true,false|}]',
         doc: [
@@ -2538,7 +2509,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEMOVE',
         keyRawName: 'FileMove',
         body: 'FileMove, % "${1:SourcePattern}", % "${2:DestPattern}" [, ${3|true,false|} ]',
         doc: [
@@ -2604,7 +2574,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEMOVEDIR',
         keyRawName: 'FileMoveDir',
         body: 'FileMoveDir, % "${1:Source}", % "${2:Dest}" [, ${3|0,1,2,R|}]',
         doc: [
@@ -2664,7 +2633,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEREAD',
         keyRawName: 'FileRead',
         body: 'FileRead, ${1:OutputVar}, % "${2:Filename}"',
         doc: [
@@ -2715,7 +2683,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEREADLINE',
         keyRawName: 'FileReadLine',
         body: 'FileReadLine, ${1:OutputVar}, % "${2:Filename}", ${3:LineNum}',
         doc: [
@@ -2764,7 +2731,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILERECYCLE',
         keyRawName: 'FileRecycle',
         body: 'FileRecycle, % "${1:FilePattern}"',
         doc: ['Sends a file or directory to the recycle bin if possible, *or permanently deletes it.*'],
@@ -2792,7 +2758,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILERECYCLEEMPTY',
         keyRawName: 'FileRecycleEmpty',
         body: 'FileRecycleEmpty [, % "${1:DriveLetter}"]',
         doc: ['Empties the recycle bin.'],
@@ -2824,7 +2789,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILEREMOVEDIR',
         keyRawName: 'FileRemoveDir',
         body: 'FileRemoveDir, % "${1:DirName}" [, ${2|true,false|}]',
         doc: ['Deletes a folder.'],
@@ -2865,7 +2829,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILESELECTFILE',
         keyRawName: 'FileSelectFile',
         body: 'FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir\\\\Filename}, ${4:Title}, ${5:Filter}]',
         doc: ['Displays a standard dialog that allows the user to open or save file(s).'],
@@ -2956,7 +2919,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILESELECTFOLDER',
         keyRawName: 'FileSelectFolder',
         body: 'FileSelectFolder, ${1:OutputVar} [, ${2:StartingFolder}, ${3:Options}, ${4:Prompt}]',
         doc: [
@@ -3039,7 +3001,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILESETATTRIB',
         keyRawName: 'FileSetAttrib',
         body: 'FileSetAttrib, ${1:Attributes} [, % "${2:D:\\test.txt}", ${3|0,1,2|}, ${4|0,1|}]',
         doc: [
@@ -3122,7 +3083,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FILESETTIME',
         keyRawName: 'FileSetTime',
         body: 'FileSetTime [, ${1:YYYYMMDDHH24MISS}, % "${2:D:\\test.txt}", ${3|M,C,A|}, ${4|0,1,2|}, ${5|0,1|}]',
         doc: [
@@ -3214,7 +3174,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'FORMATTIME',
         keyRawName: 'FormatTime',
         body: 'FormatTime, ${1:OutputVar} [, ${2:YYYYMMDDHH24MISS}, ${3:yyyy-MM-dd HH:mm:ss} ]',
         doc: [
@@ -3289,7 +3248,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GETKEYSTATE',
         keyRawName: 'GetKeyState',
         body: 'GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3|P,T|}]',
         doc: [
@@ -3348,7 +3306,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GROUPACTIVATE',
         keyRawName: 'GroupActivate',
         body: 'GroupActivate, ${1:GroupName} [, ${2:R} ]',
         doc: [
@@ -3388,7 +3345,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GROUPADD',
         keyRawName: 'GroupAdd',
         body:
             'GroupAdd, ${1:GroupName} [, ${2:WinTitle}, ${3:WinText}, ${4:Label}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -3454,7 +3410,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GROUPCLOSE',
         keyRawName: 'GroupClose',
         body: 'GroupClose, ${1:GroupName} [, ${2|A,R|}]',
         doc: [
@@ -3493,7 +3448,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GROUPDEACTIVATE',
         keyRawName: 'GroupDeactivate',
         body: 'GroupDeactivate, ${1:GroupName} [, ${2:R}]',
         doc: [
@@ -3530,7 +3484,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GUI',
         keyRawName: 'Gui',
         body:
             'Gui, ${1|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${2:Value1}, ${3:Value2}, ${4:Value3}]',
@@ -3602,7 +3555,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GUICONTROL',
         keyRawName: 'GuiControl',
         body:
             'GuiControl, ${1|(Blank),Text,Move,MoveDraw,Focus,Disable,Enable,Hide,Show,Delete,Choose,ChooseString,Font,Options|}, ${2:ControlID} [, ${3:Value}]',
@@ -3668,7 +3620,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'GUICONTROLGET',
         keyRawName: 'GuiControlGet',
         body:
             'GuiControlGet, ${1:OutputVar} [, ${2|(Blank),Pos,Focus,FocusV,Enabled,Visible,Hwnd,Name|}, ${3:ControlID}, ${4:Value}]',
@@ -3737,7 +3688,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'HOTKEY',
         keyRawName: 'Hotkey',
         body: 'Hotkey, ${1:KeyName} [, ${2:Label_or_funcName}, ${3:Options}]',
         doc: ['Creates, modifies, enables, or disables a hotkey while the script is running.'],
@@ -3805,7 +3755,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'IMAGESEARCH',
         keyRawName: 'ImageSearch',
         body: 'ImageSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:ImageFile}',
         doc: ['Searches a region of the screen for an image.'],
@@ -3902,7 +3851,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'INIDELETE',
         keyRawName: 'IniDelete',
         body: 'IniDelete, % "${1:Filename}", % "${2:Section}" [, % "${3:Key}"]',
         doc: [
@@ -3945,7 +3893,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'INIREAD',
         keyRawName: 'IniRead',
         body: 'IniRead, ${1:OutputVar}, % "${2:Filename}", % "${3:Section}", % "${4:Key}" [,% "${5:Default}"]',
         doc: [
@@ -4035,7 +3982,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'INIWRITE',
         keyRawName: 'IniWrite',
         body: 'IniWrite, % "${1:Value}", % "${2:Filename}", % "${3:Section}", % "${4:Key}"',
         doc: [
@@ -4109,7 +4055,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'INPUT',
         keyRawName: 'Input',
         body: 'Input [, ${1:OutputVar}, ${2:Options}, ${3:EndKeys}, ${4:MatchList}]',
         doc: ['Waits for the user to type a string.'],
@@ -4206,7 +4151,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'INPUTBOX',
         keyRawName: 'InputBox',
         body:
             'InputBox, ${1:OutputVar} [,% "${2:Title}", % "${3:Prompt}", ${4:HIDE}, ${5:Width}, ${6:Height}, ${7:X}, ${8:Y}, ${9:Locale}, ${10:Timeout_Sec}, % "${11:Default_Str}"]',
@@ -4333,7 +4277,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'KEYHISTORY',
         keyRawName: 'KeyHistory',
         body: 'KeyHistory',
         doc: ['Displays script info and a history of the most recent keystrokes and mouse clicks.'],
@@ -4349,7 +4292,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'KEYWAIT',
         keyRawName: 'KeyWait',
         body: 'KeyWait, ${1:KeyName} [, ${2:Options}]',
         doc: ['Waits for a key or mouse/joystick button to be released or pressed down.'],
@@ -4394,7 +4336,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'LISTHOTKEYS',
         keyRawName: 'ListHotkeys',
         body: 'ListHotkeys',
         doc: [
@@ -4409,7 +4350,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'LISTLINES',
         keyRawName: 'ListLines',
         body: 'ListLines [, ${1|On,Off|}]',
         doc: ['Displays the script lines most recently executed.'],
@@ -4443,7 +4383,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'LISTVARS',
         keyRawName: 'ListVars',
         body: 'ListVars',
         doc: [
@@ -4458,7 +4397,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'MENU',
         keyRawName: 'Menu',
         body:
             'Menu, ${1:MenuName}, ${2|Add,Insert,Delete,DeleteAll,Rename,Check,Uncheck,ToggleCheck,Enable,Disable,ToggleEnable,Default,NoDefault,Standard,NoStandard,Icon,NoIcon,Tip,Show,Color,Click,MainWindow,NoMainWindow,UseErrorLevel|} [, ${3:Value1}, ${4:Value2}, ${5:Value3}, ${6:Value4}]',
@@ -4545,7 +4483,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'MOUSECLICK',
         keyRawName: 'MouseClick',
         body:
             'MouseClick [, ${1|Left,Right,Middle,WheelUp,WheelDown,WheelLeft,WheelRight|} , ${2:X}, ${3:Y}, ${4:ClickCount}, ${5:0-100}, ${6|D,U|}, ${7:R}]',
@@ -4644,7 +4581,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'MOUSECLICKDRAG',
         keyRawName: 'MouseClickDrag',
         body:
             'MouseClickDrag, ${1|Left,Right,Middle,WheelUp,WheelDown|}, ${2:X1}, ${3:Y1}, ${4:X2}, ${5:Y2} [, ${6:0-100}, ${7:R}]',
@@ -4739,7 +4675,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'MOUSEGETPOS',
         keyRawName: 'MouseGetPos',
         body:
             'MouseGetPos [, ${1:OutputVarX}, ${2:OutputVarY}, ${3:OutputVarWin}, ${4:OutputVarControl}, ${5|0,1,2,3|}]',
@@ -4825,7 +4760,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'MOUSEMOVE',
         keyRawName: 'MouseMove',
         body: 'MouseMove, ${1:X}, ${2:Y} [, ${3:0-100}, ${4:R}]',
         doc: ['Moves the mouse cursor.'],
@@ -4886,7 +4820,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'MSGBOX',
         keyRawName: 'MsgBox',
         body: 'MsgBox, % "${0}"',
         doc: [
@@ -4951,7 +4884,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'ONEXIT',
         keyRawName: 'OnExit',
         body: 'OnExit [, ${1:Label}]',
         doc: [
@@ -4981,7 +4913,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'OUTPUTDEBUG',
         keyRawName: 'OutputDebug',
         body: 'OutputDebug, % "${1:Text}"',
         doc: ['Sends a string to the debugger (if any) for display.'],
@@ -5007,7 +4938,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'PIXELGETCOLOR',
         keyRawName: 'PixelGetColor',
         body: 'PixelGetColor, ${1:OutputVar}, ${2:X}, ${3:Y} [, ${4:Alt Slow RGB}]',
         doc: ['Retrieves the color of the pixel at the specified x,y coordinates.'],
@@ -5070,7 +5000,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'PIXELSEARCH',
         keyRawName: 'PixelSearch',
         body:
             'PixelSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:0x16_BGR_ColorID} [, ${8:0-255}, ${9:Fast RGB}]',
@@ -5182,7 +5111,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'POSTMESSAGE',
         keyRawName: 'PostMessage',
         body:
             'PostMessage, ${1:Msg} [, ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
@@ -5271,7 +5199,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'PROCESS',
         keyRawName: 'Process',
         body: 'Process, ${1|Exist,Close,List,Priority,Wait,WaitClose|} [, % ${2:PID_Or_Name} , % "${3:Value}" ]',
         doc: [
@@ -5329,7 +5256,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'PROGRESS',
         keyRawName: 'Progress',
         body: 'Progress, ${1:ProgressParam1} [, ${2:SubText}, ${3:MainText}, ${4:WinTitle}, ${5:FontName}]',
         doc: ['Creates or updates a window containing a progress bar or an image.'],
@@ -5401,7 +5327,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'RANDOM',
         keyRawName: 'Random',
         body: 'Random, ${1:OutputVar} [, ${2:Min}, ${3:Max}]',
         doc: ['Generates a pseudo-random number.'],
@@ -5447,7 +5372,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'REGDELETE',
         keyRawName: 'RegDelete',
         body: 'RegDelete, % "${1|HKLM,HKU,HKCU,HKCR,HKCC|}\\" [, % "${2:ValueName}]"',
         doc: [
@@ -5484,7 +5408,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'REGREAD',
         keyRawName: 'RegRead',
         body: 'RegRead, ${1:OutputVar}, % "${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\" [, % "${3:ValueName}" ]',
         doc: ['Reads a value from the registry.'],
@@ -5528,7 +5451,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'REGWRITE',
         keyRawName: 'RegWrite',
         body:
             'RegWrite, ${1|REG_SZ,REG_EXPAND_SZ,REG_MULTI_SZ,REG_DWORD,REG_BINARY|}, % "${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\" [, ${3:ValueName}, ${4:Value}]',
@@ -5582,7 +5504,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'RUN',
         keyRawName: 'Run',
         body:
             'Run, % "${1:ReadMe.docx}" [, % "${2:D:\\document}", % "${3:Max Min Hide UseErrorLevel}", ${4:OutputVarPID}]',
@@ -5663,7 +5584,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'RUNAS',
         keyRawName: 'RunAs',
         body: 'RunAs, [${1:User}, ${2:Password}, ${3:Domain}]',
         doc: ['Specifies a set of user credentials to use for all subsequent uses of Run and RunWait.'],
@@ -5710,7 +5630,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'RUNWAIT',
         keyRawName: 'RunWait',
         body:
             'RunWait, % "${1:ReadMe.docx}" [, % "${2:D:\\document}", % "${3:Max Min Hide UseErrorLevel}", ${4:OutputVarPID}]',
@@ -5791,7 +5710,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SEND',
         keyRawName: 'Send',
         body: 'Send, ${1:Keys}',
         doc: ['Sends simulated keystrokes and mouse clicks to the active window.'],
@@ -5836,7 +5754,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDEVENT',
         keyRawName: 'SendEvent',
         body: 'SendEvent, ${1:Keys}',
         doc: [
@@ -5885,7 +5802,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDINPUT',
         keyRawName: 'SendInput',
         body: 'SendInput, ${1:Keys}',
         doc: [
@@ -5934,7 +5850,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDLEVEL',
         keyRawName: 'SendLevel',
         body: 'SendLevel, ${1:0-100}',
         doc: ['Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings.'],
@@ -5958,7 +5873,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDMESSAGE',
         keyRawName: 'SendMessage',
         body:
             'SendMessage, ${1:Msg}, [ ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}, ${9:Timeout}]',
@@ -6055,7 +5969,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDMODE',
         keyRawName: 'SendMode',
         body: 'SendMode, ${1|Event,Play,Input,InputThenPlay|}',
         doc: [
@@ -6099,7 +6012,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDPLAY',
         keyRawName: 'SendPlay',
         body: 'SendPlay, ${1:Keys}',
         doc: [
@@ -6148,7 +6060,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SENDRAW',
         keyRawName: 'SendRaw',
         body: 'SendRaw, ${1:Keys}',
         doc: [
@@ -6197,7 +6108,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETBATCHLINES',
         keyRawName: 'SetBatchLines',
         body: 'SetBatchLines, ${1|-1,20ms,LineCount|}',
         doc: ['Determines how fast a script will run (affects CPU utilization).'],
@@ -6229,7 +6139,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETCAPSLOCKSTATE',
         keyRawName: 'SetCapsLockState',
         body: 'SetCapsLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
         doc: [
@@ -6267,7 +6176,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETCONTROLDELAY',
         keyRawName: 'SetControlDelay',
         body: 'SetControlDelay, ${1:Delay_ms}',
         doc: ['Sets the delay that will occur after each control-modifying command.'],
@@ -6294,7 +6202,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETDEFAULTMOUSESPEED',
         keyRawName: 'SetDefaultMouseSpeed',
         body: 'SetDefaultMouseSpeed, ${1:0-100}',
         doc: [
@@ -6322,7 +6229,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETENV',
         keyRawName: 'SetEnv',
         body: 'SetEnv, ${1:OutVar}, ${2:Value}',
         doc: ['Assigns the specified value to a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).'],
@@ -6358,7 +6264,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETFORMAT',
         keyRawName: 'SetFormat',
         body: 'SetFormat, ${1|IntegerFast,FloatFast,Integer,Float|}, ${2:Format}',
         doc: ['Sets the format of integers and floating point numbers generated by math operations.'],
@@ -6418,7 +6323,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETKEYDELAY',
         keyRawName: 'SetKeyDelay',
         body: 'SetKeyDelay [, ${1:Delay_ms} , ${2:PressDuration}, ${3:Play}]',
         doc: [
@@ -6471,7 +6375,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETMOUSEDELAY',
         keyRawName: 'SetMouseDelay',
         body: 'SetMouseDelay, ${1:Delay_ms}, [ ${2:Play}]',
         doc: ['Sets the delay that will occur after each mouse movement or click.'],
@@ -6504,7 +6407,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETNUMLOCKSTATE',
         keyRawName: 'SetNumLockState',
         body: 'SetNumLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
         doc: [
@@ -6544,7 +6446,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETREGVIEW',
         keyRawName: 'SetRegView',
         body: 'SetRegView, ${1|32,64,Default|}',
         doc: [
@@ -6575,7 +6476,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETSCROLLLOCKSTATE',
         keyRawName: 'SetScrollLockState',
         body: 'SetScrollLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]',
         doc: [
@@ -6615,7 +6515,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETSTORECAPSLOCKMODE',
         keyRawName: 'SetStoreCapsLockMode',
         body: 'SetStoreCapsLockMode, ${1|On,Off|}',
         doc: [
@@ -6649,7 +6548,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETTIMER',
         keyRawName: 'SetTimer',
         body: 'SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off,Delete,Default|}, ${3:Priority_int}]',
         doc: ['Causes a subroutine to be launched automatically and repeatedly at a specified time interval.'],
@@ -6738,7 +6636,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETTITLEMATCHMODE',
         keyRawName: 'SetTitleMatchMode',
         body: 'SetTitleMatchMode, ${1|Fast,Slow,RegEx,1,2,3|}',
         doc: [
@@ -6787,7 +6684,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETWINDELAY',
         keyRawName: 'SetWinDelay',
         body: 'SetWinDelay, ${1:Delay_ms}',
         doc: [
@@ -6814,7 +6710,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SETWORKINGDIR',
         keyRawName: 'SetWorkingDir',
         body: 'SetWorkingDir, % "${1:DirName}"',
         doc: [
@@ -6842,7 +6737,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SHUTDOWN',
         keyRawName: 'Shutdown',
         body: 'Shutdown, ${1:Flag}',
         doc: [
@@ -6882,7 +6776,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SLEEP',
         keyRawName: 'Sleep',
         body: 'Sleep, ${1:Delay_ms}',
         doc: [
@@ -6913,7 +6806,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SORT',
         keyRawName: 'Sort',
         body: 'Sort, ${1:InputVarName} [, ${2:Options}]',
         doc: [
@@ -6950,7 +6842,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SOUNDBEEP',
         keyRawName: 'SoundBeep',
         body: 'SoundBeep [, ${1:Frequency_37_to_32767}, ${2:Duration_ms}]',
         doc: ['Emits a tone from the PC speaker.'],
@@ -6986,7 +6877,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SOUNDGET',
         keyRawName: 'SoundGet',
         body:
             'SoundGet, ${1:OutputVar} [, ${2|MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|}, ${3:ControlType}, ${4:DeviceNumber}]',
@@ -7047,7 +6937,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SOUNDGETWAVEVOLUME',
         keyRawName: 'SoundGetWaveVolume',
         body: 'SoundGetWaveVolume, ${1:OutputVar} [, ${2:DeviceNumber}]',
         doc: ['Retrieves the wave output volume of a sound device.'],
@@ -7083,7 +6972,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SOUNDPLAY',
         keyRawName: 'SoundPlay',
         body: 'SoundPlay, ${1:Filename} [, ${2:wait}]',
         doc: ['Plays a sound, video, or other supported file type.'],
@@ -7128,7 +7016,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SOUNDSET',
         keyRawName: 'SoundSet',
         body: 'SoundSet, ${1:NewSetting} [, ${2:ComponentType}, ${3:ControlType}, ${4:DeviceNumber}]',
         doc: ['Changes various settings of a sound device (master mute, master volume, etc.)'],
@@ -7200,7 +7087,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SOUNDSETWAVEVOLUME',
         keyRawName: 'SoundSetWaveVolume',
         body: 'SoundSetWaveVolume, ${1:Percent}, [ ${2:DeviceNumber}]',
         doc: [
@@ -7245,7 +7131,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SPLASHIMAGE',
         keyRawName: 'SplashImage',
         body:
             'SplashImage, [, ${1:ImageFile}, ${2:Options}, ${3:SubText}, ${4:MainText}, ${5:WinTitle}, ${6:FontName}]',
@@ -7334,7 +7219,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SPLASHTEXTOFF',
         keyRawName: 'SplashTextOff',
         body: 'SplashTextOff',
         doc: ['Creates or removes a customizable text popup window.'],
@@ -7348,7 +7232,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'SPLASHTEXTON',
         keyRawName: 'SplashTextOn',
         body: 'SplashTextOn [, ${1:Width}, ${2:Height}, ${3:Title}, ${4:Text}]',
         doc: ['Creates or removes a customizable text popup window.'],
@@ -7398,7 +7281,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SPLITPATH',
         keyRawName: 'SplitPath',
         body:
             'SplitPath, ${1:InputFullFileName} [, ${2:OutFileName}, ${3:OutDir}, ${4:OutExtension}, ${5:OutNameNoExt}, ${6:OutDrive}]',
@@ -7494,7 +7376,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STATUSBARGETTEXT',
         keyRawName: 'StatusBarGetText',
         body:
             'StatusBarGetText, ${1:OutputVar} [, ${2:Part#}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -7563,7 +7444,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STATUSBARWAIT',
         keyRawName: 'StatusBarWait',
         body:
             'StatusBarWait, [${1:BarText}, ${2:Timeout_sec}, ${3:Part#}, ${4:WinTitle}, ${5:WinText}, ${6:Interval}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
@@ -7650,7 +7530,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGCASESENSE',
         keyRawName: 'StringCaseSense',
         body: 'StringCaseSense, ${1|On,Off,Locale|}',
         doc: ['Determines whether string comparisons are case sensitive (default is "not case sensitive").'],
@@ -7684,7 +7563,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGGETPOS',
         keyRawName: 'StringGetPos',
         body: 'StringGetPos, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:Occurrence}, ${5:Offset}]',
         doc: [
@@ -7758,7 +7636,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGLEFT',
         keyRawName: 'StringLeft',
         body: 'StringLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
         doc: [
@@ -7804,7 +7681,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGLEN',
         keyRawName: 'StringLen',
         body: 'StringLen, ${1:OutputVar}, ${2:InputVar}',
         doc: [
@@ -7838,7 +7714,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGLOWER',
         keyRawName: 'StringLower',
         body: 'StringLower, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]',
         doc: ['Converts a string to lowercase or uppercase.'],
@@ -7879,7 +7754,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGMID',
         keyRawName: 'StringMid',
         body: 'StringMid, ${1:OutputVar}, ${2:InputVar}, ${3:StartChar} [, ${4:Count}, ${5:L}]',
         doc: [
@@ -7944,7 +7818,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGREPLACE',
         keyRawName: 'StringReplace',
         body: 'StringReplace, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:ReplaceText}, ${5:ReplaceAll}]',
         doc: [
@@ -8007,7 +7880,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGRIGHT',
         keyRawName: 'StringRight',
         body: 'StringRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
         doc: [
@@ -8053,7 +7925,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGSPLIT',
         keyRawName: 'StringSplit',
         body: 'StringSplit, ${1:OutputArray}, ${2:InputVar} [, ${3:Delimiters}, ${4:OmitChars}]',
         doc: [
@@ -8131,7 +8002,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGTRIMLEFT',
         keyRawName: 'StringTrimLeft',
         body: 'StringTrimLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
         doc: [
@@ -8174,7 +8044,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGTRIMRIGHT',
         keyRawName: 'StringTrimRight',
         body: 'StringTrimRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}',
         doc: [
@@ -8217,7 +8086,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'STRINGUPPER',
         keyRawName: 'StringUpper',
         body: 'StringUpper, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]',
         doc: [
@@ -8259,7 +8127,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SUSPEND',
         keyRawName: 'Suspend',
         body: 'Suspend [, ${1|On,Off,Toggle,Permit|}]',
         doc: [
@@ -8300,7 +8167,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'SYSGET',
         keyRawName: 'SysGet',
         body:
             'SysGet, ${1:OutputVar}, ${2|MonitorCount,MonitorPrimary,Monitor,MonitorWorkArea,MonitorName,(Numeric)|} [, ${3:Value}]',
@@ -8346,7 +8212,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'THREAD',
         keyRawName: 'Thread',
         body: 'Thread, ${1|NoTimers,Priority,Interrupt|} [, ${2:Value1}, ${3:Value2}]',
         doc: [
@@ -8390,7 +8255,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'TOOLTIP',
         keyRawName: 'ToolTip',
         body: 'ToolTip [, % "${1:Text}", ${2:X}, ${3:Y}, ${4:1_to_20}]',
         doc: ['Creates an always-on-top window anywhere on the screen.'],
@@ -8450,7 +8314,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'TRANSFORM',
         keyRawName: 'Transform',
         body:
             'Transform, ${1:OutputVar}, ${2|Unicode,Deref,HTML,Asc,Chr,Mod,Exp,Sqrt,Log,Ln,Round,Ceil,Floor,Abs,Sin,Cos,Tan,ASin,ACos,ATan,Pow,BitNot,BitAnd,BitOr,BitXOr,BitShiftLeft,BitShiftRight|}, ${3:Value1} [, ${4:Value2}]',
@@ -8525,7 +8388,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'TRAYTIP',
         keyRawName: 'TrayTip',
         body: 'TrayTip [, ${1:Title}, ${2:Text}, ${3:Seconds}, ${4:Options}]',
         doc: [
@@ -8598,7 +8460,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'URLDOWNLOADTOFILE',
         keyRawName: 'UrlDownloadToFile',
         body: 'UrlDownloadToFile, % "${1:URL_https}", % "${2:Filename}"',
         doc: ['Downloads a file from the Internet.'],
@@ -8635,7 +8496,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINACTIVATE',
         keyRawName: 'WinActivate',
         body: 'WinActivate [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Activates the specified window..'],
@@ -8682,7 +8542,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINACTIVATEBOTTOM',
         keyRawName: 'WinActivateBottom',
         body: 'WinActivateBottom, [ ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText} ]',
         doc: [
@@ -8731,7 +8590,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINCLOSE',
         keyRawName: 'WinClose',
         body: 'WinClose [, ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText} ]',
         doc: ['Closes the specified window.'],
@@ -8787,7 +8645,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGET',
         keyRawName: 'WinGet',
         body:
             'WinGet, ${1:OutputVar} [, ${2|ID,IDLast,PID,ProcessName,ProcessPath,Count,List,MinMax,ControlList,ControlListHwnd,Transparent,TransColor,Style,ExStyle|}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText} ]',
@@ -8870,7 +8727,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGETACTIVESTATS',
         keyRawName: 'WinGetActiveStats',
         body: 'WinGetActiveStats, ${1:OutTitle}, ${2:OutWidth}, ${3:OutHeight}, ${4:OutX}, ${5:OutY}',
         doc: [
@@ -8942,7 +8798,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGETACTIVETITLE',
         keyRawName: 'WinGetActiveTitle',
         body: 'WinGetActiveTitle, ${1:OutputVar}',
         doc: ['Retrieves the title of the active window.'],
@@ -8965,7 +8820,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGETCLASS',
         keyRawName: 'WinGetClass',
         body: 'WinGetClass, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Retrieves the specified window\'s class name.'],
@@ -9019,7 +8873,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGETPOS',
         keyRawName: 'WinGetPos',
         body:
             'WinGetPos, [ ${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText} ]',
@@ -9104,7 +8957,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGETTEXT',
         keyRawName: 'WinGetText',
         body: 'WinGetText, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Retrieves the text from the specified window.'],
@@ -9158,7 +9010,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINGETTITLE',
         keyRawName: 'WinGetTitle',
         body: 'WinGetTitle, ${1:OutputVar} ${2:[, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]}',
         doc: ['Retrieves the title of the specified window.'],
@@ -9212,7 +9063,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINHIDE',
         keyRawName: 'WinHide',
         body: 'WinHide, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Hides the specified window.'],
@@ -9259,7 +9109,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINKILL',
         keyRawName: 'WinKill',
         body: 'WinKill, [ ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Forces the specified window to close.'],
@@ -9315,7 +9164,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINMAXIMIZE',
         keyRawName: 'WinMaximize',
         body: 'WinMaximize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Enlarges the specified window to its maximum size.'],
@@ -9362,7 +9210,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINMENUSELECTITEM',
         keyRawName: 'WinMenuSelectItem',
         body:
             'WinMenuSelectItem, ${1:WinTitle}, ${2:WinText}, ${3:Menu} [, ${4:SubMenu1}, ${5:SubMenu2}, ${6:SubMenu3}, ${7:SubMenu4}, ${8:SubMenu5}, ${9:SubMenu6}, ${10:ExcludeTitle}, ${11:ExcludeText} ]',
@@ -9473,7 +9320,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINMINIMIZE',
         keyRawName: 'WinMinimize',
         body: 'WinMinimize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Collapses the specified window into a button on the task bar.'],
@@ -9520,7 +9366,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINMINIMIZEALL',
         keyRawName: 'WinMinimizeAll',
         body: 'WinMinimizeAll',
         doc: ['Minimizes all windows.'],
@@ -9539,7 +9384,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'WINMINIMIZEALLUNDO',
         keyRawName: 'WinMinimizeAllUndo',
         body: 'WinMinimizeAllUndo',
         doc: ['Unminimizes all windows.'],
@@ -9558,7 +9402,6 @@ export const LineCommand: readonly TCommandElement[] = [
         _param: [],
     },
     {
-        upName: 'WINMOVE',
         keyRawName: 'WinMove',
         body:
             'WinMove, ${1:WinTitle}, ${2:WinText}, ${3:X}, ${4:Y}, [${5:Width}, ${6:Height}, ${7:ExcludeTitle}, ${8:ExcludeText}]',
@@ -9656,7 +9499,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINRESTORE',
         keyRawName: 'WinRestore',
         body: 'WinRestore, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Unminimizes or unmaximizes the specified window if it is minimized or maximized.'],
@@ -9706,7 +9548,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINSET',
         keyRawName: 'WinSet',
         body:
             'WinSet, ${1|AlwaysOnTop,Bottom,Top,Disable,Enable,Redraw,Style,ExStyle,Region,Transparent,TransColor|}, ${2:Value} [, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]',
@@ -9784,7 +9625,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINSETTITLE',
         keyRawName: 'WinSetTitle',
         body: 'WinSetTitle, ${1:WinTitle}, ${2:WinText}, ${3:NewTitle} [, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Changes the title of the specified window.'],
@@ -9846,7 +9686,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINSHOW',
         keyRawName: 'WinShow',
         body: 'WinShow [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]',
         doc: ['Unhides the specified window.'],
@@ -9893,7 +9732,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINWAIT',
         keyRawName: 'WinWait',
         body: 'WinWait [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Waits until the specified window exists.'],
@@ -9951,7 +9789,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINWAITACTIVE',
         keyRawName: 'WinWaitActive',
         body: 'WinWaitActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Waits until the specified window is active.'],
@@ -10008,7 +9845,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINWAITCLOSE',
         keyRawName: 'WinWaitClose',
         body: 'WinWaitClose [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Waits until the specified window does not exist.'],
@@ -10064,7 +9900,6 @@ export const LineCommand: readonly TCommandElement[] = [
         ],
     },
     {
-        upName: 'WINWAITNOTACTIVE',
         keyRawName: 'WinWaitNotActive',
         body: 'WinWaitNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]',
         doc: ['Waits until the specified window is not active.'],

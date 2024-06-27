@@ -3,23 +3,22 @@
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://www.autohotkey.com/docs/v1/",
         "Adjust some formats to suit vscode display": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "0%"
+        "google Translation progress": "ENVGET --"
     },
     "body": [
         {
-            "upName": "AUTOTRIM",
             "keyRawName": "AutoTrim",
             "body": "AutoTrim, ${1|On,Off|}",
             "doc": [
-                "Determines whether [traditional assignments](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm \"Deprecated. New scripts should use Var := Value instead.\") like `Var1 = %Var2%` omit spaces and tabs from the beginning and end of _Var2_."
+                "确定[旧赋值](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm \"Deprecated. New scripts should use Var := Value instead.\")（如 `Var1 = %Var2%` ）是否省略 _Var2_ 开头和结尾的空格和制表符。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/AutoTrim.htm",
             "exp": [
                 "AutoTrim, OnOff",
-                "; (default) On: tabs and spaces at the beginning and end of a Var2 are omitted from Var1 ",
+                "; (default) On: Var1 中省略了 Var2 开头和结尾的制表符和空格 ",
                 ";               Var1 = %Var2%",
-                ";           Off: Such tabs and spaces are not omitted."
+                ";           Off: 此类制表符和空格不会被省略。"
             ],
             "_paramType": [
                 "S"
@@ -30,30 +29,29 @@
                     "name": "On|Off",
                     "isOpt": false,
                     "paramDoc": [
-                        "**On**: In a [traditional assignment](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm \"Deprecated. New scripts should use Var := Value instead.\") like `Var1 = %Var2%`, tabs and spaces at the beginning and end of a _Var2_ are omitted from _Var1_. This is the default.",
+                        "**On**: 在[旧赋](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm \"Deprecated. New scripts should use Var := Value instead.\")值中，（如 `Var1 = %Var2%` ） _Var1_ 省略了 _Var2_ 开头和结尾的制表符和空格。这是缺省设置。",
                         "",
-                        "**Off**: Such tabs and spaces are not omitted.",
+                        "**Off**: 不会省略此类制表元和空格。",
                         "",
-                        "[[v1.1.30+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 \"Applies to AutoHotkey v1.1.30 and later\") The decimal values 1 and 0 may be used in place of On and Off, respectively.",
+                        "[[v1.1.30+]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 \"Applies to AutoHotkey v1.1.30 and later\") 十进位值 1 和 0 可以分别用于代替 On 和 Off。",
                         "",
-                        "Any literal tabs and spaces are omitted regardless of this setting. Prior to [[v1.1.06]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00), this included \\`t and any escaped literal spaces or tabs. For example, when AutoTrim is Off, the statement ``Var = `t`` assigns a tab character on [[v1.1.06]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00) and an empty string on earlier versions."
+                        "无论此设置如何，任何文本制表符和空格都会被忽略。 在 [\\[v1.1.06\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00) 之前，这包括 `t 和任何转义的文本空格或制表符。例如，当 AutoTrim 为 Off 时，该语句会在 [\\[v1.1.06\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.06.00) 上分配一个制表符，在早期版本上分配一个空字符串。``Var = `t``"
                     ]
                 }
             ]
         },
         {
-            "upName": "BLOCKINPUT",
             "keyRawName": "BlockInput",
             "body": "BlockInput, ${1|On,Off,Send,Mouse,SendAndMouse,Default,MouseMove,MouseMoveOff|}",
             "doc": [
-                "Disables or enables the user's ability to interact with the computer via keyboard and mouse."
+                "禁用或启用用户通过键盘和鼠标与计算机交互的能力。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/BlockInput.htm",
             "exp": [
                 "BlockInput, OnOff",
-                ";  On : The user is prevented from interacting with the computer (mouse and keyboard input has no effect).",
-                ";  Off: Input is re-enabled.",
+                ";  On : 阻止用户与计算机交互（鼠标和键盘输入不起作用）。",
+                ";  Off: 输入已重新启用。",
                 "BlockInput, SendMouse",
                 ";  Send",
                 ";  Mouse",
@@ -72,47 +70,47 @@
                     "name": "On|Off|Send|Mouse|SendAndMouse|Default|MouseMove|MouseMoveOff",
                     "isOpt": false,
                     "paramDoc": [
-                        "| option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |",
-                        "| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |",
-                        "| On           | The user is prevented from interacting with the computer (mouse and keyboard input has no effect).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | , |",
-                        "| Off          | Input is re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |",
-                        "| Send         | The user's keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user's keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                                                                                                                                           | , |",
-                        "| Mouse        | The user's keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user's mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                            | , |",
-                        "| SendAndMouse | A combination of the above two modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | , |",
-                        "| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `BlockInput On` is currently in effect, using `BlockInput Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |",
-                        "| MouseMove    | The mouse cursor will not move in response to the user's physical movement of the mouse (DirectInput applications are a possible exception). When a script first uses this command, the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed (if it is not already). In addition, the script becomes [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm), meaning that [ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm) rather than [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) should be used to terminate it. The mouse hook will stay installed until the next use of the [Suspend](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) or [Hotkey](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) command, at which time it is removed if not required by any hotkeys or hotstrings (see [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)). | , |",
-                        "| MouseMoveOff | Allows the user to move the mouse cursor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | , |"
+                        "| option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |",
+                        "| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |",
+                        "| On           | 阻止用户与计算机交互（鼠标和键盘输入不起作用）。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |",
+                        "| Off          | 输入已重新启用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |",
+                        "| Send         | 当 [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) 或 [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) 正在进行时，将忽略用户的键盘和鼠标输入（仅限传统的 [SendEvent 模式](https://www.autohotkey.com/docs/v1/lib/SendMode.htm)）。这样可以防止用户的击键中断仿真击键的流程。发送完成后，将重新启用输入（除非仍被先前使用的 阻止）。`BlockInput On`                                                                                                                                                                                                                                                                                                                                                        |",
+                        "| Mouse        | 当 [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm)、[MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)、[MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm) 或 [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) 正在进行时，将忽略用户的键盘和鼠标输入（仅限传统的 [SendEvent 模式](https://www.autohotkey.com/docs/v1/lib/SendMode.htm)）。这样可以防止用户的鼠标移动和按两下中断类比的鼠标事件。鼠标命令完成后，将重新启用输入（除非仍被先前使用的 `BlockInput On` 阻止）。                                                                                                                                                                               |",
+                        "| SendAndMouse | 上述两种模式的组合。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |",
+                        "| Default      | 关闭_发送_和_鼠标_模式，但不更改输入阻塞的当前状态。例如，如果 `BlockInput On` 当前有效，则使用 `BlockInput Default` 不会将其关闭。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |",
+                        "| MouseMove    | 鼠标光标不会随着用户对鼠标的物理移动而移动（DirectInput 应用程序可能是一个例外）。当脚本首次使用此命令时，将安装[鼠标钩](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm)（如果尚未安装）。此外，脚本将变[为持久性](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm)，这意味着应使用[ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm)而不是[Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm)来终止它。鼠标钩将保持安装状态，直到下次使用[「挂起](https://www.autohotkey.com/docs/v1/lib/Suspend.htm)」或[「热键](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm)」命令，此时如果任何热键或热字符串不需要鼠标钩，则将其删除（请参阅 [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)）。 |",
+                        "| MouseMoveOff | 允许用户移动鼠标光标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |",
+                        ""
                     ]
                 }
             ]
         },
         {
-            "upName": "CLICK",
             "keyRawName": "Click",
             "body": "Click [, ${1:Options}]",
             "doc": [
-                "Clicks a mouse button at the specified coordinates. It can also hold down a mouse button, turn the mouse wheel, or move the mouse."
+                "在指定座标处按两下鼠标按钮。它还可以按住鼠标按钮、转动鼠标滚轮或移动鼠标。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/Click.htm",
             "exp": [
                 "Click [, Options]",
-                ";exp1 Clicks the left mouse button at a specific position.",
+                ";exp1 在特定位置点击鼠标左键。",
                 "Click, 100 200",
                 "",
-                ";exp2 Moves the mouse cursor to a specific position without clicking.",
+                ";exp2 将鼠标游标移到特定位置而不按一下。",
                 "Click, 100 200 0",
                 "",
-                ";exp3 Clicks the right mouse button at a specific position.",
+                ";exp3 在特定位置按一下鼠标右键。",
                 " Click, 100 200 Right",
                 "",
-                ";exp Performs a double-click at the mouse cursor's current position.",
+                ";exp 在鼠标游标的目前位置执行双击。",
                 "Click, 2",
                 "",
-                ";exp Presses down the left mouse button and holds it.",
+                ";exp 按下鼠标左键并按住。",
                 "Click, Down",
                 "",
-                ";exp Releases the right mouse button.",
+                ";exp 释放鼠标右键。",
                 "Click, Up Right",
                 ""
             ],
@@ -136,19 +134,18 @@
             ]
         },
         {
-            "upName": "CLIPWAIT",
             "keyRawName": "ClipWait",
             "body": "ClipWait [, ${1:Timeout_Sec}, ${2|False,True|}]",
             "doc": [
-                "Waits until the [clipboard](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm) contains data."
+                "等待[剪贴板](https://www.autohotkey.com/docs/v1/misc/Clipboard.htm)包含数据。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ClipWait.htm",
             "exp": [
-                "ClipWait, Timeout, WaitForAnyData",
-                ";  Timeout : If omitted, the command will wait indefinitely.",
-                ";            Else wait sec",
-                ";  WaitForAnyData : ",
+                "ClipWait, Timeout, WaitFor",
+                ";  Timeout : 如果省略，则命令将无限期等待。",
+                ";            否则等待 秒",
+                ";  WaitFor : ",
                 ""
             ],
             "_paramType": [
@@ -161,47 +158,49 @@
                     "sign": "E",
                     "isOpt": true,
                     "paramDoc": [
-                        "It's `seconds`, not `ms`.\nIf this parameter is omitted or 0 (false), the command is more selective, waiting specifically for text or files to appear (\"text\" includes anything that would produce text when you paste into Notepad). If this parameter is 1 (true) (can be an expression), the command waits for data of any kind to appear on the clipboard."
+                        "这是 `秒`，而不是 `毫秒`。如果为空或省略，该命令将无限期等待。"
                     ]
                 },
                 {
-                    "name": "WaitForAnyData",
+                    "name": "WaitFor",
                     "sign": "E",
                     "isOpt": true,
                     "paramDoc": [
                         "```ahk",
                         "0|1",
                         "```",
-                        "If this parameter is omitted or 0 (false), the command is more selective, waiting specifically for text or files to appear (\"text\" includes anything that would produce text when you paste into Notepad). If this parameter is 1 (true) (can be an expression), the command waits for data of any kind to appear on the clipboard."
+                        "**0:** 该命令更具选择性，专门等待文本或档出现（“文本”包括粘贴到记事本中时会生成文本的任何内容）。",
+                        "",
+                        "**1:** 该命令等待任何类型的数据出现在剪贴板上。"
                     ]
                 }
             ]
         },
         {
-            "upName": "CONTROL",
             "keyRawName": "Control",
             "body": "Control, ${1|Check,Uncheck,Enable,Disable,Show,Hide,Style,ExStyle,ShowDropDown,HideDropDown,TabLeft,TabRight,Add,Delete,Choose,ChooseString,EditPaste|}, [${2:Value}, ${3:Control}, ${4:WinTitle}, ${5:WinText}, ${6:ExcludeTitle}, ${7:ExcludeText}]",
             "doc": [
-                "Makes a variety of changes to a control.",
-                "For _SubCommand_, specify one of the following:",
+                "对控件进行各种更改。",
                 "",
-                "- [Check](https://www.autohotkey.com/docs/v1/lib/Control.htm#Check): Turns on (checks) a radio button or checkbox.",
-                "- [Uncheck](https://www.autohotkey.com/docs/v1/lib/Control.htm#Uncheck): Turns off a radio button or checkbox.",
-                "- [Enable](https://www.autohotkey.com/docs/v1/lib/Control.htm#Enable): Enables a control if it was previously disabled.",
-                "- [Disable](https://www.autohotkey.com/docs/v1/lib/Control.htm#Disable): Disables or \"grays out\" a control.",
-                "- [Show](https://www.autohotkey.com/docs/v1/lib/Control.htm#Show): Shows a control if it was previously hidden.",
-                "- [Hide](https://www.autohotkey.com/docs/v1/lib/Control.htm#Hide): Hides a control.",
-                "- [Style](https://www.autohotkey.com/docs/v1/lib/Control.htm#Style): Changes the style of a control.",
-                "- [ExStyle](https://www.autohotkey.com/docs/v1/lib/Control.htm#ExStyle): Changes the extended style of a control.",
-                "- [ShowDropDown](https://www.autohotkey.com/docs/v1/lib/Control.htm#ShowDropDown): Shows the drop-down list of a ComboBox control.",
-                "- [HideDropDown](https://www.autohotkey.com/docs/v1/lib/Control.htm#HideDropDown): Hides the drop-down list of a ComboBox control.",
-                "- [TabLeft](https://www.autohotkey.com/docs/v1/lib/Control.htm#TabLeft): Moves left by one or more tabs in a SysTabControl32.",
-                "- [TabRight](https://www.autohotkey.com/docs/v1/lib/Control.htm#TabRight): Moves right by one or more tabs in a SysTabControl32.",
-                "- [Add](https://www.autohotkey.com/docs/v1/lib/Control.htm#Add): Adds the specified string as a new entry at the bottom of a ListBox, ComboBox (and possibly other types).",
-                "- [Delete](https://www.autohotkey.com/docs/v1/lib/Control.htm#Delete): Deletes the specified entry number from a ListBox or ComboBox.",
-                "- [Choose](https://www.autohotkey.com/docs/v1/lib/Control.htm#Choose): Sets the selection in a ListBox or ComboBox to be the specified entry number.",
-                "- [ChooseString](https://www.autohotkey.com/docs/v1/lib/Control.htm#ChooseString): Sets the selection in a ListBox or ComboBox to be the first entry whose leading part matches the specified string.",
-                "- [EditPaste](https://www.autohotkey.com/docs/v1/lib/Control.htm#EditPaste): Pastes the specified string at the caret in an Edit control."
+                "对于 _SubCommand_，请指定以下选项之一：",
+                "",
+                "- [Check 检查](https://www.autohotkey.com/docs/v1/lib/Control.htm#Check)：打开（检查）单选按钮或复选框。",
+                "- [Uncheck 取消检查](https://www.autohotkey.com/docs/v1/lib/Control.htm#Uncheck)关闭单选按钮或复选框。",
+                "- [Enable 启用](https://www.autohotkey.com/docs/v1/lib/Control.htm#Enable)：启用控件（如果以前禁用了该控制件）。",
+                "- [Disable 禁用](https://www.autohotkey.com/docs/v1/lib/Control.htm#Disable)：禁用控件或将其“灰显”。",
+                "- [Show 显示](https://www.autohotkey.com/docs/v1/lib/Control.htm#Show)：显示以前隐藏的控制件。",
+                "- [Hide 隐藏](https://www.autohotkey.com/docs/v1/lib/Control.htm#Hide)：隐藏控件。",
+                "- [Style 样式](https://www.autohotkey.com/docs/v1/lib/Control.htm#Style)：更改控件的样式。",
+                "- [ExStyle Ex样式](https://www.autohotkey.com/docs/v1/lib/Control.htm#ExStyle)：更改控件的扩展样式。",
+                "- [ShowDropDown 显示下拉式选单](https://www.autohotkey.com/docs/v1/lib/Control.htm#ShowDropDown)：显示 ComboBox 控制件的下拉清单。",
+                "- [HideDropDown隐藏下拉式选单 ](https://www.autohotkey.com/docs/v1/lib/Control.htm#HideDropDown)：隐藏 ComboBox 控制件的下拉清单。",
+                "- [TabLeft](https://www.autohotkey.com/docs/v1/lib/Control.htm#TabLeft)：在 SysTabControl32 中向左移动一个或多个选项卡。",
+                "- [TabRight](https://www.autohotkey.com/docs/v1/lib/Control.htm#TabRight)：在 SysTabControl32 中向右移动一个或多个选项卡。",
+                "- [Add添加](https://www.autohotkey.com/docs/v1/lib/Control.htm#Add)：将指定的字符串作为新条目添加到 ListBox、ComboBox（可能还有其他类型）的底部。",
+                "- [Delete 删除](https://www.autohotkey.com/docs/v1/lib/Control.htm#Delete)：从 ListBox 或 ComboBox 中删除指定的条目编号。",
+                "- [Choose 选择](https://www.autohotkey.com/docs/v1/lib/Control.htm#Choose)：将 ListBox 或 ComboBox 中的选定内容设置为指定的条目编号。",
+                "- [ChooseString](https://www.autohotkey.com/docs/v1/lib/Control.htm#ChooseString)：将 ListBox 或 ComboBox 中的选定内容设置为其前导部分与指定字符串匹配的第一个条目。",
+                "- [EditPaste](https://www.autohotkey.com/docs/v1/lib/Control.htm#EditPaste)：将指定的字符串粘贴到“编辑”控件的插入符号处。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/Control.htm",
@@ -225,27 +224,23 @@
                     "paramDoc": [
                         "SubCommand",
                         "",
-                        "| subCmd         | Description                                                                                                        |",
-                        "| :------------- | :----------------------------------------------------------------------------------------------------------------- |",
-                        "| *Check*        | Turns on (checks) a radio button or checkbox.                                                                      |",
-                        "| *Uncheck*      | Turns off a radio button or checkbox.                                                                              |",
-                        "| *Enable*       | Enables a control if it was previously disabled.                                                                   |",
-                        "| *Disable*      | Disables or \"grays out\" a control.                                                                                 |",
-                        "| *Show*         | Shows a control if it was previously hidden.                                                                       |",
-                        "| *Hide*         | Hides a control.                                                                                                   |",
-                        "| *Style*        | Changes the style of a control.                                                                                    |",
-                        "| *ExStyle*      | Changes the extended style of a control.                                                                           |",
-                        "| *ShowDropDown* | Shows the drop-down list of a ComboBox control.                                                                    |",
-                        "| *HideDropDown* | Hides the drop-down list of a ComboBox control.                                                                    |",
-                        "| *TabLeft*      | Moves left by one or more tabs in a SysTabControl32.                                                               |",
-                        "| *TabRight*     | Moves right by one or more tabs in a SysTabControl32.                                                              |",
-                        "| *Add*          | Adds the specified string as a new entry at the bottom of a ListBox, ComboBox (and possibly other types).          |",
-                        "| *Delete*       | Deletes the specified entry number from a ListBox or ComboBox.                                                     |",
-                        "| *Choose*       | Sets the selection in a ListBox or ComboBox to be the specified entry number.                                      |",
-                        "| *ChooseString* | Sets the selection in a ListBox or ComboBox to be the first entry whose leading part matches the specified string. |",
-                        "| *EditPaste*    | Pastes the specified string at the caret in an Edit control.                                                       |",
-                        "",
-                        ""
+                        "- [Check 检查](https://www.autohotkey.com/docs/v1/lib/Control.htm#Check)：打开（检查）单选按钮或复选框。",
+                        "- [Uncheck 取消检查](https://www.autohotkey.com/docs/v1/lib/Control.htm#Uncheck)关闭单选按钮或复选框。",
+                        "- [Enable 启用](https://www.autohotkey.com/docs/v1/lib/Control.htm#Enable)：启用控件（如果以前禁用了该控制件）。",
+                        "- [Disable 禁用](https://www.autohotkey.com/docs/v1/lib/Control.htm#Disable)：禁用控件或将其“灰显”。",
+                        "- [Show 显示](https://www.autohotkey.com/docs/v1/lib/Control.htm#Show)：显示以前隐藏的控制件。",
+                        "- [Hide 隐藏](https://www.autohotkey.com/docs/v1/lib/Control.htm#Hide)：隐藏控件。",
+                        "- [Style 样式](https://www.autohotkey.com/docs/v1/lib/Control.htm#Style)：更改控件的样式。",
+                        "- [ExStyle Ex样式](https://www.autohotkey.com/docs/v1/lib/Control.htm#ExStyle)：更改控件的扩展样式。",
+                        "- [ShowDropDown 显示下拉式选单](https://www.autohotkey.com/docs/v1/lib/Control.htm#ShowDropDown)：显示 ComboBox 控制件的下拉清单。",
+                        "- [HideDropDown隐藏下拉式选单 ](https://www.autohotkey.com/docs/v1/lib/Control.htm#HideDropDown)：隐藏 ComboBox 控制件的下拉清单。",
+                        "- [TabLeft](https://www.autohotkey.com/docs/v1/lib/Control.htm#TabLeft)：在 SysTabControl32 中向左移动一个或多个选项卡。",
+                        "- [TabRight](https://www.autohotkey.com/docs/v1/lib/Control.htm#TabRight)：在 SysTabControl32 中向右移动一个或多个选项卡。",
+                        "- [Add添加](https://www.autohotkey.com/docs/v1/lib/Control.htm#Add)：将指定的字符串作为新条目添加到 ListBox、ComboBox（可能还有其他类型）的底部。",
+                        "- [Delete 删除](https://www.autohotkey.com/docs/v1/lib/Control.htm#Delete)：从 ListBox 或 ComboBox 中删除指定的条目编号。",
+                        "- [Choose 选择](https://www.autohotkey.com/docs/v1/lib/Control.htm#Choose)：将 ListBox 或 ComboBox 中的选定内容设置为指定的条目编号。",
+                        "- [ChooseString](https://www.autohotkey.com/docs/v1/lib/Control.htm#ChooseString)：将 ListBox 或 ComboBox 中的选定内容设置为其前导部分与指定字符串匹配的第一个条目。",
+                        "- [EditPaste](https://www.autohotkey.com/docs/v1/lib/Control.htm#EditPaste)：将指定的字符串粘贴到“编辑”控件的插入符号处。"
                     ]
                 },
                 {
@@ -253,7 +248,7 @@
                     "sign": "S",
                     "isOpt": true,
                     "paramDoc": [
-                        "These are dependent upon each other and their usage is described [below](https://www.autohotkey.com/docs/v1/lib/Control.htm#SubCommands)."
+                        "它们相互依赖，它们的用法[如下](https://www.autohotkey.com/docs/v1/lib/Control.htm#SubCommands)所述。"
                     ]
                 },
                 {
@@ -301,11 +296,10 @@
             ]
         },
         {
-            "upName": "CONTROLCLICK",
             "keyRawName": "ControlClick",
             "body": "ControlClick, [${1:Control_or_Pos}, ${2:WinTitle}, ${3:WinText}, ${4:WhichButton}, ${5:ClickCount}, ${6:Options}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
-                "Sends a mouse button or mouse wheel event to a control."
+                "将鼠标按钮或鼠标滚轮事件发送到控件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlClick.htm",
@@ -315,7 +309,7 @@
                 "ControlClick, OK, Some Window Title",
                 "ControlClick, x55 y77, Some Window Title",
                 "",
-                "SetControlDelay -1  ; May improve reliability and reduce side effects.",
+                "SetControlDelay -1  ;可以提高可靠性并减少副作用。",
                 "ControlClick, Toolbar321, Some Window Title,,,, NA x192 y10"
             ],
             "_paramType": [
@@ -334,15 +328,15 @@
                     "sign": "S",
                     "isOpt": true,
                     "paramDoc": [
-                        "If blank or omitted, the target window's topmost control will be clicked (or the target window itself if it has no controls). Otherwise, one of the two modes below will be used.",
+                        "如果为空或省略，则将单击目标窗口的最顶层控件（如果没有控件，则单击目标窗口本身）。否则，请使用以下模式之一。",
                         "",
-                        "**Mode 1** (Position): Specify the X and Y coordinates relative to the target window's upper left corner. The X coordinate must precede the Y coordinate and there must be at least one space or tab between them. For example: `X55 Y33`. If there is a control at the specified coordinates, it will be sent the click-event at those exact coordinates. If there is no control, the target window itself will be sent the event (which might have no effect depending on the nature of the window).",
+                        "**模式 1** (Position):指定相对于目标窗口左上角的 X 和 Y 坐标。X 坐标必须位于 Y 坐标之前，并且它们之间必须至少有一个空格或制表符。例如：`X55 Y33`。如果在指定坐标处有一个控件，则会向该精确坐标发送点击事件。如果没有控件，则会向目标窗口本身发送事件（根据窗口的性质，这可能没有效果）。",
                         "",
-                        "**Note**: In mode 1, the X and Y option letters of the _Options_ parameter are ignored.",
+                        "**Note**: 在模式 1 中，_Options_ 参数的 X 和 Y 选项字母被忽略。",
                         "",
-                        "**Mode 2** (ClassNN or Text): Specify either ClassNN (the classname and instance number of the control) or the name/text of the control, both of which can be determined via Window Spy. When using name/text, the matching behavior is determined by [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm).",
+                        "**模式 2** (ClassNN or Text): 指定 ClassNN（控件的类名和实例编号）或控件的名称/文本，这两者都可以通过 Window Spy 确定。使用名称/文本时，匹配行为由 [SetTitleMatchMode](https://www.autohotkey.com/docs/v1/lib/SetTitleMatchMode.htm) 确定。",
                         "",
-                        "By default, mode 2 takes precedence over mode 1. For example, in the unlikely event that there is a control whose text or ClassNN has the format \"Xnnn Ynnn\", it would be acted upon by mode 2. To override this and use mode 1 unconditionally, specify the word Pos in _Options_ as in the following example: `ControlClick, x255 y152, WinTitle,,,, Pos`.",
+                        "默认情况下，模式 2 优先于模式 1。 For example, in the unlikely event that there is a control whose text or ClassNN has the format \"Xnnn Ynnn\", it would be acted upon by mode 2. To override this and use mode 1 unconditionally, specify the word Pos in _Options_ as in the following example: `ControlClick, x255 y152, WinTitle,,,, Pos`.",
                         "",
                         "To operate upon a control's HWND (window handle), leave this parameter blank and specify `ahk_id %ControlHwnd%` for the _WinTitle_ parameter (this also works on hidden controls even when [DetectHiddenWindows](https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm) is Off). The HWND of a control is typically retrieved via [ControlGet Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd), [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), or [DllCall()](https://www.autohotkey.com/docs/v1/lib/DllCall.htm)."
                     ]
@@ -380,7 +374,7 @@
                     "sign": "E",
                     "isOpt": true,
                     "paramDoc": [
-                        "If blank or omitted, it defaults to 1. Otherwise, specify the number of times to click the mouse button or turn the mouse wheel, which can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)."
+                        "如果为空或省略，则默认为 1。否则，指定单击鼠标按钮或转动鼠标滚轮的次数，这可以是一个[表达式](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions)。"
                     ]
                 },
                 {
@@ -388,18 +382,18 @@
                     "sign": "S",
                     "isOpt": true,
                     "paramDoc": [
-                        "If blank or omitted, each click consists of a down-event followed by an up-event, and occurs at the center of the control when mode 2 is in effect. Otherwise, specify a series of one or more of the following options. For example: `d x50 y25`.",
+                        "如果为空或省略，则每次点击都由一个向下事件和一个向上事件组成，并且在模式 2 生效时发生在控件的中心。否则，请指定一系列一个或多个以下选项。例如： `d x50 y25`.",
                         "",
-                        "| option | Description                                                                                                                                                          |",
-                        "| :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |",
-                        "| NA     | May improve reliability. See reliability below.                                                                                                                      |",
-                        "| D      | Press the mouse button down but do not release it (i.e. generate a down-event). If both the D and U options are absent, a complete click (down and up) will be sent. |",
-                        "| U      | Release the mouse button (i.e. generate an up-event). This option should not be present if the D option is already present (and vice versa).                         |",
-                        "| Pos    | Specify the word Pos anywhere in Options to unconditionally use the X/Y positioning mode as described in the Control-or-Pos parameter above.                         |",
-                        "| Xn     | Specify for n the X position to click at, relative to the control's upper left corner. If unspecified, the click will occur at the horizontal-center of the control. |",
-                        "| Yn     | Specify for n the Y position to click at, relative to the control's upper left corner. If unspecified, the click will occur at the vertical-center of the control.   |",
+                        "| option | Description                                                                         |",
+                        "| :----- | :---------------------------------------------------------------------------------- |",
+                        "| NA     | 可能会提高可靠性。请参阅下文的可靠性。                                                    |",
+                        "| D      | 按下鼠标按钮但不释放（即生成向下事件）。如果 D 和 U 选项均不存在，则会发送完整的点击（向下和向上）。|",
+                        "| U      | 释放鼠标按钮（即生成向上事件）。如果 D 选项已存在，则不应存在此选项（反之亦然）。                |",
+                        "| Pos    | 在选项中的任意位置指定单词 Pos 以无条件使用如上文 Control-or-Pos 参数所述的 X/Y 定位模式。     |",
+                        "| Xn     | 指定 n 要单击的 X 位置，相对于控件的左上角。如果未指定，则单击将发生在控件的水平中心。           |",
+                        "| Yn     | 指定 n 要单击的 Y 位置，相对于控件的左上角。如果未指定，则单击将发生在控件的垂直中心。           |",
                         "",
-                        "Use decimal (not hexadecimal) numbers for the X and Y options."
+                        "对 X 和 Y 选项使用十进制（而非十六进制）数字。"
                     ]
                 },
                 {
@@ -421,11 +415,10 @@
             ]
         },
         {
-            "upName": "CONTROLFOCUS",
             "keyRawName": "ControlFocus",
             "body": "ControlFocus [, ${1:Control}, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
-                "Sets input focus to a given control on a window."
+                "将输入焦点设置为窗口上的给定控件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlFocus.htm",
@@ -485,29 +478,28 @@
             ]
         },
         {
-            "upName": "CONTROLGET",
             "keyRawName": "ControlGet",
             "body": "ControlGet, ${1:OutputVar}, ${2|List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd|}, [${3:Value}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
-                "Retrieves which control of the target window has input focus, if any.",
+                "检索目标窗口的哪个控件具有输入焦点（如果有）。",
                 "",
-                "| option                                                                                                                                                                                          | Description                                                                                |",
-                "| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |",
-                "| [List](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#List)                                                                                                                              | Retrieves a list of items from a ListView, ListBox, ComboBox, or DropDownList.             |",
-                "| [Checked](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Checked)                                                                                                                        | Retrieves 1 if the checkbox or radio button is checked or 0 if not.                        |",
-                "| [Enabled](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Enabled)                                                                                                                        | Retrieves 1 if the control is enabled, or 0 if disabled.                                   |",
-                "| [Visible](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Visible)                                                                                                                        | Retrieves 1 if the control is visible, or 0 if hidden.                                     |",
-                "| [Tab](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Tab)                                                                                                                                | Retrieves the tab number of a SysTabControl32 control.                                     |",
-                "| [FindString](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#FindString)                                                                                                                  | Retrieves the entry number of a ListBox or ComboBox that is an exact match for the string. |",
-                "| [Choice](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Choice)                                                                                                                          | Retrieves the name of the currently selected entry in a ListBox or ComboBox.               |",
-                "| [LineCount](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#LineCount)                                                                                                                    | Retrieves the number of lines in an Edit control.                                          |",
-                "| [CurrentLine](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#CurrentLine)                                                                                                                | Retrieves the line number in an Edit control where the caret resides.                      |",
-                "| [CurrentCol](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#CurrentCol)                                                                                                                  | Retrieves the column number in an Edit control where the caret resides.                    |",
-                "| [Line](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Line)                                                                                                                              | Retrieves the text of the specified line number in an Edit control.                        |",
-                "| [Selected](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Selected)                                                                                                                      | Retrieves the selected text in an Edit control.                                            |",
-                "| [Style](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Style)                                                                                                                            | Retrieves an 8-digit hexadecimal number representing the style of the control.             |",
-                "| [ExStyle](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#ExStyle)                                                                                                                        | Retrieves an 8-digit hexadecimal number representing the extended style of the control.    |",
-                "| [Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) [\\[v1.1.04+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 \"Applies to AutoHotkey v1.1.04 and later\") | Retrieves the window handle (HWND) of the control.                                         |"
+                "| option                                                                                                                                                                                          | Description                                                  |",
+                "| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |",
+                "| [List](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#List)                                                                                                                              | 从 ListView、ListBox、ComboBox 或 DropDownList 中检索项目列表。  |",
+                "| [Checked](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Checked)                                                                                                                        | 如果复选框或单选按钮被选中则检索 1，否则检索 0。                     |",
+                "| [Enabled](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Enabled)                                                                                                                        | 如果控件启用则检索 1，如果控件禁用则检索 0。                        |",
+                "| [Visible](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Visible)                                                                                                                        | 如果控件可见则检索 1，如果控件隐藏则检索 0。                        |",
+                "| [Tab](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Tab)                                                                                                                                | 检索 SysTabControl32 控件的选项卡编号。                         |",
+                "| [FindString](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#FindString)                                                                                                                  | 检索与字符串完全匹配的 ListBox 或 ComboBox 的条目编号。            |",
+                "| [Choice](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Choice)                                                                                                                          | 检索 ListBox 或 ComboBox 中当前选定条目的名称。                  |",
+                "| [LineCount](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#LineCount)                                                                                                                    | 检索编辑控件中的行数。                                          |",
+                "| [CurrentLine](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#CurrentLine)                                                                                                                | 检索插入符号所在的编辑控件中的行号。                               |",
+                "| [CurrentCol](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#CurrentCol)                                                                                                                  | 检索编辑控件中插入符号所在的列号。                                 |",
+                "| [Line](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Line)                                                                                                                              | 检索编辑控件中指定行号的文本。                                    |",
+                "| [Selected](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Selected)                                                                                                                      | 检索编辑控件中选定的文本。                                       |",
+                "| [Style](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Style)                                                                                                                            | 检索代表控件样式的 8 位十六进制数。                               |",
+                "| [ExStyle](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#ExStyle)                                                                                                                        | 检索代表控件扩展样式的 8 位十六进制数。                            |",
+                "| [Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) [\\[v1.1.04+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 \"Applies to AutoHotkey v1.1.04 and later\") | 检索控件的窗口句柄 (HWND)。                                   |"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlGet.htm",
@@ -538,23 +530,23 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "| option      | Description                                                                                |",
-                        "| :---------- | :----------------------------------------------------------------------------------------- |",
-                        "| List        | Retrieves a list of items from a ListView, ListBox, ComboBox, or DropDownList.             |",
-                        "| Checked     | Retrieves 1 if the checkbox or radio button is checked or 0 if not.                        |",
-                        "| Enabled     | Retrieves 1 if the control is enabled, or 0 if disabled.                                   |",
-                        "| Visible     | Retrieves 1 if the control is visible, or 0 if hidden.                                     |",
-                        "| Tab         | Retrieves the tab number of a SysTabControl32 control.                                     |",
-                        "| FindString  | Retrieves the entry number of a ListBox or ComboBox that is an exact match for the string. |",
-                        "| Choice      | Retrieves the name of the currently selected entry in a ListBox or ComboBox.               |",
-                        "| LineCount   | Retrieves the number of lines in an Edit control.                                          |",
-                        "| CurrentLine | Retrieves the line number in an Edit control where the caret resides.                      |",
-                        "| CurrentCol  | Retrieves the column number in an Edit control where the caret resides.                    |",
-                        "| Line        | Retrieves the text of the specified line number in an Edit control.                        |",
-                        "| Selected    | Retrieves the selected text in an Edit control.                                            |",
-                        "| Style       | Retrieves an 8-digit hexadecimal number representing the style of the control.             |",
-                        "| ExStyle     | Retrieves an 8-digit hexadecimal number representing the extended style of the control.    |",
-                        "| Hwnd        | Retrieves the window handle (HWND) of the control.                                         |"
+                        "| option                                                                                                                                                                                          | Description                                                  |",
+                        "| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |",
+                        "| [List](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#List)                                                                                                                              | 从 ListView、ListBox、ComboBox 或 DropDownList 中检索项目列表。  |",
+                        "| [Checked](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Checked)                                                                                                                        | 如果复选框或单选按钮被选中则检索 1，否则检索 0。                     |",
+                        "| [Enabled](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Enabled)                                                                                                                        | 如果控件启用则检索 1，如果控件禁用则检索 0。                        |",
+                        "| [Visible](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Visible)                                                                                                                        | 如果控件可见则检索 1，如果控件隐藏则检索 0。                        |",
+                        "| [Tab](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Tab)                                                                                                                                | 检索 SysTabControl32 控件的选项卡编号。                         |",
+                        "| [FindString](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#FindString)                                                                                                                  | 检索与字符串完全匹配的 ListBox 或 ComboBox 的条目编号。            |",
+                        "| [Choice](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Choice)                                                                                                                          | 检索 ListBox 或 ComboBox 中当前选定条目的名称。                  |",
+                        "| [LineCount](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#LineCount)                                                                                                                    | 检索编辑控件中的行数。                                          |",
+                        "| [CurrentLine](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#CurrentLine)                                                                                                                | 检索插入符号所在的编辑控件中的行号。                               |",
+                        "| [CurrentCol](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#CurrentCol)                                                                                                                  | 检索编辑控件中插入符号所在的列号。                                 |",
+                        "| [Line](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Line)                                                                                                                              | 检索编辑控件中指定行号的文本。                                    |",
+                        "| [Selected](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Selected)                                                                                                                      | 检索编辑控件中选定的文本。                                       |",
+                        "| [Style](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Style)                                                                                                                            | 检索代表控件样式的 8 位十六进制数。                               |",
+                        "| [ExStyle](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#ExStyle)                                                                                                                        | 检索代表控件扩展样式的 8 位十六进制数。                            |",
+                        "| [Hwnd](https://www.autohotkey.com/docs/v1/lib/ControlGet.htm#Hwnd) [\\[v1.1.04+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 \"Applies to AutoHotkey v1.1.04 and later\") | 检索控件的窗口句柄 (HWND)。                                   |"
                     ]
                 },
                 {
@@ -610,11 +602,10 @@
             ]
         },
         {
-            "upName": "CONTROLGETFOCUS",
             "keyRawName": "ControlGetFocus",
             "body": "ControlGetFocus, ${1:OutputVar}, [${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
-                "Retrieves which control of the target window has input focus, if any."
+                "检索目标窗口的哪个控件具有输入焦点（如果有）。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlGetFocus.htm",
@@ -623,7 +614,7 @@
                 ";exp:",
                 "ControlGetFocus, OutputVar, % \"Untitled - Notepad\"",
                 "if ErrorLevel",
-                "    MsgBox, % \"The target window doesn't exist or none of its controls has input focus.\"",
+                "    MsgBox, % \"目标视窗不存在或其控件均没有输入焦点。\"",
                 "else",
                 "    MsgBox, % \"Control with focus = \" OutputVar"
             ],
@@ -678,18 +669,17 @@
             ]
         },
         {
-            "upName": "CONTROLGETPOS",
             "keyRawName": "ControlGetPos",
             "body": "ControlGetPos, [${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:Control}, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]",
             "doc": [
-                "Retrieves the position and size of a control."
+                "检索控件的位置和大小。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlGetPos.htm",
             "exp": [
                 "ControlGetPos, [OutX, OutY, OutWidth, OutHeight, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]",
                 "",
-                ";exp: Continuously updates and displays the name and position of the control currently under the mouse cursor.",
+                ";exp: 不断更新并显示目前鼠标游标下的控件的名称和位置。",
                 "",
                 "Loop",
                 "{",
@@ -792,18 +782,17 @@
             ]
         },
         {
-            "upName": "CONTROLGETTEXT",
             "keyRawName": "ControlGetText",
             "body": "ControlGetText, ${1:OutputVar} [, ${2:Control}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
-                "Retrieves text from a control.\n\n* Note: To retrieve text from a ListView, ListBox, or ComboBox, use ControlGet List instead."
+                "从控件中检索文本。\n\n* Note: 若要从 ListView、ListBox 或 ComboBox 检索文本，请改用 ControlGet List。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlGetText.htm",
             "exp": [
                 "ControlGetText, OutputVar [, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]",
                 "",
-                ";exp 1 Retrieves the current text from Notepad's edit control and stores it in OutputVar.",
+                ";exp 1 从记事本的编辑控件中检索目前文本并将其存储在 OutputVar.",
                 "",
                 "~F11::fn_test()",
                 "",
@@ -876,11 +865,10 @@
             ]
         },
         {
-            "upName": "CONTROLMOVE",
             "keyRawName": "ControlMove",
             "body": "ControlMove, ${1:Control}, ${2:X}, ${3:Y}, ${4:Width}, ${5:Height} [, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]",
             "doc": [
-                "Moves or resizes a control."
+                "移动控制或调整其大小。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlMove.htm",
@@ -895,9 +883,9 @@
                 "fn_ControlMoveTimer() {",
                 "    if not WinExist(\"My Input Box\")",
                 "        return",
-                "    ; Otherwise the above set the \"last found\" window for us:",
+                "    ; 否则上面为我们设置「最后找到」视窗：",
                 "    WinActivate",
-                "    ControlMove, OK, 10, , 200 ; Move the OK button to the left and increase its width.",
+                "    ControlMove, OK, 10, , 200 ;将“确定”按钮向左移动并增加其宽度。",
                 "}",
                 ""
             ],
@@ -990,11 +978,10 @@
             ]
         },
         {
-            "upName": "CONTROLSEND",
             "keyRawName": "ControlSend",
             "body": "ControlSend, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
-                "Sends simulated keystrokes to a window or control."
+                "将模拟击键发送到窗口或控件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlSend.htm",
@@ -1065,11 +1052,10 @@
             ]
         },
         {
-            "upName": "CONTROLSENDRAW",
             "keyRawName": "ControlSendRaw",
             "body": "ControlSendRaw, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
-                "Sends simulated keystrokes to a window or control."
+                "将模拟击键发送到窗口或控件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlSend.htm",
@@ -1140,11 +1126,10 @@
             ]
         },
         {
-            "upName": "CONTROLSETTEXT",
             "keyRawName": "ControlSetText",
             "body": "ControlSetText, [${1:Control}, ${2:NewText}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
-                "Changes the text of a control."
+                "更改控件的文本。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ControlSetText.htm",
@@ -1213,11 +1198,10 @@
             ]
         },
         {
-            "upName": "COORDMODE",
             "keyRawName": "CoordMode",
             "body": "CoordMode, ${1|ToolTip,Pixel,Mouse,Caret,Menu|} [, ${2|Screen,Relative,Window,Client|}]",
             "doc": [
-                "Sets coordinate mode for various commands to be relative to either the active window or the screen.\n\n1. **TargetType**:\n> The type of target to affect. Specify one of the following words:\n- **ToolTip**: Affects [ToolTip](https://www.autohotkey.com/docs/v1/lib/ToolTip.htm).\n- **Pixel**: Affects [PixelGetColor](https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm), [PixelSearch](https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm), and [ImageSearch](https://www.autohotkey.com/docs/v1/lib/ImageSearch.htm).\n- **Mouse**: Affects [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).\n- **Caret**: Affects the built-in variables [A_CaretX](https://www.autohotkey.com/docs/v1/Variables.htm#Caret) and [A_CaretY](https://www.autohotkey.com/docs/v1/Variables.htm#Caret).\n- **Menu**: Affects the [Menu Show](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Show) command when coordinates are specified for it.\n\n2. **RelativeTo**:\n> The area to which TargetType is to be related. Specify one of the following words (if omitted, it defaults to Screen):\n- **Screen**: Coordinates are relative to the desktop (entire screen).\n- **Relative**: Coordinates are relative to the active window.\n- **Window** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 \"Applies to AutoHotkey v1.1.05 and later\"): Synonymous with _Relative_ and recommended for clarity.\n- **Client** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 \"Applies to AutoHotkey v1.1.05 and later\"): Coordinates are relative to the active window's client area, which excludes the window's title bar, menu (if it has a standard one) and borders. Client coordinates are less dependent on OS version and theme."
+                "将各种命令的坐标模式设置为相对于活动窗口或屏幕。\n\n1. **TargetType**:\n> The type of target to affect. Specify one of the following words:\n- **ToolTip**: Affects [ToolTip](https://www.autohotkey.com/docs/v1/lib/ToolTip.htm).\n- **Pixel**: Affects [PixelGetColor](https://www.autohotkey.com/docs/v1/lib/PixelGetColor.htm), [PixelSearch](https://www.autohotkey.com/docs/v1/lib/PixelSearch.htm), and [ImageSearch](https://www.autohotkey.com/docs/v1/lib/ImageSearch.htm).\n- **Mouse**: Affects [MouseGetPos](https://www.autohotkey.com/docs/v1/lib/MouseGetPos.htm), [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), and [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm)/[Click](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm)/[Drag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm).\n- **Caret**: Affects the built-in variables [A_CaretX](https://www.autohotkey.com/docs/v1/Variables.htm#Caret) and [A_CaretY](https://www.autohotkey.com/docs/v1/Variables.htm#Caret).\n- **Menu**: Affects the [Menu Show](https://www.autohotkey.com/docs/v1/lib/Menu.htm#Show) command when coordinates are specified for it.\n\n2. **RelativeTo**:\n> The area to which TargetType is to be related. Specify one of the following words (if omitted, it defaults to Screen):\n- **Screen**: Coordinates are relative to the desktop (entire screen).\n- **Relative**: Coordinates are relative to the active window.\n- **Window** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 \"Applies to AutoHotkey v1.1.05 and later\"): Synonymous with _Relative_ and recommended for clarity.\n- **Client** [[v1.1.05+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.05.00 \"Applies to AutoHotkey v1.1.05 and later\"): Coordinates are relative to the active window's client area, which excludes the window's title bar, menu (if it has a standard one) and borders. Client coordinates are less dependent on OS version and theme."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/CoordMode.htm",
@@ -1238,7 +1222,7 @@
                     "paramDoc": [
                         "TargetType",
                         "",
-                        "The type of target to affect. Specify one of the following words:",
+                        "要影响的目标类型。指定下列词语之一：",
                         "",
                         "**ToolTip**: Affects [ToolTip](https://www.autohotkey.com/docs/v1/lib/ToolTip.htm).",
                         "",
@@ -1272,18 +1256,17 @@
             ]
         },
         {
-            "upName": "DETECTHIDDENTEXT",
             "keyRawName": "DetectHiddenText",
             "body": "DetectHiddenText, ${1|On,Off|}",
             "doc": [
-                "Determines whether invisible text in a window is \"seen\" for the purpose of finding the window. This affects commands, built-in functions and control flow statements such as WinExist() and WinActivate."
+                "确定是否“看到”窗口中的不可见文本以查找窗口。这会影响窗口命令，如 [WinExist（）](https://www.autohotkey.com/docs/v1/lib/WinExist.htm) 和 [WinActivate](https://www.autohotkey.com/docs/v1/lib/WinActivate.htm)。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/DetectHiddenText.htm",
             "exp": [
                 "DetectHiddenText, OnOff",
-                ";                -> On (defaults), Hidden text will be detected.",
-                ";                -> Off, Hidden text is not detected."
+                ";                -> On (defaults), 隐藏文本将被检测到。",
+                ";                -> Off, 未检测到隐藏文本。"
             ],
             "_paramType": [
                 "S"
@@ -1294,9 +1277,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "**On**: This is the default. Hidden text will be detected.",
+                        "**On**: 这是默认设置。隐藏文本将被检测。",
                         "",
-                        "**Off**: Hidden text is not detected.",
+                        "**Off**: 未检测到隐藏文本。",
                         "",
                         "[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 \"Applies to AutoHotkey v1.1.30 and later\") The decimal values 1 and 0 may be used in place of On and Off, respectively."
                     ]
@@ -1304,18 +1287,17 @@
             ]
         },
         {
-            "upName": "DETECTHIDDENWINDOWS",
             "keyRawName": "DetectHiddenWindows",
             "body": "DetectHiddenWindows, ${1|On,Off|}",
             "doc": [
-                "Determines whether invisible windows are \"seen\" by the script."
+                "确定不可见的窗口是否被脚本“看到”。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/DetectHiddenWindows.htm",
             "exp": [
                 "DetectHiddenWindows, OnOff",
-                ";                     On: Hidden windows are detected.",
-                ";          (default) Off: Hidden windows are not detected, except by the WinShow command."
+                ";                     On: 检测到隐藏窗口。",
+                ";          (default) Off: 除 WinShow 命令外，无法检测隐藏窗口。"
             ],
             "_paramType": [
                 "S"
@@ -1326,9 +1308,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "**On**: Hidden windows are detected.",
+                        "**On**: 检测到隐藏窗口。",
                         "",
-                        "**Off**: This is the default. Hidden windows are not detected, except by the [WinShow](https://www.autohotkey.com/docs/v1/lib/WinShow.htm) command.",
+                        "**Off**: 除 WinShow 命令外，无法检测隐藏窗口。",
                         "",
                         "[\\[v1.1.30+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.30.00 \"Applies to AutoHotkey v1.1.30 and later\") The decimal values 1 and 0 may be used in place of On and Off, respectively."
                     ]
@@ -1336,17 +1318,16 @@
             ]
         },
         {
-            "upName": "DRIVE",
             "keyRawName": "Drive",
             "body": "Drive, ${1|Label,Lock,Unlock,Eject|} [, ${2:D:}, ${3:Value}]",
             "doc": [
-                "Ejects/retracts the tray in a CD or DVD drive, or sets a drive's volume label.",
+                "弹出/缩回 CD 或 DVD 驱动器中的托盘，或设置驱动器的卷标。",
                 "| option                                                            | Description                                         |",
                 "| :---------------------------------------------------------------- | :-------------------------------------------------- |",
-                "| [Label](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Label)   | Changes the volume label of a drive.                |",
-                "| [Lock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Lock)     | Prevents the eject feature of a drive from working. |",
-                "| [Unlock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Unlock) | Restores the eject feature of a drive.              |",
-                "| [Eject](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Eject)   | Ejects or retracts the tray of a CD or DVD drive.   |"
+                "| [Label](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Label)   | 更改驱动器的卷标。                |",
+                "| [Lock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Lock)     | 防止驱动器的弹出功能起作用。 |",
+                "| [Unlock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Unlock) | 恢复驱动器的弹出功能.              |",
+                "| [Eject](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Eject)   | 弹出或缩回 CD 或 DVD 驱动器的托盘。   |"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/Drive.htm",
@@ -1367,12 +1348,12 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "| option   | Description                                         |",
-                        "| :------- | :-------------------------------------------------- |",
-                        "| *Labe*   | Changes the volume label of a drive.                |",
-                        "| *Lock*   | Prevents the eject feature of a drive from working. |",
-                        "| *Unlock* | Restores the eject feature of a drive.              |",
-                        "| *EjectE* | Ejects or retracts the tray of a CD or DVD drive.   |"
+                        "| option                                                            | Description                                         |",
+                        "| :---------------------------------------------------------------- | :-------------------------------------------------- |",
+                        "| [Label](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Label)   | 更改驱动器的卷标。                |",
+                        "| [Lock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Lock)     | 防止驱动器的弹出功能起作用。 |",
+                        "| [Unlock](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Unlock) | 恢复驱动器的弹出功能.              |",
+                        "| [Eject](https://www.autohotkey.com/docs/v1/lib/Drive.htm#Eject)   | 弹出或缩回 CD 或 DVD 驱动器的托盘。   |"
                     ]
                 },
                 {
@@ -1401,18 +1382,29 @@
             ]
         },
         {
-            "upName": "DRIVEGET",
             "keyRawName": "DriveGet",
             "body": "DriveGet, ${1:OutputVar}, ${2|List,Capacity,FileSystem,Label,Serial,Type,Status,StatusCD|} [, ${3:Value}]",
             "doc": [
-                "Retrieves various types of information about the computer's drive(s).\n*SubCommand*\n* List:        Retrieves a string of letters, one character for each drive letter in the system.\n* Capacity:    Retrieves the total capacity of the specified path in megabytes.\n* FileSystem:  Retrieves the type of the specified drive's file system.\n* Label:       Retrieves the volume label of the specified drive.\n* Serial:      Retrieves the volume serial number of the specified drive.\n* Type:        Retrieves the drive type of the specified path.\n* Status:      Retrieves the status of the specified path.\n* StatusCD:    Retrieves the media status of a CD or DVD drive."
+                "检索有关计算机驱动器的各种类型的信息。",
+                "",
+                "| option                                                                       | description                         |",
+                "| ---------------------------------------------------------------------------- | :---------------------------------- |",
+                "| [List](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#List)             | 检索一串字母，系统中每个驱动器号一个字符。  |",
+                "| [Capacity](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Capacity)     | 检索驱动器的总容量。                    |",
+                "| [FileSystem](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#FileSystem) | 检索驱动器文件系统的类型。               |",
+                "| [Label](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Label)           | 检索驱动器的卷标。                      |",
+                "| [Serial](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Serial)         | 检索驱动器的卷序列号。                   |",
+                "| [Type](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Type)             | 检索驱动器的类型。                      |",
+                "| [Status](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Status)         | 检索驱动器的状态。                      |",
+                "| [StatusCD](https:www.autohotkey.com/docs/v1/lib/DriveGet.htm#StatusCD)       | 检索 CD 或 DVD 驱动器的媒体状态。        |",
+                ""
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/DriveGet.htm",
             "exp": [
                 "DriveGet, OutputVar, SubCommand [, Value]",
                 "",
-                ";exp Allows the user to select a drive in order to analyze it.",
+                ";exp 允许用户选择一个驱动器以便对其进行分析。",
                 "",
                 "FileSelectFolder, folder,, 3, Pick a drive to analyze:",
                 "if not folder",
@@ -1446,14 +1438,17 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "- [List](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#List): Retrieves a string of letters, one character for each drive letter in the system.",
-                        "- [Capacity](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Capacity): Retrieves the total capacity of a drive.",
-                        "- [FileSystem](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#FileSystem): Retrieves the type of a drive's file system.",
-                        "- [Label](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Label): Retrieves the volume label of a drive.",
-                        "- [Serial](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Serial): Retrieves the volume serial number of a drive.",
-                        "- [Type](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Type): Retrieves the type of a drive.",
-                        "- [Status](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Status): Retrieves the status of a drive.",
-                        "- [StatusCD](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#StatusCD): Retrieves the media status of a CD or DVD drive."
+                        "| option                                                                       | description                         |",
+                        "| ---------------------------------------------------------------------------- | :---------------------------------- |",
+                        "| [List](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#List)             | 检索一串字母，系统中每个驱动器号一个字符。  |",
+                        "| [Capacity](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Capacity)     | 检索驱动器的总容量。                    |",
+                        "| [FileSystem](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#FileSystem) | 检索驱动器文件系统的类型。               |",
+                        "| [Label](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Label)           | 检索驱动器的卷标。                      |",
+                        "| [Serial](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Serial)         | 检索驱动器的卷序列号。                   |",
+                        "| [Type](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Type)             | 检索驱动器的类型。                      |",
+                        "| [Status](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Status)         | 检索驱动器的状态。                      |",
+                        "| [StatusCD](https:www.autohotkey.com/docs/v1/lib/DriveGet.htm#StatusCD)       | 检索 CD 或 DVD 驱动器的媒体状态。        |",
+                        ""
                     ]
                 },
                 {
@@ -1467,17 +1462,16 @@
             ]
         },
         {
-            "upName": "DRIVESPACEFREE",
             "keyRawName": "DriveSpaceFree",
             "body": "DriveSpaceFree, ${1:OutputVar_MBSize}, ${2:C:\\\\}",
             "doc": [
-                "Retrieves the free disk space of a drive, in Megabytes."
+                "检索驱动器的可用磁盘空间（以兆字节为单位）。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/DriveSpaceFree.htm",
             "exp": [
                 "DriveSpaceFree, OutputVar, Path",
-                "; OutputVar size is Megabytes.",
+                ";OutputVar 大小以 MB 为单位。",
                 "",
                 "DriveSpaceFree, FreeSpace, C:\\",
                 "MsgBox % FreeSpace//1024 ; MB -> GB"
@@ -1494,7 +1488,7 @@
                     "paramDoc": [
                         "megabytes MB",
                         "",
-                        "The output variable in which to store the result, which is rounded down to the nearest whole number.",
+                        "用于存储结果的输出变量，结果将向下舍入到最接近的整数。",
                         "",
                         "```ahk",
                         "DriveSpaceFree, FreeSpace, % A_MyDocuments",
@@ -1507,7 +1501,7 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "Any path contained by the drive (might also work on UNC paths and mapped drives).",
+                        "驱动器包含的任何路径（也可能适用于 UNC 路径和映射驱动器）。",
                         "",
                         "```ahk",
                         "DriveSpaceFree, FreeSpace, C:\\",
@@ -1517,11 +1511,10 @@
             ]
         },
         {
-            "upName": "EDIT",
             "keyRawName": "Edit",
             "body": "Edit",
             "doc": [
-                "Opens the current script for editing in the associated editor."
+                "打开当前脚本以便在相关编辑器中编辑。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/Edit.htm",
@@ -1532,7 +1525,6 @@
             "_param": []
         },
         {
-            "upName": "ENVADD",
             "keyRawName": "EnvAdd",
             "body": "EnvAdd, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]",
             "doc": [
@@ -1589,11 +1581,10 @@
             ]
         },
         {
-            "upName": "ENVDIV",
             "keyRawName": "EnvDiv",
             "body": "EnvDiv, ${1:OutVar}, ${2:Value}",
             "doc": [
-                "Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself divided by the given value. Synonymous with: `Var /= Value`."
+                "将[变量](https://www.autohotkey.com/docs/v1/Variables.htm)设置为自身除以给定值。代名词： `Var /= Value`."
             ],
             "recommended": false,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvDiv.htm",
@@ -1627,7 +1618,6 @@
             ]
         },
         {
-            "upName": "ENVGET",
             "keyRawName": "EnvGet",
             "body": "EnvGet, ${1:OutputVar}, ${2:EnvVarName}",
             "doc": [
@@ -1668,7 +1658,6 @@
             ]
         },
         {
-            "upName": "ENVMULT",
             "keyRawName": "EnvMult",
             "body": "EnvMult, ${1:OutVar}, ${2:Value}",
             "doc": [
@@ -1706,7 +1695,6 @@
             ]
         },
         {
-            "upName": "ENVSET",
             "keyRawName": "EnvSet",
             "body": "EnvSet, ${1:EnvVar}, ${2:Value}",
             "doc": [
@@ -1741,7 +1729,6 @@
             ]
         },
         {
-            "upName": "ENVSUB",
             "keyRawName": "EnvSub",
             "body": "EnvSub, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]",
             "doc": [
@@ -1799,7 +1786,6 @@
             ]
         },
         {
-            "upName": "ENVUPDATE",
             "keyRawName": "EnvUpdate",
             "body": "EnvUpdate",
             "doc": [
@@ -1814,7 +1800,6 @@
             "_param": []
         },
         {
-            "upName": "FILEAPPEND",
             "keyRawName": "FileAppend",
             "body": "FileAppend [, ${1:Text} , ${2:Filename}, ${3:Encoding}]",
             "doc": [
@@ -1830,7 +1815,7 @@
                 "FileAppend,",
                 "(",
                 "A line of text.",
-                "By default, the hard carriage return (Enter) between the previous line and this one will be written to the file.",
+                "By default, the hard carriage return (回车) between the previous line and this one will be written to the file.",
                 "    This line is indented with a tab; by default, that tab will also be written to the file.",
                 "Variable references such as %Var% are expanded by default.",
                 "), D:\\My File.txt"
@@ -1884,7 +1869,6 @@
             ]
         },
         {
-            "upName": "FILECOPY",
             "keyRawName": "FileCopy",
             "body": "FileCopy, ${1:SourcePattern}, ${2:DestPattern} [, ${3|0,1|}]",
             "doc": [
@@ -1948,7 +1932,6 @@
             ]
         },
         {
-            "upName": "FILECOPYDIR",
             "keyRawName": "FileCopyDir",
             "body": "FileCopyDir, ${1:Source}, ${2:Dest} [, ${3|0,1|}]",
             "doc": [
@@ -2005,7 +1988,6 @@
             ]
         },
         {
-            "upName": "FILECREATEDIR",
             "keyRawName": "FileCreateDir",
             "body": "FileCreateDir, ${1:Path}",
             "doc": [
@@ -2040,7 +2022,6 @@
             ]
         },
         {
-            "upName": "FILECREATESHORTCUT",
             "keyRawName": "FileCreateShortcut",
             "body": "FileCreateShortcut, ${1:Target}, ${2:C:\\My Shortcut.lnk} [, ${3:WorkingDir}, ${4:Args}, ${5:Description}, ${6:IconFile}, ${7:ShortcutKey}, ${8:IconNumber}, ${9|1,3,7|} ]",
             "doc": [
@@ -2147,7 +2128,6 @@
             ]
         },
         {
-            "upName": "FILEDELETE",
             "keyRawName": "FileDelete",
             "body": "FileDelete, ${1:FilePattern}",
             "doc": [
@@ -2178,7 +2158,6 @@
             ]
         },
         {
-            "upName": "FILEENCODING",
             "keyRawName": "FileEncoding",
             "body": "FileEncoding, [${1|ANSI,UTF-8,UTF-8-RAW,UTF-16,UTF-16-RAW,CPnnn|}]",
             "doc": [
@@ -2217,7 +2196,6 @@
             ]
         },
         {
-            "upName": "FILEGETATTRIB",
             "keyRawName": "FileGetAttrib",
             "body": "FileGetAttrib, ${1:OutputVar} , [${2:Filename}]",
             "doc": [
@@ -2259,7 +2237,6 @@
             ]
         },
         {
-            "upName": "FILEGETSHORTCUT",
             "keyRawName": "FileGetShortcut",
             "body": "FileGetShortcut, ${1:LinkFile} [, ${2:OutTarget}, ${3:OutDir}, ${4:OutArgs}, ${5:OutDescription}, ${6:OutIcon}, ${7:OutIconNum}, ${8:OutRunState}]",
             "doc": [
@@ -2360,7 +2337,6 @@
             ]
         },
         {
-            "upName": "FILEGETSIZE",
             "keyRawName": "FileGetSize",
             "body": "FileGetSize, ${1:OutputVar} [, % \"${2:Filename}\", ${3|K,M|}]",
             "doc": [
@@ -2412,7 +2388,6 @@
             ]
         },
         {
-            "upName": "FILEGETTIME",
             "keyRawName": "FileGetTime",
             "body": "FileGetTime, ${1:OutputVar} [, % \"${2:Filename}\", ${3|M,C,A|} ]",
             "doc": [
@@ -2469,7 +2444,6 @@
             ]
         },
         {
-            "upName": "FILEGETVERSION",
             "keyRawName": "FileGetVersion",
             "body": "FileGetVersion, ${1:OutputVar} [, % \"${2:Filename}\"]",
             "doc": [
@@ -2508,7 +2482,6 @@
             ]
         },
         {
-            "upName": "FILEINSTALL",
             "keyRawName": "FileInstall",
             "body": "FileInstall, ${1:Source}, % \"${2:Dest}\" [, ${3|true,false|}]",
             "doc": [
@@ -2562,7 +2535,6 @@
             ]
         },
         {
-            "upName": "FILEMOVE",
             "keyRawName": "FileMove",
             "body": "FileMove, % \"${1:SourcePattern}\", % \"${2:DestPattern}\" [, ${3|true,false|} ]",
             "doc": [
@@ -2628,7 +2600,6 @@
             ]
         },
         {
-            "upName": "FILEMOVEDIR",
             "keyRawName": "FileMoveDir",
             "body": "FileMoveDir, % \"${1:Source}\", % \"${2:Dest}\" [, ${3|0,1,2,R|}]",
             "doc": [
@@ -2688,7 +2659,6 @@
             ]
         },
         {
-            "upName": "FILEREAD",
             "keyRawName": "FileRead",
             "body": "FileRead, ${1:OutputVar}, % \"${2:Filename}\"",
             "doc": [
@@ -2739,7 +2709,6 @@
             ]
         },
         {
-            "upName": "FILEREADLINE",
             "keyRawName": "FileReadLine",
             "body": "FileReadLine, ${1:OutputVar}, % \"${2:Filename}\", ${3:LineNum}",
             "doc": [
@@ -2788,7 +2757,6 @@
             ]
         },
         {
-            "upName": "FILERECYCLE",
             "keyRawName": "FileRecycle",
             "body": "FileRecycle, % \"${1:FilePattern}\"",
             "doc": [
@@ -2818,7 +2786,6 @@
             ]
         },
         {
-            "upName": "FILERECYCLEEMPTY",
             "keyRawName": "FileRecycleEmpty",
             "body": "FileRecycleEmpty [, % \"${1:DriveLetter}\"]",
             "doc": [
@@ -2852,7 +2819,6 @@
             ]
         },
         {
-            "upName": "FILEREMOVEDIR",
             "keyRawName": "FileRemoveDir",
             "body": "FileRemoveDir, % \"${1:DirName}\" [, ${2|true,false|}]",
             "doc": [
@@ -2895,7 +2861,6 @@
             ]
         },
         {
-            "upName": "FILESELECTFILE",
             "keyRawName": "FileSelectFile",
             "body": "FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir\\\\Filename}, ${4:Title}, ${5:Filter}]",
             "doc": [
@@ -2988,7 +2953,6 @@
             ]
         },
         {
-            "upName": "FILESELECTFOLDER",
             "keyRawName": "FileSelectFolder",
             "body": "FileSelectFolder, ${1:OutputVar} [, ${2:StartingFolder}, ${3:Options}, ${4:Prompt}]",
             "doc": [
@@ -3071,7 +3035,6 @@
             ]
         },
         {
-            "upName": "FILESETATTRIB",
             "keyRawName": "FileSetAttrib",
             "body": "FileSetAttrib, ${1:Attributes} [, % \"${2:D:\\test.txt}\", ${3|0,1,2|}, ${4|0,1|}]",
             "doc": [
@@ -3154,7 +3117,6 @@
             ]
         },
         {
-            "upName": "FILESETTIME",
             "keyRawName": "FileSetTime",
             "body": "FileSetTime [, ${1:YYYYMMDDHH24MISS}, % \"${2:D:\\test.txt}\", ${3|M,C,A|}, ${4|0,1,2|}, ${5|0,1|}]",
             "doc": [
@@ -3246,7 +3208,6 @@
             ]
         },
         {
-            "upName": "FORMATTIME",
             "keyRawName": "FormatTime",
             "body": "FormatTime, ${1:OutputVar} [, ${2:YYYYMMDDHH24MISS}, ${3:yyyy-MM-dd HH:mm:ss} ]",
             "doc": [
@@ -3323,7 +3284,6 @@
             ]
         },
         {
-            "upName": "GETKEYSTATE",
             "keyRawName": "GetKeyState",
             "body": "GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3|P,T|}]",
             "doc": [
@@ -3356,7 +3316,7 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "This can be just about any single character from the keyboard or one of the key names from the [key list](https://www.autohotkey.com/docs/v1/KeyList.htm), such as a mouse/controller button. Examples: B, 5, LWin, RControl, Alt, Enter, Escape, LButton, MButton, Joy1.",
+                        "This can be just about any single character from the keyboard or one of the key names from the [key list](https://www.autohotkey.com/docs/v1/KeyList.htm), such as a mouse/controller button. Examples: B, 5, LWin, RControl, Alt, 回车, Escape, LButton, MButton, Joy1.",
                         "",
                         "Alternatively, an explicit virtual key code such as vkFF may be specified. This is useful in the rare case where a key has no name. The virtual key code of such a key can be determined by following the steps at the bottom of the [key list page](https://www.autohotkey.com/docs/v1/KeyList.htm#SpecialKeys).",
                         "",
@@ -3382,7 +3342,6 @@
             ]
         },
         {
-            "upName": "GROUPACTIVATE",
             "keyRawName": "GroupActivate",
             "body": "GroupActivate, ${1:GroupName} [, ${2:R} ]",
             "doc": [
@@ -3422,7 +3381,6 @@
             ]
         },
         {
-            "upName": "GROUPADD",
             "keyRawName": "GroupAdd",
             "body": "GroupAdd, ${1:GroupName} [, ${2:WinTitle}, ${3:WinText}, ${4:Label}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -3493,7 +3451,6 @@
             ]
         },
         {
-            "upName": "GROUPCLOSE",
             "keyRawName": "GroupClose",
             "body": "GroupClose, ${1:GroupName} [, ${2|A,R|}]",
             "doc": [
@@ -3532,7 +3489,6 @@
             ]
         },
         {
-            "upName": "GROUPDEACTIVATE",
             "keyRawName": "GroupDeactivate",
             "body": "GroupDeactivate, ${1:GroupName} [, ${2:R}]",
             "doc": [
@@ -3569,7 +3525,6 @@
             ]
         },
         {
-            "upName": "GUI",
             "keyRawName": "Gui",
             "body": "Gui, ${1|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${2:Value1}, ${3:Value2}, ${4:Value3}]",
             "doc": [
@@ -3646,7 +3601,6 @@
             ]
         },
         {
-            "upName": "GUICONTROL",
             "keyRawName": "GuiControl",
             "body": "GuiControl, ${1|(Blank),Text,Move,MoveDraw,Focus,Disable,Enable,Hide,Show,Delete,Choose,ChooseString,Font,Options|}, ${2:ControlID} [, ${3:Value}]",
             "doc": [
@@ -3713,7 +3667,6 @@
             ]
         },
         {
-            "upName": "GUICONTROLGET",
             "keyRawName": "GuiControlGet",
             "body": "GuiControlGet, ${1:OutputVar} [, ${2|(Blank),Pos,Focus,FocusV,Enabled,Visible,Hwnd,Name|}, ${3:ControlID}, ${4:Value}]",
             "doc": [
@@ -3785,7 +3738,6 @@
             ]
         },
         {
-            "upName": "HOTKEY",
             "keyRawName": "Hotkey",
             "body": "Hotkey, ${1:KeyName} [, ${2:Label_or_funcName}, ${3:Options}]",
             "doc": [
@@ -3855,7 +3807,6 @@
             ]
         },
         {
-            "upName": "IMAGESEARCH",
             "keyRawName": "ImageSearch",
             "body": "ImageSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:ImageFile}",
             "doc": [
@@ -3954,7 +3905,6 @@
             ]
         },
         {
-            "upName": "INIDELETE",
             "keyRawName": "IniDelete",
             "body": "IniDelete, % \"${1:Filename}\", % \"${2:Section}\" [, % \"${3:Key}\"]",
             "doc": [
@@ -3999,13 +3949,12 @@
             ]
         },
         {
-            "upName": "INIREAD",
             "keyRawName": "IniRead",
             "body": "IniRead, ${1:OutputVar}, % \"${2:Filename}\", % \"${3:Section}\", % \"${4:Key}\" [,% \"${5:Default}\"]",
             "doc": [
-                "从标准格式.ini文件中读取值、节或节名称列表。",
+                "从标准格式.ini文档中读取值、节或节名称列表。",
                 "",
-                "标准 ini 文件如下所示：",
+                "标准 ini 文档如下所示：",
                 "",
                 "```ini",
                 "[Section]",
@@ -4036,7 +3985,7 @@
                     "paramDoc": [
                         "用于存储检索值的输出变量的名称。如果无法检索该值，则将变量设置为 _Default_ 参数指示的值（如下所述）。",
                         "",
-                        "标准 ini 文件如下所示：",
+                        "标准 ini 文档如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4048,9 +3997,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        ".ini 文件的名称，如果未指定绝对路径，则假定该名称位于 [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) 中。",
+                        ".ini 文档的名称，如果未指定绝对路径，则假定该名称位于 [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) 中。",
                         "",
-                        "标准 ini 文件如下所示：",
+                        "标准 ini 文档如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4062,9 +4011,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        ".ini文件中的节名称,即显示在方括号中的标题短语(此参数中不包括括号)。",
+                        ".ini文档中的节名称,即显示在方括号中的标题短语(此参数中不包括括号)。",
                         "",
-                        "标准 ini 文件如下所示：",
+                        "标准 ini 文档如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4076,9 +4025,9 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        ".ini 文件中的键名称。",
+                        ".ini 文档中的键名称。",
                         "",
-                        "标准 ini 文件如下所示：",
+                        "标准 ini 文档如下所示：",
                         "```ini",
                         "[SectionName]",
                         "Key=Value",
@@ -4100,7 +4049,6 @@
             ]
         },
         {
-            "upName": "INIWRITE",
             "keyRawName": "IniWrite",
             "body": "IniWrite, % \"${1:Value}\", % \"${2:Filename}\", % \"${3:Section}\", % \"${4:Key}\"",
             "doc": [
@@ -4174,7 +4122,6 @@
             ]
         },
         {
-            "upName": "INPUT",
             "keyRawName": "Input",
             "body": "Input [, ${1:OutputVar}, ${2:Options}, ${3:EndKeys}, ${4:MatchList}]",
             "doc": [
@@ -4205,7 +4152,7 @@
                         "",
                         "**Note:** <kbd>Esc</kbd> is translated to the ASCII ESC character, [Chr](https://www.autohotkey.com/docs/v1/lib/Chr.htm)(27). This can be avoided by including `{Esc}` in _EndKeys_, in which case pressing <kbd>Esc</kbd> will terminate Input.",
                         "",
-                        "Whitespace characters such as <kbd>Tab</kbd> (\\`t) are stored literally. <kbd>Enter</kbd> is stored as linefeed (\\`n)."
+                        "Whitespace characters such as <kbd>Tab</kbd> (\\`t) are stored literally. <kbd>回车</kbd> is stored as linefeed (\\`n)."
                     ]
                 },
                 {
@@ -4249,7 +4196,7 @@
                     "paramDoc": [
                         "A list of zero or more keys, any one of which terminates the Input when pressed (the end key itself is not written to _OutputVar_). When an Input is terminated this way, [ErrorLevel](https://www.autohotkey.com/docs/v1/misc/ErrorLevel.htm) is set to the word EndKey followed by a colon and the name of the end key. Examples: `EndKey:.`, `EndKey:Escape`.",
                         "",
-                        "_EndKeys_ uses a format similar to the [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) command. For example, specifying `{Enter}.{Esc}` would cause either <kbd>Enter</kbd>, <kbd>.</kbd>, or <kbd>Esc</kbd> to terminate the Input. To use the braces themselves as end keys, specify `{{}` and/or `{}}`.",
+                        "_EndKeys_ uses a format similar to the [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) command. For example, specifying `{回车}.{Esc}` would cause either <kbd>回车</kbd>, <kbd>.</kbd>, or <kbd>Esc</kbd> to terminate the Input. To use the braces themselves as end keys, specify `{{}` and/or `{}}`.",
                         "",
                         "To use <kbd>Ctrl</kbd>, <kbd>Alt</kbd>, or <kbd>Shift</kbd> as end keys, specify the left and/or right version of the key, not the neutral version. For example, specify `{LControl}{RControl}` rather than `{Control}`.",
                         "",
@@ -4273,7 +4220,6 @@
             ]
         },
         {
-            "upName": "INPUTBOX",
             "keyRawName": "InputBox",
             "body": "InputBox, ${1:OutputVar} [,% \"${2:Title}\", % \"${3:Prompt}\", ${4:HIDE}, ${5:Width}, ${6:Height}, ${7:X}, ${8:Y}, ${9:Locale}, ${10:Timeout_Sec}, % \"${11:Default_Str}\"]",
             "doc": [
@@ -4285,7 +4231,7 @@
                 "InputBox, OutputVar [, Title, Prompt, HIDE, Width, Height, X, Y, Locale, Timeout, Default]",
                 "",
                 ";exp1 Allows the user to enter a hidden password.",
-                "InputBox, password, % \"Enter Password\",% \"(your input will be hidden)\", hide",
+                "InputBox, password, % \"回车 Password\",% \"(your input will be hidden)\", hide",
                 "",
                 ";exp2 Allows the user to enter a phone number.",
                 "InputBox, UserInput, % \"Phone Number\",% \"Please enter a phone number.\", , 640, 480",
@@ -4401,7 +4347,6 @@
             ]
         },
         {
-            "upName": "KEYHISTORY",
             "keyRawName": "KeyHistory",
             "body": "KeyHistory",
             "doc": [
@@ -4419,7 +4364,6 @@
             "_param": []
         },
         {
-            "upName": "KEYWAIT",
             "keyRawName": "KeyWait",
             "body": "KeyWait, ${1:KeyName} [, ${2:Options}]",
             "doc": [
@@ -4466,7 +4410,6 @@
             ]
         },
         {
-            "upName": "LISTHOTKEYS",
             "keyRawName": "ListHotkeys",
             "body": "ListHotkeys",
             "doc": [
@@ -4481,7 +4424,6 @@
             "_param": []
         },
         {
-            "upName": "LISTLINES",
             "keyRawName": "ListLines",
             "body": "ListLines [, ${1|On,Off|}]",
             "doc": [
@@ -4517,7 +4459,6 @@
             ]
         },
         {
-            "upName": "LISTVARS",
             "keyRawName": "ListVars",
             "body": "ListVars",
             "doc": [
@@ -4532,7 +4473,6 @@
             "_param": []
         },
         {
-            "upName": "MENU",
             "keyRawName": "Menu",
             "body": "Menu, ${1:MenuName}, ${2|Add,Insert,Delete,DeleteAll,Rename,Check,Uncheck,ToggleCheck,Enable,Disable,ToggleEnable,Default,NoDefault,Standard,NoStandard,Icon,NoIcon,Tip,Show,Color,Click,MainWindow,NoMainWindow,UseErrorLevel|} [, ${3:Value1}, ${4:Value2}, ${5:Value3}, ${6:Value4}]",
             "doc": [
@@ -4626,7 +4566,6 @@
             ]
         },
         {
-            "upName": "MOUSECLICK",
             "keyRawName": "MouseClick",
             "body": "MouseClick [, ${1|Left,Right,Middle,WheelUp,WheelDown,WheelLeft,WheelRight|} , ${2:X}, ${3:Y}, ${4:ClickCount}, ${5:0-100}, ${6|D,U|}, ${7:R}]",
             "doc": [
@@ -4724,7 +4663,6 @@
             ]
         },
         {
-            "upName": "MOUSECLICKDRAG",
             "keyRawName": "MouseClickDrag",
             "body": "MouseClickDrag, ${1|Left,Right,Middle,WheelUp,WheelDown|}, ${2:X1}, ${3:Y1}, ${4:X2}, ${5:Y2} [, ${6:0-100}, ${7:R}]",
             "doc": [
@@ -4818,7 +4756,6 @@
             ]
         },
         {
-            "upName": "MOUSEGETPOS",
             "keyRawName": "MouseGetPos",
             "body": "MouseGetPos [, ${1:OutputVarX}, ${2:OutputVarY}, ${3:OutputVarWin}, ${4:OutputVarControl}, ${5|0,1,2,3|}]",
             "doc": [
@@ -4903,7 +4840,6 @@
             ]
         },
         {
-            "upName": "MOUSEMOVE",
             "keyRawName": "MouseMove",
             "body": "MouseMove, ${1:X}, ${2:Y} [, ${3:0-100}, ${4:R}]",
             "doc": [
@@ -4966,7 +4902,6 @@
             ]
         },
         {
-            "upName": "MSGBOX",
             "keyRawName": "MsgBox",
             "body": "MsgBox, % \"${0}\"",
             "doc": [
@@ -5033,7 +4968,6 @@
             ]
         },
         {
-            "upName": "ONEXIT",
             "keyRawName": "OnExit",
             "body": "OnExit [, ${1:Label}]",
             "doc": [
@@ -5063,7 +4997,6 @@
             ]
         },
         {
-            "upName": "OUTPUTDEBUG",
             "keyRawName": "OutputDebug",
             "body": "OutputDebug, % \"${1:Text}\"",
             "doc": [
@@ -5091,7 +5024,6 @@
             ]
         },
         {
-            "upName": "PIXELGETCOLOR",
             "keyRawName": "PixelGetColor",
             "body": "PixelGetColor, ${1:OutputVar}, ${2:X}, ${3:Y} [, ${4:Alt Slow RGB}]",
             "doc": [
@@ -5156,7 +5088,6 @@
             ]
         },
         {
-            "upName": "PIXELSEARCH",
             "keyRawName": "PixelSearch",
             "body": "PixelSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:0x16_BGR_ColorID} [, ${8:0-255}, ${9:Fast RGB}]",
             "doc": [
@@ -5269,7 +5200,6 @@
             ]
         },
         {
-            "upName": "POSTMESSAGE",
             "keyRawName": "PostMessage",
             "body": "PostMessage, ${1:Msg} [, ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -5363,7 +5293,6 @@
             ]
         },
         {
-            "upName": "PROCESS",
             "keyRawName": "Process",
             "body": "Process, ${1|Exist,Close,List,Priority,Wait,WaitClose|} [, % ${2:PID_Or_Name} , % \"${3:Value}\" ]",
             "doc": [
@@ -5423,7 +5352,6 @@
             ]
         },
         {
-            "upName": "PROGRESS",
             "keyRawName": "Progress",
             "body": "Progress, ${1:ProgressParam1} [, ${2:SubText}, ${3:MainText}, ${4:WinTitle}, ${5:FontName}]",
             "doc": [
@@ -5497,7 +5425,6 @@
             ]
         },
         {
-            "upName": "RANDOM",
             "keyRawName": "Random",
             "body": "Random, ${1:OutputVar} [, ${2:Min}, ${3:Max}]",
             "doc": [
@@ -5545,7 +5472,6 @@
             ]
         },
         {
-            "upName": "REGDELETE",
             "keyRawName": "RegDelete",
             "body": "RegDelete, % \"${1|HKLM,HKU,HKCU,HKCR,HKCC|}\\\" [, % \"${2:ValueName}]\"",
             "doc": [
@@ -5582,7 +5508,6 @@
             ]
         },
         {
-            "upName": "REGREAD",
             "keyRawName": "RegRead",
             "body": "RegRead, ${1:OutputVar}, % \"${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\\" [, % \"${3:ValueName}\" ]",
             "doc": [
@@ -5628,7 +5553,6 @@
             ]
         },
         {
-            "upName": "REGWRITE",
             "keyRawName": "RegWrite",
             "body": "RegWrite, ${1|REG_SZ,REG_EXPAND_SZ,REG_MULTI_SZ,REG_DWORD,REG_BINARY|}, % \"${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\\" [, ${3:ValueName}, ${4:Value}]",
             "doc": [
@@ -5683,7 +5607,6 @@
             ]
         },
         {
-            "upName": "RUN",
             "keyRawName": "Run",
             "body": "Run, % \"${1:ReadMe.docx}\" [, % \"${2:D:\\document}\", % \"${3:Max Min Hide UseErrorLevel}\", ${4:OutputVarPID}]",
             "doc": [
@@ -5765,7 +5688,6 @@
             ]
         },
         {
-            "upName": "RUNAS",
             "keyRawName": "RunAs",
             "body": "RunAs, [${1:User}, ${2:Password}, ${3:Domain}]",
             "doc": [
@@ -5816,7 +5738,6 @@
             ]
         },
         {
-            "upName": "RUNWAIT",
             "keyRawName": "RunWait",
             "body": "RunWait, % \"${1:ReadMe.docx}\" [, % \"${2:D:\\document}\", % \"${3:Max Min Hide UseErrorLevel}\", ${4:OutputVarPID}]",
             "doc": [
@@ -5898,7 +5819,6 @@
             ]
         },
         {
-            "upName": "SEND",
             "keyRawName": "Send",
             "body": "Send, ${1:Keys}",
             "doc": [
@@ -5945,7 +5865,6 @@
             ]
         },
         {
-            "upName": "SENDEVENT",
             "keyRawName": "SendEvent",
             "body": "SendEvent, ${1:Keys}",
             "doc": [
@@ -5994,7 +5913,6 @@
             ]
         },
         {
-            "upName": "SENDINPUT",
             "keyRawName": "SendInput",
             "body": "SendInput, ${1:Keys}",
             "doc": [
@@ -6043,7 +5961,6 @@
             ]
         },
         {
-            "upName": "SENDLEVEL",
             "keyRawName": "SendLevel",
             "body": "SendLevel, ${1:0-100}",
             "doc": [
@@ -6069,7 +5986,6 @@
             ]
         },
         {
-            "upName": "SENDMESSAGE",
             "keyRawName": "SendMessage",
             "body": "SendMessage, ${1:Msg}, [ ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}, ${9:Timeout}]",
             "doc": [
@@ -6171,7 +6087,6 @@
             ]
         },
         {
-            "upName": "SENDMODE",
             "keyRawName": "SendMode",
             "body": "SendMode, ${1|Event,Play,Input,InputThenPlay|}",
             "doc": [
@@ -6215,7 +6130,6 @@
             ]
         },
         {
-            "upName": "SENDPLAY",
             "keyRawName": "SendPlay",
             "body": "SendPlay, ${1:Keys}",
             "doc": [
@@ -6264,7 +6178,6 @@
             ]
         },
         {
-            "upName": "SENDRAW",
             "keyRawName": "SendRaw",
             "body": "SendRaw, ${1:Keys}",
             "doc": [
@@ -6313,7 +6226,6 @@
             ]
         },
         {
-            "upName": "SETBATCHLINES",
             "keyRawName": "SetBatchLines",
             "body": "SetBatchLines, ${1|-1,20ms,LineCount|}",
             "doc": [
@@ -6347,7 +6259,6 @@
             ]
         },
         {
-            "upName": "SETCAPSLOCKSTATE",
             "keyRawName": "SetCapsLockState",
             "body": "SetCapsLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]",
             "doc": [
@@ -6385,7 +6296,6 @@
             ]
         },
         {
-            "upName": "SETCONTROLDELAY",
             "keyRawName": "SetControlDelay",
             "body": "SetControlDelay, ${1:Delay_ms}",
             "doc": [
@@ -6414,7 +6324,6 @@
             ]
         },
         {
-            "upName": "SETDEFAULTMOUSESPEED",
             "keyRawName": "SetDefaultMouseSpeed",
             "body": "SetDefaultMouseSpeed, ${1:0-100}",
             "doc": [
@@ -6442,7 +6351,6 @@
             ]
         },
         {
-            "upName": "SETENV",
             "keyRawName": "SetEnv",
             "body": "SetEnv, ${1:OutVar}, ${2:Value}",
             "doc": [
@@ -6480,7 +6388,6 @@
             ]
         },
         {
-            "upName": "SETFORMAT",
             "keyRawName": "SetFormat",
             "body": "SetFormat, ${1|IntegerFast,FloatFast,Integer,Float|}, ${2:Format}",
             "doc": [
@@ -6542,7 +6449,6 @@
             ]
         },
         {
-            "upName": "SETKEYDELAY",
             "keyRawName": "SetKeyDelay",
             "body": "SetKeyDelay [, ${1:Delay_ms} , ${2:PressDuration}, ${3:Play}]",
             "doc": [
@@ -6595,7 +6501,6 @@
             ]
         },
         {
-            "upName": "SETMOUSEDELAY",
             "keyRawName": "SetMouseDelay",
             "body": "SetMouseDelay, ${1:Delay_ms}, [ ${2:Play}]",
             "doc": [
@@ -6630,7 +6535,6 @@
             ]
         },
         {
-            "upName": "SETNUMLOCKSTATE",
             "keyRawName": "SetNumLockState",
             "body": "SetNumLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]",
             "doc": [
@@ -6670,7 +6574,6 @@
             ]
         },
         {
-            "upName": "SETREGVIEW",
             "keyRawName": "SetRegView",
             "body": "SetRegView, ${1|32,64,Default|}",
             "doc": [
@@ -6701,7 +6604,6 @@
             ]
         },
         {
-            "upName": "SETSCROLLLOCKSTATE",
             "keyRawName": "SetScrollLockState",
             "body": "SetScrollLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]",
             "doc": [
@@ -6741,7 +6643,6 @@
             ]
         },
         {
-            "upName": "SETSTORECAPSLOCKMODE",
             "keyRawName": "SetStoreCapsLockMode",
             "body": "SetStoreCapsLockMode, ${1|On,Off|}",
             "doc": [
@@ -6775,7 +6676,6 @@
             ]
         },
         {
-            "upName": "SETTIMER",
             "keyRawName": "SetTimer",
             "body": "SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off,Delete,Default|}, ${3:Priority_int}]",
             "doc": [
@@ -6866,7 +6766,6 @@
             ]
         },
         {
-            "upName": "SETTITLEMATCHMODE",
             "keyRawName": "SetTitleMatchMode",
             "body": "SetTitleMatchMode, ${1|Fast,Slow,RegEx,1,2,3|}",
             "doc": [
@@ -6915,7 +6814,6 @@
             ]
         },
         {
-            "upName": "SETWINDELAY",
             "keyRawName": "SetWinDelay",
             "body": "SetWinDelay, ${1:Delay_ms}",
             "doc": [
@@ -6942,7 +6840,6 @@
             ]
         },
         {
-            "upName": "SETWORKINGDIR",
             "keyRawName": "SetWorkingDir",
             "body": "SetWorkingDir, % \"${1:DirName}\"",
             "doc": [
@@ -6970,7 +6867,6 @@
             ]
         },
         {
-            "upName": "SHUTDOWN",
             "keyRawName": "Shutdown",
             "body": "Shutdown, ${1:Flag}",
             "doc": [
@@ -7010,7 +6906,6 @@
             ]
         },
         {
-            "upName": "SLEEP",
             "keyRawName": "Sleep",
             "body": "Sleep, ${1:Delay_ms}",
             "doc": [
@@ -7041,7 +6936,6 @@
             ]
         },
         {
-            "upName": "SORT",
             "keyRawName": "Sort",
             "body": "Sort, ${1:InputVarName} [, ${2:Options}]",
             "doc": [
@@ -7082,7 +6976,6 @@
             ]
         },
         {
-            "upName": "SOUNDBEEP",
             "keyRawName": "SoundBeep",
             "body": "SoundBeep [, ${1:Frequency_37_to_32767}, ${2:Duration_ms}]",
             "doc": [
@@ -7120,7 +7013,6 @@
             ]
         },
         {
-            "upName": "SOUNDGET",
             "keyRawName": "SoundGet",
             "body": "SoundGet, ${1:OutputVar} [, ${2|MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|}, ${3:ControlType}, ${4:DeviceNumber}]",
             "doc": [
@@ -7182,7 +7074,6 @@
             ]
         },
         {
-            "upName": "SOUNDGETWAVEVOLUME",
             "keyRawName": "SoundGetWaveVolume",
             "body": "SoundGetWaveVolume, ${1:OutputVar} [, ${2:DeviceNumber}]",
             "doc": [
@@ -7220,7 +7111,6 @@
             ]
         },
         {
-            "upName": "SOUNDPLAY",
             "keyRawName": "SoundPlay",
             "body": "SoundPlay, ${1:Filename} [, ${2:wait}]",
             "doc": [
@@ -7267,7 +7157,6 @@
             ]
         },
         {
-            "upName": "SOUNDSET",
             "keyRawName": "SoundSet",
             "body": "SoundSet, ${1:NewSetting} [, ${2:ComponentType}, ${3:ControlType}, ${4:DeviceNumber}]",
             "doc": [
@@ -7341,7 +7230,6 @@
             ]
         },
         {
-            "upName": "SOUNDSETWAVEVOLUME",
             "keyRawName": "SoundSetWaveVolume",
             "body": "SoundSetWaveVolume, ${1:Percent}, [ ${2:DeviceNumber}]",
             "doc": [
@@ -7386,7 +7274,6 @@
             ]
         },
         {
-            "upName": "SPLASHIMAGE",
             "keyRawName": "SplashImage",
             "body": "SplashImage, [, ${1:ImageFile}, ${2:Options}, ${3:SubText}, ${4:MainText}, ${5:WinTitle}, ${6:FontName}]",
             "doc": [
@@ -7477,7 +7364,6 @@
             ]
         },
         {
-            "upName": "SPLASHTEXTOFF",
             "keyRawName": "SplashTextOff",
             "body": "SplashTextOff",
             "doc": [
@@ -7493,7 +7379,6 @@
             "_param": []
         },
         {
-            "upName": "SPLASHTEXTON",
             "keyRawName": "SplashTextOn",
             "body": "SplashTextOn [, ${1:Width}, ${2:Height}, ${3:Title}, ${4:Text}]",
             "doc": [
@@ -7547,7 +7432,6 @@
             ]
         },
         {
-            "upName": "SPLITPATH",
             "keyRawName": "SplitPath",
             "body": "SplitPath, ${1:InputFullFileName} [, ${2:OutFileName}, ${3:OutDir}, ${4:OutExtension}, ${5:OutNameNoExt}, ${6:OutDrive}]",
             "doc": [
@@ -7642,7 +7526,6 @@
             ]
         },
         {
-            "upName": "STATUSBARGETTEXT",
             "keyRawName": "StatusBarGetText",
             "body": "StatusBarGetText, ${1:OutputVar} [, ${2:Part#}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -7718,7 +7601,6 @@
             ]
         },
         {
-            "upName": "STATUSBARWAIT",
             "keyRawName": "StatusBarWait",
             "body": "StatusBarWait, [${1:BarText}, ${2:Timeout_sec}, ${3:Part#}, ${4:WinTitle}, ${5:WinText}, ${6:Interval}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -7810,7 +7692,6 @@
             ]
         },
         {
-            "upName": "STRINGCASESENSE",
             "keyRawName": "StringCaseSense",
             "body": "StringCaseSense, ${1|On,Off,Locale|}",
             "doc": [
@@ -7846,7 +7727,6 @@
             ]
         },
         {
-            "upName": "STRINGGETPOS",
             "keyRawName": "StringGetPos",
             "body": "StringGetPos, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:Occurrence}, ${5:Offset}]",
             "doc": [
@@ -7920,7 +7800,6 @@
             ]
         },
         {
-            "upName": "STRINGLEFT",
             "keyRawName": "StringLeft",
             "body": "StringLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -7966,7 +7845,6 @@
             ]
         },
         {
-            "upName": "STRINGLEN",
             "keyRawName": "StringLen",
             "body": "StringLen, ${1:OutputVar}, ${2:InputVar}",
             "doc": [
@@ -8002,7 +7880,6 @@
             ]
         },
         {
-            "upName": "STRINGLOWER",
             "keyRawName": "StringLower",
             "body": "StringLower, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]",
             "doc": [
@@ -8047,7 +7924,6 @@
             ]
         },
         {
-            "upName": "STRINGMID",
             "keyRawName": "StringMid",
             "body": "StringMid, ${1:OutputVar}, ${2:InputVar}, ${3:StartChar} [, ${4:Count}, ${5:L}]",
             "doc": [
@@ -8112,7 +7988,6 @@
             ]
         },
         {
-            "upName": "STRINGREPLACE",
             "keyRawName": "StringReplace",
             "body": "StringReplace, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:ReplaceText}, ${5:ReplaceAll}]",
             "doc": [
@@ -8177,7 +8052,6 @@
             ]
         },
         {
-            "upName": "STRINGRIGHT",
             "keyRawName": "StringRight",
             "body": "StringRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -8223,7 +8097,6 @@
             ]
         },
         {
-            "upName": "STRINGSPLIT",
             "keyRawName": "StringSplit",
             "body": "StringSplit, ${1:OutputArray}, ${2:InputVar} [, ${3:Delimiters}, ${4:OmitChars}]",
             "doc": [
@@ -8301,7 +8174,6 @@
             ]
         },
         {
-            "upName": "STRINGTRIMLEFT",
             "keyRawName": "StringTrimLeft",
             "body": "StringTrimLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -8346,7 +8218,6 @@
             ]
         },
         {
-            "upName": "STRINGTRIMRIGHT",
             "keyRawName": "StringTrimRight",
             "body": "StringTrimRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -8391,7 +8262,6 @@
             ]
         },
         {
-            "upName": "STRINGUPPER",
             "keyRawName": "StringUpper",
             "body": "StringUpper, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]",
             "doc": [
@@ -8435,7 +8305,6 @@
             ]
         },
         {
-            "upName": "SUSPEND",
             "keyRawName": "Suspend",
             "body": "Suspend [, ${1|On,Off,Toggle,Permit|}]",
             "doc": [
@@ -8476,7 +8345,6 @@
             ]
         },
         {
-            "upName": "SYSGET",
             "keyRawName": "SysGet",
             "body": "SysGet, ${1:OutputVar}, ${2|MonitorCount,MonitorPrimary,Monitor,MonitorWorkArea,MonitorName,(Numeric)|} [, ${3:Value}]",
             "doc": [
@@ -8525,7 +8393,6 @@
             ]
         },
         {
-            "upName": "THREAD",
             "keyRawName": "Thread",
             "body": "Thread, ${1|NoTimers,Priority,Interrupt|} [, ${2:Value1}, ${3:Value2}]",
             "doc": [
@@ -8573,7 +8440,6 @@
             ]
         },
         {
-            "upName": "TOOLTIP",
             "keyRawName": "ToolTip",
             "body": "ToolTip [, % \"${1:Text}\", ${2:X}, ${3:Y}, ${4:1_to_20}]",
             "doc": [
@@ -8635,7 +8501,6 @@
             ]
         },
         {
-            "upName": "TRANSFORM",
             "keyRawName": "Transform",
             "body": "Transform, ${1:OutputVar}, ${2|Unicode,Deref,HTML,Asc,Chr,Mod,Exp,Sqrt,Log,Ln,Round,Ceil,Floor,Abs,Sin,Cos,Tan,ASin,ACos,ATan,Pow,BitNot,BitAnd,BitOr,BitXOr,BitShiftLeft,BitShiftRight|}, ${3:Value1} [, ${4:Value2}]",
             "doc": [
@@ -8715,7 +8580,6 @@
             ]
         },
         {
-            "upName": "TRAYTIP",
             "keyRawName": "TrayTip",
             "body": "TrayTip [, ${1:Title}, ${2:Text}, ${3:Seconds}, ${4:Options}]",
             "doc": [
@@ -8790,7 +8654,6 @@
             ]
         },
         {
-            "upName": "URLDOWNLOADTOFILE",
             "keyRawName": "UrlDownloadToFile",
             "body": "UrlDownloadToFile, % \"${1:URL_https}\", % \"${2:Filename}\"",
             "doc": [
@@ -8829,7 +8692,6 @@
             ]
         },
         {
-            "upName": "WINACTIVATE",
             "keyRawName": "WinActivate",
             "body": "WinActivate [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -8882,7 +8744,6 @@
             ]
         },
         {
-            "upName": "WINACTIVATEBOTTOM",
             "keyRawName": "WinActivateBottom",
             "body": "WinActivateBottom, [ ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText} ]",
             "doc": [
@@ -8935,7 +8796,6 @@
             ]
         },
         {
-            "upName": "WINCLOSE",
             "keyRawName": "WinClose",
             "body": "WinClose [, ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText} ]",
             "doc": [
@@ -8997,7 +8857,6 @@
             ]
         },
         {
-            "upName": "WINGET",
             "keyRawName": "WinGet",
             "body": "WinGet, ${1:OutputVar} [, ${2|ID,IDLast,PID,ProcessName,ProcessPath,Count,List,MinMax,ControlList,ControlListHwnd,Transparent,TransColor,Style,ExStyle|}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText} ]",
             "doc": [
@@ -9083,7 +8942,6 @@
             ]
         },
         {
-            "upName": "WINGETACTIVESTATS",
             "keyRawName": "WinGetActiveStats",
             "body": "WinGetActiveStats, ${1:OutTitle}, ${2:OutWidth}, ${3:OutHeight}, ${4:OutX}, ${5:OutY}",
             "doc": [
@@ -9157,7 +9015,6 @@
             ]
         },
         {
-            "upName": "WINGETACTIVETITLE",
             "keyRawName": "WinGetActiveTitle",
             "body": "WinGetActiveTitle, ${1:OutputVar}",
             "doc": [
@@ -9184,7 +9041,6 @@
             ]
         },
         {
-            "upName": "WINGETCLASS",
             "keyRawName": "WinGetClass",
             "body": "WinGetClass, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -9246,7 +9102,6 @@
             ]
         },
         {
-            "upName": "WINGETPOS",
             "keyRawName": "WinGetPos",
             "body": "WinGetPos, [ ${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText} ]",
             "doc": [
@@ -9336,7 +9191,6 @@
             ]
         },
         {
-            "upName": "WINGETTEXT",
             "keyRawName": "WinGetText",
             "body": "WinGetText, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -9398,7 +9252,6 @@
             ]
         },
         {
-            "upName": "WINGETTITLE",
             "keyRawName": "WinGetTitle",
             "body": "WinGetTitle, ${1:OutputVar} ${2:[, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]}",
             "doc": [
@@ -9460,7 +9313,6 @@
             ]
         },
         {
-            "upName": "WINHIDE",
             "keyRawName": "WinHide",
             "body": "WinHide, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9513,7 +9365,6 @@
             ]
         },
         {
-            "upName": "WINKILL",
             "keyRawName": "WinKill",
             "body": "WinKill, [ ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -9575,7 +9426,6 @@
             ]
         },
         {
-            "upName": "WINMAXIMIZE",
             "keyRawName": "WinMaximize",
             "body": "WinMaximize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9628,7 +9478,6 @@
             ]
         },
         {
-            "upName": "WINMENUSELECTITEM",
             "keyRawName": "WinMenuSelectItem",
             "body": "WinMenuSelectItem, ${1:WinTitle}, ${2:WinText}, ${3:Menu} [, ${4:SubMenu1}, ${5:SubMenu2}, ${6:SubMenu3}, ${7:SubMenu4}, ${8:SubMenu5}, ${9:SubMenu6}, ${10:ExcludeTitle}, ${11:ExcludeText} ]",
             "doc": [
@@ -9752,7 +9601,6 @@
             ]
         },
         {
-            "upName": "WINMINIMIZE",
             "keyRawName": "WinMinimize",
             "body": "WinMinimize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9805,7 +9653,6 @@
             ]
         },
         {
-            "upName": "WINMINIMIZEALL",
             "keyRawName": "WinMinimizeAll",
             "body": "WinMinimizeAll",
             "doc": [
@@ -9826,7 +9673,6 @@
             "_param": []
         },
         {
-            "upName": "WINMINIMIZEALLUNDO",
             "keyRawName": "WinMinimizeAllUndo",
             "body": "WinMinimizeAllUndo",
             "doc": [
@@ -9847,7 +9693,6 @@
             "_param": []
         },
         {
-            "upName": "WINMOVE",
             "keyRawName": "WinMove",
             "body": "WinMove, ${1:WinTitle}, ${2:WinText}, ${3:X}, ${4:Y}, [${5:Width}, ${6:Height}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -9950,7 +9795,6 @@
             ]
         },
         {
-            "upName": "WINRESTORE",
             "keyRawName": "WinRestore",
             "body": "WinRestore, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -10006,7 +9850,6 @@
             ]
         },
         {
-            "upName": "WINSET",
             "keyRawName": "WinSet",
             "body": "WinSet, ${1|AlwaysOnTop,Bottom,Top,Disable,Enable,Redraw,Style,ExStyle,Region,Transparent,TransColor|}, ${2:Value} [, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -10089,7 +9932,6 @@
             ]
         },
         {
-            "upName": "WINSETTITLE",
             "keyRawName": "WinSetTitle",
             "body": "WinSetTitle, ${1:WinTitle}, ${2:WinText}, ${3:NewTitle} [, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10157,7 +9999,6 @@
             ]
         },
         {
-            "upName": "WINSHOW",
             "keyRawName": "WinShow",
             "body": "WinShow [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -10210,7 +10051,6 @@
             ]
         },
         {
-            "upName": "WINWAIT",
             "keyRawName": "WinWait",
             "body": "WinWait [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10274,7 +10114,6 @@
             ]
         },
         {
-            "upName": "WINWAITACTIVE",
             "keyRawName": "WinWaitActive",
             "body": "WinWaitActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10337,7 +10176,6 @@
             ]
         },
         {
-            "upName": "WINWAITCLOSE",
             "keyRawName": "WinWaitClose",
             "body": "WinWaitClose [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10399,7 +10237,6 @@
             ]
         },
         {
-            "upName": "WINWAITNOTACTIVE",
             "keyRawName": "WinWaitNotActive",
             "body": "WinWaitNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [

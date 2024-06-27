@@ -12,7 +12,6 @@ export class CSnippetCommand extends vscode.CompletionItem {
             keyRawName,
             body,
             recommended,
-            upName,
         } = v;
         super({
             label: keyRawName,
@@ -29,7 +28,7 @@ export class CSnippetCommand extends vscode.CompletionItem {
         this.insertText = new vscode.SnippetString(body2);
         this.detail = 'Command of AHK (neko-help)';
         this.documentation = md;
-        this.upName = upName;
+        this.upName = keyRawName.toUpperCase();
         this.recommended = recommended;
     }
 }

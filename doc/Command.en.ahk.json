@@ -6,7 +6,6 @@
     },
     "body": [
         {
-            "upName": "AUTOTRIM",
             "keyRawName": "AutoTrim",
             "body": "AutoTrim, ${1|On,Off|}",
             "doc": [
@@ -41,7 +40,6 @@
             ]
         },
         {
-            "upName": "BLOCKINPUT",
             "keyRawName": "BlockInput",
             "body": "BlockInput, ${1|On,Off,Send,Mouse,SendAndMouse,Default,MouseMove,MouseMoveOff|}",
             "doc": [
@@ -71,22 +69,21 @@
                     "name": "On|Off|Send|Mouse|SendAndMouse|Default|MouseMove|MouseMoveOff",
                     "isOpt": false,
                     "paramDoc": [
-                        "| option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |",
-                        "| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |",
-                        "| On           | The user is prevented from interacting with the computer (mouse and keyboard input has no effect).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | , |",
-                        "| Off          | Input is re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |",
-                        "| Send         | The user's keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user's keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                                                                                                                                           | , |",
-                        "| Mouse        | The user's keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user's mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                            | , |",
-                        "| SendAndMouse | A combination of the above two modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | , |",
-                        "| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `BlockInput On` is currently in effect, using `BlockInput Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | , |",
-                        "| MouseMove    | The mouse cursor will not move in response to the user's physical movement of the mouse (DirectInput applications are a possible exception). When a script first uses this command, the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed (if it is not already). In addition, the script becomes [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm), meaning that [ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm) rather than [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) should be used to terminate it. The mouse hook will stay installed until the next use of the [Suspend](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) or [Hotkey](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) command, at which time it is removed if not required by any hotkeys or hotstrings (see [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)). | , |",
-                        "| MouseMoveOff | Allows the user to move the mouse cursor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | , |"
+                        "| option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |",
+                        "| :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |",
+                        "| On           | The user is prevented from interacting with the computer (mouse and keyboard input has no effect).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |",
+                        "| Off          | Input is re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |",
+                        "| Send         | The user's keyboard and mouse input is ignored while a [Send](https://www.autohotkey.com/docs/v1/lib/Send.htm) or [SendRaw](https://www.autohotkey.com/docs/v1/lib/Send.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user's keystrokes from disrupting the flow of simulated keystrokes. When the Send finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |",
+                        "| Mouse        | The user's keyboard and mouse input is ignored while a [Click](https://www.autohotkey.com/docs/v1/lib/Click.htm), [MouseMove](https://www.autohotkey.com/docs/v1/lib/MouseMove.htm), [MouseClick](https://www.autohotkey.com/docs/v1/lib/MouseClick.htm), or [MouseClickDrag](https://www.autohotkey.com/docs/v1/lib/MouseClickDrag.htm) is in progress (the traditional [SendEvent mode](https://www.autohotkey.com/docs/v1/lib/SendMode.htm) only). This prevents the user's mouse movements and clicks from disrupting the simulated mouse events. When the mouse command finishes, input is re-enabled (unless still blocked by a previous use of `BlockInput, On`).                                                                                                                                                                                                                                                                                   |",
+                        "| SendAndMouse | A combination of the above two modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |",
+                        "| Default      | Turns off both the _Send_ and the _Mouse_ modes, but does not change the current state of input blocking. For example, if `BlockInput On` is currently in effect, using `BlockInput Default` will not turn it off.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |",
+                        "| MouseMove    | The mouse cursor will not move in response to the user's physical movement of the mouse (DirectInput applications are a possible exception). When a script first uses this command, the [mouse hook](https://www.autohotkey.com/docs/v1/lib/_InstallMouseHook.htm) is installed (if it is not already). In addition, the script becomes [persistent](https://www.autohotkey.com/docs/v1/lib/_Persistent.htm), meaning that [ExitApp](https://www.autohotkey.com/docs/v1/lib/ExitApp.htm) rather than [Exit](https://www.autohotkey.com/docs/v1/lib/Exit.htm) should be used to terminate it. The mouse hook will stay installed until the next use of the [Suspend](https://www.autohotkey.com/docs/v1/lib/Suspend.htm) or [Hotkey](https://www.autohotkey.com/docs/v1/lib/Hotkey.htm) command, at which time it is removed if not required by any hotkeys or hotstrings (see [#Hotstring NoMouse](https://www.autohotkey.com/docs/v1/lib/_Hotstring.htm)). |",
+                        "| MouseMoveOff | Allows the user to move the mouse cursor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |"
                     ]
                 }
             ]
         },
         {
-            "upName": "CLICK",
             "keyRawName": "Click",
             "body": "Click [, ${1:Options}]",
             "doc": [
@@ -135,7 +132,6 @@
             ]
         },
         {
-            "upName": "CLIPWAIT",
             "keyRawName": "ClipWait",
             "body": "ClipWait [, ${1:Timeout_Sec}, ${2|False,True|}]",
             "doc": [
@@ -144,10 +140,10 @@
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/ClipWait.htm",
             "exp": [
-                "ClipWait, Timeout, WaitForAnyData",
+                "ClipWait, Timeout, WaitFor",
                 ";  Timeout : If omitted, the command will wait indefinitely.",
                 ";            Else wait sec",
-                ";  WaitForAnyData : ",
+                ";  WaitFor : ",
                 ""
             ],
             "_paramType": [
@@ -160,24 +156,25 @@
                     "sign": "E",
                     "isOpt": true,
                     "paramDoc": [
-                        "It's `seconds`, not `ms`.\nIf this parameter is omitted or 0 (false), the command is more selective, waiting specifically for text or files to appear (\"text\" includes anything that would produce text when you paste into Notepad). If this parameter is 1 (true) (can be an expression), the command waits for data of any kind to appear on the clipboard."
+                        "It's `seconds`, not `ms`.\nIf blank or omitted, the command will wait indefinitely."
                     ]
                 },
                 {
-                    "name": "WaitForAnyData",
+                    "name": "WaitFor",
                     "sign": "E",
                     "isOpt": true,
                     "paramDoc": [
                         "```ahk",
                         "0|1",
                         "```",
-                        "If this parameter is omitted or 0 (false), the command is more selective, waiting specifically for text or files to appear (\"text\" includes anything that would produce text when you paste into Notepad). If this parameter is 1 (true) (can be an expression), the command waits for data of any kind to appear on the clipboard."
+                        "**0:** The command is more selective, waiting specifically for text or files to appear (\"text\" includes anything that would produce text when you paste into Notepad).",
+                        "",
+                        "**1:** The command waits for data of any kind to appear on the clipboard."
                     ]
                 }
             ]
         },
         {
-            "upName": "CONTROL",
             "keyRawName": "Control",
             "body": "Control, ${1|Check,Uncheck,Enable,Disable,Show,Hide,Style,ExStyle,ShowDropDown,HideDropDown,TabLeft,TabRight,Add,Delete,Choose,ChooseString,EditPaste|}, [${2:Value}, ${3:Control}, ${4:WinTitle}, ${5:WinText}, ${6:ExcludeTitle}, ${7:ExcludeText}]",
             "doc": [
@@ -300,7 +297,6 @@
             ]
         },
         {
-            "upName": "CONTROLCLICK",
             "keyRawName": "ControlClick",
             "body": "ControlClick, [${1:Control_or_Pos}, ${2:WinTitle}, ${3:WinText}, ${4:WhichButton}, ${5:ClickCount}, ${6:Options}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -420,7 +416,6 @@
             ]
         },
         {
-            "upName": "CONTROLFOCUS",
             "keyRawName": "ControlFocus",
             "body": "ControlFocus [, ${1:Control}, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -484,7 +479,6 @@
             ]
         },
         {
-            "upName": "CONTROLGET",
             "keyRawName": "ControlGet",
             "body": "ControlGet, ${1:OutputVar}, ${2|List,Checked,Enabled,Visible,Tab,FindString,Choice,LineCount,CurrentLine,CurrentCol,Line,Selected,Style,ExStyle,Hwnd|}, [${3:Value}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -609,7 +603,6 @@
             ]
         },
         {
-            "upName": "CONTROLGETFOCUS",
             "keyRawName": "ControlGetFocus",
             "body": "ControlGetFocus, ${1:OutputVar}, [${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -677,7 +670,6 @@
             ]
         },
         {
-            "upName": "CONTROLGETPOS",
             "keyRawName": "ControlGetPos",
             "body": "ControlGetPos, [${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:Control}, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]",
             "doc": [
@@ -791,7 +783,6 @@
             ]
         },
         {
-            "upName": "CONTROLGETTEXT",
             "keyRawName": "ControlGetText",
             "body": "ControlGetText, ${1:OutputVar} [, ${2:Control}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -875,7 +866,6 @@
             ]
         },
         {
-            "upName": "CONTROLMOVE",
             "keyRawName": "ControlMove",
             "body": "ControlMove, ${1:Control}, ${2:X}, ${3:Y}, ${4:Width}, ${5:Height} [, ${6:WinTitle}, ${7:WinText}, ${8:ExcludeTitle}, ${9:ExcludeText}]",
             "doc": [
@@ -989,7 +979,6 @@
             ]
         },
         {
-            "upName": "CONTROLSEND",
             "keyRawName": "ControlSend",
             "body": "ControlSend, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -1064,7 +1053,6 @@
             ]
         },
         {
-            "upName": "CONTROLSENDRAW",
             "keyRawName": "ControlSendRaw",
             "body": "ControlSendRaw, [${1:Control}, ${2:Keys}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -1139,7 +1127,6 @@
             ]
         },
         {
-            "upName": "CONTROLSETTEXT",
             "keyRawName": "ControlSetText",
             "body": "ControlSetText, [${1:Control}, ${2:NewText}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -1212,7 +1199,6 @@
             ]
         },
         {
-            "upName": "COORDMODE",
             "keyRawName": "CoordMode",
             "body": "CoordMode, ${1|ToolTip,Pixel,Mouse,Caret,Menu|} [, ${2|Screen,Relative,Window,Client|}]",
             "doc": [
@@ -1271,7 +1257,6 @@
             ]
         },
         {
-            "upName": "DETECTHIDDENTEXT",
             "keyRawName": "DetectHiddenText",
             "body": "DetectHiddenText, ${1|On,Off|}",
             "doc": [
@@ -1303,7 +1288,6 @@
             ]
         },
         {
-            "upName": "DETECTHIDDENWINDOWS",
             "keyRawName": "DetectHiddenWindows",
             "body": "DetectHiddenWindows, ${1|On,Off|}",
             "doc": [
@@ -1335,7 +1319,6 @@
             ]
         },
         {
-            "upName": "DRIVE",
             "keyRawName": "Drive",
             "body": "Drive, ${1|Label,Lock,Unlock,Eject|} [, ${2:D:}, ${3:Value}]",
             "doc": [
@@ -1400,11 +1383,22 @@
             ]
         },
         {
-            "upName": "DRIVEGET",
             "keyRawName": "DriveGet",
             "body": "DriveGet, ${1:OutputVar}, ${2|List,Capacity,FileSystem,Label,Serial,Type,Status,StatusCD|} [, ${3:Value}]",
             "doc": [
-                "Retrieves various types of information about the computer's drive(s).\n*SubCommand*\n* List:        Retrieves a string of letters, one character for each drive letter in the system.\n* Capacity:    Retrieves the total capacity of the specified path in megabytes.\n* FileSystem:  Retrieves the type of the specified drive's file system.\n* Label:       Retrieves the volume label of the specified drive.\n* Serial:      Retrieves the volume serial number of the specified drive.\n* Type:        Retrieves the drive type of the specified path.\n* Status:      Retrieves the status of the specified path.\n* StatusCD:    Retrieves the media status of a CD or DVD drive."
+                "Retrieves various types of information about the computer's drive(s).",
+                "",
+                "| option                                                                       | description                                                                       |",
+                "| ---------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |",
+                "| [List](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#List)             | Retrieves a string of letters, one character for each drive letter in the system. |",
+                "| [Capacity](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Capacity)     | Retrieves the total capacity of a drive.                                          |",
+                "| [FileSystem](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#FileSystem) | Retrieves the type of a drive's file system.                                      |",
+                "| [Label](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Label)           | Retrieves the volume label of a drive.                                            |",
+                "| [Serial](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Serial)         | Retrieves the volume serial number of a drive.                                    |",
+                "| [Type](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Type)             | Retrieves the type of a drive.                                                    |",
+                "| [Status](https://www.autohotkey.com/docs/v1/lib/DriveGet.htm#Status)         | Retrieves the status of a drive.                                                  |",
+                "| [StatusCD](https:www.autohotkey.com/docs/v1/lib/DriveGet.htm#StatusCD)       | Retrieves the media status of a CD or DVD drive.                                  |",
+                ""
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/DriveGet.htm",
@@ -1466,7 +1460,6 @@
             ]
         },
         {
-            "upName": "DRIVESPACEFREE",
             "keyRawName": "DriveSpaceFree",
             "body": "DriveSpaceFree, ${1:OutputVar_MBSize}, ${2:C:\\\\}",
             "doc": [
@@ -1516,7 +1509,6 @@
             ]
         },
         {
-            "upName": "EDIT",
             "keyRawName": "Edit",
             "body": "Edit",
             "doc": [
@@ -1531,7 +1523,6 @@
             "_param": []
         },
         {
-            "upName": "ENVADD",
             "keyRawName": "EnvAdd",
             "body": "EnvAdd, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]",
             "doc": [
@@ -1588,7 +1579,6 @@
             ]
         },
         {
-            "upName": "ENVDIV",
             "keyRawName": "EnvDiv",
             "body": "EnvDiv, ${1:OutVar}, ${2:Value}",
             "doc": [
@@ -1626,7 +1616,6 @@
             ]
         },
         {
-            "upName": "ENVGET",
             "keyRawName": "EnvGet",
             "body": "EnvGet, ${1:OutputVar}, ${2:EnvVarName}",
             "doc": [
@@ -1667,7 +1656,6 @@
             ]
         },
         {
-            "upName": "ENVMULT",
             "keyRawName": "EnvMult",
             "body": "EnvMult, ${1:OutVar}, ${2:Value}",
             "doc": [
@@ -1705,7 +1693,6 @@
             ]
         },
         {
-            "upName": "ENVSET",
             "keyRawName": "EnvSet",
             "body": "EnvSet, ${1:EnvVar}, ${2:Value}",
             "doc": [
@@ -1740,7 +1727,6 @@
             ]
         },
         {
-            "upName": "ENVSUB",
             "keyRawName": "EnvSub",
             "body": "EnvSub, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]",
             "doc": [
@@ -1798,7 +1784,6 @@
             ]
         },
         {
-            "upName": "ENVUPDATE",
             "keyRawName": "EnvUpdate",
             "body": "EnvUpdate",
             "doc": [
@@ -1813,7 +1798,6 @@
             "_param": []
         },
         {
-            "upName": "FILEAPPEND",
             "keyRawName": "FileAppend",
             "body": "FileAppend [, ${1:Text} , ${2:Filename}, ${3:Encoding}]",
             "doc": [
@@ -1883,7 +1867,6 @@
             ]
         },
         {
-            "upName": "FILECOPY",
             "keyRawName": "FileCopy",
             "body": "FileCopy, ${1:SourcePattern}, ${2:DestPattern} [, ${3|0,1|}]",
             "doc": [
@@ -1947,7 +1930,6 @@
             ]
         },
         {
-            "upName": "FILECOPYDIR",
             "keyRawName": "FileCopyDir",
             "body": "FileCopyDir, ${1:Source}, ${2:Dest} [, ${3|0,1|}]",
             "doc": [
@@ -2004,7 +1986,6 @@
             ]
         },
         {
-            "upName": "FILECREATEDIR",
             "keyRawName": "FileCreateDir",
             "body": "FileCreateDir, ${1:Path}",
             "doc": [
@@ -2039,7 +2020,6 @@
             ]
         },
         {
-            "upName": "FILECREATESHORTCUT",
             "keyRawName": "FileCreateShortcut",
             "body": "FileCreateShortcut, ${1:Target}, ${2:C:\\My Shortcut.lnk} [, ${3:WorkingDir}, ${4:Args}, ${5:Description}, ${6:IconFile}, ${7:ShortcutKey}, ${8:IconNumber}, ${9|1,3,7|} ]",
             "doc": [
@@ -2146,7 +2126,6 @@
             ]
         },
         {
-            "upName": "FILEDELETE",
             "keyRawName": "FileDelete",
             "body": "FileDelete, ${1:FilePattern}",
             "doc": [
@@ -2177,7 +2156,6 @@
             ]
         },
         {
-            "upName": "FILEENCODING",
             "keyRawName": "FileEncoding",
             "body": "FileEncoding, [${1|ANSI,UTF-8,UTF-8-RAW,UTF-16,UTF-16-RAW,CPnnn|}]",
             "doc": [
@@ -2216,7 +2194,6 @@
             ]
         },
         {
-            "upName": "FILEGETATTRIB",
             "keyRawName": "FileGetAttrib",
             "body": "FileGetAttrib, ${1:OutputVar} , [${2:Filename}]",
             "doc": [
@@ -2258,7 +2235,6 @@
             ]
         },
         {
-            "upName": "FILEGETSHORTCUT",
             "keyRawName": "FileGetShortcut",
             "body": "FileGetShortcut, ${1:LinkFile} [, ${2:OutTarget}, ${3:OutDir}, ${4:OutArgs}, ${5:OutDescription}, ${6:OutIcon}, ${7:OutIconNum}, ${8:OutRunState}]",
             "doc": [
@@ -2359,7 +2335,6 @@
             ]
         },
         {
-            "upName": "FILEGETSIZE",
             "keyRawName": "FileGetSize",
             "body": "FileGetSize, ${1:OutputVar} [, % \"${2:Filename}\", ${3|K,M|}]",
             "doc": [
@@ -2411,7 +2386,6 @@
             ]
         },
         {
-            "upName": "FILEGETTIME",
             "keyRawName": "FileGetTime",
             "body": "FileGetTime, ${1:OutputVar} [, % \"${2:Filename}\", ${3|M,C,A|} ]",
             "doc": [
@@ -2468,7 +2442,6 @@
             ]
         },
         {
-            "upName": "FILEGETVERSION",
             "keyRawName": "FileGetVersion",
             "body": "FileGetVersion, ${1:OutputVar} [, % \"${2:Filename}\"]",
             "doc": [
@@ -2507,7 +2480,6 @@
             ]
         },
         {
-            "upName": "FILEINSTALL",
             "keyRawName": "FileInstall",
             "body": "FileInstall, ${1:Source}, % \"${2:Dest}\" [, ${3|true,false|}]",
             "doc": [
@@ -2561,7 +2533,6 @@
             ]
         },
         {
-            "upName": "FILEMOVE",
             "keyRawName": "FileMove",
             "body": "FileMove, % \"${1:SourcePattern}\", % \"${2:DestPattern}\" [, ${3|true,false|} ]",
             "doc": [
@@ -2627,7 +2598,6 @@
             ]
         },
         {
-            "upName": "FILEMOVEDIR",
             "keyRawName": "FileMoveDir",
             "body": "FileMoveDir, % \"${1:Source}\", % \"${2:Dest}\" [, ${3|0,1,2,R|}]",
             "doc": [
@@ -2687,7 +2657,6 @@
             ]
         },
         {
-            "upName": "FILEREAD",
             "keyRawName": "FileRead",
             "body": "FileRead, ${1:OutputVar}, % \"${2:Filename}\"",
             "doc": [
@@ -2738,7 +2707,6 @@
             ]
         },
         {
-            "upName": "FILEREADLINE",
             "keyRawName": "FileReadLine",
             "body": "FileReadLine, ${1:OutputVar}, % \"${2:Filename}\", ${3:LineNum}",
             "doc": [
@@ -2787,7 +2755,6 @@
             ]
         },
         {
-            "upName": "FILERECYCLE",
             "keyRawName": "FileRecycle",
             "body": "FileRecycle, % \"${1:FilePattern}\"",
             "doc": [
@@ -2817,7 +2784,6 @@
             ]
         },
         {
-            "upName": "FILERECYCLEEMPTY",
             "keyRawName": "FileRecycleEmpty",
             "body": "FileRecycleEmpty [, % \"${1:DriveLetter}\"]",
             "doc": [
@@ -2851,7 +2817,6 @@
             ]
         },
         {
-            "upName": "FILEREMOVEDIR",
             "keyRawName": "FileRemoveDir",
             "body": "FileRemoveDir, % \"${1:DirName}\" [, ${2|true,false|}]",
             "doc": [
@@ -2894,7 +2859,6 @@
             ]
         },
         {
-            "upName": "FILESELECTFILE",
             "keyRawName": "FileSelectFile",
             "body": "FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir\\\\Filename}, ${4:Title}, ${5:Filter}]",
             "doc": [
@@ -2987,7 +2951,6 @@
             ]
         },
         {
-            "upName": "FILESELECTFOLDER",
             "keyRawName": "FileSelectFolder",
             "body": "FileSelectFolder, ${1:OutputVar} [, ${2:StartingFolder}, ${3:Options}, ${4:Prompt}]",
             "doc": [
@@ -3070,7 +3033,6 @@
             ]
         },
         {
-            "upName": "FILESETATTRIB",
             "keyRawName": "FileSetAttrib",
             "body": "FileSetAttrib, ${1:Attributes} [, % \"${2:D:\\test.txt}\", ${3|0,1,2|}, ${4|0,1|}]",
             "doc": [
@@ -3153,7 +3115,6 @@
             ]
         },
         {
-            "upName": "FILESETTIME",
             "keyRawName": "FileSetTime",
             "body": "FileSetTime [, ${1:YYYYMMDDHH24MISS}, % \"${2:D:\\test.txt}\", ${3|M,C,A|}, ${4|0,1,2|}, ${5|0,1|}]",
             "doc": [
@@ -3245,7 +3206,6 @@
             ]
         },
         {
-            "upName": "FORMATTIME",
             "keyRawName": "FormatTime",
             "body": "FormatTime, ${1:OutputVar} [, ${2:YYYYMMDDHH24MISS}, ${3:yyyy-MM-dd HH:mm:ss} ]",
             "doc": [
@@ -3322,7 +3282,6 @@
             ]
         },
         {
-            "upName": "GETKEYSTATE",
             "keyRawName": "GetKeyState",
             "body": "GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3|P,T|}]",
             "doc": [
@@ -3381,7 +3340,6 @@
             ]
         },
         {
-            "upName": "GROUPACTIVATE",
             "keyRawName": "GroupActivate",
             "body": "GroupActivate, ${1:GroupName} [, ${2:R} ]",
             "doc": [
@@ -3421,7 +3379,6 @@
             ]
         },
         {
-            "upName": "GROUPADD",
             "keyRawName": "GroupAdd",
             "body": "GroupAdd, ${1:GroupName} [, ${2:WinTitle}, ${3:WinText}, ${4:Label}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -3492,7 +3449,6 @@
             ]
         },
         {
-            "upName": "GROUPCLOSE",
             "keyRawName": "GroupClose",
             "body": "GroupClose, ${1:GroupName} [, ${2|A,R|}]",
             "doc": [
@@ -3531,7 +3487,6 @@
             ]
         },
         {
-            "upName": "GROUPDEACTIVATE",
             "keyRawName": "GroupDeactivate",
             "body": "GroupDeactivate, ${1:GroupName} [, ${2:R}]",
             "doc": [
@@ -3568,7 +3523,6 @@
             ]
         },
         {
-            "upName": "GUI",
             "keyRawName": "Gui",
             "body": "Gui, ${1|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${2:Value1}, ${3:Value2}, ${4:Value3}]",
             "doc": [
@@ -3645,7 +3599,6 @@
             ]
         },
         {
-            "upName": "GUICONTROL",
             "keyRawName": "GuiControl",
             "body": "GuiControl, ${1|(Blank),Text,Move,MoveDraw,Focus,Disable,Enable,Hide,Show,Delete,Choose,ChooseString,Font,Options|}, ${2:ControlID} [, ${3:Value}]",
             "doc": [
@@ -3712,7 +3665,6 @@
             ]
         },
         {
-            "upName": "GUICONTROLGET",
             "keyRawName": "GuiControlGet",
             "body": "GuiControlGet, ${1:OutputVar} [, ${2|(Blank),Pos,Focus,FocusV,Enabled,Visible,Hwnd,Name|}, ${3:ControlID}, ${4:Value}]",
             "doc": [
@@ -3784,7 +3736,6 @@
             ]
         },
         {
-            "upName": "HOTKEY",
             "keyRawName": "Hotkey",
             "body": "Hotkey, ${1:KeyName} [, ${2:Label_or_funcName}, ${3:Options}]",
             "doc": [
@@ -3854,7 +3805,6 @@
             ]
         },
         {
-            "upName": "IMAGESEARCH",
             "keyRawName": "ImageSearch",
             "body": "ImageSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:ImageFile}",
             "doc": [
@@ -3953,7 +3903,6 @@
             ]
         },
         {
-            "upName": "INIDELETE",
             "keyRawName": "IniDelete",
             "body": "IniDelete, % \"${1:Filename}\", % \"${2:Section}\" [, % \"${3:Key}\"]",
             "doc": [
@@ -3998,7 +3947,6 @@
             ]
         },
         {
-            "upName": "INIREAD",
             "keyRawName": "IniRead",
             "body": "IniRead, ${1:OutputVar}, % \"${2:Filename}\", % \"${3:Section}\", % \"${4:Key}\" [,% \"${5:Default}\"]",
             "doc": [
@@ -4088,7 +4036,6 @@
             ]
         },
         {
-            "upName": "INIWRITE",
             "keyRawName": "IniWrite",
             "body": "IniWrite, % \"${1:Value}\", % \"${2:Filename}\", % \"${3:Section}\", % \"${4:Key}\"",
             "doc": [
@@ -4162,7 +4109,6 @@
             ]
         },
         {
-            "upName": "INPUT",
             "keyRawName": "Input",
             "body": "Input [, ${1:OutputVar}, ${2:Options}, ${3:EndKeys}, ${4:MatchList}]",
             "doc": [
@@ -4261,7 +4207,6 @@
             ]
         },
         {
-            "upName": "INPUTBOX",
             "keyRawName": "InputBox",
             "body": "InputBox, ${1:OutputVar} [,% \"${2:Title}\", % \"${3:Prompt}\", ${4:HIDE}, ${5:Width}, ${6:Height}, ${7:X}, ${8:Y}, ${9:Locale}, ${10:Timeout_Sec}, % \"${11:Default_Str}\"]",
             "doc": [
@@ -4389,7 +4334,6 @@
             ]
         },
         {
-            "upName": "KEYHISTORY",
             "keyRawName": "KeyHistory",
             "body": "KeyHistory",
             "doc": [
@@ -4407,7 +4351,6 @@
             "_param": []
         },
         {
-            "upName": "KEYWAIT",
             "keyRawName": "KeyWait",
             "body": "KeyWait, ${1:KeyName} [, ${2:Options}]",
             "doc": [
@@ -4454,7 +4397,6 @@
             ]
         },
         {
-            "upName": "LISTHOTKEYS",
             "keyRawName": "ListHotkeys",
             "body": "ListHotkeys",
             "doc": [
@@ -4469,7 +4411,6 @@
             "_param": []
         },
         {
-            "upName": "LISTLINES",
             "keyRawName": "ListLines",
             "body": "ListLines [, ${1|On,Off|}]",
             "doc": [
@@ -4505,7 +4446,6 @@
             ]
         },
         {
-            "upName": "LISTVARS",
             "keyRawName": "ListVars",
             "body": "ListVars",
             "doc": [
@@ -4520,7 +4460,6 @@
             "_param": []
         },
         {
-            "upName": "MENU",
             "keyRawName": "Menu",
             "body": "Menu, ${1:MenuName}, ${2|Add,Insert,Delete,DeleteAll,Rename,Check,Uncheck,ToggleCheck,Enable,Disable,ToggleEnable,Default,NoDefault,Standard,NoStandard,Icon,NoIcon,Tip,Show,Color,Click,MainWindow,NoMainWindow,UseErrorLevel|} [, ${3:Value1}, ${4:Value2}, ${5:Value3}, ${6:Value4}]",
             "doc": [
@@ -4614,7 +4553,6 @@
             ]
         },
         {
-            "upName": "MOUSECLICK",
             "keyRawName": "MouseClick",
             "body": "MouseClick [, ${1|Left,Right,Middle,WheelUp,WheelDown,WheelLeft,WheelRight|} , ${2:X}, ${3:Y}, ${4:ClickCount}, ${5:0-100}, ${6|D,U|}, ${7:R}]",
             "doc": [
@@ -4712,7 +4650,6 @@
             ]
         },
         {
-            "upName": "MOUSECLICKDRAG",
             "keyRawName": "MouseClickDrag",
             "body": "MouseClickDrag, ${1|Left,Right,Middle,WheelUp,WheelDown|}, ${2:X1}, ${3:Y1}, ${4:X2}, ${5:Y2} [, ${6:0-100}, ${7:R}]",
             "doc": [
@@ -4806,7 +4743,6 @@
             ]
         },
         {
-            "upName": "MOUSEGETPOS",
             "keyRawName": "MouseGetPos",
             "body": "MouseGetPos [, ${1:OutputVarX}, ${2:OutputVarY}, ${3:OutputVarWin}, ${4:OutputVarControl}, ${5|0,1,2,3|}]",
             "doc": [
@@ -4891,7 +4827,6 @@
             ]
         },
         {
-            "upName": "MOUSEMOVE",
             "keyRawName": "MouseMove",
             "body": "MouseMove, ${1:X}, ${2:Y} [, ${3:0-100}, ${4:R}]",
             "doc": [
@@ -4954,7 +4889,6 @@
             ]
         },
         {
-            "upName": "MSGBOX",
             "keyRawName": "MsgBox",
             "body": "MsgBox, % \"${0}\"",
             "doc": [
@@ -5021,7 +4955,6 @@
             ]
         },
         {
-            "upName": "ONEXIT",
             "keyRawName": "OnExit",
             "body": "OnExit [, ${1:Label}]",
             "doc": [
@@ -5051,7 +4984,6 @@
             ]
         },
         {
-            "upName": "OUTPUTDEBUG",
             "keyRawName": "OutputDebug",
             "body": "OutputDebug, % \"${1:Text}\"",
             "doc": [
@@ -5079,7 +5011,6 @@
             ]
         },
         {
-            "upName": "PIXELGETCOLOR",
             "keyRawName": "PixelGetColor",
             "body": "PixelGetColor, ${1:OutputVar}, ${2:X}, ${3:Y} [, ${4:Alt Slow RGB}]",
             "doc": [
@@ -5144,7 +5075,6 @@
             ]
         },
         {
-            "upName": "PIXELSEARCH",
             "keyRawName": "PixelSearch",
             "body": "PixelSearch, ${1:OutputVarX}, ${2:OutputVarY}, ${3:X1}, ${4:Y1}, ${5:X2}, ${6:Y2}, ${7:0x16_BGR_ColorID} [, ${8:0-255}, ${9:Fast RGB}]",
             "doc": [
@@ -5257,7 +5187,6 @@
             ]
         },
         {
-            "upName": "POSTMESSAGE",
             "keyRawName": "PostMessage",
             "body": "PostMessage, ${1:Msg} [, ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -5351,7 +5280,6 @@
             ]
         },
         {
-            "upName": "PROCESS",
             "keyRawName": "Process",
             "body": "Process, ${1|Exist,Close,List,Priority,Wait,WaitClose|} [, % ${2:PID_Or_Name} , % \"${3:Value}\" ]",
             "doc": [
@@ -5411,7 +5339,6 @@
             ]
         },
         {
-            "upName": "PROGRESS",
             "keyRawName": "Progress",
             "body": "Progress, ${1:ProgressParam1} [, ${2:SubText}, ${3:MainText}, ${4:WinTitle}, ${5:FontName}]",
             "doc": [
@@ -5485,7 +5412,6 @@
             ]
         },
         {
-            "upName": "RANDOM",
             "keyRawName": "Random",
             "body": "Random, ${1:OutputVar} [, ${2:Min}, ${3:Max}]",
             "doc": [
@@ -5533,7 +5459,6 @@
             ]
         },
         {
-            "upName": "REGDELETE",
             "keyRawName": "RegDelete",
             "body": "RegDelete, % \"${1|HKLM,HKU,HKCU,HKCR,HKCC|}\\\" [, % \"${2:ValueName}]\"",
             "doc": [
@@ -5570,7 +5495,6 @@
             ]
         },
         {
-            "upName": "REGREAD",
             "keyRawName": "RegRead",
             "body": "RegRead, ${1:OutputVar}, % \"${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\\" [, % \"${3:ValueName}\" ]",
             "doc": [
@@ -5616,7 +5540,6 @@
             ]
         },
         {
-            "upName": "REGWRITE",
             "keyRawName": "RegWrite",
             "body": "RegWrite, ${1|REG_SZ,REG_EXPAND_SZ,REG_MULTI_SZ,REG_DWORD,REG_BINARY|}, % \"${2|HKLM,HKU,HKCU,HKCR,HKCC|}\\\" [, ${3:ValueName}, ${4:Value}]",
             "doc": [
@@ -5671,7 +5594,6 @@
             ]
         },
         {
-            "upName": "RUN",
             "keyRawName": "Run",
             "body": "Run, % \"${1:ReadMe.docx}\" [, % \"${2:D:\\document}\", % \"${3:Max Min Hide UseErrorLevel}\", ${4:OutputVarPID}]",
             "doc": [
@@ -5753,7 +5675,6 @@
             ]
         },
         {
-            "upName": "RUNAS",
             "keyRawName": "RunAs",
             "body": "RunAs, [${1:User}, ${2:Password}, ${3:Domain}]",
             "doc": [
@@ -5804,7 +5725,6 @@
             ]
         },
         {
-            "upName": "RUNWAIT",
             "keyRawName": "RunWait",
             "body": "RunWait, % \"${1:ReadMe.docx}\" [, % \"${2:D:\\document}\", % \"${3:Max Min Hide UseErrorLevel}\", ${4:OutputVarPID}]",
             "doc": [
@@ -5886,7 +5806,6 @@
             ]
         },
         {
-            "upName": "SEND",
             "keyRawName": "Send",
             "body": "Send, ${1:Keys}",
             "doc": [
@@ -5933,7 +5852,6 @@
             ]
         },
         {
-            "upName": "SENDEVENT",
             "keyRawName": "SendEvent",
             "body": "SendEvent, ${1:Keys}",
             "doc": [
@@ -5982,7 +5900,6 @@
             ]
         },
         {
-            "upName": "SENDINPUT",
             "keyRawName": "SendInput",
             "body": "SendInput, ${1:Keys}",
             "doc": [
@@ -6031,7 +5948,6 @@
             ]
         },
         {
-            "upName": "SENDLEVEL",
             "keyRawName": "SendLevel",
             "body": "SendLevel, ${1:0-100}",
             "doc": [
@@ -6057,7 +5973,6 @@
             ]
         },
         {
-            "upName": "SENDMESSAGE",
             "keyRawName": "SendMessage",
             "body": "SendMessage, ${1:Msg}, [ ${2:wParam}, ${3:lParam}, ${4:Control}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText}, ${9:Timeout}]",
             "doc": [
@@ -6159,7 +6074,6 @@
             ]
         },
         {
-            "upName": "SENDMODE",
             "keyRawName": "SendMode",
             "body": "SendMode, ${1|Event,Play,Input,InputThenPlay|}",
             "doc": [
@@ -6203,7 +6117,6 @@
             ]
         },
         {
-            "upName": "SENDPLAY",
             "keyRawName": "SendPlay",
             "body": "SendPlay, ${1:Keys}",
             "doc": [
@@ -6252,7 +6165,6 @@
             ]
         },
         {
-            "upName": "SENDRAW",
             "keyRawName": "SendRaw",
             "body": "SendRaw, ${1:Keys}",
             "doc": [
@@ -6301,7 +6213,6 @@
             ]
         },
         {
-            "upName": "SETBATCHLINES",
             "keyRawName": "SetBatchLines",
             "body": "SetBatchLines, ${1|-1,20ms,LineCount|}",
             "doc": [
@@ -6335,7 +6246,6 @@
             ]
         },
         {
-            "upName": "SETCAPSLOCKSTATE",
             "keyRawName": "SetCapsLockState",
             "body": "SetCapsLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]",
             "doc": [
@@ -6373,7 +6283,6 @@
             ]
         },
         {
-            "upName": "SETCONTROLDELAY",
             "keyRawName": "SetControlDelay",
             "body": "SetControlDelay, ${1:Delay_ms}",
             "doc": [
@@ -6402,7 +6311,6 @@
             ]
         },
         {
-            "upName": "SETDEFAULTMOUSESPEED",
             "keyRawName": "SetDefaultMouseSpeed",
             "body": "SetDefaultMouseSpeed, ${1:0-100}",
             "doc": [
@@ -6430,7 +6338,6 @@
             ]
         },
         {
-            "upName": "SETENV",
             "keyRawName": "SetEnv",
             "body": "SetEnv, ${1:OutVar}, ${2:Value}",
             "doc": [
@@ -6468,7 +6375,6 @@
             ]
         },
         {
-            "upName": "SETFORMAT",
             "keyRawName": "SetFormat",
             "body": "SetFormat, ${1|IntegerFast,FloatFast,Integer,Float|}, ${2:Format}",
             "doc": [
@@ -6530,7 +6436,6 @@
             ]
         },
         {
-            "upName": "SETKEYDELAY",
             "keyRawName": "SetKeyDelay",
             "body": "SetKeyDelay [, ${1:Delay_ms} , ${2:PressDuration}, ${3:Play}]",
             "doc": [
@@ -6583,7 +6488,6 @@
             ]
         },
         {
-            "upName": "SETMOUSEDELAY",
             "keyRawName": "SetMouseDelay",
             "body": "SetMouseDelay, ${1:Delay_ms}, [ ${2:Play}]",
             "doc": [
@@ -6618,7 +6522,6 @@
             ]
         },
         {
-            "upName": "SETNUMLOCKSTATE",
             "keyRawName": "SetNumLockState",
             "body": "SetNumLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]",
             "doc": [
@@ -6658,7 +6561,6 @@
             ]
         },
         {
-            "upName": "SETREGVIEW",
             "keyRawName": "SetRegView",
             "body": "SetRegView, ${1|32,64,Default|}",
             "doc": [
@@ -6689,7 +6591,6 @@
             ]
         },
         {
-            "upName": "SETSCROLLLOCKSTATE",
             "keyRawName": "SetScrollLockState",
             "body": "SetScrollLockState [, ${1|On,Off,AlwaysOn,AlwaysOff|}]",
             "doc": [
@@ -6729,7 +6630,6 @@
             ]
         },
         {
-            "upName": "SETSTORECAPSLOCKMODE",
             "keyRawName": "SetStoreCapsLockMode",
             "body": "SetStoreCapsLockMode, ${1|On,Off|}",
             "doc": [
@@ -6763,7 +6663,6 @@
             ]
         },
         {
-            "upName": "SETTIMER",
             "keyRawName": "SetTimer",
             "body": "SetTimer, ${1:Label_or_fnName} [, ${2|Period,On,Off,Delete,Default|}, ${3:Priority_int}]",
             "doc": [
@@ -6854,7 +6753,6 @@
             ]
         },
         {
-            "upName": "SETTITLEMATCHMODE",
             "keyRawName": "SetTitleMatchMode",
             "body": "SetTitleMatchMode, ${1|Fast,Slow,RegEx,1,2,3|}",
             "doc": [
@@ -6903,7 +6801,6 @@
             ]
         },
         {
-            "upName": "SETWINDELAY",
             "keyRawName": "SetWinDelay",
             "body": "SetWinDelay, ${1:Delay_ms}",
             "doc": [
@@ -6930,7 +6827,6 @@
             ]
         },
         {
-            "upName": "SETWORKINGDIR",
             "keyRawName": "SetWorkingDir",
             "body": "SetWorkingDir, % \"${1:DirName}\"",
             "doc": [
@@ -6958,7 +6854,6 @@
             ]
         },
         {
-            "upName": "SHUTDOWN",
             "keyRawName": "Shutdown",
             "body": "Shutdown, ${1:Flag}",
             "doc": [
@@ -6998,7 +6893,6 @@
             ]
         },
         {
-            "upName": "SLEEP",
             "keyRawName": "Sleep",
             "body": "Sleep, ${1:Delay_ms}",
             "doc": [
@@ -7029,7 +6923,6 @@
             ]
         },
         {
-            "upName": "SORT",
             "keyRawName": "Sort",
             "body": "Sort, ${1:InputVarName} [, ${2:Options}]",
             "doc": [
@@ -7070,7 +6963,6 @@
             ]
         },
         {
-            "upName": "SOUNDBEEP",
             "keyRawName": "SoundBeep",
             "body": "SoundBeep [, ${1:Frequency_37_to_32767}, ${2:Duration_ms}]",
             "doc": [
@@ -7108,7 +7000,6 @@
             ]
         },
         {
-            "upName": "SOUNDGET",
             "keyRawName": "SoundGet",
             "body": "SoundGet, ${1:OutputVar} [, ${2|MASTER,SPEAKERS,DIGITAL,LINE,MICROPHONE,SYNTH,CD,TELEPHONE,PCSPEAKER,WAVE,AUX,ANALOG,HEADPHONES,N/A|}, ${3:ControlType}, ${4:DeviceNumber}]",
             "doc": [
@@ -7170,7 +7061,6 @@
             ]
         },
         {
-            "upName": "SOUNDGETWAVEVOLUME",
             "keyRawName": "SoundGetWaveVolume",
             "body": "SoundGetWaveVolume, ${1:OutputVar} [, ${2:DeviceNumber}]",
             "doc": [
@@ -7208,7 +7098,6 @@
             ]
         },
         {
-            "upName": "SOUNDPLAY",
             "keyRawName": "SoundPlay",
             "body": "SoundPlay, ${1:Filename} [, ${2:wait}]",
             "doc": [
@@ -7255,7 +7144,6 @@
             ]
         },
         {
-            "upName": "SOUNDSET",
             "keyRawName": "SoundSet",
             "body": "SoundSet, ${1:NewSetting} [, ${2:ComponentType}, ${3:ControlType}, ${4:DeviceNumber}]",
             "doc": [
@@ -7329,7 +7217,6 @@
             ]
         },
         {
-            "upName": "SOUNDSETWAVEVOLUME",
             "keyRawName": "SoundSetWaveVolume",
             "body": "SoundSetWaveVolume, ${1:Percent}, [ ${2:DeviceNumber}]",
             "doc": [
@@ -7374,7 +7261,6 @@
             ]
         },
         {
-            "upName": "SPLASHIMAGE",
             "keyRawName": "SplashImage",
             "body": "SplashImage, [, ${1:ImageFile}, ${2:Options}, ${3:SubText}, ${4:MainText}, ${5:WinTitle}, ${6:FontName}]",
             "doc": [
@@ -7465,7 +7351,6 @@
             ]
         },
         {
-            "upName": "SPLASHTEXTOFF",
             "keyRawName": "SplashTextOff",
             "body": "SplashTextOff",
             "doc": [
@@ -7481,7 +7366,6 @@
             "_param": []
         },
         {
-            "upName": "SPLASHTEXTON",
             "keyRawName": "SplashTextOn",
             "body": "SplashTextOn [, ${1:Width}, ${2:Height}, ${3:Title}, ${4:Text}]",
             "doc": [
@@ -7535,7 +7419,6 @@
             ]
         },
         {
-            "upName": "SPLITPATH",
             "keyRawName": "SplitPath",
             "body": "SplitPath, ${1:InputFullFileName} [, ${2:OutFileName}, ${3:OutDir}, ${4:OutExtension}, ${5:OutNameNoExt}, ${6:OutDrive}]",
             "doc": [
@@ -7630,7 +7513,6 @@
             ]
         },
         {
-            "upName": "STATUSBARGETTEXT",
             "keyRawName": "StatusBarGetText",
             "body": "StatusBarGetText, ${1:OutputVar} [, ${2:Part#}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -7706,7 +7588,6 @@
             ]
         },
         {
-            "upName": "STATUSBARWAIT",
             "keyRawName": "StatusBarWait",
             "body": "StatusBarWait, [${1:BarText}, ${2:Timeout_sec}, ${3:Part#}, ${4:WinTitle}, ${5:WinText}, ${6:Interval}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -7798,7 +7679,6 @@
             ]
         },
         {
-            "upName": "STRINGCASESENSE",
             "keyRawName": "StringCaseSense",
             "body": "StringCaseSense, ${1|On,Off,Locale|}",
             "doc": [
@@ -7834,7 +7714,6 @@
             ]
         },
         {
-            "upName": "STRINGGETPOS",
             "keyRawName": "StringGetPos",
             "body": "StringGetPos, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:Occurrence}, ${5:Offset}]",
             "doc": [
@@ -7908,7 +7787,6 @@
             ]
         },
         {
-            "upName": "STRINGLEFT",
             "keyRawName": "StringLeft",
             "body": "StringLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -7954,7 +7832,6 @@
             ]
         },
         {
-            "upName": "STRINGLEN",
             "keyRawName": "StringLen",
             "body": "StringLen, ${1:OutputVar}, ${2:InputVar}",
             "doc": [
@@ -7990,7 +7867,6 @@
             ]
         },
         {
-            "upName": "STRINGLOWER",
             "keyRawName": "StringLower",
             "body": "StringLower, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]",
             "doc": [
@@ -8035,7 +7911,6 @@
             ]
         },
         {
-            "upName": "STRINGMID",
             "keyRawName": "StringMid",
             "body": "StringMid, ${1:OutputVar}, ${2:InputVar}, ${3:StartChar} [, ${4:Count}, ${5:L}]",
             "doc": [
@@ -8100,7 +7975,6 @@
             ]
         },
         {
-            "upName": "STRINGREPLACE",
             "keyRawName": "StringReplace",
             "body": "StringReplace, ${1:OutputVar}, ${2:InputVar}, ${3:SearchText} [, ${4:ReplaceText}, ${5:ReplaceAll}]",
             "doc": [
@@ -8165,7 +8039,6 @@
             ]
         },
         {
-            "upName": "STRINGRIGHT",
             "keyRawName": "StringRight",
             "body": "StringRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -8211,7 +8084,6 @@
             ]
         },
         {
-            "upName": "STRINGSPLIT",
             "keyRawName": "StringSplit",
             "body": "StringSplit, ${1:OutputArray}, ${2:InputVar} [, ${3:Delimiters}, ${4:OmitChars}]",
             "doc": [
@@ -8289,7 +8161,6 @@
             ]
         },
         {
-            "upName": "STRINGTRIMLEFT",
             "keyRawName": "StringTrimLeft",
             "body": "StringTrimLeft, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -8334,7 +8205,6 @@
             ]
         },
         {
-            "upName": "STRINGTRIMRIGHT",
             "keyRawName": "StringTrimRight",
             "body": "StringTrimRight, ${1:OutputVar}, ${2:InputVar}, ${3:Count}",
             "doc": [
@@ -8379,7 +8249,6 @@
             ]
         },
         {
-            "upName": "STRINGUPPER",
             "keyRawName": "StringUpper",
             "body": "StringUpper, ${1:OutputVar}, ${2:InputVar} [, ${3:T}]",
             "doc": [
@@ -8423,7 +8292,6 @@
             ]
         },
         {
-            "upName": "SUSPEND",
             "keyRawName": "Suspend",
             "body": "Suspend [, ${1|On,Off,Toggle,Permit|}]",
             "doc": [
@@ -8464,7 +8332,6 @@
             ]
         },
         {
-            "upName": "SYSGET",
             "keyRawName": "SysGet",
             "body": "SysGet, ${1:OutputVar}, ${2|MonitorCount,MonitorPrimary,Monitor,MonitorWorkArea,MonitorName,(Numeric)|} [, ${3:Value}]",
             "doc": [
@@ -8513,7 +8380,6 @@
             ]
         },
         {
-            "upName": "THREAD",
             "keyRawName": "Thread",
             "body": "Thread, ${1|NoTimers,Priority,Interrupt|} [, ${2:Value1}, ${3:Value2}]",
             "doc": [
@@ -8561,7 +8427,6 @@
             ]
         },
         {
-            "upName": "TOOLTIP",
             "keyRawName": "ToolTip",
             "body": "ToolTip [, % \"${1:Text}\", ${2:X}, ${3:Y}, ${4:1_to_20}]",
             "doc": [
@@ -8623,7 +8488,6 @@
             ]
         },
         {
-            "upName": "TRANSFORM",
             "keyRawName": "Transform",
             "body": "Transform, ${1:OutputVar}, ${2|Unicode,Deref,HTML,Asc,Chr,Mod,Exp,Sqrt,Log,Ln,Round,Ceil,Floor,Abs,Sin,Cos,Tan,ASin,ACos,ATan,Pow,BitNot,BitAnd,BitOr,BitXOr,BitShiftLeft,BitShiftRight|}, ${3:Value1} [, ${4:Value2}]",
             "doc": [
@@ -8703,7 +8567,6 @@
             ]
         },
         {
-            "upName": "TRAYTIP",
             "keyRawName": "TrayTip",
             "body": "TrayTip [, ${1:Title}, ${2:Text}, ${3:Seconds}, ${4:Options}]",
             "doc": [
@@ -8778,7 +8641,6 @@
             ]
         },
         {
-            "upName": "URLDOWNLOADTOFILE",
             "keyRawName": "UrlDownloadToFile",
             "body": "UrlDownloadToFile, % \"${1:URL_https}\", % \"${2:Filename}\"",
             "doc": [
@@ -8817,7 +8679,6 @@
             ]
         },
         {
-            "upName": "WINACTIVATE",
             "keyRawName": "WinActivate",
             "body": "WinActivate [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -8870,7 +8731,6 @@
             ]
         },
         {
-            "upName": "WINACTIVATEBOTTOM",
             "keyRawName": "WinActivateBottom",
             "body": "WinActivateBottom, [ ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText} ]",
             "doc": [
@@ -8923,7 +8783,6 @@
             ]
         },
         {
-            "upName": "WINCLOSE",
             "keyRawName": "WinClose",
             "body": "WinClose [, ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText} ]",
             "doc": [
@@ -8985,7 +8844,6 @@
             ]
         },
         {
-            "upName": "WINGET",
             "keyRawName": "WinGet",
             "body": "WinGet, ${1:OutputVar} [, ${2|ID,IDLast,PID,ProcessName,ProcessPath,Count,List,MinMax,ControlList,ControlListHwnd,Transparent,TransColor,Style,ExStyle|}, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText} ]",
             "doc": [
@@ -9071,7 +8929,6 @@
             ]
         },
         {
-            "upName": "WINGETACTIVESTATS",
             "keyRawName": "WinGetActiveStats",
             "body": "WinGetActiveStats, ${1:OutTitle}, ${2:OutWidth}, ${3:OutHeight}, ${4:OutX}, ${5:OutY}",
             "doc": [
@@ -9145,7 +9002,6 @@
             ]
         },
         {
-            "upName": "WINGETACTIVETITLE",
             "keyRawName": "WinGetActiveTitle",
             "body": "WinGetActiveTitle, ${1:OutputVar}",
             "doc": [
@@ -9172,7 +9028,6 @@
             ]
         },
         {
-            "upName": "WINGETCLASS",
             "keyRawName": "WinGetClass",
             "body": "WinGetClass, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -9234,7 +9089,6 @@
             ]
         },
         {
-            "upName": "WINGETPOS",
             "keyRawName": "WinGetPos",
             "body": "WinGetPos, [ ${1:OutX}, ${2:OutY}, ${3:OutWidth}, ${4:OutHeight}, ${5:WinTitle}, ${6:WinText}, ${7:ExcludeTitle}, ${8:ExcludeText} ]",
             "doc": [
@@ -9324,7 +9178,6 @@
             ]
         },
         {
-            "upName": "WINGETTEXT",
             "keyRawName": "WinGetText",
             "body": "WinGetText, ${1:OutputVar} [, ${2:WinTitle}, ${3:WinText}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -9386,7 +9239,6 @@
             ]
         },
         {
-            "upName": "WINGETTITLE",
             "keyRawName": "WinGetTitle",
             "body": "WinGetTitle, ${1:OutputVar} ${2:[, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]}",
             "doc": [
@@ -9448,7 +9300,6 @@
             ]
         },
         {
-            "upName": "WINHIDE",
             "keyRawName": "WinHide",
             "body": "WinHide, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9501,7 +9352,6 @@
             ]
         },
         {
-            "upName": "WINKILL",
             "keyRawName": "WinKill",
             "body": "WinKill, [ ${1:WinTitle}, ${2:WinText}, ${3:SecondsToWait}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -9563,7 +9413,6 @@
             ]
         },
         {
-            "upName": "WINMAXIMIZE",
             "keyRawName": "WinMaximize",
             "body": "WinMaximize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9616,7 +9465,6 @@
             ]
         },
         {
-            "upName": "WINMENUSELECTITEM",
             "keyRawName": "WinMenuSelectItem",
             "body": "WinMenuSelectItem, ${1:WinTitle}, ${2:WinText}, ${3:Menu} [, ${4:SubMenu1}, ${5:SubMenu2}, ${6:SubMenu3}, ${7:SubMenu4}, ${8:SubMenu5}, ${9:SubMenu6}, ${10:ExcludeTitle}, ${11:ExcludeText} ]",
             "doc": [
@@ -9740,7 +9588,6 @@
             ]
         },
         {
-            "upName": "WINMINIMIZE",
             "keyRawName": "WinMinimize",
             "body": "WinMinimize [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9793,7 +9640,6 @@
             ]
         },
         {
-            "upName": "WINMINIMIZEALL",
             "keyRawName": "WinMinimizeAll",
             "body": "WinMinimizeAll",
             "doc": [
@@ -9814,7 +9660,6 @@
             "_param": []
         },
         {
-            "upName": "WINMINIMIZEALLUNDO",
             "keyRawName": "WinMinimizeAllUndo",
             "body": "WinMinimizeAllUndo",
             "doc": [
@@ -9835,7 +9680,6 @@
             "_param": []
         },
         {
-            "upName": "WINMOVE",
             "keyRawName": "WinMove",
             "body": "WinMove, ${1:WinTitle}, ${2:WinText}, ${3:X}, ${4:Y}, [${5:Width}, ${6:Height}, ${7:ExcludeTitle}, ${8:ExcludeText}]",
             "doc": [
@@ -9938,7 +9782,6 @@
             ]
         },
         {
-            "upName": "WINRESTORE",
             "keyRawName": "WinRestore",
             "body": "WinRestore, [${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -9994,7 +9837,6 @@
             ]
         },
         {
-            "upName": "WINSET",
             "keyRawName": "WinSet",
             "body": "WinSet, ${1|AlwaysOnTop,Bottom,Top,Disable,Enable,Redraw,Style,ExStyle,Region,Transparent,TransColor|}, ${2:Value} [, ${3:WinTitle}, ${4:WinText}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
@@ -10077,7 +9919,6 @@
             ]
         },
         {
-            "upName": "WINSETTITLE",
             "keyRawName": "WinSetTitle",
             "body": "WinSetTitle, ${1:WinTitle}, ${2:WinText}, ${3:NewTitle} [, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10145,7 +9986,6 @@
             ]
         },
         {
-            "upName": "WINSHOW",
             "keyRawName": "WinShow",
             "body": "WinShow [, ${1:WinTitle}, ${2:WinText}, ${3:ExcludeTitle}, ${4:ExcludeText}]",
             "doc": [
@@ -10198,7 +10038,6 @@
             ]
         },
         {
-            "upName": "WINWAIT",
             "keyRawName": "WinWait",
             "body": "WinWait [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10262,7 +10101,6 @@
             ]
         },
         {
-            "upName": "WINWAITACTIVE",
             "keyRawName": "WinWaitActive",
             "body": "WinWaitActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10325,7 +10163,6 @@
             ]
         },
         {
-            "upName": "WINWAITCLOSE",
             "keyRawName": "WinWaitClose",
             "body": "WinWaitClose [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_Sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [
@@ -10387,7 +10224,6 @@
             ]
         },
         {
-            "upName": "WINWAITNOTACTIVE",
             "keyRawName": "WinWaitNotActive",
             "body": "WinWaitNotActive [, ${1:WinTitle}, ${2:WinText}, ${3:Timeout_sec}, ${4:ExcludeTitle}, ${5:ExcludeText}]",
             "doc": [

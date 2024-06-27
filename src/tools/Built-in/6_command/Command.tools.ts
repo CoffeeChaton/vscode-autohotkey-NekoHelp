@@ -44,8 +44,8 @@ const tmep_cmd = (() => {
             exp,
             keyRawName,
             link,
-            upName,
         } = v;
+        const upName: string = keyRawName.toUpperCase();
         let cmdSignLabel: string = keyRawName;
         let isFirstOption = 0;
         for (const commandParams of _param) {
