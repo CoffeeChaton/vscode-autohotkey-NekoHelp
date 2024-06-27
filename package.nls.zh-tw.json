@@ -15,7 +15,7 @@
     "AhkNekoHelp.Diag.AMasterSwitch-1": "任何時候都不要程式碼診斷。",
     "AhkNekoHelp.Diag.AMasterSwitch-2": "(默認）如果打開 [工作區](https://code.visualstudio.com/docs/editor/workspaces)，則診斷，否則不診斷。",
     "AhkNekoHelp.Diag.AMasterSwitch-3": "任何時候都程式碼診斷。",
-    "AhkNekoHelp.Diag.code107LegacyAssignment": "(code107) 診斷 [`var=value`(傳統賦值)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm) 並建議 '嘗試使用`:=`替換`=`'",
+    "AhkNekoHelp.Diag.code107LegacyAssignment": "([code107](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code107.md) 診斷 [`var=value`(傳統賦值)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm) 並建議 '嘗試使用`:=`替換`=`'",
     "AhkNekoHelp.Diag.code209": "[info] 總是使用 `if ()` 或 `if !()` 風格, 不允許 If (Expression) 變體 ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82))",
     "AhkNekoHelp.Diag.code300FuncSize": "(code300)函數/方法大小的校驗（只計算非空行）",
     "AhkNekoHelp.Diag.code500": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md))提示var已分配但從未使用，這是檔案的最大警告數量。使用 ```0``` 關閉警告。",

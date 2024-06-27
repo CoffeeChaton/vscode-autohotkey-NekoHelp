@@ -21,6 +21,15 @@
 - fix: rm `A_ScriptDir`/`A_WorkingDir` fake support.
 - feat: hover `#Include` list may file
 - feat: CA `#Include` check file exist
+- feat: diag `code107` not warn `Like path stitching`
+
+  ```ahk
+  #Requires AutoHotkey v1.1.33+
+
+  source  = %A_ScriptDir%\Temp.txt
+  ;   not warn, because start with "%var%\"
+  ```
+
 - feat: ([#5](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/5#issuecomment-2167533567))
   - try support multiple files move event, and auto fix `#Include`
   - list all may file

@@ -9,8 +9,14 @@ function assignErr({
     detail,
     line,
     lStr,
+    textRaw,
 }: TAhkTokenLine, DocStrMap: TTokenStream): CDiagBase | null {
     if (!detail.includes(EDetail.inSkipSign2)) return null;
+
+    if ((/^%\w+%\\/u).test(textRaw.replace(/.*=\s*/u, ''))) {
+        // Like path stitching
+        return null;
+    }
 
     const tokenNext: TAhkTokenLine | undefined = DocStrMap[line + 1] as TAhkTokenLine | undefined;
 
