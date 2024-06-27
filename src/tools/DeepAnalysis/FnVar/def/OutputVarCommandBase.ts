@@ -1,5 +1,5 @@
 import type { TAssociated, TValMetaIn } from '../../../../AhkSymbol/CAhkFunc';
-import { OutputCommandBaseMap } from '../../../Built-in/6_command/Command.tools';
+import { Cmd_OutputBaseMap } from '../../../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
@@ -13,7 +13,7 @@ import { pseudoArrayPushDef } from './pseudoArray/pseudoArrayPushDef';
  * Provides a callable function for each AutoHotkey command that has an OutputVar.
  */
 export function OutputVarCommandBase(need: TGetFnDefNeed, keyWord: string, col: number): null {
-    const len: number | undefined = OutputCommandBaseMap.get(keyWord);
+    const len: number | undefined = Cmd_OutputBaseMap.get(keyWord);
     if (len === undefined) return null;
     //
     const {

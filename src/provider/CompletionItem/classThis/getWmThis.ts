@@ -14,7 +14,7 @@ export type TWmThisPos = Readonly<{
 }>;
 type TWmThisMap = ReadonlyMap<string, readonly TWmThisPos[]>;
 
-export const WmThisCore = new CMemo<CAhkClass, TWmThisMap>(
+export const WmThisCore: CMemo<CAhkClass, TWmThisMap> = new CMemo(
     (AhkClassSymbol: CAhkClass): TWmThisMap => {
         const { fsPath } = AhkClassSymbol.uri;
         const map = new Map<string, TWmThisPos[]>();

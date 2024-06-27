@@ -12,32 +12,34 @@ export type TMethodRef = {
 
 type TMethodDefShell = ReadonlyMap<string, readonly TMethodRef[]>;
 
-export const fileMethodRef = new CMemo<TAhkFileData, TMethodDefShell>((AhkFileData: TAhkFileData): TMethodDefShell => {
-    const { DocStrMap } = AhkFileData;
-    const map = new Map<string, TMethodRef[]>();
-    //
-    for (const AhkTokenLine of DocStrMap) {
-        const { line, lStr } = AhkTokenLine;
-        for (const ma of lStr.matchAll(/(?<=\.)([#$@\w\u{A1}-\u{FFFF}]+)(?=\()/giu)) {
-            //                                        .Name(
-            const col: number = ma.index;
+export const fileMethodRef: CMemo<TAhkFileData, TMethodDefShell> = new CMemo(
+    (AhkFileData: TAhkFileData): TMethodDefShell => {
+        const { DocStrMap } = AhkFileData;
+        const map = new Map<string, TMethodRef[]>();
 
-            const rawName: string = ma[1];
-            const upName: string = ToUpCase(rawName);
-            const range: vscode.Range = new vscode.Range(
-                new vscode.Position(line, col),
-                new vscode.Position(line, col + rawName.length),
-            );
+        for (const AhkTokenLine of DocStrMap) {
+            const { line, lStr } = AhkTokenLine;
+            for (const ma of lStr.matchAll(/(?<=\.)([#$@\w\u{A1}-\u{FFFF}]+)(?=\()/giu)) {
+                //                                        .Name(
+                const col: number = ma.index;
 
-            const arr: TMethodRef[] = map.get(upName) ?? [];
-            arr.push({
-                rawName,
-                upName,
-                range,
-            });
-            map.set(upName, arr);
+                const rawName: string = ma[1];
+                const upName: string = ToUpCase(rawName);
+                const range: vscode.Range = new vscode.Range(
+                    new vscode.Position(line, col),
+                    new vscode.Position(line, col + rawName.length),
+                );
+
+                const arr: TMethodRef[] = map.get(upName) ?? [];
+                arr.push({
+                    rawName,
+                    upName,
+                    range,
+                });
+                map.set(upName, arr);
+            }
         }
-    }
 
-    return map;
-});
+        return map;
+    },
+);

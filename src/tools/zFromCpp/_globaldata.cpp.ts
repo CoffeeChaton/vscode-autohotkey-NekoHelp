@@ -7,14 +7,13 @@
  */
 const ACT_INVALID = 0;
 const ACT_FIRST_COMMAND = 24;
-const g_delimiter = ',';
 // TCHAR g_delimiter = ',';
 // TCHAR g_DerefChar = '%';
 // TCHAR g_EscapeChar = '`';
 
 const end_flags = [
     ' ',
-    g_delimiter,
+    ',',
     '(',
     '\t',
     '<',

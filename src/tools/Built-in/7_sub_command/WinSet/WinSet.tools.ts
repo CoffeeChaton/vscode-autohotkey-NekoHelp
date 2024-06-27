@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { WinSetSubCmdList } from './WinSet.data';
 
-export const { snippetWinSet, WinSetMDMap } = (() => {
+const WinSet = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
@@ -54,7 +54,10 @@ export const { snippetWinSet, WinSetMDMap } = (() => {
     // ---
     // ---
     return {
-        snippetWinSet: snippetListRW as readonly vscode.CompletionItem[],
-        WinSetMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetListRW,
+        MDMapRW,
     };
 })();
+
+export const WinSet_snip: readonly vscode.CompletionItem[] = WinSet.snippetListRW;
+export const WinSet_MDMap: ReadonlyMap<string, vscode.MarkdownString> = WinSet.MDMapRW;

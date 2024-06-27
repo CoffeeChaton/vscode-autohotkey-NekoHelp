@@ -2,8 +2,11 @@ import * as vscode from 'vscode';
 import { CSnippetCommand } from '../6_command/CSnippetCommand';
 import { declarationDataList } from './declaration.data';
 
-export const [snippetDeclaration, declarationMDMap] = (
-    (): [readonly CSnippetCommand[], ReadonlyMap<string, vscode.MarkdownString>] => {
+type TDeclaration_snip = readonly CSnippetCommand[];
+type TDeclaration_MDMap = ReadonlyMap<string, vscode.MarkdownString>;
+
+const temp_Declaration: [TDeclaration_snip, TDeclaration_MDMap] = (
+    (): [TDeclaration_snip, TDeclaration_MDMap] => {
         const map1 = new Map<string, vscode.MarkdownString>();
         const tempList: CSnippetCommand[] = [];
 
@@ -37,12 +40,15 @@ export const [snippetDeclaration, declarationMDMap] = (
     }
 )();
 
+export const Declaration_snip: TDeclaration_snip = temp_Declaration[0];
+export const Declaration_MDMap: TDeclaration_MDMap = temp_Declaration[1];
+
 export function getHoverDeclaration(wordUp: string): vscode.MarkdownString | undefined {
-    return declarationMDMap.get(wordUp);
+    return Declaration_MDMap.get(wordUp);
 }
 
 export function getSnipDeclaration(lStr: string): readonly CSnippetCommand[] {
     return (/^[ \t{]*\w*$/iu).test(lStr)
-        ? snippetDeclaration
+        ? Declaration_snip
         : [];
 }

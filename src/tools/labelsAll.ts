@@ -18,7 +18,7 @@ function findAllLabelAllMapCore(ch: readonly TAhkSymbol[], map: TLabelMapRW): vo
     }
 }
 
-export const findAllLabelAllMap = new CMemo<TAstRoot, TLabelMap>((AST: TAstRoot): TLabelMap => {
+export const findAllLabelAllMap: CMemo<TAstRoot, TLabelMap> = new CMemo((AST: TAstRoot): TLabelMap => {
     const LabelMap: TLabelMapRW = new Map();
     findAllLabelAllMapCore(AST, LabelMap);
     return LabelMap;

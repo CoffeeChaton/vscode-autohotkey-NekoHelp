@@ -56,13 +56,15 @@ const ahk2Exe = (() => {
     }
 
     return {
-        Ahk2exeMdMap: Ahk2exeMdMapRW as ReadonlyMap<string, vscode.MarkdownString>,
-        snippetAhk2exeLine: snippetAhk2exeRW as readonly vscode.CompletionItem[],
-        snippetAhk2exeKeep: snippetAhk2exeKeepRW as readonly vscode.CompletionItem[],
+        Ahk2exeMdMapRW,
+        snippetAhk2exeRW,
+        snippetAhk2exeKeepRW,
     };
 })();
 
-export const { Ahk2exeMdMap, snippetAhk2exeLine, snippetAhk2exeKeep } = ahk2Exe;
+export const Ahk2exe_MdMap: ReadonlyMap<string, vscode.MarkdownString> = ahk2Exe.Ahk2exeMdMapRW;
+export const Ahk2exe_snip_Line: readonly vscode.CompletionItem[] = ahk2Exe.snippetAhk2exeRW;
+export const Ahk2exe_snip_Keep: readonly vscode.CompletionItem[] = ahk2Exe.snippetAhk2exeKeepRW;
 
 type TRangeAndKeyUp = {
     upKey: string,
@@ -85,7 +87,7 @@ function getAhk2exeMeta(AhkTokenLine: TAhkTokenLine, position: vscode.Position):
         const { character, line } = position;
         if (character > lStrLen && character < col) {
             const upKey: string = maAhk2exe[1].toUpperCase();
-            const md: vscode.MarkdownString | undefined = Ahk2exeMdMap.get(upKey);
+            const md: vscode.MarkdownString | undefined = Ahk2exe_MdMap.get(upKey);
             if (md !== undefined) {
                 return {
                     upKey,
@@ -108,7 +110,7 @@ function getAhk2exeMeta(AhkTokenLine: TAhkTokenLine, position: vscode.Position):
         const { character, line } = position;
         if (character > lStrLen && character < col) {
             const upKey = 'KEEP';
-            const md: vscode.MarkdownString | undefined = Ahk2exeMdMap.get(upKey);
+            const md: vscode.MarkdownString | undefined = Ahk2exe_MdMap.get(upKey);
             if (md !== undefined) {
                 return {
                     upKey,

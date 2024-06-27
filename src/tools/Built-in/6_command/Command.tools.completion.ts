@@ -3,10 +3,10 @@ import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { enumLog } from '../../enumErr';
 import { getAllFunc } from '../../Func/getAllFunc';
-import { snippetCommand } from './Command.tools';
+import { Cmd_Snip } from './Command.tools';
 import type { CSnippetCommand } from './CSnippetCommand';
 
-const snippetCommandFilter: readonly CSnippetCommand[] = snippetCommand.filter((v: CSnippetCommand) => v.recommended);
+const snippetCommandFilter: readonly CSnippetCommand[] = Cmd_Snip.filter((v: CSnippetCommand) => v.recommended);
 
 export function getSnipCmd(subStr: string, AhkTokenLine: TAhkTokenLine): readonly CSnippetCommand[] {
     const { fistWordUp } = AhkTokenLine;
@@ -32,7 +32,7 @@ export function getSnipCmd(subStr: string, AhkTokenLine: TAhkTokenLine): readonl
 
     switch (opt) {
         case ECommandOption.All:
-            return snippetCommand;
+            return Cmd_Snip;
 
         case ECommandOption.Recommended:
             return snippetCommandFilter;

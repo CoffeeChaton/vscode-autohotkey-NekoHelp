@@ -5,8 +5,8 @@ import { CMemo } from '../../../CMemo';
 import type { TScanData } from '../../../DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../../str/ToUpCase';
-import { GuiMDMap } from '../Gui/Gui.tools';
-import { GuiControlMDMap } from '../GuiControl/GuiControl.tools';
+import { Gui_MDMap } from '../Gui/Gui.tools';
+import { GuiControl_MDMap } from '../GuiControl/GuiControl.tools';
 
 const GuiNameMd: vscode.MarkdownString = new vscode.MarkdownString(
     'hover at [GuiName](https://www.autohotkey.com/docs/v1/lib/Gui.htm#MultiWin)',
@@ -88,7 +88,7 @@ function getGuiParam2ndData(lStr: string, col: number, line: number): TGui2ndPar
     );
 
     // add... etc
-    const md: vscode.MarkdownString | undefined = GuiMDMap.get(wordUp.trim().toUpperCase());
+    const md: vscode.MarkdownString | undefined = Gui_MDMap.get(wordUp.trim().toUpperCase());
     if (md !== undefined) {
         const SubCmd: TSubCmd = {
             wordUp,
@@ -103,7 +103,7 @@ function getGuiParam2ndData(lStr: string, col: number, line: number): TGui2ndPar
 
     // Options
     if (RawNameNew.includes('+') || RawNameNew.includes('-')) {
-        const mdOpt: vscode.MarkdownString | undefined = GuiMDMap.get('Options'.toUpperCase());
+        const mdOpt: vscode.MarkdownString | undefined = Gui_MDMap.get('Options'.toUpperCase());
         if (mdOpt !== undefined) {
             const SubCmd: TSubCmd = {
                 wordUp: 'Options'.toUpperCase(),
@@ -180,7 +180,7 @@ function getGuiControlParam2ndData(lStr: string, col: number, line: number): TGu
     );
 
     // add... etc
-    const md: vscode.MarkdownString | undefined = GuiControlMDMap.get(wordUp.trim().toUpperCase());
+    const md: vscode.MarkdownString | undefined = GuiControl_MDMap.get(wordUp.trim().toUpperCase());
     if (md !== undefined) {
         const SubCmd: TSubCmd = {
             wordUp,
@@ -194,7 +194,7 @@ function getGuiControlParam2ndData(lStr: string, col: number, line: number): TGu
     }
 
     if (wordUp === '') {
-        const md2: vscode.MarkdownString | undefined = GuiControlMDMap.get('(Blank)'.trim().toUpperCase());
+        const md2: vscode.MarkdownString | undefined = GuiControl_MDMap.get('(Blank)'.trim().toUpperCase());
         if (md2 !== undefined) {
             const SubCmd: TSubCmd = {
                 wordUp,
@@ -210,7 +210,7 @@ function getGuiControlParam2ndData(lStr: string, col: number, line: number): TGu
 
     // Options
     if (RawNameNew.includes('+') || RawNameNew.includes('-')) {
-        const mdOpt: vscode.MarkdownString | undefined = GuiMDMap.get('(options)'.toUpperCase());
+        const mdOpt: vscode.MarkdownString | undefined = Gui_MDMap.get('(options)'.toUpperCase());
         if (mdOpt !== undefined) {
             const SubCmd: TSubCmd = {
                 wordUp: '(options)'.toUpperCase(),

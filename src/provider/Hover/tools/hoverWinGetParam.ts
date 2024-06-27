@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { WinGetMDMap } from '../../../tools/Built-in/7_sub_command/WinGet/WinGet.tools';
+import { WinGet_MDMap } from '../../../tools/Built-in/7_sub_command/WinGet/WinGet.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
@@ -26,7 +26,7 @@ function hoverWinGetParamCore(lStr: string, col: number, character: number): vsc
     const { lPos, RawNameNew } = a2;
 
     if (character >= lPos && character <= lPos + RawNameNew.length) {
-        const md: vscode.MarkdownString | undefined = WinGetMDMap.get(RawNameNew.trim().toUpperCase());
+        const md: vscode.MarkdownString | undefined = WinGet_MDMap.get(RawNameNew.trim().toUpperCase());
         if (md !== undefined) return md;
 
         return unknownWinGetSubCmdMd;

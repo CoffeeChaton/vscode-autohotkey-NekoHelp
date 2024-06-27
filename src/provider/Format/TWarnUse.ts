@@ -6,8 +6,8 @@ import { ErmFirstCommaCommand } from '../../configUI.data';
 import type { DeepReadonly, TAhkTokenLine, TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
 import type { TBrackets } from '../../tools/Bracket';
-import { DirectivesMDMap } from '../../tools/Built-in/0_directive/Directives.tool';
-import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
+import { Directives_MDMap } from '../../tools/Built-in/0_directive/Directives.tool';
+import { Cmd_MDMap } from '../../tools/Built-in/6_command/Command.tools';
 import { lineReplace } from './fmtReplace';
 import type { TFmtCore } from './FormatType';
 import { removeFirstCommaDirective } from './removeFirstCommaDirective';
@@ -56,7 +56,7 @@ function fmtPlus(
 
     if (userConfigs.removeFirstCommaDirective && detail.includes(EDetail.isDirectivesLine)) {
         const ma: RegExpMatchArray | null = lStrTrim.match(/^#(\w+)[ \t]*,/u);
-        if (ma !== null && DirectivesMDMap.has(ma[1].toUpperCase())) {
+        if (ma !== null && Directives_MDMap.has(ma[1].toUpperCase())) {
             return removeFirstCommaDirective(
                 {
                     indentBlank,
@@ -76,7 +76,7 @@ function fmtPlus(
             SecondWordUp,
             SecondWordUpCol,
         } = AhkTokenLine;
-        if (CommandMDMap.has(fistWordUp)) {
+        if (Cmd_MDMap.has(fistWordUp)) {
             const textNewTrimStart: string = rmFirstCommaCommand({
                 col: fistWordUp.length + fistWordUpCol,
                 cmdTo1_or_2,
@@ -87,7 +87,7 @@ function fmtPlus(
             return ToFmtCore({ line, textRaw, newText: `${indentBlank}${textNewTrimStart}` });
         }
 
-        if (CommandMDMap.has(SecondWordUp)) {
+        if (Cmd_MDMap.has(SecondWordUp)) {
             const textNewTrimStart: string = rmFirstCommaCommand({
                 col: SecondWordUp.length + SecondWordUpCol,
                 cmdTo1_or_2,

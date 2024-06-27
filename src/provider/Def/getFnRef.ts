@@ -150,7 +150,7 @@ const CmdRefFuncList = [
     { fn: getSortFunc, by: EFnRefBy.SortFlag },
 ] as const satisfies readonly TFnRefWithCmd[];
 
-export const fileFuncRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TFuncRef[]>>(
+export const fileFuncRef: CMemo<TAhkFileData, ReadonlyMap<string, readonly TFuncRef[]>> = new CMemo(
     (AhkFileData: TAhkFileData): ReadonlyMap<string, readonly TFuncRef[]> => {
         const { DocStrMap, AST } = AhkFileData;
         const filterLineList: number[] = getDAListTop(AST)
@@ -221,7 +221,7 @@ export type TFnRefLike = {
     by: EFnRefBy,
 };
 
-export const fixComObjConnect = new CMemo<TAhkFileData, readonly TLineFnCall[]>(
+export const fixComObjConnect: CMemo<TAhkFileData, readonly TLineFnCall[]> = new CMemo(
     (AhkFileData: TAhkFileData): readonly TLineFnCall[] => {
         const oldList: readonly TFuncRef[] | undefined = fileFuncRef.up(AhkFileData).get('ComObjConnect'.toUpperCase());
         if (oldList === undefined) return [];

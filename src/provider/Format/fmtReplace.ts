@@ -1,6 +1,6 @@
 import type { TAhkTokenLine } from '../../globalEnum';
 import { EDetail, EMultiline } from '../../globalEnum';
-import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
+import { Cmd_MDMap } from '../../tools/Built-in/6_command/Command.tools';
 import { lineReplaceCheckIfIn } from './tools/lineReplaceCheckIfIn';
 
 function textReplace(textElement: string): string {
@@ -91,8 +91,8 @@ export function lineReplace(AhkTokenLine: TAhkTokenLine, text: string, lStrTrim:
             || multiline !== EMultiline.none
             || detail.includes(EDetail.isHotKeyLine)
             || detail.includes(EDetail.isHotStrLine)
-            || CommandMDMap.has(fistWordUp)
-            || CommandMDMap.has(SecondWordUp)
+            || Cmd_MDMap.has(fistWordUp)
+            || Cmd_MDMap.has(SecondWordUp)
             || lineReplaceCheckIfIn(AhkTokenLine) !== null)
         ? text
         : fnStrGroup(text);

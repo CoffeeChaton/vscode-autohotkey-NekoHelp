@@ -14,14 +14,7 @@ export type TCmdMsg = {
     readonly link: TCommandElement['link'],
 };
 
-export const {
-    snippetCommand,
-    CommandMDMap,
-    CommandErrMap,
-    OutputCommandBaseMap,
-    OutputCommandPlusMap,
-    inPutVarMap,
-} = (() => {
+const tmep_cmd = (() => {
     const CommandMDMapTemp = new Map<string, TCmdMsg>();
     const snippetCommandTemp: CSnippetCommand[] = [];
     const CommandErrMapTemp = new Map<string, TAllowDiagCode>();
@@ -44,14 +37,14 @@ export const {
     const LineCommand: TCommandElement[] = readNlsJson('Command') as TCommandElement[];
     for (const v of LineCommand) {
         const {
-            doc,
-            link, // string | undefined
-            exp, // string[] | undefined
-            diag,
-            upName,
-            keyRawName,
             _param,
             _paramType,
+            diag,
+            doc,
+            exp,
+            keyRawName,
+            link,
+            upName,
         } = v;
         let cmdSignLabel: string = keyRawName;
         let isFirstOption = 0;
@@ -116,18 +109,25 @@ export const {
     outBaseMapRW.set('CATCH', 'CATCH'.length);
     // ---
     return {
-        snippetCommand: snippetCommandTemp as readonly CSnippetCommand[],
-        CommandMDMap: CommandMDMapTemp as ReadonlyMap<string, TCmdMsg>,
-        CommandErrMap: CommandErrMapTemp as ReadonlyMap<string, TAllowDiagCode>,
+        snippetCommandTemp,
+        CommandMDMapTemp,
+        CommandErrMapTemp,
         //
-        OutputCommandBaseMap: outBaseMapRW as ReadonlyMap<string, number>,
-        OutputCommandPlusMap: outPlusMapRW as ReadonlyMap<string, readonly number[]>,
-        inPutVarMap: inPutVarMapRw as ReadonlyMap<string, readonly number[]>,
+        outBaseMapRW,
+        outPlusMapRW,
+        inPutVarMapRw,
     };
 })();
 
+export const Cmd_Snip: readonly CSnippetCommand[] = tmep_cmd.snippetCommandTemp;
+export const Cmd_MDMap: ReadonlyMap<string, TCmdMsg> = tmep_cmd.CommandMDMapTemp;
+export const Cmd_ErrMap: ReadonlyMap<string, TAllowDiagCode> = tmep_cmd.CommandErrMapTemp;
+export const Cmd_OutputBaseMap: ReadonlyMap<string, number> = tmep_cmd.outBaseMapRW;
+export const Cmd_OutputPlusMap: ReadonlyMap<string, readonly number[]> = tmep_cmd.outPlusMapRW;
+export const Cmd_InPutVarMap: ReadonlyMap<string, readonly number[]> = tmep_cmd.inPutVarMapRw;
+
 export function getHoverCommand2(wordUp: string): vscode.MarkdownString | undefined {
-    return CommandMDMap.get(wordUp)?.md;
+    return Cmd_MDMap.get(wordUp)?.md;
 }
 
 export const cmdDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('Command');

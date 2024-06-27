@@ -70,7 +70,15 @@ function strListDeepEq(DocStrMap: TTokenStream, fullTextList: readonly string[])
     return true;
 }
 
-export const BaseScanMemo = {
+type TBaseScanMemo = {
+    readonly memo: Map<TFsPath, TMemo[]>,
+    readonly memoSizeFix: (fsPath: TFsPath) => TMemo[],
+    readonly setMemo: (fsPath: TFsPath, AhkCache: TMemo) => void,
+    readonly getMemo: (fsPath: TFsPath, fullTextList: readonly string[], DocFullSize: number) => TMemo | undefined,
+    readonly clear: () => void,
+};
+
+export const BaseScanMemo: TBaseScanMemo = {
     memo: new Map<TFsPath, TMemo[]>(),
 
     memoSizeFix(fsPath: TFsPath): TMemo[] {

@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { ControlSubCmdList } from './Control.data';
 
-export const { snippetControl, ControlMDMap } = (() => {
+const temp_Control = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
@@ -54,7 +54,10 @@ export const { snippetControl, ControlMDMap } = (() => {
     // ---
     // ---
     return {
-        snippetControl: snippetListRW as readonly vscode.CompletionItem[],
-        ControlMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetListRW,
+        MDMapRW,
     };
 })();
+
+export const Control_Snip: readonly vscode.CompletionItem[] = temp_Control.snippetListRW;
+export const Control_MDMap: ReadonlyMap<string, vscode.MarkdownString> = temp_Control.MDMapRW;

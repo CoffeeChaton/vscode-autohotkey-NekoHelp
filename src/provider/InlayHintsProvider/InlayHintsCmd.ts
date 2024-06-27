@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TConfigs } from '../../configUI.data';
-import { CommandMDMap, type TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
+import { Cmd_MDMap, type TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
 import type { TCmdRefEx } from '../../tools/DeepAnalysis/FnVar/def/getFileCmdUsing';
 import type { TArgs } from '../../tools/DeepAnalysis/FnVar/def/getFileFnUsing';
 import { isBuiltin } from '../../tools/isBuiltin';
@@ -361,7 +361,7 @@ export function InlayHintsCmd(
         if (CmdUpName === '') {
             continue;
         }
-        const cmdData2: TCmdMsg | undefined = CommandMDMap.get(CmdUpName);
+        const cmdData2: TCmdMsg | undefined = Cmd_MDMap.get(CmdUpName);
         if (cmdData2 === undefined) {
             // GLOBAL  IF RETURN CONTINUE ...etc
             continue;

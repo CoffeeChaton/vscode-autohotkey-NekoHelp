@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { GuiControlSubCmdList } from './GuiControl.data';
 
-export const { snippetGuiControl, GuiControlMDMap } = (() => {
+const temp_GuiControl = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
@@ -54,7 +54,10 @@ export const { snippetGuiControl, GuiControlMDMap } = (() => {
     // ---
     // ---
     return {
-        snippetGuiControl: snippetListRW as readonly vscode.CompletionItem[],
-        GuiControlMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetListRW,
+        MDMapRW,
     };
 })();
+
+export const GuiControl_snip: readonly vscode.CompletionItem[] = temp_GuiControl.snippetListRW;
+export const GuiControl_MDMap: ReadonlyMap<string, vscode.MarkdownString> = temp_GuiControl.MDMapRW;

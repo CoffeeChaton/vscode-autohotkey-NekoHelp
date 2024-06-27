@@ -15,12 +15,12 @@ import type { TGlobalVal, TGValMap } from '../../core/ParserTools/ahkGlobalDef';
 import { EGlobalDefBy } from '../../core/ParserTools/ahkGlobalDef';
 import type { TTokenStream } from '../../globalEnum';
 import { EDetail } from '../../globalEnum';
-import { WinTitleMDMap } from '../Built-in/100_other/WinTitle/WinTitleParameter.tools';
-import { AVariablesMDMap } from '../Built-in/1_built_in_var/A_Variables.tools';
-import { Bi_VarMDMap } from '../Built-in/1_built_in_var/BiVariables.tools';
-import { StatementMDMap } from '../Built-in/3_foc/foc.tools';
-import { operatorMD } from '../Built-in/4_operator/operator.tools';
-import { CommandMDMap } from '../Built-in/6_command/Command.tools';
+import { WinTitle_MDMap } from '../Built-in/100_other/WinTitle/WinTitleParameter.tools';
+import { AVar_MDMap } from '../Built-in/1_built_in_var/A_Variables.tools';
+import { BiVar_MDMap } from '../Built-in/1_built_in_var/BiVariables.tools';
+import { foc_MDMap } from '../Built-in/3_foc/foc.tools';
+import { operator_MDMap } from '../Built-in/4_operator/operator.tools';
+import { Cmd_MDMap } from '../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../str/ToUpCase';
 import { pushDef } from './pushDef';
 import { pushRef } from './pushRef';
@@ -173,12 +173,12 @@ export function getUnknownTextMap(
 
             if (
                 !textMap.has(wordUp) && (
-                    CommandMDMap.has(wordUp)
-                    || AVariablesMDMap.has(wordUp)
-                    || StatementMDMap.has(wordUp)
-                    || Bi_VarMDMap.has(wordUp)
-                    || operatorMD.has(wordUp) // and or
-                    || WinTitleMDMap.has(wordUp) // ahk_class
+                    Cmd_MDMap.has(wordUp)
+                    || AVar_MDMap.has(wordUp)
+                    || foc_MDMap.has(wordUp)
+                    || BiVar_MDMap.has(wordUp)
+                    || operator_MDMap.has(wordUp) // and or
+                    || WinTitle_MDMap.has(wordUp) // ahk_class
                     // || (/^_+$/u).test(wordUp) // str
                     /*
                      * let decLiteral: number = 6;

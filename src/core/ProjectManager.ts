@@ -24,10 +24,27 @@ import { BaseScanMemo, getFileAST } from './ParserTools/getFileAST';
 
 export type TAhkFileData = TMemo;
 
+type TPm = Readonly<{
+    DocMap: Map<TFsPath, TAhkFileData>,
+    getDocMapValue(): TAhkFileData[],
+    getDocMap(fsPath: string): TAhkFileData | undefined,
+    delMap(e: vscode.FileDeleteEvent): void,
+    createMap(e: vscode.FileCreateEvent): void,
+    renameFiles(e: vscode.FileRenameEvent): Promise<void>,
+    updateDocDef(document: vscode.TextDocument): TAhkFileData | null,
+    changeDoc(e: vscode.TextDocumentChangeEvent): void,
+    UpdateCacheAsyncCh(
+        ahkIncludeList: readonly CAhkInclude[],
+        rootPath: string,
+        byRefLogList: { type: keyof TTryParserIncludeLog, msg: string }[],
+        history: Set<string>,
+    ): Promise<readonly TAhkFileData[]>,
+}>;
+
 /**
  * ProjectManager
  */
-export const pm = {
+export const pm: TPm = {
     // key : vscode.Uri.fsPath,
     DocMap: new Map<TFsPath, TAhkFileData>(),
 

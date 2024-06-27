@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 import { EDiagCode } from '../../../../diag';
 import type { TAhkTokenLine } from '../../../../globalEnum';
 import { RegRootList } from '../../../../tools/Built-in/100_other/RegRootKey.data';
-import { forErrMap } from '../../../../tools/Built-in/3_foc/foc.tools';
-import { CommandErrMap } from '../../../../tools/Built-in/6_command/Command.tools';
+import { foc_ErrMap } from '../../../../tools/Built-in/3_foc/foc.tools';
+import { Cmd_ErrMap } from '../../../../tools/Built-in/6_command/Command.tools';
 import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../../../tools/str/ToUpCase';
@@ -99,7 +99,7 @@ function getCommandErrCore(params: TAhkTokenLine, keyWordUp: string, wordUpCol: 
     if (keyWordUp === 'LOOP') return getLoopErr(lStr, line, wordUpCol);
     if (keyWordUp === 'IF') return getIfInErr(params, wordUpCol);
 
-    const diag: EDiagCode | undefined = CommandErrMap.get(keyWordUp) ?? forErrMap.get(keyWordUp);
+    const diag: EDiagCode | undefined = Cmd_ErrMap.get(keyWordUp) ?? foc_ErrMap.get(keyWordUp);
     if (diag !== undefined) {
         return new CDiagBase({
             value: diag,

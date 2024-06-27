@@ -3,9 +3,9 @@ import { getIfCmdSecUp } from '../../../../core/getSecondUpIfEx';
 import type { TAhkFileData } from '../../../../core/ProjectManager';
 import { EDiagCode } from '../../../../diag';
 import type { TAhkTokenLine } from '../../../../globalEnum';
-import { StatementMDMap } from '../../../../tools/Built-in/3_foc/foc.tools';
+import { foc_MDMap } from '../../../../tools/Built-in/3_foc/foc.tools';
 import { FocIfExMap } from '../../../../tools/Built-in/3_foc/semanticFoc.data';
-import { CommandMDMap } from '../../../../tools/Built-in/6_command/Command.tools';
+import { Cmd_MDMap } from '../../../../tools/Built-in/6_command/Command.tools';
 import { CMemo } from '../../../../tools/CMemo';
 import type { TScanData } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
@@ -36,7 +36,7 @@ function getCode702(AhkTokenLine: TAhkTokenLine, match: number): CDiagBase | nul
         const RawName: string = ma[1];
         const UpName: string = RawName.toUpperCase();
 
-        if (StatementMDMap.has(UpName) || CommandMDMap.has(UpName)) {
+        if (foc_MDMap.has(UpName) || Cmd_MDMap.has(UpName)) {
             const col00: number = lPos + RawNameNew.indexOf(RawName);
             const range = new vscode.Range(
                 new vscode.Position(line, col00),
@@ -69,7 +69,7 @@ const code701Err = new CMemo<TAhkFileData, readonly CDiagBase[]>((AhkFileData: T
         } = AhkTokenLine;
         const match: number | undefined = FocIfExMap.get(fistWordUp);
         if (match === undefined) continue;
-        if (StatementMDMap.has(SecondWordUp) || CommandMDMap.has(SecondWordUp)) continue;
+        if (foc_MDMap.has(SecondWordUp) || Cmd_MDMap.has(SecondWordUp)) continue;
         if (!DocStrMap[line].displayErr) continue;
 
         const c702: CDiagBase | null = getCode702(AhkTokenLine, match);

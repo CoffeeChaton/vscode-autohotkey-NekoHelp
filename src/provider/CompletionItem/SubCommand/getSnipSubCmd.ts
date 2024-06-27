@@ -3,14 +3,14 @@ import { getConfig } from '../../../configUI';
 import { ECommandOption } from '../../../configUI.data';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
-import { snippetControl } from '../../../tools/Built-in/7_sub_command/Control/Control.tools';
-import { snippetControlGet } from '../../../tools/Built-in/7_sub_command/ControlGet/ControlGet.tools';
-import { snippetGui } from '../../../tools/Built-in/7_sub_command/Gui/Gui.tools';
-import { snippetGuiControl } from '../../../tools/Built-in/7_sub_command/GuiControl/GuiControl.tools';
+import { Control_Snip } from '../../../tools/Built-in/7_sub_command/Control/Control.tools';
+import { ControlGet_snip } from '../../../tools/Built-in/7_sub_command/ControlGet/ControlGet.tools';
+import { Gui_snip } from '../../../tools/Built-in/7_sub_command/Gui/Gui.tools';
+import { GuiControl_snip } from '../../../tools/Built-in/7_sub_command/GuiControl/GuiControl.tools';
 import { snippetMenu } from '../../../tools/Built-in/7_sub_command/Menu/Menu.tools';
-import { snippetSysGet } from '../../../tools/Built-in/7_sub_command/SysGet/SysGet.tools';
-import { snippetWinGet } from '../../../tools/Built-in/7_sub_command/WinGet/WinGet.tools';
-import { snippetWinSet } from '../../../tools/Built-in/7_sub_command/WinSet/WinSet.tools';
+import { SysGet_snip } from '../../../tools/Built-in/7_sub_command/SysGet/SysGet.tools';
+import { WinGet_snip } from '../../../tools/Built-in/7_sub_command/WinGet/WinGet.tools';
+import { WinSet_snip } from '../../../tools/Built-in/7_sub_command/WinSet/WinSet.tools';
 import { enumLog } from '../../../tools/enumErr';
 
 function getSubStr2(subStr: string, fistWordUp: string, detail: readonly EDetail[]): string {
@@ -43,19 +43,19 @@ export function getSnipSubCmd(subStr: string, AhkTokenLine: TAhkTokenLine): read
 
             const list: vscode.CompletionItem[] = [];
 
-            if (subCmdPlus.Gui && 'Gui'.toLowerCase().startsWith(subStr2)) list.push(...snippetGui);
+            if (subCmdPlus.Gui && 'Gui'.toLowerCase().startsWith(subStr2)) list.push(...Gui_snip);
             if (subCmdPlus.GuiControl && 'GuiControl'.toLowerCase().startsWith(subStr2)) {
-                list.push(...snippetGuiControl);
+                list.push(...GuiControl_snip);
             }
             if (subCmdPlus.Menu && 'Menu'.toLowerCase().startsWith(subStr2)) list.push(...snippetMenu);
-            if (subCmdPlus.SysGet && 'SysGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetSysGet);
-            if (subCmdPlus.WinSet === true && 'WinSet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinSet);
-            if (subCmdPlus.WinGet === true && 'WinGet'.toLowerCase().startsWith(subStr2)) list.push(...snippetWinGet);
+            if (subCmdPlus.SysGet && 'SysGet'.toLowerCase().startsWith(subStr2)) list.push(...SysGet_snip);
+            if (subCmdPlus.WinSet === true && 'WinSet'.toLowerCase().startsWith(subStr2)) list.push(...WinSet_snip);
+            if (subCmdPlus.WinGet === true && 'WinGet'.toLowerCase().startsWith(subStr2)) list.push(...WinGet_snip);
             if (subCmdPlus.Control === true && 'Control'.toLowerCase().startsWith(subStr2)) {
-                list.push(...snippetControl);
+                list.push(...Control_Snip);
             }
             if (subCmdPlus.ControlGet === true && 'ControlGet'.toLowerCase().startsWith(subStr2)) {
-                list.push(...snippetControlGet);
+                list.push(...ControlGet_snip);
             }
 
             // todo something

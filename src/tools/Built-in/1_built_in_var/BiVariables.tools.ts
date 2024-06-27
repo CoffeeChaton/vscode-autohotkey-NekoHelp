@@ -11,7 +11,7 @@ import type { BiVariables } from './BiVariables.data';
 type TBi_VarMDMap = ReadonlyMap<string, vscode.MarkdownString>;
 type TBi_snippet_list = readonly vscode.CompletionItem[];
 
-export const [Bi_VarMDMap, snippetBiVar] = ((): [TBi_VarMDMap, TBi_snippet_list] => {
+const temp_bi = ((): [TBi_VarMDMap, TBi_snippet_list] => {
     const map1 = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     //
@@ -50,14 +50,17 @@ export const [Bi_VarMDMap, snippetBiVar] = ((): [TBi_VarMDMap, TBi_snippet_list]
     return [map1, List2];
 })();
 
+export const BiVar_MDMap: TBi_VarMDMap = temp_bi[0];
+export const BiVar_snip: TBi_snippet_list = temp_bi[1];
+
 export function hoverBiVar(wordUp: string): vscode.MarkdownString | undefined {
-    return Bi_VarMDMap.get(wordUp);
+    return BiVar_MDMap.get(wordUp);
 }
 
 export function getSnipBiVar(PartStr: string): readonly vscode.CompletionItem[] {
     return PartStr.startsWith('A_')
         ? []
-        : snippetBiVar;
+        : BiVar_snip;
 }
 
 export const biBVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('BiVariables');

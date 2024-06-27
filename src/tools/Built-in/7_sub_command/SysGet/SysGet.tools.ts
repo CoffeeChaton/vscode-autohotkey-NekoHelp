@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { SysGetSubCmdList } from './SysGet.data';
 
-export const { snippetSysGet, SysGetMDMap } = (() => {
+const temp_SysGet = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
@@ -52,9 +52,11 @@ export const { snippetSysGet, SysGetMDMap } = (() => {
     SysGetSubCmdList.length = 0;
 
     // ---
-    // ---
     return {
-        snippetSysGet: snippetListRW as readonly vscode.CompletionItem[],
-        SysGetMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetListRW,
+        MDMapRW,
     };
 })();
+
+export const SysGet_snip: readonly vscode.CompletionItem[] = temp_SysGet.snippetListRW;
+export const SysGet_MDMap: ReadonlyMap<string, vscode.MarkdownString> = temp_SysGet.MDMapRW;

@@ -1,8 +1,11 @@
 import * as vscode from 'vscode';
 import { operatorDataList } from './operator.data';
 
-export const [operatorMD, snippetOperator] = (
-    (): [ReadonlyMap<string, vscode.MarkdownString>, readonly vscode.CompletionItem[]] => {
+type TOperator_MDMap = ReadonlyMap<string, vscode.MarkdownString>;
+type TOperator_snip = readonly vscode.CompletionItem[];
+
+const temp_operator: [TOperator_MDMap, TOperator_snip] = (
+    (): [TOperator_MDMap, TOperator_snip] => {
         const map1 = new Map<string, vscode.MarkdownString>();
         const List2: vscode.CompletionItem[] = [];
         //
@@ -49,12 +52,15 @@ export const [operatorMD, snippetOperator] = (
     }
 )();
 
+export const operator_MDMap: TOperator_MDMap = temp_operator[0];
+const Operator_snip: TOperator_snip = temp_operator[1];
+
 export function getHoverOperator(wordUp: string): vscode.MarkdownString | undefined {
-    return operatorMD.get(wordUp);
+    return operator_MDMap.get(wordUp);
 }
 
 export function getSnippetOperator(PartStr: string): readonly vscode.CompletionItem[] {
     return PartStr.startsWith('A_')
         ? []
-        : snippetOperator;
+        : Operator_snip;
 }

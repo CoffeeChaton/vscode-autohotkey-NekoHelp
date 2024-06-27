@@ -8,7 +8,7 @@ import { CMemo } from '../../tools/CMemo';
 import { findAllLabelAllMap } from '../../tools/labelsAll';
 import { getFileAllFuncMap } from '../../tools/visitor/getFileAllFuncMap';
 
-export const memoFileGuiRef = new CMemo<TAhkFileData, readonly TGui2ndParamEx[]>(
+export const memoFileGuiRef: CMemo<TAhkFileData, readonly TGui2ndParamEx[]> = new CMemo(
     (AhkFileData: TAhkFileData): readonly TGui2ndParamEx[] => {
         const arr: TGui2ndParamEx[] = [];
         for (const AhkTokenLine of AhkFileData.DocStrMap) {

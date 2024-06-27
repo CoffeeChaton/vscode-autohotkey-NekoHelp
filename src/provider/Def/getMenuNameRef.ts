@@ -22,7 +22,7 @@ type TGuiMenuRefData = {
  * ;          ^^^^^^^^ find it
  * ```
  */
-export const memGuiMenuRef = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TGuiMenuRefData[]>>(
+export const memGuiMenuRef: CMemo<TAhkFileData, ReadonlyMap<string, readonly TGuiMenuRefData[]>> = new CMemo(
     (AhkFileData: TAhkFileData): ReadonlyMap<string, readonly TGuiMenuRefData[]> => {
         const { DocStrMap } = AhkFileData;
         const guiFull: TGui2ndParamEx[] = [];

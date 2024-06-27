@@ -4,7 +4,7 @@ import type { CAhkComment } from '../../AhkSymbol/CAhkLine';
 import { CAhkDirectives } from '../../AhkSymbol/CAhkLine';
 import type { TLineClass } from '../../AhkSymbol/TLineClass';
 import { EDetail } from '../../globalEnum';
-import { DirectivesMDMap } from '../../tools/Built-in/0_directive/Directives.tool';
+import { Directives_MDMap } from '../../tools/Built-in/0_directive/Directives.tool';
 import { getRangeOfLine } from '../../tools/range/getRangeOfLine';
 import type { TFuncInput } from '../getChildren';
 import { getComment } from './getComment';
@@ -63,7 +63,7 @@ export function ParserLine(FuncInput: TFuncInput): CAhkComment | TLineClass | nu
     const col: number = lStr.indexOf('#');
 
     const hashtag: string = name.replace('#', '').toUpperCase();
-    if (DirectivesMDMap.has(hashtag)) {
+    if (Directives_MDMap.has(hashtag)) {
         return new CAhkDirectives({
             name,
             range: rangeOfLine,

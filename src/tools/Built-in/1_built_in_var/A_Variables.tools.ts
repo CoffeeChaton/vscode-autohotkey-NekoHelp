@@ -5,7 +5,7 @@ import type { TAElement } from './A_Variables.data';
 type TA_MD_Map = ReadonlyMap<string, vscode.MarkdownString>;
 type TA_snippet_list = readonly vscode.CompletionItem[];
 
-export const [AVariablesMDMap, snippetStartWihA] = ((): [TA_MD_Map, TA_snippet_list] => {
+const temp_AVariables = ((): [TA_MD_Map, TA_snippet_list] => {
     const map1 = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     //
@@ -41,14 +41,17 @@ export const [AVariablesMDMap, snippetStartWihA] = ((): [TA_MD_Map, TA_snippet_l
     return [map1, List2];
 })();
 
+export const AVar_MDMap: TA_MD_Map = temp_AVariables[0];
+export const AVar_snip: TA_snippet_list = temp_AVariables[1];
+
 export function getSnippetStartWihA(PartStr: string): readonly vscode.CompletionItem[] {
     return PartStr.startsWith('A')
-        ? snippetStartWihA
+        ? AVar_snip
         : [];
 }
 
 export function hoverAVar(wordUp: string): vscode.MarkdownString | undefined {
-    return AVariablesMDMap.get(wordUp);
+    return AVar_MDMap.get(wordUp);
 }
 
 export const biAVarDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('A_Variables');

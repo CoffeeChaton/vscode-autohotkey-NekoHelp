@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { GuiSubCommandList } from './Gui.data';
 
-export const { snippetGui, GuiMDMap } = (() => {
+const tem_gui = (() => {
     const MDMapRW = new Map<string, vscode.MarkdownString>();
     const snippetListRW: vscode.CompletionItem[] = [];
 
@@ -54,7 +54,10 @@ export const { snippetGui, GuiMDMap } = (() => {
     // ---
     // ---
     return {
-        snippetGui: snippetListRW as readonly vscode.CompletionItem[],
-        GuiMDMap: MDMapRW as ReadonlyMap<string, vscode.MarkdownString>,
+        snippetListRW,
+        MDMapRW,
     };
 })();
+
+export const Gui_snip: readonly vscode.CompletionItem[] = tem_gui.snippetListRW;
+export const Gui_MDMap: ReadonlyMap<string, vscode.MarkdownString> = tem_gui.MDMapRW;

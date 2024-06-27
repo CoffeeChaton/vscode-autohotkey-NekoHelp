@@ -76,7 +76,7 @@ const memoFileMenuRef = new CMemo<TAhkFileData, readonly TMenuParam1stData[]>(
     },
 );
 
-export const memoFileMenuRefMap = new CMemo<TAhkFileData, ReadonlyMap<string, readonly TMenuParam1stData[]>>(
+export const memoFileMenuRefMap: CMemo<TAhkFileData, ReadonlyMap<string, readonly TMenuParam1stData[]>> = new CMemo(
     (AhkFileData: TAhkFileData): ReadonlyMap<string, readonly TMenuParam1stData[]> => {
         const arr: readonly TMenuParam1stData[] = memoFileMenuRef.up(AhkFileData);
         return Map.groupBy(arr, (Data: TMenuParam1stData): string => ToUpCase(Data.rawName));

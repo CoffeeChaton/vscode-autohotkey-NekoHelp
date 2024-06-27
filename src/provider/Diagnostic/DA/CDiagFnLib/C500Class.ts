@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 import type { TValMapOut, TValMetaOut, TVarData } from '../../../../AhkSymbol/CAhkFunc';
 import { EPseudoArray } from '../../../../AhkSymbol/CAhkFunc';
 import { EDiagCodeDA } from '../../../../diag';
-import { AVariablesMDMap } from '../../../../tools/Built-in/1_built_in_var/A_Variables.tools';
-import { Bi_VarMDMap } from '../../../../tools/Built-in/1_built_in_var/BiVariables.tools';
+import { AVar_MDMap } from '../../../../tools/Built-in/1_built_in_var/A_Variables.tools';
+import { BiVar_MDMap } from '../../../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { ToUpCase } from '../../../../tools/str/ToUpCase';
 import { CDiagFn } from '../../tools/CDiagFn';
 
@@ -79,9 +79,9 @@ export function NeverUsedVar(
 
         // if (v.defRangeList.length > 1) return; // don't open this with out debug
         if (
-            AVariablesMDMap.has(key)
+            AVar_MDMap.has(key)
             || key.startsWith('_')
-            || Bi_VarMDMap.has(key)
+            || BiVar_MDMap.has(key)
             || !displayErrList[defRangeList[0].range.start.line]
             || key === 'PCRE_CALLOUT'
         ) {

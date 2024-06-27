@@ -1,8 +1,10 @@
 import * as vscode from 'vscode';
 import { WinTitleParameterData } from './WinTitleParameter.data';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const [WinTitleMDMap, snippetWinTitle] = (() => {
+type TWinTitle_MDMap = ReadonlyMap<string, vscode.MarkdownString>;
+type TWinTitle_snip = readonly vscode.CompletionItem[];
+
+const temp_WinTitleParam: [TWinTitle_MDMap, TWinTitle_snip] = ((): [TWinTitle_MDMap, TWinTitle_snip] => {
     const map1 = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     //
@@ -45,12 +47,15 @@ export const [WinTitleMDMap, snippetWinTitle] = (() => {
     ];
 })();
 
+export const WinTitle_MDMap: TWinTitle_MDMap = temp_WinTitleParam[0];
+export const WinTitle_snip: TWinTitle_snip = temp_WinTitleParam[1];
+
 export function getSnippetWinTitleParam(PartStr: string): readonly vscode.CompletionItem[] {
     return PartStr.startsWith('a')
-        ? snippetWinTitle
+        ? WinTitle_snip
         : [];
 }
 
 export function hoverWinTitleParam(wordUp: string): vscode.MarkdownString | undefined {
-    return WinTitleMDMap.get(wordUp);
+    return WinTitle_MDMap.get(wordUp);
 }

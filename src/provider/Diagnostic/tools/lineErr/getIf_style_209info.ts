@@ -65,7 +65,7 @@ function getIf_style_209(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
     });
 }
 
-export const memoIf_style = new CMemo(
+export const memoIf_style: CMemo<TTokenStream, readonly CDiagBase[]> = new CMemo(
     (DocStrMap: TTokenStream): readonly CDiagBase[] => {
         const need: CDiagBase[] = [];
 

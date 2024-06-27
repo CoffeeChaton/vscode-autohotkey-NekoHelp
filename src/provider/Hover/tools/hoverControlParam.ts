@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { ControlMDMap } from '../../../tools/Built-in/7_sub_command/Control/Control.tools';
+import { Control_MDMap } from '../../../tools/Built-in/7_sub_command/Control/Control.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
@@ -26,7 +26,7 @@ function hoverControlParamCore(lStr: string, col: number, character: number): vs
     const { lPos, RawNameNew } = a1;
 
     if (character >= lPos && character <= lPos + RawNameNew.length) {
-        const md: vscode.MarkdownString | undefined = ControlMDMap.get(RawNameNew.trim().toUpperCase());
+        const md: vscode.MarkdownString | undefined = Control_MDMap.get(RawNameNew.trim().toUpperCase());
         if (md !== undefined) return md;
 
         return unknownControlSubCmdMd;

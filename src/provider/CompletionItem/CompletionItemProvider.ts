@@ -16,7 +16,7 @@ import { getSnipStartNum } from '../../tools/Built-in/100_other/Keys_and_other/N
 import { getSnipAhkSend } from '../../tools/Built-in/100_other/Send_tools';
 import { getSnippetWinMsg } from '../../tools/Built-in/100_other/Windows_Messages/Windows_Messages.tools';
 import { getSnippetWinTitleParam } from '../../tools/Built-in/100_other/WinTitle/WinTitleParameter.tools';
-import { getSnippetStartWihA, snippetStartWihA } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
+import { AVar_snip, getSnippetStartWihA } from '../../tools/Built-in/1_built_in_var/A_Variables.tools';
 import { getSnipBiVar } from '../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import { BuiltInFunc2Completion } from '../../tools/Built-in/2_built_in_function/func.tools';
 import { getSnippetStatement as getSnippetFoc } from '../../tools/Built-in/3_foc/foc.tools';
@@ -81,7 +81,7 @@ function CompletionItemCore(
             return IncludeFsPath(document, position, AhkFileData, AhkTokenLine);
         }
         if (context.triggerCharacter === '%') {
-            return [...snippetStartWihA];
+            return [...AVar_snip];
         }
     }
 

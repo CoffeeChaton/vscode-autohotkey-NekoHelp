@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { SysGetMDMap } from '../../../tools/Built-in/7_sub_command/SysGet/SysGet.tools';
+import { SysGet_MDMap } from '../../../tools/Built-in/7_sub_command/SysGet/SysGet.tools';
 import type { TScanData } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { spiltCommandAll } from '../../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 
@@ -26,11 +26,11 @@ function hoverSysGetParamCore(lStr: string, col: number, character: number): vsc
     const { lPos, RawNameNew } = a2;
 
     if (character >= lPos && character <= lPos + RawNameNew.length) {
-        const md: vscode.MarkdownString | undefined = SysGetMDMap.get(RawNameNew.trim().toUpperCase());
+        const md: vscode.MarkdownString | undefined = SysGet_MDMap.get(RawNameNew.trim().toUpperCase());
         if (md !== undefined) return md;
 
         if ((/^\d+$/u).test(RawNameNew.trim())) {
-            const mdOpt: vscode.MarkdownString | undefined = SysGetMDMap.get('(Numeric)'.toUpperCase());
+            const mdOpt: vscode.MarkdownString | undefined = SysGet_MDMap.get('(Numeric)'.toUpperCase());
             if (mdOpt !== undefined) return mdOpt;
         }
 

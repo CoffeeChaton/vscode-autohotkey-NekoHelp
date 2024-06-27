@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import type { TAhkTokenLine } from '../../../globalEnum';
 import { EDetail } from '../../../globalEnum';
-import { CommandMDMap } from '../6_command/Command.tools';
+import { Cmd_MDMap } from '../6_command/Command.tools';
 import { initNlsDefMap, readNlsJson } from '../nls_json.tools';
 import type { TFocDiag, TStatementElement } from './foc.data';
 
@@ -9,7 +9,7 @@ type TStatementMDMap = ReadonlyMap<string, vscode.MarkdownString>;
 type TSnippetStatement = readonly vscode.CompletionItem[];
 type TForErrMap = ReadonlyMap<string, TFocDiag>;
 
-export const [StatementMDMap, snippetStatement, forErrMap] = ((): [TStatementMDMap, TSnippetStatement, TForErrMap] => {
+const temp_foc = ((): [TStatementMDMap, TSnippetStatement, TForErrMap] => {
     const map1: Map<string, vscode.MarkdownString> = new Map<string, vscode.MarkdownString>();
     const List2: vscode.CompletionItem[] = [];
     const errMap = new Map<string, TFocDiag>();
@@ -63,6 +63,10 @@ export const [StatementMDMap, snippetStatement, forErrMap] = ((): [TStatementMDM
     return [map1, List2, errMap]; // [Map(19), Array(19)]
 })();
 
+export const foc_MDMap: TStatementMDMap = temp_foc[0];
+export const foc_snip: TSnippetStatement = temp_foc[1];
+export const foc_ErrMap: TForErrMap = temp_foc[2];
+
 export function getSnippetStatement(
     PartStr: string,
     fistWordUp: string,
@@ -70,17 +74,17 @@ export function getSnippetStatement(
 ): readonly vscode.CompletionItem[] {
     if (AhkTokenLine.detail.includes(EDetail.inComment)) return [];
 
-    if (CommandMDMap.has(fistWordUp)) {
+    if (Cmd_MDMap.has(fistWordUp)) {
         return [];
     }
 
     return PartStr.startsWith('A_')
         ? []
-        : snippetStatement;
+        : foc_snip;
 }
 
 export function getHoverStatement(wordUp: string): vscode.MarkdownString | undefined {
-    return StatementMDMap.get(wordUp);
+    return foc_MDMap.get(wordUp);
 }
 
 export const focDefMap: ReadonlyMap<string, [vscode.Location]> = initNlsDefMap('foc');

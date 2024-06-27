@@ -1,6 +1,6 @@
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { CommandMDMap } from '../../../tools/Built-in/6_command/Command.tools';
+import { Cmd_MDMap } from '../../../tools/Built-in/6_command/Command.tools';
 
 export type TCmdSemantic = 0 | {
     nameUp: string,
@@ -15,14 +15,14 @@ function getCmdData(AhkTokenLine: TAhkTokenLine): { nameUp: string, col: number 
         SecondWordUp,
         SecondWordUpCol,
     } = AhkTokenLine;
-    if (CommandMDMap.has(fistWordUp)) {
+    if (Cmd_MDMap.has(fistWordUp)) {
         return {
             nameUp: fistWordUp,
             col: fistWordUpCol,
         };
     }
 
-    if (CommandMDMap.has(SecondWordUp)) {
+    if (Cmd_MDMap.has(SecondWordUp)) {
         return {
             nameUp: SecondWordUp,
             col: SecondWordUpCol,

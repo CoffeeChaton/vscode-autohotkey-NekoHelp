@@ -1,6 +1,6 @@
 /* cSpell:disable */
 import { describe, expect, it } from '@jest/globals';
-import { inPutVarMap, OutputCommandBaseMap, OutputCommandPlusMap } from './Command.tools';
+import { Cmd_InPutVarMap, Cmd_OutputBaseMap, Cmd_OutputPlusMap } from './Command.tools';
 
 const outBase = [
     'ControlGet, OutputVar, SubCommand, Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText',
@@ -105,9 +105,9 @@ describe('check outList Command cover', () => {
     it('check: OutPutB OutPutP InPut', (): void => {
         expect.hasAssertions();
 
-        const errList0: string[] = DataCheck(outBase, OutputCommandBaseMap);
-        const errList1: string[] = DataCheck(outPlus, OutputCommandPlusMap);
-        const errList2: string[] = DataCheck(inputList, inPutVarMap);
+        const errList0: string[] = DataCheck(outBase, Cmd_OutputBaseMap);
+        const errList1: string[] = DataCheck(outPlus, Cmd_OutputPlusMap);
+        const errList2: string[] = DataCheck(inputList, Cmd_InPutVarMap);
 
         expect(errList0).toHaveLength(0);
         expect(errList1).toHaveLength(0);

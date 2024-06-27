@@ -2,11 +2,11 @@
 import * as vscode from 'vscode';
 import type { TAhkFileData } from '../../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../../globalEnum';
-import { Bi_VarMDMap } from '../../../tools/Built-in/1_built_in_var/BiVariables.tools';
+import { BiVar_MDMap } from '../../../tools/Built-in/1_built_in_var/BiVariables.tools';
 import type { TCmdMsg } from '../../../tools/Built-in/6_command/Command.tools';
-import { CommandMDMap } from '../../../tools/Built-in/6_command/Command.tools';
+import { Cmd_MDMap } from '../../../tools/Built-in/6_command/Command.tools';
 
-export const ErrorLevelMap = new Map<string, string>(
+export const ErrorLevelMap: Map<string, string> = new Map(
     [
         // ['Language element', 'ErrorLevel values'],
         // ['DllCall()', '0, -1, -2, -3, -4, n, An'],
@@ -113,7 +113,7 @@ function hoverErrorLevelCore(AhkTokenLine: TAhkTokenLine): TCmdMsg | null {
         SecondWordUp,
     } = AhkTokenLine;
     if (fistWordUp === '') return null;
-    return CommandMDMap.get(fistWordUp) ?? CommandMDMap.get(SecondWordUp) ?? null;
+    return Cmd_MDMap.get(fistWordUp) ?? Cmd_MDMap.get(SecondWordUp) ?? null;
 }
 
 export function hoverErrorLevel(
@@ -148,7 +148,7 @@ export function hoverErrorLevel(
             '---',
             '',
             '',
-            Bi_VarMDMap.get('ErrorLevel'.toUpperCase())?.value ?? '',
+            BiVar_MDMap.get('ErrorLevel'.toUpperCase())?.value ?? '',
         ].join('\n');
 
         return new vscode.MarkdownString(md, true);

@@ -111,7 +111,7 @@ function getIf_legacy210Err(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
     });
 }
 
-export const memoIf_legacyErrCode210 = new CMemo(
+export const memoIf_legacyErrCode210: CMemo<TTokenStream, readonly (CDiagBase | null)[]> = new CMemo(
     (DocStrMap: TTokenStream): readonly (CDiagBase | null)[] => {
         const need: (CDiagBase | null)[] = [];
 

@@ -1,4 +1,4 @@
-import { OutputCommandPlusMap } from '../../../Built-in/6_command/Command.tools';
+import { Cmd_OutputPlusMap } from '../../../Built-in/6_command/Command.tools';
 import { ToUpCase } from '../../../str/ToUpCase';
 import type { TGetFnDefNeed } from '../TFnVarDef';
 import { getValMeta } from './getValMeta';
@@ -20,7 +20,7 @@ function pickCommand(needArr: number[] | readonly number[], AllCut: TScanData[])
 }
 
 export function OutputVarCommandPlus(need: TGetFnDefNeed, keyWord: string, col: number): null {
-    const needArr: readonly number[] | undefined = OutputCommandPlusMap.get(keyWord);
+    const needArr: readonly number[] | undefined = Cmd_OutputPlusMap.get(keyWord);
     if (needArr === undefined) return null;
 
     const {

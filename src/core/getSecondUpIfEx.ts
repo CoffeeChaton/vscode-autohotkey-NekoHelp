@@ -46,7 +46,7 @@ export function getIfCmdSecUp(name: string, ax: number): TTPatternMatchFn {
  * https://www.autohotkey.com/docs/v1/Language.htm#if-statement
  * https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/22
  */
-export const getSecondUpIfEx = [
+export const getSecondUpIfEx: readonly TPatternMatch[] = [
     {
         name: 'IFMSGBOX',
         fn: getIfCmdSecUp('IfMsgBox', 1),
@@ -107,4 +107,4 @@ export const getSecondUpIfEx = [
         name: 'IFWINNOTEXIST',
         fn: getIfCmdSecUp('IfWinNotExist', 4),
     },
-] as const satisfies readonly TPatternMatch[];
+];

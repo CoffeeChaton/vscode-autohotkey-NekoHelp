@@ -16,7 +16,7 @@ type TDirectivesMDMap = ReadonlyMap<string, TDirectivesMeta>;
  */
 type TSnippetDirective = readonly vscode.CompletionItem[];
 
-export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDirectivesMDMap] => {
+const temp_Directives = ((): [TSnippetDirective, TDirectivesMDMap] => {
     //
     // initialize
     const map = new Map<string, { md: vscode.MarkdownString, keyRawName: `#${string}` }>();
@@ -67,9 +67,12 @@ export const [SnippetDirectives, DirectivesMDMap] = ((): [TSnippetDirective, TDi
     return [List1, map]; // [Array(29),Map(35)]
 })();
 
+const Directive_snip: TSnippetDirective = temp_Directives[0];
+export const Directives_MDMap: TDirectivesMDMap = temp_Directives[1];
+
 export function getSnipDirectives(subStr: string): readonly vscode.CompletionItem[] {
     return (/^#\w*$/iu).test(subStr)
-        ? SnippetDirectives
+        ? Directive_snip
         : [];
 }
 
@@ -90,7 +93,7 @@ export function getDirectivesMeta(
 
     const col: number = lStr.indexOf('#');
     if (col <= character && col + upName.length >= character) {
-        const meta: TDirectivesMeta | undefined = DirectivesMDMap.get(upName.replace('#', ''));
+        const meta: TDirectivesMeta | undefined = Directives_MDMap.get(upName.replace('#', ''));
         if (meta !== undefined) return meta;
     }
 

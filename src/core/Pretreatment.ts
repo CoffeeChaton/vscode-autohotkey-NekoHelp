@@ -7,7 +7,7 @@ import type { TAhkTokenLine, TMultilineFlag, TTokenStream } from '../globalEnum'
 import { EDetail, EMultiline } from '../globalEnum';
 import { getIgnore } from '../provider/Diagnostic/getIgnore';
 import { log } from '../provider/vscWindows/log';
-import { DirectivesMDMap } from '../tools/Built-in/0_directive/Directives.tool';
+import { Directives_MDMap } from '../tools/Built-in/0_directive/Directives.tool';
 import { getLStrHotStr } from '../tools/str/getLStrHotStr';
 import { getMultiline } from '../tools/str/getMultiline';
 import { getMultilineLStr } from '../tools/str/getMultilineLStr';
@@ -394,7 +394,7 @@ export function Pretreatment(
             const maDirectives: RegExpMatchArray | null = lStrTrim.match(/^#(\w+)/u);
             if (maDirectives !== null) {
                 const key: string = maDirectives[1].toUpperCase();
-                if (DirectivesMDMap.has(key)) {
+                if (Directives_MDMap.has(key)) {
                     // of label-line
                     result.push({
                         ahkDoc,

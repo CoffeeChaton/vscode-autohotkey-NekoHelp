@@ -3,7 +3,7 @@ import { getConfig } from '../../configUI';
 import type { TAhkFileData } from '../../core/ProjectManager';
 import type { TAhkTokenLine } from '../../globalEnum';
 import type { TCmdMsg } from '../../tools/Built-in/6_command/Command.tools';
-import { CommandMDMap } from '../../tools/Built-in/6_command/Command.tools';
+import { Cmd_MDMap } from '../../tools/Built-in/6_command/Command.tools';
 import { CMemo } from '../../tools/CMemo';
 import { enumLog } from '../../tools/enumErr';
 import { SignatureCmdOverloadMap } from './SignatureCmdOverload';
@@ -102,10 +102,10 @@ function getCmdData(AhkTokenLine: TAhkTokenLine): TCmdData | null {
 
     if (fistWordUp === '') return null;
 
-    const cmdData: TCmdMsg | undefined = CommandMDMap.get(fistWordUp);
+    const cmdData: TCmdMsg | undefined = Cmd_MDMap.get(fistWordUp);
     if (cmdData === undefined) {
         if (SecondWordUp === '') return null;
-        const cmdData2: TCmdMsg | undefined = CommandMDMap.get(SecondWordUp);
+        const cmdData2: TCmdMsg | undefined = Cmd_MDMap.get(SecondWordUp);
         if (cmdData2 === undefined) return null;
 
         const CmdSign2: TCmdSign | null = CmdSignMemo.up(cmdData2);
