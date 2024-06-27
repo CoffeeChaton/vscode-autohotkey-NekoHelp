@@ -14,7 +14,7 @@
 
 ## v0.0.62(2024-06-XX)
 
-<!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.4.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - feat: `#Include` gotoDef with Unknown case

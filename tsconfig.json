@@ -5,7 +5,7 @@
         "exactOptionalPropertyTypes": true,
         "forceConsistentCasingInFileNames": true,
         "lib": [
-            "ESNext"
+            "esnext"
         ],
         "module": "CommonJS",
         "moduleResolution": "node",
@@ -20,13 +20,15 @@
         "rootDir": ".",
         "sourceMap": true,
         "strict": true,
-        "target": "ES2021",
+        "target": "esnext", // not es2023 or es2024 at 2024/06/27, i need regex-v flag now
         "types": [
             "@types/node"
         ],
+        "declaration": true,
+        "isolatedDeclarations": true,
+        // "diagnostics": true,
         "useUnknownInCatchVariables": false
     },
-    "diagnostics": true,
     "exclude": [
         "node_modules",
         ".vscode-test",
