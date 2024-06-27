@@ -35,7 +35,8 @@ function fmtRawData(param: unknown): string {
     const obj = {
         headData: {
             note: 'machine generated, Please do not manually modify this file!',
-            source: 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp',
+            source: 'https://www.autohotkey.com/docs/v1/',
+            'Adjust some formats to suit vscode display': 'https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp',
         },
         body: param,
     };
