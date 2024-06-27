@@ -417,7 +417,9 @@ export function Pretreatment(
                         SecondWordUp: '',
                         SecondWordUpCol: -1,
                         textRaw,
-                        lineFnCallRaw: [],
+                        lineFnCallRaw: key === 'IF'
+                            ? fnRefLStrCore(lStr)
+                            : [],
                     });
                     continue;
                 }
