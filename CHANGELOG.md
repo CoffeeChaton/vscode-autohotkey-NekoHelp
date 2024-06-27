@@ -32,6 +32,21 @@
   }
   ```
 
+- fix: `#if` func-ref
+
+  ```ahk
+  #Requires AutoHotkey v1.1.33+
+
+  #if fn_isInRange()
+  ;   ^^^^^^^^^^^^ sould has ref
+  #if
+
+
+  fn_isInRange() {
+
+  }
+  ```
+
 ## v0.0.61(2024-06-15)
 
 <!-- pnpm 9.3.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
