@@ -24,11 +24,11 @@
 *.vsix
 coverage/
 cspell.json
+data/icon.svg
 dist/extension.js.map
 dist/test/
 dprint.json
 esbuild.config.js
-icon.svg
 image/
 jest.config.js
 knip.json
@@ -37,8 +37,6 @@ note/
 out/
 oxlintrc.json
 pnpm-lock.yaml
-readonlyJsonAdd.js
-readonlyJsonRm.js
 script/
 src/
 syntaxes/grammar/

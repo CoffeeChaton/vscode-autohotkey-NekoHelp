@@ -25,12 +25,12 @@
     "main": "./dist/extension",
     "scripts": {
         "auto_fix": "eslint --fix src",
-        "compile": "node esbuild.config.js",
-        "compile_dev": "node esbuild.config.js --isDev",
+        "compile": "node ./script/esbuild.config.js",
+        "compile_dev": "node ./script/esbuild.config.js --isDev",
         "fmt": "dprint fmt && pnpm run sort_pack",
         "jest": "jest --onlyChanged",
         "knip": "knip",
-        "lint": "pnpm oxlint -c oxlintrc.json && eslint src",
+        "lint": "pnpm oxlint && eslint src",
         "package": "pnpm run readOnlyJsonAdd && pnpm run packageCore && pnpm run readOnlyJsonRm",
         "packageCore": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp --baseImagesUrl https://raw.githubusercontent.com/CoffeeChaton/vscode-autohotkey-NekoHelp/main/",
         "pnpm clean cache": "pnpm store prune",
@@ -778,7 +778,7 @@
                     ".ah1",
                     ".ahk"
                 ],
-                "configuration": "./ahk.configuration.json"
+                "configuration": "./data/ahk.configuration.json"
             }
         ],
         "menus": {
@@ -828,7 +828,7 @@
     "engines": {
         "vscode": "^1.90.0"
     },
-    "icon": "icon.png",
+    "icon": "data/icon.png",
     "galleryBanner": {
         "color": "#b09df5",
         "theme": "dark"
