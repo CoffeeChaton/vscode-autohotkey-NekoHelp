@@ -31,6 +31,7 @@ function textReplace(textElement: string): string {
         .replaceAll(/\bwhile\s*(?=\()/giu, (m: string): string => `${m.trim()} `)
         .replaceAll(/\belse\s*(?=\{)/giu, (m: string): string => `${m.trim()} `)
         .replaceAll(/(?<=\})\s*else\b/giu, (m: string): string => ` ${m.trim()}`)
+        .replaceAll(/(?:^|\s+)until\s+/giu, (m: string): string => ` ${m.trim()} `)
         .replaceAll(/ *;/gu, ' ;');
 
     // \s === [ \f\n\r\t\v]

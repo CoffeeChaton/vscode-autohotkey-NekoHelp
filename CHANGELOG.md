@@ -17,10 +17,11 @@
 <!-- pnpm 9.4.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
-- feat: `#Include` gotoDef with Unknown case
+- feat: `"AhkNekoHelp.format.textReplace"` support `until` space format
+- feat: `#Include` gotoDef with Unknown case , use list all may file
 - fix: rm `A_ScriptDir`/`A_WorkingDir` fake support.
 - feat: hover `#Include` list may file
-- feat: CA `#Include` check file exist
+- feat: CodeAction `#Include` add file exist check
 - feat: diag `code107` not warn `Like path stitching`
 
   ```ahk
