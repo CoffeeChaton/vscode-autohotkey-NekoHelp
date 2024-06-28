@@ -83,6 +83,6 @@
         "json",
         "ts"
     ],
-    "i18n-ally.displayLanguage": "en",
+    "i18n-ally.displayLanguage": "en"
     //  "markdown.extension.list.indentationSize": "inherit"
 }
