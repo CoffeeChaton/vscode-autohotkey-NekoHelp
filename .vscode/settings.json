@@ -45,7 +45,8 @@
         "extensions.json": "jsonc",
         "oxlintrc.json": "jsonc",
         "settings.json": "jsonc",
-        "tsconfig.json": "jsonc"
+        "tsconfig.json": "jsonc",
+        "*.zh-cn.ahk.json": "jsonc"
     },
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "cSpell.customDictionaries": {
@@ -70,8 +71,6 @@
         }
     },
     "explorer.fileNesting.enabled": true,
-    "AhkNekoHelp.format.removeFirstCommaCommand": 0,
-    "AhkNekoHelp.format.removeFirstCommaDirective": false,
     "files.readonlyInclude": {
         "node_modules/**": true,
         "dist/**": true
@@ -79,17 +78,11 @@
     "i18n-ally.localesPaths": [
         "i18n"
     ],
-    "i18n-ally.keystyle": "nested",
     "i18n-ally.sortKeys": true,
     "i18n-ally.enabledParsers": [
         "json",
         "ts"
     ],
-    "i18n-ally.sourceLanguage": "en",
     "i18n-ally.displayLanguage": "en",
-    "editor.unicodeHighlight.allowedLocales": {
-        "zh-hans": true,
-        "zh-hant": true
-    }
-    // "markdown.extension.list.indentationSize": "inherit"
+    //  "markdown.extension.list.indentationSize": "inherit"
 }
