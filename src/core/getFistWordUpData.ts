@@ -6,7 +6,7 @@ export function getFistWordCore(lStrTrimFix: string): string {
     /**
      * } else$
      */
-    const ma2: string | undefined = str.match(/^(\w+)$/u)?.[1];
+    const ma2: string | undefined = str.match(/^(\w+)[ \t]*$/u)?.[1];
     if (ma2 !== undefined) return ma2;
 
     const ma3: string | undefined = str.match(/^(\w+)[ \t]*,/u)?.[1];
@@ -48,16 +48,7 @@ function getFistWord(lStrTrim: string): string {
     // OK        || (/::\s*\w*$/iu).test(subStr) // allow hotstring or hotkey
     // OK        || (/^[{}]\s*/iu).test(subStr);
 
-    if ((/^[{}]/u).test(lStrTrim)) {
-        /**
-         * } else$
-         */
-        const lStrTrimFix: string = lStrTrim.replace(/^[{} \t]*/u, '');
-        return getFistWordCore(lStrTrimFix);
-    }
-
-    // not need to fix
-    return getFistWordCore(lStrTrim);
+    return getFistWordCore(lStrTrim.replace(/^[{} \t]*/u, ''));
 }
 
 type TFistWordUpData = {

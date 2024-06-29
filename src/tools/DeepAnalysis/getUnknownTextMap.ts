@@ -66,10 +66,6 @@ export function getUnknownTextMap(
             const character: number = v.index;
             const { input } = v;
 
-            if (input === undefined) {
-                void vscode.window.showErrorMessage(`getUnknown Error at line ${line} of ${name}()`);
-                continue;
-            }
             if (character === fistWordUpCol || character === SecondWordUpCol) {
                 // ; Search(node, find, return="") { ; why ahk allow val/Param name like `keyword` ...
                 // ;                     ^-----------------------------------------------------> param def
