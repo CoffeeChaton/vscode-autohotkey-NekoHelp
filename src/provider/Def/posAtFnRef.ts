@@ -4,7 +4,7 @@ import { getGuiFunc } from '../../tools/Command/GuiTools';
 import { getHotkeyWrap } from '../../tools/Command/HotkeyTools';
 import { getMenuFunc } from '../../tools/Command/MenuTools';
 import { getSetTimerWrap } from '../../tools/Command/SetTimerTools';
-import { getSortFunc } from '../../tools/Command/sotrTools';
+import { getSortFunc } from '../../tools/Command/sortTools';
 import type { TScanData } from '../../tools/DeepAnalysis/FnVar/def/spiltCommandAll';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { fnRefLStr } from './fnRefLStr';

@@ -32,7 +32,7 @@ export function getUnknownTextMap(
     paramMap: TParamMapIn,
     valMap: TValMapIn,
     GValMap: TGValMap,
-    name: string,
+    _name: string,
 ): TTextMapIn {
     const textMap: TTextMapIn = new Map<string, TTextMetaIn>();
     for (const AhkTokenLine of AhkTokenList) {
