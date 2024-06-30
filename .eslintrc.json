@@ -7,20 +7,17 @@
     "extends": [
         "airbnb-base",
         "airbnb-typescript",
-        // "eslint:all",
-        // "plugin:@typescript-eslint/all",
+        "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:import/errors",
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-        "plugin:import/warnings",
+        "plugin:import-x/recommended",
         "plugin:promise/recommended",
         "plugin:regexp/recommended",
-        // "plugin:security/recommended",
         "plugin:sonarjs/recommended",
-        "plugin:unicorn/all",
-        "eslint:recommended"
+        "plugin:unicorn/all"
+        // "eslint:all",
+        // "plugin:@typescript-eslint/all",
+        // "plugin:security/recommended",
     ],
     "globals": {
         "Atomics": "readonly",
@@ -33,8 +30,7 @@
             },
             "extends": [
                 "plugin:jest/recommended",
-                "plugin:jest/all",
-                "plugin:jest-formatting/strict"
+                "plugin:jest/all"
             ],
             "files": [
                 "**/*.test.ts"
@@ -48,8 +44,6 @@
                 ]
             },
             "rules": {
-                "jest-formatting/padding-around-describe-blocks": "error",
-                "jest-formatting/padding-around-test-blocks": "error",
                 "jest/no-conditional-in-test": "off",
                 "max-lines-per-function": "off"
             }
@@ -77,12 +71,12 @@
         "@typescript-eslint",
         "@typescript-eslint/eslint-plugin",
         "fp",
-        "import",
+        "import-x",
         "promise",
-        // "security",
         "sonarjs",
         "unicorn"
         // "immutable",
+        // "security",
     ],
     "root": true,
     "rules": {
@@ -90,7 +84,8 @@
         "unicorn/prefer-string-raw": "off",
         "unicorn/import-style": "off",
         "no-undef": "off",
-        "import/no-unresolved": "off",
+        "import-x/no-unresolved": "off",
+        "import/prefer-default-export": "off",
         "@typescript-eslint/naming-convention": "off",
         "no-ternary": "off",
         "camelcase": "off",
@@ -206,22 +201,13 @@
         "func-style": "off",
         "id-length": "off",
         "implicit-arrow-linebreak": "error",
-        "import/default": "error",
-        "import/export": "error",
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "js": "never",
-                "jsx": "never",
-                "ts": "never",
-                "tsx": "never"
-            }
-        ],
-        "import/named": "error",
-        "import/namespace": "error",
-        "import/no-extraneous-dependencies": "off",
-        "import/prefer-default-export": "off",
+        "import-x/default": "error",
+        "import-x/export": "error",
+        "import-x/extensions": "off",
+        "import-x/named": "error",
+        "import-x/namespace": "error",
+        "import-x/no-extraneous-dependencies": "off",
+        "import-x/prefer-default-export": "off",
         "indent": "off",
         "init-declarations": "error",
         "line-comment-position": "off",
@@ -392,12 +378,8 @@
         "wrap-regex": "error"
     },
     "settings": {
-        "import/resolver": {
-            "node": {
-                "extensions": [
-                    ".ts"
-                ]
-            }
-        }
+        "import-x/extensions": [
+            ".ts"
+        ]
     }
 }

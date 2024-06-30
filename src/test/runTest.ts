@@ -1,4 +1,4 @@
-/* eslint-disable unicorn/prefer-module */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { runTests } from '@vscode/test-electron';
 import * as path from 'node:path';
 

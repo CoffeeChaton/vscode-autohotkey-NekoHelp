@@ -32,7 +32,7 @@ export function getUnknownTextMap(
     paramMap: TParamMapIn,
     valMap: TValMapIn,
     GValMap: TGValMap,
-    name: string,
+    _name: string,
 ): TTextMapIn {
     const textMap: TTextMapIn = new Map<string, TTextMetaIn>();
     for (const AhkTokenLine of AhkTokenList) {
@@ -66,10 +66,6 @@ export function getUnknownTextMap(
             const character: number = v.index;
             const { input } = v;
 
-            if (input === undefined) {
-                void vscode.window.showErrorMessage(`getUnknown Error at line ${line} of ${name}()`);
-                continue;
-            }
             if (character === fistWordUpCol || character === SecondWordUpCol) {
                 // ; Search(node, find, return="") { ; why ahk allow val/Param name like `keyword` ...
                 // ;                     ^-----------------------------------------------------> param def

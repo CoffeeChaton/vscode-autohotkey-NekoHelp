@@ -3,7 +3,7 @@
         "note": "machine generated, Please do not manually modify this file!",
         "source": "https://www.autohotkey.com/docs/v1/",
         "Adjust some formats to suit vscode display": "https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp",
-        "google Translation progress": "ENVGET --"
+        "google Translation progress": "GuiControlGet --doc , _param ...lazy"
     },
     "body": [
         {
@@ -1621,7 +1621,7 @@
             "keyRawName": "EnvGet",
             "body": "EnvGet, ${1:OutputVar}, ${2:EnvVarName}",
             "doc": [
-                "Retrieves an environment variable.\n- [Parameters](https://www.autohotkey.com/docs/v1/lib/EnvGet.htm#Parameters)\n* OutputVar : \n  The name of the variable in which to store the string.\n* EnvVarName :\n  The name of the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to retrieve.\n  Exp : `Path` or `TEMP`or `TMP`"
+                "检索指定[环境变量](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables)的值。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvGet.htm",
@@ -1661,7 +1661,8 @@
             "keyRawName": "EnvMult",
             "body": "EnvMult, ${1:OutVar}, ${2:Value}",
             "doc": [
-                "Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself times the given value. Synonymous with: `Var *= Value`."
+                "将[变量](https://www.autohotkey.com/docs/v1/Variables.htm)设置为自身乘以给定值。代名词： `Var *= Value`.",
+                "**荒废的：**不建议在新脚本中使用此命令。使用 `Var := Var * Value` 或 `Var *= Value` 代替。"
             ],
             "recommended": false,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvMult.htm",
@@ -1698,7 +1699,7 @@
             "keyRawName": "EnvSet",
             "body": "EnvSet, ${1:EnvVar}, ${2:Value}",
             "doc": [
-                "Writes a value to a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) contained in the environment.\n## Parameters\n* EnvVar : \n  Name of the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to use, e.g. \"COMSPEC\" or \"PATH\".\n* Value :\n  Value to set the [environment variable](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) to."
+                "将值写入指定的[环境变量](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables)。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvSet.htm",
@@ -1732,7 +1733,8 @@
             "keyRawName": "EnvSub",
             "body": "EnvSub, ${1:OutVar}, ${2:Value} [, ${3|Seconds,Minutes,Hours,Days|}]",
             "doc": [
-                "Sets a [variable](https://www.autohotkey.com/docs/v1/Variables.htm) to itself minus the given value (can also compare [date-time](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) values). Synonymous with: `Var -= Value`.\n- Var : The name of the [variable](https://www.autohotkey.com/docs/v1/Variables.htm) upon which to operate.\n- Value : Any integer, floating point number, or [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n- TimeUnits : `Seconds`, `Minutes`, `Hours`, `Days`"
+                "将[变量](https://www.autohotkey.com/docs/v1/Variables.htm)设置为自身减去给定值（也可以比较[日期-时间](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD)值）。代名词：`Var -= Value`",
+                "TimeUnits : `Seconds`, `Minutes`, `Hours`, `Days`"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvSub.htm",
@@ -1789,7 +1791,7 @@
             "keyRawName": "EnvUpdate",
             "body": "EnvUpdate",
             "doc": [
-                "Notifies the OS and all running applications that [environment variable(s)](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables) have changed."
+                "通知操作系统和所有正在运行的应用程序[环境变量](https://www.autohotkey.com/docs/v1/Concepts.htm#environment-variables)已更改。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/EnvUpdate.htm",
@@ -1803,7 +1805,7 @@
             "keyRawName": "FileAppend",
             "body": "FileAppend [, ${1:Text} , ${2:Filename}, ${3:Encoding}]",
             "doc": [
-                "Writes text to the end of a file (first creating the file, if necessary)."
+                "将文本写入文件末尾（如有必要，首先创建文件）。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileAppend.htm",
@@ -1872,7 +1874,7 @@
             "keyRawName": "FileCopy",
             "body": "FileCopy, ${1:SourcePattern}, ${2:DestPattern} [, ${3|0,1|}]",
             "doc": [
-                "Copies one or more files.\n* Overwrite\n* If omitted or 0 (false), the command does not overwrite existing files.\n* If this parameter is 1 (true), the command overwrites existing files."
+                "复制一个或多个文件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileCopy.htm",
@@ -1935,7 +1937,7 @@
             "keyRawName": "FileCopyDir",
             "body": "FileCopyDir, ${1:Source}, ${2:Dest} [, ${3|0,1|}]",
             "doc": [
-                "Copies a folder along with all its sub-folders and files (similar to xcopy).\n* **Overwrite**\n* This parameter determines whether to overwrite files if they already exist. If omitted, it defaults to 0 (false). Specify one of the following values:\n* 0 (false): Do not overwrite existing files. The operation will fail and have no effect if _Dest_ already exists as a file or directory.\n* 1 (true): Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted.\n* This parameter can be an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions), even one that evalutes to true or false (since true and false are stored internally as 1 and 0)."
+                "复制文件夹及其所有子文件夹和文件(类似于 xcopy)或存档文件(如 ZIP)的全部内容。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileCopyDir.htm",
@@ -1991,7 +1993,7 @@
             "keyRawName": "FileCreateDir",
             "body": "FileCreateDir, ${1:Path}",
             "doc": [
-                "Creates a folder."
+                "创建文件夹。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileCreateDir.htm",
@@ -2025,7 +2027,7 @@
             "keyRawName": "FileCreateShortcut",
             "body": "FileCreateShortcut, ${1:Target}, ${2:C:\\My Shortcut.lnk} [, ${3:WorkingDir}, ${4:Args}, ${5:Description}, ${6:IconFile}, ${7:ShortcutKey}, ${8:IconNumber}, ${9|1,3,7|} ]",
             "doc": [
-                "Creates a shortcut (.lnk) file."
+                "创建快捷方式(.lnk)文件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileCreateShortcut.htm",
@@ -2131,7 +2133,7 @@
             "keyRawName": "FileDelete",
             "body": "FileDelete, ${1:FilePattern}",
             "doc": [
-                "Deletes one or more files.\n\n### FilePattern\n1. The name of a single file or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n2. To remove an entire folder, along with all its sub-folders and files, use [FileRemoveDir](https://www.autohotkey.com/docs/v1/lib/FileRemoveDir.htm)."
+                "永久删除一个或多个文件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileDelete.htm",
@@ -2161,7 +2163,7 @@
             "keyRawName": "FileEncoding",
             "body": "FileEncoding, [${1|ANSI,UTF-8,UTF-8-RAW,UTF-16,UTF-16-RAW,CPnnn|}]",
             "doc": [
-                "Sets the default encoding for [FileRead](https://www.autohotkey.com/docs/v1/lib/FileRead.htm), [FileReadLine](https://www.autohotkey.com/docs/v1/lib/FileReadLine.htm), [Loop Read](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm), [FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm), and [FileOpen()](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm).\n\n### Encoding\nOne of the following values : (if omitted, it defaults to the system default ANSI code page, which is also the default setting)\n- UTF-8: Unicode UTF-8, equivalent to CP65001.\n- UTF-8-RAW: As above, but no byte order mark is written when a new file is created.\n- UTF-16: Unicode UTF-16 with little endian byte order, equivalent to CP1200.\n- UTF-16-RAW: As above, but no byte order mark is written when a new file is created.\n- CP_nnn_: A code page with numeric identifier _nnn_. See [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/dd317756.aspx)."
+                "设置 [FileRead](https://www.autohotkey.com/docs/v1/lib/FileRead.htm)、[FileReadLine](https://www.autohotkey.com/docs/v1/lib/FileReadLine.htm)、[Loop Read](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm)、[FileAppend](https://www.autohotkey.com/docs/v1/lib/FileAppend.htm) 和 [FileOpen（）](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm) 的默认编码。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm",
@@ -2178,19 +2180,19 @@
                     "sign": "S",
                     "isOpt": true,
                     "paramDoc": [
-                        "[\\[v1.0.90+\\]:](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#L42 \"Applies to:",
-                        "AutoHotkey_L Revision 42 and later",
-                        "AutoHotkey v1.0.90.00 and later\") Overrides the default encoding set by [FileEncoding](https://www.autohotkey.com/docs/v1/lib/FileEncoding.htm), where _Encoding_ follows the same format.",
+                        "如果为空或省略，则默认为 CP0。否则，请指定以下字符串之一：",
                         "",
-                        "**UTF-8:** Unicode UTF-8, equivalent to CP65001.",
+                        "**CP0：**系统默认 ANSI 代码页。请参阅下面的备注。",
                         "",
-                        "**UTF-8-RAW:** As above, but no byte order mark is written when a new file is created.",
+                        "**UTF-8：**Unicode UTF-8，相当于 CP65001。",
                         "",
-                        "**UTF-16:** Unicode UTF-16 with little endian byte order, equivalent to CP1200.",
+                        "**UTF-8-RAW：**如上所述，但在创建新文件时不会写入字节顺序标记。",
                         "",
-                        "**UTF-16-RAW:** As above, but no byte order mark is written when a new file is created.",
+                        "**UTF-16：**Unicode UTF-16，字节顺序小，相当于 CP1200。",
                         "",
-                        "**CP_nnn_:** A code page with numeric identifier _nnn_. See [Code Page Identifiers](https://learn.microsoft.com/windows/win32/intl/code-page-identifiers)."
+                        "**UTF-16-RAW：**如上所述，但在创建新文件时不会写入字节顺序标记。",
+                        "",
+                        "**CP_nnn_：**带有数字标识符 _nnn_ 的代码页。[请参见代码页标识符](https://learn.microsoft.com/windows/win32/intl/code-page-identifiers)。"
                     ]
                 }
             ]
@@ -2199,7 +2201,18 @@
             "keyRawName": "FileGetAttrib",
             "body": "FileGetAttrib, ${1:OutputVar} , [${2:Filename}]",
             "doc": [
-                "Reports whether a file or folder is read-only, hidden, etc.\n1. `Remarks` - The string returned will contain a subset of the letters in the string \"RASHNDOCT\":\n\n- R = READONLY\n- A = ARCHIVE\n- S = SYSTEM\n- H = HIDDEN\n- N = NORMAL\n- D = DIRECTORY\n- O = OFFLINE\n- C = COMPRESSED\n- T = TEMPORARY"
+                "报告文件或文件夹是只读的、隐藏的等。",
+                "用于存储文件或文件夹属性的输出变量的名称。此字符串是 的子集，其中每个字母表示以下内容：`RASHNDOCT`",
+                "",
+                "- R = 只读",
+                "- A = 存档",
+                "- S = 系统",
+                "- H = 隐藏",
+                "- N = 正常",
+                "- D = 目录",
+                "- O = 脱机",
+                "- C = 压缩",
+                "- T = 临时"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileGetAttrib.htm",
@@ -2223,7 +2236,17 @@
                     "sign": "O",
                     "isOpt": false,
                     "paramDoc": [
-                        "The name of the output variable in which to store the retrieved text."
+                        "用于存储文件或文件夹属性的输出变量的名称。此字符串是 的子集，其中每个字母表示以下内容：`RASHNDOCT`",
+                        "",
+                        "- R = 只读",
+                        "- A = 存档",
+                        "- S = 系统",
+                        "- H = 隐藏",
+                        "- N = 正常",
+                        "- D = 目录",
+                        "- O = 脱机",
+                        "- C = 压缩",
+                        "- T = 临时"
                     ]
                 },
                 {
@@ -2240,7 +2263,7 @@
             "keyRawName": "FileGetShortcut",
             "body": "FileGetShortcut, ${1:LinkFile} [, ${2:OutTarget}, ${3:OutDir}, ${4:OutArgs}, ${5:OutDescription}, ${6:OutIcon}, ${7:OutIconNum}, ${8:OutRunState}]",
             "doc": [
-                "Retrieves information about a shortcut (.lnk) file, such as its target file.\n### [Parameters](https://www.autohotkey.com/docs/v1/lib/FileGetShortcut.htm#Parameters)\n\n- LinkFile\n> Name of the shortcut file to be analyzed, which is assumed to be in [%A\\_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. Be sure to include the **.lnk** extension.\n- OutTarget\n> Name of the variable in which to store the shortcut's target (not including any arguments it might have). For example: C:\\WINDOWS\\system32\\notepad.exe\n- OutDir\n> Name of the variable in which to store the shortcut's working directory. For example: C:\\My Documents. If environment variables such as %WinDir% are present in the string, one way to resolve them is via [StrReplace()](https://www.autohotkey.com/docs/v1/lib/StrReplace.htm) or [StringReplace](https://www.autohotkey.com/docs/v1/lib/StringReplace.htm \"Deprecated. New scripts should use StrReplace() instead.\"). For example: [StringReplace](https://www.autohotkey.com/docs/v1/lib/StringReplace.htm), OutDir, OutDir, %WinDir%, %[A_WinDir](https://www.autohotkey.com/docs/v1/Variables.htm#WinDir)%.\n- OutArgs\n> Name of the variable in which to store the shortcut's parameters (blank if none).\n- OutDescription\n> Name of the variable in which to store the shortcut's comments (blank if none).\n- OutIcon\n> Name of the variable in which to store the filename of the shortcut's icon (blank if none).\n- OutIconNum\n> Name of the variable in which to store the shortcut's icon number within the icon file (blank if none). This value is most often 1, which means the first icon.\n- OutRunState\n> Name of the variable in which to store the shortcut's initial launch state, which is one of the following digits:\n> - 1 = Normal\n> - 3 = Maximized\n> - 7 = Minimized"
+                "检索有关快捷方式 （.lnk） 文件的信息，例如其目标文件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileGetShortcut.htm",
@@ -2340,7 +2363,7 @@
             "keyRawName": "FileGetSize",
             "body": "FileGetSize, ${1:OutputVar} [, % \"${2:Filename}\", ${3|K,M|}]",
             "doc": [
-                "Retrieves the size of a file."
+                "检索文件的大小。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileGetSize.htm",
@@ -2391,7 +2414,7 @@
             "keyRawName": "FileGetTime",
             "body": "FileGetTime, ${1:OutputVar} [, % \"${2:Filename}\", ${3|M,C,A|} ]",
             "doc": [
-                "Retrieves the datetime stamp of a file or folder.\n1. `OutputVar` : YYYYMMDDHH24MISS. The time is your own local time, not UTC/GMT.\n2. `Filename` : The name of the target file or folder, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime`: \n- `M` = Modification time(defaults)\n- `C` = Creation time\n- `A` = Last access time"
+                "检索文件或文件夹的日期时间戳。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileGetTime.htm",
@@ -2434,11 +2457,11 @@
                     "paramDoc": [
                         "WhichTime",
                         "",
-                        "If blank or omitted, it defaults to M (modification time). Otherwise, specify one of the following letters to set which timestamp should be retrieved:",
+                        "如果为空或省略，则默认为 M。 否则，请指定以下字母之一以设置应检索的时间戳：",
                         "",
-                        "- M = Modification time",
-                        "- C = Creation time",
-                        "- A = Last access time"
+                        "- M = 修改时间",
+                        "- C = 创建时间",
+                        "- A = 上次访问时间"
                     ]
                 }
             ]
@@ -2447,7 +2470,7 @@
             "keyRawName": "FileGetVersion",
             "body": "FileGetVersion, ${1:OutputVar} [, % \"${2:Filename}\"]",
             "doc": [
-                "Retrieves the version of a file.\n1. `OutputVar` - The name of the variable in which to store the version number/string.\n2. `Filename` - The name of the target file. If a full path is not specified, this function uses the search sequence specified by the system [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175) function. If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead."
+                "检索文件的版本。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileGetVersion.htm",
@@ -2485,7 +2508,7 @@
             "keyRawName": "FileInstall",
             "body": "FileInstall, ${1:Source}, % \"${2:Dest}\" [, ${3|true,false|}]",
             "doc": [
-                "Includes the specified file inside the [compiled version](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe) of the script.\n1. `Source` - \n> - The name of the file to be added to the compiled EXE. The file is assumed to be in (or relative to) the script's own directory if an absolute path isn't specified.\n> - The file name **must not** contain double quotes, variable references (e.g. %A_ProgramFiles%), or wildcards. In addition, any special characters such as literal percent signs and commas must be [escaped](https://www.autohotkey.com/docs/v1/misc/EscapeChar.htm) (just like in the parameters of all other commands). Finally, this parameter must be listed to the right of the FileInstall command (that is, not on a [continuation line](https://www.autohotkey.com/docs/v1/Scripts.htm#continuation) beneath it).\n2. `Dest` - When _Source_ is extracted from the EXE, this is the name of the file to be created. It is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. The destination directory must already exist. Unlike _Source_, variable references may be used.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist."
+                "在脚本[的编译版本](https://www.autohotkey.com/docs/v1/Scripts.htm#ahk2exe)中包含指定的文件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileInstall.htm",
@@ -2538,7 +2561,7 @@
             "keyRawName": "FileMove",
             "body": "FileMove, % \"${1:SourcePattern}\", % \"${2:DestPattern}\" [, ${3|true,false|} ]",
             "doc": [
-                "Moves or renames one or more files.\n1. `SourcePattern` - The name of a single file or a wildcard pattern such as C:\\Temp\\*.tmp. _SourcePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n2. `DestPattern` - \n> - The name or pattern of the destination, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n> - If present, the first asterisk (`*`) in the filename is replaced with the source filename excluding its extension, while the first asterisk after the last full stop (`.`) is replaced with the source file's extension. If an asterisk is present but the extension is omitted, the source file's extension is used.\n> - To perform a simple move -- retaining the existing file name(s) -- specify only the folder name as shown in these mostly equivalent examples:\n> - ```FileMove, C:\\*.txt, C:\\My Folder```\n> - ```FileMove, C:\\*.txt, C:\\My Folder\\*.*```\n> - The destination directory must already exist. If _My Folder_ does not exist, the first example above will use \"My Folder\" as the target filename, while the second example will move no files.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist."
+                "移动或重命名一个或多个文件。\n1. `SourcePattern` - The name of a single file or a wildcard pattern such as C:\\Temp\\*.tmp. _SourcePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n2. `DestPattern` - \n> - The name or pattern of the destination, which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n> - If present, the first asterisk (`*`) in the filename is replaced with the source filename excluding its extension, while the first asterisk after the last full stop (`.`) is replaced with the source file's extension. If an asterisk is present but the extension is omitted, the source file's extension is used.\n> - To perform a simple move -- retaining the existing file name(s) -- specify only the folder name as shown in these mostly equivalent examples:\n> - ```FileMove, C:\\*.txt, C:\\My Folder```\n> - ```FileMove, C:\\*.txt, C:\\My Folder\\*.*```\n> - The destination directory must already exist. If _My Folder_ does not exist, the first example above will use \"My Folder\" as the target filename, while the second example will move no files.\n3. `Overwrite` - This parameter determines whether to overwrite files if they already exist."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileMove.htm",
@@ -2603,7 +2626,7 @@
             "keyRawName": "FileMoveDir",
             "body": "FileMoveDir, % \"${1:Source}\", % \"${2:Dest}\" [, ${3|0,1,2,R|}]",
             "doc": [
-                "Moves a folder along with all its sub-folders and files. It can also rename a folder.\n1. `Source` - Name of the source directory (with no trailing backslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. For example: C:\\My Folder\n2. `Dest` - The new path and name of the directory (with no trailing baskslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. For example: D:\\My Folder.\n> **Note**: _Dest_ is the actual path and name that the directory will have after it is moved; it is _not_ the directory into which _Source_ is moved (except for the known limitation mentioned below).\n3. `Flag` - \n> - **0** (default): Do not overwrite existing files. The operation will fail if _Dest_ already exists as a file or directory.\n> - **1**: Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted. **Known limitation:** If _Dest_ already exists as a folder and it is on the same volume as _Source_, _Source_ will be moved into it rather than overwriting it. To avoid this, see the next option.\n> - **2**: The same as mode 1 above except that the limitation is absent.\n> - **R**: Rename the directory rather than moving it. Although renaming normally has the same effect as moving, it is helpful in cases where you want \"all or none\" behavior; that is, when you don't want the operation to be only partially successful when _Source_ or one of its files is locked (in use). Although this method cannot move _Source_ onto a different volume, it can move it to any other directory on its own volume. The operation will fail if _Dest_ already exists as a file or directory."
+                "移动文件夹及其所有子文件夹和文件。它还可以重命名文件夹。\n1. `Source` - Name of the source directory (with no trailing backslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. For example: C:\\My Folder\n2. `Dest` - The new path and name of the directory (with no trailing baskslash), which is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified. For example: D:\\My Folder.\n> **Note**: _Dest_ is the actual path and name that the directory will have after it is moved; it is _not_ the directory into which _Source_ is moved (except for the known limitation mentioned below).\n3. `Flag` - \n> - **0** (default): Do not overwrite existing files. The operation will fail if _Dest_ already exists as a file or directory.\n> - **1**: Overwrite existing files. However, any files or subfolders inside _Dest_ that do not have a counterpart in _Source_ will not be deleted. **Known limitation:** If _Dest_ already exists as a folder and it is on the same volume as _Source_, _Source_ will be moved into it rather than overwriting it. To avoid this, see the next option.\n> - **2**: The same as mode 1 above except that the limitation is absent.\n> - **R**: Rename the directory rather than moving it. Although renaming normally has the same effect as moving, it is helpful in cases where you want \"all or none\" behavior; that is, when you don't want the operation to be only partially successful when _Source_ or one of its files is locked (in use). Although this method cannot move _Source_ onto a different volume, it can move it to any other directory on its own volume. The operation will fail if _Dest_ already exists as a file or directory."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileMoveDir.htm",
@@ -2662,7 +2685,7 @@
             "keyRawName": "FileRead",
             "body": "FileRead, ${1:OutputVar}, % \"${2:Filename}\"",
             "doc": [
-                "Reads a file's contents into a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).\n > try to use [function](https://www.autohotkey.com/docs/v1/Language.htm#commands-vs-functions) replace [FileOpen](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm) and [File.Read](https://www.autohotkey.com/docs/v1/objects/File.htm#Read)"
+                "将文件的内容读入[变量](https://www.autohotkey.com/docs/v1/Variables.htm)。\n > try to use [function](https://www.autohotkey.com/docs/v1/Language.htm#commands-vs-functions) replace [FileOpen](https://www.autohotkey.com/docs/v1/lib/FileOpen.htm) and [File.Read](https://www.autohotkey.com/docs/v1/objects/File.htm#Read)"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileRead.htm",
@@ -2712,7 +2735,7 @@
             "keyRawName": "FileReadLine",
             "body": "FileReadLine, ${1:OutputVar}, % \"${2:Filename}\", ${3:LineNum}",
             "doc": [
-                "Reads the specified line from a file and stores the text in a [variable](https://www.autohotkey.com/docs/v1/Variables.htm).\n > `Remarks` - It is strongly recommended to use this command only for small files, or in cases where only a single line of text is needed. To scan and process a large number of lines (one by one), use a [file-reading loop](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm) for best performance."
+                "从文件中读取指定的行，并将文本存储在[变量](https://www.autohotkey.com/docs/v1/Variables.htm)中。\n > `Remarks` - It is strongly recommended to use this command only for small files, or in cases where only a single line of text is needed. To scan and process a large number of lines (one by one), use a [file-reading loop](https://www.autohotkey.com/docs/v1/lib/LoopReadFile.htm) for best performance."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileReadLine.htm",
@@ -2760,7 +2783,7 @@
             "keyRawName": "FileRecycle",
             "body": "FileRecycle, % \"${1:FilePattern}\"",
             "doc": [
-                "Sends a file or directory to the recycle bin if possible, *or permanently deletes it.*"
+                "如果可能，将文件或目录发送到回收站，或将其永久删除。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileRecycle.htm",
@@ -2789,7 +2812,7 @@
             "keyRawName": "FileRecycleEmpty",
             "body": "FileRecycleEmpty [, % \"${1:DriveLetter}\"]",
             "doc": [
-                "Empties the recycle bin."
+                "清空回收站。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileRecycleEmpty.htm",
@@ -2822,7 +2845,7 @@
             "keyRawName": "FileRemoveDir",
             "body": "FileRemoveDir, % \"${1:DirName}\" [, ${2|true,false|}]",
             "doc": [
-                "Deletes a folder."
+                "删除文件夹。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileRemoveDir.htm",
@@ -2864,7 +2887,7 @@
             "keyRawName": "FileSelectFile",
             "body": "FileSelectFile, ${1:OutputVar} [, ${2:Options}, ${3:RootDir\\\\Filename}, ${4:Title}, ${5:Filter}]",
             "doc": [
-                "Displays a standard dialog that allows the user to open or save file(s)."
+                "显示一个标准对话框，允许用户打开或保存文件。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileSelectFile.htm",
@@ -2956,7 +2979,7 @@
             "keyRawName": "FileSelectFolder",
             "body": "FileSelectFolder, ${1:OutputVar} [, ${2:StartingFolder}, ${3:Options}, ${4:Prompt}]",
             "doc": [
-                "Displays a standard dialog that allows the user to select a folder.\n\n`Options`:\n- **0**: The options below are all disabled (except on Windows 2000, where the \"make new folder\" button might appear anyway).\n- **1** (default): A button is provided that allows the user to create new folders.\n- **Add 2** to the above number to provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a \"make new folder\" button.\n- **Add 4** to the above number to omit the BIF_NEWDIALOGSTYLE property. Adding 4 ensures that FileSelectFolder will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a \"make new folder\" button, at least on Windows XP. [\"4\" requires v1.0.48+]"
+                "显示允许用户选择文件夹的标准对话框。\n\n`Options`:\n- **0**: The options below are all disabled (except on Windows 2000, where the \"make new folder\" button might appear anyway).\n- **1** (default): A button is provided that allows the user to create new folders.\n- **Add 2** to the above number to provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a \"make new folder\" button.\n- **Add 4** to the above number to omit the BIF_NEWDIALOGSTYLE property. Adding 4 ensures that FileSelectFolder will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a \"make new folder\" button, at least on Windows XP. [\"4\" requires v1.0.48+]"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileSelectFolder.htm",
@@ -3038,7 +3061,7 @@
             "keyRawName": "FileSetAttrib",
             "body": "FileSetAttrib, ${1:Attributes} [, % \"${2:D:\\test.txt}\", ${3|0,1,2|}, ${4|0,1|}]",
             "doc": [
-                "Changes the attributes of one or more files or folders. Wildcards are supported.\n1. `Attributes` -\n> - The attributes to change. For example, `+HA-R`.\n> - To easily turn on, turn off or toggle attributes, prefix one or more of the following attribute letters with a plus sign (+), minus sign (-) or caret (^), respectively:\n> 1. `R` = READONLY\n> 2. `A` = ARCHIVE\n> 3. `S` = SYSTEM\n> 4. `H` = HIDDEN\n> 5. `N` = NORMAL (this is valid only when used without any other attributes)\n> 6. `O` = OFFLINE\n> 7. `T` = TEMPORARY\n2. `FilePattern` -\n> - The name of a single file or folder, or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n> - If omitted, the current file of the innermost enclosing File-Loop will be used instead.\n3. `OperateOnFolders` -\n> - `0` (default) = Folders are not operated upon (only files).\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n4. `Recurse` -\n> - `0` (default) = Subfolders are not recursed into.\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation."
+                "更改一个或多个文件或文件夹的属性。支持通配符。\n1. `Attributes` -\n> - The attributes to change. For example, `+HA-R`.\n> - To easily turn on, turn off or toggle attributes, prefix one or more of the following attribute letters with a plus sign (+), minus sign (-) or caret (^), respectively:\n> 1. `R` = READONLY\n> 2. `A` = ARCHIVE\n> 3. `S` = SYSTEM\n> 4. `H` = HIDDEN\n> 5. `N` = NORMAL (this is valid only when used without any other attributes)\n> 6. `O` = OFFLINE\n> 7. `T` = TEMPORARY\n2. `FilePattern` -\n> - The name of a single file or folder, or a wildcard pattern such as `C:\\Temp\\*.tmp`. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir) if an absolute path isn't specified.\n> - If omitted, the current file of the innermost enclosing File-Loop will be used instead.\n3. `OperateOnFolders` -\n> - `0` (default) = Folders are not operated upon (only files).\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n4. `Recurse` -\n> - `0` (default) = Subfolders are not recursed into.\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileSetAttrib.htm",
@@ -3120,7 +3143,7 @@
             "keyRawName": "FileSetTime",
             "body": "FileSetTime [, ${1:YYYYMMDDHH24MISS}, % \"${2:D:\\test.txt}\", ${3|M,C,A|}, ${4|0,1,2|}, ${5|0,1|}]",
             "doc": [
-                "Changes the datetime stamp of one or more files or folders. Wildcards are supported.\n1. `YYYYMMDDHH24MISS` - This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n2. `FilePattern` - The name of a single file or folder, or a wildcard pattern such as C:\\Temp\\*.tmp. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir).\n if an absolute path isn't specified.If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime` -\n> - `M` = Modification time (default)\n> - `C` = Creation time\n> - `A` = Last access time\n4. `OperateOnFolders` -\n> - `0` = Folders are not operated upon (only files).  (default)\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n5. `OperateOnFolders` -\n> - `0` = Subfolders are not recursed into. (default)\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation."
+                "更改一个或多个文件或文件夹的日期时间戳。支持通配符。\n1. `YYYYMMDDHH24MISS` - This parameter is an [expression](https://www.autohotkey.com/docs/v1/Variables.htm#Expressions).\n2. `FilePattern` - The name of a single file or folder, or a wildcard pattern such as C:\\Temp\\*.tmp. _FilePattern_ is assumed to be in [%A_WorkingDir%](https://www.autohotkey.com/docs/v1/Variables.htm#WorkingDir).\n if an absolute path isn't specified.If omitted, the current file of the innermost enclosing [File-Loop](https://www.autohotkey.com/docs/v1/lib/LoopFile.htm) will be used instead.\n3. `WhichTime` -\n> - `M` = Modification time (default)\n> - `C` = Creation time\n> - `A` = Last access time\n4. `OperateOnFolders` -\n> - `0` = Folders are not operated upon (only files).  (default)\n> - `1` = All files and folders that match the wildcard pattern are operated upon.\n> - `2` = Only folders are operated upon (no files).\n5. `OperateOnFolders` -\n> - `0` = Subfolders are not recursed into. (default)\n> - `1` = Subfolders are recursed into so that files and folders contained therein are operated upon if they match FilePattern. All subfolders will be recursed into, not just those whose names match FilePattern. However, files and folders with a complete path name longer than 259 characters are skipped over as though they do not exist. Such files are rare because normally, the operating system does not allow their creation."
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm",
@@ -3211,7 +3234,7 @@
             "keyRawName": "FormatTime",
             "body": "FormatTime, ${1:OutputVar} [, ${2:YYYYMMDDHH24MISS}, ${3:yyyy-MM-dd HH:mm:ss} ]",
             "doc": [
-                "Transforms a [YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD) timestamp into the specified date/time format."
+                "将[YYYYMMDDHH24MISS](https://www.autohotkey.com/docs/v1/lib/FileSetTime.htm#YYYYMMDD)时间戳转换为指定的日期/时间格式。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/FormatTime.htm",
@@ -3287,7 +3310,8 @@
             "keyRawName": "GetKeyState",
             "body": "GetKeyState, ${1:OutputVar}, ${2:KeyName} [,${3|P,T|}]",
             "doc": [
-                "**Deprecated:** This command is not recommended for use in new scripts. Use the [GetKeyState](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#function) function instead."
+                "**荒废的：**不建议在新脚本中使用此命令。请改用上述 [GetKeyState](https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#function) 函数。",
+                "将字母 D 或 U 存储在变量中，具体取决于指定的键盘键或鼠标/控制器按钮是向下还是向上。还检索控制器状态。"
             ],
             "recommended": false,
             "link": "https://www.autohotkey.com/docs/v1/lib/GetKeyState.htm#command",
@@ -3345,7 +3369,7 @@
             "keyRawName": "GroupActivate",
             "body": "GroupActivate, ${1:GroupName} [, ${2:R} ]",
             "doc": [
-                "Activates the next window in a window group that was defined with [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm)."
+                "激活使用 [GroupAdd](https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm) 定义的窗口组中的下一个窗口。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm",
@@ -3384,7 +3408,7 @@
             "keyRawName": "GroupAdd",
             "body": "GroupAdd, ${1:GroupName} [, ${2:WinTitle}, ${3:WinText}, ${4:Label}, ${5:ExcludeTitle}, ${6:ExcludeText}]",
             "doc": [
-                "Adds a window specification to a window group, creating the group if necessary."
+                "将窗口规范添加到窗口组，并在必要时创建该组。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/GroupAdd.htm",
@@ -3454,7 +3478,7 @@
             "keyRawName": "GroupClose",
             "body": "GroupClose, ${1:GroupName} [, ${2|A,R|}]",
             "doc": [
-                "Closes the active window if it was just activated by [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) or [GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm). It then activates the next window in the series. It can also close all windows in a group."
+                "如果活动窗口刚刚由 [GroupActivate 或 GroupDeactivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) 激活，则关闭该[](https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm)窗口。然后，它将激活该系列中的下一个窗口。它还可以关闭组中的所有窗口。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/GroupClose.htm",
@@ -3492,7 +3516,7 @@
             "keyRawName": "GroupDeactivate",
             "body": "GroupDeactivate, ${1:GroupName} [, ${2:R}]",
             "doc": [
-                "Similar to [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) except activates the next window **not** in the group."
+                "与 [GroupActivate](https://www.autohotkey.com/docs/v1/lib/GroupActivate.htm) 类似，但激活不在组中的下一个窗口。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/GroupDeactivate.htm",
@@ -3528,7 +3552,23 @@
             "keyRawName": "Gui",
             "body": "Gui, ${1|New,Add,Show,Submit,Cancel,Hide,Destroy,Font,Color,Margin,Options,Menu,Minimize,Maximize,Restore,Flash,Default|} [, ${2:Value1}, ${3:Value2}, ${4:Value3}]",
             "doc": [
-                "Creates and manages windows and controls. Such windows can be used as data entry forms or custom user interfaces.\n1. `Sub-commands` -\n\n- [New](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New) [[v1.1.04+]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 \"Applies to AutoHotkey v1.1.04 and later\"): Creates a new window.\n- [Add](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Add): Creates a control such as text, button, or checkbox.\n- [Show](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Show): Displays the window. It can also minimize, maximize, or move the window.\n- [Submit](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Submit): Saves the user's input and optionally hides the window.\n- [Cancel](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Cancel) / [Hide](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Hide): Hides the window.\n- [Destroy](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy): Deletes the window.\n- [Font](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Font): Sets the typeface, size, style, and text color for subsequently created controls.\n- [Color](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Color): Sets the background color for the window and/or its controls.\n- [Margin](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Margin): Sets the margin/spacing used whenever no explicit position has been specified for a control.\n- [Options and styles for a window](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Options): Sets various options for the appearance and behavior of the window.\n- [Menu](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Menu): Adds or removes a menu bar.\n- [Minimize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Minimize) / [Maximize](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Maximize) / [Restore](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Restore): Performs the indicated operation on the window.\n- [Flash](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Flash): Blinks the window and its taskbar button.\n- [Default](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default): Changes the current thread's default GUI window name."
+                "创建和管理窗口和控件。此类窗口可用作数据输入表单或自定义用户界面。",
+                "对于 _SubCommand_，请指定以下选项之一：",
+                "",
+                "- [新增](https://www.autohotkey.com/docs/v1/lib/Gui.htm#New) [\\[v1.1.04+\\]](https://www.autohotkey.com/docs/v1/AHKL_ChangeLog.htm#v1.1.04.00 \"Applies to AutoHotkey v1.1.04 and later\")：创建一个新窗口。",
+                "- [添加](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Add)：创建控件，如文本、按钮或复选框。",
+                "- [显示](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Show)：显示窗口。它还可以最小化、最大化或移动窗口。",
+                "- [提交](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Submit)：保存用户的输入，并选择性地隐藏窗口。",
+                "- [取消](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Cancel)/[隐藏](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Hide)：隐藏窗口。",
+                "- [销毁](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Destroy)：删除窗口。",
+                "- [字体](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Font)：设置后续创建的控件的字体、大小、样式和文本颜色。",
+                "- [颜色](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Color)：设置窗口和/或其控件的背景色。",
+                "- [边距](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Margin)：更改自动定位控件的边距/间距。",
+                "- [菜单](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Menu)：添加或删除菜单栏。",
+                "- [最小化](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Minimize)/[最大](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Maximize)化/[恢复](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Restore)：在窗口上执行指示的操作。",
+                "- [闪光](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Flash)灯：闪烁窗口及其任务栏按钮。",
+                "- [默认](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Default)值：更改当前线程的默认 GUI 窗口名称。",
+                "- [+/-Option1 +/-Option2 ...](https://www.autohotkey.com/docs/v1/lib/Gui.htm#Options)：更改窗口的外观和行为。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/Gui.htm",
@@ -3554,24 +3594,24 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "| SubCmd   | Description                                                                                  |",
-                        "| :------- | :------------------------------------------------------------------------------------------- |",
-                        "| New      | Creates a new window.                                                                        |",
-                        "| Add      | Creates a control such as text, button, or checkbox.                                         |",
-                        "| Show     | Displays the window. It can also minimize, maximize, or move the window.                     |",
-                        "| Submit   | Saves the user's input and optionally hides the window.                                      |",
-                        "| Cancel   | Hides the window.                                                                            |",
-                        "| Hide     | Hides the window.                                                                            |",
-                        "| Destroy  | Deletes the window.                                                                          |",
-                        "| Font     | Sets the typeface, size, style, and text color for subsequently created controls.            |",
-                        "| Color    | Sets the background color for the window and/or its controls.                                |",
-                        "| Margin   | Sets the margin/spacing used whenever no explicit position has been specified for a control. |",
-                        "| Menu     | Adds or removes a menu bar.                                                                  |",
-                        "| Minimize | Performs the indicated operation on the window.                                              |",
-                        "| Maximize | Performs the indicated operation on the window.                                              |",
-                        "| Restore  | Performs the indicated operation on the window.                                              |",
-                        "| Flash    | Blinks the window and its taskbar button.                                                    |",
-                        "| Default  | Changes the current thread's default GUI window name.                                        |"
+                        "| SubCmd   | Description                                  |",
+                        "| :------- | :------------------------------------------- |",
+                        "| New      | 创建一个新窗口。                                |",
+                        "| Add      | 创建控件，例如文本、按钮或复选框。                 |",
+                        "| Show     | 显示窗口。它还可以最小化、最大化或移动窗口。         |",
+                        "| Submit   | 保存用户的输入并可选择隐藏窗口。                   |",
+                        "| Cancel   | 隐藏窗口。                                     |",
+                        "| Hide     | 隐藏窗口。                                     |",
+                        "| Destroy  | 删除窗口。                                     |",
+                        "| Font     | 设置后续创建的控件的字体、大小、样式和文本颜色。      |",
+                        "| Color    | 设置窗口和/或其控件的背景颜色。                    |",
+                        "| Margin   |设置当没有为控件指定明确位置时使用的边距/间距。        |",
+                        "| Menu     | 添加或删除菜单栏。                               |",
+                        "| Minimize | 在窗口上执行指示的操作。                          |",
+                        "| Maximize | 在窗口上执行指示的操作。                          |",
+                        "| Restore  | 在窗口上执行指示的操作。                          |",
+                        "| Flash    | 闪烁窗口及其任务栏按钮。                          |",
+                        "| Default  | 更改当前线程的默认 GUI 窗口名称。                  |"
                     ]
                 },
                 {
@@ -3604,7 +3644,24 @@
             "keyRawName": "GuiControl",
             "body": "GuiControl, ${1|(Blank),Text,Move,MoveDraw,Focus,Disable,Enable,Hide,Show,Delete,Choose,ChooseString,Font,Options|}, ${2:ControlID} [, ${3:Value}]",
             "doc": [
-                "Makes a variety of changes to a control in a GUI window.\n1. `SubCommand` -\n\n- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank): Puts new contents into the control.\n- [Text](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text): Changes the text/caption of the control.\n- [Move](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move): Moves and/or resizes the control.\n- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw): Moves and/or resizes the control and repaints the region occupied by it.\n- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus): Sets keyboard focus to the control.\n- [Disable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable): Disables (grays out) the control.\n- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable): Enables the control.\n- [Hide](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide): Hides the control.\n- [Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show): Shows the control.\n- [Delete](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete): Not yet implemented.\n- [Choose](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose): Selects the specified item number in a multi-item control.\n- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString): Selects a item in a multi-item control whose leading part matches a string.\n- [Font](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font): Changes the control's font typeface, size, color, and style.\n- [Options](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options): Add or remove various control-specific or general options and styles."
+                "对 GUI 窗口中的控件进行各种更改。",
+                "",
+                "对于 SubCommand，请指定以下选项之一：",
+                "",
+                "- [（空白）](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank)：将新内容放入控件中。",
+                "- [文本](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text)：更改控件的文本/标题。",
+                "- [移动](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move)：移动控件和/或调整控件大小。",
+                "- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw)：移动和/或调整控件大小，并重新绘制控件所占据的区域。",
+                "- [焦点](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus)：将键盘焦点设置为控件。",
+                "- [禁用](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable)：禁用（灰显）控件。",
+                "- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable)：启用控件。",
+                "- [隐藏](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide)：隐藏控件。",
+                "- [显示](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show)：显示控件。",
+                "- [删除](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete)：尚未实现。",
+                "- [选择](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose)：选择多项控件中的指定项号。",
+                "- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString)：选择多项控件中前导部分与字符串匹配的项。",
+                "- [字体](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font)：更改控件的字体、大小、颜色和样式。",
+                "- [选项](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options)：添加或删除各种特定于控件或常规的选项和样式。"
             ],
             "recommended": true,
             "link": "https://www.autohotkey.com/docs/v1/lib/GuiControl.htm",
@@ -3622,22 +3679,22 @@
                     "sign": "S",
                     "isOpt": false,
                     "paramDoc": [
-                        "For _SubCommand_, specify one of the following:",
+                        "对于 SubCommand，请指定以下选项之一：",
                         "",
-                        "- [(Blank)](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank): Puts new contents into the control.",
-                        "- [Text](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text): Changes the text/caption of the control.",
-                        "- [Move](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move): Moves and/or resizes the control.",
-                        "- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw): Moves and/or resizes the control and repaints the region occupied by it.",
-                        "- [Focus](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus): Sets keyboard focus to the control.",
-                        "- [Disable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable): Disables (grays out) the control.",
-                        "- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable): Enables the control.",
-                        "- [Hide](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide): Hides the control.",
-                        "- [Show](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show): Shows the control.",
-                        "- [Delete](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete): Not yet implemented.",
-                        "- [Choose](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose): Selects the specified item number in a multi-item control.",
-                        "- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString): Selects a item in a multi-item control whose leading part matches a string.",
-                        "- [Font](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font): Changes the control's font typeface, size, color, and style.",
-                        "- [Options](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options): Add or remove various control-specific or general options and styles."
+                        "- [（空白）](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Blank)：将新内容放入控件中。",
+                        "- [文本](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Text)：更改控件的文本/标题。",
+                        "- [移动](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Move)：移动控件和/或调整控件大小。",
+                        "- [MoveDraw](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#MoveDraw)：移动和/或调整控件大小，并重新绘制控件所占据的区域。",
+                        "- [焦点](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Focus)：将键盘焦点设置为控件。",
+                        "- [禁用](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Disable)：禁用（灰显）控件。",
+                        "- [Enable](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Enable)：启用控件。",
+                        "- [隐藏](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Hide)：隐藏控件。",
+                        "- [显示](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Show)：显示控件。",
+                        "- [删除](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Delete)：尚未实现。",
+                        "- [选择](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Choose)：选择多项控件中的指定项号。",
+                        "- [ChooseString](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#ChooseString)：选择多项控件中前导部分与字符串匹配的项。",
+                        "- [字体](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#Font)：更改控件的字体、大小、颜色和样式。",
+                        "- [选项](https://www.autohotkey.com/docs/v1/lib/GuiControl.htm#options)：添加或删除各种特定于控件或常规的选项和样式。"
                     ]
                 },
                 {

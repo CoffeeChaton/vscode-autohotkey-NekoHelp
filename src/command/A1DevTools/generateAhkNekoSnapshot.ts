@@ -8,7 +8,6 @@ import type { TAhkFileData } from '../../core/ProjectManager';
 import { fileFuncRef } from '../../provider/Def/getFnRef';
 import { log } from '../../provider/vscWindows/log';
 import { getWorkspaceRoot } from '../../tools/fsTools/getWorkspaceRoot';
-import { mkDirByPathSync } from '../../tools/fsTools/mkDirByPathSync';
 import { UpdateCacheAsync } from '../UpdateCache';
 
 function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: readonly string[]): readonly string[] {
@@ -37,7 +36,7 @@ function generateSnapshot(AhkFileDataList: readonly TAhkFileData[], rootList: re
         const msFix: number = ms <= ms_min
             ? ms_min
             : ms;
-        mkDirByPathSync(targetDir);
+        fs.mkdirSync(targetDir, { recursive: true });
 
         const data: string = [
             '# snap',
