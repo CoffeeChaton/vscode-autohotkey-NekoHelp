@@ -19,6 +19,7 @@
 <!-- dprint 0.45.1 -->
 
 - feat: hover/Completion `__New()` `__Set()` etc...
+- fix: Class Property Def
 
 ## v0.0.62(2024-06-28)
 
