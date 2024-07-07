@@ -24,6 +24,7 @@ import { getSnipFocEx } from '../../tools/Built-in/3_foc/focEx.tools';
 import { getSnippetOperator } from '../../tools/Built-in/4_operator/operator.tools';
 import { getSnipDeclaration } from '../../tools/Built-in/5_declaration/declaration.tools';
 import { getSnipCmd } from '../../tools/Built-in/6_command/Command.tools.completion';
+import { getSnipClass_meta_method } from '../../tools/Built-in/8_built_in_method_property/class_meta_method.tools';
 import { getDAWithPos } from '../../tools/DeepAnalysis/getDAWithPos';
 import { ahk_group_completion } from './ahk_group/ahk_group';
 import { ahkDocCompletions } from './ahkDoc/ahkDocCompletions';
@@ -133,6 +134,7 @@ function CompletionItemCore(
         ...getDllCallCompletion(AhkFileData, position),
         ...getComObjActiveCompletion(AhkFileData, position, document, context),
         ...getNormalPathCompletion(document.uri, position, AhkTokenLine, context),
+        ...getSnipClass_meta_method(AhkFileData, position),
     );
 
     if (PartStr !== null) {

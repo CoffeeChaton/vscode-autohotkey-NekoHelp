@@ -23,6 +23,7 @@ import { getFuncWithName } from '../../tools/DeepAnalysis/getFuncWithName';
 import { ToUpCase } from '../../tools/str/ToUpCase';
 import { ClassProperty2Md } from '../Def/getClassProperty';
 import { getFucDefWordUpFix } from '../Def/getFucDefWordUpFix';
+import { hover_at_func_or_method_def } from './tools/hover_at_func_or_method_def';
 import { hoverAhkObj } from './tools/hoverAhkObj';
 import { hoverClassName } from './tools/hoverClassName';
 import { hoverComObjActive } from './tools/hoverComObjActive';
@@ -50,12 +51,7 @@ import { hoverWinSetParam } from './tools/hoverWinSetParam';
 function HoverOfFunc(
     document: vscode.TextDocument,
     position: vscode.Position,
-    AhkFunc: CAhkFunc | null,
 ): vscode.MarkdownString | null {
-    if (AhkFunc !== null && AhkFunc.nameRange.contains(position)) {
-        return AhkFunc.md; // hover at func-def-range
-    }
-    //
     const range: vscode.Range | undefined = document.getWordRangeAtPosition(
         position,
         /(?<=[!"/&'()*+,\-:;<=>?[\\^\]{|}~ \t]|^)[#$@\w\u{A1}-\u{FFFF}]+(?=\()/u,
@@ -102,8 +98,9 @@ function HoverProviderCore(
         ?? hoverAhkObj(document, AhkFileData, position);
     if (DirectivesMd !== null) return DirectivesMd;
 
-    const AhkFunc: CAhkFunc | null = getDAWithPos(AST, position);
-    const haveFunc: vscode.MarkdownString | null = HoverOfFunc(document, position, AhkFunc)
+    const DA: CAhkFunc | null = getDAWithPos(AST, position);
+    const haveFunc: vscode.MarkdownString | null = hover_at_func_or_method_def(position, DA)
+        ?? HoverOfFunc(document, position)
         ?? hoverMethod(document, position, AhkFileData)
         ?? ClassProperty2Md(document, position, AhkFileData)
         ?? HotKeyOpt(position, AhkFileData);
@@ -142,8 +139,8 @@ function HoverProviderCore(
         if (param !== null) return new vscode.Hover(param);
     }
 
-    if (AhkFunc !== null) {
-        const DAmd: vscode.MarkdownString | null = DeepAnalysisHover(AhkFunc, wordUp, position);
+    if (DA !== null) {
+        const DAmd: vscode.MarkdownString | null = DeepAnalysisHover(DA, wordUp, position);
         if (DAmd !== null) return new vscode.Hover(DAmd);
     }
 
