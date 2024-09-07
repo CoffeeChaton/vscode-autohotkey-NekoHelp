@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [v0.0.63(2024-07-XX)](#v00632024-07-xx)
+  - [v0.0.63(2024-09-07)](#v00632024-09-07)
   - [v0.0.62(2024-06-28)](#v00622024-06-28)
   - [v0.0.61(2024-06-15)](#v00612024-06-15)
   - [v0.0.60(2024-06-09)](#v00602024-06-09)
@@ -13,13 +13,15 @@
   - [v0.0.54(2024-04-10)](#v00542024-04-10)
   - [\<= 0.0.53(before 2024)](#-0053before-2024)
 
-## v0.0.63(2024-07-XX)
+## v0.0.63(2024-09-07)
 
-<!-- pnpm 9.4.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
+<!-- pnpm 9.5.0 iwr https://get.pnpm.io/install.ps1 -useb | iex-->
 <!-- dprint 0.45.1 -->
 
 - feat: hover/Completion `__New()` `__Set()` etc...
 - fix: Class Property Def
+- feat: diag code210 add new option ([#93](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/93))
+- fix: diag code210 SemanticHighlight
 
 ## v0.0.62(2024-06-28)
 
