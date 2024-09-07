@@ -109,6 +109,7 @@ function upConfig(Configs: vscode.WorkspaceConfiguration): TConfigs {
             AMasterSwitch: getConfigs<EDiagMasterSwitch>(Configs, 'AhkNekoHelp.Diag.AMasterSwitch'),
             code107: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code107LegacyAssignment'),
             code209: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code209'),
+            code210: getConfigs<boolean>(Configs, 'AhkNekoHelp.Diag.code210'),
             code300fnSize: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code300FuncSize'),
             code500Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code500'), // NeverUsedVar
             code502Max: getConfigs<number>(Configs, 'AhkNekoHelp.Diag.code502'), // of var

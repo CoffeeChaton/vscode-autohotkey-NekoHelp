@@ -151,6 +151,11 @@
                         "default": false,
                         "markdownDescription": "%AhkNekoHelp.Diag.code209%"
                     },
+                    "AhkNekoHelp.Diag.code210": {
+                        "type": "boolean",
+                        "default": true,
+                        "markdownDescription": "%AhkNekoHelp.Diag.code210%"
+                    },
                     "AhkNekoHelp.Diag.code300FuncSize": {
                         "type": "number",
                         "default": 100,

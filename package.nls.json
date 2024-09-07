@@ -17,6 +17,7 @@
     "AhkNekoHelp.Diag.AMasterSwitch-3": "alway diagnose",
     "AhkNekoHelp.Diag.code107LegacyAssignment": "([code107](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code107.md) Diagnostic [`var = value`(legacy assignment)](https://www.autohotkey.com/docs/v1/lib/SetEnv.htm) and suggest \"try to use `:=` replace `=`\"",
     "AhkNekoHelp.Diag.code209": "[info] always use `if ()` or `if !()` style, not allow If (Expression) variants ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82))",
+    "AhkNekoHelp.Diag.code210": "[warn] use `if (expression)` instead of `if a = b` (legacy) ([#82](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/issues/82)",
     "AhkNekoHelp.Diag.code300FuncSize": "(code300) lint of function/Method size (just calc non-blank lines)",
     "AhkNekoHelp.Diag.code500": "([code500](https://github.com/CoffeeChaton/vscode-autohotkey-NekoHelp/blob/main/note/code500.md)) var is assigned but never used, a file max warn number. use ```0``` to close warn.",
     "AhkNekoHelp.Diag.code502": "(code502) case sensitivity check of variable, a file max warn number. use ```0``` to close warn.",

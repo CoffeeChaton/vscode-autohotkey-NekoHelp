@@ -26,15 +26,10 @@ const wmBaseDiagnostic = new CMemo(
         const displayErrList: readonly boolean[] = DocStrMap
             .map(({ displayErr }: TAhkTokenLine): boolean => displayErr);
 
-        const oldIf: readonly CDiagBase[] = memoIf_legacyErrCode210.up(DocStrMap)
-            .filter((v: CDiagBase | null): v is CDiagBase => v !== null)
-            .filter((_v: CDiagBase, index: number): boolean => displayErrList[index]);
-
         const diagList: readonly CDiagBase[] = [
             ...getLineErr(DocStrMap),
             ...getTreeErr(AST, displayErrList, DocStrMap),
             ...getMultilineDiag(DocStrMap),
-            ...oldIf,
         ];
         return new Set(diagList);
     },
@@ -57,6 +52,7 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
         code800Deprecated,
         code107,
         code209,
+        code210,
         code300fnSize,
     } = getConfig().Diag;
 
@@ -72,6 +68,14 @@ export function setBaseDiag(AhkFileData: TAhkFileData): void {
     }
     if (code209) {
         DiagShow.push(...memoIf_style.up(DocStrMap));
+    }
+    if (code210) {
+        const displayErrList: readonly boolean[] = DocStrMap
+            .map(({ displayErr }: TAhkTokenLine): boolean => displayErr);
+        const oldIf: readonly CDiagBase[] = memoIf_legacyErrCode210.up(DocStrMap)
+            .filter((v: CDiagBase | null): v is CDiagBase => v !== null)
+            .filter((v: CDiagBase): boolean => displayErrList[v.range.start.line]);
+        DiagShow.push(...oldIf);
     }
 
     diagColl.set(uri, [

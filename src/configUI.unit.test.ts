@@ -60,6 +60,7 @@ describe('check package ruler', () => {
                 ['AhkNekoHelp.Diag.AMasterSwitch', 'string'],
                 ['AhkNekoHelp.Diag.code107LegacyAssignment', 'boolean'],
                 ['AhkNekoHelp.Diag.code209', 'boolean'],
+                ['AhkNekoHelp.Diag.code210', 'boolean'],
                 ['AhkNekoHelp.Diag.code300FuncSize', 'number'],
                 ['AhkNekoHelp.Diag.code500', 'number'],
                 ['AhkNekoHelp.Diag.code502', 'number'],
