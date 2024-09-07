@@ -98,8 +98,12 @@ function getIf_legacy210Err(AhkTokenLine: TAhkTokenLine): CDiagBase | null {
     const lPos: number = lStr.indexOf(strF2);
     if (lPos === -1) return null;
 
+    const lPosFix = lPos === 0 && strF2 === ''
+        ? lStr.indexOf(strF1)
+        : lPos;
+
     const range: vscode.Range = new vscode.Range(
-        new vscode.Position(line, lPos),
+        new vscode.Position(line, lPosFix),
         new vscode.Position(line, lStr.trimEnd().length),
     );
 
